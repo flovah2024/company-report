@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK하이닉스 기업 분석 리포트 | FLOVAH AI Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 316.8deg, var(--rule) 316.8deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.2px;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+                <div class="logo-subtitle" style="margin-top:0;">AI Insights &amp; Research</div>
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 3월 27일</span>
+            <span class="flovah-badge">Premium Research</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="overview" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    SK하이닉스
+                    <span class="hero-title-highlight">메모리 반도체의 글로벌 리더</span>
+                </h1>
+                <p class="hero-subtitle">AI 시대의 고성능 메모리 솔루션 제공자</p>
+
+                <div style="display: flex; justify-content: center; margin-top: 32px;">
+                    <div class="ai-score-badge">
+                        <span style="font-size: 14px; color: var(--ink);">AI Readiness Score</span>
+                        <div class="score-circle">88</div>
+                        <span style="font-size: 13px; color: var(--text-body);">초고성능 메모리 기술력</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">000660</div>
+                        <div class="metric-label">KOSPI Code</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">66조</div>
+                        <div class="metric-label">2024 Revenue</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">150조+</div>
+                        <div class="metric-label">Market Cap</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">35,000+</div>
+                        <div class="metric-label">Employees</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="report-info">
+            <div class="report-info-item">
+                <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                <div class="report-info-content">
+                    <h4>법인명</h4>
+                    <p>SK하이닉스 주식회사</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                <div class="report-info-content">
+                    <h4>대표이사</h4>
+                    <p>곽노정</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                <div class="report-info-content">
+                    <h4>설립년도</h4>
+                    <p>1983년 (현대전자)</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <div class="report-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="report-info-content">
+                    <h4>본사</h4>
+                    <p>경기도 이천시</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요 및 역사</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요 및 사업 구조</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i>기업 역사 및 발전</h3>
+                <p>SK하이닉스는 1983년 현대전자 반도체사업부로 출발하여 40년 이상의 오랜 역사를 가진 글로벌 메모리 반도체 제조업체입니다. 한국 반도체 산업의 역사와 함께 성장해 온 기업으로서, 세계적 수준의 기술력과 제조 역량을 갖추고 있으며, 현재 DRAM과 NAND 플래시 메모리 분야에서 글로벌 톱3 위치를 차지하고 있습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1983년</div>
+                            <div class="timeline-item-content">현대전자 반도체사업부 설립, 16KB DRAM 개발</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1992년</div>
+                            <div class="timeline-item-content">현대반도체로 분사, 64Mb DRAM 개발</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2001년</div>
+                            <div class="timeline-item-content">현대하이닉스로 사명 변경, 1Gb DRAM 개발</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2011년</div>
+                            <div class="timeline-item-content">SK마이크로닉스 인수, SK하이닉스로 사명 재변경</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2015년</div>
+                            <div class="timeline-item-content">3D NAND 양산 개시, 메모리 반도체 확장</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2020년</div>
+                            <div class="timeline-item-content">HBM2 양산, 고대역폭 메모리 시장 진입</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2024년</div>
+                            <div class="timeline-item-content">HBM3E 양산, AI 메모리 시장 주도</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2026년</div>
+                            <div class="timeline-item-content">HBM4 개발 진행, AI GPU 메모리 생태계 구축</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i>기업 비전 및 미션</h3>
+                <p><strong>비전:</strong> 초지능 시대의 메모리 반도체 리더로서 인류의 데이터 처리 혁신을 주도하는 글로벌 기업</p>
+                <p style="margin-top: 25px; margin-bottom: 15px;"><strong>미션:</strong></p>
+                <ul class="content-list">
+                    <li>첨단 메모리 기술 개발을 통한 AI·데이터센터 시장 기회 극대화</li>
+                    <li>차세대 고성능 메모리 솔루션으로 글로벌 고객의 혁신 지원</li>
+                    <li>지속 가능한 경영과 기술 혁신으로 장기적 주주 가치 창출</li>
+                    <li>반도체 산업의 선도 기업으로서 산업 생태계 발전 추진</li>
+                </ul>
+                <p style="margin-top: 25px;">SK하이닉스는 DRAM, NAND, HBM 등 메모리 반도체의 모든 주요 분야에서 글로벌 경쟁력을 보유한 통합형 메모리 솔루션 기업으로 포지셔닝하고 있으며, AI 시대에 필수적인 고성능 메모리 기술 개발에 집중하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>사업 구조 및 세부 분석</h3>
+                <p>SK하이닉스의 사업은 크게 세 가지 핵심 부문으로 구성되어 있으며, 각각 고유의 기술 특성과 시장 기회를 보유하고 있습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">1) DRAM 사업부</strong></p>
+                    <p>DRAM(동적 램)은 컴퓨터, 서버, 모바일 기기의 주요 메모리 소자로서 가장 기초적이면서도 매우 중요한 반도체입니다. SK하이닉스는 DDR5, DDR6 등 최신 DRAM 제품을 제공하고 있으며, 데이터센터용 고성능 DRAM 시장에서 강한 입지를 유지하고 있습니다. 특히 AI 모델 학습과 추론에 필요한 대역폭 요구 증가에 대응하여 고대역폭 메모리(HBM) 기술을 병행하고 있습니다. DRAM 사업은 매출의 약 40~45%를 차지하는 핵심 수익원이며, 글로벌 메모리 시장의 수급 상황에 민감합니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">2) NAND 플래시 메모리 사업부</strong></p>
+                    <p>NAND는 SSD, USB 메모리, 스마트폰 저장 장치 등에 사용되는 비휘발성 메모리입니다. SK하이닉스는 238단계 3D NAND 기술을 개발하여 용량과 속도 면에서 업계 선도 수준을 유지하고 있습니다. 스마트폰, PC, 클라우드 데이터센터 등 다양한 최종 고객에 대한 제품을 공급하고 있으며, 매출의 약 40~45%를 차지합니다. NAND 산업은 DRAM보다 경쟁이 심하며, 3D 공정 고도화와 원가 경쟁력이 중요한 경쟁 요소입니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">3) HBM(고대역폭 메모리) 사업부</strong></p>
+                    <p>HBM은 AI GPU, 고성능 프로세서와 함께 사용되는 차세대 초고성능 메모리로서, AI 데이터센터 시대에 가장 주목받는 기술입니다. SK하이닉스는 2024년 HBM3E 양산을 시작했으며, 2025년부터 HBM4 개발에 착수하고 있습니다. 현재 HBM 시장은 NVIDIA GPU와의 번들 수요가 주도적이며, SK하이닉스는 삼성전자, 인텔과 함께 소수의 주요 공급업체 중 하나입니다. HBM은 아직 매출 비중이 작지만(5~10%), 향후 AI 시장의 급성장에 따라 가장 빠른 성장이 예상되는 부문입니다.</p>
+                </div>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>NVIDIA (HBM)</li>
+                        <li>Apple (NAND, DRAM)</li>
+                        <li>Intel (DRAM)</li>
+                        <li>AMD (HBM, DRAM)</li>
+                        <li>Samsung (협력사)</li>
+                        <li>Google (서버 메모리)</li>
+                        <li>Microsoft (데이터센터)</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>파운더리 파트너</h3>
+                    <ul class="content-list">
+                        <li>TSMC (공급 계약)</li>
+                        <li>삼성전자 (경쟁, 협력)</li>
+                        <li>Micron (글로벌)</li>
+                        <li>Kioxia (NAND)</li>
+                        <li>Western Digital (공급)</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>지역별 주요 고객</h3>
+                    <ul class="content-list">
+                        <li>북미: NVIDIA, Intel, AMD</li>
+                        <li>아시아: Apple, Samsung, TSMC</li>
+                        <li>중국: Baidu, Alibaba, Tencent</li>
+                        <li>EU: 자동차 제조사</li>
+                        <li>한국: 국내 전자 기업</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-layer-group"></i>조직 구조 및 인력 현황</h3>
+                <p>SK하이닉스는 2026년 기준 약 35,000명의 글로벌 임직원으로 구성된 대형 반도체 제조 기업입니다. 조직은 크게 반도체 제조(Fab), 설계·기술(R&D), 판매·마케팅, 경영 지원 부문으로 나뉘어 있습니다.</p>
+
+                <p style="margin-top: 25px;"><strong>반도체 제조 부문(약 55~60%):</strong> 이천, 청주 등 국내 Fab과 인도 구레곤 Fab에서 DRAM, NAND, HBM 제품을 생산합니다. 공정 엔지니어, 생산 기술자, 품질 관리 인력이 배치되어 있습니다.</p>
+
+                <p style="margin-top: 15px;"><strong>연구·개발 부문(약 25~30%):</strong> 메모리 소자 설계, 공정 기술 개발, 신소재 연구 등을 담당합니다. 박사급 연구원들이 주축이며, 반도체 기술의 미래 방향을 결정하는 핵심 부문입니다.</p>
+
+                <p style="margin-top: 15px;"><strong>판매·마케팅·영업 부문(약 8~10%):</strong> 글로벌 고객사와의 관계 관리, 제품 판매, 기술 지원 등을 담당합니다. 미국, 중국, 일본 등 주요 시장에 영업 거점을 운영하고 있습니다.</p>
+
+                <p style="margin-top: 15px;"><strong>경영 지원 부문(약 5~7%):</strong> 재무, 회계, 법무, HR, 전략 등 회사의 경영 기능을 담당합니다.</p>
+
+                <p style="margin-top: 25px;">임직원의 약 60% 이상이 국내(한국)에 위치하고 있으며, 미국, 중국, 일본, 대만 등지에 중요 거점을 보유하고 있습니다. 연간 R&D 투자는 매출의 약 20%로 업계 최고 수준이며, 글로벌 최고 수준의 기술 인력 확보와 유지가 경쟁 우위의 핵심입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>핵심 기술 역량</h3>
+                <p style="margin-bottom: 20px;">SK하이닉스가 보유한 기술 자산은 반도체 산업에서 가장 높은 수준의 경쟁력을 제공합니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">HBM3E 기술:</strong> 높은 대역폭(최대 819GB/s)과 낮은 지연시간을 제공하는 AI GPU용 필수 메모리입니다. SK하이닉스는 2024년부터 양산을 시작했으며, NVIDIA H100/H200 GPU와의 최적 호환성을 확보했습니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">238단 3D NAND:</strong> 세 차원으로 구성된 초고집적 플래시 메모리 기술로, 높은 용량과 신뢰성을 동시에 실현합니다. 세계 최고 수준의 공정 미세화를 통해 비용 효율성을 극대화했습니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">DDR5/DDR6 DRAM:</strong> 최신 세대 DRAM 기술로 데이터센터, 고성능 컴퓨팅 시장의 수요를 충족합니다. 저전력 소비와 고속 동작을 특징으로 합니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">CXL(Compute Express Link) 메모리:</strong> 차세대 고속 인터페이스를 지원하는 확장 메모리로, AI 시스템의 메모리 대역폭 제약을 해결할 핵심 기술입니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">AI 메모리 생태계:</strong> NVIDIA, AMD, Intel 등 주요 GPU/프로세서 제조업체와의 긴밀한 협력을 통해 AI 시스템 최적화 메모리를 공동 개발하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 핵심 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY ANALYSIS -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>차세대 메모리 기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>HBM3E 및 HBM4 기술</h3>
+                <p>HBM(High Bandwidth Memory)은 인공지능 시대의 가장 중요한 메모리 기술입니다. SK하이닉스는 2024년 HBM3E 양산을 시작했으며, 현재 NVIDIA H100/H200 GPU의 주요 메모리 공급자로 활동하고 있습니다. HBM3E의 대역폭은 최대 819GB/s로, 일반 DRAM(약 100GB/s)의 8배 이상입니다. 이는 AI 모델의 학습과 추론 속도를 대폭 향상시키는 핵심 기술입니다.</p>
+
+                <p style="margin-top: 20px;">HBM4는 차세대 기술로서, 2025~2026년경 상용화될 것으로 예상됩니다. HBM4는 HBM3E 대비 약 2배의 대역폭(1,600GB/s 이상)과 향상된 에너지 효율을 제공할 것으로 예상됩니다. SK하이닉스와 삼성전자, TSMC 등이 경쟁적으로 개발하고 있으며, AI 시장의 성장과 함께 수요가 급증할 것으로 전망됩니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">기술 우위:</strong> SK하이닉스는 HBM 개발과 양산에서 선도적 위치를 차지하고 있습니다. NVIDIA와의 긴밀한 협력을 통해 HBM의 성능 최적화를 지속하고 있으며, 공급 안정성 측면에서도 신뢰도 높은 파트너로 평가받고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">시장 기회:</strong> AI 데이터센터 시장의 급속한 확대에 따라 HBM 수요는 매년 50% 이상 증가할 것으로 예상됩니다. SK하이닉스는 HBM 시장에서 약 20~30%의 시장 점유율을 목표로 하고 있으며, 이는 회사의 중기 성장 동력이 될 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cube"></i>3D NAND 플래시 기술 (238단)</h3>
+                <p><strong>개발 현황:</strong> SK하이닉스는 238단계 3D NAND 기술을 개발하여 최신 SSD, 스마트폰, 데이터센터 저장 장치에 공급하고 있습니다. 이는 업계 최고 수준의 집적도로, 단위 면적당 저장 용량을 극대화합니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">기술 특성:</strong> 3D NAND는 수평적 확산의 한계를 넘기 위해 수직 방향으로 메모리 셀을 쌓아올리는 기술입니다. 238단은 약 238개 층의 메모리 셀을 적층한 것을 의미합니다. SK하이닉스의 238단 공정은 다음과 같은 특징을 가집니다:</p>
+                <ul class="content-list">
+                    <li>용량: 1TB급 SSD 제조에 필요한 고집적도 달성</li>
+                    <li>속도: 빠른 쓰기/읽기 속도로 사용자 경험 향상</li>
+                    <li>신뢰성: 안정적인 데이터 보존 능력</li>
+                    <li>원가: 칩 면적 감소로 인한 원가 경쟁력</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">시장 적용:</strong> 238단 3D NAND는 SSD, USB, 스마트폰, 클라우드 데이터센터 등 광범위하게 적용되고 있습니다. 특히 엔터프라이즈급 SSD의 성장으로 SK하이닉스의 NAND 매출이 지속적으로 확대되고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">차세대 기술:</strong> SK하이닉스는 이미 차세대 3D NAND(300단 이상) 기술 개발을 진행 중이며, 2027년 이후 상용화할 것으로 예상됩니다. 이는 NAND 산업의 경쟁력 유지에 필수적입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-bolt"></i>DDR5/DDR6 DRAM</h3>
+                    <p>DDR5는 최신 세대 DRAM으로서, DDR4 대비 약 2배의 대역폭(최대 128GB/s)을 제공합니다. SK하이닉스는 DDR5를 적극 양산하고 있으며, 고성능 PC, 서버, 데이터센터에 공급하고 있습니다.</p>
+
+                    <p style="margin-top: 20px;">DDR6은 차세대 기술으로서, 대역폭 대폭 향상과 전력 소비 감소를 특징으로 합니다. JEDEC 표준 개발이 진행 중이며, 2025년 이후 상용화될 것으로 예상됩니다.</p>
+
+                    <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 13px;">AI 적용:</strong> AI 시스템의 메모리 대역폭 요구 증가로, DDR5/6은 필수적인 기술입니다. SK하이닉스는 AI 최적화 DRAM 개발을 가속화하고 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-plug"></i>CXL 및 AI 메모리</h3>
+                    <p>CXL(Compute Express Link)은 CPU와 외부 메모리 간의 고속 연결 인터페이스로서, AI 시스템의 메모리 확장성을 극대화합니다. SK하이닉스는 CXL 지원 메모리 개발에 앞장서고 있습니다.</p>
+
+                    <p style="margin-top: 20px;">AI 메모리는 AI 모델의 학습과 추론 특성을 최적화한 메모리로서, 낮은 지연시간과 높은 대역폭을 특징으로 합니다. SK하이닉스는 NVIDIA, AMD 등과 공동으로 AI 메모리 표준을 주도하고 있습니다.</p>
+
+                    <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 13px;">경쟁력:</strong> CXL과 AI 메모리는 향후 5년간 가장 빠른 성장이 예상되는 메모리 분야로서, SK하이닉스의 혁신 기술이 핵심 경쟁 우위입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>기술 경쟁력 평가</h3>
+                <p style="margin-bottom: 20px;">SK하이닉스의 주요 기술 분야별 경쟁력을 다음과 같이 평가합니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">HBM 기술</span>
+                            <span class="progress-label-value">92/100</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">NAND 플래시 기술</span>
+                            <span class="progress-label-value">88/100</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">DRAM 기술</span>
+                            <span class="progress-label-value">85/100</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">CXL/AI 메모리</span>
+                            <span class="progress-label-value">82/100</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 82%"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">제조 공정</span>
+                            <span class="progress-label-value">89/100</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 89%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>글로벌 메모리 시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 메모리 시장 현황</h3>
+                <p>글로벌 메모리 반도체 시장은 2024년 약 150조 원 규모로, 매년 5~15% 성장 추세를 보이고 있습니다. 메모리 시장은 DRAM(약 45%), NAND(약 45%), 기타 메모리(약 10%)로 구성되어 있으며, AI와 데이터센터의 성장에 따라 고성능 메모리의 비중이 급증하고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">시장 특성:</strong> 메모리 시장은 다음과 같은 특성을 가집니다:</p>
+                <ul class="content-list">
+                    <li>높은 산업 집중도: 삼성전자, SK하이닉스, Micron이 시장의 약 90% 점유</li>
+                    <li>수급에 민감한 가격 변동: 메모리 초과공급 시 가격이 급락하는 특성</li>
+                    <li>막대한 자본 투자 필요: Fab 구축에 10조 원 이상 소요</li>
+                    <li>기술 진화의 빠른 속도: 2~3년마다 주요 기술 세대 교체</li>
+                    <li>글로벌 공급망 의존성: 국가별 수출통제 영향 증가</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">AI 시장 영향:</strong> AI 데이터센터의 급속한 확대로 인해 고대역폭 메모리(HBM) 수요가 폭발적으로 증가하고 있습니다. NVIDIA의 성공으로 촉발된 AI GPU 수요는 메모리 시장의 새로운 성장 동력이 되고 있으며, HBM은 2024년 약 5조 원 규모에서 2027년 25조 원 이상으로 성장할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>HBM 시장의 급성장</h3>
+                <p>HBM은 AI 시대의 가장 핵심적인 메모리 기술로서, 과거 슈퍼컴퓨터나 그래픽카드에 제한적으로 사용되었으나, 최근 AI GPU의 폭발적 성장으로 인해 시장이 급격히 확대되고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">시장 규모 전망:</strong></p>
+                <div style="margin-top: 20px;">
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 25%;"></div>
+                            </div>
+                            <div class="bar-value">5조원</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 45%;"></div>
+                            </div>
+                            <div class="bar-value">15조원</div>
+                            <div class="bar-label">2025년E</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 65%;"></div>
+                            </div>
+                            <div class="bar-value">25조원</div>
+                            <div class="bar-label">2026년E</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 85%;"></div>
+                            </div>
+                            <div class="bar-value">35조원</div>
+                            <div class="bar-label">2027년E</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">50조원</div>
+                            <div class="bar-label">2028년E</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 30px;"><strong style="color: var(--accent); font-size: 14px;">수요 드라이버:</strong> HBM 수요는 주로 NVIDIA GPU(H100/H200/H400), AMD GPU(MI300), 그리고 기타 AI 프로세서로부터 발생합니다. 2025년 이후 생성형 AI 서비스 확대와 대모델 학습 수요로 인해 HBM 공급 부족이 심화될 것으로 예상됩니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">공급 체인:</strong> HBM의 공급은 여전히 병목 상태입니다. 주요 공급업체는 SK하이닉스(약 30~40%), 삼성전자(약 30~40%), Micron(약 20~30%)으로, 각사의 생산 능력 확대가 AI 시장의 성장 속도를 결정짓고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-database"></i>AI 서버 메모리 시장</h3>
+                <p>AI 데이터센터의 메모리 수요는 전통 서버와 완전히 다릅니다. AI 모델 학습과 추론에 필요한 대역폭이 매우 높기 때문에, 단일 서버 당 메모리 용량과 대역폭 요구가 급증하고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">메모리 구성:</strong> 최신 AI 서버는 다음과 같은 메모리 구성을 갖습니다:</p>
+                <ul class="content-list">
+                    <li>HBM: GPU당 100~200GB (고대역폭 메모리)</li>
+                    <li>DDR5/DDR6: CPU용 메모리 (32~256GB)</li>
+                    <li>NAND SSD: 저장소 및 캐시 (5~50TB)</li>
+                    <li>CXL: 확장 메모리 (선택사항)</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">시장 기회:</strong> 단일 AI 서버의 메모리 가치는 전통 서버의 10배 이상입니다. 데이터센터의 AI화에 따라 SK하이닉스의 메모리 매출이 급속히 증가할 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 비교 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>글로벌 메모리 제조업체 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>SK하이닉스</th>
+                                <th>삼성전자</th>
+                                <th>Micron Technology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>본사</strong></td>
+                                <td>한국 이천</td>
+                                <td>한국 서울</td>
+                                <td>미국 아이다호</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DRAM 점유율</strong></td>
+                                <td>약 28%</td>
+                                <td>약 42%</td>
+                                <td>약 25%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NAND 점유율</strong></td>
+                                <td>약 18%</td>
+                                <td>약 35%</td>
+                                <td>약 13%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HBM 점유율</strong></td>
+                                <td>약 35%</td>
+                                <td>약 40%</td>
+                                <td>약 10%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024 매출</strong></td>
+                                <td>약 66조원</td>
+                                <td>약 280조원*</td>
+                                <td>약 42조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>R&D 투자율</strong></td>
+                                <td>약 20%</td>
+                                <td>약 10%</td>
+                                <td>약 18%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HBM 양산 시작</strong></td>
+                                <td>2024년</td>
+                                <td>2024년</td>
+                                <td>2025년 예상</td>
+                            </tr>
+                            <tr>
+                                <td><strong>주요 강점</strong></td>
+                                <td>HBM, DRAM 기술</td>
+                                <td>전 분야 통합</td>
+                                <td>미국 시장 강점</td>
+                            </tr>
+                            <tr>
+                                <td><strong>주요 약점</strong></td>
+                                <td>NAND 경쟁력</td>
+                                <td>지정학적 위험</td>
+                                <td>기술 격차</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 20px; font-size: 13px; color: var(--text-muted);">*삼성전자는 다양한 사업 부문을 포함하며, 반도체 사업만 약 70조원 규모</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-building"></i>삼성전자</h3>
+                    <p><strong>위치:</strong> 글로벌 메모리 시장 1위</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">강점:</strong> DRAM과 NAND 모두 시장 점유율 1위를 차지하고 있으며, 통합적 반도체 포트폴리오를 보유. HBM 기술도 SK하이닉스와 동등 수준으로 평가.</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">약점:</strong> 지정학적 위험(미국-중국 갈등), 일부 차세대 기술 분야에서 SK하이닉스 대비 낮은 경쟁력. NAND에서의 높은 원가 구조.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i>Micron Technology</h3>
+                    <p><strong>위치:</strong> 글로벌 메모리 시장 3위</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">강점:</strong> 미국 기업으로 미국 정부의 보호 및 지원 대상. 높은 R&D 역량과 고객 친화적 기술 지원.</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">약점:</strong> 기술 혁신 속도가 SK, 삼성 대비 뒤쳐짐. HBM 양산 일정 지연. NAND, DRAM 모두에서 시장 점유율 낮음.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-expand"></i>기타 경쟁사</h3>
+                    <p><strong>Kioxia/Western Digital:</strong> NAND 전문, HBM 참여 없음</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">Intel 옵테인:</strong> 3D XPoint 메모리 기술 포기</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">중국 로컬:</strong> DRAM 및 NAND 기술격차 심각, 글로벌 경쟁 불가</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess-knight"></i>경쟁 우위 분석</h3>
+                <p style="margin-bottom: 20px;">SK하이닉스는 다음과 같은 경쟁 우위를 보유하고 있습니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">1) HBM 기술 리더십:</strong> 가장 빠른 HBM 양산과 NVIDIA와의 긴밀한 협력으로 AI 시장 우위 확보</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">2) 균형잡힌 포트폴리오:</strong> DRAM, NAND, HBM을 모두 취급하여 고객 다변화</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">3) 높은 R&D 투자:</strong> 매출의 20% 이상을 R&D에 투자하여 기술 선도 유지</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">4) 제조 역량:</strong> 이천, 청주 등 최신 Fab 시설로 안정적 공급 능력</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">5) 고객 신뢰도:</strong> NVIDIA, Apple, Intel 등 주요 고객의 신뢰 기반 구축</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>종합 SWOT 분석</span>
+            </div>
+
+            <div class="four-column" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule);">
+                <div class="content-card" style="border-top: none; border-right: 1px solid var(--rule);">
+                    <h3 style="color: var(--gold); margin-bottom: 20px;"><i class="fas fa-arrow-up"></i>Strengths (강점)</h3>
+                    <ul class="content-list">
+                        <li>HBM 기술 선도: AI 시대의 핵심 메모리 기술 우위</li>
+                        <li>높은 기술력: DRAM, NAND, HBM 모두 경쟁력 확보</li>
+                        <li>글로벌 고객: NVIDIA, Apple, Intel 등 핵심 고객 확보</li>
+                        <li>R&D 투자: 매출의 20% 이상 R&D에 투자</li>
+                        <li>제조 효율: 최신 Fab으로 경쟁력 있는 원가 구조</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="border-top: none;">
+                    <h3 style="color: var(--gold); margin-bottom: 20px;"><i class="fas fa-arrow-down"></i>Weaknesses (약점)</h3>
+                    <ul class="content-list">
+                        <li>NAND 경쟁력 약화: 삼성 대비 NAND 시장 점유율 낮음</li>
+                        <li>규모 격차: 삼성전자 대비 전체 매출 규모 차이</li>
+                        <li>자본 집약성: 지속적인 막대한 Fab 투자 필요</li>
+                        <li>고객 집중도: NVIDIA 등 주요 고객 의존도 높음</li>
+                        <li>한국 기업: 지정학적 위험 (미국-중국 갈등)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="four-column" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule);">
+                <div class="content-card" style="border-top: none; border-right: 1px solid var(--rule);">
+                    <h3 style="color: var(--gold); margin-bottom: 20px;"><i class="fas fa-lightbulb"></i>Opportunities (기회)</h3>
+                    <ul class="content-list">
+                        <li>AI 메모리 시장 급성장: HBM 수요 연 50% 이상 증가</li>
+                        <li>데이터센터 확대: 글로벌 AI 인프라 투자 증가</li>
+                        <li>차세대 기술: HBM4, CXL 등 신기술 수요 증가</li>
+                        <li>글로벌 공급 부족: 장기간 공급 부족으로 가격 유지</li>
+                        <li>신규 시장: 자동차, IoT, 엣지 AI 등 신시장 진출</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="border-top: none;">
+                    <h3 style="color: var(--gold); margin-bottom: 20px;"><i class="fas fa-exclamation-triangle"></i>Threats (위협)</h3>
+                    <ul class="content-list">
+                        <li>기술 추월: 경쟁사의 빠른 기술 혁신</li>
+                        <li>경기 침체: 글로벌 경기 둔화 시 메모리 수요 급락</li>
+                        <li>미중 갈등: 수출통제 강화에 따른 중국 시장 제약</li>
+                        <li>단가 인하: 과잉 공급 시 메모리 가격 급락 위험</li>
+                        <li>정치적 위험: 반도체 산업 규제 강화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-rocket"></i>
+                <span>중기 전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crown"></i>HBM 시장 지배 전략</h3>
+                <p>SK하이닉스의 가장 핵심적인 전략은 HBM 시장에서의 지배적 위치 확보입니다. 현재 HBM은 NVIDIA GPU와의 번들 수요가 주도적이며, SK하이닉스는 이미 30~40%의 시장 점유율을 보유하고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">구체적 전략:</strong></p>
+                <ul class="content-list">
+                    <li>HBM3E 최대한 빠른 양산 확대 및 공급 안정화</li>
+                    <li>HBM4 개발 가속화로 차세대 기술 선점</li>
+                    <li>NVIDIA, AMD 등 GPU 제조사와의 기술 협력 강화</li>
+                    <li>HBM 전용 생산 능력 대폭 확충</li>
+                    <li>고객별 맞춤형 HBM 솔루션 개발</li>
+                </ul>
+
+                <p style="margin-top: 20px;">성공 시 2027년 SK하이닉스의 HBM 매출은 12조 원 이상으로 성장할 것으로 예상되며, 이는 회사 전체 성장을 주도하게 될 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-network-wired"></i>AI 메모리 생태계 구축</h3>
+                <p>SK하이닉스는 단순한 메모리 칩 공급업체를 넘어 AI 시스템 최적화 메모리 솔루션 제공업체로의 전환을 추진하고 있습니다. 이는 NVIDIA와의 협력을 통해 GPU 맞춤형 메모리를 개발하고, CPU 제조사와 협력하여 시스템 레벨의 메모리 최적화를 추구하는 것을 의미합니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">추진 내용:</strong></p>
+                <ul class="content-list">
+                    <li>NVIDIA H100/H200/H400 GPU와의 기술 동기화</li>
+                    <li>AMD MI300 및 향후 GPU와의 최적화 협력</li>
+                    <li>Intel, Qualcomm 등 CPU 제조사와의 DDR6 협력</li>
+                    <li>CXL 기반 확장 메모리 솔루션 개발</li>
+                    <li>AI 모델별 메모리 최적 구성 가이드 제공</li>
+                </ul>
+
+                <p style="margin-top: 20px;">이 전략은 메모리 가격 경쟁을 일부 완화하고 고마진 솔루션 사업으로의 확대를 가능하게 할 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i>차세대 메모리 기술 선투자</h3>
+                <p>메모리 산업의 기술 진화 속도가 빠르기 때문에, SK하이닉스는 현재 수익성보다 미래 경쟁력을 우선하는 선투자 전략을 추진하고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">투자 분야:</strong></p>
+                <ul class="content-list">
+                    <li>HBM4 및 HBM5 차세대 기술 개발</li>
+                    <li>3D NAND 300단 이상 초고집적 기술</li>
+                    <li>DDR6 및 미래 DRAM 기술</li>
+                    <li>신소재 및 극자외선(EUV) 공정 기술</li>
+                    <li>차세대 인터페이스(CXL 3.0 이상) 지원 메모리</li>
+                </ul>
+
+                <p style="margin-top: 20px;">이러한 선투자는 단기 수익성을 압박하지만, 5~10년 후 SK하이닉스의 시장 우위를 결정짓는 중요한 전략입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-compress"></i>NAND 사업 구조 조정</h3>
+                <p>NAND 플래시 메모리는 과거 SK하이닉스의 주요 수익원이었으나, 최근 가격 경쟁 심화로 인해 수익성이 악화되고 있습니다. SK하이닉스는 NAND 사업을 구조적으로 조정하여 고부가가치 부분에 집중하는 전략을 추진하고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">조정 방향:</strong></p>
+                <ul class="content-list">
+                    <li>저가 NAND 시장 축소 (과자본화된 시장)</li>
+                    <li>엔터프라이즈급 고성능 SSD 집중</li>
+                    <li>240층 이상 초고집적 제품 중심 생산</li>
+                    <li>스마트폰용 NAND 고마진 제품 강화</li>
+                    <li>일부 NAND 생산능력을 HBM으로 전환</li>
+                </ul>
+
+                <p style="margin-top: 20px;">이 전략으로 인해 NAND 매출은 정체하거나 소폭 감소할 수 있으나, 수익성은 개선될 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무 성과 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trending-up"></i>매출 및 수익 트렌드</h3>
+                <p>SK하이닉스의 최근 재무 성과는 메모리 반도체 시장의 사이클을 반영하고 있습니다. 2023년 메모리 부도기를 거쳐 2024년부터 점진적 회복이 이루어지고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">주요 재무 지표 (2024년 기준):</strong></p>
+                <ul class="content-list">
+                    <li>매출: 약 66조 원</li>
+                    <li>영업이익: 약 5.5조 원 (영업이익률 약 8.3%)</li>
+                    <li>순이익: 약 2.5조 원 (순이익률 약 3.8%)</li>
+                    <li>자본금: 약 2.6조 원</li>
+                    <li>총자산: 약 130조 원</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">2025~2027년 전망:</strong> AI 메모리 수요 증가에 따라 매출은 연 10~20% 성장이 예상되며, 2027년 매출 100조 원 이상 달성이 목표입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-object-group"></i>사업부별 매출 구성</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 70%;"></div>
+                            </div>
+                            <div class="bar-value">DRAM<br>42%</div>
+                            <div class="bar-label">약 28조원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 70%;"></div>
+                            </div>
+                            <div class="bar-value">NAND<br>44%</div>
+                            <div class="bar-label">약 29조원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 20%;"></div>
+                            </div>
+                            <div class="bar-value">HBM<br>8%</div>
+                            <div class="bar-label">약 5조원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 10%;"></div>
+                            </div>
+                            <div class="bar-value">기타<br>6%</div>
+                            <div class="bar-label">약 4조원</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-water"></i>현금 흐름</h3>
+                    <p><strong>영업 현금 흐름:</strong> 약 8조 원 (IFRS 기준)</p>
+                    <p style="margin-top: 15px;"><strong>투자 현금 흐름:</strong> 약 -10조 원 (설비 투자)</p>
+                    <p style="margin-top: 15px;"><strong>재무 현금 흐름:</strong> 약 3조 원 (배당금 감소)</p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--accent);">특징:</strong> 막대한 Fab 설비 투자로 인해 자유현금흐름이 제약적이나, AI 메모리 수요 증가에 따라 투자 수익성이 개선되는 추세</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percent"></i>수익성 분석</h3>
+                <p>SK하이닉스의 수익성은 메모리 시장의 수급 상황에 민감하게 반응합니다. 2023년 극심한 경기침체로 수익성이 악화되었으나, 2024년부터 점진적 회복이 이루어지고 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">주요 수익성 지표:</strong></p>
+                <div style="margin-top: 20px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2024년 영업이익률</span>
+                            <span class="progress-label-value">8.3%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 35%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2025년 예상 영업이익률</span>
+                            <span class="progress-label-value">12~15%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 50%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026년 예상 영업이익률</span>
+                            <span class="progress-label-value">15~18%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 58%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROE (자본수익률)</span>
+                            <span class="progress-label-value">약 8~10%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 40%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROIC (투자자본수익률)</span>
+                            <span class="progress-label-value">약 5~7%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent);">평가:</strong> 메모리 업계의 일반적인 수익성이 낮은 편이나, SK하이닉스는 기술 우위를 통해 업계 평균 이상의 수익성을 유지하려고 노력하고 있습니다. 향후 HBM 비중 증가에 따라 수익성 개선이 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>재무 건전성</h3>
+                <p><strong>부채 비율:</strong> 약 70~80% (업계 평균 대비 양호)</p>
+                <p style="margin-top: 15px;"><strong>유동성:</strong> 약 1.2~1.3 (양호)</p>
+                <p style="margin-top: 15px;"><strong>신용 등급:</strong> Moody's A2, S&P A-</p>
+                <p style="margin-top: 15px;"><strong style="color: var(--accent);">평가:</strong> SK하이닉스는 반도체 업계의 높은 자본 투자 요구에도 불구하고 양호한 재무 건전성을 유지하고 있습니다. 다만 과도한 Fab 투자에 따른 부채 증가는 향후 모니터링이 필요합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 전망</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-bullseye"></i>
+                <span>투자 테제 및 위험 요인</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i>핵심 투자 테제</h3>
+                <p><strong style="color: var(--gold); font-size: 15px;">SK하이닉스는 AI 메모리 시대의 최대 수혜업체입니다.</strong></p>
+
+                <p style="margin-top: 20px;">SK하이닉스의 중기 성장을 주도할 3가지 주요 드라이버는 다음과 같습니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">1) HBM 시장 주도:</strong> NVIDIA GPU의 폭발적 수요에 따라 HBM 시장은 2024년 5조 원에서 2027년 50조 원 이상으로 10배 성장할 것으로 예상됩니다. SK하이닉스의 HBM 점유율이 30~40%를 유지한다면, HBM 사업 매출은 15~20조 원 규모로 성장하게 됩니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">2) 메모리 가격 상승:</strong> 현재 글로벌 메모리 공급 부족 상황이 향후 2~3년 지속될 것으로 예상됩니다. 이는 메모리 칩 가격의 상승을 의미하며, SK하이닉스의 수익성 개선으로 이어질 것입니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">3) 차세대 기술 리더십:</strong> SK하이닉스는 HBM4, CXL, DDR6 등 차세대 기술 개발에서 선도적 위치를 유지함으로써 경쟁사 대비 기술 프리미엄을 확보하게 될 것입니다.</p>
+                </div>
+
+                <p style="margin-top: 30px;"><strong style="color: var(--gold); font-size: 15px;">투자 전망:</strong> 2027년 SK하이닉스의 예상 매출은 95~110조 원, 영업이익률은 15~18%로 추정됩니다. 이는 현재 대비 약 50% 매출 성장과 100% 이상의 이익 성장을 의미하며, 한국 대형 우량기업 중에서 가장 빠른 성장이 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i>주요 위험 요인</h3>
+                <p style="margin-bottom: 20px;">투자 결정 시 다음과 같은 위험 요인을 신중히 검토해야 합니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">1) 기술 위험:</strong> 경쟁사(삼성, Micron)의 빠른 기술 혁신으로 인해 SK하이닉스의 기술 우위가 약화될 수 있습니다. 특히 HBM 분야에서 삼성의 추격이 빠르므로 주의가 필요합니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">2) 경기 위험:</strong> 글로벌 경기 침체 시 AI 투자도 급락할 수 있습니다. 2008년 금융위기 당시 반도체 산업이 경험한 수준의 수요 급감은 SK하이닉스의 실적을 심각하게 악화시킬 것입니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">3) 지정학적 위험:</strong> 미국의 대중국 수출통제 강화, 그리고 한국 반도체 업체에 대한 규제 가능성이 증가하고 있습니다. 특히 고급 메모리 기술의 중국 수출이 제한될 경우 시장이 축소될 수 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">4) 공급 과잉 위험:</strong> 메모리 시장은 역사적으로 과잉 공급 사이클을 반복해왔습니다. 만약 HBM, DRAM, NAND 등 모든 분야에서 동시에 공급이 과잉이 되면 가격 붕괴가 발생할 수 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--accent); font-size: 14px;">5) 자본 투자 위험:</strong> SK하이닉스의 향후 성장을 위해서는 연 10조 원 이상의 Fab 설비 투자가 필요합니다. 만약 투자 회수가 예상보다 더디면 재무 건전성이 악화될 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>FLOVAH 인사이트</h3>
+                <p><strong style="color: var(--gold); font-size: 15px;">평가: BUY (강력한 매수 추천)</strong></p>
+
+                <p style="margin-top: 20px;">SK하이닉스는 AI 시대의 명확한 수혜주입니다. HBM 기술 선도, 글로벌 고객 기반, 높은 R&D 투자 등 여러 긍정 요인이 복합적으로 작용하여 향후 3~5년 우수한 성과를 낼 것으로 예상됩니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent); font-size: 14px;">투자 시 체크리스트:</strong></p>
+                <ul class="content-list">
+                    <li>HBM 양산 차질 여부 모니터링 (핵심 지표)</li>
+                    <li>분기별 영업이익률 추이 (수익성 지표)</li>
+                    <li>자유현금흐름 개선 추세 (재무 지표)</li>
+                    <li>시장 점유율 유지/확대 (경쟁력 지표)</li>
+                    <li>신기술 개발 진전도 (미래 성장성 지표)</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent);">목표가:</strong> 12개월 목표가는 현재 주가의 40~50% 상승 여력이 있을 것으로 예상됩니다. 다만 메모리 가격, 경기 상황, 지정학적 리스크에 따라 변동성이 클 수 있습니다.</p>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--accent);">투자 기간:</strong> 중기(2~3년) 투자 관점에서 강력한 매수 추천이며, 단기 변동성에는 흔들리지 않기를 권고합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>면책 조항 (Disclaimer)</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">본 보고서는 정보 제공 목적으로만 작성되었으며, 투자 조언이 아닙니다. 본 보고서에 포함된 정보는 공개 정보와 FLOVAH AI Insights의 분석을 토대로 작성되었으나, 그 정확성을 보장하지 않습니다. 투자 결정은 본인의 투자 목표, 위험 감수 능력, 전체 포트폴리오 상황을 고려하여 신중히 판단하기 바랍니다. FLOVAH는 본 보고서 이용으로 인한 직접 또는 간접 손실에 대해 책임을 지지 않습니다.</p>
+
+                <p style="margin-top: 20px; font-size: 14px; color: var(--text-secondary);"><strong>작성일:</strong> 2026년 3월 27일<br><strong>분석가:</strong> FLOVAH AI Research Team<br><strong>정보 출처:</strong> SK하이닉스 공시, KOSPI, 글로벌 산업 데이터, 공개 뉴스</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--rule); text-align: center;">
+            <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 20px;">
+                © 2026 FLOVAH AI Insights. All rights reserved. | <a href="index.html" style="color: var(--gold); text-decoration: none;">홈</a>
+            </p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:24px;width:auto;filter:brightness(0.85);">
+                <p style="color: var(--text-muted); font-size: 11px;">Premium AI Research Platform for Equity Analysis</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target.querySelector('.progress-bar-fill');
+                    if (fill && fill.style.width) {
+                        fill.style.transition = 'width 1s ease';
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.progress-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Animate score circle
+        window.addEventListener('load', function() {
+            const scoreCircle = document.querySelector('.score-circle');
+            if (scoreCircle) {
+                scoreCircle.style.animation = 'fadeInUp 0.8s ease forwards';
+            }
+        });
+    </script>
+</body>
+</html>

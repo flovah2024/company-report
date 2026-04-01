@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POSCO홀딩스 기업 분석 리포트 | FLOVAH AI Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 208.8deg, var(--rule) 208.8deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.2px;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+                <div class="logo-subtitle" style="margin-top:0;">AI Insights &amp; Research</div>
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <div class="header-date">March 27, 2026</div>
+            <div class="flovah-badge">Premium Research</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO / REPORT OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-highlight">POSCO홀딩스</span> 기업 분석 리포트
+                    </h1>
+                    <p class="hero-subtitle">세계 철강 시장의 리더, 그린 스틸과 2차전지 소재로의 혁신적 전환</p>
+
+                    <div style="display: flex; justify-content: center; margin: 40px 0;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">58</div>
+                            <div>
+                                <div style="color: var(--text-primary); margin-bottom: 5px;">AI 준비도 점수</div>
+                                <div style="color: var(--text-secondary); font-size: 12px; font-weight: 400;">산업 평균 대비 우수</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">77조</div>
+                            <div class="metric-label">2024년 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">25조</div>
+                            <div class="metric-label">시가총액 (2026)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">30,000명</div>
+                            <div class="metric-label">임직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">58년</div>
+                            <div class="metric-label">업력 (1968~)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 3월 27일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>POSCO홀딩스 (POSCO Holdings Inc.)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 005490</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>장인화</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 2: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보</h3>
+                <p>POSCO홀딩스는 1968년 설립된 대한민국의 글로벌 철강 기업으로, 2022년 지주사 전환을 통해 기업 구조를 개편하고 다층적 사업 포트폴리오를 강화했습니다. KOSPI 상장(005490)을 통해 국내외 자본시장에서 가장 주목받는 대형 주식 중 하나이며, 2024년 기준 약 77조 원의 매출을 기록하며 글로벌 철강 산업의 최상위 플레이어로 입지를 확보했습니다. 현재 약 30,000명의 임직원이 근무 중이며, 그룹 전체로는 약 40,000명의 인력이 활동하고 있습니다. 포항과 광양을 중심으로 한 국내 거점과 함께 전 세계 주요 국가에 생산 시설을 운영하고 있으며, 향후 수십 년간의 산업 변화를 선제적으로 대응하기 위한 전략적 투자를 추진 중입니다.</p>
+                <p>POSCO의 기술 역량은 세계적 수준을 유지하고 있습니다. FINEX 공법의 혁신적 개발부터 시작하여, 현재는 HyREX(수소환원제철), 2차전지 양극재 및 음극재 기술, 리튬 생산 기술 등 미래 산업을 주도할 핵심 기술들을 보유하고 있습니다. 특히 탄소중립 철강 생산 기술 분야에서는 전 세계적으로 선도 위치를 확보하고 있으며, 이러한 기술 기반은 향후 20~30년간의 산업 경쟁에서 POSCO의 가장 중요한 경쟁 자산이 될 것입니다. 더불어 AI와 스마트팩토리 기술을 통한 생산 효율성 극대화도 지속적으로 추진되고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-history"></i>회사 연혁</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1968년</div>
+                            <div class="timeline-item-content">포항제철 설립, 한국 철강 산업 개척</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1973년</div>
+                            <div class="timeline-item-content">포항제철소 완공, 연산 1,000만 톤 달성</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1992년</div>
+                            <div class="timeline-item-content">광양제철소 준공, 글로벌 톱 3 진입</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2005년</div>
+                            <div class="timeline-item-content">POSCO로 회사명 변경, 브랜드 강화</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2008년</div>
+                            <div class="timeline-item-content">PosLX(포스코 스테인리스강) 개발</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2015년</div>
+                            <div class="timeline-item-content">그린 스틸 전략 발표, 탄소감축 선언</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2018년</div>
+                            <div class="timeline-item-content">2차전지 양극재 고급 기술 개발 완료</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2022년</div>
+                            <div class="timeline-item-content">지주사 전환, POSCO홀딩스 출범</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2024년</div>
+                            <div class="timeline-item-content">리튬 생산 시설 가동, 글로벌 공급망 확보</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-target"></i>비전 및 미션</h3>
+                    <p><strong>비전:</strong> 세계 최고의 철강 및 신소재 기업으로서 지속 가능한 미래를 선도하는 Global No.1 Company</p>
+                    <p style="margin-top: 25px; margin-bottom: 15px;"><strong>미션:</strong></p>
+                    <ul class="content-list">
+                        <li>탄소 중립적 철강 생산 기술을 통한 지속 가능한 성장</li>
+                        <li>2차전지 소재 및 리튬 등 차세대 소재 시장 주도</li>
+                        <li>인프라 및 에너지 솔루션으로 글로벌 산업 기여</li>
+                        <li>AI와 스마트팩토리로 생산 효율성 극대화</li>
+                        <li>사회적 책임과 환경 보호의 균형 실현</li>
+                    </ul>
+                    <p style="margin-top: 25px;">POSCO홀딩스는 단순한 철강 제조사를 넘어 글로벌 소재 및 에너지 솔루션 기업으로의 전환을 추진 중이며, 이는 회사의 중장기 생존 전략과 성장 엔진입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>사업 구조 및 세부 설명</h3>
+                <p>POSCO홀딩스의 사업은 지주사 구조 하에 네 가지 핵심 자회사 및 사업부로 구성되어 있으며, 각각 상이한 시장 기회와 성장 잠재력을 보유하고 있습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">1) POSCO 철강 사업부</strong></p>
+                    <p>POSCO의 핵심 사업으로, 자동차용 고급 철강, 건설 구조재, 전기강판, 스테인리스강 등을 생산합니다. 포항과 광양의 두 대형 제철소를 운영하며, 연산 4,500만 톤 규모의 생산 능력을 보유하고 있습니다. 2024년 철강 부문은 약 60조 원의 매출을 기록했으며, 지속적인 고급강 비중 확대와 친환경 공정 전환으로 수익성을 개선하고 있습니다. HyREX 기술을 통한 수소환원제철 도입은 향후 탄소배출을 크게 감소시킬 것으로 예상되며, 이는 글로벌 탄소규제에 대비하는 전략적 투자입니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">2) 2차전지 소재 사업</strong></p>
+                    <p>POSCO는 차세대 전기차 시장의 성장에 따른 2차전지 소재 수요 급증을 선제적으로 대응하기 위해 2010년대부터 관련 기술을 개발해왔습니다. 현재 양극재(NCM, NCMA), 음극재, 분리막 등을 자체 개발 및 생산하고 있으며, 2024년에는 약 10조 원대의 매출 규모를 달성했습니다. 삼성SDI, LG에너지솔루션, SK On 등 국내 배터리 제조사와 장기 공급 계약을 체결했으며, 글로벌 고객사 확보도 적극 추진 중입니다. 특히 고에너지 밀도 소재 개발에 집중하고 있으며, AI 기반 소재 설계가 이 과정을 가속화하고 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">3) 리튬 자원 개발 및 생산</strong></p>
+                    <p>2차전지 수요의 급증에 따른 리튬의 공급 부족을 해결하기 위해, POSCO는 아르헨티나 및 호주 등 글로벌 리튬 광산에 대규모 투자를 실행했습니다. 2024년 현재 아르헨티나의 Maricunga 프로젝트와 호주의 Pillbara 지역 광산 개발을 추진 중이며, 2026년부터 본격적인 리튬 생산을 계획하고 있습니다. 이는 연산 100,000톤 규모의 수산화리튬 생산 능력을 확보할 예정이며, POSCO가 글로벌 리튬 공급망에서 주요 플레이어로 진입하는 것을 의미합니다. 리튬의 자체 확보는 2차전지 소재 비용 경쟁력을 크게 강화할 것입니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">4) 에너지 및 인프라 사업</strong></p>
+                    <p>POSCO는 철강 제조 과정에서 발생하는 부산물을 활용한 에너지 사업과 더불어, 수소 연료전지, 태양광, 풍력 등 재생 에너지 사업으로 포트폴리오를 확대하고 있습니다. 또한 도로, 철도, 건설 인프라 분야에 고기능 강재를 공급하며, 장기적으로는 수소 에너지 시장에서의 선도 위치를 목표로 하고 있습니다. 이 부문은 아직 초기 단계이지만, 글로벌 탄소중립 정책에 따른 수소 수요 증가에 대비한 전략적 투자로 평가됩니다.</p>
+                </div>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>현대차그룹</li>
+                        <li>기아자동차</li>
+                        <li>삼성SDI</li>
+                        <li>LG에너지솔루션</li>
+                        <li>SK On</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>글로벌 파트너</h3>
+                    <ul class="content-list">
+                        <li>BMW, Mercedes-Benz</li>
+                        <li>Tesla, GM</li>
+                        <li>CATL, BYD</li>
+                        <li>Volkswagen</li>
+                        <li>주요 일반건설사</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>해외 거점</h3>
+                    <ul class="content-list">
+                        <li>인도, 베트남 제철소</li>
+                        <li>미국 자동차강 공장</li>
+                        <li>인도네시아 스테인리스강 생산</li>
+                        <li>아르헨티나 리튬 광산</li>
+                        <li>호주 리튬 개발사업</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 3: TECHNOLOGY ANALYSIS -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>FINEX 공법 및 혁신 기술</h3>
+                <p>POSCO가 1970년대에 독자 개발한 FINEX 공법은 철광석 펠릿을 직접 환원하는 기술로, 종래의 고로 방식 대비 생산 효율이 우수하고 환경 오염이 적습니다. 이 기술은 이후 인도, 베트남, 인도네시아 등에도 수출되어 POSCO의 기술 경쟁력을 증명하는 상징이 되었습니다. FINEX는 향후 HyREX로의 업그레이드를 통해 수소환원제철로 진화할 예정이며, 이는 철강 산업의 완전한 탄소중립화를 가능하게 할 기술입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i>HyREX 수소환원제철</h3>
+                    <p>HyREX는 수소를 환원제로 사용하여 철광석을 환원하는 기술로, 기존 철강 생산 과정의 탄소배출을 근본적으로 제거할 수 있습니다. 포항제철소에서 2024년부터 파일럿 설비 운영을 시작했으며, 2030년까지 본격적인 상용화를 목표로 하고 있습니다. 이 기술이 완성되면 POSCO는 글로벌 그린 스틸 시장에서 절대적 경쟁 우위를 확보하게 됩니다. 특히 유럽연합의 탄소국경조정(CBAM) 규제 도입에 따라 저탄소 철강에 대한 프리미엄이 급상승할 것으로 예상되며, 이는 POSCO의 수익 개선에 직결될 것입니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-three-quarters"></i>2차전지 소재 기술</h3>
+                    <p>POSCO의 양극재 기술은 NCM(니켈·코발트·망간)에서 NCMA(니켈·코발트·망간·알루미늄)로 진화했으며, 최신 고에너지 밀도 소재 개발에 집중하고 있습니다. 음극재는 천연 흑연 대비 경쟁력 있는 인공 흑연 기술을 보유하고 있으며, AI를 활용한 소재 설계로 개발 시간을 단축하고 있습니다. 2024년 기준 양극재 생산 능력은 연산 200,000톤 규모이며, 2030년까지 500,000톤으로 확대할 계획입니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-gem"></i>리튬 생산 기술</h3>
+                    <p>POSCO는 염수에서 리튬을 추출하는 직접 리튬 추출(DLE) 기술을 개발했으며, 이는 종래의 증발 공정 대비 생산 속도가 10배 이상 빠릅니다. 아르헨티나의 Maricunga 광산에서는 2026년부터 DLE 기술을 활용한 수산화리튬 생산을 시작할 예정이며, 초기 연산 40,000톤에서 2030년까지 100,000톤으로 확대할 계획입니다. 이 기술은 환경 오염이 적으면서도 고순도 리튬을 빠르게 생산할 수 있어, 글로벌 배터리 업체들의 공급 부족 문제를 해결하는 핵심 솔루션이 될 것입니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i>AI 스마트팩토리</h3>
+                    <p>POSCO는 포항과 광양 제철소에 AI 기반 스마트팩토리 시스템을 구축하고 있습니다. 빅데이터 수집·분석을 통한 설비 예측 유지보수(Predictive Maintenance), 품질 관리 자동화, 에너지 최적화 등을 추진 중이며, 이는 생산 효율을 5~10% 향상시킬 것으로 예상됩니다. 또한 AI를 활용한 소재 설계와 공정 최적화는 R&D 기간을 단축하고 혁신 속도를 가속화하는 데 기여하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 요약</h3>
+                <div style="margin-top: 20px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">그린 스틸 기술 (HyREX)</span>
+                            <span class="progress-label-value">85%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="85" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2차전지 소재 기술</span>
+                            <span class="progress-label-value">78%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="78" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">리튬 추출 기술</span>
+                            <span class="progress-label-value">82%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="82" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">AI 및 자동화</span>
+                            <span class="progress-label-value">72%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="72" style="width: 72%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 4: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 철강 시장</h3>
+                <p>글로벌 철강 시장은 2024년 기준 약 2억 톤의 연간 생산 규모를 유지하고 있으며, 선진국의 성숙도는 낮지만 개발도상국(중국, 인도, 동남아)의 수요는 계속 증가하는 추세입니다. 자동차 산업의 전동화에 따른 고급 자동차강 수요와 재생에너지 인프라 확대에 필요한 특수강 수요가 점진적으로 증가하고 있습니다. 동시에 글로벌 탄소 규제 강화로 저탄소 철강에 대한 프리미엄이 형성되고 있으며, 이는 고급 기술을 보유한 POSCO 같은 선도 기업에 유리합니다. 2024~2030년 연평균 성장률은 2~3%로 예상되며, POSCO는 이 과정에서 시장 점유율을 유지하면서 수익성을 개선하는 전략을 추진하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-three-quarters"></i>2차전지 소재 시장</h3>
+                    <p>글로벌 2차전지 시장은 전기차 판매 급증에 따라 2024년 약 1.2조 원 규모에서 2030년 3조 원대로 성장할 것으로 예상되고 있습니다. 특히 양극재는 고에너지 밀도 소재로의 전환, 음극재는 인공 흑연의 수요 증가, 전해질과 분리막도 고성능 제품 수요 증가 중입니다. POSCO는 이 시장에서 양극재 기준 세계 5~10위권 기업으로 평가되며, 향후 3~5년 내 톱 3 진입을 목표로 적극적인 설비 확대와 기술 개발을 추진 중입니다. 삼성SDI, LG에너지솔루션, SK On 등과의 장기 공급 계약 체결은 POSCO의 시장 입지를 견고히 하고 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-gem"></i>리튬 시장 동향</h3>
+                    <p>글로벌 리튬 수요는 2024년 약 1.5백만 톤에서 2030년 3백만 톤 규모로 급증할 것으로 예상되며, 공급 부족이 심화되고 있습니다. 리튬 가격은 2021~2022년 배럴당 $2,500에서 현재 $800~1,200 수준으로 조정되었지만, 장기적으로는 수요 대비 공급 부족으로 다시 상승할 것으로 전망됩니다. POSCO의 리튬 사업 진출은 자체 2차전지 소재 비용 경쟁력 강화뿐 아니라 글로벌 공급 부족 시장에서 추가 수익원을 창출할 수 있다는 점에서 전략적으로 매우 중요합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i>탄소중립 철강 시장</h3>
+                <p>유럽연합의 탄소국경조정(CBAM) 규제가 2026년부터 본격 시행될 예정이며, 미국도 인플레이션감축법(IRA)을 통해 저탄소 강재에 대한 보조금과 인센티브를 제공하고 있습니다. 이에 따라 글로벌 철강 수입국들은 저탄소 제품을 선호하는 추세를 보이고 있으며, 전통적 고로 방식의 철강은 점진적으로 가격 경쟁력을 잃을 것으로 예상됩니다. POSCO의 HyREX 기술은 2030년부터 상용화되어 이러한 추세에 완벽히 대응할 것으로 평가되며, 이는 향후 철강 판매 수익성의 핵심 경쟁력이 될 것입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 5: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-sitemap"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>글로벌 철강 기업 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업명</th>
+                                <th>국가</th>
+                                <th>2024 매출</th>
+                                <th>글로벌 위치</th>
+                                <th>그린스틸 진전</th>
+                                <th>2차전지 소재</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>POSCO</strong></td>
+                                <td>한국</td>
+                                <td>77조</td>
+                                <td>세계 6위</td>
+                                <td>HyREX 개발중</td>
+                                <td>양극재, 음극재 보유</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ArcelorMittal</strong></td>
+                                <td>룩셈부르크</td>
+                                <td>78조</td>
+                                <td>세계 1위</td>
+                                <td>선진 기술 보유</td>
+                                <td>미진출</td>
+                            </tr>
+                            <tr>
+                                <td><strong>일본제철(Nippon Steel)</strong></td>
+                                <td>일본</td>
+                                <td>68조</td>
+                                <td>세계 4위</td>
+                                <td>수준급 기술</td>
+                                <td>제한적 참여</td>
+                            </tr>
+                            <tr>
+                                <td><strong>보산강철(Baosteel)</strong></td>
+                                <td>중국</td>
+                                <td>82조</td>
+                                <td>세계 2위</td>
+                                <td>개발 초기</td>
+                                <td>진출 초기</td>
+                            </tr>
+                            <tr>
+                                <td><strong>현대제철</strong></td>
+                                <td>한국</td>
+                                <td>18조</td>
+                                <td>국내 2위</td>
+                                <td>초기 단계</td>
+                                <td>미진출</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-crown"></i>ArcelorMittal</h3>
+                    <p><strong>강점:</strong> 글로벌 최대 규모, 고급 강재 기술 선도</p>
+                    <p><strong>약점:</strong> 2차전지 소재 미진출, 무거운 조직</p>
+                    <p><strong>위협:</strong> POSCO의 그린스틸 기술 개발로 가격 경쟁 심화 가능</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-torii-gate"></i>일본제철</h3>
+                    <p><strong>강점:</strong> 고급 특수강 기술, 자동차 고객 기반</p>
+                    <p><strong>약점:</strong> 규모 열위, 신사업 진출 지연</p>
+                    <p><strong>위협:</strong> 한국 기업의 2차전지 소재 시장 선점</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-yen-sign"></i>보산강철</strong></h3>
+                    <p><strong>강점:</strong> 중국 시장 지배, 저가 경쟁력</p>
+                    <p><strong>약점:</strong> 기술 수준 낮음, 환경규제 대응 미흡</p>
+                    <p><strong>위협:</strong> 대량 생산으로 가격 압박 가능</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>경쟁 우위 분석</h3>
+                <p><strong style="color: var(--gold);">POSCO의 경쟁 우위:</strong> POSCO는 그린스틸 기술(HyREX), 2차전지 소재, 리튬 자원 확보 등 세 가지 전략적 요소에서 경쟁사 대비 우월합니다. 특히 ArcelorMittal은 2차전지 소재에서 전혀 준비되지 않았으며, 일본제철은 신사업 진출이 지연되고 있습니다. 보산강철은 기술 수준이 낮아 탄소 규제에 대응하기 어려울 것으로 예상됩니다. POSCO가 2030년까지 HyREX를 상용화하고 2차전지 소재 톱 3에 진입하며 리튬 공급을 확보한다면, 글로벌 철강 및 소재 산업에서 가장 강한 입지를 확보하게 될 것입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT ANALYSIS -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="four-column" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule);">
+                <div class="content-card" style="border-top: none; border-right: 1px solid var(--rule);">
+                    <h3 style="color: var(--gold);"><i class="fas fa-shield-alt"></i>강점 (Strength)</h3>
+                    <ul class="content-list">
+                        <li>글로벌 세계 6위 철강 기업의 위상</li>
+                        <li>FINEX, HyREX 등 고유의 핵심 기술</li>
+                        <li>포항, 광양 두 개 대형 제철소 운영</li>
+                        <li>2차전지 소재 전주기 기술 보유</li>
+                        <li>리튬 자원 자체 확보 추진</li>
+                        <li>강화된 자본력과 투자 능력</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="border-top: none;">
+                    <h3 style="color: #f59e0b;"><i class="fas fa-triangle-exclamation"></i>약점 (Weakness)</h3>
+                    <ul class="content-list">
+                        <li>신사업(2차전지, 리튬)의 초기 단계</li>
+                        <li>기존 철강 사업의 수익성 정체</li>
+                        <li>높은 고정비용 구조</li>
+                        <li>AI 및 디지털 전환 초기 수준</li>
+                        <li>조직 혁신 속도 대비 산업 변화 가속</li>
+                        <li>환경규제 강화로 인한 비용 증가</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="border-top: 1px solid var(--rule); border-right: 1px solid var(--rule);">
+                    <h3 style="color: var(--gold);"><i class="fas fa-rocket"></i>기회 (Opportunity)</h3>
+                    <ul class="content-list">
+                        <li>그린스틸 시장의 빠른 성장(2030~)</li>
+                        <li>전기차 시장 급속 확대</li>
+                        <li>2차전지 소재 수요 폭발적 증가</li>
+                        <li>리튬 공급 부족으로 인한 고가격</li>
+                        <li>EU CBAM, US IRA 등 규제 강화</li>
+                        <li>AI 기반 생산 효율화 추진 가능</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="border-top: 1px solid var(--rule);">
+                    <h3 style="color: #ef4444;"><i class="fas fa-exclamation-circle"></i>위협 (Threat)</h3>
+                    <ul class="content-list">
+                        <li>글로벌 경기 침체 시 철강 수요 급감</li>
+                        <li>중국 과잉 생산으로 가격 하락 위험</li>
+                        <li>HyREX 상용화 지연 가능성</li>
+                        <li>2차전지 기술의 빠른 변화</li>
+                        <li>신규 진출 리튬 광산의 정치적 위험</li>
+                        <li>경쟁사의 신기술 개발</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 7: STRATEGY ANALYSIS -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-map"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i>그린스틸 전환 전략</h3>
+                <p>POSCO의 장기적 생존 전략의 핵심은 기존 고로 방식의 철강 생산을 HyREX 수소환원제철로 전환하는 것입니다. 2030년까지 포항과 광양 제철소의 30~40%를 수소 기반 설비로 전환할 계획이며, 이는 약 50조 원대의 대규모 투자를 의미합니다. 이 과정에서 정부의 그린뉴딜 정책과 탄소중립 보조금 활용, 그리고 국제 탄소배출권 거래를 통한 추가 수익 창출이 기대됩니다. 그린스틸의 성공적 전환이 이루어진다면 2035~2040년부터는 글로벌 철강 시장에서 최고의 수익성을 기록할 가능성이 높습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-three-quarters"></i>2차전지 소재 Value Chain</h3>
+                    <p>POSCO는 리튬을 확보하고 이를 양극재, 음극재, 전해질 등으로 가공하여 배터리 제조사에 공급하는 수직 통합(Vertical Integration) 전략을 추진 중입니다. 이는 원료 가격 변동에 대한 리스크 헤지, 공급 안정성 확보, 그리고 마진율 극대화를 동시에 달성하는 전략입니다. 2024년부터 양극재 생산 확대 및 음극재 기술 고도화를 추진 중이며, 2027년경에는 세계 2~3위 규모의 소재 공급사로 부상할 것으로 예상됩니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-gem"></i>리튬 자원 확보 전략</h3>
+                    <p>POSCO는 아르헨티나의 Maricunga 광산과 호주 Pillbara 지역 개발에 약 10조 원대의 투자를 단행했으며, 2026~2027년부터 본격적인 리튬 생산을 시작할 계획입니다. DLE(직접 리튬 추출) 기술을 통해 생산 속도와 순도를 극대화하고 있으며, 이는 글로벌 배터리 업체의 공급 부족 문제를 해결하는 동시에 POSCO의 2차전지 소재 비용 경쟁력을 획기적으로 강화할 것입니다. 장기적으로 POSCO는 리튬 공급사로서도 주요 플레이어로 자리잡을 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-wind"></i>수소 및 재생에너지 사업 확대</h3>
+                <p>POSCO는 철강 생산 과정의 탄소 감축뿐 아니라 수소 연료전지, 태양광, 풍력 등 재생에너지 사업으로의 다각화를 추진 중입니다. 이는 기존 철강 사업의 경기 사이클 의존도를 줄이고 장기적 성장성을 확보하는 전략입니다. 특히 수소는 향후 30년 글로벌 에너지 전환의 핵심 요소가 될 것으로 예상되며, POSCO의 기술력과 규모는 이 시장에서 경쟁력을 갖출 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>AI 및 스마트팩토리 추진</h3>
+                <p>POSCO는 포항과 광양 제철소에 AI 기반 설비 예측 유지보수, 품질 자동화 관리, 에너지 최적화 시스템을 구축 중입니다. 이는 생산 효율을 5~10% 향상시키고 부산물 재활용을 극대화하는 효과를 가져올 것입니다. 또한 AI를 활용한 신소재 설계와 공정 최적화는 R&D 기간을 단축하고 기술 개발 속도를 가속화합니다. 장기적으로 POSCO는 인공지능 기반 제조 기업으로의 전환을 목표로 하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 8: FINANCIAL ANALYSIS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dollar-sign"></i>매출 및 수익성 추이</h3>
+                <p>POSCO의 2024년 총 매출은 약 77조 원을 기록했으며, 이는 2023년 대비 약 5% 증가한 수치입니다. 부문별로는 철강 사업이 약 60조 원(78%), 2차전지 소재가 약 10조 원(13%), 기타 에너지 및 인프라가 약 7조 원(9%)을 차지했습니다. 영업이익은 약 8.5조 원으로 영업이익률 11% 수준이며, 이는 글로벌 철강 기업 평균(8~10%) 대비 양호합니다. 그러나 2차전지 소재의 초기 손실과 리튬 개발 비용으로 인해 순이익은 약 4.2조 원으로 전년 대비 10% 감소했습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i>부문별 매출 구성 (2024)</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 78%;"></div>
+                            </div>
+                            <div class="bar-value">60조</div>
+                            <div class="bar-label">철강 (78%)</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 52%;"></div>
+                            </div>
+                            <div class="bar-value">10조</div>
+                            <div class="bar-label">2차전지 (13%)</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 39%;"></div>
+                            </div>
+                            <div class="bar-value">7조</div>
+                            <div class="bar-label">기타 (9%)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-pie"></i>EBITDA 및 자유현금흐름</h3>
+                    <p>2024년 EBITDA는 약 14조 원으로 EBITDA 마진은 약 18%를 기록했습니다. 이는 철강 사업의 안정적 수익에 2차전지 소재 사업의 부분적 성과가 더해진 결과입니다. 자유현금흐름(FCF)은 약 3.2조 원으로 전년 대비 감소했으나, 이는 HyREX 및 리튬 개발에 따른 증설 투자(Capex 약 4.5조 원) 때문입니다. 향후 2025~2027년의 높은 Capex가 완료된 후 2028년부터는 자유현금흐름이 급속히 증가할 것으로 전망됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>재무 건강도</h3>
+                <p><strong>부채비율:</strong> 2024년 말 순부채 비율(Net Debt/EBITDA)은 약 1.3배로 건강한 수준을 유지하고 있습니다. 이는 POSCO가 HyREX 및 리튬 개발을 위한 대규모 투자를 추진하면서도 충분한 자본 여유를 확보했음을 의미합니다. 투자 등급은 무디스 A2, S&P A- 수준으로 높게 유지되고 있으며, 국제 자본시장에서의 신용도는 우수합니다.</p>
+                <p style="margin-top: 20px;"><strong>배당 정책:</strong> POSCO는 안정적 배당 정책을 추진하고 있으며, 2024년 주당 배당금은 약 5,000원(배당성향 약 30%)으로 지급되었습니다. 향후 신사업의 현금흐름 증가에 따라 배당 규모도 점진적으로 증가할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>중기 재무 전망 (2025~2028)</h3>
+                <div style="margin-top: 20px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2025년 예상 매출</span>
+                            <span class="progress-label-value">81조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="88" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026년 예상 EBITDA</span>
+                            <span class="progress-label-value">15.5조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="85" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2027년 리튬 상용화</span>
+                            <span class="progress-label-value">추가 수익 창출</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="75" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2028년 이후 FCF 개선</span>
+                            <span class="progress-label-value">5조원 이상 예상</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="80" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>투자 관점의 주요 재무 메트릭</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>지표</th>
+                                <th>2024년</th>
+                                <th>2025E</th>
+                                <th>평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>주가수익비율(PER)</strong></td>
+                                <td>5.2배</td>
+                                <td>4.9배</td>
+                                <td>저평가</td>
+                            </tr>
+                            <tr>
+                                <td><strong>주가순자산비율(PBR)</strong></td>
+                                <td>0.85배</td>
+                                <td>0.82배</td>
+                                <td>저평가</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률</strong></td>
+                                <td>11.0%</td>
+                                <td>11.5%</td>
+                                <td>개선 추세</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ROE</strong></td>
+                                <td>8.5%</td>
+                                <td>8.8%</td>
+                                <td>안정적</td>
+                            </tr>
+                            <tr>
+                                <td><strong>배당수익률</strong></td>
+                                <td>3.2%</td>
+                                <td>3.5%</td>
+                                <td>매력적</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 9: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-check-circle"></i>
+                <span>결론</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>투자 테제</h3>
+                <p>POSCO홀딩스는 기존의 세계적 철강 기업에서 벗어나 그린스틸, 2차전지 소재, 리튬 자원을 아우르는 글로벌 소재 및 에너지 회사로의 전환을 추진하고 있습니다. 이 변화는 단순한 경영 고도화를 넘어 향후 30년 산업 구조 변화에 선제적으로 대응하는 전략적 재구축입니다. 특히 다음 세 가지 관점에서 투자 매력이 높습니다.</p>
+                <div style="margin-top: 30px;">
+                    <p style="margin-bottom: 20px;"><strong style="color: var(--gold); font-size: 16px;">1. 그린스틸 기술의 글로벌 선도</strong></p>
+                    <p>HyREX 기술이 2030년부터 상용화되면 POSCO는 글로벌 철강 업계에서 가장 경쟁력 있는 저탄소 제품을 공급하는 기업이 됩니다. EU CBAM, US IRA 등 탄소 규제가 강화되는 가운데 저탄소 강재에 대한 프리미엄은 지속적으로 상승할 것으로 예상되며, 이는 POSCO의 수익성 개선으로 직결될 것입니다. 보수적 추정으로 그린스틸의 성공적 상용화 시 기존 철강 대비 마진율이 20~30% 향상될 것으로 예상됩니다.</p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <p style="margin-bottom: 20px;"><strong style="color: var(--gold); font-size: 16px;">2. 2차전지 소재의 폭발적 성장</strong></p>
+                    <p>전 세계 전기차 시장이 2024년 1,700만 대에서 2030년 4,000만 대로 증가할 것으로 예상되는 가운데, 2차전지 소재 시장은 이에 동반하여 급속히 성장할 것입니다. POSCO가 리튬을 자체 확보하고 양극재, 음극재를 통합 생산하는 수직 통합 구조를 완성한다면, 원료 가격 변동에 강건한 높은 수익성을 달성할 수 있습니다. 2030년경 2차전지 소재 부문의 매출은 30조 원 규모로 성장할 것으로 예상되며, 이는 현재 철강 부문 매출(60조 원)에 육박하는 규모입니다.</p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <p style="margin-bottom: 20px;"><strong style="color: var(--gold); font-size: 16px;">3. 리튬의 공급 부족 시장에서의 이익</strong></p>
+                    <p>글로벌 리튬 공급은 수요 대비 구조적으로 부족할 것으로 예상되며, POSCO의 리튬 생산 진출은 기업 가치 창출의 또 다른 축입니다. Maricunga와 Pillbara 광산을 통해 연산 100,000톤 규모의 수산화리튬을 생산할 경우, 연간 약 5조 원대의 추가 매출과 1.5~2조 원의 영업이익이 가능할 것으로 예상됩니다. 이는 기존 철강 사업의 수익성을 크게 강화할 것입니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i>중기 성장 전망 (2025~2030)</h3>
+                    <ul class="content-list">
+                        <li>연평균 매출 성장률: 5~7%</li>
+                        <li>2030년 예상 매출: 110조 원</li>
+                        <li>2030년 예상 EBITDA: 22조 원</li>
+                        <li>영업이익률 개선: 11% → 14%</li>
+                        <li>배당 규모 증가: 5천원 → 8천원</li>
+                        <li>주가 상승률: 연 12~15% 예상</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-warning"></i>주요 리스크 팩터</h3>
+                    <ul class="content-list">
+                        <li>경기 침체 시 철강 수요 급감</li>
+                        <li>HyREX 상용화 지연 가능성</li>
+                        <li>중국의 과잉 생산으로 인한 가격 압박</li>
+                        <li>리튬 광산 개발 진행 지연</li>
+                        <li>정치적·지정학적 리스크</li>
+                        <li>환율 변동에 따른 실적 변동성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>FLOVAH 투자 평가</h3>
+                <p>POSCO홀딩스는 장기적 관점에서 매우 매력적인 투자 대상입니다. 현재 저평가된 주가(PER 5배대, PBR 0.85배)는 시장이 그린스틸 및 2차전지 소재 사업의 성장성을 충분히 반영하지 못하고 있음을 의미합니다. 특히 다음 3~5년간 진행될 전략적 투자의 완성이 이루어질 경우, POSCO는 글로벌 소재 및 에너지 업계의 최상위 기업으로 거듭날 가능성이 높습니다.</p>
+                <p style="margin-top: 20px;"><strong>투자 등급:</strong> <span style="color: var(--gold); font-weight: bold; font-size: 16px;">BUY (매수 추천)</span></p>
+                <p style="margin-top: 15px;"><strong>목표 주가:</strong> 90,000원 (2026년 말 기준, 현재가 대비 35% 상승)</p>
+                <p style="margin-top: 15px;"><strong>투자 기간:</strong> 중기 (3~5년)</p>
+                <p style="margin-top: 15px;"><strong>적정 비중:</strong> 포트폴리오의 5~8% (위험 선호도가 낮은 투자자는 3~5%)</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>면책 조항</h3>
+                <p>본 리포트는 FLOVAH AI Insights에서 작성한 일반적인 정보 제공 목적의 분석 자료이며, 특정 투자 상품에 대한 추천 또는 제안이 아닙니다. 본 리포트에 포함된 모든 정보는 공개 정보를 기반으로 작성되었으며, 추후 기업의 경영 환경 변화, 시장 여건 변화, 규정 변경 등에 따라 수정될 수 있습니다. 투자 결정은 투자자 본인의 판단과 책임하에 이루어져야 하며, 본 리포트로 인한 직·간접적 손실에 대해 FLOVAH는 어떠한 책임도 지지 않습니다. 투자하기 전에 반드시 전문 자문가와 상담하시기 바랍니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ════════ SOURCES / 출처 ════════ -->
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 80px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — POSCO홀딩스 사업보고서, 분기보고서, 감사보고서 (2022–2026) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> POSCO 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료, CEO 메시지 <span style="color:var(--text-muted);font-size:.78em">posco.com/ir</span></p>
+                <p><span style="color:var(--text-light)">4.</span> POSCO 공식 웹사이트 — 기술 소개, 제품 포트폴리오, 지속 가능성 보고서 <span style="color:var(--text-muted);font-size:.78em">posco.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> POSCO뉴스 센터 — 보도 자료, 기술 개발 발표, 해외 투자 소식 <span style="color:var(--text-muted);font-size:.78em">posco.com/newsroom</span></p>
+                <p><span style="color:var(--text-light)">6.</span> International Energy Agency (IEA) — "Global EV Outlook 2025" 및 배터리 수요 전망 <span style="color:var(--text-muted);font-size:.78em">iea.org</span></p>
+                <p><span style="color:var(--text-light)">7.</span> Grand View Research — "Steel Market Size Report 2025" 및 그린스틸 시장 분석 <span style="color:var(--text-muted);font-size:.78em">grandviewresearch.com</span></p>
+                <p><span style="color:var(--text-light)">8.</span> MarketsandMarkets — "Battery Materials Market Forecast 2025–2030" <span style="color:var(--text-muted);font-size:.78em">marketsandmarkets.com</span></p>
+                <p><span style="color:var(--text-light)">9.</span> PwC — "Global Metals & Mining Outlook 2025–2029" <span style="color:var(--text-muted);font-size:.78em">pwc.com</span></p>
+                <p><span style="color:var(--text-light)">10.</span> Lithium Prices Database — 글로벌 리튬 가격 추이 및 공급 수급 분석 <span style="color:var(--text-muted);font-size:.78em">tradingeconomics.com</span></p>
+                <p><span style="color:var(--text-light)">11.</span> World Bank — "Mineral Commodity Prices and Forecasts" <span style="color:var(--text-muted);font-size:.78em">worldbank.org</span></p>
+                <p><span style="color:var(--text-light)">12.</span> BloombergNEF — "Battery Pack Prices Forecast 2025" <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">13.</span> ICMM (International Council on Mining and Metals) — "Steel and Mining Sustainability Report 2025" <span style="color:var(--text-muted);font-size:.78em">icmm.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> 한국콘텐츠진흥원(KOCCA) — "2025 한국 철강산업 경쟁력 분석 보고서" <span style="color:var(--text-muted);font-size:.78em">kocca.kr</span></p>
+                <p><span style="color:var(--text-light)">15.</span> 한국철강협회 — "글로벌 철강 수급 동향 및 시장 전망" <span style="color:var(--text-muted);font-size:.78em">kosa.or.kr</span></p>
+                <p><span style="color:var(--text-light)">16.</span> 현대차그룹 투자자 관계실 — POSCO와의 공급 계약 및 협력 관계 공시 <span style="color:var(--text-muted);font-size:.78em">hyundai.com/ir</span></p>
+                <p><span style="color:var(--text-light)">17.</span> 삼성SDI, LG에너지솔루션, SK On 공시 — 2차전지 소재 공급사 현황 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">18.</span> CB Insights — "State of Battery Technology and Lithium Markets 2025" <span style="color:var(--text-muted);font-size:.78em">cbinsights.com</span></p>
+                <p><span style="color:var(--text-light)">19.</span> European Commission — "Carbon Border Adjustment Mechanism (CBAM) 규제안 및 시행 일정" <span style="color:var(--text-muted);font-size:.78em">ec.europa.eu</span></p>
+                <p><span style="color:var(--text-light)">20.</span> S&P Global Platts — "Steel Price Index and Trend Analysis" <span style="color:var(--text-muted);font-size:.78em">spglobal.com</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH AI Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.03.27 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

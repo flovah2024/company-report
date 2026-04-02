@@ -324,9 +324,75 @@
             margin-top: 12px;
         }
 
+        /* ── SECTOR TABS ── */
+        .sector-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 36px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .sector-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .25s ease;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .sector-tab i {
+            font-size: 12px;
+            opacity: .6;
+            transition: opacity .25s;
+        }
+
+        .sector-tab:hover {
+            border-color: var(--text-muted);
+            color: var(--text-light);
+            background: var(--bg-elevated);
+        }
+
+        .sector-tab:hover i { opacity: .9; }
+
+        .sector-tab.active {
+            background: var(--bg-elevated);
+            border-color: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        .sector-tab.active i {
+            color: var(--gold);
+            opacity: 1;
+        }
+
+        .sector-tab .tab-count {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-left: 2px;
+        }
+
+        .sector-tab.active .tab-count {
+            color: var(--gold-dim);
+        }
+
         /* ── SECTOR GROUP ── */
         .sector-group {
             margin-bottom: 48px;
+        }
+
+        .sector-group.hidden {
+            display: none;
         }
 
         .sector-label {
@@ -384,6 +450,8 @@
             .hero h1 { font-size: 28px; }
             .section { padding: 30px 20px 80px; }
             .card-grid { grid-template-columns: 1fr; }
+            .sector-tabs { gap: 6px; }
+            .sector-tab { padding: 6px 12px; font-size: 12px; }
         }
     </style>
 </head>
@@ -411,8 +479,20 @@
             <span class="count">31건의 리포트</span>
         </div>
 
+        <div class="sector-tabs">
+            <div class="sector-tab active" data-filter="all"><i class="fas fa-th"></i> 전체 <span class="tab-count">21</span></div>
+            <div class="sector-tab" data-filter="semiconductor"><i class="fas fa-microchip"></i> 반도체 · IT <span class="tab-count">2</span></div>
+            <div class="sector-tab" data-filter="auto"><i class="fas fa-car"></i> 자동차 · 모빌리티 <span class="tab-count">3</span></div>
+            <div class="sector-tab" data-filter="bio"><i class="fas fa-dna"></i> 바이오 · 헬스케어 <span class="tab-count">2</span></div>
+            <div class="sector-tab" data-filter="finance"><i class="fas fa-university"></i> 금융 · 보험 <span class="tab-count">5</span></div>
+            <div class="sector-tab" data-filter="platform"><i class="fas fa-globe"></i> 플랫폼 · IT서비스 <span class="tab-count">2</span></div>
+            <div class="sector-tab" data-filter="energy"><i class="fas fa-industry"></i> 에너지 · 소재 · 화학 <span class="tab-count">4</span></div>
+            <div class="sector-tab" data-filter="construction"><i class="fas fa-hard-hat"></i> 건설 · 조선 <span class="tab-count">2</span></div>
+            <div class="sector-tab" data-filter="content"><i class="fas fa-film"></i> 콘텐츠 · 미디어 <span class="tab-count">1</span></div>
+        </div>
+
         <!-- ═══ 반도체 · IT ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="semiconductor">
             <div class="sector-label">
                 <i class="fas fa-microchip"></i>
                 <span>반도체 · IT</span>
@@ -455,7 +535,7 @@
         </div>
 
         <!-- ═══ 자동차 · 모빌리티 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="auto">
             <div class="sector-label">
                 <i class="fas fa-car"></i>
                 <span>자동차 · 모빌리티</span>
@@ -514,7 +594,7 @@
         </div>
 
         <!-- ═══ 바이오 · 헬스케어 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="bio">
             <div class="sector-label">
                 <i class="fas fa-dna"></i>
                 <span>바이오 · 헬스케어</span>
@@ -573,7 +653,7 @@
         </div>
 
         <!-- ═══ 금융 · 보험 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="finance">
             <div class="sector-label">
                 <i class="fas fa-university"></i>
                 <span>금융 · 보험</span>
@@ -696,7 +776,7 @@
         </div>
 
         <!-- ═══ 플랫폼 · IT서비스 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="platform">
             <div class="sector-label">
                 <i class="fas fa-globe"></i>
                 <span>플랫폼 · IT서비스</span>
@@ -739,7 +819,7 @@
         </div>
 
         <!-- ═══ 에너지 · 소재 · 화학 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="energy">
             <div class="sector-label">
                 <i class="fas fa-industry"></i>
                 <span>에너지 · 소재 · 화학</span>
@@ -846,7 +926,7 @@
         </div>
 
         <!-- ═══ 건설 · 조선 · 복합기업 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="construction">
             <div class="sector-label">
                 <i class="fas fa-hard-hat"></i>
                 <span>건설 · 조선 · 해운</span>
@@ -980,7 +1060,7 @@
         </div>
 
         <!-- ═══ 콘텐츠 · 미디어 ═══ -->
-        <div class="sector-group">
+        <div class="sector-group" data-sector="content">
             <div class="sector-label">
                 <i class="fas fa-film"></i>
                 <span>콘텐츠 · 미디어</span>
@@ -1006,6 +1086,23 @@
             </div>
         </div>
     </section>
+
+    <script>
+    document.querySelectorAll('.sector-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.sector-tab').forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            var filter = tab.getAttribute('data-filter');
+            document.querySelectorAll('.sector-group').forEach(function(group) {
+                if (filter === 'all') {
+                    group.classList.remove('hidden');
+                } else {
+                    group.classList.toggle('hidden', group.getAttribute('data-sector') !== filter);
+                }
+            });
+        });
+    });
+    </script>
 
     <footer>
         <p>© 2026 FLOVAH Insights. All rights reserved.</p>

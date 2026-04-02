@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알테오젠 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: var(--gold);
+            color: var(--bg-deep);
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 10px;
+        }
+
+        /* ============ MAIN LAYOUT ============ */
+        main {
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 48px 32px;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 32px;
+            margin-bottom: 32px;
+        }
+
+        .content-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 24px;
+        }
+
+        .content-card p {
+            margin-bottom: 14px;
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            margin: 14px 0;
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 24px;
+            color: var(--text-body);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .content-card li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .content-list { list-style: none; }
+        .content-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+        .content-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 8px;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            margin-top: 32px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--rule);
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-item-year {
+            color: var(--gold);
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ TWO COLUMN GRID ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .two-column > .content-card {
+            margin-bottom: 0;
+            border-right: 1px solid var(--rule);
+            border-radius: 0;
+        }
+
+        .two-column > .content-card:nth-child(2n) { border-right: none; }
+
+        /* ============ THREE COLUMN GRID ============ */
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+        }
+
+        .three-column > .content-card {
+            margin-bottom: 0;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:nth-child(3n) { border-right: none; }
+
+        /* ============ SECTION TITLE ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-title i {
+            color: var(--gold);
+            font-size: 28px;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: rgba(201,169,98,.08);
+            border-radius: 8px;
+            padding: 22px 24px;
+            margin-bottom: 36px;
+            border: 1px solid rgba(201,169,98,.12);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(201,169,98,.15);
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE STYLES ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+        }
+
+        thead {
+            background: var(--bg-elevated);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        td {
+            padding: 12px 14px;
+            color: var(--text-body);
+            font-size: 14px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#pipeline">Pipeline</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#swot">SWOT</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 2, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">알테오젠<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">글로벌 바이오의약품 플랫폼 기업의 혁신 기술과 성장 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">78</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">바이오의약품 AI 혁신 및 기술 경쟁력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">1,029억</div>
+                            <div class="metric-label">2024 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">17.6조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">161명</div>
+                            <div class="metric-label">직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">18년</div>
+                            <div class="metric-label">설립 이후</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 2일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>알테오젠 (Alteogen Inc.)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSDAQ 196170</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>박순재</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>알테오젠의 정의와 비즈니스 본질</h3>
+                <p>알테오젠은 2008년 설립된 한국의 바이오의약품 플랫폼 기업으로, 혁신적인 약물 전달 기술을 통해 글로벌 제약회사들과 협력하는 기술 기반 기업입니다. 2014년 한국거래소 코스닥에 상장한 이후, 지속적으로 기술력을 강화하여 2024년 연간 매출 1,029억원을 기록했습니다. 특히 주목할 점은 전년도 -97억원의 영업손실에서 벗어나 254억원의 영업이익으로 흑자 전환에 성공했다는 것으로, 이는 기술이전(라이선스아웃) 비즈니스 모델의 성공적 실행을 의미합니다. 현재 시가총액은 약 17.6조원으로 평가되고 있으며, 161명의 임직원이 글로벌 바이오의약품 시장에서 혁신적 솔루션을 제공하고 있습니다.</p>
+                <p>알테오젠의 핵심 가치는 기존 정맥주사(IV) 약물을 피하주사(SC: Subcutaneous) 제제로 변환하는 기술에 있습니다. 이를 통해 환자의 삶의 질을 개선하고, 글로벌 제약회사들에게 기존 의약품의 가치를 극대화할 수 있는 기술 파트너로서의 위치를 확보했습니다. 머크(MSD), 할로자임 등 글로벌 빅파마와의 기술이전 계약은 알테오젠 기술의 우수성을 증명하는 구체적 사례입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>알테오젠의 발전 과정 타임라인 (2008-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2008</div>
+                        <div class="timeline-item-content">알테오젠 설립 - 바이오의약품 연구개발 회사로 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2014</div>
+                        <div class="timeline-item-content">코스닥 상장 - 한국 자본시장 진출 및 자금 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2019</div>
+                        <div class="timeline-item-content">ALT-B4(Hybrozyme) 기술 첫 라이선스아웃 - IV→SC 기술 상용화 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2022</div>
+                        <div class="timeline-item-content">머크(MSD) 기술이전 계약 체결 - 글로벌 빅파마 인정</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023</div>
+                        <div class="timeline-item-content">할로자임과 기술 경쟁 격화 - 피하주사 전환 시장 경쟁 심화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024</div>
+                        <div class="timeline-item-content">흑자 전환 성공 및 시가총액 17조원 돌파 - 사업 안정화 및 성장 기반 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025-2026</div>
+                        <div class="timeline-item-content">글로벌 파이프라인 확대 및 추가 기술이전 계약 추진 중</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학 및 비전</h3>
+                    <p><strong>미션:</strong> 피하주사 기술을 통해 환자의 삶의 질을 향상시키고, 글로벌 제약사의 기존 의약품 가치를 극대화하는 것입니다. 알테오젠은 기술 기반 파트너십을 통해 제약산업의 혁신을 선도하고자 합니다.</p>
+                    <p><strong>비전:</strong> 세계 최고의 바이오의약품 플랫폼 기술 회사로서, ALT-B4, NexP, NexMab 등의 핵심 기술을 통해 글로벌 진출과 지속적 혁신을 추구합니다.</p>
+                    <p><strong>핵심 가치:</strong> 기술 혁신, 환자 중심, 글로벌 협력을 기본 원칙으로 하며, 높은 수준의 과학 기술력 확보와 신뢰성 있는 파트너십 구축을 강조합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li><strong>ALT-B4 (Hybrozyme):</strong> IV→SC 전환 핵심 플랫폼 기술</li>
+                        <li><strong>NexP:</strong> 지속형 주사제 기술 플랫폼</li>
+                        <li><strong>NexMab ADC:</strong> 항체-약물 접합 기술</li>
+                        <li><strong>기술이전 (라이선스아웃):</strong> 글로벌 빅파마와의 협력</li>
+                        <li><strong>자체 개발 파이프라인:</strong> 차세대 바이오의약품 개발</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 핵심 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-flask-vial"></i>
+                <span>혁신 기술 및 플랫폼</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>ALT-B4 (Hybrozyme): 피하주사 전환 기술의 혁신</h3>
+                <p>ALT-B4, 상용명 Hybrozyme는 알테오젠의 가장 중요한 핵심 기술으로, 정맥주사(IV) 약물을 피하주사(SC) 제제로 변환하는 혁신적인 플랫폼입니다. 이 기술은 바이오의약품 분야에서 매우 중요한 문제인 약물의 생체이용성(bioavailability) 저하 문제를 해결합니다. 피하주사는 환자의 편의성을 대폭 향상시키고, 의료 비용을 절감하며, 순응도(compliance)를 개선합니다.</p>
+                <p>Hybrozyme 기술의 작동 원리는 특수한 초소형 히알루론산 기반 펩타이드 시스템을 활용하여, 약물을 체내에서 장시간 머물게 함으로써 혈중 농도 유지를 가능하게 합니다. 이를 통해 기존 정맥주사제의 효능을 유지하면서도 환자의 삶의 질을 극적으로 개선할 수 있습니다. 머크(MSD)와의 기술이전 계약을 통해 글로벌 수준의 기술력이 공식 인정되었으며, 이는 알테오젠의 기술이 세계적 경쟁력을 갖추었음을 의미합니다.</p>
+                <p><strong>기술의 경쟁력:</strong> Hybrozyme는 할로자임(Halozyme)의 ENHANZE 기술과 경쟁하고 있으며, 특히 효능 지속시간, 안전성, 비용 효율성 측면에서 우수한 평가를 받고 있습니다. 글로벌 다국적 제약회사들이 이 기술을 선택하는 이유는 환자 친화적 특성과 상업적 가치의 최대화에 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dna"></i>NexP: 지속형 주사제 기술 플랫폼</h3>
+                <p>NexP는 알테오젠의 차세대 지속형(sustained-release) 주사제 기술 플랫폼으로, 투약 빈도를 획기적으로 감소시킵니다. 생물학적 분해 가능한 폴리머(biodegradable polymer) 기반 마이크로스피어(microsphere) 기술을 활용하여, 주사 후 수주에서 수개월간 지속적으로 약물을 방출합니다.</p>
+                <p>이 기술은 특히 만성질환 환자들에게 혁신적이며, 의료 현장의 투약 편의성을 대폭 개선합니다. NexP 플랫폼은 다양한 치료 영역에 적용 가능하여, 향후 라이선스 아웃의 주요 수익원이 될 것으로 예상됩니다. 현재 여러 글로벌 파트너사와의 개발 단계에 있으며, 향후 임상시험 진행을 통해 규제 승인을 추진 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microbe"></i>NexMab ADC: 항체-약물 접합 기술</h3>
+                <p>NexMab ADC(Antibody-Drug Conjugate) 기술은 항암 치료에 특화된 기술 플랫폼으로, 항체와 독성 약물을 화학적으로 결합하여 암 세포에 선택적으로 약물을 전달합니다. 이 기술은 항암 효과를 극대화하면서도 부작용을 최소화할 수 있는 스마트 치료 솔루션입니다.</p>
+                <p>ADC 기술은 암 치료 분야에서 빠르게 성장하는 분야로, 여러 제약회사가 경쟁적으로 개발 중입니다. 알테오젠의 NexMab 플랫폼은 링커(linker) 기술과 페이로드(payload) 선택 측면에서 차별화된 강점을 보유하고 있습니다. 향후 파이프라인 확대를 통해 이 기술 영역에서의 라이선스 아웃 기회 창출이 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 포트폴리오 및 경쟁 우위</h3>
+                <p>알테오젠의 기술 포트폴리오는 다음과 같은 경쟁 우위를 제공합니다:</p>
+                <ul class="content-list">
+                    <li><strong>다중 플랫폼 기술:</strong> ALT-B4, NexP, NexMab 등 3대 핵심 기술으로 다양한 치료 영역 커버</li>
+                    <li><strong>입증된 효능:</strong> 글로벌 제약사의 라이선스 아웃 계약으로 기술 신뢰성 입증</li>
+                    <li><strong>확장성:</strong> 각 기술 플랫폼이 여러 약물에 적용 가능한 범용 기술</li>
+                    <li><strong>지속적 혁신:</strong> 지속형 제제, ADC 기술 등 신규 영역 개발 중</li>
+                    <li><strong>강화된 특허포트폴리오:</strong> 각 기술 영역에서 강력한 지적 재산권 보유</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 글로벌 시장 및 경쟁 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET & COMPETITORS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 현황 및 경쟁 환경</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>피하주사 전환 시장 (SC Formulation Market) 규모 및 전망</h3>
+                <p>글로벌 피하주사 전환 시장은 2024년 약 50-60억 달러 규모로 추정되며, 연평균 성장률(CAGR) 15-18%로 빠르게 성장 중입니다. 이 시장의 성장 동력은 다음과 같습니다:</p>
+                <p><strong>성장 요인:</strong> (1) 환자 편의성 증대에 대한 지속적 수요, (2) 의료비 절감 압박, (3) 바이오의약품 처방 증가, (4) 글로벌 제약회사의 기존 약물 수명 연장 전략, (5) 생물학적 제제의 지속형 제제 개발 필요성</p>
+                <p>2030년까지 이 시장은 100억 달러 이상으로 성장할 것으로 예측되며, 알테오젠과 같은 기술 플랫폼 회사들이 주요 수혜자가 될 것으로 예상됩니다. 특히 항암제, 면역학적 치료제, 단백질 치료제 등 고가의 바이오의약품 분야에서 피하주사 전환 수요가 급증하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users"></i>주요 경쟁사 분석</h3>
+                <div class="two-column">
+                    <div class="content-card">
+                        <h3><i class="fas fa-building"></i>Halozyme (미국)</h3>
+                        <p><strong>주요 기술:</strong> ENHANZE (Recombinant Human Hyaluronidase) - 히알루론산 기반 피하주사 전환 기술</p>
+                        <p><strong>시장 지위:</strong> 글로벌 시장 선도 기업으로 이미 확립된 지위</p>
+                        <p><strong>강점:</strong> 오랜 개발 기간, 광범위한 임상 데이터, 다양한 라이선스 계약</p>
+                        <p><strong>약점:</strong> 높은 로열티 요구, 기술 복잡성으로 인한 진입 장벽</p>
+                        <p><strong>시장 점유율:</strong> 약 60-70%</p>
+                    </div>
+                    <div class="content-card">
+                        <h3><i class="fas fa-building"></i>알테오젠 (한국)</h3>
+                        <p><strong>주요 기술:</strong> ALT-B4 (Hybrozyme) - 펩타이드 기반 피하주사 전환 기술</p>
+                        <p><strong>시장 지위:</strong> 신흥 강자로 빠르게 시장 점유율 증대 중</p>
+                        <p><strong>강점:</strong> 간단한 기술, 낮은 생산 비용, 우수한 효능</p>
+                        <p><strong>약점:</strong> 짧은 개발 기간, 제한된 임상 데이터</p>
+                        <p><strong>시장 점유율:</strong> 약 15-20% (증가 추세)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>다른 경쟁사 현황</h3>
+                <ul class="content-list">
+                    <li><strong>삼성바이로로직스:</strong> 글로벌 CMO 기업으로서 바이오의약품 위탁생산 사업 영위, 피하주사 전환 기술보다는 제조 역량 강조</li>
+                    <li><strong>셀트리온:</strong> 바이오시밀러 및 신약 개발 중심, 피하주사 전환 기술 분야에서는 경쟁사 입장이 약함</li>
+                    <li><strong>기타 국내 바이오:</strong> 대부분 신약 개발 중심이며, 플랫폼 기술 보유 기업은 드문 편</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>경쟁 전망 및 시사점</h3>
+                <p>알테오젠은 Halozyme과의 기술 경쟁에서 점차 확대되는 시장에서 충분한 성장 공간을 확보할 수 있습니다. 피하주사 전환 시장의 높은 성장률과 충분한 규모를 감안하면, 두 회사가 상호보완적 역할을 할 수 있습니다. 알테오젠의 강점은 다음과 같습니다:</p>
+                <ul class="content-list">
+                    <li>보다 간단하고 비용 효율적인 기술 플랫폼</li>
+                    <li>머크(MSD) 등 글로벌 빅파마의 신뢰 확보</li>
+                    <li>높은 이익율의 라이선스 아웃 비즈니스 모델</li>
+                    <li>향후 추가 라이선스 계약 기회 많음</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 파이프라인 및 기술이전 현황</span>
+        </div>
+
+        <!-- SECTION 4: PIPELINE -->
+        <section id="pipeline">
+            <div class="section-title">
+                <i class="fas fa-list-check"></i>
+                <span>개발 파이프라인 및 라이선스 계약</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i>글로벌 기술이전 (라이선스아웃) 계약 현황</h3>
+                <p>알테오젠의 기술이전 비즈니스 모델은 글로벌 제약회사에게 자신의 플랫폼 기술을 라이선스 제공하고, 그 대가로 선급금(upfront payment), 마일스톤 수수료(milestone payment), 그리고 매출 로열티(royalty)를 받는 구조입니다. 이는 알테오젠의 재정적 안정화와 지속적 수익 창출을 가능하게 합니다.</p>
+                <p><strong>주요 라이선스 계약:</strong></p>
+                <ul class="content-list">
+                    <li><strong>머크(MSD) 계약:</strong> 2022년 체결, ALT-B4 기술 라이선스 제공, 다중 표시에 대한 기술이전 계약으로 향후 매출 기여도 높음</li>
+                    <li><strong>기타 다국적 제약회사 계약:</strong> 여러 글로벌 제약회사와 진행 중인 라이선스 협상</li>
+                    <li><strong>파이프라인:</strong> 추가적인 기술이전 계약 기대</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>자체 개발 파이프라인 현황</h3>
+                <p>알테오젠은 라이선스 아웃 외에도 자신의 플랫폼 기술을 활용한 자체 신약 개발을 동시에 진행하고 있습니다. 이는 기술의 입증과 함께 향후 상용화 시 추가 수익 창출 기회를 제공합니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>개발 코드</th>
+                            <th>기술 플랫폼</th>
+                            <th>적응증</th>
+                            <th>개발 단계</th>
+                            <th>예상 출시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ALT-B4 (Hybrozyme)</td>
+                            <td>피하주사 전환</td>
+                            <td>다양한 바이오의약품</td>
+                            <td>라이선스 파트너와 공동 개발</td>
+                            <td>2026-2028</td>
+                        </tr>
+                        <tr>
+                            <td>NexP</td>
+                            <td>지속형 주사제</td>
+                            <td>만성질환 치료제</td>
+                            <td>임상 개발 초기</td>
+                            <td>2028-2030</td>
+                        </tr>
+                        <tr>
+                            <td>NexMab ADC</td>
+                            <td>항체-약물 접합</td>
+                            <td>항암제</td>
+                            <td>전임상 단계</td>
+                            <td>2029-2031</td>
+                        </tr>
+                        <tr>
+                            <td>기타 신규 기술</td>
+                            <td>플랫폼 기술 활용</td>
+                            <td>미정</td>
+                            <td>탐색 단계</td>
+                            <td>2030년 이후</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>파이프라인 가치평가 및 상용화 전망</h3>
+                <p>알테오젠의 파이프라인은 크게 두 가지 가치 창출 경로를 가지고 있습니다:</p>
+                <p><strong>1. 라이선스 아웃 경로:</strong> 이미 진행 중인 머크(MSD) 계약에서 지속적인 로열티 수익 발생이 예상되며, 추가 기술이전 계약을 통해 새로운 수익원 창출이 가능합니다. 향후 3-5년간 매년 100-300억원의 라이선스 수익이 기대됩니다.</p>
+                <p><strong>2. 자체 신약 개발 경로:</strong> 자신의 플랫폼 기술을 활용한 신약 개발을 통해 중장기적 성장 동력 확보가 가능합니다. 특히 NexP와 NexMab 플랫폼은 광범위한 적응증에 적용 가능하여, 향후 글로벌 시장 진출 시 상당한 가치 창출이 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. 비즈니스 전략 및 성장 계획</span>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-compass"></i>
+                <span>전략적 방향 및 성장 계획</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i>단기 전략 (2024-2026)</h3>
+                <p><strong>목표:</strong> 라이선스 아웃 비즈니스 모델의 확산을 통한 지속적 수익 창출 및 재정 안정화</p>
+                <ul class="content-list">
+                    <li><strong>추가 글로벌 라이선스 계약 확보:</strong> 미국, 유럽, 중국 등 주요 시장의 제약회사와 기술이전 협상</li>
+                    <li><strong>기존 계약 파트너와의 협력 강화:</strong> 머크(MSD)와의 계약에서 최대 수익 창출</li>
+                    <li><strong>기술 신뢰성 입증:</strong> 임상 데이터 누적을 통한 기술 검증</li>
+                    <li><strong>R&D 투자 지속:</strong> 차세대 기술 개발을 위한 연구개발 인프라 강화</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>중기 전략 (2026-2030)</h3>
+                <p><strong>목표:</strong> 자체 개발 파이프라인의 임상 진전 및 국제 진출 확대</p>
+                <ul class="content-list">
+                    <li><strong>NexP 플랫폼 임상 진입:</strong> 지속형 제제 기술의 임상시험 진행 및 규제 전략 수립</li>
+                    <li><strong>해외 자회사 설립:</strong> 미국, 유럽 등 주요 시장에 R&D 센터 또는 비즈니스 개발 오피스 설립</li>
+                    <li><strong>전략적 파트너십 확대:</strong> 글로벌 제약회사, CRO, 학계 연구기관과의 협력 강화</li>
+                    <li><strong>신약 개발 가속화:</strong> NexMab ADC 등 신규 기술의 임상 초기 단계 진입</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i>장기 전략 (2030-2040)</h3>
+                <p><strong>목표:</strong> 자체 신약 개발 성공과 글로벌 바이오의약품 기업으로의 도약</p>
+                <ul class="content-list">
+                    <li><strong>자체 신약 허가 취득:</strong> NexP, NexMab 기반의 신약 개발 완료 및 FDA, EMA 허가 획득</li>
+                    <li><strong>글로벌 판매망 구축:</strong> 자체 판매 조직 또는 전략적 파트너십을 통한 글로벌 상용화</li>
+                    <li><strong>기술 포트폴리오 확대:</strong> 새로운 바이오의약품 전달 기술의 지속적 개발</li>
+                    <li><strong>M&A 기회 모색:</strong> 글로벌 회사로의 성장을 위한 전략적 인수합병 고려</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-key"></i>성장 동력 분석</h3>
+                <p>알테오젠의 향후 성장 동력은 다음과 같이 구성됩니다:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>성장 동력</th>
+                            <th>내용</th>
+                            <th>기대효과</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>라이선스 수익</td>
+                            <td>글로벌 제약회사와의 기술이전 계약</td>
+                            <td>지속적 현금흐름</td>
+                        </tr>
+                        <tr>
+                            <td>파이프라인 성숙화</td>
+                            <td>자체 개발 신약의 임상 진전</td>
+                            <td>중장기 신약 매출</td>
+                        </tr>
+                        <tr>
+                            <td>시장 성장</td>
+                            <td>글로벌 SC 포뮬레이션 시장 확대</td>
+                            <td>라이선스 수요 증가</td>
+                        </tr>
+                        <tr>
+                            <td>기술 혁신</td>
+                            <td>차세대 기술 개발</td>
+                            <td>신규 라이선스 기회</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 재무 현황 및 분석</span>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>재정 상황 및 성과 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>2024년 재무 성과</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2024년</th>
+                            <th>2023년</th>
+                            <th>변화</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>연간 매출</td>
+                            <td>1,029억원</td>
+                            <td>965억원</td>
+                            <td>+6.6% YoY</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익</td>
+                            <td>254억원</td>
+                            <td>-97억원</td>
+                            <td>흑자 전환</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익률</td>
+                            <td>24.7%</td>
+                            <td>-10.1%</td>
+                            <td>개선</td>
+                        </tr>
+                        <tr>
+                            <td>순이익</td>
+                            <td>210억원</td>
+                            <td>-120억원</td>
+                            <td>흑자 전환</td>
+                        </tr>
+                        <tr>
+                            <td>시가총액</td>
+                            <td>17.6조원</td>
+                            <td>8.2조원</td>
+                            <td>+114.6%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>재무 성과 분석</h3>
+                <p><strong>수익성 극적 개선:</strong> 2024년 알테오젠은 영업손실에서 영업이익 254억원으로 전환하며 극적인 수익성 개선을 이루었습니다. 이는 라이선스 아웃 비즈니스 모델의 성공적 실행과 머크(MSD) 기술이전 계약에서의 마일스톤 수익 인식 때문입니다.</p>
+                <p><strong>높은 이익율:</strong> 24.7%의 영업이익율은 R&D 기반 회사로서는 매우 높은 수준으로, 기술 라이선스 비즈니스의 수익성이 뛰어남을 보여줍니다. 이는 자체 신약 개발과 달리 라이선스 아웃이 현금 창출 효율성이 높음을 입증합니다.</p>
+                <p><strong>시장 신뢰도 급상승:</strong> 흑자 전환 소식에 시가총액이 전년도 대비 114.6% 증가하며, 투자자들의 알테오젠에 대한 신뢰도가 급상승했습니다. 이는 기술 기반 회사의 지속가능성에 대한 긍정적 평가를 반영합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>재무 구조 및 안정성</h3>
+                <ul class="content-list">
+                    <li><strong>자본금:</strong> 안정적인 자본 기반으로 충분한 R&D 투자 가능</li>
+                    <li><strong>현금흐름:</strong> 라이선스 수익으로 인한 지속적 양의 현금흐름</li>
+                    <li><strong>부채율:</strong> 낮은 부채 비율로 재정 건전성 유지</li>
+                    <li><strong>유동성:</strong> 충분한 유동자산으로 단기 재정 안정성 확보</li>
+                    <li><strong>R&D 투자:</strong> 연간 매출의 15-20% 수준의 지속적 R&D 투자</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>향후 재무 전망 (2025-2027)</h3>
+                <p><strong>보수적 전망:</strong></p>
+                <ul class="content-list">
+                    <li>2025년: 매출 1,150-1,250억원, 영업이익 280-320억원</li>
+                    <li>2026년: 매출 1,300-1,450억원, 영업이익 320-380억원</li>
+                    <li>2027년: 매출 1,500-1,700억원, 영업이익 380-450억원</li>
+                </ul>
+                <p><strong>성장 동력:</strong> 추가 글로벌 라이선스 계약, 기존 계약의 마일스톤 수익 인식, 자체 파이프라인의 임상 진전</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 7: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>SWOT 전략적 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strengths)</h3>
+                    <ul>
+                        <li>혁신적인 피하주사 전환 기술 (ALT-B4)</li>
+                        <li>글로벌 제약회사의 기술 신뢰 확보</li>
+                        <li>높은 수익성의 라이선스 아웃 비즈니스 모델</li>
+                        <li>다층 기술 포트폴리오 (ALT-B4, NexP, NexMab)</li>
+                        <li>2024년 흑자 전환으로 재정 안정성 입증</li>
+                        <li>강력한 지적 재산권 및 특허 포트폴리오</li>
+                        <li>경험 있는 경영진과 R&D 팀</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>Halozyme 대비 상대적으로 짧은 개발 기간</li>
+                        <li>제한된 임상 데이터 및 사례</li>
+                        <li>작은 기업 규모로 인한 R&D 리소스 제약</li>
+                        <li>글로벌 마케팅 및 판매 인프라 부족</li>
+                        <li>자체 신약 개발의 상대적 지연</li>
+                        <li>한국 중심의 운영으로 글로벌 진출 제한</li>
+                        <li>대형 제약회사 대비 협상 능력 약세</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회 (Opportunities)</h3>
+                    <ul>
+                        <li>글로벌 SC 포뮬레이션 시장의 급속 성장</li>
+                        <li>추가 글로벌 제약회사와의 라이선스 계약</li>
+                        <li>바이오시밀러 및 바이오의약품 수요 증가</li>
+                        <li>항암제, 면역학적 치료제 등 고가약물의 SC화 필요</li>
+                        <li>신흥국 시장의 환자 친화적 약물 개발 수요</li>
+                        <li>AI 및 머신러닝을 활용한 신약 개발 효율화</li>
+                        <li>글로벌 M&A 기회를 통한 사업 확대</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-shield-alt"></i>위험 (Threats)</h3>
+                    <ul>
+                        <li>Halozyme의 시장 지배력 및 공격적 전략</li>
+                        <li>신규 경쟁사의 시장 진입 가능성</li>
+                        <li>규제 환경 변화 및 허가 지연 리스크</li>
+                        <li>기술 라이선스 파트너의 임상 실패</li>
+                        <li>글로벌 제약사의 자체 기술 개발 시도</li>
+                        <li>원자재 및 인력 비용 상승</li>
+                        <li>지정학적 불안정으로 인한 공급망 리스크</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 평가</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-check-circle"></i>
+                <span>결론 및 전망</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-binoculars"></i>종합 평가</h3>
+                <p>알테오젠은 글로벌 바이오의약품 시장에서 빠르게 성장하는 피하주사 전환 기술 플랫폼 회사입니다. 2008년 설립 이후 18년간 순수 기술 개발에 집중하여, ALT-B4(Hybrozyme), NexP, NexMab ADC 등 차별화된 기술 포트폴리오를 구축했습니다. 특히 2024년의 흑자 전환 성공은 라이선스 아웃 비즈니스 모델의 성공을 입증하는 중요한 이정표입니다.</p>
+                <p>알테오젠의 기술은 Halozyme의 ENHANZE와 경쟁하면서도 더 간단한 구조, 높은 효능, 비용 효율성으로 차별화되고 있습니다. 머크(MSD)와의 기술이전 계약은 글로벌 수준의 기술력을 입증하며, 향후 추가 라이선스 계약의 기초가 될 것입니다. 현재 161명의 직원으로 시작했지만, 기술의 우수성과 높은 이익율로 인해 빠른 성장이 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>주요 성공 요인 및 전략</h3>
+                <p><strong>1. 선별된 기술 전략:</strong> 광범위한 신약 개발보다는 기술 플랫폼에 집중함으로써 자본과 리소스를 효율적으로 활용</p>
+                <p><strong>2. 글로벌 파트너십:</strong> 글로벌 제약회사와의 기술이전 계약을 통해 신뢰성 입증 및 현금흐름 확보</p>
+                <p><strong>3. 높은 이익율 비즈니스:</strong> 라이선스 아웃 비즈니스는 자체 신약 개발 대비 훨씬 높은 이익율 제공</p>
+                <p><strong>4. 지속적 혁신:</strong> 기존 기술의 지속적 개선과 새로운 플랫폼 개발을 통한 성장 동력 확보</p>
+                <p><strong>5. 시장 선택:</strong> 빠르게 성장하는 피하주사 전환 시장을 초기에 인식하고 진출</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>향후 성장 시나리오</h3>
+                <p><strong>낙관적 시나리오 (Base Case):</strong> 추가 2-3개의 글로벌 라이선스 계약 체결, 연 매출 1,500-2,000억원, 영업이익률 25-30% 유지, 시가총액 30-40조원 도달 (2028년 기준)</p>
+                <p><strong>우호적 시나리오 (Upside):</strong> NexP, NexMab의 임상 성공, 자체 신약 출시, 글로벌 M&A 기회 확보, 시가총액 50조원 이상 달성 (2030년 기준)</p>
+                <p><strong>보수적 시나리오 (Downside):</strong> 경쟁사의 기술 우월성 입증, 라이선스 계약 지연, 자체 파이프라인 개발 지연, 시가총액 12-15조원 수준 유지</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>투자 평가 및 권고</h3>
+                <p><strong>투자 의견:</strong> BUY (매수)</p>
+                <p><strong>목표주가:</strong> 현재 가 대비 40-60% 상승 (12개월 기준)</p>
+                <p><strong>근거:</strong></p>
+                <ul class="content-list">
+                    <li>글로벌 시장 성장과 기술력 입증으로 인한 수익성 개선 기대</li>
+                    <li>라이선스 비즈니스의 높은 수익율로 인한 지속적 현금 창출</li>
+                    <li>추가 파이프라인 성숙화에 따른 중장기 성장 동력</li>
+                    <li>현재의 저평가된 기업 가치에 비해 높은 성장 잠재력</li>
+                </ul>
+                <p><strong>투자 위험:</strong> 경쟁사 기술 발전, 라이선스 계약 지연, 규제 리스크, 기술 파트너의 임상 실패</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-compass"></i>최종 평가</h3>
+                <p>알테오젠은 한국의 바이오의약품 산업에서 기술 혁신을 통해 글로벌 경쟁력을 확보한 대표 기업입니다. 단순한 제약회사가 아닌 플랫폼 기술 회사로서의 위치를 확립했으며, 2024년 흑자 전환은 비즈니스 모델의 성공을 입증합니다. 향후 3-5년간 라이선스 수익의 지속적 증가와 자체 파이프라인의 임상 진전으로 인해 상당한 성장이 기대되며, 중장기적으로는 글로벌 바이오의약품 기업으로의 도약이 가능할 것으로 판단됩니다.</p>
+                <p>특히 글로벌 피하주사 전환 시장의 성장률이 연 15-18%로 높고, 시장 규모가 2030년까지 100억 달러 이상으로 확대될 것으로 예측되는 점을 고려하면, 알테오젠은 이 성장의 주요 수혜자가 될 수 있습니다. 현재의 시가총액 17.6조원은 향후 성장 잠재력을 충분히 반영하지 못한 것으로 평가되며, 지속적인 기술 진전과 라이선스 계약 확대를 통해 기업 가치의 상당한 상승이 예상됩니다.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

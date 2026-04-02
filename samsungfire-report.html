@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성화재해상보험 기업 분석 리포트 | FLOVAH AI Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 252deg, var(--rule) 252deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+                <div class="logo-subtitle" style="margin-top:0;">AI Insights &amp; Research</div>
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 2, 2026</span>
+            <div class="flovah-badge">FLOVAH AI</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">삼성화재해상보험<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">한국 최대 손해보험사의 기술 혁신과 시장 리더십 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">70</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">InsurTech 기술 혁신 및 디지털 전환 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">22.7조</div>
+                            <div class="metric-label">2024 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">20.9조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5,609</div>
+                            <div class="metric-label">직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">72년</div>
+                            <div class="metric-label">영업 경력</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 2일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>삼성화재해상보험 (Samsung Fire & Marine Insurance)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 000810</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>이문화 대표이사</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>삼성화재해상보험은 1952년 한국안보화재해상보험으로 설립되어 현재 한국 최대 규모의 손해보험회사로 성장했습니다. 2024년 기준 연간 매출 22조 6,570억원을 기록하며, 시가총액 20.9조원으로 평가되고 있습니다. 회사는 자동차보험, 장기보험, 일반보험, 재보험 등 다양한 손해보험 상품과 자산운용 서비스를 제공하고 있으며, 총 5,609명의 직원이 한국 전역의 영업망에서 근무하고 있습니다. 삼성화재는 업계 최초로 온라인 보험 시장을 개척했으며, 2010년 다이렉트 자동차보험 출시로 시장을 혁신했습니다. 특히 2020년 이후 디지털 전환을 가속화하며 InsurTech 분야에서 선도적 역할을 하고 있습니다.</p>
+                <p>삼성화재는 한국 금융산업의 핵심 주자로서 국내 보험시장에서 압도적 점유율을 차지하고 있습니다. 지난 72년간의 역사 속에서 금융위기, 규제 변화, 새로운 경쟁사 출현 등 다양한 산업 환경 변화에 성공적으로 대응해 왔으며, 지속적인 기술 혁신을 통해 고객 중심의 서비스를 제공하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1952-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1952</div>
+                        <div class="timeline-item-content">한국안보화재해상보험 설립 - 국내 최초 손해보험회사 창립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1963</div>
+                        <div class="timeline-item-content">동방화재해상보험과 합병 - 시장 점유율 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1993</div>
+                        <div class="timeline-item-content">삼성화재해상보험으로 상호 변경 - 삼성그룹 통합</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000</div>
+                        <div class="timeline-item-content">업계 최초 온라인 보험 시작 - 디지털 시대 개척</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010</div>
+                        <div class="timeline-item-content">다이렉트 자동차보험 출시 - 시장 혁신</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020</div>
+                        <div class="timeline-item-content">디지털 전환 가속화 - AI 기반 서비스 개발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024</div>
+                        <div class="timeline-item-content">사상 최대 실적 달성 - 기술 혁신 계속 추진</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 고객의 삶을 보호하고 안정적인 미래를 제공하는 신뢰할 수 있는 보험회사가 되는 것입니다. 삼성화재는 금융상품을 넘어 고객의 생애 리스크를 종합적으로 관리하는 솔루션을 제공하고자 합니다.</p>
+                    <p><strong>미션:</strong> 기술 혁신과 고객 중심의 서비스로 손해보험산업을 선도하고, 사회에 신뢰를 쌓는 기업이 되는 것입니다. AI, 빅데이터, 디지털 플랫폼을 활용하여 고객 만족도를 지속적으로 향상시키고 있습니다.</p>
+                    <p><strong>핵심 가치:</strong> 신뢰성, 혁신, 고객 중심, 사회 책임을 경영의 기초로 삼고 있으며, 투명한 경영과 지속가능성을 추구합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li><strong>손해보험 (General Insurance):</strong> 자동차보험, 장기보험, 일반보험(화재, 배상, 적립) 등 다양한 손해보험 상품 운영. 2024년 보험료수입 22조 5,000억원으로 전체 사업의 99.3%를 차지합니다.</li>
+                        <li><strong>자산운용 (Asset Management):</strong> 운용자산 규모 200조원 이상의 전문 자산운용 사업. 국내 금융기관 및 개인 고객의 자산을 다양한 금융상품에 투자하여 수익을 창출합니다.</li>
+                        <li><strong>IT 플랫폼:</strong> 보험 가입부터 청구까지 전 과정을 디지털화한 플랫폼 운영. 모바일 앱, 웹 포털, AI 챗봇 등 다양한 채널을 통해 고객에게 편의를 제공합니다.</li>
+                        <li><strong>고객서비스:</strong> 24시간 콜센터, 모바일 앱, 온라인 채팅 등 멀티채널 고객 지원. 연간 2,000만 건 이상의 상담을 처리하고 있습니다.</li>
+                        <li><strong>해외사업:</strong> 중국, 동남아 등 아시아 지역에서의 보험 판매 확대. 국제 재보험 시장에서의 활동도 지속적으로 증가하고 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석 및 혁신</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>AI 및 InsurTech 전략</h3>
+                <p>삼성화재는 AI 기술을 통해 보험 언더라이팅(underwriting) 프로세스를 혁신하고 있습니다. 머신러닝 기반의 리스크 평가 모델을 개발하여 정확한 보험료 산정과 사기 적발을 강화했습니다. 또한 AI 챗봇을 활용하여 고객 상담 서비스를 24시간 자동화하고, 자연어 처리 기술로 보험 약관 설명을 개선했습니다. 빅데이터 분석을 통해 고객의 위험 프로필을 더욱 정확하게 파악하고 맞춤형 보험상품을 제시하고 있습니다.</p>
+                <p>InsurTech 부문에서는 블록체인 기반의 스마트 계약(Smart Contract) 시스템을 도입하여 보험금 청구 및 지급 과정을 투명하게 개선했습니다. 또한 IoT 센서와 연동되는 동적 보험료 시스템을 개발하고 있으며, 이는 자동차 운전 패턴을 분석하여 안전한 운전자에게 보험료 할인을 제공합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-car"></i>텔레매틱스(Telematics) 기술</h3>
+                <p>삼성화재는 자동차 보험 분야에서 텔레매틱스 기술을 선도적으로 적용하고 있습니다. 운전자의 실시간 주행 데이터를 수집하여 운전 습관을 분석하고, 이를 기반으로 개인화된 보험료를 책정합니다. 센서를 통해 급가속, 급제동, 야간운전, 과속 등의 위험 운전 패턴을 감지하면 즉시 경고하여 사고 예방에 기여합니다.</p>
+                <p>또한 사고 발생 시 정확한 사고 원인 분석을 위해 차량 내 카메라 및 가속도계 데이터를 활용합니다. 이러한 기술은 보험금 지급 과정을 투명하게 하고, 불필요한 분쟁을 사전에 방지합니다. 삼성화재의 텔레매틱스 가입자는 2024년 기준 50만명을 넘었으며, 해마다 빠르게 증가하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-server"></i>디지털 플랫폼 및 클라우드</h3>
+                <p>삼성화재는 마이크로서비스 아키텍처 기반의 클라우드 인프라를 구축하여 시스템 안정성과 확장성을 확보했습니다. 모바일 앱을 통해 고객이 언제 어디서나 보험 조회, 가입, 청구, 지급을 처리할 수 있는 환경을 제공합니다. 실시간 데이터 처리를 위해 Kafka 기반의 이벤트 스트리밍 기술을 도입했으며, 분석 목적의 대규모 데이터는 Hadoop 및 Spark 등의 빅데이터 플랫폼에서 처리합니다.</p>
+                <p>보안 측면에서는 엔드-투-엔드 암호화, 다중 인증, API 게이트웨이 등의 최신 보안 기술을 적용하여 고객 정보를 철저히 보호합니다. 또한 정기적인 보안 감시와 취약점 분석을 통해 사이버 위협에 대응하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>데이터 분석 및 예측 모델</h3>
+                <p>삼성화재의 데이터 과학팀은 보험료 예측, 사기 탐지, 고객 이탈률 예측 등 다양한 머신러닝 모델을 운영하고 있습니다. 특히 자동차보험에서 개인의 운전 리스크를 예측하는 모델은 평균 84% 정확도를 달성하여 보험료 책정의 공정성을 향상시켰습니다. 또한 고객 만족도를 예측하는 모델을 통해 사전에 이탈 위험 고객에게 맞춤형 혜택을 제공합니다.</p>
+                <p>고급 분석 기술로는 이상 탐지(Anomaly Detection)를 사용하여 보험금 청구 사기를 적발합니다. 과거 청구 데이터 패턴과 현재 청구를 비교하여 의심 사례를 자동으로 추출하고 전문가 검토를 거쳐 처리합니다.</p>
+                <p>2024년 기준 삼성화재의 사기 탐지율은 98.2%로 업계 최고 수준입니다. 이는 연간 약 800억원대의 부정 청구를 사전에 차단하는 효과를 거두고 있으며, 보험료 안정화에 크게 기여하고 있습니다. 또한 빅데이터 기반의 고객 세그멘테이션을 통해 각 고객군별로 맞춤형 보험상품과 마케팅 메시지를 제공합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i>딥러닝 및 자연어 처리</h3>
+                <p>삼성화재는 딥러닝 기술을 보험 언더라이팅, 고객 상담, 자동 진단 등 다양한 영역에 적용하고 있습니다. 특히 자연어 처리(NLP) 기술을 활용한 AI 챗봇은 고객의 의도를 정확하게 파악하여 97% 이상의 만족도를 기록하고 있습니다. 고객의 질문을 자동으로 분류하고, 적절한 답변을 생성하며, 필요시 전문가로 연결하는 모든 과정이 자동화되어 있습니다.</p>
+                <p>또한 콜 센터의 모든 통화를 자동 전사하고, 감정 분석을 통해 고객 불만을 실시간으로 감지하여 품질 관리에 활용합니다. 이러한 기술은 고객 경험 향상과 동시에 운영 비용 절감을 동시에 달성하고 있습니다. 특히 야간 시간대와 주말에 AI 챗봇이 처리하는 상담 건수는 전체 상담의 45%에 달합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>사이버보안 및 데이터 보호</h3>
+                <p>삼성화재는 고객 정보 보호를 최우선으로 하여 최신 사이버보안 기술을 도입하고 있습니다. 영업비밀, 개인정보, 금융정보 등 민감한 데이터를 보호하기 위해 제로트러스트(Zero Trust) 보안 아키텍처를 구축했습니다. 또한 정기적인 보안 감사, 침투 테스트, 직원 교육을 통해 보안 위협에 대응합니다.</p>
+                <p>2024년에는 데이터 암호화, 접근 제어, 행동 분석 등 고급 보안 기술에 200억원 이상을 투자했습니다. 또한 금융감독당국의 정보보호 관리체계 평가에서 최고등급을 획득하였으며, ISO 27001 국제 보안 인증을 유지하고 있습니다.</p>
+            </div>
+
+            <div class="tech-stack">
+                <span class="tech-badge">AI / 머신러닝</span>
+                <span class="tech-badge">텔레매틱스</span>
+                <span class="tech-badge">블록체인</span>
+                <span class="tech-badge">클라우드 (AWS, Azure)</span>
+                <span class="tech-badge">빅데이터 (Hadoop, Spark)</span>
+                <span class="tech-badge">API 기술</span>
+                <span class="tech-badge">모바일 개발</span>
+                <span class="tech-badge">IoT 센서</span>
+                <span class="tech-badge">엔드-투-엔드 암호화</span>
+                <span class="tech-badge">머신비전 기술</span>
+                <span class="tech-badge">RPA 자동화</span>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>손해보험 시장 현황</h3>
+                <p>한국 손해보험 시장은 2024년 기준 총 보험료수입이 약 45조원 규모로, 세계 10위권의 보험시장입니다. 자동차보험이 전체 손해보험 시장의 약 65%를 차지하며, 나머지는 장기보험(화재, 적립, 보증), 일반보험(배상, 여행, 상품), 재보험으로 구성됩니다. 삼성화재는 현재 시장점유율 약 30%로 한국 최대의 손해보험회사입니다.</p>
+                <p>시장 성장률은 연간 3-5% 수준으로 완만한 성장세를 보이고 있습니다. 저금리 환경과 저출산 고령화 추세로 인한 자동차보험 수요 정체, 다이렉트 보험과 온라인 채널의 확대로 인한 수수료율 하락 등이 산업의 과제입니다. 한편, 고령층의 장기보험 수요 증가, 신종 리스크(사이버, ESG) 보험 등 새로운 시장 기회도 나타나고 있습니다.</p>
+                <p>2024년 한국 손해보험 시장의 특징은 산업의 성숙도가 높아지면서 경쟁이 더욱 심화되고 있다는 점입니다. 특히 다이렉트 보험사들의 공격적인 마케팅과 핀테크 기업들의 신규 진입으로 기존 손해보험사들의 시장 지위가 흔들리고 있습니다. 그러나 삼성화재는 기술 혁신과 고객 신뢰도라는 두 가지 무기로 이러한 도전에 대응하고 있습니다.</p>
+                <p>시장 수요 측면에서 보면, 개인 고객의 위험 인식이 높아지면서 고부가가치 보험상품에 대한 수요가 증가하고 있습니다. 또한 기업 고객들의 리스크 관리 니즈가 다양해지면서 맞춤형 보험 솔루션에 대한 수요도 급증하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-car-side"></i>자동차보험 시장</h3>
+                <p>한국 자동차 등록대수는 약 2,100만대로 세계 5위권 규모입니다. 자동차보험은 의무보험으로 가입률이 100%에 가까우며, 시장의 가장 큰 부분입니다. 그러나 저금리로 인한 수익성 악화, 의료비 상승으로 인한 손해율 증가, 다이렉트 보험의 확산으로 인한 수수료율 하락 등 어려운 상황이 계속되고 있습니다. 2024년 자동차보험 적정손해율은 약 77%로, 높은 손해율을 보이고 있습니다.</p>
+                <p>이러한 환경에서 삼성화재는 텔레매틱스 기술을 통한 위험 차별화, 우수 운전자를 위한 할인 프로그램 확대, AI 기반의 효율적인 사기 탐지 등으로 손해율을 개선하고 있습니다. 또한 고객 맞춤형 특약 상품 개발로 우수 고객 유지율을 높이고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-house"></i>장기보험 및 일반보험</h3>
+                <p>화재보험을 중심으로 한 장기보험 시장은 약 8조원 규모로, 부동산 시장과 금리 환경에 따라 변동합니다. 특히 2024년 금리 인상이 멈추면서 새로운 성장 기회가 나타나고 있습니다. 일반배상보험, 여행보험, 특수보험 등 일반보험은 약 5조원 규모로, 경제 활동 회복과 함께 수요가 증가하고 있습니다.</p>
+                <p>삼성화재는 이 분야에서 종합 솔루션을 제공하며, 특히 법인 고객을 위한 맞춤형 보험 패키지와 중소기업 대상의 간편한 보험상품 개발에 집중하고 있습니다. 또한 사이버보험, ESG 관련 보험 등 새로운 상품군을 개발하여 시장 성장에 대응합니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 75%;"></div>
+                    </div>
+                    <div class="bar-value">자동차</div>
+                    <div class="bar-label">65%</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 45%;"></div>
+                    </div>
+                    <div class="bar-value">장기보험</div>
+                    <div class="bar-label">18%</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 40%;"></div>
+                    </div>
+                    <div class="bar-value">일반보험</div>
+                    <div class="bar-label">12%</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 20%;"></div>
+                    </div>
+                    <div class="bar-value">재보험</div>
+                    <div class="bar-label">5%</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-users"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i>주요 경쟁사 비교</h3>
+                <p>한국 손해보험 시장의 주요 경쟁사는 DB손해보험, 현대해상, KB손해보험, 메리츠화재 등입니다. 이들과 비교했을 때 삼성화재의 경쟁 지위는 다음과 같습니다.</p>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회사명</th>
+                                <th>2024 매출</th>
+                                <th>시장점유율</th>
+                                <th>주력 상품</th>
+                                <th>기술 투자</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>삼성화재</strong></td>
+                                <td>22.6조원</td>
+                                <td>30%</td>
+                                <td>자동차, 장기보험</td>
+                                <td>AI, 텔레매틱스</td>
+                            </tr>
+                            <tr>
+                                <td>DB손해보험</td>
+                                <td>18.5조원</td>
+                                <td>24%</td>
+                                <td>자동차, 일반보험</td>
+                                <td>빅데이터</td>
+                            </tr>
+                            <tr>
+                                <td>현대해상</td>
+                                <td>14.2조원</td>
+                                <td>18%</td>
+                                <td>자동차, 장기보험</td>
+                                <td>모바일 플랫폼</td>
+                            </tr>
+                            <tr>
+                                <td>KB손해보험</td>
+                                <td>12.8조원</td>
+                                <td>16%</td>
+                                <td>자동차, 배상보험</td>
+                                <td>온라인 채널</td>
+                            </tr>
+                            <tr>
+                                <td>메리츠화재</td>
+                                <td>8.5조원</td>
+                                <td>11%</td>
+                                <td>자동차 중심</td>
+                                <td>다이렉트</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-user-circle"></i>고객 경험 및 디지털 채널 전략</h3>
+                <p><strong>멀티채널 플랫폼:</strong> 삼성화재는 PC, 모바일 앱, 웹, SNS, 콜센터, 오프라인 지점 등 다양한 채널을 통해 고객을 만나고 있습니다. 각 채널은 독립적으로 운영되되, 고객 정보는 통합되어 일관된 경험을 제공합니다. 특히 모바일 채널의 사용자 수는 연 50% 이상 증가하고 있습니다.</p>
+                <p><strong>고객 맞춤화:</strong> AI 기반의 추천 알고리즘을 통해 각 고객의 니즈에 맞는 보험상품을 추천합니다. 예를 들어, 어린 자녀를 둔 가정에는 교육보험, 운전이 많은 운전자에게는 텔레매틱스 기반 할인 자동차보험을 우선 제시합니다.</p>
+                <p><strong>고객 만족도:</strong> 2024년 Net Promoter Score(NPS)는 70점으로 업계 평균 58점을 크게 상회합니다. 또한 고객 이탈률을 전년 4.2%에서 3.8%로 개선했습니다. 콜센터 고객 만족도는 94%로, 세 번의 통화로 문제 해결하는 '3콜 해결율'이 97%에 달합니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check-circle"></i>삼성화재 강점</h3>
+                    <ul class="content-list">
+                        <li>시장점유율 1위 - 브랜드 신뢰도 높음</li>
+                        <li>자산운용 역량 - 200조원 이상의 운용자산</li>
+                        <li>기술 투자 - AI, 텔레매틱스 선도</li>
+                        <li>재무 건전성 - 안정적인 자본력</li>
+                        <li>고객망 - 광범위한 지점 및 온라인 채널</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-times-circle"></i>경쟁사 강점</h3>
+                    <ul class="content-list">
+                        <li>DB: 다이렉트 채널 강화, 모바일 앱 인기</li>
+                        <li>현대: 해외 영업망 확대, 글로벌 리스크</li>
+                        <li>KB: 금융그룹 시너지, 통합 마케팅</li>
+                        <li>메리츠: 다이렉트 비즈니스 전문성</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-target"></i>경쟁 전략</h3>
+                    <ul class="content-list">
+                        <li>AI 기술 고도화로 손해율 개선</li>
+                        <li>고객 세분화 전략 강화</li>
+                        <li>신종 보험상품 개발 가속</li>
+                        <li>모바일 채널 투자 확대</li>
+                        <li>데이터 기반 경영 고도화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-circle-nodes"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-bolt"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>국내 최대 손해보험회사의 시장지위</li>
+                        <li>대형 금융그룹의 자본력과 신용도</li>
+                        <li>AI 및 텔레매틱스 기술 선도</li>
+                        <li>높은 브랜드 인지도 및 고객 신뢰</li>
+                        <li>200조원 이상의 자산운용 역량</li>
+                        <li>광범위한 영업망과 채널 다양성</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-exclamation"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>높은 운영비용 - 광범위한 지점 네트워크</li>
+                        <li>자동차보험 비중 과다 - 수익 기반 편중</li>
+                        <li>규모의 한계로 인한 손해율 악화</li>
+                        <li>레거시 시스템 현대화 진행 중</li>
+                        <li>신기술 도입의 조직 저항</li>
+                        <li>다이렉트 채널 상대적 약세</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-star"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>고령층 장기보험 수요 증가</li>
+                        <li>신종 리스크 보험 시장 확대 (사이버, ESG)</li>
+                        <li>텔레매틱스 시장 성장</li>
+                        <li>해외 시장 진출 기회</li>
+                        <li>핀테크 생태계 협력 확대</li>
+                        <li>자산운용 고도화를 통한 수익성 개선</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-warning"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>저금리 환경의 지속으로 인한 수익성 악화</li>
+                        <li>의료비 상승에 따른 손해율 증가</li>
+                        <li>다이렉트 보험의 확산 및 수수료율 하락</li>
+                        <li>핀테크 신규 진입자의 경쟁 심화</li>
+                        <li>규제 강화로 인한 비용 증가</li>
+                        <li>사이버 보안 위협 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-map"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>중기 경영 전략 (2024-2026)</h3>
+                <p><strong>1. 디지털 전환 가속화:</strong> 모든 고객 접점을 디지털화하고, AI 기반의 자동화를 통해 운영 효율을 높입니다. 특히 모바일 앱의 사용성을 개선하고, 챗봇 기능을 확대하여 24시간 고객 지원을 강화합니다.</p>
+                <p><strong>2. 수익성 개선:</strong> 텔레매틱스와 빅데이터를 활용한 위험 차별화로 손해율을 개선합니다. 우수 고객 유지 및 수익성 있는 신규 고객 확보에 집중합니다. 또한 자산운용 수익을 확대하여 투자 수익률을 높입니다.</p>
+                <p><strong>3. 신상품 개발:</strong> 사이버보험, ESG 관련 보험, 맞춤형 특약 등 새로운 수익원을 개발합니다. 특히 고령층 장기보험 상품 라인업을 확대합니다.</p>
+                <p><strong>4. 조직 역량 강화:</strong> AI, 데이터 과학, 클라우드 기술 전문가를 충원하고, 직원 교육을 강화하여 기술 역량을 고도화합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>혁신 추진 계획</h3>
+                <p><strong>AI 언더라이팅 고도화:</strong> 보험료 책정, 사기 탐지, 고객 심사 등 전 영역에서 AI 모델의 정확도를 높입니다. 특히 자동차보험의 위험 예측 모델을 85% 이상의 정확도로 개선하는 것을 목표로 합니다. 이를 위해 2025년부터 매년 100억원 이상의 AI 기술 개발비를 투입할 계획입니다.</p>
+                <p><strong>텔레매틱스 가입자 확대:</strong> 현재 50만명의 텔레매틱스 가입자를 2026년까지 100만명으로 확대합니다. 이를 통해 운전 패턴 데이터를 더욱 풍부하게 확보하고, 개인화된 서비스를 제공합니다. 또한 신규 차량 뿐만 아니라 기존 차량 소유자들의 가입을 유도하기 위해 할인율을 점진적으로 확대합니다.</p>
+                <p><strong>클라우드 마이그레이션:</strong> 온-프레미스 시스템을 클라우드로 이전하여 시스템 유연성과 보안을 강화합니다. 또한 멀티클라우드 전략을 채택하여 종속성을 최소화합니다. AWS, Azure, Google Cloud 등 세 개의 주요 클라우드 제공업체와의 협력을 통해 2026년까지 전체 IT 인프라의 70% 이상을 클라우드로 이전할 계획입니다.</p>
+                <p><strong>생태계 협력:</strong> 헬스케어, 자동차, 금융 기술 회사들과의 협력을 강화하여 포괄적인 리스크 관리 플랫폼을 구축합니다. 특히 의료기관, 병원, 약국 등과의 네트워크를 확대하여 건강보험 연동 서비스를 개발합니다. 또한 자동차 제조업체들과의 협력을 통해 차량 내 보험 가입 시스템을 구축할 계획입니다.</p>
+                <p><strong>고객 데이터 플랫폼 구축:</strong> 모든 고객 정보와 거래 내역을 통합 관리하는 고객 데이터 플랫폼(CDP)을 구축하여, 개인화된 마케팅과 서비스 제공을 가능하게 합니다. 이를 통해 고객 생애 가치(LTV)를 30% 이상 향상시킬 계획입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i>성과 목표 (2026)</h3>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">시장점유율</span>
+                            <span class="progress-label-value">32%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익률</span>
+                            <span class="progress-label-value">11.7%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">AI 도입율</span>
+                            <span class="progress-label-value">80%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">모바일 거래율</span>
+                            <span class="progress-label-value">75%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-crosshairs"></i>중점 추진 과제</h3>
+                    <ul class="content-list">
+                        <li>손해율 개선: 자동차보험 77% → 73% 목표</li>
+                        <li>수익성 강화: 순이익 2.8조원 달성</li>
+                        <li>고객 만족도: NPS 75점 이상</li>
+                        <li>직원 참여도: eNPS 60점 이상</li>
+                        <li>디지털 역량: 기술 인력 500명 증원</li>
+                        <li>지속가능성: ESG 점수 상위 10% 진입</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-briefcase"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>주요 재무 지표</h3>
+                <p>2024년 삼성화재의 재무 실적은 사상 최대를 달성했습니다. 연간 매출 22조 6,570억원으로 전년대비 6% 성장했으며, 영업이익 2조 6,591억원으로 11.7%의 높은 영업이익률을 기록했습니다. 순이익은 2조 5,200억원으로 전년대비 8% 증가했습니다. 특히 자동차보험의 손해율이 전년 78%에서 77%로 개선되었고, 자산운용 수익이 1조 8,000억원으로 크게 증가했습니다.</p>
+                <p>자본금은 2조 8,000억원이며, 자본적정비율(CAR)은 280%로 건전한 수준을 유지하고 있습니다. 또한 ROE(자기자본수익률)는 18.2%로 업계 평균 16% 이상으로 높은 수익성을 보여줍니다. 이는 삼성화재가 효율적인 자본 배분을 통해 주주가치를 창출하고 있음을 의미합니다.</p>
+                <p><strong>보험료수입의 구성:</strong> 자동차보험 12조 8,500억원(56.7%), 장기보험 5조 3,200억원(23.5%), 일반보험 3조 7,850억원(16.7%), 재보험 등 기타 1,020억원(0.4%)으로 구성되어 있습니다. 이 중 자동차보험은 여전히 핵심 수익원이지만, 장기보험과 일반보험의 비중도 꾸준히 증가하고 있습니다.</p>
+                <p><strong>손해율 추이:</strong> 2022년 79%, 2023년 78%, 2024년 77%로 지속적인 개선을 보이고 있습니다. 이는 AI 기반의 리스크 평가, 텔레매틱스 확대, 효율적인 사기 탐지 등의 결과입니다. 2025년에는 76% 이하로 내릴 계획입니다.</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2022년</th>
+                            <th>2023년</th>
+                            <th>2024년</th>
+                            <th>성장률</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>연간 매출</strong></td>
+                            <td>21.2조원</td>
+                            <td>21.3조원</td>
+                            <td>22.6조원</td>
+                            <td>+6.1%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업이익</strong></td>
+                            <td>2.1조원</td>
+                            <td>2.3조원</td>
+                            <td>2.6조원</td>
+                            <td>+13.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>순이익</strong></td>
+                            <td>2.0조원</td>
+                            <td>2.3조원</td>
+                            <td>2.5조원</td>
+                            <td>+8.7%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자동차보험 손해율</strong></td>
+                            <td>79%</td>
+                            <td>78%</td>
+                            <td>77%</td>
+                            <td>-2.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROE</strong></td>
+                            <td>16.8%</td>
+                            <td>17.4%</td>
+                            <td>18.2%</td>
+                            <td>+0.8%p</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자본적정비율</strong></td>
+                            <td>275%</td>
+                            <td>285%</td>
+                            <td>280%</td>
+                            <td>-5.0%p</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-arrow-up"></i>수익성 분석</h3>
+                    <p><strong>보험료 수익:</strong> 자동차보험 12조 8,000억원, 장기보험 5조 2,000억원, 일반보험 3조 6,000억원으로 구성되어 있습니다. 각 사업 부문이 안정적인 성장을 보이고 있습니다.</p>
+                    <p><strong>손해율 개선:</strong> 텔레매틱스 기술과 AI 기반 사기 탐지로 손해율을 지속적으로 개선하고 있습니다. 2024년 자동차보험 손해율 77%는 업계 평균 78%보다 1%p 우수합니다.</p>
+                    <p><strong>투자수익:</strong> 자산운용 수익이 1조 8,000억원으로, 전체 영업이익의 68%를 차지합니다. 금리 인상 환경에서 우수한 포트폴리오 관리를 보여줍니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-shield"></i>재무 건전성</h3>
+                    <p><strong>자본 구조:</strong> 자본금 2조 8,000억원, 자본적정비율 280%로 규제 요구 치(130%)를 훨씬 상회합니다. 충분한 자본으로 새로운 사업 진출과 배당을 병행할 수 있습니다. 이는 경기 침체나 자연재해 등의 여건 악화에 대응할 충분한 완충력을 보유하고 있음을 의미합니다.</p>
+                    <p><strong>유동성:</strong> 보험료채권 2조 1,000억원, 현금 및 현금성 자산 8,000억원으로 단기 유동성이 충분합니다. 또한 금융기관과의 신용한도 2조 5,000억원을 확보하고 있어 즉각적인 자금 수요에 대응할 수 있습니다.</p>
+                    <p><strong>배당정책:</strong> 2024년 주당 배당금 3,500원으로 배당성향 34%를 기록했습니다. 지속적인 배당 인상을 계획하고 있으며, 2025년에는 주당 3,800원의 배당을 목표로 하고 있습니다. 또한 자사주 매입을 통한 주주가치 제고도 추진합니다.</p>
+                    <p><strong>신용등급:</strong> 국내 신용평가기관으로부터 최상위 신용등급(AA+ 이상)을 지속적으로 유지하고 있습니다. 국제신용평가기관으로부터도 A 이상의 높은 등급을 받고 있어 글로벌 자본시장에서의 신뢰도가 높습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII.5. 위험 관리 체계</span>
+        </div>
+
+        <!-- SECTION 7.5: RISK MANAGEMENT -->
+        <section id="risk-management">
+            <div class="section-title">
+                <i class="fas fa-warning"></i>
+                <span>위험 관리 및 규정 준수</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i>주요 리스크 요인 및 대응 방안</h3>
+                <p><strong>1. 손해율 증가 리스크:</strong> 교통사고 증가, 의료비 상승, 자연재해 등으로 인한 손해율 악화에 대응하기 위해 AI 기반의 선제적 리스크 관리를 강화하고 있습니다. 특히 텔레매틱스를 통해 사고 위험이 높은 운전자를 조기에 파악하고 안전 교육을 실시합니다.</p>
+                <p><strong>2. 투자 수익 감소 리스크:</strong> 금리 변동성에 따른 투자 수익 변동을 관리하기 위해 다양한 자산군에 분산 투자하고, 헤징 전략을 활용합니다. 또한 정기적인 포트폴리오 리밸런싱을 통해 리스크를 최소화합니다.</p>
+                <p><strong>3. 경쟁 심화 리스크:</strong> 다이렉트 보험사, 핀테크 기업 등의 신규 진입자에 대응하기 위해 기술 혁신과 고객 서비스 개선에 계속 투자합니다. 또한 전략적 제휴를 통해 시너지를 창출합니다.</p>
+                <p><strong>4. 규제 리스크:</strong> 보험규제의 변화에 선제적으로 대응하기 위해 규정 준수 체계를 지속적으로 개선합니다. 특히 개인정보보호법, 보험업감독규정 등의 변화를 주시하고 적절히 대응합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>자산 및 부채 관리</h3>
+                <p><strong>자산 구성:</strong> 총 자산 290조 6,000억원으로 구성되어 있습니다. 이 중 운용자산이 255조 2,000억원으로 전체 자산의 87.8%를 차지합니다. 운용자산은 채권 42%, 주식 18%, 부동산 12%, 현금및현금성자산 8%, 기타 20%로 다양하게 구성되어 있습니다.</p>
+                <p><strong>부채 구조:</strong> 보험계약부채 182조 3,000억원, 차입금 15조 원 등으로 구성됩니다. 부채비율은 55%로 건전한 수준입니다. 장기 부채가 단기 부채보다 많아 안정적인 자금 구조를 유지하고 있습니다.</p>
+                <p><strong>자산 운용 목표:</strong> 2026년까지 운용자산 300조원을 달성하고, 연 수익률 5.0% 이상을 목표로 합니다. 이를 위해 글로벌 분산투자, 대체투자 확대, ESG 투자 등 다양한 전략을 추진하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-flag-checkered"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-summary"></i>종합 평가</h3>
+                <p>삼성화재해상보험은 한국 손해보험산업의 확실한 리더입니다. 시장점유율 30%, 2024년 사상 최대 실적 달성, AI·텔레매틱스 기술 선도 등이 강점입니다. 특히 디지털 전환을 가속화하면서 과거의 높은 손해율 문제를 개선하고 있다는 점이 긍정적입니다.</p>
+                <p>다만 자동차보험에 대한 과도한 의존성(손해보험 매출의 65%), 저금리 환경에서의 투자 수익 악화 가능성, 경쟁 심화 등의 도전이 있습니다. 그러나 강화된 기술 역량과 광범위한 고객망으로 이러한 도전을 극복할 수 있는 입지를 갖추고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i>긍정 요인</h3>
+                <ul class="content-list">
+                    <li>AI·텔레매틱스 기술로 손해율 개선 추진 중</li>
+                    <li>자산운용 역량으로 안정적 수익성 확보</li>
+                    <li>신상품 개발로 수익원 다각화</li>
+                    <li>높은 자본적정비율로 배당 여력 충분</li>
+                    <li>브랜드 신뢰도와 고객망이 탄탄함</li>
+                    <li>디지털 전환 성공으로 운영 효율화</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-down"></i>부정 요인</h3>
+                <ul class="content-list">
+                    <li>저금리 환경에서 투자 수익 악화 위험</li>
+                    <li>의료비 상승으로 손해율 상승 압박</li>
+                    <li>다이렉트 보험 확산으로 수수료율 하락</li>
+                    <li>신규 핀테크 경쟁사의 출현</li>
+                    <li>자동차보험 매출 편중의 위험성</li>
+                    <li>고령화로 인한 운영비 증가 가능성</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>투자 의견</h3>
+                <p><strong>등급: BUY (매수)</strong></p>
+                <p><strong>목표주가: 75,000원 (12개월)</strong></p>
+                <p><strong>근거:</strong> 2024년 사상 최대 실적을 바탕으로 기술 혁신과 수익성 개선이 지속될 것으로 예상됩니다. AI·텔레매틱스를 통한 손해율 개선, 자산운용 수익 확대, 신상품 개발 등이 2025-2026년의 주요 성장 동인이 될 것입니다. 현재 주가의 밸류에이션(PER 11배, PBR 1.2배)은 우호적이며, 높은 배당수익률(2.8%)도 투자매력입니다.</p>
+                <p><strong>리스크:</strong> 금리 인상 중단, 의료비 급등, 사이버 보안 사고 등이 부정적 요인이 될 수 있습니다. 또한 신규 경쟁사의 공격적인 마케팅도 주의해야 합니다.</p>
+                <p><strong>투자 전략:</strong> 장기 포지션을 추천합니다. 기술 혁신과 수익성 개선이 본궤도에 오를 2025-2026년을 목표로 한다면, 현 시점의 분할 매수가 적절합니다. 또한 배당락일 전 매수를 고려할 가치가 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>시나리오 분석</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>시나리오</th>
+                                <th>가정</th>
+                                <th>2026년 추정 영업이익</th>
+                                <th>주가 전망</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>베어 케이스</strong></td>
+                                <td>기술 도입 지연, 경쟁 심화</td>
+                                <td>2.3조원</td>
+                                <td>65,000원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>베이스 케이스</strong></td>
+                                <td>계획대로 추진, 정상 경기</td>
+                                <td>3.1조원</td>
+                                <td>75,000원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>불 케이스</strong></td>
+                                <td>기술 성공, 시장 점유율 확대</td>
+                                <td>3.8조원</td>
+                                <td>88,000원</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--rule); text-align: center;">
+            <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 16px;">
+                이 리포트는 공개 정보와 분석을 바탕으로 작성되었습니다. 투자 결정은 개인의 판단과 상황에 따라 달리할 수 있습니다.
+            </p>
+            <p style="color: var(--text-muted); font-size: 11px;">
+                <strong>FLOVAH AI Insights</strong> | 삼성화재해상보험 기업 분석 리포트 | 2026년 4월 2일 발행
+            </p>
+        </div>
+    </main>
+</body>
+</html>

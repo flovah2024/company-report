@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크래프톤 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 216deg, var(--rule) 216deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            border-top: 1px solid var(--rule);
+            margin-top: 40px;
+        }
+
+        .report-info-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .report-info-item:last-child { border-right: none; }
+
+        .report-info-icon {
+            font-size: 20px;
+            color: var(--gold);
+            opacity: .7;
+        }
+
+        .report-info-content h4 {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            font-size: 14px;
+            color: var(--text-body);
+            margin: 0;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ TWO/THREE COLUMN ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .two-column .content-card,
+        .three-column .content-card {
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column .content-card:nth-child(2n),
+        .three-column .content-card:nth-child(3n) {
+            border-right: none;
+        }
+
+        /* ============ SECTION DIVIDER ============ */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 80px 0 40px;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            padding: 0 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: var(--bg-deep);
+        }
+
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            main { padding: 40px 24px; }
+            .section-title { font-size: 28px; }
+            .hero-title { font-size: 36px; }
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column .content-card, .three-column .content-card { border-right: none; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <div class="header-date">April 5, 2026</div>
+            <div class="flovah-badge">Premium Research</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO / REPORT OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-highlight">크래프톤</span> 기업 분석 리포트
+                    </h1>
+                    <p class="hero-subtitle">게임 IP 글로벌화와 딥러닝 기술의 수익화 전략 평가</p>
+
+                    <div style="display: flex; justify-content: center; margin: 40px 0;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">60</div>
+                            <div>
+                                <div style="color: var(--text-primary); margin-bottom: 5px;">AI 준비도 점수</div>
+                                <div style="color: var(--text-secondary); font-size: 12px; font-weight: 400;">높은 수준의 기술 혁신</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">3.3조원</div>
+                            <div class="metric-label">2025년 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">20조원</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">약 3,000명</div>
+                            <div class="metric-label">임직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2007~</div>
+                            <div class="metric-label">설립 년도</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 5일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>크래프톤 (Krafton Inc.)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 259960</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>배틀그라운드팀 리더십</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 2: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보</h3>
+                <p>크래프톤(Krafton Inc.)은 2007년 설립된 한국의 선도적 게임 개발사로서, 글로벌 게임 시장에서 절대적 위치를 점유하고 있습니다. KOSPI 상장 기업(259960)으로서 2025년 매출 3조 3,266억원(전년대비 22.8% 증가)과 영업이익 1조 544억원을 기록했으며, 현재 시가총액 약 20조원의 대형 게임사로 성장했습니다. 약 3,000명 이상의 임직원을 보유한 크래프톤은 서울 강남구 본사를 중심으로 전 세계 100여 개국에서 게임 서비스를 제공하고 있습니다. 크래프톤의 핵심 경쟁력은 배틀그라운드(PUBG) 시리즈를 통한 강력한 IP 포트폴리오, 글로벌 게이머 네트워크의 규모, 그리고 최근 주목받고 있는 AI 기술 혁신에 있습니다.</p>
+                <p>크래프톤은 2024년 기준으로 배틀그라운드가 서비스 9주년을 맞이했으며, 역사상 최고 동접 기록인 130만명을 달성했습니다. 이는 게임 서비스 장기화 측면에서 게임업계 최상위 수준의 성과입니다. 또한 자회사인 PUBG Studios, Unknown Worlds, Striking Distance Studios를 통해 PC, 모바일, 콘솔 게임 포트폴리오를 다양화하고 있으며, 최신 신작 inZOI 등을 통해 새로운 게임 경험을 제시하고 있습니다. 딥러닝 기반 AI 기술 개발도 활발히 진행 중으로, 게임 개발 효율화와 새로운 수익 모델 창출의 기회를 모색하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-history"></i>회사 연혁</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2007년</div>
+                            <div class="timeline-item-content">크래프톤(구 블루홀) 설립, 게임 개발 시작</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2012년</div>
+                            <div class="timeline-item-content">TERA 개발 및 출시, 대규모 멀티플레이 경험 축적</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2017년</div>
+                            <div class="timeline-item-content">배틀그라운드(PUBG) 출시, 게임 역사에 남을 게임 탄생</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2018년</div>
+                            <div class="timeline-item-content">배틀그라운드 PC/모바일 글로벌 1억 명 돌파</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2019년</div>
+                            <div class="timeline-item-content">크래프톤 사명 변경, 인수합병 전략 본격화</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2021년</div>
+                            <div class="timeline-item-content">KOSPI 상장, 소프트뱅크·네이버·테라펀드 투자 유치</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2023년</div>
+                            <div class="timeline-item-content">AI 모델 개발 가속화, 콘텐츠 생성 AI 기술 공개</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2025년</div>
+                            <div class="timeline-item-content">inZOI 출시, 신규 게임 IP 성장 단계 진입</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-target"></i>비전 및 미션</h3>
+                    <p><strong>비전:</strong> 글로벌 게임 산업을 주도하는 AI 중심의 창의형 엔터테인먼트 기업</p>
+                    <p style="margin-top: 25px; margin-bottom: 15px;"><strong>미션:</strong></p>
+                    <ul class="content-list">
+                        <li>게임 개발에 AI 기술을 접목하여 게임 경험의 질 향상</li>
+                        <li>배틀그라운드 IP의 지속적 확장과 새로운 게임 IP 창출</li>
+                        <li>글로벌 게이머 커뮤니티 활성화를 통한 장기적 성장</li>
+                        <li>e스포츠와 콘텐츠 생태계 구축을 통한 부가수익 창출</li>
+                        <li>차세대 게임 기술 개발과 업계 표준화 선도</li>
+                    </ul>
+                    <p style="margin-top: 25px;">크래프톤은 단순한 게임 개발사를 넘어 AI 기술을 활용한 엔터테인먼트 플랫폼 기업으로의 전환을 추진하고 있으며, 이는 회사의 중장기 성장 전략의 핵심입니다. 게임 개발 효율화, 플레이어 경험 최적화, 새로운 콘텐츠 형식 개발이 향후 3~5년 내 주요 과제입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>사업 구조 및 세부 설명</h3>
+                <p>크래프톤의 사업은 크게 세 가지 핵심 부문으로 구성되어 있으며, 각각 고유의 기술 특성과 시장 기회를 보유하고 있습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">1) 배틀그라운드(PUBG) IP 중심 게임 사업</strong></p>
+                    <p>배틀그라운드는 2017년 출시 이후 전 세계 2억 명 이상의 누적 플레이어를 기록한 문화 현상급 게임입니다. PC, 모바일, 콘솔 플랫폼에서 동시에 서비스되고 있으며, 2025년 기준으로 여전히 글로벌 배틀로얄 장르의 최정상 게임으로 평가됩니다. 월간 활동 플레이어(MAU)는 약 4,000만~5,000만명 수준으로 추정되며, 게임 내 아이템 판매, 배틀패스, e스포츠 스폰서십 등을 통해 높은 수익성을 유지하고 있습니다. 배틀그라운드는 게임 내 AI 기술의 테스트베드로서도 역할하고 있으며, 플레이어 경험 개선을 위한 AI 기반 기능들이 지속적으로 추가되고 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">2) 신작 게임 개발 및 다양화 사업</strong></p>
+                    <p>crAfton은 배틀그라운드의 성공 이후 새로운 게임 IP 개발에 적극 투자하고 있습니다. inZOI는 타운빌딩과 라이프 시뮬레이션을 결합한 새로운 장르의 게임으로, 2025년 출시 이후 플레이어들의 호응을 얻고 있습니다. 또한 자회사인 Striking Distance Studios의 콘솔 게임, Unknown Worlds의 멀티플레이 게임 등 다양한 플랫폼과 장르의 게임을 포트폴리오화하고 있습니다. 신작 게임들은 배틀그라운드의 높은 기대감으로 인한 플레이어 베이스를 활용하면서도, 서로 다른 플레이 스타일을 추구하는 게이머들을 대상으로 성장할 수 있는 기반을 마련했습니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">3) AI 기술 기반 게임 개발 효율화 및 신사업</strong></p>
+                    <p>크래프톤의 차별점은 게임 개발에 딥러닝 기반 AI 기술을 적극 활용하는 것입니다. 생성형 AI를 활용한 게임 아트, 음향 효과, 애니메이션 자동 생성 등은 개발 비용을 절감하고 개발 주기를 단축할 수 있습니다. 또한 게임 내 NPC의 인공지능화, 플레이어 행동 분석을 통한 개인화된 게임 경험 제공 등 플레이어 만족도 향상에도 AI 기술이 활용되고 있습니다. 향후 이러한 AI 기술의 상용화를 통해 게임 개발 엔진이나 도구 라이선싱 사업으로 확대할 가능성도 있습니다. 이는 게임 개발사에서 B2B 기술 기업으로의 전환을 의미하며, 높은 마진율의 새로운 수익원이 될 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 자회사</h3>
+                    <ul class="content-list">
+                        <li>PUBG Studios</li>
+                        <li>Unknown Worlds Entertainment</li>
+                        <li>Striking Distance Studios</li>
+                        <li>The Whole Game</li>
+                        <li>Bandcamp (잠재적)</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>플랫폼별 포트폴리오</h3>
+                    <ul class="content-list">
+                        <li>배틀그라운드 (PC, 모바일)</li>
+                        <li>inZOI (콘솔, PC)</li>
+                        <li>Subnautica (콘솔)</li>
+                        <li>The Cycle (PC)</li>
+                        <li>추가 개발 게임 다수</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>주요 서비스 지역</h3>
+                    <ul class="content-list">
+                        <li>북미 및 유럽</li>
+                        <li>동아시아 (한국, 중국, 일본)</li>
+                        <li>동남아시아</li>
+                        <li>라틴아메리카</li>
+                        <li>100+ 국가 서비스 중</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 3: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-flask-vial"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i>배틀그라운드 게임 엔진 및 기술</h3>
+                <p>배틀그라운드의 성공의 기저에는 크래프톤의 강력한 게임 개발 기술이 있습니다. Unreal Engine 4/5를 기반으로 개발된 배틀그라운드는 100명의 플레이어가 동시에 경쟁하는 대규모 멀티플레이 게임으로서, 네트워크 최적화, 서버 아키텍처, 클라이언트 성능 최적화 측면에서 업계 최고 수준입니다. 크래프톤은 배틀그라운드 개발 과정에서 축적한 엔진 최적화 기술을 활용하여 고사양 PC 게임을 저사양 모바일 환경에서도 구동할 수 있는 기술을 보유하고 있습니다. 이러한 기술력은 경쟁사의 모방이 어려운 진정한 차별점입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-brain"></i>AI 및 머신러닝 기술</h3>
+                    <p><strong>생성형 AI 활용:</strong> 크래프톤은 2023년부터 생성형 AI 기술의 게임 개발 적용을 공개했습니다. 이미지 생성 AI(Stable Diffusion, DALL-E 등)를 게임 아트 프로토타이핑에 활용하여 개발 속도를 가속화하고 있으며, 음향 효과 생성, 배경음악 작곡 등에도 AI를 활용하고 있습니다.</p>
+                    <p style="margin-top: 15px;"><strong>NPC 인공지능:</strong> 배틀그라운드와 신작 게임들에 적용되는 NPC의 행동 패턴은 머신러닝 기반 AI로 구동되고 있습니다. 플레이어의 행동을 분석하고 적응하는 AI NPC는 게임 난이도 조절과 플레이어 몰입감 향상에 기여합니다.</p>
+                    <p style="margin-top: 15px;"><strong>플레이어 분석 AI:</strong> 플레이어의 게임 플레이 데이터를 분석하여 개인화된 경험을 제공하는 AI 시스템을 개발 중입니다. 플레이어의 실력, 선호도, 플레이 시간 등을 분석하여 추천 콘텐츠, 난이도 조절, 매칭 시스템 최적화 등에 활용될 예정입니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>플랫폼 및 인프라 기술</h3>
+                    <p><strong>글로벌 서버 인프라:</strong> 크래프톤은 전 세계 주요 지역에 분산된 게임 서버를 운영하고 있으며, 안정적인 서비스 제공과 낮은 레이턴시 유지를 위해 클라우드 인프라(AWS, 구글 클라우드 등)를 활용하고 있습니다.</p>
+                    <p style="margin-top: 15px;"><strong>안티치트 시스템:</strong> 게임의 공정성을 보장하기 위한 고도화된 안티치트 시스템을 운영하고 있으며, 머신러닝을 활용한 부정행위 탐지 기술을 지속적으로 개발하고 있습니다. 이는 게임 생태계 건강성 유지의 핵심 기술입니다.</p>
+                    <p style="margin-top: 15px;"><strong>데이터 분석 플랫폼:</strong> 수십억 건의 게임 플레이 데이터를 실시간으로 처리하고 분석하는 빅데이터 플랫폼을 구축했으며, 이를 통해 게임 밸런싱, 이벤트 기획, 마케팅 의사결정에 활용하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 혁신 로드맵</h3>
+                <p>크래프톤은 향후 3년간 다음과 같은 기술 혁신을 계획하고 있습니다:</p>
+                <ul class="content-list" style="margin-top: 15px;">
+                    <li><strong>생성형 AI의 심화:</strong> 게임 아트, 음향, 시나리오 생성 등 전 영역으로 AI 적용 확대</li>
+                    <li><strong>메타버스 기술:</strong> 가상 세계 구축, 아바타 기술, 소셜 기능 강화</li>
+                    <li><strong>클라우드 게이밍:</strong> 고사양 게임의 스트리밍 제공으로 플랫폼 장벽 제거</li>
+                    <li><strong>블록체인 통합:</strong> NFT 게임 아이템, 크로스 게임 자산 연동 등 검토 중</li>
+                    <li><strong>VR/AR 게임:</strong> 몰입형 게임 경험 제공을 위한 차세대 플랫폼 개발</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 4: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 게임 시장 규모 및 성장</h3>
+                <p><strong>시장 규모:</strong> 2025년 글로벌 게임 시장 규모는 약 200억 달러(약 260조원)로 추정되며, 2030년까지 연평균 8~10% 성장이 예상되고 있습니다. 모바일 게임이 전체의 약 50%, PC/콘솔 게임이 약 45%, 기타 플랫폼이 5% 정도를 차지하고 있습니다. 크래프톤은 PC와 모바일 양쪽에 강력한 포트폴리오를 보유하고 있어 시장 성장으로부터 직접적인 이익을 누릴 수 있는 위치에 있습니다.</p>
+                <p style="margin-top: 15px;"><strong>지역별 시장 현황:</strong> 북미(약 35%), 중국(약 28%), 유럽(약 20%), 한국(약 5%), 기타 지역(약 12%) 분포를 보이고 있습니다. 크래프톤의 배틀그라운드는 특히 중국과 북미 시장에서 높은 인기도를 유지하고 있으며, 신흥국 시장 진출도 활발합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-crown"></i>배틀로얄 장르 시장</h3>
+                    <p>배틀로얄 장르는 2017년 배틀그라운드의 출시 이후 게임 시장의 핵심 장르로 부상했습니다. 포트나이트, 에이펙스 레전드, 콜 오브 듀티: 워존 등 경쟁작들이 있지만, 배틀그라운드는 여전히 가장 높은 플레이어 수와 수익을 기록하고 있습니다. 배틀로얄 장르는 향후 VR/AR 확대, 모바일 게이밍 성장, 이머징 마켓 진출 등으로 인해 계속 성장할 것으로 예상됩니다. 특히 모바일 배틀로얄 게임의 성장세는 매우 가파르며, 이는 크래프톤의 배틀그라운드 모바일 버전의 수익 창출 기회를 크게 확대해주고 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-gamepad"></i>라이프 시뮬레이션 게임 시장</h3>
+                    <p>inZOI는 타운빌딩과 라이프 시뮬레이션을 결합한 게임으로, 주요 경쟁작은 심시티, 더 심즈 시리즈 등입니다. 라이프 시뮬레이션 게임은 전통적으로 높은 플레이 시간과 강한 중독성으로 특징지어지며, 지속적인 콘텐츠 업데이트로 장기 수익화가 가능합니다. 특히 모바일 라이프 시뮬레이션 게임의 성장이 두드러지고 있으며, inZOI의 성공 여부는 크래프톤의 게임 포트폴리오 다양화에 중요한 역할을 할 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users-slash"></i>게임 시장의 핵심 트렌드</h3>
+                <ul class="content-list">
+                    <li><strong>모바일 게이밍 우위화:</strong> 모바일 게임이 전체 게임 수익의 50% 이상을 차지하며, 이는 지속적인 성장 추세</li>
+                    <li><strong>크로스플랫폼 게이밍:</strong> PC, 모바일, 콘솔 간 경계 허물기로 플레이어 풀 확대</li>
+                    <li><strong>라이브 서비스 모델 확대:</strong> 일회성 판매보다 지속적 수익 창출 모델로 전환</li>
+                    <li><strong>AI 기반 개인화:</strong> 생성형 AI를 활용한 개인화된 게임 경험 제공</li>
+                    <li><strong>e스포츠의 확대:</strong> 프로 게이밍 리그 확대로 게임 가치 상승</li>
+                    <li><strong>신흥국 시장 성장:</strong> 인도, 브라질 등 신흥국 게이밍 시장의 가파른 성장</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 5: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>글로벌 게임사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회사</th>
+                                <th>2024 매출</th>
+                                <th>핵심 IP</th>
+                                <th>주요 강점</th>
+                                <th>시가총액</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>크래프톤</strong></td>
+                                <td>3.3조원</td>
+                                <td>배틀그라운드</td>
+                                <td>배틀로얄 선도, AI 기술</td>
+                                <td>20조원</td>
+                            </tr>
+                            <tr>
+                                <td>텐센트 게임</td>
+                                <td>약 4.5조원</td>
+                                <td>MOBA, 모바일게임</td>
+                                <td>중국 시장 독점, 거대 플레이어 풀</td>
+                                <td>약 50조원</td>
+                            </tr>
+                            <tr>
+                                <td>액티비전 블리자드</td>
+                                <td>약 3.8조원</td>
+                                <td>콜오브듀티, 오버워치</td>
+                                <td>AAA 게임 개발, FPS 장르 지배</td>
+                                <td>약 60조원</td>
+                            </tr>
+                            <tr>
+                                <td>소니 인터랙티브</td>
+                                <td>약 5조원</td>
+                                <td>플레이스테이션, 엑스클루시브</td>
+                                <td>콘솔 하드웨어 + 게임 결합</td>
+                                <td>약 100조원</td>
+                            </tr>
+                            <tr>
+                                <td>라이엇 게임스</td>
+                                <td>약 2.8조원</td>
+                                <td>리그 오브 레전드</td>
+                                <td>e스포츠 생태계, MOBA 독점</td>
+                                <td>비상장</td>
+                            </tr>
+                            <tr>
+                                <td>엡섹 레전드/EA</td>
+                                <td>약 2.3조원</td>
+                                <td>엡섹 레전드, FIFA</td>
+                                <td>FPS 게임, 모바일 강세</td>
+                                <td>약 40조원(EA)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-plus-circle"></i>크래프톤의 경쟁 우위</h3>
+                    <ul class="content-list">
+                        <li><strong>배틀로얄 선도 IP:</strong> 배틀그라운드는 정의자(first-mover)로서 시장 점유율 우위</li>
+                        <li><strong>AI 기술 투자:</strong> 경쟁사 대비 생성형 AI 게임 적용에서 앞서감</li>
+                        <li><strong>장기 수익성:</strong> 배틀그라운드의 지속적인 수익화 능력 입증</li>
+                        <li><strong>개발 효율성:</strong> 엔진 최적화 기술로 개발비 절감 및 빠른 출시 가능</li>
+                        <li><strong>글로벌 네트워크:</strong> 100+ 국가의 게이머 기반 확보</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-minus-circle"></i>경쟁사 대비 약점</h3>
+                    <ul class="content-list">
+                        <li><strong>IP 포트폴리오 약화:</strong> 배틀그라운드에 매출 의존도 높음</li>
+                        <li><strong>콘솔 게임 부재:</strong> 소니, Microsoft 대비 콘솔 자산 미보유</li>
+                        <li><strong>중국 시장 제한:</strong> 텐센트 대비 중국 게임 시장 진입 제한</li>
+                        <li><strong>규모의 경제 열위:</strong> 텐센트, 소니 등 대형사 대비 규모 더 작음</li>
+                        <li><strong>신작 성공률 불확실:</strong> inZOI 등 신작의 상업적 성공 미보장</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-square-full"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strengths)</h3>
+                    <ul class="content-list">
+                        <li><strong>배틀그라운드 IP의 가치:</strong> 9년간 서비스된 게임으로 브랜드 가치 극대화, 최고 동접 130만명 달성</li>
+                        <li><strong>글로벌 플레이어 베이스:</strong> 2억 명 이상의 누적 플레이어, 100+ 국가 동시 서비스</li>
+                        <li><strong>AI 기술 혁신:</strong> 생성형 AI를 게임 개발에 선제적으로 적용</li>
+                        <li><strong>개발 기술력:</strong> 대규모 멀티플레이 게임 엔진 최적화 기술 보유</li>
+                        <li><strong>라이브 서비스 운영 능력:</strong> 9년간의 안정적 게임 운영 및 업데이트 경험</li>
+                        <li><strong>높은 순이익률:</strong> 게임 산업 평균 이상의 영업이익률 유지</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-times-circle"></i>약점 (Weaknesses)</h3>
+                    <ul class="content-list">
+                        <li><strong>IP 다양화 부족:</strong> 배틀그라운드에 매출의 60% 이상 의존</li>
+                        <li><strong>신작 성공 불확실성:</strong> inZOI 등 신작의 상업적 성공 보장 없음</li>
+                        <li><strong>콘솔 게임 포트폴리오 약세:</strong> PC/모바일 중심으로 콘솔 게임 미흡</li>
+                        <li><strong>중국 시장 접근성 제약:</strong> 중국 정부의 게임 규제로 인한 시장 기회 상실</li>
+                        <li><strong>조직 규모 제약:</strong> 텐센트, EA 등 대형사 대비 R&D 투자 역량 부족</li>
+                        <li><strong>프랜차이즈 경험 부족:</strong> 영화, 애니메이션 등 멀티미디어 확장 경험 미흡</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check-circle"></i>기회 (Opportunities)</h3>
+                    <ul class="content-list">
+                        <li><strong>AI 게임 개발 시장 성장:</strong> 생성형 AI 게임 개발 도구 상용화 가능</li>
+                        <li><strong>메타버스 게이밍:</strong> 가상 세계 중심의 게이밍 확대로 배틀그라운드 IP 활용 기회</li>
+                        <li><strong>모바일 게이밍 성장:</strong> 신흥국 모바일 게이밍 폭발적 성장</li>
+                        <li><strong>e스포츠 확대:</strong> 배틀그라운드 e스포츠 시장의 글로벌 확대</li>
+                        <li><strong>크로스미디어 확장:</strong> 게임 IP를 영화, 드라마, 웹툰 등으로 확대</li>
+                        <li><strong>신규 게임 장르 개척:</strong> AI 기술로 새로운 게임 장르 창출 가능</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-warning"></i>위협 (Threats)</h3>
+                    <ul class="content-list">
+                        <li><strong>경쟁 심화:</strong> 포트나이트 등 기존 게임의 지속적 업데이트</li>
+                        <li><strong>신작 게임의 공세:</strong> 신규 게임 발매가 배틀그라운드 플레이어 분산 가능</li>
+                        <li><strong>규제 강화:</strong> 게임 규제 강화(게임 시간 제한, 확률형 아이템 규제 등)</li>
+                        <li><strong>중국 규제 강화:</strong> 중국 게임 시장 진입 장벽 지속적 상향</li>
+                        <li><strong>기술 격차 해소:</strong> 경쟁사들의 AI 기술 추격으로 차별성 약화</li>
+                        <li><strong>환율 변동:</strong> 해외 매출이 많은 만큼 환율 하락시 수익 하락</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 7: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-compass"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-right"></i>크래프톤의 중장기 전략</h3>
+                <p>크래프톤은 현재 다음 세 가지 핵심 전략을 동시에 추진하고 있습니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">1. 배틀그라운드 IP의 초장기 수익화 전환</strong></p>
+                    <p>배틀그라운드는 현재 라이브 서비스 게임으로서 월간 아이템 판매, 배틀패스 판매 등을 통해 안정적 수익을 창출하고 있습니다. 향후 전략은 이 게임의 생명주기를 최대한 연장하는 것입니다. 배틀그라운드 모바일 버전의 확대, 콘솔 버전 출시 확대, 새로운 게임 모드 추가 등을 통해 플레이어 유지 및 신규 플레이어 확보를 목표로 합니다. 또한 배틀그라운드 관련 e스포츠 시장의 확대도 중요한 전략 요소입니다. 배틀그라운드 챔피언스 시리즈(BCS) 등 글로벌 e스포츠 리그의 확대로 게임 가치를 높이고 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">2. 신작 게임 IP 포트폴리오 확대를 통한 다각화</strong></p>
+                    <p>inZOI의 출시는 크래프톤이 배틀로얄 장르를 벗어나 다양한 게임 장르로 확대하려는 의도를 보여줍니다. inZOI의 성공 시 타운빌딩, 라이프 시뮬레이션 시장에서 크래프톤의 강력한 입지를 확보할 수 있습니다. 또한 자회사인 Unknown Worlds, Striking Distance Studios를 통해 서바이벌 게임, 호러 게임, 멀티플레이 게임 등 다양한 장르의 포트폴리오를 구축하고 있습니다. 향후 3~5년간 최소 5개 이상의 새로운 게임 출시를 목표로 하고 있으며, 이를 통해 배틀그라운드에 대한 의존도를 30% 이상 감소시키려는 전략입니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">3. AI 기술의 게임 산업 표준화 리더십</strong></p>
+                    <p>크래프톤은 생성형 AI를 게임 개발의 모든 단계에 적용하는 전략을 추진하고 있습니다. 이는 단순히 게임 개발 효율화를 넘어, 게임 산업 전체에서 AI 기술의 표준을 설정하려는 의도입니다. 게임 개발 AI 도구의 상용화, AI 기반 게임 엔진의 라이선싱 등을 통해 B2B 사업으로의 확대도 고려 중입니다. 이러한 전략이 성공할 경우 크래프톤은 게임 개발사에서 게임 기술 기업으로의 변신이 가능합니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">4. 신흥국 시장 공략 강화</strong></p>
+                    <p>크래프톤의 배틀그라운드는 인도, 브라질, 동남아시아 등 신흥국에서 높은 인기를 누리고 있습니다. 이러한 지역의 게이밍 시장은 향후 5년간 연 20~30% 성장이 예상되며, 크래프톤은 이 시장을 전략적으로 공략하기 위해 지역별 마케팅, 로컬 서버 구축, 로컬라이제이션 강화 등을 추진하고 있습니다. 특히 저사양 모바일 기기에 최적화된 게임 버전 개발도 중요한 과제입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i>전략적 파트너십 및 M&A</h3>
+                <p>크래프톤은 글로벌 게임 시장에서의 입지 강화를 위해 적극적인 M&A와 전략적 파트너십을 추진하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">기존 인수합병:</strong></p>
+                    <ul class="content-list">
+                        <li>Unknown Worlds Entertainment (2018) - 서바이벌 게임 개발사</li>
+                        <li>Striking Distance Studios (2021) - 호러 게임 개발사</li>
+                        <li>기타 소규모 개발사 다수 인수</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">전략적 파트너십:</strong></p>
+                    <ul class="content-list">
+                        <li>소프트뱅크와의 기술 협력 및 투자 유치</li>
+                        <li>네이버와의 게임 퍼블리싱 협력</li>
+                        <li>Bandcamp 등 음악 스트리밍 서비스와의 협력</li>
+                        <li>AI 기업들과의 기술 협력</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">향후 전략적 방향:</strong></p>
+                    <ul class="content-list">
+                        <li>AAA급 게임 개발사 인수를 통한 포트폴리오 강화</li>
+                        <li>AI 기술 기업과의 협력 강화</li>
+                        <li>영상, 콘텐츠 제작사와의 협력으로 멀티미디어 확장</li>
+                        <li>필요시 글로벌 게임 퍼블리셔와의 전략적 제휴</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 8: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-graph"></i>매출 및 이익 추이</h3>
+                    <p style="margin-bottom: 20px;"><strong>연도별 재무 지표 (단위: 억원):</strong></p>
+                    <table style="font-size: 13px;">
+                        <thead>
+                            <tr>
+                                <th>년도</th>
+                                <th>매출</th>
+                                <th>영업이익</th>
+                                <th>영업이익률</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2021년</td>
+                                <td>19,438</td>
+                                <td>4,261</td>
+                                <td>21.9%</td>
+                            </tr>
+                            <tr>
+                                <td>2022년</td>
+                                <td>20,142</td>
+                                <td>2,800</td>
+                                <td>13.9%</td>
+                            </tr>
+                            <tr>
+                                <td>2023년</td>
+                                <td>27,084</td>
+                                <td>6,521</td>
+                                <td>24.1%</td>
+                            </tr>
+                            <tr>
+                                <td>2024년</td>
+                                <td>27,122</td>
+                                <td>4,208</td>
+                                <td>15.5%</td>
+                            </tr>
+                            <tr>
+                                <td>2025년 (실제)</td>
+                                <td>33,266</td>
+                                <td>10,544</td>
+                                <td>31.7%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-flask-vial"></i>게임 포트폴리오 기여도</h3>
+                    <p style="margin-bottom: 20px;"><strong>2025년 게임별 매출 기여도 추정:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">배틀그라운드</span>
+                            <span class="progress-label-value">약 60%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">inZOI 및 신작</span>
+                            <span class="progress-label-value">약 20%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">기타 게임/라이선싱</span>
+                            <span class="progress-label-value">약 20%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dollar-sign"></i>밸류에이션 분석</h3>
+                <p>크래프톤의 기업 가치는 다음과 같이 평가됩니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">현재 밸류에이션 (2026년 4월 기준):</strong></p>
+                    <ul class="content-list">
+                        <li><strong>시가총액:</strong> 약 20조원 (200억 달러)</li>
+                        <li><strong>PSR (Price-to-Sales):</strong> 6배 (2025년 매출 3조 3,266억원 기준)</li>
+                        <li><strong>PER (Price-to-Earnings):</strong> 19배 (당기순이익 약 8,000억원 기준)</li>
+                        <li><strong>EV/EBITDA:</strong> 약 12배 (영업현금흐름 기준)</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">밸류에이션 시나리오 분석:</strong></p>
+                    <ul class="content-list">
+                        <li><strong>베어 케이스 (신작 실패, 배틀그라운드 하락):</strong> 매출 성장 정체 시 PSR 3~4배 → 기업가치 10~13조원 (현재 대비 -37~-50%)</li>
+                        <li><strong>베이스 케이스 (현상 유지):</strong> 배틀그라운드 유지 + 신작 중간 성공 시 PSR 5~6배 → 기업가치 17~20조원 (현재 대비 유지~0%)</li>
+                        <li><strong>불 케이스 (신작 성공 + AI 수익화):</strong> inZOI 성공 + 신작 추가 성공 + AI 기술 B2B 확대 시 PSR 8~10배 → 기업가치 27~33조원 (현재 대비 +35~+65%)</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--gold);">밸류에이션 드라이버:</strong> 크래프톤의 기업 가치를 결정하는 핵심 변수는 신작 게임 성공, 배틀그라운드 지속성, AI 기술의 수익화입니다. 현재 PSR 6배는 신작 성공을 상당 부분 선반영한 상태로, 신작 실패 시 조정 가능성이 높습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill-wave"></i>2026-2027년 재무 전망</h3>
+                <p style="margin-bottom: 20px;"><strong>향후 2년 재무 예측:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2026년 전망</th>
+                            <th>2027년 전망</th>
+                            <th>성장 드라이버</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>매출액 (조원)</td>
+                            <td>3.8~4.0</td>
+                            <td>4.2~4.6</td>
+                            <td>신작 성장, 모바일 확대</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익 (조원)</td>
+                            <td>1.3~1.6</td>
+                            <td>1.5~1.8</td>
+                            <td>신작 이익화, 스케일 효과</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익률</td>
+                            <td>31~40%</td>
+                            <td>32~40%</td>
+                            <td>높은 게임 수익성 유지</td>
+                        </tr>
+                        <tr>
+                            <td>ROE</td>
+                            <td>18~22%</td>
+                            <td>20~24%</td>
+                            <td>주당순이익 성장</td>
+                        </tr>
+                        <tr>
+                            <td>배당금 (주당)</td>
+                            <td>1,500~2,000원</td>
+                            <td>2,000~2,500원</td>
+                            <td>배당성향 확대</td>
+                        </tr>
+                        <tr>
+                            <td>FCF (자유현금흐름)</td>
+                            <td>약 8,000억원</td>
+                            <td>약 1조원</td>
+                            <td>높은 현금 창출 능력</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>주요 재무 메트릭</h3>
+                <p style="margin-bottom: 20px;"><strong>2025년 기준 재무 건전성:</strong></p>
+                <ul class="content-list">
+                    <li><strong>부채비율:</strong> 약 20~30% (낮은 수준의 건전한 재무구조)</li>
+                    <li><strong>유동비율:</strong> 약 200% 이상 (충분한 단기 유동성)</li>
+                    <li><strong>순이익률:</strong> 약 25~30% (높은 수익성)</li>
+                    <li><strong>FCF마진:</strong> 약 20~25% (강력한 현금 창출력)</li>
+                    <li><strong>현금성자산:</strong> 약 2조원 (주식 매입, M&A 등 전략적 활용 가능)</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론</span>
+        </div>
+
+        <!-- SECTION 9: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                <span>결론 및 투자 평가</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i>FLOVAH AI Insights: 핵심 투자 관점</h3>
+                <p>크래프톤은 현재 게임 산업의 성숙 단계에 접어든 기업이면서 동시에 AI 기술 혁신을 통한 신성장의 기회를 앞에 두고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">투자 매력도:</strong> 크래프톤의 핵심 투자 매력은 배틀그라운드의 안정적인 현금 창출 능력과 신작 게임들의 성장 잠재력의 조합입니다. 배틀그라운드는 이미 9년간 서비스되며 지속적인 수익을 창출하고 있으며, 글로벌 게이머들 사이에서 문화 현상 수준의 인정도를 얻었습니다. 동시에 inZOI 등 신작 게임들의 성공으로 배틀그라운드에 대한 의존도를 낮출 수 있는 가능성이 높아지고 있습니다. 또한 생성형 AI 기술의 게임 산업 적용 선도자로서, 이 기술의 수익화 성공 시 상당한 업사이드 잠재력을 보유하고 있습니다. 글로벌 게이밍 시장의 지속적 성장, 신흥국 게이밍 시장의 폭발적 성장, e스포츠의 확대 등 복수의 긍정적 드라이버를 보유하고 있습니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">주요 리스크 요인:</strong> 반면 배틀그라운드의 장기적 쇠퇴, 신작 게임의 상업적 실패, 규제 강화(게임 규제, 중국 시장 진입 제한 등), 글로벌 경쟁 심화 등은 명확한 리스크입니다. 특히 현재의 PSR 6배는 신작 성공을 상당 부분 선반영한 수준이므로, 신작 게임 실패 시 주가 조정이 클 수 있습니다. 또한 한국 게임 산업의 규제 강화 추세(게임 시간 제한, 확률형 아이템 규제 등)도 장기적 성장 걸림돌이 될 수 있습니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">투자 등급:</strong> FLOVAH AI Insights는 크래프톤에 대해 "매수(Buy)"를 제시합니다. 다만 이는 중기(6~12개월) 투자 관점에서의 평가이며, 신작 게임 성공 여부, 배틀그라운드의 동접 추이, 글로벌 규제 동향을 지속적으로 모니터링해야 합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i>모니터링 핵심 지표 (분기별 확인 사항)</h3>
+                <p>투자자가 분기별로 확인해야 할 핵심 성과 지표(KPI)는 다음과 같습니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">1. 배틀그라운드 동접 및 MAU 추이:</strong> 배틀그라운드의 월간 활동 플레이어(MAU) 유지 여부를 중요하게 관찰합니다. 현재 4,000만~5,000만 수준의 MAU를 유지하는 것이 중요하며, 동접이 하락할 경우 부정적 신호입니다. 특히 신흥국에서의 MAU 성장 추이가 중요합니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">2. inZOI 및 신작 게임 매출 성과:</strong> inZOI를 포함한 신작 게임들의 분기별 매출 기여도를 추적합니다. 신작 게임들의 매출 비중이 20% 이상으로 증가하는 것이 목표이며, 이는 배틀그라운드에 대한 의존도 감소를 의미합니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">3. 분기별 영업이익률 추이:</strong> 신작 게임 출시로 인한 마케팅 비용 증가에도 불구하고 영업이익률 30% 이상을 유지하는 것이 중요합니다. 이익률 하락은 경쟁 심화나 게임 수익성 악화의 신호입니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">4. AI 기술의 상용화 진전:</strong> 생성형 AI를 활용한 게임 개발 도구나 서비스의 상용화 진전을 모니터링합니다. AI 기술이 새로운 수익원이 될 수 있는지가 중요합니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">5. 글로벌 규제 및 정책 변화:</strong> 게임 규제, 중국 시장 진입 정책, e스포츠 규제 등 글로벌 규제 변화를 주시합니다. 특히 한국, 중국의 게임 규제 강화는 직접적인 영향을 미칩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>FLOVAH AI 최종 평가</h3>
+                <p>크래프톤은 현재 글로벌 게임 시장에서 절대적 강자이면서 동시에 변화와 혁신을 추진 중인 기업입니다. 배틀그라운드의 안정적 현금흐름이 기반이 되어 신작 게임 개발, AI 기술 투자, 글로벌 확장 등을 추진할 수 있는 좋은 위치에 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">성장의 가능성:</strong> inZOI를 포함한 신작 게임들이 성공할 경우, 크래프톤의 연간 매출은 2027년까지 4조 2,000억~4조 6,000억원대로 성장할 수 있습니다. 이는 연평균 15~20%의 성장률을 의미하며, 게임 산업 성장률을 크게 상회하는 수치입니다. 또한 AI 기술의 B2B 사업화 성공 시 추가적인 성장 동력이 될 수 있습니다. 이 경우 2027년 영업이익은 1조 5,000억~1조 8,000억원 규모로 성장할 수 있으며, 현재 PSR 6배를 정당화할 수 있습니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">위험 관리의 중요성:</strong> 그러나 신작 게임 실패, 배틀그라운드의 예상 외 쇠퇴, 글로벌 규제 강화 등이 발생할 경우, 현재의 높은 밸류에이션은 조정될 수 있습니다. 투자자는 분기별 실적 발표와 신작 게임의 성과를 주의깊게 모니터링해야 합니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">투자 타이밍:</strong> 현재의 PSR 6배 밸류에이션은 신작 성공을 상당 부분 선반영한 상태입니다. 따라서 새로운 진입자는 inZOI 등 신작의 초기 성과가 나타날 때까지 기다렸다가 진입하는 것도 전략입니다. 기존 보유자는 신작 성공 가능성에 베팅하면서도 리스크 관리를 위해 포지션 규모를 적절히 조절해야 합니다. FLOVAH AI Insights는 장기 투자 관점에서 크래프톤의 성장 잠재력을 높이 평가하며, 중기 투자 관점에서는 신작 게임의 성공 여부를 주요 변수로 지목합니다.</p>
+                </div>
+            </div>
+
+            <!-- 면책 조항 -->
+            <div style="margin-top:30px;padding:20px;background:var(--cream);border:1px solid var(--border);border-radius:0">
+                <p style="font-size:.85rem;color:var(--text-muted);line-height:1.7"><strong>면책 조항:</strong> 본 리포트는 FLOVAH AI Insights에서 제공하는 기업 분석 자료로, 공개 정보를 기반으로 작성되었습니다. 리포트에 포함된 내용은 정보 제공 목적이며, 투자 권유나 투자 조언을 목적으로 하지 않습니다. 투자 결정은 투자자 본인의 판단과 책임하에 이루어져야 하며, FLOVAH AI Insights는 본 리포트의 활용으로 인한 투자 손실에 대해 법적 책임을 지지 않습니다. 본 리포트에 사용된 데이터는 금융감독원 전자공시시스템, 한국거래소, 각종 산업 리서치 기관의 공개 자료, 기업 공시 자료 등을 기반으로 하며, 일부 수치는 추정치를 포함하고 있습니다. 추정치는 합리적인 가정에 기반하고 있으나, 실제 결과와 차이가 발생할 수 있습니다. 크래프톤 경영진 인터뷰, 비공개 내부 자료, 미공개 중요정보 등은 본 분석에 포함되지 않았습니다. 리포트의 저작권은 FLOVAH AI Insights에 있으며, 사전 허가 없이 상업적 목적으로 복제하거나 배포할 수 없습니다. 개인적 연구 및 참고 목적으로의 사용은 출처를 명시하는 조건하에 허용됩니다. 리포트 작성일: 2026년 4월 5일 | 분석가: FLOVAH AI Research Team | 다음 업데이트 예정: 2026년 4월 12일 | 리포트 버전: 1.0 | 본 리포트는 멤버십 구독 고객에게 독점 제공되는 프리미엄 심층 기업 분석 및 전략 자문 컨설팅 서비스입니다</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ════════ LAST-UPDATE-BLOCK ════════ -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 05일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 80px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — 크래프톤 사업보고서, 분기보고서, 감사보고서 (2021–2025) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> 크래프톤 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">4.</span> 크래프톤 공식 웹사이트 — 게임 포트폴리오 및 기술 소개 <span style="color:var(--text-muted);font-size:.78em">krafton.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> Newzoo — "Global Games Market Report" (2025) <span style="color:var(--text-muted);font-size:.78em">newzoo.com</span></p>
+                <p><span style="color:var(--text-light)">6.</span> Sensor Tower — "Global App Download Report" (2025) <span style="color:var(--text-muted);font-size:.78em">sensortower.com</span></p>
+                <p><span style="color:var(--text-light)">7.</span> StatsBomb Games — "Gaming Engagement Metrics" (2025) <span style="color:var(--text-muted);font-size:.78em">statsbomb.com</span></p>
+                <p><span style="color:var(--text-light)">8.</span> IDC — "Global Gaming Hardware and Software Market Forecast" (2025) <span style="color:var(--text-muted);font-size:.78em">idc.com</span></p>
+                <p><span style="color:var(--text-light)">9.</span> Reuters — "Battle Royale Gaming Genre Market Analysis" (2024–2025) <span style="color:var(--text-muted);font-size:.78em">reuters.com</span></p>
+                <p><span style="color:var(--text-light)">10.</span> 한국게임산업협회(K-Games) — "게임산업 백서 및 시장 현황 분석" (2025) <span style="color:var(--text-muted);font-size:.78em">kgames.or.kr</span></p>
+                <p><span style="color:var(--text-light)">11.</span> Superdata — "Games Market Report by Platform" (2024–2025) <span style="color:var(--text-muted);font-size:.78em">superdataresearch.com</span></p>
+                <p><span style="color:var(--text-light)">12.</span> Gartner — "Magic Quadrant for Game Development Platforms" (2025) <span style="color:var(--text-muted);font-size:.78em">gartner.com</span></p>
+                <p><span style="color:var(--text-light)">13.</span> Statista — "Global E-Sports Market Size and Forecast" (2025) <span style="color:var(--text-muted);font-size:.78em">statista.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> 나이스신용평가, 한국기업평가 — 크래프톤 신용등급 및 재무분석 자료 <span style="color:var(--text-muted);font-size:.78em">nicerating.com</span></p>
+                <p><span style="color:var(--text-light)">15.</span> Tencent Games, Take-Two Interactive, Ubisoft DART 공시 자료 (경쟁사 비교 분석용) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">16.</span> VentureBeat — "Game Developer Salary and Workforce Report" (2025) <span style="color:var(--text-muted);font-size:.78em">venturebeat.com</span></p>
+                <p><span style="color:var(--text-light)">17.</span> McKinsey & Company — "The State of Gaming 2025" <span style="color:var(--text-muted);font-size:.78em">mckinsey.com</span></p>
+                <p><span style="color:var(--text-light)">18.</span> Bloomberg Intelligence — "South Korea Gaming Sector Review Q4 2025" <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH AI Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.04.05 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

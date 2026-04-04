@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LG전자 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 198deg, var(--rule) 198deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+            width: 65%;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -24px; left: 50%; transform: translateX(-50%);
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 13px;
+            font-family: 'Orbit', sans-serif;
+            white-space: nowrap;
+        }
+
+        .bar-label {
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        /* ============ SWOT GRID ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0;
+            margin-top: 32px;
+            border: 1px solid var(--rule);
+        }
+
+        .swot-box {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 28px;
+            position: relative;
+        }
+
+        .swot-box:nth-child(2n) { border-right: none; }
+        .swot-box:nth-last-child(1), .swot-box:nth-last-child(2) { border-bottom: none; }
+
+        .swot-box-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .swot-box-title i {
+            font-size: 16px;
+            color: var(--gold);
+        }
+
+        .swot-box ul {
+            list-style: none;
+        }
+
+        .swot-box li {
+            color: var(--text-body);
+            font-size: 14px;
+            margin-bottom: 10px;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .swot-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--rule);
+            padding: 48px;
+            margin-top: 80px;
+        }
+
+        footer .content-card {
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        footer h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer h2 i {
+            font-size: 18px;
+            color: var(--gold);
+        }
+
+        footer p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        footer span {
+            color: var(--text-light);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            header { padding: 0 24px; }
+            nav { gap: 16px; }
+            nav a { font-size: 10px; }
+            main { padding: 40px 24px 60px; }
+            .section-title { font-size: 32px; }
+            .hero-title { font-size: 40px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-box { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-box:last-child { border-bottom: none; }
+        }
+
+        @media (max-width: 480px) {
+            header { height: auto; padding: 12px 16px; flex-direction: column; }
+            nav { gap: 12px; }
+            main { padding: 30px 16px 40px; }
+            .section-title { font-size: 26px; gap: 8px; }
+            .hero-title { font-size: 32px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            table { font-size: 13px; }
+            th, td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">FLOVAH INSIGHTS</div>
+        </div>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#technology">기술</a>
+            <a href="#market">시장</a>
+            <a href="#competitors">경쟁</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">전략</a>
+            <a href="#finance">재무</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026.04.05</span>
+            <span class="flovah-badge">Premium</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ SECTION 1: 기업 개요 ============ -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">LG전자 기업분석<span class="hero-title-highlight">종합 리포트</span></h1>
+                    <p class="hero-subtitle">글로벌 전자제품 및 전장사업 선도기업의 체질개선과 성장전략 분석</p>
+                    <div class="ai-score-badge">
+                        <div class="score-circle">7.8</div>
+                        <div>
+                            <div style="font-size: 13px; color: var(--ink);">종합 평가점수</div>
+                            <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">강한 사업다각화 + 향후 실적 개선 기대</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">20조</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">89.2조</div>
+                    <div class="metric-label">2025 매출액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2.48조</div>
+                    <div class="metric-label">영업이익</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">112,500</div>
+                    <div class="metric-label">주가(원)</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 기업 개요</h3>
+                <p><strong>LG전자(주)(KOSPI: 066570)</strong>는 1958년 금성사로 설립되어 현재 글로벌 전자제품 및 차량부품 사업의 선도기업으로 성장했습니다. 생활가전(주방가전, 세탁기, 에어컨), TV/디스플레이, 전장사업(자동차 부품), B2B솔루션 등 다각화된 포트폴리오를 보유하고 있습니다.</p>
+                <p>2025년 LG전자는 <strong>역대 최대 매출인 89조 2,009억원을 기록</strong>했으며, 매출 대비 기준으로는 전년 대비 1.7% 성장했습니다. 다만 영업이익은 2조 4,784억원으로 전년 대비 27.5% 감소했으나, 이는 디스플레이 사업의 일시적 손실과 구조조정 비용 때문입니다. 이사회는 2026년 영업이익 43% 급증을 전망하고 있어, 향후 체질개선 성과에 대한 시장의 기대가 높은 상태입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 주요 사업 포트폴리오</h3>
+                <ul class="content-list">
+                    <li><strong>생활가전(HE):</strong> 매출 26.1조원, 영업이익 1.27조원으로 사상 최대 실적 달성. 냉장고, 세탁기, 에어컨, 조리기 등 핵심 카테고리에서 프리미엄 포지셔닝 강화.</li>
+                    <li><strong>디스플레이(MS):</strong> 매출 19.4조원, 영업손실 7,509억원. OLED TV 패널 및 IT 디스플레이 시장에서 구조적 어려움 극복 중. AI TV 관련 신기술 투자 지속.</li>
+                    <li><strong>전장사업(VS):</strong> 10년 연속 성장 지속, 누적 수주액 100조원 돌파. 전기차 배터리/충전 시스템, 자동차 인포테인먼트, 전력관리 솔루션 등 미래먹거리 확보.</li>
+                    <li><strong>B2B솔루션(BS):</strong> 태양광 패널, 에너지저장장치(ESS), 산업용 디스플레이, 데이터센터 솔루션 등으로 신성장 동력 창출.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 발전 역사</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1958년</div>
+                        <div class="timeline-item-content">금성사 설립. 라디오 생산으로 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1960~1970년대</div>
+                        <div class="timeline-item-content">TV, 냉장고 등 가전제품 대량 생산 시작. 한국 가전산업 기초 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1980~1990년대</div>
+                        <div class="timeline-item-content">LG 브랜드 통합, 국제 진출 가속화. LCD/PDP 디스플레이 산업 진입</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000~2010년대</div>
+                        <div class="timeline-item-content">OLED TV 기술 개발, 스마트홈 생태계 구축. 자동차 부품 사업 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020년~현재</div>
+                        <div class="timeline-item-content">전기차 시대 대응, AI 기술 통합, 재정리 구조조정. 인도 IPO 추진으로 글로벌 사업 다각화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 2: 기술 분석 ============ -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>기술 분석</span></h2>
+            <p class="section-subtitle">차세대 기술 역량과 R&D 전략</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i> 핵심 기술 영역</h3>
+                <p><strong>OLED 기술 리더십:</strong> LG전자는 OLED TV 및 디스플레이 분야에서 글로벌 최고 기술력을 보유하고 있습니다. 자체 OLED 패널 생산 능력으로 삼성, LG 등 경쟁사 대비 원가경쟁력 우위를 지니고 있으며, 차세대 QD-OLED(양자점 OLED) 기술 개발도 진행 중입니다. 특히 84인치 OLED TV 등 대형 디스플레이 시장 개척에서 선도적 역할을 하고 있습니다.</p>
+                <p><strong>AI 통합 가전:</strong> LG는 AI 기술을 세탁기, 냉장고, 에어컨 등 주요 가전제품에 통합하여 '스마트홈' 생태계 구축을 추진 중입니다. 음성인식, 패턴학습, 원격제어 등의 기능으로 사용자 경험을 극대화하고 있으며, ThinQ AI 플랫폼을 중심으로 가전 간 연동성을 강화하고 있습니다.</p>
+                <p><strong>전기차 부품 기술:</strong> LG의 전장사업(VS) 부문은 자동차 배터리, 배터리관리시스템(BMS), 고속 충전 인프라, 차량 인포테인먼트, 전력관리 솔루션 등을 개발하고 있습니다. 10년 연속 수주 증가와 100조원 누적 수주 돌파는 글로벌 자동차 메이저들의 신뢰를 반영합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> R&D 투자 현황</h3>
+                <p>LG전자는 연간 매출의 약 5~6% 규모를 R&D에 투자하고 있으며, 이는 글로벌 전자업계 평균 수준입니다. 주요 R&D 센터는 서울, 경주, 서산 등 국내 지역과 미국(뉴저지), 중국(상하이) 등 주요 시장에 분포하고 있습니다. 최근에는 AI, 자율주행차 부품, 신재생에너지 등 미래 성장 분야에 집중 투자하고 있습니다.</p>
+                <p><strong>특허 현황:</strong> LG전자는 국내외 총 45,000건 이상의 특허를 보유하고 있으며, 매년 4,000~5,000건의 신규 특허를 출원하고 있습니다. 특히 디스플레이, 이차전지, AI 관련 분야에서 특허 비중이 높아, 기술 수준의 높이를 시사합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-network-wired"></i> 기술 파트너십</h3>
+                <ul class="content-list">
+                    <li>삼성디스플레이와의 협력을 통한 OLED 패널 공급 다각화</li>
+                    <li>테슬라, GM, 현대자동차 등 주요 자동차 메이커와의 전장 부품 공급 계약</li>
+                    <li>구글, 아마존 등 글로벌 IT 기업과의 AI 음성비서 통합 협력</li>
+                    <li>미국 에너지 관련 스타트업과의 배터리/충전 기술 파트너십</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 3: 시장 분석 ============ -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-globe"></i> <span>시장 분석</span></h2>
+            <p class="section-subtitle">글로벌 시장 규모, 성장률, 트렌드</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 주요 시장 규모 및 성장 전망</h3>
+                <p><strong>생활가전 시장:</strong> 글로벌 생활가전 시장은 연 2~3% 성장률을 유지하고 있으며, 2025년 기준 약 360억 달러 규모입니다. 선진국의 교체수요와 신흥국의 중산층 확대가 주요 성장 동인입니다. 프리미엄 가전 세그먼트는 연 5~7% 고성장 중이며, LG는 이 분야에서 강한 포지션을 유지하고 있습니다.</p>
+                <p><strong>TV/디스플레이 시장:</strong> OLED TV 시장은 연 8~10% 성장 중이며, 2025년 기준 약 70억 달러 규모입니다. LCD TV는 포화 단계이지만, OLED와 QD-OLED 등 차세대 디스플레이는 고성장 중입니다. IT 디스플레이(모니터, 노트북 패널) 시장은 약 400억 달러 규모로, AI 기술 적용으로 수요가 증가 추세입니다.</p>
+                <p><strong>전장 시장:</strong> 글로벌 전기차 시장은 연 15~20% 고성장 중이며, 자동차 부품 중 배터리, BMS, 충전 인프라 관련 시장이 가장 빠르게 확대되고 있습니다. 2025년 기준 전기차 누적 판매량은 약 2,000만 대이며, 향후 10년간 시장 규모가 3배 이상 확대될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map-world"></i> 지역별 시장 현황</h3>
+                <ul class="content-list">
+                    <li><strong>북미:</strong> 프리미�um 가전 수요 강세, OLED TV 시장 성장. LG 매출 비중 약 25%</li>
+                    <li><strong>유럽:</strong> 에너지 효율성 규제 강화, 스마트홈 수요 증가. 경쟁 심화로 수익성 저하 추세</li>
+                    <li><strong>중국:</strong> 로컬 경쟁업체 강세로 마진율 압박. LG는 프리미엄 세그먼트에 집중</li>
+                    <li><strong>인도/동남아:</strong> 중산층 확대로 고성장 지역. LG의 신규 성장 동력으로 주목</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trend"></i> 시장 트렌드</h3>
+                <p><strong>AI 기술 통합:</strong> 가전 업계 전반에서 AI 기능 탑재가 표준화되는 추세입니다. 음성제어, 자동최적화, 예측 유지보수 등의 기능이 고객 만족도를 크게 높이고 있습니다.</p>
+                <p><strong>지속가능성(ESG):</strong> 에너지 효율성, 친환경 소재 사용, 순환경제 비즈니스 모델이 시장 진입의 필수 요건이 되고 있습니다. LG는 RE100(재생에너지 100%) 목표를 설정하여 선도적으로 대응 중입니다.</p>
+                <p><strong>전기차 및 에너지 저장:</strong> 전세계 전기차 판매량 증가에 따라 관련 부품과 에너지 저장 솔루션 시장이 급성장 중입니다. 2030년까지 전기차 누적 판매량은 5,000만 대를 넘을 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 4: 경쟁사 분석 ============ -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>경쟁사 분석</span></h2>
+            <p class="section-subtitle">주요 경쟁사 대비 상대 위치 및 경쟁력 평가</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 경쟁 구도 분석</h3>
+                <p>LG전자는 삼성전자, 소니, 에이수스, 하이센스 등과 경쟁하고 있습니다. 사업 분야별로 경쟁 구도가 상이한데, 생활가전에서는 삼성, 화이로 등과의 경쟁이 심하고, OLED TV 분야에서는 소니와 경쟁하고 있습니다. 전장사업에서는 SKI, CATL, Panasonic 등 배터리 업체들과의 경쟁이 주요 이슈입니다.</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>LG전자</th>
+                            <th>삼성전자</th>
+                            <th>소니</th>
+                            <th>필립스</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025 매출(조원)</td>
+                            <td>89.2</td>
+                            <td>274.5</td>
+                            <td>25.6</td>
+                            <td>12.8</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익(조원)</td>
+                            <td>2.48</td>
+                            <td>42.5</td>
+                            <td>2.1</td>
+                            <td>0.8</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익률(%)</td>
+                            <td>2.8%</td>
+                            <td>15.5%</td>
+                            <td>8.2%</td>
+                            <td>6.3%</td>
+                        </tr>
+                        <tr>
+                            <td>OLED TV 기술력</td>
+                            <td>최강</td>
+                            <td>강</td>
+                            <td>중</td>
+                            <td>약</td>
+                        </tr>
+                        <tr>
+                            <td>전장사업 진출</td>
+                            <td>강</td>
+                            <td>매우강</td>
+                            <td>약</td>
+                            <td>약</td>
+                        </tr>
+                        <tr>
+                            <td>AI 가전 역량</td>
+                            <td>강</td>
+                            <td>강</td>
+                            <td>중</td>
+                            <td>중</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 경쟁 우위 및 약점</h3>
+                <p><strong>LG의 경쟁 우위:</strong></p>
+                <ul class="content-list">
+                    <li>OLED TV 기술 및 생산 능력에서 글로벌 최강의 위치 유지</li>
+                    <li>생활가전 분야의 강한 브랜드 이미지 및 고객 충성도</li>
+                    <li>10년 연속 성장하는 전장사업으로 미래 성장 동력 확보</li>
+                    <li>다각화된 사업 포트폴리오로 경기변동성에 대한 완충 역할</li>
+                </ul>
+                <p><strong>LG의 약점:</strong></p>
+                <ul class="content-list">
+                    <li>삼성 대비 매출 규모 1/3 수준으로 글로벌 경쟁에서 규모의 경제 한계</li>
+                    <li>디스플레이 부문의 지속적인 손실로 회사 전체 이익률 저하</li>
+                    <li>중국 로컬 경쟁사(Hisense, TCL)의 가성비 제품 공세에 취약</li>
+                    <li>전장사업에서 아직 수익화 단계 진입 전, 초기 투자 단계 지속</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 5: SWOT 분석 ============ -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-cube"></i> <span>SWOT 분석</span></h2>
+            <p class="section-subtitle">강점, 약점, 기회, 위협 종합 평가</p>
+
+            <div class="swot-grid">
+                <div class="swot-box">
+                    <h4 class="swot-box-title"><i class="fas fa-shield"></i> Strength</h4>
+                    <ul>
+                        <li>글로벌 OLED 기술 리더십</li>
+                        <li>프리미엄 가전 브랜드 위상</li>
+                        <li>전장사업 선도기업 지위</li>
+                        <li>AI 기술 통합 역량</li>
+                        <li>다각화된 포트폴리오</li>
+                    </ul>
+                </div>
+                <div class="swot-box">
+                    <h4 class="swot-box-title"><i class="fas fa-exclamation-triangle"></i> Weakness</h4>
+                    <ul>
+                        <li>삼성 대비 규모 및 영향력</li>
+                        <li>디스플레이 부문 손실 지속</li>
+                        <li>중국 경쟁사 가성비 우위</li>
+                        <li>전장사업 초기 투자 부담</li>
+                        <li>구조조정 비용 증가</li>
+                    </ul>
+                </div>
+                <div class="swot-box">
+                    <h4 class="swot-box-title"><i class="fas fa-rocket"></i> Opportunity</h4>
+                    <ul>
+                        <li>전기차 시장 고성장(연 15~20%)</li>
+                        <li>ESG 관련 신규 시장 창출</li>
+                        <li>인도 시장 중산층 확대</li>
+                        <li>AI 기술 시장 수요 급증</li>
+                        <li>에너지저장(ESS) 시장 성장</li>
+                    </ul>
+                </div>
+                <div class="swot-box">
+                    <h4 class="swot-box-title"><i class="fas fa-warning"></i> Threat</h4>
+                    <ul>
+                        <li>중국 저가 경쟁사 공세 심화</li>
+                        <li>LCD TV 시장 포화</li>
+                        <li>원자재 가격 변동성</li>
+                        <li>지정학적 위험(미중 갈등)</li>
+                        <li>글로벌 경기침체 우려</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 6: 전략 분석 ============ -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-map"></i> <span>전략 분석</span></h2>
+            <p class="section-subtitle">향후 성장 전략 및 구조조정 계획</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 중기 경영전략</h3>
+                <p><strong>Portfolio 재편:</strong> LG전자는 고수익 사업에 경영 자원을 집중하고, 저수익·손실 부문의 개선 또는 축소를 추진하고 있습니다. 특히 디스플레이 부문에 대해 구조조정을 단행하여 2026년 손실 축소를 목표로 하고 있습니다.</p>
+                <p><strong>전장사업 성장 추진:</strong> 10년 연속 수주 증가 추세에 힘입어 전장사업의 산업용 규모 확대를 목표로 하고 있습니다. 현재 순발주 규모 100조원을 돌파했으며, 2026~2030년 기간 중 누적 수주 200조원 달성을 목표로 하고 있습니다. 이를 위해 전장사업에 대한 R&D 투자를 대폭 증가시키고 있습니다.</p>
+                <p><strong>AI 기술 통합:</strong> ThinQ AI 플랫폼을 중심으로 가전 간 연동 기술을 고도화하고 있으며, 음성제어, 자동최적화, 예측 유지보수 등의 기능을 지속 강화할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 지역별 전략</h3>
+                <p><strong>북미 시장:</strong> 프리미엄 세그먼트 강화로 고수익성 유지. OLED TV 시장 확대에 주력</p>
+                <p><strong>유럽 시장:</strong> ESG 규제 대응 및 에너지 효율 기술 경쟁력 강화. 북유럽 지역 고급 가전 수요 공략</p>
+                <p><strong>중국 시장:</strong> 저가 경쟁사와의 직접 경쟁 회피, 프리미엄 세그먼트 집중. 현지 전자상거래 플랫폼 활용 강화</p>
+                <p><strong>신흥시장(인도/동남아):</strong> 합리적 가격의 중급 가전 라인업 강화. 인도 IPO를 통한 현지 법인 독립화로 의사결정 신속화 추진</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-graduation-cap"></i> 2026년 목표</h3>
+                <ul class="content-list">
+                    <li>영업이익 43% 성장(2.48조원 → 약 3.55조원 목표)</li>
+                    <li>생활가전 매출 지속 성장 및 수익성 유지</li>
+                    <li>디스플레이 부문 손실액 50% 감소</li>
+                    <li>전장사업 누적 수주 120조원 달성</li>
+                    <li>인도 IPO 완료로 신흥시장 자율성 강화</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 7: 재무 분석 ============ -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>재무 분석</span></h2>
+            <p class="section-subtitle">매출 추이, 수익성, 자본 구조</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-line-chart"></i> 매출 및 수익성 추이</h3>
+                <p>LG전자의 2025년 매출은 89.2조원으로 전년 대비 1.7% 성장했습니다. 이는 코로나 이후 정상화 추세 속에서 회복세를 이어가고 있음을 의미합니다. 다만 영업이익은 2.48조원으로 전년 대비 27.5% 감소했는데, 이는 주로 디스플레이 부문의 구조적 손실과 일회성 구조조정 비용 때문입니다.</p>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 65%;">
+                                <div class="bar-value">87.7조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">2024 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;">
+                                <div class="bar-value">89.2조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">2025 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 85%;">
+                                <div class="bar-value">약 98조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">2026E 매출</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percent"></i> 세부 사업 수익성</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 95%;">
+                                <div class="bar-value">1.27조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">생활가전(HE)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 15%;">
+                                <div class="bar-value">-0.75조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">디스플레이(MS)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 40%;">
+                                <div class="bar-value">0.45조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">전장(VS)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 30%;">
+                                <div class="bar-value">약 0.3조</div>
+                            </div>
+                        </div>
+                        <div class="bar-label">B2B(BS)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i> 주요 재무 지표</h3>
+                <p><strong>2025년 기준 재무 지표:</strong></p>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">매출액</span>
+                        <span class="progress-label-value">89.2조원</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="75"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">영업이익</span>
+                        <span class="progress-label-value">2.48조원</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="28"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">영업이익률</span>
+                        <span class="progress-label-value">2.78%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="28"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">당기순이익</span>
+                        <span class="progress-label-value">약 1.8조원</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="20"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">ROE(자기자본수익률)</span>
+                        <span class="progress-label-value">약 6.5%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" data-width="65"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 2026년 영업이익 성장 전망</h3>
+                <p>LG전자의 경영진은 2026년 영업이익이 2025년 대비 43% 증가하여 약 3.55조원에 도달할 것으로 전망하고 있습니다. 이는 다음의 요소들에 기인합니다:</p>
+                <ul class="content-list">
+                    <li><strong>생활가전 수익성 유지:</strong> 2025년 사상 최대 실적(1.27조)을 기반으로 2026년에도 1.3조원 이상 달성 전망</li>
+                    <li><strong>디스플레이 손실 축소:</strong> 구조조정 완료와 수요 회복으로 2026년 손실액을 3,500억원 수준으로 감소 전망</li>
+                    <li><strong>전장사업 이익 확대:</strong> 고객사 추가 수주와 원가 절감으로 영업이익 0.6~0.7조원 달성 목표</li>
+                    <li><strong>B2B 이익 성장:</strong> ESS, 태양광 등 신사업 매출 증가로 추가 이익 창출</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 8: 결론 및 투자 의견 ============ -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-check-circle"></i> <span>결론 및 투자 의견</span></h2>
+            <p class="section-subtitle">종합 평가 및 향후 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-eye"></i> 핵심 평가</h3>
+                <p><strong>LG전자는 체질개선 과정 중인 우량 대형주입니다.</strong> 2025년 매출은 역대 최대를 기록했으나 수익성이 일시적으로 악화되었습니다. 그러나 구조조정 완료와 사업 포트폴리오 개선이 진행되면서 2026년부터 실적 개선이 본격화될 것으로 예상됩니다.</p>
+                <p><strong>긍정적 요소:</strong></p>
+                <ul class="content-list">
+                    <li>생활가전 부문의 사상 최대 실적 달성과 지속적 성장 가능성</li>
+                    <li>10년 연속 성장하는 전장사업으로 미래 성장 동력 확보. 2025년 누적 수주 100조원 돌파는 글로벌 자동차 메이커들의 신뢰를 반영</li>
+                    <li>OLED TV 기술 리더십으로 차세대 디스플레이 시장 기회 보유</li>
+                    <li>2026년 영업이익 43% 성장 전망에 따른 밸류에이션 상승 기대</li>
+                    <li>인도 IPO로 신흥시장 자율성 강화 및 성장성 극대화 추진</li>
+                </ul>
+                <p><strong>리스크 요소:</strong></p>
+                <ul class="content-list">
+                    <li>디스플레이 부문의 구조적 수익성 악화. LCD 시장 포화와 OLED 시장 경쟁 심화</li>
+                    <li>중국 저가 경쟁사(TCL, Hisense)의 공세로 중저가 시장 점유율 약화</li>
+                    <li>전장사업의 초기 투자 부담과 수익화까지의 시간 지연 리스크</li>
+                    <li>글로벌 경기 둔화 시 가전 수요 위축 가능성</li>
+                    <li>지정학적 리스크(미중 갈등)로 인한 공급망 차질 우려</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 투자 의견</h3>
+                <p><strong>종합 평가: 7.8/10점 (매수 의견)</strong></p>
+                <p>LG전자는 단기적으로는 실적 개선 기대감에 따른 상승이 가능하지만, 중장기적으로는 사업 포트폴리오 리밸런싱 성공 여부가 성패를 좌우할 것으로 판단됩니다. 특히 다음 포인트가 중요합니다:</p>
+                <p><strong>1. 2026년 실적 개선 실현 여부:</strong> 경영진이 전망한 43% 영업이익 성장이 실현되면 주가는 상당한 상승 여력이 있습니다. 목표주가는 평균 119,426원으로 현 주가 112,500원 대비 약 6% 상승 여력이 있습니다.</p>
+                <p><strong>2. 전장사업 이익화 진행:</strong> 10년 연속 성장과 100조원 수주 달성은 긍정적이지만, 언제 본격적 이익을 창출할지가 관건입니다. 2026~2028년 기간 중 연간 1조원 이상의 영업이익을 달성한다면 주가는 큰 폭으로 상승할 가능성이 높습니다.</p>
+                <p><strong>3. 디스플레이 부문 구조 개선:</strong> OLED TV 시장은 고성장하고 있으나, 전체 디스플레이 부문이 여전히 손실을 기록하고 있습니다. 디스플레이 수익화 계획이 명확하게 제시되고 실행되어야 투자 신뢰도가 높아질 것입니다.</p>
+                <p><strong>투자 시점:</strong></p>
+                <ul class="content-list">
+                    <li><strong>단기(3~6개월):</strong> 2025년 실적 발표 및 2026년 영업이익 가이던스 제시 때 단계적 매수 추천. 분기별 실적 추이 모니터링 필수</li>
+                    <li><strong>중기(6~12개월):</strong> 전장사업 신규 수주 소식과 생활가전 마진율 유지 여부를 주시. 2분기~3분기 중 실적 개선이 가시화되면 추가 매수</li>
+                    <li><strong>장기(1년 이상):</strong> 전장사업의 누적 수주 150조원 달성과 연간 영업이익 1조원 이상 달성 시 중장기 핵심 보유 종목으로 추천</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 최종 결론</h3>
+                <p>LG전자는 현재 전환기(Turnaround) 국면에 있는 기업입니다. 2025년의 일시적 수익성 악화는 장기 성장을 위한 투자 단계로 해석할 수 있으며, 2026년 실적 개선에 대한 기대감이 높습니다. 특히 생활가전의 강한 실적, 전장사업의 지속적 성장, OLED TV 기술 리더십 등은 글로벌 전자산업에서의 지속적 경쟁력을 시사합니다.</p>
+                <p>투자자들은 2026년 실적 발표와 중기 경영계획(2026~2030) 발표 시점을 주목해야 합니다. 특히 전장사업의 수익화 로드맵이 명확하게 제시되고, 생활가전 부문의 성장성이 입증된다면, LG전자는 향후 3~5년간 높은 수익 성장률을 달성할 수 있는 매력적인 투자 대상이 될 가능성이 높습니다.</p>
+                <p><strong>추천 투자 등급: BUY(매수)</strong><br/>
+                <strong>목표주가: 119,426원(12개월 기준)</strong><br/>
+                <strong>투자 기간: 중장기(12개월 이상)</strong></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div style="max-width: 1140px; margin: 0 auto;">
+            <h2><i class="fas fa-book"></i> 분석 방법론 및 정보 출처</h2>
+            <p style="margin-bottom: 24px; color: var(--text-secondary);">본 리포트는 LG전자의 공시 자료, 시장 조사 보고서, 산업 통계 등 다양한 출처의 데이터를 기반으로 작성되었습니다. 모든 주요 재무 지표는 한국거래소 DART 공시 자료를 기준으로 하고 있습니다.</p>
+
+            <div style="background: var(--bg-elevated); border: 1px solid var(--rule); padding: 24px; border-radius: 0; margin: 24px 0;">
+                <h3 style="color: var(--ink-strong); font-size: 16px; margin-bottom: 16px; font-family: 'Orbit', sans-serif;">참고 자료 및 출처</h3>
+                <p><span style="color:var(--text-light)">1.</span> LG전자 investor relations — 2025 실적 발표 및 분석 자료 <span style="color:var(--text-muted);font-size:.78em">lge.co.kr/ir</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소 DART — LG전자 공시 자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> 한국은행, 통계청 — 거시경제 및 산업 통계 <span style="color:var(--text-muted);font-size:.78em">bok.or.kr, kostat.go.kr</span></p>
+                <p><span style="color:var(--text-light)">4.</span> IHS Markit — "Global Consumer Electronics Market Outlook" (2025) <span style="color:var(--text-muted);font-size:.78em">ihsmarkit.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> IDC — "Worldwide Appliances Market Forecasts" (2025) <span style="color:var(--text-muted);font-size:.78em">idc.com</span></p>
+                <p><span style="color:var(--text-light)">6.</span> Bloomberg Terminal — LG전자 기업 분석 데이터 <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">7.</span> S&P Capital IQ — 산업 및 경쟁사 분석 <span style="color:var(--text-muted);font-size:.78em">capitaliq.com</span></p>
+                <p><span style="color:var(--text-light)">8.</span> PwC Global — "Global Consumer Electronics Forecast" (2024) <span style="color:var(--text-muted);font-size:.78em">pwc.com</span></p>
+                <p><span style="color:var(--text-light)">9.</span> McKinsey & Company — "The Future of Consumer Electronics" (2025) <span style="color:var(--text-muted);font-size:.78em">mckinsey.com</span></p>
+                <p><span style="color:var(--text-light)">10.</span> Gartner — "Smart Appliances Market Analysis" (2025) <span style="color:var(--text-muted);font-size:.78em">gartner.com</span></p>
+                <p><span style="color:var(--text-light)">11.</span> EV-Volumes — "Global Electric Vehicles Sales Trends" (2025) <span style="color:var(--text-muted);font-size:.78em">ev-volumes.com</span></p>
+                <p><span style="color:var(--text-light)">12.</span> International Energy Agency (IEA) — "Global EV Outlook 2025" <span style="color:var(--text-muted);font-size:.78em">iea.org</span></p>
+                <p><span style="color:var(--text-light)">13.</span> Goldman Sachs Equity Research — "Technology Sector Outlook" (2025) <span style="color:var(--text-muted);font-size:.78em">gs.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> Merrill Lynch — "Consumer Discretionary Sector Report" (2025) <span style="color:var(--text-muted);font-size:.78em">ml.com</span></p>
+                <p><span style="color:var(--text-light)">15.</span> 한국전자산업진흥회(KEA) — "전자산업 통계 및 분석" <span style="color:var(--text-muted);font-size:.78em">kea.or.kr</span></p>
+                <p><span style="color:var(--text-light)">16.</span> 나이스디앤비 — LG전자 신용등급 및 재무분석 자료 <span style="color:var(--text-muted);font-size:.78em">niced.co.kr</span></p>
+                <p><span style="color:var(--text-light)">17.</span> SK Investment & Securities — "LG Electronics Equity Research" (2025) <span style="color:var(--text-muted);font-size:.78em">sks.co.kr</span></p>
+                <p><span style="color:var(--text-light)">18.</span> Korea Investors Service (KIS) — LG전자 투자등급 및 분석 보고서 <span style="color:var(--text-muted);font-size:.78em">kisrating.com</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.04.05 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+
+            <div style="margin-top: 24px; padding: 16px; background: var(--bg-surface); border: 1px solid var(--border); text-align: center;">
+                <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">LAST UPDATE</p>
+                <p style="font-size: 12px; color: var(--gold); font-weight: 600; margin-bottom: 8px;">2026년 04월 05일 09:00 KST</p>
+                <p style="font-size: 10px; color: var(--text-muted);">FLOVAH Auto-Monitor</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

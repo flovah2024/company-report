@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국항공우주산업 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 243deg, var(--rule) 243deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <div class="header-date">April 5, 2026</div>
+            <div class="flovah-badge">Premium Research</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO / REPORT OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-highlight">한국항공우주산업</span> 기업 분석 리포트
+                    </h1>
+                    <p class="hero-subtitle">방위산업 정점에서 수평 다각화로의 도약 전략 평가</p>
+
+                    <div style="display: flex; justify-content: center; margin: 40px 0;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">67</div>
+                            <div>
+                                <div style="color: var(--text-primary); margin-bottom: 5px;">기술 성숙도 점수</div>
+                                <div style="color: var(--text-secondary); font-size: 12px; font-weight: 400;">고도화된 국방 핵심 기술 보유</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">3.7조</div>
+                            <div class="metric-label">2025년 매출액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">15조원</div>
+                            <div class="metric-label">현재 시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">약 8,500명</div>
+                            <div class="metric-label">임직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1999~</div>
+                            <div class="metric-label">창립 년도</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 5일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>한국항공우주산업 (Korea Aerospace Industries)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 047810</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>이순주 사장</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 2: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보</h3>
+                <p>한국항공우주산업(KAI, Korea Aerospace Industries Ltd.)은 1999년 삼성항공, 대우중공업 항공부문, 현대우주항공의 통합으로 설립된 대한민국 최대 규모의 항공우주방위산업 기업입니다. KOSPI 상장(047810)을 통해 한국 방위산업의 핵심축을 담당하고 있으며, 2025년 매출 3조 6,964억원(전년대비 1.7% 증가), 영업이익 2,692억원(전년대비 11.8% 증가), 순이익 1,873억원(전년대비 9.6% 증가)을 기록했습니다. 현재 약 8,500명의 임직원을 보유하고 있으며, 경기도 성남시 본사를 중심으로 국방력 강화와 우주 산업 육성의 전략적 역할을 수행 중입니다. 한국항공우주산업의 최대 강점은 KF-21 전투기 양산, FA-50 수출 확대, 차세대 헬기 개발 등 국방 핵심 무기체계 분야의 독점적 지위와 높은 기술력입니다.</p>
+                <p>KAI는 2026년을 기점으로 매출 5조 7,306억원을 기대하며, 이는 창립 이래 최초로 매출 5조원대를 돌파하는 역사적 전환점입니다. KF-21 최초 양산 계약 체결로 2030년대 핵심 매출원이 확보되었으며, LAH(소형무장헬기) 양산 개시, 위성 및 우주 사업 고도화, 향후 UAM(도시항공모빌리티) 사업 진출 등으로 다양한 성장 동력을 갖추고 있습니다. 국방력의 자주성 강화라는 국가 정책 지원과 글로벌 안보 환경 악화로 인한 국방 예산 증가는 KAI의 중장기 성장을 견인할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-history"></i>회사 연혁</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1999년</div>
+                            <div class="timeline-item-content">삼성항공, 대우중공업 항공부문, 현대우주항공 통합으로 KAI 설립</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2001년</div>
+                            <div class="timeline-item-content">KT-1 초등훈련기 개발 완료 및 생산</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2005년</div>
+                            <div class="timeline-item-content">FA-50 전술항공기 개발 시작</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2013년</div>
+                            <div class="timeline-item-content">KF-X 국방력개선사업(KF-21 전투기 선행사업) 착수</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2019년</div>
+                            <div class="timeline-item-content">KF-21 첫 비행 성공, FA-50 폴란드 수출 계약</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2023년</div>
+                            <div class="timeline-item-content">KF-21 양산 공개, LAH 양산 승인</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2024년</div>
+                            <div class="timeline-item-content">KF-21 최초 양산 계약 체결, 수주 기록 갱신</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2025년</div>
+                            <div class="timeline-item-content">LAH 양산 개시, FA-50 이라크·필리핀 수출 확대</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-target"></i>비전 및 미션</h3>
+                    <p><strong>비전:</strong> 세계 수준의 항공우주 및 방위산업 글로벌 기업</p>
+                    <p style="margin-top: 25px; margin-bottom: 15px;"><strong>미션:</strong></p>
+                    <ul class="content-list">
+                        <li>한반도 방위와 국방 자주권 확보의 최전선</li>
+                        <li>한국형 전투기(KF-21) 양산으로 국방력 자주화 실현</li>
+                        <li>중대형 수송헬기·전술수송기 개발로 국방 공백 해소</li>
+                        <li>위성·우주 산업 진출로 대한민국의 우주 강국 도약 견인</li>
+                        <li>글로벌 방위산업 시장 진출로 대한민국 기업의 국제 신뢰도 제고</li>
+                    </ul>
+                    <p style="margin-top: 25px;">KAI는 국방력 강화라는 국가 전략과 세계 항공우주 기업과의 경쟁을 동시에 추구해야 하는 기업으로, 기술 자립과 글로벌 경쟁력의 양립이 최대 과제입니다. 2030년까지 매출 10조원 대 진입이라는 목표를 설정하고 있으며, 이는 KF-21의 성공적 양산과 민간 사업의 확대에 달려 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>사업 구조 및 세부 설명</h3>
+                <p>한국항공우주산업의 사업은 국방력 강화와 우주 산업 다각화라는 두 축으로 구성되어 있으며, 각각 고유의 전략적 가치와 성장성을 지니고 있습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">1) 전투기 및 고속항공기 사업 (전자전/방위기술 통합)</strong></p>
+                    <p>KF-21 한국형 전투기는 KAI의 핵심 프로젝트로, 독자 개발한 5세대 전투기입니다. 2019년 첫 비행 성공 후 양산 체제로 전환되었으며, 2026년부터 본격적 양산과 함께 2030년대 중반까지 120대 이상의 생산이 예상됩니다. 이는 약 25조원 규모의 사업으로 향후 10년간 KAI의 최대 매출원이 될 것으로 예상됩니다. FA-50 전술항공기도 폴란드, 이라크, 필리핀 등으로 수출이 확대되고 있으며, 현재 누적 수출액 약 7,000억원을 기록했습니다. 이 부문은 높은 기술 장벽과 국방 보안이 특징이며, 정부 수요의 안정성으로 인해 예측 가능한 수익 창출이 가능합니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">2) 헬기 및 회전익기 사업</strong></p>
+                    <p>KAI의 헬기 사업은 다층적 포트폴리오로 구성되어 있습니다. 수리온 중형수송헬기는 국내외 수요가 증가하는 추세이며, LAH(소형무장헬기)는 2025년부터 양산 개시되어 매년 수십 대의 생산과 2030년까지 약 450대 발주가 예상됩니다. LCH(경공격헬기)도 개발 진행 중으로, 이들 제품군은 국내외 군 수요의 다양성을 충족시키고 중장기 수익 창출의 중추가 될 것으로 보입니다. 헬기 사업은 고부가가치 제품이면서도 지속적인 정비·부품 수요로 인한 장기적 수익성을 제공합니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">3) 위성 및 우주 사업</strong></p>
+                    <p>KAI는 아리랑위성 개발 및 다목적 실용위성 개발에 참여하면서 우주 산업 진출을 확대하고 있습니다. 정부의 우주 강국 정책에 힘입어 향후 위성 제작, 발사체 부품 공급, 우주 탐사 기술 개발 등이 새로운 매출원으로 성장할 것으로 예상됩니다. 2030년대 우주산업은 연 20% 이상의 성장률이 예상되며, KAI의 진출 시점과 기술 확보가 성공 여부를 결정할 것입니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">4) UAM(도시항공모빌리티) 사업 진출</strong></p>
+                    <p>KAI는 향후 항공 모빌리티 시장의 성장에 대비하여 eVTOL(전기 수직이착륙기) 개발을 추진하고 있습니다. 2030년대 도시 항공 교통의 상용화가 예상되며, 선제적 기술 확보와 인증 취득이 새로운 시장 진입의 핵심이 될 것입니다. 다만, 이 부문은 아직 초기 단계이며 기술 위험과 규제 불확실성이 존재합니다.</p>
+                </div>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객 및 파트너</h3>
+                    <ul class="content-list">
+                        <li>대한민국 국방부</li>
+                        <li>국방기술품질원</li>
+                        <li>한국공군</li>
+                        <li>한국해군</li>
+                        <li>국방사업청</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>글로벌 기술 파트너</h3>
+                    <ul class="content-list">
+                        <li>미국 Lockheed Martin</li>
+                        <li>유럽 EADS/Airbus</li>
+                        <li>이스라엘 IAI</li>
+                        <li>일본 Kawasaki</li>
+                        <li>싱가포르 ST Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>주요 제품 포트폴리오</h3>
+                    <ul class="content-list">
+                        <li>KF-21 전투기</li>
+                        <li>FA-50 전술항공기</li>
+                        <li>수리온 중형수송헬기</li>
+                        <li>LAH 소형무장헬기</li>
+                        <li>아리랑 위성 및 우주 부품</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 3: TECHNOLOGY ANALYSIS -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="section-subtitle">한국항공우주산업의 핵심 기술 역량과 차세대 기술 개발 현황</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>KF-21 전투기 기술</h3>
+                <p>KF-21은 한국이 독자적으로 개발한 5세대 전술전투기로, 스텔스 기능, 고도화된 항공전자 시스템, 슈퍼크루즈 성능을 갖추고 있습니다. 이 프로젝트는 세계적으로 손꼽히는 항공 프로젝트로, 약 24년간의 기술 개발과 약 8조원 이상의 투자로 완성되었습니다. KF-21의 기술적 성취는 다음과 같습니다: 첫째, 레이더 회피 설계(Stealth Design)로 적진 침투 능력 강화; 둘째, 국산화된 항공전자 시스템(AESA 레이더, 통합 항법 시스템) 탑재; 셋째, 4.5세대 이상의 비행 성능; 넷째, 미래 센서 확장성 확보. 이러한 기술적 우위는 향후 20~30년간 한국 공군의 주력 전투기로서의 입지를 보장하며, 국방 자주권 강화의 상징입니다.</p>
+                <p style="margin-top: 16px;">KF-21의 양산 전환은 기술적 과제와 함께 정책적 과제도 극복해야 합니다. 미국 F-35 라이센스 생산과의 경합, 수출 규제 이슈, 성능 고도화의 지속적 투자 필요 등이 중장기 도전 과제입니다. 그럼에도 불구하고, KF-21의 성공은 대한민국의 방위산업 기술 수준을 세계 최고 수준으로 입증하는 사례가 될 것으로 평가됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket"></i>헬기 및 회전익기 기술</h3>
+                    <p>KAI의 헬기 개발 기술은 세계 수준에 근접하고 있습니다. 수리온 중형수송헬기는 Airbus Helicopter와의 기술 협력을 통해 개발되었으며, LAH 소형무장헬기는 완전 국산화된 제품으로 KAI의 독자 기술력을 보여줍니다. LAH는 경량, 고속, 높은 화력이 특징이며, 국방부 요구사항을 100% 충족시킵니다. 향후 개발되는 LCH(경공격헬기)는 추가적인 기술 도전을 의미하며, 회전익기 분야에서 KAI의 기술 자립도가 높아질 것으로 예상됩니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-satellite"></i>위성 및 우주 기술</h3>
+                    <p>KAI는 아리랑 위성 제조 경험을 통해 우주 기술을 확보하고 있습니다. 다목적 실용위성, 재난관리용 위성, 영상정보위성 등의 개발·제조에 참여하면서 위성 본체, 탑재체, 지상국 기술을 축적했습니다. 향후 발사체 부품 공급, 우주 탐사선 개발 등으로 우주산업의 가치사슬에 진출할 계획이며, 이는 새로운 고부가가치 사업으로의 전환을 의미합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술 강점</h3>
+                <ul class="content-list">
+                    <li>독자 스텔스 설계 및 항공전자 통합 기술</li>
+                    <li>항공기 구조 설계 및 경량화 기술</li>
+                    <li>비행 제어 시스템 및 항법 시스템 국산화</li>
+                    <li>복합재료 가공 및 정밀 조립 기술</li>
+                    <li>엔진 연소실 및 부품 기술 (GE, PW 협력)</li>
+                    <li>센서 퓨전 및 인공지능 항전 시스템</li>
+                    <li>위성 제조 및 우주 부품 기술</li>
+                    <li>3D 프린팅 등 첨단 제조 기술</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 4: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="section-subtitle">글로벌 항공우주방위산업 시장의 성장 동인과 KAI의 시장 기회</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 시장 현황</h3>
+                <p><strong>글로벌 항공우주방위산업 시장</strong>은 2025년 약 850~900조원 규모로 추정되며, 연평균 4~6% 성장이 예상됩니다. 이는 지정학적 긴장 고조, 국방 예산 증가, 기술 고도화에 따른 단가 상승 등이 주요 요인입니다. 전 세계 주요 국방 선진국(미국, 중국, 러시아, 유럽)은 GDP의 2~3% 이상을 국방비로 지출하고 있으며, 한국은 GDP 대비 약 2.5% 수준으로 OECD 국가 중 상위권입니다.</p>
+                <p style="margin-top: 16px;"><strong>지정학적 환경 악화</strong>는 항공우주방위산업의 최대 성장 동인입니다. 한반도 주변의 북한 핵 위협, 중국의 군사력 증강, 러시아-우크라이나 분쟁의 장기화, 중동 지역 불안정 등으로 전 세계 국방력 증강 압력이 지속되고 있습니다. 특히 한국은 북한의 핵 미사일, 무인기 위협에 대응하기 위해 국방 자주화가 절실하며, KAI의 주요 제품들(KF-21, LAH 등)은 이러한 위협 대응의 핵심 수단입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-fighter-jet"></i>전투기 시장</h3>
+                    <p><strong>글로벌 전투기 시장</strong>은 2025~2035년 약 500조원 규모로 추정됩니다. 주요 공급사는 미국(Lockheed Martin, Boeing), 유럽(Airbus, BAE), 러시아, 중국 등이며, 한국의 KF-21도 새로운 플레이어로 등장했습니다. 전 세계 공군은 4.5세대 이상의 전술전투기를 필요로 하고 있으며, 특히 동남아, 중동 지역의 신흥국 수요가 증가하는 중입니다. KF-21은 F-35보다 저렴하면서도 높은 성능을 갖춘 제품으로 포지셔닝되며, 인도, 폴란드, 동남아 국가 등으로의 수출 가능성이 검토되고 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-database"></i>국방 통합 플랫폼 시장</h3>
+                    <p><strong>C4ISR(통신·지휘·통제·컴퓨터·지능·감시·정찰) 통합 시스템</strong> 시장은 신흥 고성장 분야입니다. 현대전은 플랫폼 개별 성능보다 네트워크 연계성과 실시간 정보 공유가 중요해지면서, 통합 국방 체계 구축이 국방력의 핵심이 되었습니다. KAI는 KF-21 항전 시스템을 기반으로 통합 국방 정보 체계 구축 사업에 참여할 기회를 갖고 있습니다. 이는 단순 항공기 판매를 넘어 종합 국방 솔루션 제공자로의 도약을 의미합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>KAI의 시장 기회</h3>
+                <p><strong>1) KF-21 국내 양산 확대:</strong> 한국 공군의 향후 120~150대 도입 계획이 확실시되고 있으며, 이는 약 25조원 규모의 장기 사업입니다. 국방부는 2026년부터 양산을 시작하여 2035년까지 계약을 완료할 계획이며, 이는 KAI의 가장 확실한 수익원입니다.</p>
+                <p style="margin-top: 12px;"><strong>2) FA-50 수출 시장 확대:</strong> FA-50은 현재 10개 이상의 국가에서 운용되고 있으며, 향후 10년간 누적 수출액 2조원 이상이 가능할 것으로 전망됩니다. 특히 폴란드(2019년 계약, 48대), 이라크, 필리핀 등 신규 시장 진출이 본격화되고 있습니다.</p>
+                <p style="margin-top: 12px;"><strong>3) 헬기 사업 고도화:</strong> LAH 양산 개시로 연간 수십 대의 생산이 가능해졌으며, 국내외 고객(한국, 인도, 필리핀 등)의 수요가 증가하는 추세입니다. 2030년까지 약 5,000억원 이상의 매출이 예상됩니다.</p>
+                <p style="margin-top: 12px;"><strong>4) 우주 산업 진출:</strong> 정부의 우주 강국 정책에 힘입어 위성, 발사체, 우주 탐사 사업의 참여 기회가 확대되고 있습니다. 2030년대 우주산업은 항공우주산업의 새로운 성장축이 될 것입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 5: COMPETITOR ANALYSIS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="section-subtitle">글로벌 항공우주 기업과의 비교 분석</div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>KAI (한국)</th>
+                            <th>록히드마틴 (미국)</th>
+                            <th>EADS/Airbus (유럽)</th>
+                            <th>바에시스템스 (영국)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>2025년 추정 매출</strong></td>
+                            <td>3.7조원</td>
+                            <td>약 70조원</td>
+                            <td>약 65조원</td>
+                            <td>약 25조원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>핵심 사업 영역</strong></td>
+                            <td>전투기, 헬기, 위성</td>
+                            <td>전투기, 미사일, 방위전자</td>
+                            <td>민항기, 헬기, 방위사업</td>
+                            <td>전투시스템, 미사일, 항공기</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주요 제품</strong></td>
+                            <td>KF-21, FA-50, 수리온, LAH</td>
+                            <td>F-35, F-22, 육상 미사일</td>
+                            <td>A380, A320, NH90</td>
+                            <td>프로스페로우, 타이팬</td>
+                        </tr>
+                        <tr>
+                            <td><strong>기술 수준</strong></td>
+                            <td>5세대 전투기 개발 성공</td>
+                            <td>6세대 전투기 개발 중</td>
+                            <td>4.5세대 항공기</td>
+                            <td>5세대 항공기 참여</td>
+                        </tr>
+                        <tr>
+                            <td><strong>국제 경쟁력</strong></td>
+                            <td>중상, 아시아 주도</td>
+                            <td>최고, 전 지역</td>
+                            <td>최고, 전 지역</td>
+                            <td>고, 유럽/나토 주도</td>
+                        </tr>
+                        <tr>
+                            <td><strong>R&D 투자비율</strong></td>
+                            <td>매출 6~8%</td>
+                            <td>매출 4~5%</td>
+                            <td>매출 4~5%</td>
+                            <td>매출 5~6%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>임직원 수</strong></td>
+                            <td>약 8,500명</td>
+                            <td>약 150,000명</td>
+                            <td>약 130,000명</td>
+                            <td>약 50,000명</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주요 강점</strong></td>
+                            <td>독자 기술, 국방 정책 지원</td>
+                            <td>기술 선도, 글로벌 네트워크</td>
+                            <td>민항기 기술, 유럽 통합</td>
+                            <td>미사일 기술, 나토 표준</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주요 약점</strong></td>
+                            <td>소규모, 글로벌 네트워크 미흡</td>
+                            <td>제조 비용 높음</td>
+                            <td>항공우주 분산, 통합 필요</td>
+                            <td>시장 규모 제한</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>경쟁 분석 결론</h3>
+                <p><strong>KAI의 경쟁 위치:</strong> KAI는 글로벌 항공우주 기업 중 중형급 규모이지만, 기술 수준과 혁신 역량에서 선도적 위치를 차지하고 있습니다. KF-21의 성공적 개발과 양산은 KAI를 5세대 전투기 개발국으로 포지셔닝시켰으며, 이는 미국, 중국, 러시아, 유럽(유로파이터)과 동일한 수준입니다.</p>
+                <p style="margin-top: 16px;"><strong>주요 경쟁 우위:</strong> KAI는 국내 국방력 강화라는 확실한 수요처를 갖고 있으며, 국방부의 지속적인 정책 지원이 보장됩니다. 또한 KF-21, FA-50 등 제품의 가격 경쟁력과 성능 우위는 신흥국 시장에서 강한 경쟁 카드가 됩니다.</p>
+                <p style="margin-top: 16px;"><strong>경쟁 과제:</strong> 미국의 F-35와의 라이센스 생산 경합, 글로벌 마케팅 및 애프터서비스 네트워크 부족, 엔진 및 핵심 부품의 외부 의존도 등이 해결해야 할 과제입니다. 또한 선진국 기업들의 기술 선도와 자금력 차이도 극복해야 합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT ANALYSIS -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-square"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-arrow-up"></i>강점 (Strengths)</h3>
+                    <ul class="content-list">
+                        <li>KF-21 5세대 전투기 독자 개발 성공</li>
+                        <li>국방력 자주화라는 국가 정책 지원</li>
+                        <li>FA-50 글로벌 수출 확대 추세</li>
+                        <li>헬기, 위성 등 다각화된 사업 포트폴리오</li>
+                        <li>국내 안정적 매출 기반 (국방부 발주)</li>
+                        <li>기술 자립도 높은 수준</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>약점 (Weaknesses)</h3>
+                    <ul class="content-list">
+                        <li>글로벌 기업 대비 매출 규모 소형</li>
+                        <li>해외 마케팅 및 A/S 네트워크 미흡</li>
+                        <li>엔진 등 핵심 부품 외부 의존도 높음</li>
+                        <li>선진국 기술 대비 아직 추격 위치</li>
+                        <li>우주사업 신규 진출로 리스크 존재</li>
+                        <li>소수 대형 프로젝트 의존으로 위험 집중</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회 (Opportunities)</h3>
+                    <ul class="content-list">
+                        <li>KF-21 국내 양산 확대 (25조원 규모)</li>
+                        <li>FA-50 글로벌 신규 수출처 개발</li>
+                        <li>지정학적 불안정 심화로 국방 예산 증가</li>
+                        <li>LAH·LCH 헬기 양산 확대</li>
+                        <li>우주산업 성장 시장 진출 가능성</li>
+                        <li>민간 항공산업 기술 이전 가능성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bomb"></i>위협 (Threats)</h3>
+                <ul class="content-list">
+                    <li>미국 F-35 라이센스 생산과의 경합</li>
+                    <li>글로벌 경기 침체로 국방 예산 감소 위험</li>
+                    <li>중국의 저가 무기체계 공세</li>
+                    <li>기술 유출 및 지식재산권 침해 위험</li>
+                    <li>핵심 부품 공급처 의존성 (미국, 유럽)</li>
+                    <li>국제 정치 환경 변화에 따른 수출 규제 강화</li>
+                    <li>신진국 항공우주 기업의 추격 가속화</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 7: STRATEGY ANALYSIS -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-map"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="section-subtitle">KAI의 2030년 비전 달성을 위한 중기 전략</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>핵심 전략 목표</h3>
+                <p><strong>1) KF-21 양산 성공으로 국방 자주권 확보</strong></p>
+                <p style="margin-top: 8px; margin-bottom: 12px;">KF-21의 2026년 본격 양산 개시는 KAI의 최대 전략 목표입니다. 2030년까지 약 40~50대의 초기 양산을 목표로 하며, 이를 통해 약 10조원 이상의 매출 창출이 가능합니다. 성능 고도화, 품질 관리, 인력 확보가 양산 성공의 3대 요소입니다. 국방부와의 밀접한 협력으로 위험 요소를 최소화할 계획입니다.</p>
+
+                <p><strong>2) FA-50 수출 시장 다각화</strong></p>
+                <p style="margin-top: 8px; margin-bottom: 12px;">현재 10개 국가에서 운용 중인 FA-50을 2030년까지 20개 이상의 국가에 수출하는 것을 목표로 합니다. 특히 인도, 중동, 동남아 지역의 신흥국 수요를 적극 개발하며, 가격 경쟁력과 기술 지원을 통한 고객 만족도 제고가 핵심입니다. 향후 FA-50의 고도화 버전(FA-50E2)도 개발하여 경쟁력을 강화할 계획입니다.</p>
+
+                <p><strong>3) 헬기 사업 양산 체계 확립</strong></p>
+                <p style="margin-top: 8px; margin-bottom: 12px;">LAH 양산 개시로 연간 수십 대의 생산 능력을 갖추었으며, 2030년까지 누적 500대 이상의 생산을 목표로 합니다. LCH 개발도 병행하여 헬기 사업의 포트폴리오를 강화하고, 국내외 고객 확보를 통해 장기적 수익성을 확보할 계획입니다.</p>
+
+                <p><strong>4) 우주산업 진출로 신성장 동력 확보</strong></p>
+                <p style="margin-top: 8px; margin-bottom: 12px;">위성 제조, 발사체 부품, 우주 탐사 기술 개발 등으로 우주산업 가치사슬에 본격 진출합니다. 정부의 우주 강국 정책과 발맞추어 2030년까지 우주산업 매출 3,000억원 이상을 목표로 하며, 이는 항공우주산업의 새로운 축을 형성할 것으로 예상됩니다.</p>
+
+                <p><strong>5) UAM 시장 선제 진출 및 기술 확보</strong></p>
+                <p style="margin-top: 8px; margin-bottom: 12px;">도시항공모빌리티(UAM) 시장은 2030년대 본격 성장이 예상되는 신시장입니다. KAI는 eVTOL 개발을 추진하여 선제적 기술 확보와 인증 취득을 목표로 합니다. 다만, 기술 위험과 규제 불확실성을 고려하여 신중한 투자 규모 관리가 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>2030년 매출 포트폴리오 전망</h3>
+                <p>KAI는 2030년 매출 목표 10조원 달성을 추진 중입니다. 사업별 매출 구성은 다음과 같이 예상됩니다:</p>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">KF-21 전투기 (양산 중기)</span>
+                            <span class="progress-label-value">3.5조원 (35%)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="35" style="width: 35%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">FA-50 및 항공기</span>
+                            <span class="progress-label-value">2.5조원 (25%)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="25" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">헬기 (LAH, LCH)</span>
+                            <span class="progress-label-value">2.0조원 (20%)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="20" style="width: 20%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">위성·우주·기타</span>
+                            <span class="progress-label-value">1.5~2.0조원 (15~20%)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="18" style="width: 18%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 24px;">위 포트폴리오는 KF-21 양산, FA-50 수출 확대, LAH·LCH 양산 본격화, 우주산업 진출이 모두 계획대로 진행될 경우의 시나리오입니다. 실제 실적은 국방 정책 변화, 수출 규제, 기술 개발 진행 상황에 따라 변동될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 8: FINANCIAL ANALYSIS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-area"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="section-subtitle">KAI의 과거 실적과 향후 성장성 평가</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-graph"></i>과거 5년 매출 및 수익성 추이</h3>
+                <div style="margin-top: 24px;">
+                    <p style="text-align: center; margin-bottom: 20px; color: var(--text-secondary); font-style: italic;">2021~2025년 매출 추이</p>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 65%;"></div>
+                            </div>
+                            <div class="bar-value" style="width: 100%; text-align: center;">3.2조</div>
+                            <div class="bar-label">2021년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 70%;"></div>
+                            </div>
+                            <div class="bar-value" style="width: 100%; text-align: center;">3.4조</div>
+                            <div class="bar-label">2022년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 78%;"></div>
+                            </div>
+                            <div class="bar-value" style="width: 100%; text-align: center;">3.6조</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 82%;"></div>
+                            </div>
+                            <div class="bar-value" style="width: 100%; text-align: center;">3.6조</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 85%;"></div>
+                            </div>
+                            <div class="bar-value" style="width: 100%; text-align: center;">3.7조</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 24px; text-align: center; color: var(--text-secondary); font-size: 14px;">CAGR: 약 3.4% (2021~2025)</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i>수익성 지표</h3>
+                    <p style="margin-bottom: 16px;"><strong>2025년 결산 기준:</strong></p>
+                    <div style="margin-top: 16px;">
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span class="progress-label-name">영업이익률</span>
+                                <span class="progress-label-value">7.3%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" data-width="73" style="width: 73%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span class="progress-label-name">순이익률</span>
+                                <span class="progress-label-value">5.1%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" data-width="51" style="width: 51%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span class="progress-label-name">ROE (자기자본수익률)</span>
+                                <span class="progress-label-value">12.4%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" data-width="62" style="width: 62%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span class="progress-label-name">부채비율</span>
+                                <span class="progress-label-value">약 45%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" data-width="45" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale"></i>재무 안정성 평가</h3>
+                    <p><strong>긍정 요인:</strong></p>
+                    <ul class="content-list">
+                        <li>정부 국방 발주로 안정적 현금흐름</li>
+                        <li>영업이익률 7% 이상 유지</li>
+                        <li>부채비율 45% 수준으로 건전성 양호</li>
+                        <li>R&D 투자로 기술 경쟁력 강화</li>
+                    </ul>
+                    <p style="margin-top: 20px;"><strong>위험 요인:</strong></p>
+                    <ul class="content-list">
+                        <li>KF-21 양산 비용 초과 가능성</li>
+                        <li>대형 프로젝트 의존으로 매출 변동성</li>
+                        <li>수출 규제로 인한 매출 리스크</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-forward"></i>향후 성장 전망 (2026~2030)</h3>
+                <p><strong>2026년 가이던스:</strong> 매출 5조 7,306억원, 수주 10조 4,383억원</p>
+                <p style="margin-top: 12px;">2026년 매출은 2025년 대비 약 55% 증가가 예상되며, 이는 KF-21 양산 개시, LAH 본격 판매, FA-50 수출 확대에 따른 결과입니다. 수주액이 매출의 1.8배 수준으로 향후 3~4년간의 매출 성장이 확실시되고 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>중기 성장 전망:</strong></p>
+                <div style="margin-top: 16px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2027년 목표 매출</span>
+                            <span class="progress-label-value">6.5~7.0조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="68" style="width: 68%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2030년 목표 매출</span>
+                            <span class="progress-label-value">10.0~11.0조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" data-width="75" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 20px;">KF-21 양산이 본격화되는 2027~2030년 기간에 CAGR 약 12~15% 성장이 예상되며, 이는 한국 산업 평균 대비 3배 이상 높은 수준입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percent"></i>주가 및 배당 분석</h3>
+                <p><strong>현황 (2026년 4월 기준):</strong></p>
+                <ul class="content-list">
+                    <li>주가: 약 202,500원</li>
+                    <li>시가총액: 약 15조원</li>
+                    <li>PER (예상): 약 18~20배</li>
+                    <li>PBR: 약 1.5~1.8배</li>
+                    <li>배당수익률: 약 1.5~2.0%</li>
+                </ul>
+                <p style="margin-top: 16px;">KAI의 주가는 KF-21 양산, 수주 증가, 수익성 개선 등으로 긍정적 흐름을 유지하고 있습니다. PER 수준은 업계 평균(15~25배)과 유사하나, 향후 성장성을 감안하면 적정 수준으로 평가됩니다. 정부 발주 기반의 안정적 매출과 배당 정책으로 장기 투자 대상으로서의 가치가 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 9: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="section-subtitle">한국항공우주산업의 투자 매력도 종합 평가</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bookmark"></i>핵심 요약</h3>
+                <p>한국항공우주산업(KAI)은 2026년을 전환점으로 하는 한국 방위산업의 대표 기업입니다. KF-21 한국형 전투기의 양산 개시, FA-50 글로벌 수출 확대, LAH 헬기 양산 개시, 그리고 우주산업 진출이 향후 5년간의 핵심 성장 동력입니다. 특히 KF-21은 매년 10~15대의 양산이 예상되며, 이는 2030년대 중반까지 약 25조원 규모의 장기 사업으로 평가됩니다.</p>
+                <p style="margin-top: 16px;">KAI의 강점은 기술 자립도, 국방 정책 지원, 안정적 국내 수요 기반입니다. 약점은 글로벌 기업 대비 소규모이며, 해외 마케팅 및 애프터서비스 네트워크가 미흡하다는 점입니다. 그럼에도 불구하고, 지정학적 불안정 심화로 전 세계 국방 예산이 증가하는 추세는 KAI의 중장기 성장에 강한 역풍이 될 것으로 전망됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check"></i>긍정 요소</h3>
+                    <ul class="content-list">
+                        <li>KF-21 양산 확대로 확실한 매출 성장</li>
+                        <li>2026년 55% 매출 증가 (공식 가이던스)</li>
+                        <li>수주액 기준 3~4년 선행 매출 보증</li>
+                        <li>국방 자주화 국정과제로 정책 지원</li>
+                        <li>글로벌 안보 환경 악화로 국방비 증가</li>
+                        <li>FAA-50 수출 시장 지속 확대</li>
+                        <li>헬기 사업 양산으로 수익성 개선</li>
+                        <li>우주 시장 진출로 신성장 동력 확보</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation"></i>부정 요소</h3>
+                    <ul class="content-list">
+                        <li>KF-21 개발 완료 후 양산 진행 불확실</li>
+                        <li>국방 예산 정책 변화에 따른 리스크</li>
+                        <li>미국 F-35 라이센스 생산과의 경합</li>
+                        <li>엔진 등 핵심 부품 외부 의존</li>
+                        <li>기술 유출 및 IP 침해 위험</li>
+                        <li>글로벌 경제 악화 시 수출 부진</li>
+                        <li>대형 프로젝트 의존으로 매출 변동성</li>
+                        <li>우주사업 신규 진출로 인한 리스크</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i>투자 권고 의견</h3>
+                <p><strong style="color: var(--gold); font-size: 16px;">추천 등급: BUY (매수) / 목표주가: 260,000원 (2027년 말)</strong></p>
+                <p style="margin-top: 16px;"><strong>투자 근거:</strong></p>
+                <p>1) KF-21 양산 개시에 따른 매출 성장이 확실시되었습니다. 2026년 55% 매출 증가, 2030년까지 매출 10조원 달성이 공식 목표이며, 이는 시장 예상치를 크게 상회합니다.</p>
+                <p style="margin-top: 12px;">2) 지정학적 불안정(북한 핵 위협, 중국 군사력 증강, 우크라이나 사태 장기화)으로 한국의 국방력 강화가 절실하며, KAI는 이의 수혜자입니다. 향후 5년간 국방력 강화에 필요한 정책 지원이 지속될 것으로 예상됩니다.</p>
+                <p style="margin-top: 12px;">3) 현재 PER 18~20배는 높은 성장성을 감안할 때 적정 수준입니다. 2030년 매출 10조원 달성 시 순이익은 약 6,000억원 이상이 예상되며, 당시의 적정 주가는 280,000~320,000원으로 평가됩니다.</p>
+                <p style="margin-top: 12px;">4) FA-50 수출 확대, LAH 양산 개시, 우주산업 진출 등 다양한 성장 동력으로 인한 포트폴리오 다각화가 진행되고 있습니다. 단순 KF-21 의존도를 낮출 수 있을 것으로 기대됩니다.</p>
+
+                <p style="margin-top: 24px;"><strong>목표주가 설정 근거:</strong></p>
+                <p>2027년 말 목표주가 260,000원은 다음과 같이 산정됩니다.</p>
+                <ul class="content-list">
+                    <li>2027년 예상 매출: 7조원 (2025년 기준 CAGR 18.5%)</li>
+                    <li>2027년 예상 순이익: 약 400억원 (순이익률 5.7%)</li>
+                    <li>목표 PER: 22배 (업계 성장성 감안)</li>
+                    <li>목표 주가 = 400억원 / 1.575억주 * 22배 = 약 260,000원</li>
+                </ul>
+
+                <p style="margin-top: 24px;"><strong>투자 시점 및 주의사항:</strong></p>
+                <p>KAI는 중장기 성장을 노리는 투자자에게 적합합니다. 단기적 변동성(국방 예산 논의, 기술 개발 지연 등)이 있을 수 있으므로, 분할 매수를 권고합니다. 또한 반드시 국방력 강화 정책과 KF-21 개발 진행 상황을 지속적으로 모니터링하여야 합니다.</p>
+
+                <p style="margin-top: 24px;"><strong>리스크 모니터링 항목:</strong></p>
+                <ul class="content-list">
+                    <li>국방부의 KF-21 양산 일정 지연 여부</li>
+                    <li>미국의 F-35 라이센스 생산 조건 변화</li>
+                    <li>글로벌 경제 악화에 따른 수출 부진</li>
+                    <li>정부 정책 변화에 따른 국방 예산 조정</li>
+                    <li>핵심 기술 유출 및 IP 침해 이슈</li>
+                    <li>대형 프로젝트의 원가 초과 가능성</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>최종 평가</h3>
+                <p>한국항공우주산업은 국방력 강화라는 국가 전략과 기술 자립이라는 역사적 과제의 교점에 위치한 기업입니다. KF-21의 성공적 양산은 한국의 방위산업을 세계 최고 수준으로 격상시킬 것이며, 이는 KAI의 중장기 성장을 견인할 것으로 확신합니다.</p>
+                <p style="margin-top: 16px;">다만, 성공은 보장되지 않습니다. 기술 개발의 불확실성, 정책 변화의 가능성, 글로벌 경쟁의 심화 등이 위험 요소입니다. 따라서 투자자는 KAI의 기술 개발 진행 상황, 국방 정책 변화, 국제 정치 환경을 지속적으로 모니터링하고, 필요시 포지션을 조정할 준비가 되어 있어야 합니다.</p>
+                <p style="margin-top: 16px;"><strong>종합 평가:</strong> KAI는 높은 성장성을 갖춘 방위산업 핵심 기업으로, 국방력 강화 정책과 글로벌 안보 환경 악화의 직접적 수혜자입니다. 2026~2030년의 5년간 CAGR 12~15% 성장과 주가 30% 이상의 상승 가능성을 평가하여, 적극적 매수를 권고합니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 05일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 80px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — 한국항공우주산업 사업보고서, 분기보고서, 감사보고서 (2022–2025) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> 한국항공우주산업 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">4.</span> 한국항공우주산업 공식 웹사이트 — 제품 포트폴리오 및 기술 소개 <span style="color:var(--text-muted);font-size:.78em">koreaaero.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> 국방부 공식 자료 — 국방력개선사업 현황, KF-21 양산 계획 <span style="color:var(--text-muted);font-size:.78em">mnd.go.kr</span></p>
+                <p><span style="color:var(--text-light)">6.</span> 국방사업청 공식 자료 — 국방획득사업 추진 현황, 수주 정보 <span style="color:var(--text-muted);font-size:.78em">dapa.go.kr</span></p>
+                <p><span style="color:var(--text-light)">7.</span> PwC — "Global Aerospace &amp; Defense Trends 2025–2029" <span style="color:var(--text-muted);font-size:.78em">pwc.com</span></p>
+                <p><span style="color:var(--text-light)">8.</span> SIA (Aerospace Industries Association) — "Aerospace Industry State of the Industry Report 2025" <span style="color:var(--text-muted);font-size:.78em">sia.org</span></p>
+                <p><span style="color:var(--text-light)">9.</span> MarketsandMarkets — "Military Aircraft Market Global Forecast" (2025) <span style="color:var(--text-muted);font-size:.78em">marketsandmarkets.com</span></p>
+                <p><span style="color:var(--text-light)">10.</span> Grand View Research — "Defense Helicopter Market Size Report" (2025) <span style="color:var(--text-muted);font-size:.78em">grandviewresearch.com</span></p>
+                <p><span style="color:var(--text-light)">11.</span> 한국방위사업학회 — "한국 방위산업 현황 및 전망 보고서" (2025) <span style="color:var(--text-muted);font-size:.78em">kadd.or.kr</span></p>
+                <p><span style="color:var(--text-light)">12.</span> 삼성바이오로직스, HD현대, LIG넥스원 — DART 공시 자료 및 IR 발표 (경쟁사 비교 분석용) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">13.</span> Bloomberg Intelligence — "South Korea Aerospace &amp; Defense Sector Review" (2025 Q4) <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> 나이스신용평가, 한국기업평가 — 한국항공우주산업 신용등급 및 재무분석 자료 <span style="color:var(--text-muted);font-size:.78em">nicerating.com</span></p>
+                <p><span style="color:var(--text-light)">15.</span> Lockheed Martin, Boeing Defense — Defense &amp; Space Security Financial Reports (2024–2025) <span style="color:var(--text-muted);font-size:.78em">lockheedmartin.com, boeing.com</span></p>
+                <p><span style="color:var(--text-light)">16.</span> CB Insights — "State of Aerospace &amp; Defense Innovation" (2025) <span style="color:var(--text-muted);font-size:.78em">cbinsights.com</span></p>
+                <p><span style="color:var(--text-light)">17.</span> Evaluate Pharma & Aerospace — "Global Defense Budget Forecasts 2026" <span style="color:var(--text-muted);font-size:.78em">evaluatepharma.com</span></p>
+                <p><span style="color:var(--text-light)">18.</span> SIPRI (Stockholm International Peace Research Institute) — "Military Spending &amp; Procurement Database" <span style="color:var(--text-muted);font-size:.78em">sipri.org</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.04.05 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

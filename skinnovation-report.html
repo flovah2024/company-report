@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK이노베이션 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <div class="header-date">April 5, 2026</div>
+            <div class="flovah-badge">Premium Research</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        SK이노베이션
+                        <span class="hero-title-highlight">Deep Dive Analysis</span>
+                    </h1>
+                    <p class="hero-subtitle">에너지 대전환 시대의 통합에너지 플랫폼 기업</p>
+
+                    <div class="ai-score-badge">
+                        <div class="score-circle">65</div>
+                        <div>
+                            <p style="color:var(--text-muted);font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Outlook Score</p>
+                            <p style="color:var(--gold);font-size:14px;font-weight:700">Strong Growth Potential</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">17.2조원</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">~100,000원</div>
+                    <div class="metric-label">주가 (2026.4)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1962년</div>
+                    <div class="metric-label">설립 연도</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">종목코드 096770</div>
+                    <div class="metric-label">KOSPI</div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top:0;border-top:1px solid var(--rule)">
+                <h3><i class="fas fa-building"></i>기업 개요</h3>
+                <p>SK이노베이션은 1962년 창립한 이래 석유·화학·LNG·전력·배터리 등 다양한 에너지 사업을 영위해온 한국의 에너지 통합 플랫폼입니다. 2024년 SK E&S와의 전략적 합병을 통해 아태 지역 최대 규모의 통합에너지 회사로 도약했으며, 에너지 대전환 시대에 기저에너지와 신재생에너지를 동시에 보유한 독특한 포지셔닝을 갖추고 있습니다. 현재 시가총액 약 17.2조원 규모로 한국의 대표 에너지 기업 중 하나입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold)">사업 포트폴리오:</strong></p>
+                    <ul class="content-list">
+                        <li>석유·정유 및 석유화학: PX, 올레핀 등 기본 화학품 생산 및 판매</li>
+                        <li>LNG 사업: 해외 LNG 개발 참여 및 국내 도입·판매</li>
+                        <li>발전·전력: 복합화력 및 신재생에너지 발전소 운영</li>
+                        <li>배터리 사업: SK온(자회사)을 통한 리튬이온 배터리 제조·판매</li>
+                        <li>기타 자회사: SK지오센트릭(화학), SK어스온(탐사·생산), SK엔무브(윤활유)</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:24px">
+                    <p><strong style="color:var(--gold)">주요 역사 및 이정표:</strong></p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1962년</div>
+                            <div class="timeline-item-content">SK주식회사 설립, 유정 개발 및 정유 사업 시작</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2005년</div>
+                            <div class="timeline-item-content">영남정유를 인수하여 정유 사업 확대, SK에너지로 통합</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2015년</div>
+                            <div class="timeline-item-content">LNG 사업 본격 추진, PX 및 석유화학 고수익 사업 강화</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2020년</div>
+                            <div class="timeline-item-content">SK배터리 사업 분리 및 SK온(자회사) 설립</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2024년</div>
+                            <div class="timeline-item-content">SK E&S 합병 완료, 아태 최대 규모 통합에너지 회사 탄생</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2026년</div>
+                            <div class="timeline-item-content">PX 및 화학부문 실적 개선, 배터리 구조조정 후 흑자전환 기대</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 및 경쟁력</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-gear"></i>핵심 기술 경쟁력</h3>
+                <p>SK이노베이션의 기술 경쟁력은 60년 이상의 정유·화학 사업 경험과 최근의 신에너지 기술 투자에서 비롯됩니다. 석유화학 분야의 PX 생산 기술, LNG 도입·저장·활용 기술, 그리고 리튬이온 배터리 제조 기술이 핵심입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">정유·석유화학 기술:</strong></p>
+                    <ul class="content-list">
+                        <li>파라자일렌(PX) 생산: 세계 수준의 수소화 탈수소화 기술로 고순도 PX 생산</li>
+                        <li>올레핀 생산: 나프타 분해 기술 및 경질유 크래킹 기술 보유</li>
+                        <li>정유 공정: 최신 정제 기술로 연료유 품질 및 수율 최적화</li>
+                        <li>촉매 기술: 자체 개발 촉매로 생산 효율성 극대화</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">LNG 기술:</strong></p>
+                    <ul class="content-list">
+                        <li>수입·저장: 대규모 LNG 인수기지 및 저장소 운영</li>
+                        <li>가스화: LNG 재기화 및 가스 공급 기술</li>
+                        <li>해외 프로젝트: 호주, 페루 등 LNG 개발 프로젝트 참여</li>
+                        <li>가격 리스크 관리: 선물 및 파생상품 거래로 LNG 가격 헤징</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">배터리 기술 (SK온):</strong></p>
+                    <ul class="content-list">
+                        <li>고에너지밀도 셀: 에너지밀도 300+ Wh/kg 달성</li>
+                        <li>장수명 기술: 100만 km 주행 기준 배터리 수명 개선</li>
+                        <li>빠른 충전: 초고속 충전 기술(10-80% 30분 이내)</li>
+                        <li>안전성: 다층 안전 설계 및 열관리 시스템</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>R&D 투자 및 혁신 전략</h3>
+                <p>SK이노베이션은 연간 매출의 2~3% 수준을 R&D에 투자하며, 기후변화 대응 및 에너지 전환 시대의 기술 리더십을 확보하기 위해 노력 중입니다. 2025년 기준 약 3,000억원 수준의 R&D 투자 계획을 수립했습니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">주요 R&D 영역:</strong></p>
+                    <ul class="content-list">
+                        <li>차세대 배터리: 고니켈-저코발트 양극재, 단결정 기술</li>
+                        <li>전고체 배터리: 2030년 상용화 목표</li>
+                        <li>탄소 포집 및 활용(CCUS): 이산화탄소 포집 후 활용</li>
+                        <li>신재생에너지: 태양광, 풍력 발전소 관련 기술 개발</li>
+                        <li>수소 에너지: 그린 수소 생산 기술 개발 중</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">기술 경쟁력 평가:</strong></p>
+                    <p style="margin-top:12px;margin-bottom:12px">정유·화학: 세계 경쟁사 대비 중상 수준의 기술력을 보유하고 있으나, PX 시장의 공급 과잉으로 인한 가격 경쟁 심화가 이슈입니다. LNG: 국제 수준의 안정적인 기술력 보유. 배터리: 삼성SDI, LG에너지솔루션과 유사 수준의 기술 경쟁력을 보유하고 있으나, CATL 등 중국 배터리 회사의 빠른 추격으로 인한 경쟁 심화.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>제조 능력 및 공급망</h3>
+                <p>SK이노베이션은 국내 주요 제조 거점에서 석유화학 제품을 생산하고, 해외 관계사를 통해 LNG 프로젝트를 운영하고 있습니다. 배터리 사업은 SK온이 주도하며, 국내외 여러 생산 시설을 보유하고 있습니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">주요 생산 거점:</strong></p>
+                    <ul class="content-list">
+                        <li>울산 정유·화학단지: 정유, PX, 올레핀 등 생산</li>
+                        <li>여수 화학단지: 고급 화학품 생산</li>
+                        <li>해외 LNG 프로젝트: 호주 Ichthys, 페루 LNG 등</li>
+                        <li>배터리 공장: 국내(천안 등)·해외(미국, 중국) 설립 중</li>
+                        <li>발전소: 복합화력, 태양광, 풍력 발전소 운영</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">공급망 리스크:</strong></p>
+                    <p style="margin-top:12px">석유 및 천연가스 수입 의존으로 인한 가격 변동성 리스크, 배터리 핵심 소재(리튬, 코발트, 니켈) 수입 의존, 중국 배터리 공급망 경쟁 심화 등이 주요 리스크입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 규모 및 기회</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 에너지 시장 현황</h3>
+                <p>글로벌 에너지 시장은 화석연료 의존도 감소와 신재생에너지 전환의 이중 구조 속에서 성장하고 있습니다. 석유·가스 수요는 점진적으로 감소하는 추세이지만, 신흥국 수요와 에너지 안보 이슈로 단기~중기적으로는 여전히 주요 에너지원으로 남을 전망입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">석유·가스 시장:</strong></p>
+                    <ul class="content-list">
+                        <li>글로벌 석유 수요: 연 1.5~2% 증가 (2025~2030년)</li>
+                        <li>LNG 시장: 연 3~4% 증가, 아시아 수요 주도</li>
+                        <li>화학품 시장: 연 2.5~3% 증가, PX는 연 2~2.5% 증가</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">배터리 시장:</strong></p>
+                    <ul class="content-list">
+                        <li>글로벌 전기차 배터리 시장: 2030년 약 2조달러 규모</li>
+                        <li>연평균 성장률(CAGR): 20~25% (2025~2030년)</li>
+                        <li>에너지저장장치(ESS) 시장: 연 30% 성장 기대</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">신재생에너지 시장:</strong></p>
+                    <ul class="content-list">
+                        <li>태양광·풍력 설치용량: 연 15~20% 증가</li>
+                        <li>재정 지원 및 규제 강화로 성장성 높음</li>
+                        <li>전력망 현대화 및 ESS 수요 증가로 동반 성장</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-korea"></i>한국 시장의 위치와 기회</h3>
+                <p>한국은 에너지 수입 의존도가 높고, 원전·화석연료 기반의 에너지 믹스를 신재생에너지로 빠르게 전환 중입니다. 정부의 "그린뉴딜" 및 2050 탄소중립 목표는 SK이노베이션 같은 에너지 기업에게 새로운 사업 기회를 제공합니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">국내 석유화학 시장:</strong></p>
+                    <ul class="content-list">
+                        <li>시장 규모: 약 20조원 (2025년 기준)</li>
+                        <li>주요 제품: PX, 올레핀, 합성수지, 합성섬유</li>
+                        <li>성장 동력: 반도체·디스플레이·자동차 산업의 수요</li>
+                        <li>경쟁 심화: 중국 저가 제품 수입 증가로 가격 경쟁 심화</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">LNG 및 전력 시장:</strong></p>
+                    <ul class="content-list">
+                        <li>국내 LNG 수요: 연 3~4% 증가</li>
+                        <li>전력 수요: 연 2~3% 증가</li>
+                        <li>정책 지원: 전기가격 인상 및 재정 지원 강화</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">배터리 및 신재생 시장:</strong></p>
+                    <ul class="content-list">
+                        <li>전기차 보급: 2030년 신차 판매 중 전기차 비중 30% 목표</li>
+                        <li>태양광·풍력: 신규 설치용량 연 10GW 이상 목표</li>
+                        <li>ESS 수요: 전력망 안정화를 위한 정책 지원</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>산업 구조 및 가치사슬</h3>
+                <p>SK이노베이션은 원유 수입에서 최종 소비자까지의 에너지 가치사슬 전체에 참여하고 있습니다. 상류(탐사·개발)에서 중류(수입·저장·운송), 하류(정유·화학·발전)까지 다층적 포지셔닝을 갖추고 있습니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">가치사슬상 위치:</strong></p>
+                    <ul class="content-list">
+                        <li>상류: SK어스온을 통한 석유·가스 탐사 및 생산</li>
+                        <li>중류: LNG 도입, 정유, 화학 제품 생산</li>
+                        <li>하류: 전력 판매, 배터리 판매, 카본 중립 솔루션 제공</li>
+                        <li>신사업: SK온의 배터리 판매, SK지오센트릭의 순환경제 솔루션</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>주요 경쟁사 비교</h3>
+                <p>SK이노벤치는 정유·화학, LNG, 배터리, 발전 등 다양한 사업을 영위하므로, 각 사업 분야별로 상이한 경쟁사와 직면하고 있습니다. 정유·화학 분야에서는 GS칼텍스, 현대오일뱅크 등 국내 정유사와 경쟁하며, 배터리 분야에서는 삼성SDI, LG에너지솔루션과 경쟁합니다.</p>
+
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>SK이노베이션</th>
+                                <th>GS칼텍스</th>
+                                <th>현대오일뱅크</th>
+                                <th>삼성SDI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>2024년 매출(예상)</strong></td>
+                                <td>70.1조원</td>
+                                <td>28조원</td>
+                                <td>22조원</td>
+                                <td>11.5조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>주력 사업</strong></td>
+                                <td>정유·화학·LNG·배터리</td>
+                                <td>정유·화학·윤활유</td>
+                                <td>정유·석유화학</td>
+                                <td>배터리·화학</td>
+                            </tr>
+                            <tr>
+                                <td><strong>배터리 사업</strong></td>
+                                <td>SK온 (자회사)</td>
+                                <td>해당 없음</td>
+                                <td>해당 없음</td>
+                                <td>직접 운영</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LNG 사업</strong></td>
+                                <td>O (적극 추진)</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2025년 영업이익(예상)</strong></td>
+                                <td>1.33~1.6조원</td>
+                                <td>0.8~1.0조원</td>
+                                <td>0.6~0.8조원</td>
+                                <td>0.5~0.7조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>수익성 (영업이익률)</strong></td>
+                                <td>1.9~2.3%</td>
+                                <td>2.9~3.6%</td>
+                                <td>2.7~3.6%</td>
+                                <td>4.3~6.1%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top:24px">
+                    <p><strong style="color:var(--gold);">경쟁력 평가:</strong></p>
+                    <ul class="content-list">
+                        <li>규모: SK이노베이션이 국내 정유사 중 최대 규모, 매출액 기준 2배 이상 규모의 장점</li>
+                        <li>다각화: LNG 및 배터리 사업으로 수익 다각화에 가장 진출한 정유사</li>
+                        <li>수익성: 현재 수익성은 GS칼텍스, 현대오일뱅크보다 낮지만, 2025년 이후 개선 기대</li>
+                        <li>배터리: SK온의 배터리 기술은 삼성SDI 수준이지만, CATL 등 글로벌 기업과의 경쟁 심화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hand-holding-heart"></i>차별화 전략</h3>
+                <p>SK이노베이션의 경쟁력은 단순한 정유·화학 회사가 아닌 "통합에너지 플랫폼" 포지셔닝에 있습니다. 화석연료(석유, 가스)와 신재생에너지(태양광, 풍력)를 동시에 보유함으로써, 에너지 전환 시대에 독특한 가치를 제공할 수 있습니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">차별화 포인트:</strong></p>
+                    <ul class="content-list">
+                        <li>에너지 안보: 석유, 가스, 전력을 자체 공급하여 고객의 에너지 안보 강화</li>
+                        <li>카본 뉴트럴: 저탄소 LNG, 신재생에너지로 고객의 탄소 감축 지원</li>
+                        <li>통합 솔루션: 에너지 생산에서 저장·운송·활용까지 원스톱 서비스</li>
+                        <li>기술 연계: 배터리, ESS, 수소 기술로 신사업 창출</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-balance-scale"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-arrow-up"></i>강점 (Strengths)</h3>
+                    <ul class="content-list">
+                        <li><strong>규모의 경제:</strong> 연 70조원대 매출로 국내 에너지 기업 중 최대 규모</li>
+                        <li><strong>포트폴리오 다양화:</strong> 정유, 화학, LNG, 발전, 배터리 등 다층적 사업 구조</li>
+                        <li><strong>LNG 진출:</strong> 호주, 페루 LNG 프로젝트로 중장기 안정적 수익원 확보</li>
+                        <li><strong>기술 경쟁력:</strong> 60년 정유·화학 경험과 첨단 배터리 기술 보유</li>
+                        <li><strong>수직 통합:</strong> 탐사에서 소비자까지의 가치사슬 전체 커버</li>
+                        <li><strong>자본력:</strong> 강한 재무 상황으로 신사업 투자 가능</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-arrow-down"></i>약점 (Weaknesses)</h3>
+                    <ul class="content-list">
+                        <li><strong>수익성 저하:</strong> 2025년 영업이익률 1.9~2.3%로 동종 기업 대비 낮음</li>
+                        <li><strong>배터리 손실:</strong> 2025년 배터리 대규모 손상차손(약 4.2조원) 반영</li>
+                        <li><strong>가격 경쟁:</strong> PX 등 석유화학 제품 시장의 과잉 공급과 가격 경쟁</li>
+                        <li><strong>구조 복잡성:</strong> 다양한 사업의 조정 및 통합 과정에서 효율성 저하 가능</li>
+                        <li><strong>배터리 경쟁력:</strong> CATL, BYD 등 중국 배터리 기업의 빠른 추격</li>
+                        <li><strong>화석연료 의존:</strong> 여전히 매출의 70% 이상이 석유·화학·LNG에서 발생</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>기회 (Opportunities)</h3>
+                    <ul class="content-list">
+                        <li><strong>LNG 수요 증가:</strong> 에너지 안보 우려로 글로벌 LNG 수요 증가</li>
+                        <li><strong>배터리 시장 성장:</strong> 전기차·ESS 시장의 가파른 성장</li>
+                        <li><strong>신재생 사업:</strong> 태양광, 풍력, 수소 등 신재생 사업 확대 기회</li>
+                        <li><strong>화학 순환경제:</strong> SK지오센트릭을 통한 순환경제 사업 성장</li>
+                        <li><strong>정책 지원:</strong> 정부의 그린뉴딜 및 탄소중립 관련 정책 지원</li>
+                        <li><strong>국제 협력:</strong> 해외 에너지 프로젝트 및 합작 기회</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top:0;border-top:1px solid var(--rule)">
+                <h3><i class="fas fa-exclamation-triangle"></i>위협 (Threats)</h3>
+                <p style="margin-bottom:20px">SK이노베이션이 직면한 외부 위협 요인들:</p>
+                <ul class="content-list">
+                    <li><strong>유가 변동성:</strong> 유가 급등락으로 인한 수익성 변동성 증가</li>
+                    <li><strong>탄소 규제:</strong> 글로벌 탄소 규제 강화로 화석연료 사업의 장기 전망 악화</li>
+                    <li><strong>배터리 기술 변화:</strong> 전고체, 고전압 배터리 등 신기술 경쟁 심화</li>
+                    <li><strong>중국 기업 추격:</strong> CATL, BYD, 중국 정유사의 빠른 기술 발전</li>
+                    <li><strong>환경 리스크:</strong> 유류 유출, 배터리 화재 등 환경·안전 리스크</li>
+                    <li><strong>지정학적 리스크:</strong> 해외 LNG 프로젝트의 정치적 리스크 증가</li>
+                    <li><strong>금리 인상:</strong> 자본 집약적 사업의 자금 조달 비용 증가</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-compass"></i>
+                <span>비즈니스 전략</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>중장기 전략 방향</h3>
+                <p>SK이노베이션은 "에너지 대전환 시대의 선도 기업"을 목표로 하며, 화석연료 기반 사업에서 신재생 및 친환경 에너지 사업으로의 전략적 전환을 추진 중입니다. 2024년 SK E&S 합병은 이러한 전략의 구체적 실행입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">1단계 (2024-2025년): 통합 안정화 및 구조조정</strong></p>
+                    <ul class="content-list">
+                        <li>SK E&S 합병으로 조직 통합 완료</li>
+                        <li>배터리 사업 구조조정 (손실 구간 극복)</li>
+                        <li>LNG 및 화학 사업 수익성 개선</li>
+                        <li>중복 거점 정리 및 효율화</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">2단계 (2025-2028년): 신재생 및 배터리 성장 본격화</strong></p>
+                    <ul class="content-list">
+                        <li>배터리 수익성 회복 및 시장 점유율 확대</li>
+                        <li>태양광·풍력 발전소 확대 투자</li>
+                        <li>수소 사업 상용화 추진</li>
+                        <li>ESS 및 통합 에너지 관리 서비스 확대</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">3단계 (2028-2035년): 탄소중립 에너지 기업으로의 변신</strong></p>
+                    <ul class="content-list">
+                        <li>화석연료 사업의 비중 감소 (현 70% → 40% 이하)</li>
+                        <li>신재생 에너지 및 배터리 비중 증가 (현 30% → 60% 이상)</li>
+                        <li>글로벌 탄소중립 목표 달성</li>
+                        <li>순환경제 사업 확대</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>사업 포트폴리오 전략</h3>
+                <p>SK이노베이션의 사업 포트폴리오는 다음과 같이 재편될 것으로 예상됩니다:</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">핵심 사업 (Core Business):</strong></p>
+                    <ul class="content-list">
+                        <li>LNG: 호주, 페루 프로젝트로 중장기 안정 수익 창출</li>
+                        <li>배터리: SK온의 글로벌 경쟁력 강화 (2026년 흑자 전환 목표)</li>
+                        <li>신재생: 태양광, 풍력, 수소의 성장 사업화</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">성숙 사업 (Cash Cow):</strong></p>
+                    <ul class="content-list">
+                        <li>정유: 안정적 현금 흐름 창출</li>
+                        <li>PX 및 석유화학: 수익성 개선 추진</li>
+                        <li>윤활유 (SK엔무브): 고마진 사업 확대</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">신사업 (New Business):</strong></p>
+                    <ul class="content-list">
+                        <li>수소: 그린 수소 생산 및 충전 사업</li>
+                        <li>CCUS: 이산화탄소 포집 및 활용</li>
+                        <li>순환경제: SK지오센트릭의 플라스틱 재활용</li>
+                        <li>에너지 통합 관리: 스마트 에너지 솔루션</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>성과 목표 및 KPI</h3>
+                <p style="margin-bottom:20px">SK이노베이션이 발표한 2026년 성과 목표:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2025년 (실제)</th>
+                            <th>2026년 (목표)</th>
+                            <th>성장률</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>매출액</td>
+                            <td>약 50조원 (추정)</td>
+                            <td>70.1조원</td>
+                            <td>+40.2%</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익</td>
+                            <td>약 0.3~0.5조원</td>
+                            <td>1.33~1.6조원</td>
+                            <td>+208% (중간값)</td>
+                        </tr>
+                        <tr>
+                            <td>배터리 영업이익</td>
+                            <td>약 -4.2조원</td>
+                            <td>0.05~0.1조원</td>
+                            <td>흑자전환</td>
+                        </tr>
+                        <tr>
+                            <td>배터리 판매량</td>
+                            <td>약 100GWh</td>
+                            <td>120~130GWh</td>
+                            <td>+25~30%</td>
+                        </tr>
+                        <tr>
+                            <td>신재생에너지 용량</td>
+                            <td>약 5GW</td>
+                            <td>6.5~7GW</td>
+                            <td>+30~40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-line-chart"></i>수익 추이 및 전망</h3>
+                <p>SK이노베이션의 매출액은 2024년 SK E&S 합병으로 대폭 증가했으며, 2025년의 배터리 손상차손을 극복하고 2026년부터 본격적인 수익성 개선이 예상됩니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">매출 추이 및 전망:</strong></p>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:25%"></div>
+                            </div>
+                            <div class="bar-value">36.0</div>
+                            <div class="bar-label">2022년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:35%"></div>
+                            </div>
+                            <div class="bar-value">50.5</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:55%"></div>
+                            </div>
+                            <div class="bar-value">80.2</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:60%"></div>
+                            </div>
+                            <div class="bar-value">56.0</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:85%"></div>
+                            </div>
+                            <div class="bar-value">70.1</div>
+                            <div class="bar-label">2026년(목표)</div>
+                        </div>
+                    </div>
+                    <p style="margin-top:20px;font-size:13px;color:var(--text-secondary)">단위: 조원 (CAGR 2022-2026: +18.4%)</p>
+                </div>
+
+                <div style="margin-top:24px">
+                    <p><strong style="color:var(--gold);">분기별 추세 (2025년 예상):</strong></p>
+                    <ul class="content-list">
+                        <li>1분기: 유가 약세로 매출 부진</li>
+                        <li>2분기: 석유화학 마진 개선</li>
+                        <li>3분기: LNG 및 발전 이익 호조</li>
+                        <li>4분기: 연말 수요 증가 및 배터리 개선 가시화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>영업이익 및 수익성</h3>
+                <p>SK이노베이션의 영업이익은 2025년의 배터리 손상차손(약 4.2조원) 이후 2026년부터 급격한 회복이 예상됩니다. 이는 배터리 수익성 개선과 석유화학 부문의 마진 개선에 따른 것입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">영업이익 추이:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2023년</span>
+                            <span class="progress-label-value">1.2조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2024년 (실제)</span>
+                            <span class="progress-label-value">0.8조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2025년 (추정)</span>
+                            <span class="progress-label-value">-3.5조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 0%; background: rgba(201, 169, 98, 0.3);"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026년 (목표)</span>
+                            <span class="progress-label-value">1.33~1.6조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 55%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:24px">
+                    <p><strong style="color:var(--gold);">영업이익률 분석:</strong></p>
+                    <ul class="content-list">
+                        <li>2023년: 3.2% (높은 유가·화학 마진)</li>
+                        <li>2024년: 1.0% (합병 통합 비용 및 배터리 손실)</li>
+                        <li>2025년: -6.2% (배터리 대규모 손상차손)</li>
+                        <li>2026년: 1.9~2.3% (배터리 구조조정 효과)</li>
+                        <li>2027년+: 2.5~3.0% (정상화 기대)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>자산·부채 및 재무 건전성</h3>
+                <p style="margin-bottom:20px">SK이노베이션의 재무 구조 (2024년 말 추정):</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>규모 (조원)</th>
+                            <th>평가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>총자산</strong></td>
+                            <td>약 120</td>
+                            <td>자본 집약적 에너지 기업 특성</td>
+                        </tr>
+                        <tr>
+                            <td><strong>순자산</strong></td>
+                            <td>약 45</td>
+                            <td>자산대비 자본 비중 37.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>차입금</strong></td>
+                            <td>약 30</td>
+                            <td>부채비율 약 67%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>유동자산</strong></td>
+                            <td>약 35</td>
+                            <td>유동비율 약 140%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>현금</strong></td>
+                            <td>약 12</td>
+                            <td>단기 유동성 양호</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자본력</strong></td>
+                            <td>평가</td>
+                            <td>BBB+ 등급 (안정적)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top:24px">
+                    <p><strong style="color:var(--gold);">재무 건전성 평가:</strong></p>
+                    <ul class="content-list">
+                        <li><strong>긍정적 요인:</strong> 충분한 현금 보유, 영업 현금흐름 우수, 신용등급 안정</li>
+                        <li><strong>리스크 요인:</strong> 높은 부채비율, 자본 집약적 사업 특성, 유가 변동성</li>
+                        <li><strong>전망:</strong> 2026년 이후 수익성 회복으로 부채비율 개선 예상</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i>밸류에이션 분석</h3>
+                <p>SK이노베이션의 현재 밸류에이션은 2025년 배터리 손실을 반영하고 있으며, 2026년 이후 수익성 회복에 따른 재평가가 예상됩니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">현재 밸류에이션 (2026년 4월 기준):</strong></p>
+                    <ul class="content-list">
+                        <li><strong>시가총액:</strong> 약 17.2조원</li>
+                        <li><strong>주가:</strong> 약 100,000원</li>
+                        <li><strong>PER (2026년 목표 EPS 기준):</strong> 약 13배 (중간값)</li>
+                        <li><strong>PSR (2026년 목표 매출 기준):</strong> 약 0.25배</li>
+                        <li><strong>PBR (순자산 기준):</strong> 약 0.38배</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">밸류에이션 시나리오:</strong></p>
+                    <ul class="content-list">
+                        <li><strong>베어 케이스 (배터리 회복 지연):</strong> 2026년 수익성 미달 시 PER 10배, 기업가치 약 10~12조원</li>
+                        <li><strong>베이스 케이스 (예상대로 회복):</strong> 2026년 영업이익 1.5조원 시 PER 11~12배, 기업가치 약 16~18조원</li>
+                        <li><strong>불 케이스 (예상 초과):</strong> 2026년 영업이익 1.8조원 이상 시 PER 13~14배, 기업가치 약 20~22조원</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">밸류에이션 드라이버:</strong> SK이노베이션의 주가는 배터리 부문의 수익성 회복, 석유화학 마진 추이, LNG 수익 안정성, 유가 전망 등이 주요 변수입니다. 특히 2026년 배터리 영업이익 수준이 주가의 상방·하방 압박을 결정할 것으로 판단됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i>FLOVAH Insights: 핵심 투자 관점</h3>
+                <p>SK이노베이션은 현재 "변환기(Transition Period)"에 있는 기업으로 평가됩니다. 화석연료 기반의 안정적 현금 창출 능력을 유지하면서 동시에 신재생·배터리·신사업으로의 구조 전환을 추진 중입니다. 2025년의 배터리 손상차손은 일시적 충격이며, 2026년 이후의 수익성 회복이 핵심입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">투자 매력도:</strong> SK이노베이션의 주요 매력은 첫째, 에너지 전환 시대에 화석연료와 신재생 에너지를 동시에 보유한 독특한 포지셔닝, 둘째, 2026년 이후 기대되는 뚜렷한 수익성 회복 시나리오, 셋째, LNG와 배터리라는 두 개의 장기 성장 동력 확보입니다. 특히 2026년 영업이익이 목표 범위(1.33~1.6조원)를 달성할 경우, 주가는 현재 대비 상당한 상승 여력을 갖추고 있습니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">주요 리스크 요인:</strong> 반면 리스크도 명확합니다. 첫째, 배터리 부문의 수익성 회복 지연(특히 CATL 등 중국 경쟁사의 가격 경쟁), 둘째, 유가 급락으로 인한 정유·화학 마진 악화, 셋째, 글로벌 탄소 규제 강화로 인한 화석연료 수요 감소 장기 추세, 넷째, SK E&S 합병으로 인한 조직 통합 과정에서의 시너지 미달 리스크입니다. 특히 배터리 영업이익 목표 미달 시 주가 하락 폭이 클 수 있습니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">투자 등급:</strong> FLOVAH Insights는 SK이노베이션에 대해 "매수 (BUY)" 등급을 제시합니다. 다만 이는 2026년 배터리 구조조정 완료 및 수익성 회복을 전제로 한 평가입니다. 배터리 부문의 실적 발표가 주가의 상방·하방 압박을 결정할 것으로 판단됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i>모니터링 핵심 지표 (분기별 확인 사항)</h3>
+                <p>투자자가 분기별로 확인해야 할 핵심 성과 지표(KPI)는 다음과 같습니다:</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">1. 배터리 부문 실적:</strong> SK온의 분기별 매출, 영업이익(또는 손실), 판매량, 마진율을 주시합니다. 특히 2026년 1분기부터 흑자 전환 여부가 중요합니다. 판매량 목표 달성 여부(목표: 연간 120~130GWh), CATL 등 경쟁사 대비 가격 경쟁력도 모니터링합니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">2. 정유·화학 부문 수익성:</strong> PX 가격, 올레핀 마진, 석유제품 마진 추이를 확인합니다. 유가가 배럴당 60~80달러 대에 안정적으로 유지되는지, 화학 마진은 개선되고 있는지 판단합니다. 석유화학 부문의 영업이익률 목표(2~3%) 달성 추이도 중요합니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">3. LNG 사업 기여도:</strong> SK E&S 합병 후 LNG 부문의 영업이익 기여도를 확인합니다. 호주 Ichthys, 페루 LNG 프로젝트의 생산량, 판매량, 판매가격 추이를 모니터링합니다. LNG가 안정적 현금 창출원이 되고 있는지 평가합니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">4. 신재생·신사업 진전:</strong> 태양광·풍력 발전소 확대(목표: 6.5~7GW), 수소 사업 진행 상황, SK지오센트릭의 순환경제 사업 성장, ESS 판매량 등을 추적합니다. 신사업의 수익 기여도 상향 추세 여부를 확인합니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">5. 재무·자금 상황:</strong> 부채비율 추이(목표: 60% 이하), 영업 현금흐름, 배당금 정책, 신규 투자 계획 등을 모니터링합니다. 배터리 손실로 인한 재무 건전성 악화 여부를 확인합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>FLOVAH Insights 최종 평가</h3>
+                <p>SK이노베이션은 에너지 대전환 시대에 기저에너지(석유, 가스)와 신재생 에너지(태양광, 풍력, 배터리)를 동시에 보유한 독특한 포지셔닝을 갖춘 기업입니다.</p>
+
+                <div style="margin-top:20px">
+                    <p><strong style="color:var(--gold);">강점의 재강화:</strong> SK이노베이션은 60년의 정유·화학 경험으로 축적한 기술 우위와 LNG 프로젝트를 통한 중장기 수익 안정성을 갖추고 있습니다. SK E&S 합병으로 아태 지역 최대 규모의 통합에너지 회사가 되었으며, 이는 글로벌 에너지 회사들과의 경쟁에서 유리한 위치를 제공합니다. 특히 2026년 이후 배터리, LNG, 신재생 사업의 동시 성장이 달성된다면, 기업 가치는 현재 대비 상당히 상향 평가될 것으로 기대됩니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">전환의 어려움:</strong> 그러나 화석연료 기반 사업 구조에서 신재생 중심으로의 전환은 결코 쉽지 않습니다. 배터리 부문의 경우 중국 기업과의 가격 경쟁이 심화되고 있으며, 정유·화학 부문은 구조적 수익성 저하에 직면해 있습니다. 또한 글로벌 탄소 규제 강화는 화석연료 기반 사업의 장기 전망을 불확실하게 만들고 있습니다.</p>
+
+                    <p style="margin-top:12px;"><strong style="color:var(--gold);">투자자의 선택:</strong> 따라서 SK이노베이션에 대한 투자는 투자자의 시간 지평과 리스크 선호도에 따라 결정됩니다. 2026년 배터리 회복 및 수익성 개선을 믿고 있는 단기~중기 투자자에게는 매수 기회이지만, 장기적으로 화석연료 사업의 구조적 쇠퇴를 우려하는 투자자에게는 신중한 접근이 필요합니다. FLOVAH Insights는 향후 3년(2026~2028년) 기간 SK이노베이션의 수익성 회복과 신재생 사업 성장을 긍정적으로 평가하며, "매수" 등급을 유지합니다.</p>
+                </div>
+            </div>
+
+            <!-- 면책 조항 -->
+            <div style="margin-top:30px;padding:20px;background:var(--cream);border:1px solid var(--border);border-radius:0">
+                <p style="font-size:.85rem;color:var(--text-muted);line-height:1.7"><strong>면책 조항:</strong> 본 리포트는 FLOVAH Insights에서 제공하는 기업 분석 자료로, 공개 정보를 기반으로 작성되었습니다. 리포트에 포함된 내용은 정보 제공 목적이며, 투자 권유나 투자 조언을 목적으로 하지 않습니다. 투자 결정은 투자자 본인의 판단과 책임하에 이루어져야 하며, FLOVAH Insights는 본 리포트의 활용으로 인한 투자 손실에 대해 법적 책임을 지지 않습니다. 본 리포트에 사용된 데이터는 금융감독원 전자공시시스템, 한국거래소, 각종 산업 리서치 기관의 공개 자료, 기업 공시 자료 등을 기반으로 하며, 일부 수치는 추정치를 포함하고 있습니다. 추정치는 합리적인 가정에 기반하고 있으나, 실제 결과와 차이가 발생할 수 있습니다. SK이노베이션 경영진 인터뷰, 비공개 내부 자료, 미공개 중요정보 등은 본 분석에 포함되지 않았습니다. 리포트의 저작권은 FLOVAH Insights에 있으며, 사전 허가 없이 상업적 목적으로 복제하거나 배포할 수 없습니다. 개인적 연구 및 참고 목적으로의 사용은 출처를 명시하는 조건하에 허용됩니다. 리포트 작성일: 2026년 4월 5일 | 분석가: FLOVAH Research Team | 다음 업데이트 예정: 2026년 4월 12일 | 리포트 버전: 1.0 | 본 리포트는 멤버십 구독 고객에게 독점 제공되는 프리미엄 심층 기업 분석 및 전략 자문 컨설팅 서비스입니다</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ════════ LAST-UPDATE-BLOCK ════════ -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 05일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 80px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — SK이노베이션 사업보고서, 분기보고서, 감사보고서 (2022–2025) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> SK이노베이션 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료 <span style="color:var(--text-muted);font-size:.78em">sk-innovation.com/IR</span></p>
+                <p><span style="color:var(--text-light)">4.</span> SK이노베이션 공식 웹사이트 — 제품 포트폴리오 및 기술 소개 <span style="color:var(--text-muted);font-size:.78em">sk-innovation.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> SK온 공식 웹사이트 — 배터리 기술 및 사업 현황 <span style="color:var(--text-muted);font-size:.78em">sk-on.com</span></p>
+                <p><span style="color:var(--text-light)">6.</span> 한국에너지공단 — 에너지 통계 및 시장 데이터 <span style="color:var(--text-muted);font-size:.78em">energy.or.kr</span></p>
+                <p><span style="color:var(--text-light)">7.</span> IEA (국제에너지기구) — "Global Energy Outlook 2025" <span style="color:var(--text-muted);font-size:.78em">iea.org</span></p>
+                <p><span style="color:var(--text-light)">8.</span> BloombergNEF — 전기차 배터리 시장 리포트 (2025) <span style="color:var(--text-muted);font-size:.78em">bnef.bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">9.</span> BNEF (Bloomberg NEF) — "Battery Pack Prices Falling to an Average of $139/kWh in 2025" <span style="color:var(--text-muted);font-size:.78em">bnef.bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">10.</span> Wood Mackenzie — "LNG Market & Forecast Report 2025" <span style="color:var(--text-muted);font-size:.78em">woodmac.com</span></p>
+                <p><span style="color:var(--text-light)">11.</span> S&P Global Platts — 석유, 가스, 화학 가격 지수 <span style="color:var(--text-muted);font-size:.78em">pubs.spglobal.com/platts</span></p>
+                <p><span style="color:var(--text-light)">12.</span> ICIS (Independent Chemicals Information Services) — PX, 올레핀 시장 분석 <span style="color:var(--text-muted);font-size:.78em">icis.com</span></p>
+                <p><span style="color:var(--text-light)">13.</span> 한국에너지정보문화재단 — "한국의 에너지 현황" 월간 보고서 <span style="color:var(--text-muted);font-size:.78em">keic.kr</span></p>
+                <p><span style="color:var(--text-light)">14.</span> 나이스신용평가, 한국기업평가 — SK이노베이션 신용등급 및 재무분석 자료 <span style="color:var(--text-muted);font-size:.78em">nicerating.com</span></p>
+                <p><span style="color:var(--text-light)">15.</span> GS칼텍스, 현대오일뱅크, 삼성SDI 등 경쟁사 — DART 공시 자료 및 IR 발표 (경쟁사 비교 분석용) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">16.</span> CB Insights — "State of Alternative Energy & Emerging Tech" (2025) <span style="color:var(--text-muted);font-size:.78em">cbinsights.com</span></p>
+                <p><span style="color:var(--text-light)">17.</span> BNEF + Wood Mackenzie 통합 분석 — 전역 에너지 및 배터리 시장 전망 <span style="color:var(--text-muted);font-size:.78em">multiple sources</span></p>
+                <p><span style="color:var(--text-light)">18.</span> Climate Analytics — "Net-Zero 2050 Pathways and Investment Requirements" <span style="color:var(--text-muted);font-size:.78em">climate-analytics.org</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.04.05 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

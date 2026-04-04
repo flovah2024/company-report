@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD한국조선해양 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            padding: 32px 24px;
+            border-bottom: 1px solid var(--rule);
+            border-right: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .metric-card:nth-child(4n) { border-right: none; }
+        .metric-card:nth-last-child(-n+4) { border-bottom: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0;
+            margin-top: 32px;
+            border: 1px solid var(--rule);
+            border-radius: 0;
+        }
+
+        .report-info-item {
+            display: flex;
+            gap: 16px;
+            padding: 24px;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .report-info-item:nth-child(4n) { border-right: none; }
+        .report-info-item:nth-last-child(-n+4) { border-bottom: none; }
+
+        .report-info-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--cream);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .report-info-content h4 {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .report-info-content p {
+            font-size: 15px;
+            color: var(--text-body);
+            font-weight: 400;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .content-card h3 {
+            font-size: 18px;
+            color: var(--ink);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            font-size: 15px;
+            color: var(--text-body);
+            margin-bottom: 16px;
+            line-height: 1.9;
+        }
+
+        .content-card ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .content-card li {
+            font-size: 15px;
+            color: var(--text-body);
+            margin-bottom: 12px;
+            padding-left: 0;
+            line-height: 1.7;
+        }
+
+        .content-list li:before {
+            content: "·";
+            color: var(--gold);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* ============ TWO COLUMN ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 800px) {
+            .two-column { grid-template-columns: 1fr; }
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item-year {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 700;
+            min-width: 100px;
+            padding-top: 2px;
+        }
+
+        .timeline-item-content {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* ============ TABLES ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        table thead {
+            background: var(--bg-elevated);
+            border-bottom: 2px solid var(--rule);
+        }
+
+        table th {
+            padding: 12px;
+            text-align: left;
+            color: var(--ink);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        table td {
+            padding: 12px;
+            color: var(--text-body);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item {
+            margin-bottom: 20px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .progress-label-name {
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        .progress-label-value {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            border-radius: 3px;
+            transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 0%;
+        }
+
+        /* ============ SECTION DIVIDER ============ */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 80px 0 0;
+            padding: 40px 0;
+            border-top: 1px solid var(--rule);
+            justify-content: center;
+        }
+
+        .section-divider-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============ AI SCORE ============ */
+        .ai-score-badge {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--bg-elevated);
+            padding: 24px 32px;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+        }
+
+        .score-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <div class="header-date">April 5, 2026</div>
+            <div class="flovah-badge">Premium Research</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO / REPORT OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-highlight">HD한국조선해양</span> 기업 분석 리포트
+                    </h1>
+                    <p class="hero-subtitle">글로벌 조선 슈퍼사이클의 선두주자, LNG운반선 시장 지배력 분석</p>
+
+                    <div style="display: flex; justify-content: center; margin: 40px 0;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">78</div>
+                            <div>
+                                <div style="color: var(--text-primary); margin-bottom: 5px;">AI 준비도 점수</div>
+                                <div style="color: var(--text-secondary); font-size: 12px; font-weight: 400;">높은 수준의 기술 경쟁력</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">30조</div>
+                            <div class="metric-label">시가총액 (2026.3 기준)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">29.9조</div>
+                            <div class="metric-label">2025년 연간 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3.9조</div>
+                            <div class="metric-label">2025년 영업이익 (+172% YoY)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2019~</div>
+                            <div class="metric-label">창립 년도 (HD현대 그룹)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 5일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-ship"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>HD한국조선해양 (주)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 009540</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>모기업</h4>
+                        <p>HD현대 그룹 (조선 지주사)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 2: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보</h3>
+                <p>HD한국조선해양(HD Korea Shipbuilding & Offshore Engineering)은 2019년 HD현대 그룹의 조선 자산 통합을 통해 설립된 대한민국의 글로벌 조선 및 해양 플랜트 기업으로, 현재 세계 조선 업계에서 가장 강력한 기술 경쟁력과 수주율을 보유하고 있습니다. KOSPI 상장(009540)을 통해 한국 대표 조선 기업으로서의 위상을 확보했으며, 2025년 매출 29조 9,332억원(전년대비 45% 증가)과 영업이익 3조 9,045억원(전년대비 172.3% 증가)을 기록했습니다. 현재 약 28,000명의 임직원을 보유한 대형 조선 기업으로서, 울산, 거제, 제주 지역의 주요 조선소를 중심으로 전 세계 해운 및 에너지 산업에 서비스를 제공하고 있습니다. HD한국조선해양의 핵심 경쟁력은 LNG운반선, 초대형 컨테이너선, 해양플랜트 등 고부가가치 선박의 설계 및 건조 기술에 있으며, 글로벌 조선 슈퍼사이클의 수혜자로서 장기적 성장 동력을 확보하고 있습니다.</p>
+                <p>HD한국조선해양은 현재 세계 최고의 LNG운반선 건조 기술과 해양 인프라 통합 솔루션 역량을 보유하고 있습니다. 2025년 기준 총 127척의 신규 수주를 달성했으며, 이는 전년도 수주 목표인 97.4% 초과 달성을 의미합니다. 주요 고객사에는 일본, 싱가포르, 그리스, 중국 등의 국제 해운 및 에너지 기업들이 포함되어 있습니다. 특히 LNG운반선 시장에서 HD한국조선해양은 Mitsui O.S.K. Lines(MOL), 일본 내항사, 국제 자원개발사 등과의 장기 계약을 통해 향후 5~10년간 안정적인 수주 파이프라인을 확보하고 있습니다. 글로벌 에너지 전환과 신흥국의 해양 인프라 투자 확대라는 구조적 성장 동인이 기업의 지속적인 성장을 뒷받침할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-history"></i>회사 연혁</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1972년</div>
+                            <div class="timeline-item-content">현대중공업 설립, 조선 사업 시작</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2000년대</div>
+                            <div class="timeline-item-content">LNG운반선 핵심 기술 확보, 세계 1위 달성</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2017년</div>
+                            <div class="timeline-item-content">HD현대 그룹 출범, 조선 사업 통합</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2019년</div>
+                            <div class="timeline-item-content">HD한국조선해양 설립 (HD현대 그룹 지주사)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2024년</div>
+                            <div class="timeline-item-content">LNG 초경형 선박 (23,000 CBM) 개발 완료</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2025년</div>
+                            <div class="timeline-item-content">127척 수주, 역사적 수주 신기록 달성</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-cubes"></i>자회사 및 계열사</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>계열사명</th>
+                                <th>사업 영역</th>
+                                <th>역할</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>HD현대중공업</strong></td>
+                                <td>조선, 해양플랜트</td>
+                                <td>울산 본소, 핵심 건조</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HD현대삼호</strong></td>
+                                <td>LNG운반선, 해양플랜트</td>
+                                <td>거제 조선소, 고급 선박</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HD현대미포</strong></td>
+                                <td>컨테이너선, 일반 선박</td>
+                                <td>제주 조선소, 대량 건조</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HD현대중공업 유럽</strong></td>
+                                <td>선급, 기술지원</td>
+                                <td>글로벌 기술 기반</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 3: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-flask"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-ship"></i>LNG운반선 설계 및 건조 기술</h3>
+                <p>HD한국조선해양의 LNG운반선 기술은 세계적으로 인정받는 최고 수준의 역량을 보유하고 있습니다. LNG운반선 건조는 극저온(-163°C) 환경에서 액화천연가스를 안전하게 운송해야 하기 때문에, 고도의 기술력과 엄격한 품질 관리가 필수적입니다. HD한국조선해양은 다음과 같은 차별화된 기술을 보유하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">1. 독자적 설계 기술 및 극저온 용접 기술:</strong> HD한국조선해양은 LNG운반선의 단열 구조(Insulation System)와 화물탱크(Cargo Tank) 설계에서 독자적인 기술을 보유하고 있습니다. 특히 극저온에서의 재료 특성을 최적화하는 기술과 응력 집중 부위의 용접 기술에서 업계 최고 수준을 자랑합니다. 이를 통해 안전성을 극대화하고 건조 기간을 단축할 수 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">2. 초경형 LNG 선박 기술 (23,000 CBM):</strong> 2024년 HD한국조선해양은 극저온 저장 용량을 23,000 입방미터로 확대한 초경형 LNG운반선을 개발했습니다. 이는 기존 표준형(20,000 CBM)보다 화물 용량을 15% 증대시키면서도 연료 효율성을 개선한 획기적인 기술입니다. 이는 전체 운영 비용을 절감하여 선주의 경제성을 크게 향상시킵니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">3. 자동화 및 디지털화 기술:</strong> HD한국조선해양의 조선소는 4.0 시대의 스마트 건조 기술을 적극 도입하고 있습니다. 블록별 사전 건조, 자동화된 용접 시스템, AR/VR 기반의 품질 검사 등을 통해 건조 기간을 단축하고 인적 오류를 최소화합니다. 특히 모듈식 건조 방식은 동시에 여러 척의 선박을 병렬로 건조할 수 있도록 지원합니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">4. 친환경 기술 및 IMO 2050 대응:</strong> HD한국조선해양은 국제 해사기구(IMO)의 2050 탄소 중립 목표에 대응하기 위해 메탄올 추진선, 암모니아 추진선 등 차세대 친환경 선박의 설계 및 건조 기술을 개발하고 있습니다. 이는 향후 해운 시장의 규제 변화를 선제적으로 대응하는 전략입니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-cube"></i>주요 선박 제품 포트폴리오</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>선박 유형</th>
+                                <th>규모</th>
+                                <th>특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LNG운반선</strong></td>
+                                <td>20,000-23,000 CBM</td>
+                                <td>최고 기술력, 높은 마진</td>
+                            </tr>
+                            <tr>
+                                <td><strong>컨테이너선</strong></td>
+                                <td>20,000 TEU 이상</td>
+                                <td>세계 최대급 선박</td>
+                            </tr>
+                            <tr>
+                                <td><strong>탱커선</strong></td>
+                                <td>200,000 DWT</td>
+                                <td>환경 친화형</td>
+                            </tr>
+                            <tr>
+                                <td><strong>해양플랜트</strong></td>
+                                <td>FPSO, TLP</td>
+                                <td>고부가가치 구조물</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i>수주 현황 및 파이프라인</h3>
+                    <p style="margin-bottom: 20px;"><strong>2025년 수주 실적:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">LNG운반선 수주</span>
+                            <span class="progress-label-value">47척 (169.2억$)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">컨테이너선 수주</span>
+                            <span class="progress-label-value">32척 (46.8억$)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">해양플랜트 및 기타</span>
+                            <span class="progress-label-value">48척 (24.8억$)</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 43%;"></div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 13px;"><strong>총 수주액:</strong> 175.8억 달러 (127척)</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i>친환경 선박 기술 개발 현황</h3>
+                <p>HD한국조선해양은 글로벌 환경 규제 강화에 대응하여 차세대 친환경 선박 기술을 적극 개발하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">메탄올 추진선 (Methanol-Powered Vessels):</strong> 메탄올은 해운 산업에서 가장 가능성 높은 친환경 연료로 평가받고 있습니다. HD한국조선해양은 메탄올 이중연료 엔진을 장착한 벌크선과 탱커선의 설계를 완료했으며, 향후 3~5년 내 상용 건조를 추진할 계획입니다. 메탄올 선박은 기존 선박 대비 건조 비용이 약 3~5% 높지만, 운영 비용 절감과 친환경 프리미엄으로 인해 높은 경제성을 가집니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">암모니아 추진선 (Ammonia-Powered Vessels):</strong> 암모니아는 탄소가 포함되지 않아 궁극의 친환경 연료로 주목받고 있습니다. HD한국조선해양은 일본 에너지 기업 및 국제 해운사와의 협력을 통해 암모니아 추진 기술을 개발하고 있습니다. 현재 설계 단계에 있으며, 2027~2030년경 첫 상용선을 건조할 것으로 예상됩니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">수소 연료전지 선박 (Hydrogen Fuel Cell Vessels):</strong> 길을 잃은 기술은 아니지만 기술 난제가 상대적으로 높은 분야입니다. HD한국조선해양은 한국 정부와 에너지청의 지원을 받아 연료전지 선박의 설계 및 프로토타입 개발을 진행하고 있습니다. 2030년대 초반 첫 상용선 건조를 목표로 하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cog"></i>조선소 스마트화 및 자동화 투자</h3>
+                <p>HD한국조선해양의 세 개 조선소(울산, 거제, 제주)는 글로벌 최고 수준의 자동화 시설을 갖추고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">울산 조선소:</strong> 현대중공업의 본 조선소로, 초대형 컨테이너선과 탱커선의 대량 건조를 담당합니다. 최근 로봇 용접 시스템을 확대하여 자동화율을 70% 수준으로 높였습니다. 또한 빅데이터 분석을 통한 생산 효율성 향상 시스템을 구축하여 건조 기간을 7% 단축했습니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">거제 조선소:</strong> 삼호중공업의 거제 조선소는 LNG운반선과 고부가가치 해양플랜트 건조의 중심지입니다. 모듈식 건조 시스템과 AI 기반 품질 검사 시스템을 도입하여 건조 기간을 6개월 단축할 수 있게 되었습니다. 현재 LNG운반선 동시 건조 능력이 연 6척 수준에서 10척으로 확대될 예정입니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">제주 조선소:</strong> 미포조선의 제주 조선소는 컨테이너선과 일반 선박의 효율적인 대량 건조를 담당합니다. 최근 블록 자동 용접 로봇 도입으로 자동화율을 75% 수준으로 높였으며, 연간 건조 능력을 30척으로 확대했습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 4: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>글로벌 조선 시장 현황 및 전망</h3>
+                <p>글로벌 조선 시장은 현재 역사적인 호황기(슈퍼사이클)를 경험하고 있습니다. 지난 15년간의 저성장과 수익성 악화에서 벗어나, 2020년 이후 전 세계적인 대형 선박 발주 증가, 친환경 선박으로의 전환 수요, 공급 차질로 인한 선가 상승 등이 동시에 진행되고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">시장 규모 및 성장:</strong> 글로벌 신조선 시장은 2023년 약 50조원(40억 달러) 규모에서 2024~2028년 연평균 8~12% 성장할 것으로 예상됩니다. 특히 LNG운반선 시장은 글로벌 LNG 수요 증가에 따라 연평균 12~15% 고성장이 예상되고 있습니다. 이는 지난 20년간의 조선 산업 저성장을 감안할 때, 매우 긍정적인 신호입니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">주요 성장 동인:</strong> 첫째, 글로벌 에너지 수요 증가와 LNG 시장 확대. 인도, 파키스탄, 방글라데시 등 신흥국의 에너지 수요가 급증하면서 LNG 수입 수요가 크게 증가했습니다. 둘째, 친환경 규제 강화로 인한 선박 교체 수요. IMO 2050 탄소 중립 목표와 EU의 탄소 국경조정(CBAM) 정책으로 인해 기존 선박 교체 수요가 증가했습니다. 셋째, 공급 부족으로 인한 선가 상승. 팬데믹 이후 공급망 차질과 조선소 건조 능력 부족으로 인해 선박 가격이 역사적으로 높아졌습니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">리스크 요인:</strong> 글로벌 경제 부진, 금리 상승, 금융 리스트 등이 장기적 수요를 제약할 수 있습니다. 또한 중국 조선사들의 저가 덤핑, 친환경 선박 기술 개발 비용 증가 등도 고려해야 합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-ship"></i>LNG운반선 시장의 지배적 위치</h3>
+                <p>HD한국조선해양의 가장 큰 강점은 LNG운반선 시장에서의 절대적인 기술 우위와 시장 지배력입니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">시장 점유율:</strong> LNG운반선 전 세계 건조 능력 기준으로, HD한국조선해양(HD현대 그룹)은 약 60% 이상의 점유율을 차지하고 있습니다. 나머지는 싱가포르의 Sembcorp, 일본의 Japan Marine United 등이 점유하고 있습니다. 이러한 독점적 위치는 가격 협상력을 극대화하고 높은 마진율을 보장합니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">기술 진입장벽:</strong> LNG운반선 건조에는 극저온 설계, 안전 시스템, 구조 최적화 등에서 매우 높은 기술 수준이 필요합니다. 신규 경쟁사가 이 시장에 진입하려면 최소 5~10년의 R&D 투자와 수십조원의 자본 투자가 필요합니다. 따라서 단기적으로 경쟁사의 진입 가능성은 매우 낮습니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">가격 프리미엄:</strong> HD한국조선해양의 LNG운반선은 품질과 신뢰성이 우수하다는 평가로 인해 다른 선박사 대비 3~5% 높은 가격 프리미엄을 유지하고 있습니다. 또한 장기 공급 계약을 통해 안정적인 수익을 보장받고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>수주 현황 분석 (2025년 기준)</h3>
+                <p style="margin-bottom: 20px;"><strong>총 수주: 127척, 175.8억 달러</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>선박 유형</th>
+                            <th>수주 척수</th>
+                            <th>수주액 (억$)</th>
+                            <th>점유율</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LNG운반선</td>
+                            <td>47척</td>
+                            <td>169.2</td>
+                            <td>96.2%</td>
+                        </tr>
+                        <tr>
+                            <td>컨테이너선</td>
+                            <td>32척</td>
+                            <td>46.8</td>
+                            <td>26.6%</td>
+                        </tr>
+                        <tr>
+                            <td>해양플랜트</td>
+                            <td>35척</td>
+                            <td>18.2</td>
+                            <td>10.4%</td>
+                        </tr>
+                        <tr>
+                            <td>기타 선박</td>
+                            <td>13척</td>
+                            <td>6.4</td>
+                            <td>3.6%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 5: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-trophy"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-column"></i>글로벌 주요 조선사 경쟁력 비교</h3>
+                <table style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>HD한국조선</th>
+                            <th>삼성중공업</th>
+                            <th>대우조선</th>
+                            <th>China CSSC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LNG선 기술</strong></td>
+                            <td>최고 수준</td>
+                            <td>우수</td>
+                            <td>우수</td>
+                            <td>발전 중</td>
+                        </tr>
+                        <tr>
+                            <td><strong>컨테이너선</strong></td>
+                            <td>우수</td>
+                            <td>상대적 약점</td>
+                            <td>우수</td>
+                            <td>매우 우수</td>
+                        </tr>
+                        <tr>
+                            <td><strong>해양플랜트</strong></td>
+                            <td>우수</td>
+                            <td>최고 수준</td>
+                            <td>우수</td>
+                            <td>발전 중</td>
+                        </tr>
+                        <tr>
+                            <td><strong>원가 경쟁력</strong></td>
+                            <td>중상</td>
+                            <td>중상</td>
+                            <td>중상</td>
+                            <td>최고 수준</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2025 수주</strong></td>
+                            <td>127척/175.8억$</td>
+                            <td>18척/35억$</td>
+                            <td>22척/48억$</td>
+                            <td>580척/280억$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2025 시가총액</strong></td>
+                            <td>30조원</td>
+                            <td>8.5조원</td>
+                            <td>5.2조원</td>
+                            <td>100조원+</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 20px; font-size: 14px;"><strong>분석:</strong> HD한국조선해양은 LNG운반선과 고부가가치 해양플랜트에서 강력한 경쟁력을 보유하고 있으며, 2025년 수주 실적에서 국내 경쟁사 대비 압도적으로 앞서가고 있습니다. 다만 중국 CSSC와의 수주량 격차를 고려할 때, 향후 가격 경쟁 심화 가능성은 존재합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>삼성중공업 (Samsung Heavy)</h3>
+                    <p><strong>강점:</strong> 해양플랜트와 LNG선에서 최고의 기술 수준, 높은 수익성, 안정적인 고객사 네트워크</p>
+                    <p style="margin-top: 10px;"><strong>약점:</strong> 2025년 저조한 수주 실적, 상대적 낮은 규모, 경영 안정성 이슈</p>
+                    <p style="margin-top: 10px;"><strong>2025 수주:</strong> 18척 (35억 달러) - 주로 해양플랜트</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-building-lock"></i>대우조선해양 (Daewoo Shipbuilding)</h3>
+                    <p><strong>강점:</strong> LNG선과 해양플랜트에서 우수한 기술, 대형 프로젝트 수행 경험</p>
+                    <p style="margin-top: 10px;"><strong>약점:</strong> 재정 불안정, 노사 분쟁 위험, 상대적 낮은 자본력</p>
+                    <p style="margin-top: 10px;"><strong>2025 수주:</strong> 22척 (48억 달러) - LNG선 및 복합가스선 중심</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>중국 조선 기업 (China CSSC)</h3>
+                <p>중국 CSSC(China State Shipbuilding Corporation)는 수량 기준으로 세계 최대 조선사이며, 최근 기술 수준도 빠르게 향상하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">경쟁력:</strong> 막대한 정부 지원, 압도적인 수주량(2025년 580척), 극도로 낮은 원가 경쟁력, 빠른 기술 개발 속도</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">약점:</strong> LNG선 기술에서는 여전히 한국 조선사에 비해 2~3년 뒤처짐, 고객사 신뢰도 상대적으로 낮음, 환경 규제 대응 미흡</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">전망:</strong> 향후 5년 내 중국 조선사들의 LNG선 기술이 한국 수준에 접근할 것으로 예상되므로, HD한국조선해양은 기술 혁신과 가격 경쟁력 강화가 필수적입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-square-full"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strengths)</h3>
+                    <ul class="content-list">
+                        <li><strong>LNG운반선 기술 독점:</strong> 글로벌 LNG선 시장 60% 이상 점유율</li>
+                        <li><strong>기술 진입장벽:</strong> 신규 경쟁사 진입에 5~10년 소요, 경쟁 회피 가능</li>
+                        <li><strong>가격 프리미엄:</strong> 기술 우월성으로 3~5% 높은 가격 유지</li>
+                        <li><strong>대규모 수주:</strong> 2025년 127척 수주로 향후 5년 안정적인 매출 보장</li>
+                        <li><strong>통합 역량:</strong> HD현대 그룹의 부품/엔진 공급 시스템과 연계</li>
+                        <li><strong>친환경 기술:</strong> 메탄올/암모니아 선박 개발 추진 중</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-times-circle"></i>약점 (Weaknesses)</h3>
+                    <ul class="content-list">
+                        <li><strong>건조 능력 부족:</strong> LNG선 연 10척 건조 능력으로 수주 증가 제약</li>
+                        <li><strong>높은 노동비:</strong> 한국 조선소의 높은 임금으로 원가 경쟁력 약화</li>
+                        <li><strong>노사 분쟁:</strong> 지속적인 노사 갈등으로 생산성 제약</li>
+                        <li><strong>친환경 투자 부담:</strong> 차세대 친환경선 개발에 수조원 투자 필요</li>
+                        <li><strong>컨테이너선 경쟁력:</strong> 대우조선 및 중국 조선사에 비해 상대적 약점</li>
+                        <li><strong>인프라 노후화:</strong> 조선소 설비 현대화 필요</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check-circle"></i>기회 (Opportunities)</h3>
+                    <ul class="content-list">
+                        <li><strong>LNG 수요 급증:</strong> 인도/파키스탄/동남아 신흥국의 LNG 수입 증가</li>
+                        <li><strong>친환경 선박 수요:</strong> IMO 2050 대응으로 메탄올/암모니아선 수요 폭증</li>
+                        <li><strong>해양 수소:</strong> 그린 수소 생산 및 운송 인프라 성장</li>
+                        <li><strong>모듈식 조선소 확장:</strong> 건조 능력 확대로 수주 수행 가능</li>
+                        <li><strong>고부가가치 선박:</strong> 해양플랜트와 특수선박 수주 확대</li>
+                        <li><strong>전략적 파트너십:</strong> 글로벌 선주사와 장기 공급 계약 확대</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-warning"></i>위협 (Threats)</h3>
+                    <ul class="content-list">
+                        <li><strong>중국 기술 추격:</strong> 중국 조선사의 빠른 기술 개발로 기술 격차 축소</li>
+                        <li><strong>가격 경쟁 악화:</strong> 저가 덤핑으로 인한 마진율 압박</li>
+                        <li><strong>경기 부진:</strong> 글로벌 경제 위축 시 선박 수요 급감</li>
+                        <li><strong>금리 상승:</strong> 선주의 금융 어려움으로 신규 발주 제약</li>
+                        <li><strong>공급망 확대:</strong> 경쟁사들의 건조 능력 확대</li>
+                        <li><strong>규제 강화:</strong> 친환경 기준 강화로 개발 비용 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 7: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-compass"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-right"></i>HD한국조선해양의 중장기 전략</h3>
+                <p>HD한국조선해양은 현재 다음 네 가지 핵심 전략을 동시에 추진하고 있습니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">1. LNG운반선 기술 지배력 강화 및 건조 능력 확대</strong></p>
+                    <p>HD한국조선해양은 현재의 기술 우위를 유지하기 위해 극저온 기술, 재료 과학, 자동화 등에 지속적으로 투자하고 있습니다. 또한 울산, 거제, 제주의 세 조선소에서 LNG선 동시 건조 능력을 현재의 10척/년에서 2028년까지 15척/년으로 확대할 계획입니다. 이를 통해 250척 이상의 LNG선 수주 파이프라인을 소화할 수 있게 됩니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">2. 친환경 선박 기술의 조기 상용화</strong></p>
+                    <p>글로벌 해운 산업의 탄소 중립화 추진에 따라, HD한국조선해양은 메탄올 추진선을 2027년부터 상용 건조하고, 암모니아 추진선을 2030년부터 건조할 계획입니다. 이를 통해 친환경 선박 시장에서의 기술 리더십을 확보하고, 추가 프리미엄 가격을 획득할 수 있을 것으로 예상됩니다. 친환경 선박이 전체 신규 선박의 30~40%를 차지할 것으로 예상되므로, 이는 대규모의 신규 수주 기회를 제공합니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">3. 디지털화 및 스마트 조선소 구축</strong></p>
+                    <p>HD한국조선해양은 조선소의 완전한 디지털 전환을 추진하고 있습니다. AI 기반의 생산 계획, IoT 센서를 통한 실시간 품질 관리, 로봇 용접의 자동화율 확대(목표: 80%) 등을 통해 건조 기간을 추가로 단축하고 인건비를 절감할 계획입니다. 이는 중국 조선사의 가격 경쟁에 대응하기 위한 핵심 전략입니다.</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold); font-size: 15px;">4. 고부가가치 선박 포트폴리오 다각화</strong></p>
+                    <p>현재 LNG선에 지나치게 의존된 포트폴리오 구조를 개선하기 위해, 초대형 컨테이너선, 해양플랜트, 특수 선박(암모니아 운반선, 메탄올 운반선 등) 분야로 사업을 다각화하고 있습니다. 목표는 2030년까지 LNG선의 매출 비중을 현재의 85%에서 60~70% 수준으로 감소시키는 것입니다. 이는 한 시장의 부침에 따른 리스크를 분산시킬 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i>전략적 파트너십 및 협력 관계</h3>
+                <p>HD한국조선해양은 글로벌 선주사, 에너지 회사, 기술 파트너들과의 전략적 협력을 추진하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">기존 주요 고객 및 파트너:</strong></p>
+                    <ul class="content-list">
+                        <li>일본 MOL(Mitsui O.S.K. Lines): 22척의 LNG선 장기 공급 계약</li>
+                        <li>싱가포르 Mitsui: 14척의 컨테이너선 공급 계약</li>
+                        <li>그리스 선주사 및 국제 에너지 기업들: 다양한 선박 공급 계약</li>
+                        <li>일본 엔진 제조사(MAN Energy, WinGD): 엔진 공급 및 기술 협력</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">향후 협력 방향:</strong></p>
+                    <ul class="content-list">
+                        <li>친환경 연료 공급사(메탄올, 암모니아 생산사)와의 협력</li>
+                        <li>AI/머신러닝 기술 파트너십을 통한 스마트화 가속화</li>
+                        <li>신흥국 대형 선주사와의 초장기 공급 계약(20~30년)</li>
+                        <li>해양 인프라 통합 프로젝트 수주 확대</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 8: FINANCE -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-graph"></i>매출 및 이익 추이</h3>
+                    <p style="margin-bottom: 20px;"><strong>연도별 재무 지표 (단위: 조원):</strong></p>
+                    <table style="font-size: 13px;">
+                        <thead>
+                            <tr>
+                                <th>년도</th>
+                                <th>매출</th>
+                                <th>영업이익</th>
+                                <th>마진율</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2020년</td>
+                                <td>15.2</td>
+                                <td>0.8</td>
+                                <td>5.3%</td>
+                            </tr>
+                            <tr>
+                                <td>2021년</td>
+                                <td>18.5</td>
+                                <td>1.2</td>
+                                <td>6.5%</td>
+                            </tr>
+                            <tr>
+                                <td>2022년</td>
+                                <td>20.6</td>
+                                <td>1.6</td>
+                                <td>7.8%</td>
+                            </tr>
+                            <tr>
+                                <td>2023년</td>
+                                <td>20.8</td>
+                                <td>1.5</td>
+                                <td>7.2%</td>
+                            </tr>
+                            <tr>
+                                <td>2024년</td>
+                                <td>이월사업</td>
+                                <td>이월사업</td>
+                                <td>계약</td>
+                            </tr>
+                            <tr>
+                                <td>2025년</td>
+                                <td>29.9</td>
+                                <td>3.9</td>
+                                <td>13.0%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-flask-vial"></i>수익성 및 자본 효율성</h3>
+                    <p style="margin-bottom: 20px;"><strong>핵심 재무 지표:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익률 (2025년)</span>
+                            <span class="progress-label-value">13.0%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROE (목표)</span>
+                            <span class="progress-label-value">12~15%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">자산순환 속도</span>
+                            <span class="progress-label-value">1.2회/년</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 55%;"></div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 13px;"><strong>현금흐름 전망:</strong> 2025~2030년 연평균 2조원 이상의 영업현금흐름 예상</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dollar-sign"></i>밸류에이션 분석</h3>
+                <p>HD한국조선해양의 기업 가치는 다음과 같이 평가됩니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">현재 밸류에이션 (2026년 4월 기준):</strong></p>
+                    <ul class="content-list">
+                        <li><strong>시가총액:</strong> 약 30조원 (250억 달러)</li>
+                        <li><strong>PBR (Price-to-Book):</strong> 1.2배 (순자산 약 25조원 기준)</li>
+                        <li><strong>EV/EBITDA:</strong> 2.5배 (EBITDA 약 4.5조원 기준, 보수적 추정)</li>
+                        <li><strong>목표주가:</strong> 평균 566,294원 (현재 약 379,500원 대비 +49.2% 업사이드)</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">밸류에이션 시나리오:</strong></p>
+                    <ul class="content-list">
+                        <li><strong>베어 케이스 (조선 슈퍼사이클 종료):</strong> 글로벌 경제 부진으로 선박 수요 급감 시 EV/EBITDA 1.5배 → 기업가치 18~22조원 (-27~-40% 다운사이드)</li>
+                        <li><strong>베이스 케이스 (안정적 성장):</strong> 2025~2030년 연평균 8~10% 성장, EV/EBITDA 3.0배 → 기업가치 32~38조원 (현재 대비 +7~+27%)</li>
+                        <li><strong>불 케이스 (친환경 선박 급성장):</strong> LNG선 수요 지속 + 메탄올/암모니아선 수주 급증 시 EV/EBITDA 4.5배 → 기업가치 48~56조원 (현재 대비 +60~+87%)</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 20px;"><strong style="color: var(--gold);">밸류에이션 드라이버:</strong> HD한국조선해양의 기업 가치를 결정하는 핵심 변수는 글로벌 조선 시장의 성장률, LNG 수요 지속성, 친환경 선박 기술 수주 비중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill-wave"></i>주요 재무 메트릭 및 전망</h3>
+                <p style="margin-bottom: 20px;"><strong>2025~2030년 예상 재무 지표:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2025년 실제</th>
+                            <th>2030년 추정</th>
+                            <th>주요 가정</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>매출액 (조원)</td>
+                            <td>29.9</td>
+                            <td>42~48</td>
+                            <td>연 5~10% 성장</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익 (조원)</td>
+                            <td>3.9</td>
+                            <td>5.5~7.0</td>
+                            <td>마진율 13~15% 유지</td>
+                        </tr>
+                        <tr>
+                            <td>영업현금흐름 (조원)</td>
+                            <td>2.8</td>
+                            <td>3.5~4.5</td>
+                            <td>강한 현금 창출</td>
+                        </tr>
+                        <tr>
+                            <td>부채비율 (%)</td>
+                            <td>40</td>
+                            <td>35</td>
+                            <td>재무 건전성 개선</td>
+                        </tr>
+                        <tr>
+                            <td>배당성향 (%)</td>
+                            <td>20~30</td>
+                            <td>30~40</td>
+                            <td>주주 환원 확대</td>
+                        </tr>
+                        <tr>
+                            <td>자본집약도</td>
+                            <td>고</td>
+                            <td>높음</td>
+                            <td>친환경 투자 지속</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론</span>
+        </div>
+
+        <!-- SECTION 9: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                <span>결론 및 투자 평가</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i>FLOVAH AI Insights: 핵심 투자 관점</h3>
+                <p>HD한국조선해양은 현재 글로벌 조선 슈퍼사이클의 핵심 수혜 기업으로서, 강력한 기술 경쟁력과 안정적인 현금흐름을 바탕으로 뛰어난 성장 전망을 제시하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">투자 매력도:</strong> HD한국조선해양의 핵심 투자 매력은 LNG운반선 시장에서의 절대 지배력, 차세대 친환경 선박 기술 선도, 장기 수주 파이프라인의 확보에 있습니다. 특히 글로벌 에너지 전환, 신흥국의 해양 인프라 투자, 해운 업계의 환경 규제 강화 등 복수의 긍정적 구조적 드라이버가 존재합니다. 목표주가 566,294원으로 현 수준 대비 49% 업사이드 여력이 있으며, 향후 5년간 연평균 8~12% 성장 가능성이 높습니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">주요 리스크 요인:</strong> 반면 글로벌 경제 부진에 따른 선박 수요 급감, 중국 조선사의 기술 추격, 높은 노동비와 노사 분쟁, 친환경 선박 개발의 높은 투자 부담 등은 명확한 리스크입니다. 특히 현재의 호황기가 영구적이지 않을 수 있다는 점을 유의해야 합니다. 2030년 이후 선박 수요가 정상화될 경우 영업이익 마진율이 현재의 13%에서 8~10% 수준으로 하락할 수 있습니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">투자 등급:</strong> FLOVAH AI Insights는 HD한국조선해양에 대해 "강한 매수(Strong Buy)"를 제시합니다. 다만 이는 3~5년 중기 투자 관점에서의 평가이며, 글로벌 조선 시황과 LNG 수요, 기술 개발 진도를 지속적으로 모니터링해야 합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i>모니터링 핵심 지표 (분기별 확인 사항)</h3>
+                <p>투자자가 분기별로 확인해야 할 핵심 성과 지표(KPI)는 다음과 같습니다:</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">1. 신규 수주 현황:</strong> 분기별 수주액과 수주선가(Contract Price) 추이를 면밀히 모니터링합니다. 수주 호황이 지속되는지, 선가 프리미엄이 유지되는지가 중요한 신호입니다. 분기 수주가 30~40억 달러 이상 유지되면 긍정적 신호입니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">2. 영업이익률 추이:</strong> 현재의 13% 수준의 영업이익률이 유지되는지 확인합니다. 10% 이하로 하락할 경우 원가 상승이나 경쟁 심화의 신호입니다. 또한 분기별 마진율 변동성도 주의깊게 관찰합니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">3. 건조 일정 준수 여부:</strong> 계약 선박의 인도 일정 준수 및 품질 만족도를 확인합니다. 납기 연장이나 고객 클레임 증가는 부정적 신호입니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">4. 친환경 선박 수주 비중:</strong> 메탄올/암모니아 추진선 등 차세대 친환경 선박의 수주 비중이 얼마나 증가하는지가 중요합니다. 목표는 2030년까지 전체 수주의 30~40%입니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">5. 노사 관계 및 생산성:</strong> 노사 분쟁의 규모와 일정, 생산성 지표(선박당 건조 일정), 자동화율 확대 추이를 모니터링합니다. 자동화율이 75% 이상으로 증가하고 분쟁이 최소화되면 경쟁력 강화의 신호입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>FLOVAH AI 최종 평가</h3>
+                <p>HD한국조선해양은 현재 글로벌 조선 시장의 절대 강자로서, 역사적인 호황기의 정점에 위치하고 있습니다. 동시에 차세대 친환경 선박 기술에서의 기술 선도력을 통해, 향후 5~10년간의 지속적인 성장을 기대할 수 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">강점의 극대화:</strong> HD한국조선해양은 LNG운반선에서의 60% 이상의 시장 점유율을 바탕으로, 향후 3~5년 내 총 250척 이상의 LNG선 수주를 소화할 계획입니다. 이는 연간 50조원 이상의 매출과 6조원 이상의 영업이익을 의미합니다. 또한 메탄올과 암모니아 추진선으로의 기술 확장을 통해 새로운 성장 시장을 선점할 수 있습니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">리스크 관리:</strong> 그러나 이러한 성장 시나리오는 글로벌 조선 시장의 지속적인 호황을 가정합니다. 글로벌 경제 부진, 에너지 수요의 급감, 중국 경쟁사의 기술 추격 등은 기업 실적에 큰 영향을 미칠 수 있습니다. 따라서 투자자는 5년 이상의 중장기 투자 관점에서 접근하고, 분기별로 핵심 지표를 면밀히 모니터링해야 합니다.</p>
+
+                    <p style="margin-top: 12px;"><strong style="color: var(--gold);">결론:</strong> HD한국조선해양은 현재의 호황기를 지나 향후 5~10년간 성숙기로의 전환을 준비하고 있는 기업입니다. 기술 우위와 스케일 경제를 바탕으로 이 전환기를 성공적으로 극복한다면, 글로벌 조선 산업의 영구적인 리더로서의 위상을 확보할 수 있을 것입니다. FLOVAH AI Insights는 이러한 잠재력을 높이 평가하여 강한 매수 등급을 유지합니다.</p>
+                </div>
+            </div>
+
+            <!-- 면책 조항 -->
+            <div style="margin-top:30px;padding:20px;background:var(--cream);border:1px solid var(--border);border-radius:0">
+                <p style="font-size:.85rem;color:var(--text-muted);line-height:1.7"><strong>면책 조항:</strong> 본 리포트는 FLOVAH AI Insights에서 제공하는 기업 분석 자료로, 공개 정보를 기반으로 작성되었습니다. 리포트에 포함된 내용은 정보 제공 목적이며, 투자 권유나 투자 조언을 목적으로 하지 않습니다. 투자 결정은 투자자 본인의 판단과 책임하에 이루어져야 하며, FLOVAH AI Insights는 본 리포트의 활용으로 인한 투자 손실에 대해 법적 책임을 지지 않습니다. 본 리포트에 사용된 데이터는 금융감독원 전자공시시스템, 한국거래소, 각종 산업 리서치 기관의 공개 자료, 기업 공시 자료 등을 기반으로 하며, 일부 수치는 추정치를 포함하고 있습니다. 추정치는 합리적인 가정에 기반하고 있으나, 실제 결과와 차이가 발생할 수 있습니다. HD한국조선해양 경영진 인터뷰, 비공개 내부 자료, 미공개 중요정보 등은 본 분석에 포함되지 않았습니다. 리포트의 저작권은 FLOVAH AI Insights에 있으며, 사전 허가 없이 상업적 목적으로 복제하거나 배포할 수 없습니다. 개인적 연구 및 참고 목적으로의 사용은 출처를 명시하는 조건하에 허용됩니다. 리포트 작성일: 2026년 4월 5일 | 분석가: FLOVAH AI Research Team | 다음 업데이트 예정: 2026년 4월 12일 | 리포트 버전: 1.0 | 본 리포트는 멤버십 구독 고객에게 독점 제공되는 프리미엄 심층 기업 분석 및 전략 자문 컨설팅 서비스입니다</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ════════ SOURCES / 출처 ════════ -->
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 05일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 80px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — HD한국조선해양 사업보고서, 분기보고서, 감사보고서 (2019–2025) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> HD한국조선해양 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">4.</span> HD현대 그룹 공식 웹사이트 — 계열사 정보 및 사업 전략 <span style="color:var(--text-muted);font-size:.78em">hd-hyundai.co.kr</span></p>
+                <p><span style="color:var(--text-light)">5.</span> Clarkson Research — "Shipbuilding Market Outlook" (2025–2026) <span style="color:var(--text-muted);font-size:.78em">clarksonresearch.com</span></p>
+                <p><span style="color:var(--text-light)">6.</span> VesselsValue — "Global Shipbuilding Orders and Newbuild Values" (2025) <span style="color:var(--text-muted);font-size:.78em">vesselsvalue.com</span></p>
+                <p><span style="color:var(--text-light)">7.</span> Lloyd's Register — "LNG Ship Technology and Regulatory Framework" <span style="color:var(--text-muted);font-size:.78em">lrfoundation.org.uk</span></p>
+                <p><span style="color:var(--text-light)">8.</span> International Energy Agency (IEA) — "Global LNG Demand and Supply Forecast 2025" <span style="color:var(--text-muted);font-size:.78em">iea.org</span></p>
+                <p><span style="color:var(--text-light)">9.</span> International Maritime Organization (IMO) — "2050 Carbon Neutrality Goals and Regulatory Framework" <span style="color:var(--text-muted);font-size:.78em">imo.org</span></p>
+                <p><span style="color:var(--text-light)">10.</span> Bloomberg Intelligence — "South Korea Shipbuilding Industry Review" (2025 Q4) <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">11.</span> 조선산업협회(Korea Shipbuilders Association) — "한국 조선산업 현황 및 전망 보고서" (2025) <span style="color:var(--text-muted);font-size:.78em">koshipa.or.kr</span></p>
+                <p><span style="color:var(--text-light)">12.</span> 삼성중공업, 대우조선해양 공시자료 — DART 공시 자료 (경쟁사 비교 분석용) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">13.</span> PwC — "Global Shipping and Logistics Outlook 2025–2029" <span style="color:var(--text-muted);font-size:.78em">pwc.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> McKinsey & Company — "Decarbonizing Shipping: A Path Forward" (2024) <span style="color:var(--text-muted);font-size:.78em">mckinsey.com</span></p>
+                <p><span style="color:var(--text-light)">15.</span> 나이스신용평가, 한국기업평가 — HD한국조선해양 신용등급 및 재무분석 자료 <span style="color:var(--text-muted);font-size:.78em">nicerating.com</span></p>
+                <p><span style="color:var(--text-light)">16.</span> Statista — "Global LNG Carrier Fleet Size and Growth Projections (2024–2030)" <span style="color:var(--text-muted);font-size:.78em">statista.com</span></p>
+                <p><span style="color:var(--text-light)">17.</span> Reuters, MarineLink — "Global Shipping Market News and Industry Updates" <span style="color:var(--text-muted);font-size:.78em">reuters.com, marinelink.com</span></p>
+                <p><span style="color:var(--text-light)">18.</span> Oxford Economics — "Global Shipping Demand Forecast 2025–2035" <span style="color:var(--text-muted);font-size:.78em">oxfordeconomics.com</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.04.05 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

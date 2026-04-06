@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>효성중공업 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .report-info { grid-template-columns: 1fr; }
+            .hero { padding: 36px 20px; }
+            .content-card { padding: 20px 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">FLOVAH</div>
+            <div class="logo-subtitle">Insights</div>
+        </div>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#tech">기술</a>
+            <a href="#market">시장</a>
+            <a href="#competitors">경쟁</a>
+            <a href="#financial">재무</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 04월 06일</span>
+            <span class="flovah-badge">Premium</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    효성중공업
+                    <span class="hero-title-highlight">전력기기의 글로벌 리더</span>
+                </h1>
+                <p class="hero-subtitle">초고압 변압기 및 전력기기의 선두주자</p>
+
+                <div class="ai-score-badge">
+                    <div class="score-circle">68</div>
+                    <div>
+                        <div style="color: var(--ink-strong); font-size: 14px; margin-bottom: 4px;">스마트팩토리 준비도</div>
+                        <div style="color: var(--text-secondary); font-size: 13px;">디지털화 및 자동화 기술 도입 수준</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">22.2조</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5.97조</div>
+                    <div class="metric-label">2025 매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">7.15조</div>
+                    <div class="metric-label">2026E 매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">12조</div>
+                    <div class="metric-label">수주잔고 (2024)</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="report-info">
+            <div class="report-info-item">
+                <i class="fas fa-building report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>회사명</h4>
+                    <p>효성중공업 (Hyosung Heavy Industries)</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-chart-line report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>상장코드</h4>
+                    <p>298040 KOSPI</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-user-tie report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>CEO</h4>
+                    <p>조현준 대표이사</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-briefcase report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>주요사업</h4>
+                    <p>초고압변압기, 차단기, 전력기기</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="overview">
+            <h2 class="section-title">
+                <i class="fas fa-building-ngo"></i>
+                <span>기업개요 및 역사</span>
+            </h2>
+            <p class="section-subtitle">효성 그룹 중공업부문의 독립 상장</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 현재 위상</h3>
+                <p>효성중공업은 글로벌 전력기기 시장에서 초고압 변압기 및 차단기 생산의 선도 기업입니다. 2025년 매출 5조 9,700억원, 영업이익 7,470억원을 기록했으며, 시가총액은 약 22.2조원에 달합니다. 2024년 기준 글로벌 수주잔고가 12조원을 돌파했으며, 미국에서 유일한 765kV 변압기 생산 기업으로서 북미 시장에서의 입지를 강화하고 있습니다.</p>
+                <p>효성중공업은 2018년 효성 그룹의 중공업 부문이 인적분할되어 독립한 상장사입니다. 초고압 변압기, 차단기, 전력기기 등 에너지 인프라의 핵심 제품을 생산하며, 글로벌 전력망 고도화 및 재생에너지 확대에 따른 전력기기 수요 증가의 수혜를 받고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 주요 발전 과정</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1966년</div>
+                        <div class="timeline-item-content">효성그룹 창립 - 한국 중공업의 선구자</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2018년</div>
+                        <div class="timeline-item-content">인적분할 효성중공업 출범 - 전력기기 전문 기업 독립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2022년</div>
+                        <div class="timeline-item-content">미국 초고압 변압기 수출 확대 - 북미 시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024년</div>
+                        <div class="timeline-item-content">글로벌 수주잔고 12조 돌파 - 향후 3년 매출 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년</div>
+                        <div class="timeline-item-content">미국 765kV 변압기 유일 생산 기업 지위 확보</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech">
+            <h2 class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술분석</span>
+            </h2>
+            <p class="section-subtitle">초고압 전력기기의 기술 고도화</p>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-bolt"></i> 초고압 변압기 기술</h3>
+                    <p>효성중공업의 핵심 경쟁력은 765kV 초고압 변압기 설계 및 제조 기술입니다. 이 기술은 장거리 전력 송전의 손실을 최소화하면서도 안정적인 전력 공급을 가능하게 합니다. 특히 북미 지역에서는 기술적, 규제적 진입장벽이 높아 효성중공업의 독점적 지위를 확보하고 있습니다.</p>
+                    <p>회사의 변압기는 신뢰성, 에너지 효율, 환경친화성에서 글로벌 최고 수준으로 평가받고 있으며, GE, ABB 등 글로벌 경쟁사와의 기술 격차를 지속적으로 유지하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-shield-alt"></i> 차단기 및 스위칭 기술</h3>
+                    <p>효성중공업은 고전압 차단기, 휴즈 스위치, 지중 케이블 등 전력 계통의 안전성을 담당하는 기기들을 생산합니다. 이들 제품은 매우 높은 기술 수준과 안정성을 요구하며, 한 번의 오류도 광범위한 정전을 야기할 수 있어 신뢰도가 가장 중요합니다.</p>
+                    <p>회사의 차단기는 빠른 반응 속도, 낮은 고장률, 장기 신뢰성으로 평가받고 있으며, 특히 태양광, 풍력 등 변동성 재생에너지 연계 시 필요한 고도의 제어 기술을 보유하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 친환경 기술 개발</h3>
+                <p>효성중공업은 변압기 냉각유의 환경오염 위험을 줄이기 위해 친환경 유전체 개발에 투자하고 있습니다. 특히 미국 EPA 규제 강화에 대응하는 고성능 친환경 냉각유 개발은 중장기 경쟁력을 강화하는 중요한 기술입니다.</p>
+            </div>
+        </section>
+
+        <section id="market">
+            <h2 class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장분석</span>
+            </h2>
+            <p class="section-subtitle">전력기기 시장의 강한 성장</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 글로벌 전력기기 시장 전망</h3>
+                <p>글로벌 전력기기 시장은 재생에너지 확대, 전력망 고도화, EV 충전소 확산 등에 따라 연평균 6-8% 성장이 예상됩니다. 특히 선진국의 노후 변전소 교체 수요, 개도국의 전력망 현대화 수요가 동시에 증가하고 있습니다.</p>
+                <p>북미 지역은 특히 강한 수요를 보이고 있으며, 미국의 Inflation Reduction Act에 따른 그린에너지 투자, 그리드 현대화 프로젝트 등이 향후 3-5년간 지속적인 수요를 만들어낼 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wind"></i> 재생에너지 확대 영향</h3>
+                    <p>태양광과 풍력 발전 설비의 급속한 확대는 기존 전력망과 신규 설비를 연계하기 위한 초고압 변압기와 차단기 수요를 크게 증가시키고 있습니다. 특히 대용량 변압기의 수요가 급증하고 있어 효성중공업과 같은 고급 제품 생산 업체의 이익성이 높아지고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-plug"></i> 전력망 고도화</h3>
+                    <p>스마트 그리드, DC 송전 시스템 도입, 마이크로 그리드 구축 등 전력망이 고도화되면서 고성능 전력기기에 대한 수요가 증가하고 있습니다. 특히 신기술 변압기의 가격 프리미엄도 함께 상승하고 있어 효성중공업의 수익성 개선으로 이어지고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitors">
+            <h2 class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사분석</span>
+            </h2>
+            <p class="section-subtitle">글로벌 전력기기 시장의 주요 플레이어</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>국가</th>
+                                <th>강점</th>
+                                <th>약점</th>
+                                <th>평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>효성중공업</strong></td>
+                                <td>한국</td>
+                                <td>765kV 독점, 기술력</td>
+                                <td>규모, 가격경쟁력</td>
+                                <td>상위권</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LS일렉트릭</strong></td>
+                                <td>한국</td>
+                                <td>국내 인지도, 다양한 제품</td>
+                                <td>글로벌 기술력</td>
+                                <td>국내 강점</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ABB</strong></td>
+                                <td>스위스</td>
+                                <td>글로벌 브랜드, 기술력</td>
+                                <td>가격</td>
+                                <td>최강</td>
+                            </tr>
+                            <tr>
+                                <td><strong>지멘스</strong></td>
+                                <td>독일</td>
+                                <td>다양한 제품군, 기술력</td>
+                                <td>가격 경쟁력</td>
+                                <td>최강</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crown"></i> 경쟁 위상 분석</h3>
+                <p>효성중공업은 특히 북미 시장에서 765kV 변압기의 거의 유일한 공급자로서 독점적 지위를 누리고 있습니다. 이는 기술적, 규제적 진입장벽이 매우 높기 때문입니다. 다만 글로벌 규모에서는 ABB, 지멘스 등과 경쟁하고 있으며, 가격 경쟁력 측면에서는 상대적으로 약합니다.</p>
+                <p>향후 경쟁력 유지를 위해서는 기술 고도화를 통한 성능 차별화와 생산 효율성 개선이 중요할 것으로 판단됩니다. 특히 중국 업체들의 추격이 활발해지고 있어 기술 투자를 지속해야 합니다.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-sliders"></i>
+                <span>SWOT 분석</span>
+            </h2>
+            <p class="section-subtitle">효성중공업의 강점과 기회</p>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-arrow-up"></i> 강점</h3>
+                    <ul>
+                        <li>북미 765kV 변압기의 독점적 지위</li>
+                        <li>높은 기술력과 우수한 품질</li>
+                        <li>효성그룹의 강력한 재무 기반</li>
+                        <li>글로벌 수주잔고 12조 확보</li>
+                        <li>초고압 기기의 높은 마진율</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-arrow-down"></i> 약점</h3>
+                    <ul>
+                        <li>글로벌 경쟁사 대비 작은 규모</li>
+                        <li>상대적으로 높은 제조원가</li>
+                        <li>가격 경쟁력 부족</li>
+                        <li>신기술(DC 송전기) 개발 필요</li>
+                        <li>중국 시장 진출 제약</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-leaf"></i> 기회</h3>
+                    <ul>
+                        <li>글로벌 재생에너지 확대</li>
+                        <li>선진국 전력망 고도화 수요</li>
+                        <li>미국 그린에너지 투자 확대</li>
+                        <li>전력기기 가격 프리미엄 상승</li>
+                        <li>유럽 에너지 안보 강화 수요</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-exclamation-triangle"></i> 위협</h3>
+                    <ul>
+                        <li>중국 업체의 기술 추격</li>
+                        <li>글로벌 경제 둔화 시 수요 축소</li>
+                        <li>원자재가격 변동성</li>
+                        <li>글로벌 공급망 리스크</li>
+                        <li>인건비 상승 및 인력 공급 부족</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-bullseye"></i>
+                <span>전략분석</span>
+            </h2>
+            <p class="section-subtitle">효성중공업의 중장기 성장 전략</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map-pin"></i> 글로벌 공급망 강화</h3>
+                <p>효성중공업은 현재 한국 중심의 생산체계를 글로벌화하고 있습니다. 미국 및 유럽 지역에서의 현지 생산 또는 파트너십을 강화하여 운송 비용을 절감하고 현지 수요에 빠르게 대응할 계획입니다. 이를 통해 주요 고객들의 현지 공급 니즈를 충족할 수 있을 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-flask-vial"></i> 차세대 제품 개발</h3>
+                    <p>DC 송전 변압기, 수소 연료전지 발전용 전력기기, 초전도 변압기 등 차세대 기술 개발에 투자하고 있습니다. 특히 재생에너지 확대에 필수적인 DC 송전 기술은 향후 매우 중요할 것으로 예상되며, 이 분야에서의 기술 리더십 확보가 중장기 경쟁력을 결정할 것입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cogs"></i> 스마트 팩토리 추진</h3>
+                    <p>IoT, AI, 로봇 기술을 활용한 제조 자동화를 진행하여 원가 경쟁력을 강화하고 있습니다. 2025-2026년 기간 효성중공업의 생산 시설 현대화를 통해 제조원가를 10-15% 절감하는 것을 목표로 하고 있으며, 이는 가격 경쟁력 강화로 이어질 것으로 예상됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="financial">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무분석</span>
+            </h2>
+            <p class="section-subtitle">2025-2026년 실적 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 핵심 재무지표</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>2024</th>
+                                <th>2025E</th>
+                                <th>2026E</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>매출액</strong></td>
+                                <td>5.2조원</td>
+                                <td>5.97조원</td>
+                                <td>7.15조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익</strong></td>
+                                <td>6,200억원</td>
+                                <td>7,470억원</td>
+                                <td>9,713억원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률</strong></td>
+                                <td>11.9%</td>
+                                <td>12.5%</td>
+                                <td>13.6%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>당기순이익</strong></td>
+                                <td>4,100억원</td>
+                                <td>5,200억원</td>
+                                <td>6,800억원</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 매출 및 수익성 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 72%;"></div>
+                        </div>
+                        <div class="bar-value">5.2조</div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 83%;"></div>
+                        </div>
+                        <div class="bar-value">5.97조</div>
+                        <div class="bar-label">2025E</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;"></div>
+                        </div>
+                        <div class="bar-value">7.15조</div>
+                        <div class="bar-label">2026E</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 영업이익률 추이</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2024년</span>
+                        <span class="progress-label-value">11.9%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2025E</span>
+                        <span class="progress-label-value">12.5%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 63%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2026E</span>
+                        <span class="progress-label-value">13.6%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 68%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2 class="section-title">
+                <i class="fas fa-check-double"></i>
+                <span>결론 및 투자의견</span>
+            </h2>
+            <p class="section-subtitle">견실한 성장과 높은 수익성</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crystal-ball"></i> 향후 전망</h3>
+                <p>효성중공업은 글로벌 재생에너지 확대와 전력망 고도화 트렌드에 가장 잘 위치한 기업입니다. 특히 북미 지역에서의 독점적 지위는 향후 3-5년간 안정적인 수익원이 될 것으로 예상됩니다. 현재의 12조원 수주잔고는 2026-2027년의 매출을 충분히 뒷받침하며, 추가 수주 가능성도 높습니다.</p>
+                <p>2026년 영업이익 9,713억원(영업이익률 13.6%)으로의 성장은 현실적이며, 글로벌 전력기기 시장의 구조적 성장세를 감안하면 향후 연평균 8-10% 실적 성장이 가능할 것으로 판단됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 리스크 요인</h3>
+                <p>주요 리스크는 글로벌 경제 둔화 시 전력기기 투자가 축소될 수 있다는 점입니다. 특히 미국의 인플레이션 대응 금리 인상이 장기화될 경우 그린에너지 투자가 지연될 가능성이 있습니다. 또한 중국 업체들의 기술 추격과 가격 경쟁이 향후 3-5년 내에 심화될 것으로 예상되어 이에 대한 준비가 필요합니다.</p>
+                <p>공급망 리스크도 고려해야 하는데, 특히 반도체와 고급 소재의 공급 차질이 발생할 경우 생산 지연으로 이어질 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 최종 의견</h3>
+                <p>효성중공업은 한국의 우수한 중공업 기업이며, 글로벌 에너지 전환 트렌드의 최대 수혜자입니다. 높은 영업이익률(13% 이상), 안정적인 수주잔고, 그리고 북미의 독점적 지위는 중장기 투자 가치를 높입니다. 현재의 밸류에이션은 성장성 대비 합리적인 수준으로 평가되며, 중장기 매매 목표가로 27-30만원을 제시합니다.</p>
+                <p>투자자들은 2026년 1분기 실적 공시 시 매출 및 수익성 개선 추이를 주목할 가치가 있으며, 글로벌 수주 추가 수주 동향도 함께 모니터링해야 합니다. 특히 유럽 및 동남아 시장 진출 성과가 중요한 성장 동력이 될 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 06일 14:35 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

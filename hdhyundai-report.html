@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD현대 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .report-info { grid-template-columns: 1fr; }
+            .hero { padding: 36px 20px; }
+            .content-card { padding: 20px 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">FLOVAH</div>
+            <div class="logo-subtitle">Insights</div>
+        </div>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#business">사업</a>
+            <a href="#market">시장</a>
+            <a href="#competitors">경쟁</a>
+            <a href="#financial">재무</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 04월 06일</span>
+            <span class="flovah-badge">Premium</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    HD현대
+                    <span class="hero-title-highlight">융합 산업의 거인</span>
+                </h1>
+                <p class="hero-subtitle">조선해양, 정유, 전기전자, 건설기계의 통합 플랫폼</p>
+
+                <div class="ai-score-badge">
+                    <div class="score-circle">65</div>
+                    <div>
+                        <div style="color: var(--ink-strong); font-size: 14px; margin-bottom: 4px;">그룹 디지털화 지수</div>
+                        <div style="color: var(--text-secondary); font-size: 13px;">계열사 전체 AI 도입 현황</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">18.0조</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">71.3조</div>
+                    <div class="metric-label">2025 연결매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">6.1조</div>
+                    <div class="metric-label">2025 영업이익</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4개</div>
+                    <div class="metric-label">주요 사업 포트폴리오</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="report-info">
+            <div class="report-info-item">
+                <i class="fas fa-building report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>회사명</h4>
+                    <p>HD현대 (HD Hyundai)</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-chart-line report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>상장코드</h4>
+                    <p>267250 KOSPI</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-user-tie report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>CEO</h4>
+                    <p>정기선 회장</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-briefcase report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>주요사업</h4>
+                    <p>조선해양, 정유, 전기전자, 건설기계</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="overview">
+            <h2 class="section-title">
+                <i class="fas fa-ship"></i>
+                <span>기업개요 및 역사</span>
+            </h2>
+            <p class="section-subtitle">현대그룹 중추 기업의 진화</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 현재 위상</h3>
+                <p>HD현대는 한국을 대표하는 복합기업 집단으로서, 조선해양, 정유, 전기전자, 건설기계 등 4개의 주요 사업 부문을 운영하고 있습니다. 2025년 연결매출 71.3조원, 영업이익 6.1조원을 기록했으며, 시가총액은 약 18.0조원에 달합니다. 특히 2025년에는 영업이익이 전년 대비 2배 가까이 증가하면서 지주회사로서의 가치를 증명했습니다.</p>
+                <p>HD현대는 현대중공업 출신으로 조선해양 산업의 절대강자이면서, 동시에 한국의 주요 정유회사인 GS칼텍스와 현대오일뱅크를 자회사로 보유하고 있으며, 로보틱스와 전기전자 부문에서도 빠르게 성장하고 있습니다. 다양한 산업에서의 포트폴리오 다각화는 경기 사이클 리스크를 완화하는 전략으로 평가됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 주요 발전 과정</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1947년</div>
+                        <div class="timeline-item-content">현대그룹 창립 - 한국 산업화의 주역</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2002년</div>
+                        <div class="timeline-item-content">현대중공업 분리 - 해양산업 전문화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2017년</div>
+                        <div class="timeline-item-content">지주회사 체제 전환 - 포트폴리오 최적화 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023년</div>
+                        <div class="timeline-item-content">HD현대로 사명 변경 - 그룹 아이덴티티 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년</div>
+                        <div class="timeline-item-content">영업이익 6.1조 기록 - 2배 성장 달성</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i>
+                <span>사업구조분석</span>
+            </h2>
+            <p class="section-subtitle">4대 사업 포트폴리오의 시너지</p>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-anchor"></i> 조선해양사업</h3>
+                    <p>HD현대의 핵심 사업으로 LNG선, 초대형 컨테이너선, 초대형 해양구조물 등의 설계, 건조를 담당합니다. 2025년 기준 수주잔고는 100조원을 초과하여 향후 5년의 매출을 충분히 뒷받침합니다. 친환경 선박(LNG선, 메탄올 연료선 등)에서 글로벌 선도 지위를 확보하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-flask"></i> 정유사업</h3>
+                    <p>GS칼텍스, 현대오일뱅크 등을 통해 운영되는 정유사업은 안정적인 현금흐름을 제공합니다. 다만 글로벌 에너지 전환 추세에 따라 신규 정유 투자는 제한적이며, 기존 시설의 효율화와 지속가능성 강화가 중심입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> 로보틱스·전기전자</h3>
+                    <p>산업용 로봇, 스마트팩토리 솔루션, 전기차 충전 인프라 등 미래 산업을 선도하는 사업군입니다. 초기 투자 단계이지만 향후 성장성이 높으며, 특히 로보틱스는 인구감소와 생산성 향상 추세에서 매우 유망한 분야입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i> 시너지 창출 전략</h3>
+                <p>HD현대의 다각화된 포트폴리오는 각 사업군 간의 시너지를 창출합니다. 조선해양에서의 선박 건조 기술은 로보틱스와 자동화 기술의 적용으로 생산성이 향상되며, 정유사업의 안정적 현금흐름은 새로운 사업 개발 투자의 재원이 됩니다. 또한 선박용 전기 추진 시스템, 친환경 에너지 솔루션 등에서 각 사업군이 협력하는 구조입니다.</p>
+            </div>
+        </section>
+
+        <section id="market">
+            <h2 class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장분석</span>
+            </h2>
+            <p class="section-subtitle">조선해양 시장의 호황기</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 글로벌 조선 시장 전망</h3>
+                <p>글로벌 조선 시장은 현재 역사적 호황기를 경험하고 있습니다. IMO 2050 규제(2050년 탄소중립)에 대응하기 위한 친환경 선박 수요가 급증하고 있으며, 특히 LNG선, 메탄올 연료선, 수소 연료선 등의 주문이 폭증하고 있습니다. 2026-2028년까지는 이러한 높은 수주 가격과 수량이 지속될 것으로 예상됩니다.</p>
+                <p>다만 2028년 이후로는 수요가 정상화될 가능성이 높으므로, HD현대는 이 기간 동안 최대한 높은 이익을 확보하고, 동시에 차세대 핵심 기술 개발에 투자해야 합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wind"></i> 친환경 선박 수요 증가</h3>
+                    <p>IMO 규제에 따라 선박 운영사들은 친환경 선박으로의 대체를 가속화하고 있습니다. LNG 연료선의 비중이 급증하고 있으며, 메탄올, 수소, 암모니아 연료선 등 차세대 연료 선박에 대한 관심도 높습니다. HD현대는 이들 친환경 선박 시장에서 기술 선도자로서의 위치를 강화하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-droplet"></i> 글로벌 해운업 호황</h3>
+                    <p>팬데믹 이후 글로벌 해운 시장이 호황을 누리고 있으며, 이는 신규 선박 발주로 이어지고 있습니다. 특히 미국과 유럽의 수입 수요 회복, 인도-태평양 지역의 무역 증가 등이 장기적 선박 수요를 뒷받침하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitors">
+            <h2 class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사분석</span>
+            </h2>
+            <p class="section-subtitle">조선업 글로벌 경쟁 구도</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>국가</th>
+                                <th>강점</th>
+                                <th>약점</th>
+                                <th>평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>HD현대</strong></td>
+                                <td>한국</td>
+                                <td>기술력, 친환경선박, 수주</td>
+                                <td>원가경쟁력</td>
+                                <td>최강</td>
+                            </tr>
+                            <tr>
+                                <td><strong>삼성중공업</strong></td>
+                                <td>한국</td>
+                                <td>초대형선박, 기술</td>
+                                <td>수주 부족</td>
+                                <td>강력</td>
+                            </tr>
+                            <tr>
+                                <td><strong>대우조선</strong></td>
+                                <td>한국</td>
+                                <td>LNG선 기술</td>
+                                <td>경영 불안정</td>
+                                <td>중상</td>
+                            </tr>
+                            <tr>
+                                <td><strong>일본 조선사</strong></td>
+                                <td>일본</td>
+                                <td>원가경쟁력</td>
+                                <td>기술력 부족</td>
+                                <td>약세</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crown"></i> 경쟁 위상 분석</h3>
+                <p>HD현대는 글로벌 조선업에서 압도적 강자입니다. LNG선 기술력, 초대형 컨테이너선 건조 능력, 친환경 선박 기술 등에서 모두 선도적 위치를 차지하고 있습니다. 현재의 100조원 이상의 수주잔고는 경쟁사들 중 가장 높으며, 이는 기술력 및 신뢰도의 증거입니다.</p>
+                <p>다만 원가 경쟁력 측면에서는 일본 조선사들과의 경쟁이 존재하며, 중국의 새로운 조선사 진입으로 인한 경쟁 심화도 대비해야 합니다. 기술 차별화와 효율성 개선이 향후 경쟁력의 핵심이 될 것입니다.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-sliders"></i>
+                <span>SWOT 분석</span>
+            </h2>
+            <p class="section-subtitle">HD현대의 강점과 기회</p>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-arrow-up"></i> 강점</h3>
+                    <ul>
+                        <li>조선해양 분야의 글로벌 최강 기술력</li>
+                        <li>100조원 이상의 높은 수주잔고</li>
+                        <li>다각화된 사업 포트폴리오</li>
+                        <li>정유사업의 안정적 현금흐름</li>
+                        <li>친환경 선박 기술의 선도 위치</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-arrow-down"></i> 약점</h3>
+                    <ul>
+                        <li>선박 건조 원가경쟁력 상대적 약세</li>
+                        <li>조선 부문 의존도 여전히 높음</li>
+                        <li>신사업(로보틱스) 초기 단계</li>
+                        <li>인건비 상승 압력</li>
+                        <li>정유사업의 장기 구조적 쇠퇴</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-leaf"></i> 기회</h3>
+                    <ul>
+                        <li>친환경 선박에 대한 높은 수요</li>
+                        <li>IMO 규제로 인한 신규 선박 발주 증가</li>
+                        <li>로보틱스·AI 시장의 급성장</li>
+                        <li>해양 재생에너지 시장 확대</li>
+                        <li>한국 선박 기술의 프리미엄 가격화</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-exclamation-triangle"></i> 위협</h3>
+                    <ul>
+                        <li>2028년 이후 조선 수주의 정상화</li>
+                        <li>중국 조선사의 추격</li>
+                        <li>글로벌 경제 둔화 시 해운업 약세</li>
+                        <li>원자재 가격 변동성</li>
+                        <li>환경규제 강화에 따른 R&D 비용 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-bullseye"></i>
+                <span>전략분석</span>
+            </h2>
+            <p class="section-subtitle">2026년 이후 성장 전략</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-ship"></i> 친환경 선박 기술 고도화</h3>
+                <p>HD현대는 현재의 LNG선 기술을 바탕으로 메탄올, 수소, 암모니아 연료 선박 개발에 집중하고 있습니다. 2026년부터 본격적인 차세대 연료 선박의 건조가 시작될 것으로 예상되며, 이 시장에서의 기술 리더십 확보가 2030년대의 경쟁력을 결정할 것입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> 로보틱스·신사업 확대</h3>
+                    <p>HD현대는 현재 적자인 로보틱스 사업을 2026년까지 흑자로 전환하고, 2027년부터는 가시적인 이익 기여를 목표로 하고 있습니다. 스마트팩토리, EV 충전 인프라 등 신기술 분야에서의 경쟁력 강화는 장기적 가치 창출의 핵심입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cogs"></i> 효율성 개선 및 자동화</h3>
+                    <p>AI, 로봇, IoT 등을 활용한 조선소 생산성 향상이 진행 중입니다. 특히 스마트팩토리 기술을 자사 조선소에 먼저 적용하여 원가 경쟁력을 강화하고, 이를 다시 제품 경쟁력으로 연결하는 선순환 구조를 구축하는 전략입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="financial">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무분석</span>
+            </h2>
+            <p class="section-subtitle">2025년 실적 및 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 핵심 재무지표</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>2024</th>
+                                <th>2025</th>
+                                <th>2026E</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>연결매출</strong></td>
+                                <td>65.2조원</td>
+                                <td>71.3조원</td>
+                                <td>74.5조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익</strong></td>
+                                <td>3.1조원</td>
+                                <td>6.1조원</td>
+                                <td>5.8조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률</strong></td>
+                                <td>4.8%</td>
+                                <td>8.6%</td>
+                                <td>7.8%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>당기순이익</strong></td>
+                                <td>2.3조원</td>
+                                <td>4.5조원</td>
+                                <td>4.2조원</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 매출 및 영업이익 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 87%;"></div>
+                        </div>
+                        <div class="bar-value">65.2조</div>
+                        <div class="bar-label">2024년 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 96%;"></div>
+                        </div>
+                        <div class="bar-value">71.3조</div>
+                        <div class="bar-label">2025년 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;"></div>
+                        </div>
+                        <div class="bar-value">74.5조</div>
+                        <div class="bar-label">2026E 매출</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 영업이익률 추이</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2024년</span>
+                        <span class="progress-label-value">4.8%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 24%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2025년</span>
+                        <span class="progress-label-value">8.6%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 43%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2026E</span>
+                        <span class="progress-label-value">7.8%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 39%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2 class="section-title">
+                <i class="fas fa-check-double"></i>
+                <span>결론 및 투자의견</span>
+            </h2>
+            <p class="section-subtitle">조선 호황과 사업 다각화의 수혜</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crystal-ball"></i> 향후 전망</h3>
+                <p>HD현대는 2026-2027년까지 조선 호황의 수혜를 계속 받을 것으로 예상됩니다. 다만 2028년 이후 조선 시장이 정상화될 가능성이 높으므로, 기업이 이 기간 동안 얼마나 많은 미래 기술 개발 투자를 진행하고, 신사업을 성공적으로 확대하는가가 향후 성과를 좌우할 것입니다.</p>
+                <p>긍정적인 시나리오에서는 로보틱스, 해양 신에너지 등 신사업이 2027-2028년부터 의미 있는 이익 기여를 시작하여, 조선 부문의 이익 감소를 부분적으로 상쇄할 수 있습니다. 다만 이는 기술 개발과 시장 형성이 계획대로 진행될 경우의 시나리오입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 리스크 요인</h3>
+                <p>주요 리스크는 조선 호황의 조기 정상화입니다. 글로벌 경제 둔화, 해운업 약세, 또는 친환경 선박 기술의 급속한 표준화로 인한 가격 하락이 발생할 경우, HD현대의 실적은 예상보다 빠르게 악화될 수 있습니다. 또한 신사업 확대 과정에서의 손실 지속도 주가 약세로 이어질 수 있습니다.</p>
+                <p>정유사업의 장기적 수익성 악화, 원자재 가격 변동성 증가, 인건비 상승 등도 고려해야 할 위협 요인들입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 최종 의견</h3>
+                <p>HD현대는 현재 절호의 호황기를 활용하여 중장기 성장의 토대를 구축하고 있습니다. 조선해양의 기술 우위, 친환경 선박 시장의 성장성, 그리고 신사업 다각화 전략은 모두 긍정적 평가 요인입니다. 2025년의 영업이익 6.1조는 이러한 전략의 가시적 성과를 보여줍니다.</p>
+                <p>다만 투자자들은 2026-2027년 이후의 시나리오에 주목해야 합니다. 조선 호황이 지속되거나, 신사업이 성공적으로 확대된다면 중장기 가치는 높을 것입니다. 반대로 조선 시장이 조기에 악화되고 신사업이 기대를 충족하지 못한다면 평가 조정이 불가피할 것입니다. 현재의 밸류에이션은 조선 호황의 지속을 상당히 반영하고 있어, 신중한 관점에서의 접근이 권장됩니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 06일 14:40 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이브 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .report-info { grid-template-columns: 1fr; }
+            .hero { padding: 36px 20px; }
+            .content-card { padding: 20px 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">FLOVAH</div>
+            <div class="logo-subtitle">Insights</div>
+        </div>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#business">사업</a>
+            <a href="#market">시장</a>
+            <a href="#competitors">경쟁</a>
+            <a href="#financial">재무</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 04월 06일</span>
+            <span class="flovah-badge">Premium</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    하이브
+                    <span class="hero-title-highlight">음악산업의 혁신자</span>
+                </h1>
+                <p class="hero-subtitle">글로벌 엔터테인먼트와 테크 플랫폼의 통합</p>
+
+                <div class="ai-score-badge">
+                    <div class="score-circle">81</div>
+                    <div>
+                        <div style="color: var(--ink-strong); font-size: 14px; margin-bottom: 4px;">디지털 혁신도</div>
+                        <div style="color: var(--text-secondary); font-size: 13px;">플랫폼 기술 및 AI 적용 수준</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">14조</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2.65조</div>
+                    <div class="metric-label">2025 매출 (역대최대)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">499억</div>
+                    <div class="metric-label">2025 영업이익</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">사상최대</div>
+                    <div class="metric-label">2026E 실적 전망</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="report-info">
+            <div class="report-info-item">
+                <i class="fas fa-building report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>회사명</h4>
+                    <p>하이브 (HYBE)</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-chart-line report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>상장코드</h4>
+                    <p>352820 KOSPI</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-user-tie report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>경영진</h4>
+                    <p>이재상 경영총괄, 방시혁 의장</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-briefcase report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>주요사업</h4>
+                    <p>음악, 플랫폼, 테크, 게임</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="overview">
+            <h2 class="section-title">
+                <i class="fas fa-music"></i>
+                <span>기업개요 및 역사</span>
+            </h2>
+            <p class="section-subtitle">K-POP에서 글로벌 엔터테인먼트로</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 현재 위상</h3>
+                <p>하이브는 한국 음악산업의 가장 혁신적이고 성공한 기업입니다. 2025년 매출 2.65조원(역대 최대), 영업이익 499억원을 기록했으며, 시가총액은 약 14조원에 달합니다. BTS라는 글로벌 슈퍼스타를 배출한 기업으로서, 현재는 14개 독립레이블 체제로 다양한 아티스트 포트폴리오를 운영하고 있습니다.</p>
+                <p>하이브는 단순한 음악 기획사를 넘어 '엔터테인먼트 테크 플랫폼'으로 진화하고 있습니다. 위버스(Weverse)라는 팬 커뮤니티 플랫폼, 게임, 영상 콘텐츠 제작 등 다각화된 수익원을 확보하고 있으며, 이는 K-POP 산업의 특성상 아티스트 의존성을 낮추는 중요한 전략입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 주요 발전 과정</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2005년</div>
+                        <div class="timeline-item-content">빅히트 엔터테인먼트 설립 - 음악 기획사 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2013년</div>
+                        <div class="timeline-item-content">BTS 데뷔 - K-POP의 미래를 바꾼 순간</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020년</div>
+                        <div class="timeline-item-content">코스피 상장 - 음악사 최초의 성공적 상장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2021년</div>
+                        <div class="timeline-item-content">하이브로 사명 변경 및 이타카홀딩스 인수</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024년</div>
+                        <div class="timeline-item-content">14개 독립레이블 체제 완성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년</div>
+                        <div class="timeline-item-content">역대 최대 매출 2.65조원 기록</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2026년</div>
+                        <div class="timeline-item-content">BTS 월드투어 82회차 예정</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business">
+            <h2 class="section-title">
+                <i class="fas fa-icons"></i>
+                <span>사업구조분석</span>
+            </h2>
+            <p class="section-subtitle">다각화된 수익 모델</p>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-music"></i> 음악 사업</h3>
+                    <p>하이브의 핵심 사업으로 BTS 및 뉴진스, 투모로우X투게더, 이지, 세븐틴 등 다양한 글로벌 아티스트를 보유하고 있습니다. 2026년 BTS의 본격적인 활동 재개와 월드투어 확대는 음악 사업의 매출과 이익을 크게 증가시킬 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-laptop"></i> 플랫폼 사업</h3>
+                    <p>위버스는 아티스트와 팬을 직접 연결하는 커뮤니티 플랫폼으로, 구독료, 광고, 전자상거래 등 다양한 수익원을 가지고 있습니다. 글로벌 아티스트들과의 협력으로 위버스는 한국의 엔터테인먼트 플랫폼을 넘어 글로벌 스탠다드가 되고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-gamepad"></i> 게임 및 콘텐츠</h3>
+                    <p>하이브는 모바일 게임, 웹소설 연결 게임, 뮤직비디오 기반 게임 등 다양한 게임을 개발하고 있습니다. 영상 콘텐츠도 제작하고 있으며, 이들은 아티스트의 추가적 수익원이자 팬 확보의 중요한 채널입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 수익 포트폴리오의 진화</h3>
+                <p>하이브의 가장 중요한 전략적 성과는 음악 사업에 대한 의존도를 낮추고 플랫폼, 게임, 콘텐츠 사업의 비중을 높여가고 있다는 점입니다. 2025년 기준으로도 음악은 여전히 주요 수익원이지만, 플랫폼과 게임의 성장률이 더 높으며, 이는 하이브가 K-POP 아티스트의 변동성 리스크를 점진적으로 헤징하고 있음을 의미합니다.</p>
+            </div>
+        </section>
+
+        <section id="market">
+            <h2 class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장분석</span>
+            </h2>
+            <p class="section-subtitle">글로벌 엔터테인먼트 시장의 확대</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> K-POP 글로벌 시장</h3>
+                <p>K-POP은 더 이상 아시아 한정의 현상이 아니며, 북미, 유럽, 라틴아메리카 등에서 확실한 팬층을 확보하고 있습니다. 특히 Gen-Z와 Gen-Alpha가 K-POP의 주요 소비층이 되면서, 장기적으로 지속 가능한 수요를 보장합니다. BTS, 뉴진스, 투모로우X투게더 등 하이브 아티스트들은 이 글로벌 시장에서 선도적 위치에 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-microphone"></i> 콘서트/투어 시장</h3>
+                    <p>팬데믹 이후 라이브 공연 시장이 급속히 회복되고 있으며, K-POP 아티스트들의 콘서트는 매우 높은 티켓 가격에도 불구하고 전 회차가 매진되는 상황입니다. BTS의 월드투어 82회차 예정은 이러한 글로벌 수요를 반영합니다. 콘서트 수익의 마진율은 음원 판매보다 훨씬 높으므로, 투어 사업 확대는 수익성 개선으로 직결됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-streaming"></i> 음원 스트리밍</h3>
+                    <p>Spotify, Apple Music 등 글로벌 스트리밍 플랫폼에서 K-POP의 스트림이 지속적으로 증가하고 있습니다. 음원은 한 번 제작되면 장기간 수익을 창출하므로, 과거 앨범의 누적 스트림도 중요한 수익원입니다. 하이브의 거대한 음악 카탈로그는 지속적인 수익원입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competitors">
+            <h2 class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사분석</span>
+            </h2>
+            <p class="section-subtitle">K-POP 엔터테인먼트 기업의 경쟁 구도</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>주요 아티스트</th>
+                                <th>강점</th>
+                                <th>약점</th>
+                                <th>평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>하이브</strong></td>
+                                <td>BTS, 뉴진스, TXT</td>
+                                <td>글로벌 슈퍼스타, 플랫폼</td>
+                                <td>아티스트 다각화 필요</td>
+                                <td>최강</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SM엔터</strong></td>
+                                <td>EXO, 보아, 동방신기</td>
+                                <td>레이블 인프라, 역사</td>
+                                <td>신규 슈퍼스타 부족</td>
+                                <td>강자</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JYP엔터</strong></td>
+                                <td>TWICE, Stray Kids</td>
+                                <td>기술력, 신인 육성</td>
+                                <td>글로벌 영향력</td>
+                                <td>강자</td>
+                            </tr>
+                            <tr>
+                                <td><strong>YG엔터</strong></td>
+                                <td>블랙핑크, 위너</td>
+                                <td>블랙핑크의 위상</td>
+                                <td>신인 약세, 경영 불안</td>
+                                <td>약화</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crown"></i> 경쟁 위상 분석</h3>
+                <p>하이브는 현재 K-POP 엔터테인먼트 업계의 절대 강자입니다. BTS라는 역사상 가장 큰 영향을 끼친 K-POP 그룹을 보유하고 있으며, 뉴진스, 투모로우X투게더 등 신세대 슈퍼스타들도 지속적으로 배출하고 있습니다. 또한 위버스, 게임, 영상 콘텐츠 등 플랫폼 영역에서도 경쟁사 대비 앞서가고 있습니다.</p>
+                <p>다만 BTS에 대한 의존도가 여전히 높다는 점이 리스크입니다. BTS 멤버들의 군 입대로 인한 활동 공백 기간 동안 매출 변동성이 발생할 수 있으며, 2026년 이후의 BTS 활동 강도가 실적을 크게 좌우할 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-sliders"></i>
+                <span>SWOT 분석</span>
+            </h2>
+            <p class="section-subtitle">하이브의 강점과 기회</p>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-arrow-up"></i> 강점</h3>
+                    <ul>
+                        <li>BTS라는 글로벌 슈퍼스타</li>
+                        <li>강력한 신인 육성 시스템</li>
+                        <li>위버스 플랫폼의 경쟁력</li>
+                        <li>다각화된 수익 모델</li>
+                        <li>글로벌 팬층의 충성도</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-arrow-down"></i> 약점</h3>
+                    <ul>
+                        <li>BTS에 대한 높은 의존도</li>
+                        <li>아티스트 퇴사 리스크</li>
+                        <li>게임 사업의 초기 단계</li>
+                        <li>경쟁사보다 짧은 역사</li>
+                        <li>국내 시장의 한계</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-leaf"></i> 기회</h3>
+                    <ul>
+                        <li>BTS 컴백으로 사상 최대 실적 기대</li>
+                        <li>글로벌 K-POP 시장 확대</li>
+                        <li>위버스의 글로벌 확산 가능성</li>
+                        <li>게임 IP 활용 확대</li>
+                        <li>신인 아티스트의 글로벌 성공</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-exclamation-triangle"></i> 위협</h3>
+                    <ul>
+                        <li>BTS 멤버 군 입대의 활동 공백</li>
+                        <li>중국 규제로 인한 수익 축소</li>
+                        <li>경쟁 기획사의 신인 등장</li>
+                        <li>아티스트 계약 분쟁 가능성</li>
+                        <li>스트리밍 플랫폼의 지급 단가 하락</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-bullseye"></i>
+                <span>전략분석</span>
+            </h2>
+            <p class="section-subtitle">장기 성장을 위한 다각화 전략</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users"></i> 포트폴리오 다각화</h3>
+                <p>하이브는 14개 독립레이블 체제를 통해 아티스트 포트폴리오를 극대화하고 있습니다. BTS라는 슈퍼스타에 대한 의존도를 낮추면서도 각 레이블이 개별 특성화된 아티스트를 발굴/관리할 수 있는 구조입니다. 이는 조직의 유연성을 높이면서도 리스크를 분산시키는 전략입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-laptop"></i> 플랫폼 강화</h3>
+                    <p>위버스는 단순한 팬 커뮤니티를 넘어 전자상거래, 구독 서비스, 광고 플랫폼으로 확대되고 있습니다. 글로벌 아티스트들과의 협력을 통해 위버스의 글로벌 지배력을 강화하는 것이 중기 전략입니다. 이는 아티스트의 직접 수익화 기회를 늘리면서 동시에 하이브의 추가 수익원이 됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-gamepad"></i> 게임·콘텐츠 개발</h3>
+                    <p>하이브는 아티스트의 IP를 활용한 게임, 영상, 웹소설 제작을 확대하고 있습니다. 특히 모바일 게임은 고마진 사업으로, 글로벌 팬들을 타겟으로 한 게임 개발은 추가적 수익원이 될 것으로 기대됩니다. 뮤직비디오 기반 리듬게임 등 하이브만의 독특한 IP 게임화 방식도 주목할 가치가 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="financial">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무분석</span>
+            </h2>
+            <p class="section-subtitle">2025-2026년 실적 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 핵심 재무지표</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>2024</th>
+                                <th>2025</th>
+                                <th>2026E</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>매출액</strong></td>
+                                <td>2.36조원</td>
+                                <td>2.65조원</td>
+                                <td>3.1조원+</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익</strong></td>
+                                <td>300억원</td>
+                                <td>499억원</td>
+                                <td>700억원+</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률</strong></td>
+                                <td>1.3%</td>
+                                <td>1.9%</td>
+                                <td>2.3%+</td>
+                            </tr>
+                            <tr>
+                                <td><strong>당기순이익</strong></td>
+                                <td>200억원</td>
+                                <td>350억원</td>
+                                <td>500억원+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 매출 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 76%;"></div>
+                        </div>
+                        <div class="bar-value">2.36조</div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 85%;"></div>
+                        </div>
+                        <div class="bar-value">2.65조</div>
+                        <div class="bar-label">2025년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;"></div>
+                        </div>
+                        <div class="bar-value">3.1조+</div>
+                        <div class="bar-label">2026E</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 영업이익률 개선</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2024년</span>
+                        <span class="progress-label-value">1.3%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 28%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2025년</span>
+                        <span class="progress-label-value">1.9%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 41%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2026E</span>
+                        <span class="progress-label-value">2.3%+</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2 class="section-title">
+                <i class="fas fa-check-double"></i>
+                <span>결론 및 투자의견</span>
+            </h2>
+            <p class="section-subtitle">BTS 컴백의 역사적 기회</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crystal-ball"></i> 향후 전망</h3>
+                <p>하이브는 2026년 BTS의 본격적인 활동 재개와 월드투어 확대로 사상 최대의 실적을 기록할 것으로 전망됩니다. BTS는 현재 세계에서 가장 영향력 있는 음악 그룹 중 하나이며, 컴백에 대한 글로벌 팬들의 기대는 매우 높습니다. 이는 음악 판매, 콘서트 수익, 머천다이징 등 모든 분야에서 매출과 이익을 크게 증가시킬 것으로 예상됩니다.</p>
+                <p>더 나아가 뉴진스, 투모로우X투게더 등 신세대 글로벌 아티스트들의 성장과 위버스의 플랫폼 확산, 그리고 게임·콘텐츠 사업의 본격화가 동시에 일어난다면, 하이브의 중장기 성장은 매우 강할 것으로 판단됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 리스크 요인</h3>
+                <p>주요 리스크는 BTS에 대한 의존도입니다. BTS 멤버들의 퇴사, 활동 축소, 또는 글로벌 인기의 감소가 발생할 경우 하이브의 실적에 큰 충격을 미칠 수 있습니다. 또한 중국의 한류 규제 강화는 아시아 시장 수익에 직접적 영향을 줄 수 있습니다.</p>
+                <p>음악 스트리밍 플랫폼의 지급 단가 하락, 경쟁 기획사의 신인 등장, 그리고 BTS 월드투어 과정에서의 예상 밖의 이슈 발생도 주시해야 할 리스크들입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 최종 의견</h3>
+                <p>하이브는 2026년 BTS 컴백으로 역사적 수익 기회를 맞이하고 있습니다. 현재의 밸류에이션은 이러한 기회를 어느 정도 반영하고 있지만, BTS 컴백과 월드투어의 규모가 예상을 상회할 경우 추가 상승의 여지가 있습니다. 특히 플랫폼과 게임 사업의 성장이 예상을 초과한다면 하이브의 장기적 가치는 현재의 평가보다 훨씬 높을 수 있습니다.</p>
+                <p>투자자들은 2026년 1분기 BTS 컴백 활동의 반응도, 2분기 콘서트 티켓 판매 현황, 그리고 위버스와 게임 사업의 성장세를 면밀히 모니터링할 필요가 있습니다. 이들이 기대를 충족한다면 하이브의 밸류에이션 상향 조정이 불가피할 것으로 판단됩니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 06일 14:50 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

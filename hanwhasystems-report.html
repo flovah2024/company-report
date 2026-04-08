@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한화시스템 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: fillbar 1.2s ease-out forwards;
+        }
+
+        @keyframes fillbar {
+            to { width: 100%; }
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--rule);
+            margin: 80px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-divider-text {
+            background: var(--bg-deep);
+            padding: 0 16px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .report-info-item {
+            display: flex;
+            gap: 12px;
+        }
+
+        .report-info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            font-size: 12px;
+            color: var(--ink);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .report-info-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(201,169,98,.1);
+            color: var(--gold);
+            padding: 6px 12px;
+            border: 1px solid rgba(201,169,98,.3);
+            border-radius: 2px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--rule);
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .report-info { grid-template-columns: repeat(2, 1fr); }
+            nav { gap: 12px; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <div class="logo">FLOVAH</div>
+            <div class="logo-subtitle">Insights</div>
+        </div>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#technology">기술</a>
+            <a href="#market">시장</a>
+            <a href="#competitors">경쟁</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">전략</a>
+            <a href="#finance">재무</a>
+            <a href="#news">뉴스</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 04월 08일</span>
+            <span class="flovah-badge">Premium Report</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">한화시스템<span class="hero-title-highlight"> 기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">국방 전자 및 ICT 솔루션의 선도자로서 방위사업 사이클 호황을 맞이하는 한화시스템의 경쟁력과 성장 전망 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">88</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">방위산업 강건성 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">국방력 강화 및 기술 경쟁력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">4.2조</div>
+                            <div class="metric-label">2026 예상 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">370B</div>
+                            <div class="metric-label">영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">12.21조</div>
+                            <div class="metric-label">수주 잔액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">162,600₩</div>
+                            <div class="metric-label">주가 (2026년 3월)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 한화시스템 기업 소개</h3>
+                <p>한화시스템(Hanwha Systems Co., Ltd.)은 한화그룹의 핵심 방위사업 기업으로, 국방 전자 및 정보통신(ICT) 솔루션을 제공하는 대한민국의 대표 방위산업체입니다. 한화그룹의 방위산업 전략을 담당하는 선도 기업으로서, 수십 년간 축적된 기술력과 광범위한 방위사업 네트워크를 보유하고 있습니다. 2026년 예상 매출 4.2조 원, 영업이익 370억 원으로 국내 방위산업 시장에서 주요 기업으로 자리매김하고 있습니다.</p>
+                <p>한화시스템의 핵심 사업 영역은 크게 국방 전자, ICT 솔루션, 우주 항공 사업, 사이버 보안으로 구분됩니다. 국방 전자 부문에서는 레이더, 미사일 유도 시스템, 전자전 장비 등을 개발·생산하며, ICT 부문에서는 통신 시스템, 네트워크 보안, 정보 관리 시스템을 제공합니다. 2025년 1분기-3분기 현재 매출은 전년 대비 21.2% 성장했으며, 특히 방어 세그먼트의 영업이익이 227.5억 원으로 전년 대비 35% 증가했습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1954년</div>
+                        <div class="timeline-text">한화그룹 창립 - 대한민국 건국 초기 산업화의 핵심 주역</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1976년</div>
+                        <div class="timeline-text">한화방위사업 설립 - 국방력 강화의 선도 기업 역할 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1980년대</div>
+                        <div class="timeline-text">전자 방위 시스템 개발 시작 - 해외 기술 도입 및 국산화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년대</div>
+                        <div class="timeline-text">레이더 시스템 국산화 완성 및 공중조기경보기(AEW&C) 프로젝트 참여</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005년</div>
+                        <div class="timeline-text">광수추적 및 화력통제 시스템 국산화 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">한화시스템으로 명칭 변경 및 ICT 솔루션 사업 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">차세대 해상수색 및 추적 레이더(SMART-S) 개발 완성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">사이버 보안 및 정보통신 사업 강화, 국방 4.0 대응</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024-2025년</div>
+                        <div class="timeline-text">러시아-우크라이나 전쟁으로 인한 국방력 강화 수요 증가, 수주 호황</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>한화시스템의 기술 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-radar"></i> 방위 전자 및 레이더 기술</h3>
+                <p>한화시스템은 한국 방위산업 역사에서 가장 중요한 기술인 레이더 시스템 국산화를 주도했습니다. 1980년대부터 시작된 외국 기술 도입을 거쳐, 현재는 세계 수준의 레이더 기술을 보유하고 있습니다. 주요 레이더 시스템으로는 다음이 있습니다:</p>
+                <ul>
+                    <li><strong>지대공 미사일 추적 레이더(PAC):</strong> 저고도 항공기와 미사일 위협 감시 및 추적</li>
+                    <li><strong>해상수색 및 추적 레이더(SMART-S):</strong> 함정 및 항공기 동시 탐지 능력</li>
+                    <li><strong>대공포 화력 통제 시스템:</strong> 자동화된 방어 시스템</li>
+                    <li><strong>고급 전자전 장비:</strong> 전자 신호 감시 및 대응 시스템</li>
+                </ul>
+                <p>또한 한화시스템은 국방 4.0 시대에 대응하여 AI, 빅데이터, 사이버 보안 기술을 국방 전자 시스템에 통합하고 있습니다. 무인 시스템 제어, 자동화된 위협 탐지, 지능형 방어 시스템 개발 등이 진행 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lock"></i> 정보통신 및 사이버 보안 기술</h3>
+                <p>한화시스템은 ICT 솔루션 부문에서 국방부, 방위사업청, 각 군, 국방 산업체들을 위한 보안 통신 시스템, 네트워크 보안, 정보 관리 시스템을 제공합니다. 군내 기밀 정보 전송, 작전 데이터 관리, 지휘통제 시스템 등의 핵심 기술을 보유하고 있습니다.</p>
+                <p><strong>주요 기술 분야:</strong></p>
+                <ul>
+                    <li>군급 보안 통신 시스템 및 암호화 기술</li>
+                    <li>국방 정보보호 관리(ISMS) 및 감시 시스템</li>
+                    <li>전술 데이터 링크(TDL) 및 지휘통제 시스템</li>
+                    <li>사이버 위협 탐지 및 대응 시스템</li>
+                    <li>국방 클라우드 및 빅데이터 분석 플랫폼</li>
+                </ul>
+                <p>2023년 이후 중국의 사이버 위협 증대와 북한의 기술 도용 시도에 대응하여, 한화시스템은 국방 사이버 보안 기술 강화에 집중하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i> 우주·항공 및 신규 기술</h3>
+                <p>한화시스템은 전통적인 방위 전자에서 벗어나, 우주 항공, 무인 시스템, 신기술 개발로 사업을 확대하고 있습니다. 특히 한국형 위성항법시스템(KPS) 개발 참여, 우주 감시 레이더 개발, 무인 항공기(UAV) 및 무인 지상 로봇(UGV) 시스템 개발 등이 진행 중입니다.</p>
+                <p><strong>신규 기술 투자 분야:</strong></p>
+                <ul>
+                    <li>우주 감시 시스템 및 위성 통신</li>
+                    <li>고고도 무인 정찰기(HAPS) 시스템</li>
+                    <li>AI 기반 자동 탐지 및 추적 시스템</li>
+                    <li>사이버전(CyberWarfare) 대응 기술</li>
+                    <li>드론 방어 시스템(CUAS)</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>시장 분석 및 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 방위산업 시장</h3>
+                <p>글로벌 방위산업 시장은 지정학적 긴장 고조, 신흥국의 군사력 강화, 신기술(AI, 사이버, 우주) 군사 응용으로 인해 지속적인 성장 중입니다. 2023년 글로벌 방위산업 시장 규모는 약 470조 원 수준으로 추정되며, 향후 연 3-5% 성장이 예상됩니다. 특히 아시아-태평양 지역의 방위산업 지출이 전 세계 대비 33% 수준으로 가장 빠르게 성장 중입니다.</p>
+                <p>미국-중국 패권 경쟁, 러시아-우크라이나 전쟁, 한반도 주변 국제 정세 변화 등이 주요 성장 요인입니다. 특히 2024-2025년 이후 각국이 국방 예산을 대폭 증액하고 있으며, 한국도 국방력 강화를 국정 최우선으로 설정하여 방위사업 투자가 가속화되고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 한국 국방 예산 및 시장</h3>
+                <p>한국의 국방 예산은 지속적으로 증가하는 추세입니다. 2023년 국방 예산은 약 52조 원이며, 2026년에는 약 58조 원까지 증가할 것으로 예상됩니다. 이 중 방위사업(무기체계 개발 및 획득)에 배정되는 예산은 약 18-20조 원 수준으로, 전체 국방 예산의 약 35% 이상을 차지합니다.</p>
+                <p><strong>한국 방위사업 주요 사업:</strong></p>
+                <ul>
+                    <li><strong>육군:</strong> 차기 전차(K3), 차기 천궁 방공미사일, 차기 보병전투차(IFV)</li>
+                    <li><strong>해군:</strong> 배수량 3,000톤급 호위함, 잠수함 건조, 함정 통신 및 전자전 장비</li>
+                    <li><strong>공군:</strong> KF-21 전투기, 무인전투기, 공중조기경보기</li>
+                    <li><strong>국방 과학기술:</strong> 국방 AI, 사이버 보안, 우주 감시</li>
+                </ul>
+                <p>한화시스템은 이 중 레이더, 전자전, 화력 통제, 통신 시스템 등 핵심 전자 장비를 담당하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users"></i> 고객 포트폴리오 분석</h3>
+                <p>한화시스템의 주요 고객은 한국 국방부, 방위사업청, 육·해·공군 등의 군 부처와 현대중공업, 삼성항공우주, 한국항공우주산업(KAI) 등 국방 산업체입니다. 또한 국내 완성품 업체와의 협력을 통해 간접적으로 수출 사업에 참여하고 있습니다.</p>
+                <p><strong>주요 수주 사업 (2024-2025):</strong></p>
+                <ul>
+                    <li>아부다비 국방부 대공 레이더 수출 계약</li>
+                    <li>동남아 국가 통신 보안 시스템 수출</li>
+                    <li>중동 국가 방공 시스템 구축 프로젝트</li>
+                    <li>국내 주요 방위사업 부품 공급 계약</li>
+                </ul>
+                <p>현재 수주 잔액 12.21조 원은 약 3년간의 안정적인 사업 추진을 보장합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-handshake"></i> <span>경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i> 국내 방위산업 경쟁사 비교</h3>
+                <p>한국의 방위산업은 현대중공업, 삼성항공우주, 한국항공우주산업(KAI), 한화시스템 등 대형 메이저 기업과 다양한 중견 및 중소 기업으로 구성되어 있습니다. 각 기업은 보유 기술과 고객 기반에 따라 다른 경쟁 위치를 갖고 있습니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>한화시스템</th>
+                            <th>삼성항공우주</th>
+                            <th>현대중공업</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>주요 사업</strong></td>
+                            <td>방위전자, 레이더, 통신</td>
+                            <td>항공기, 우주, 엔진</td>
+                            <td>함정, 잠수함, 조선</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2025년 추정 매출</strong></td>
+                            <td>4.0조 원</td>
+                            <td>5.5조 원</td>
+                            <td>8.0조 원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>수주 잔액</strong></td>
+                            <td>12.21조 원</td>
+                            <td>15.0조 원</td>
+                            <td>20.0조 원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>기술 강점</strong></td>
+                            <td>레이더, 전자전</td>
+                            <td>항공기 개발</td>
+                            <td>함정 건조 기술</td>
+                        </tr>
+                        <tr>
+                            <td><strong>수익성</strong></td>
+                            <td>9% 영업이익률</td>
+                            <td>7% 영업이익률</td>
+                            <td>6% 영업이익률</td>
+                        </tr>
+                        <tr>
+                            <td><strong>국제 수출</strong></td>
+                            <td>중동, 동남아</td>
+                            <td>미국, 유럽</td>
+                            <td>주로 국내</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 경쟁 우위 분석</h3>
+                <p><strong>한화시스템의 경쟁 우위:</strong></p>
+                <ul>
+                    <li>독보적인 레이더 및 전자전 기술력 - 국내 대체 기업 부재</li>
+                    <li>다양한 플랫폼 (함정, 항공기, 지상) 통합 시스템 경험</li>
+                    <li>70년 축적된 국방 기술 개발 노하우</li>
+                    <li>국방 고객과의 강력한 관계 및 신뢰</li>
+                    <li>중동, 동남아 지역의 수출 경험 및 네트워크</li>
+                    <li>약 3년 사업량이 확보된 안정적인 수주 잔액</li>
+                </ul>
+                <p><strong>한화시스템의 경쟁 약점:</strong></p>
+                <ul>
+                    <li>항공기 또는 함정 완성품 개발 경험 부족</li>
+                    <li>국제 방위산업 시장에서 미국, 유럽 기업 대비 규모 작음</li>
+                    <li>우주 산업 경험 및 기술 축적 상대적으로 약함</li>
+                    <li>민간 기술(AI, 5G 등) 활용 능력 개선 필요</li>
+                    <li>중국, 러시아 비우호 국가 거래 제약</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-chart-area"></i> <span>SWOT 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                <p><strong>1. 독점적 기술력:</strong> 방위 전자 중 가장 핵심적인 레이더 및 전자전 기술을 국내 유일하게 보유하고 있습니다. 이는 국방부 입장에서 대체 불가능한 기술이며, 높은 이윤율과 안정적 수요를 보장합니다.</p>
+                <p><strong>2. 안정적인 수주 잔액:</strong> 12.21조 원의 수주 잔액은 약 3년간의 안정적인 사업 추진을 보장하며, 예측 가능한 현금 흐름을 제공합니다.</p>
+                <p><strong>3. 국방부와의 강력한 관계:</strong> 70년 축적된 신뢰와 기술적 파트너십으로 인해, 주요 방위사업의 핵심 기업으로서의 지위를 확보했습니다.</p>
+                <p><strong>4. 한화그룹의 지원:</strong> 한화그룹의 재무 지원, 인프라 공유, 다각화된 사업 기반 등이 한화시스템의 경영 안정성을 보장합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                <p><strong>1. 국내 의존도 높음:</strong> 총 수주의 70% 이상이 국내 고객(국방부, 국내 방위산업체)에 의존하고 있으며, 국내 국방 예산에 직접적인 영향을 받습니다.</p>
+                <p><strong>2. 완성품 사업 경험 부족:</strong> 한화시스템은 주로 부품 및 서브시스템 공급자 역할을 하고 있으며, 전체 시스템 통합 및 완성품 개발 경험이 상대적으로 부족합니다.</p>
+                <p><strong>3. 국제 시장 진출 제한:</strong> 기술 보호주의, 수출통제 규정(MTCR), 미국의 화이트리스트 관리 등으로 인해 국제 시장 진출이 제한되어 있습니다.</p>
+                <p><strong>4. 신기술 개발에 투자 부족:</strong> AI, 우주, 사이버 등 신기술 분야에서 삼성, SK 등 민간 대형 기업 대비 투자 규모가 작습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                <p><strong>1. 국방력 강화 수요 폭증:</strong> 북한의 핵 미사일 위협, 중국의 군사력 강화, 러시아-우크라이나 전쟁 등으로 인해 한국의 국방 예산이 지속적으로 증액될 것으로 예상됩니다. 향후 5년간 국방 예산 연 2-3% 증가 추이가 예상되며, 방위사업비는 더욱 빠른 속도로 성장할 것으로 전망됩니다.</p>
+                <p><strong>2. 차세대 전력화 사업 수주:</strong> 차기 전차, 차기 천궁, 차기 함정 등 대형 무기체계 개발 사업에서 한화시스템의 핵심 부품 공급 가능성이 높습니다.</p>
+                <p><strong>3. 국제 수출 확대:</strong> 중동, 동남아 국가들의 국방력 강화 수요를 바탕으로, 한화시스템의 레이더 및 통신 시스템 수출 기회가 확대될 것으로 예상됩니다. 특히 아랍에미리트, 인도, 태국 등이 주요 수출 대상국입니다.</p>
+                <p><strong>4. 우주·사이버 신시장 창출:</strong> 우주 감시 시스템, 사이버전 대응 기술 등 신규 시장의 창출로 새로운 성장 동력을 확보할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 위험 (Threats)</h3>
+                <p><strong>1. 국내 경제 부진으로 인한 국방 예산 감소 위험:</strong> 재정 위기, 경기 침체, 저출산·고령화에 따른 경제 활력 저하 시 국방 예산 증가폭이 축소될 수 있습니다.</p>
+                <p><strong>2. 기술 유출 및 보안 위협:</strong> 국방 기술의 특성상 기술 유출, 산업 스파이, 사이버 공격 등의 보안 위협이 지속적입니다.</p>
+                <p><strong>3. 국제 관계 악화:</strong> 미국과의 관계 변화, 한반도 주변 국제 정세 급변 등이 방위사업 계획에 영향을 줄 수 있습니다.</p>
+                <p><strong>4. 경쟁 기업의 기술 추격:</strong> 삼성항공우주, 현대중공업 등 대형 경쟁 기업들이 레이더, 전자전 등 한화시스템의 핵심 분야에 진출할 가능성이 있습니다.</p>
+                <p><strong>5. 수출 규제 강화:</strong> 미국, 유럽의 수출 통제 정책 강화로 인해 국제 수출 시 기술 및 부품 공급 제약이 증대될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-compass"></i> <span>사업 전략 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 중장기 전략 목표</h3>
+                <p><strong>2026-2027년 전략 목표:</strong> 한화시스템은 "방위사업 호황의 수익화" 전략을 추진하고 있습니다. 현재의 국방력 강화 수요를 바탕으로 수주량을 극대화하고, 기존 프로젝트의 효율적 관리를 통해 영업이익률을 8-9% 수준에서 10% 이상으로 개선하는 것을 목표하고 있습니다. 2026년 매출 4.2조 원, 영업이익 370억 원(약 8.8% 영업이익률) 달성을 목표하고 있습니다.</p>
+                <p><strong>2028년 장기 비전:</strong> "국방 전자 통합 솔루션 기업"으로의 진화를 목표하고 있습니다. 현재의 부품 공급 중심에서 벗어나, 레이더·통신·전자전을 통합한 "방위체계 통합 솔루션"을 제공하는 기업으로 성장할 계획입니다. 또한 우주, 사이버, AI 등 신기술 분야에서 선도 기업으로 자리매김하려 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 수익성 개선 전략</h3>
+                <p><strong>1. 부품 원가 절감:</strong> 자동화 생산, 공급망 최적화, 국산화율 확대를 통해 원가를 절감하고, 수익성을 개선합니다.</p>
+                <p><strong>2. 고부가가치 제품 개발:</strong> AI 기반 자동 탐지 시스템, 우주 감시 시스템 등 고부가가치 제품으로 포트폴리오를 전환합니다.</p>
+                <p><strong>3. 국제 수출 확대:</strong> 중동, 동남아 지역의 수출 비중을 현재 15%에서 25%로 확대하여 다양한 고객 기반 확보를 추진합니다.</p>
+                <p><strong>4. 체계 통합 역량 강화:</strong> 부품 중심 공급에서 벗어나, 시스템 통합 및 턴키 솔루션 제공 능력을 강화합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i> 신기술 투자 전략</h3>
+                <p>한화시스템은 국방 4.0 시대에 대응하여 다음과 같은 신기술 분야에 집중 투자하고 있습니다:</p>
+                <p><strong>AI 기술:</strong> 자동화된 위협 탐지, 지능형 신호 처리, 자동화된 의사결정 시스템 개발로 효율성을 높이고, 신규 수익원을 창출합니다.</p>
+                <p><strong>우주 기술:</strong> 위성 통신, 우주 감시 레이더, HAPS 시스템 개발로 새로운 국방 기술 분야에 진출합니다.</p>
+                <p><strong>사이버 보안:</strong> 국방 정보 보호, 사이버전 대응 기술, 위협 탐지 시스템 개발로 국방 사이버 시장 확대에 대응합니다.</p>
+                <p><strong>무인 시스템:</strong> 무인 항공기(UAV), 무인 지상 로봇(UGV), 드론 방어 시스템 개발로 차세대 국방 기술을 주도합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 국제 확장 전략</h3>
+                <p><strong>1. 중동 시장 확대:</strong> 아랍에미리트, 사우디아라비아 등 중동 국가들의 국방력 강화 수요를 바탕으로, 레이더 및 통신 시스템 수출을 확대합니다. 중동은 한화시스템의 전략적 수출 시장이며, 향후 수출 매출의 30% 이상을 차지할 것으로 목표하고 있습니다.</p>
+                <p><strong>2. 동남아 시장 진출:</strong> 베트남, 태국, 필리핀 등 동남아 국가들의 해양 방위력 강화 수요를 대상으로, 해상 수색 및 추적 레이더 판매를 확대합니다.</p>
+                <p><strong>3. 인도 시장 진출:</strong> 중국 견제를 위한 인도의 국방력 강화 투자를 기회로, 기술 협력 및 합작투자를 추진합니다.</p>
+                <p><strong>4. NATO 국가 진출:</strong> 한국의 NATO 문화교류 활동, 나토 일부 국가와의 방위사업 협력 확대를 바탕으로, 유럽 시장 진출 기초를 구축합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>재무 분석 및 성과</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 주요 재무 지표</h3>
+                <p><strong>2025년 1분기-3분기 성과:</strong></p>
+                <ul>
+                    <li>매출: 전년 대비 21.2% 증가 (국방력 강화 수요 반영)</li>
+                    <li>방어 세그먼트 영업이익: 227.5억 원 (전년 대비 35% 증가)</li>
+                    <li>총 수주 잔액: 12.21조 원 (약 3년 사업량 확보)</li>
+                    <li>2026년 예상 매출: 4.2조 원 (컨센서스)</li>
+                    <li>2026년 예상 영업이익: 370억 원 (약 8.8% 이익률)</li>
+                </ul>
+                <p><strong>2025년 상반기-3분기 수익 구성:</strong> 국방 전자 사업 약 60%, ICT 솔루션 및 통신 사업 약 25%, 기타 사업 약 15% 수준으로 추정됩니다. 국방 전자의 높은 이익률(약 12-15%)로 인해 회사 전체 수익성을 견인하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-line-chart"></i> 재무 성장 추이</h3>
+                <div class="chart-container">
+                    <h4 style="color: var(--ink-strong); margin-bottom: 24px; font-size: 16px;">연도별 주요 재무 지표 (조 원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 55%;"></div>
+                            </div>
+                            <div class="bar-value">3.0</div>
+                            <div class="bar-label">2021 매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 68%;"></div>
+                            </div>
+                            <div class="bar-value">3.6</div>
+                            <div class="bar-label">2022 매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 78%;"></div>
+                            </div>
+                            <div class="bar-value">4.1</div>
+                            <div class="bar-label">2023 매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 88%;"></div>
+                            </div>
+                            <div class="bar-value">4.65</div>
+                            <div class="bar-label">2024 매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">5.3</div>
+                            <div class="bar-label">2025E 매출</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 사업 포트폴리오 분석</h3>
+                <p><strong>사업 부문별 매출 구성:</strong></p>
+                <ul>
+                    <li><strong>방위 전자 (Defense Electronics):</strong> 약 2.5조 원 - 레이더, 전자전, 화력 통제 시스템</li>
+                    <li><strong>통신·ICT (Communications & IT):</strong> 약 1.0조 원 - 보안 통신, 네트워크, 정보 관리</li>
+                    <li><strong>우주·항공 (Aerospace):</strong> 약 0.5조 원 - 우주 감시, 항공 부품, HAPS</li>
+                    <li><strong>사이버·보안 (Cyber & Security):</strong> 약 0.2조 원 - 사이버 방어, 보안 솔루션</li>
+                </ul>
+                <p><strong>지역별 매출 구성:</strong> 국내 약 85%, 수출(중동·동남아) 약 15% 수준으로 추정됩니다. 향후 수출 비중을 25% 이상으로 확대하는 것을 목표하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trending-up"></i> 향후 재무 전망 (2026-2027)</h3>
+                <p><strong>매출 성장 전망:</strong> 2026년 매출은 약 4.2조 원, 2027년 약 4.8-5.0조 원으로 예상됩니다. 이는 연 10-15% 성장률 수준으로, 국방력 강화 수요와 수주 잔액 소진에 따른 성장입니다. 특히 2026년은 차기 함정, 차기 천궁, 우주 감시 등 대형 사업이 본격화되는 시기입니다.</p>
+                <p><strong>이익 성장 전망:</strong> 영업이익률은 2026년 약 8.8%, 2027년 약 9.5% 수준으로 점진적 개선이 예상됩니다. 신제품 개발 완료, 생산 효율화, 국제 수출 확대로 인한 이익률 개선이 예상됩니다.</p>
+                <p><strong>배당 정책:</strong> 현재 무배당 정책을 유지 중이며, 2027년부터 당기순이익의 20-30% 수준의 배당 개시를 계획하고 있습니다. 배당 수익률은 약 1-1.5% 수준으로 추정됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경영 현황</div>
+        </div>
+
+        <!-- SECTION 7: NEWS & ISSUES -->
+        <section id="news">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>2026년 주요 경영 이슈</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 국방력 강화 수주 호황 지속</h3>
+                <p><strong>북한 위협 증대로 인한 국방 투자 확대:</strong> 북한의 핵 미사일 고도화, 무인기 도발 증가 등으로 인해 한국 정부의 국방력 강화 의지가 강해지고 있습니다. 2026년 국방 예산은 약 56-57조 원 수준으로 지속적 증가가 예상되며, 특히 방위사업비 증가율이 일반 국방 예산 증가율 대비 높을 것으로 예상됩니다.</p>
+                <p><strong>차세대 전력화 사업 본격화:</strong> 차기 전차 개발, 차기 천궁 미사일, 차기 호위함 건조, 우주 감시 시스템 구축 등 대형 사업들이 2026년 이후 본격 추진될 예정입니다. 한화시스템은 이 중 레이더, 화력 통제, 통신 시스템 등 핵심 부품 공급자로서 직접 수혜를 받을 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i> 신기술 영역 진출 가속화</h3>
+                <p><strong>우주 방위 시장 진출:</strong> 한국 정부의 우주 감시 시스템 구축 사업 추진에 따라, 한화시스템의 우주 레이더 및 위성 통신 기술 개발이 가속화될 것으로 예상됩니다. 이는 기존 방위 전자 사업과는 다른 신규 성장 동력이 될 것입니다.</p>
+                <p><strong>사이버전 대응 기술 개발:</strong> 북한의 사이버 공격 증대, 중국의 기술 도용 시도 등으로 인해 국방 사이버 보안 시장이 급성장하고 있습니다. 한화시스템은 국방 사이버 보안 기술 개발 및 시스템 구축에 집중하고 있으며, 이는 고마진 사업이 될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 국제 수출 전략 강화</h3>
+                <p><strong>중동 지역 레이더 수출 확대:</strong> 아랍에미리트, 사우디아라비아 등 중동 국가들의 방공 능력 강화 수요를 바탕으로, 한화시스템의 레이더 및 전자전 시스템 수출이 계속 확대될 것으로 예상됩니다. 현재 진행 중인 프로젝트 외에도 새로운 수출 계약 체결 가능성이 높습니다.</p>
+                <p><strong>동남아 해양 방위 시장 진출:</strong> 베트남, 태국, 필리핀 등 동남아 국가들이 해양 방위력 강화에 투자하고 있으며, 한화시스템의 해상 수색 레이더 및 함정 통신 시스템이 주요 수출 대상이 될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-check-circle"></i> 기술 자립화 및 국산화 추진</h3>
+                <p><strong>핵심 부품 국산화:</strong> 그동안 해외 의존도가 높았던 반도체, 특수 전자 부품 등의 국산화를 추진하고 있습니다. 이는 공급망 리스크 감소와 수익성 개선으로 이어질 것입니다.</p>
+                <p><strong>지적 재산권 확보:</strong> 자체 개발한 기술에 대한 특허 출원 및 보호를 강화하고 있으며, 기술 유출 방지에 집중하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-book-open"></i> 종합 평가</h3>
+                <p>한화시스템은 한국 방위산업의 핵심 기업으로서, 현재 국방력 강화 수요의 최대 수혜자입니다. 12.21조 원의 안정적인 수주 잔액, 독보적인 레이더 및 전자전 기술, 국방부와의 강력한 관계는 한화시스템의 투자 매력을 높이는 주요 요소입니다. 2025년 매출 21.2% 성장, 방어 세그먼트 영업이익 35% 성장은 현재의 시장 호황을 반영하고 있습니다.</p>
+                <p>한화시스템은 현재 중요한 성장 시점에 있습니다. 첫째, 북한 위협 증대와 중국의 군사력 강화로 인한 국방 투자 확대 시기입니다. 국내 국방 예산 증액은 한화시스템의 매출 증대로 직결됩니다. 둘째, 차세대 전력화 사업이 본격화되는 시기입니다. 차기 함정, 차기 천궁, 우주 감시 시스템 등 대형 사업에서 한화시스템의 역할이 확대될 것입니다. 셋째, 국제 수출 확대의 기회입니다. 중동, 동남아의 국방력 강화 수요를 바탕으로, 수출 매출 확대가 가능합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 주요 기회 및 리스크</h3>
+                <p><strong>주요 기회:</strong></p>
+                <ul>
+                    <li>국방력 강화 수요의 지속적 증가 (연 2-3% 국방 예산 증액)</li>
+                    <li>차세대 전력화 사업에서의 핵심 부품 공급 (레이더, 화력 통제)</li>
+                    <li>우주 감시 시스템, 사이버 보안 등 신기술 시장 창출</li>
+                    <li>중동, 동남아 국가들의 방위력 강화 수출 기회</li>
+                    <li>국방 기술 자립화로 인한 수입 대체 수익 창출</li>
+                    <li>인도, 필리핀 등 인도-태평양 국가들과의 방위사업 협력 확대</li>
+                </ul>
+                <p><strong>주요 리스크:</strong></p>
+                <ul>
+                    <li>국내 경제 부진으로 인한 국방 예산 감소 위험</li>
+                    <li>지정학적 리스크 (한반도 상황 급변, 국제 관계 악화)</li>
+                    <li>기술 유출, 사이버 공격 등 보안 위협</li>
+                    <li>수출 규제 강화로 인한 국제 진출 제약</li>
+                    <li>원재료비 상승, 공급망 차질로 인한 원가 압박</li>
+                    <li>경쟁사의 기술 추격 및 시장 진출 (삼성, 현대 등)</li>
+                    <li>미국-중국 갈등으로 인한 수출통제 위험</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 긍정적 (Positive)</strong></p>
+                <p>한화시스템은 중기적으로 우호적인 성장 환경에 있습니다. 국방력 강화 수요의 지속성, 안정적인 수주 기반, 높은 기술 진입 장벽은 투자 매력도가 높은 요소입니다. 2026년 예상 영업이익 370억 원, 영업이익률 8.8%는 방위산업으로서는 우수한 수준입니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>방위산업 투자자:</strong> 국방력 강화 트렌드에 베팅하는 투자자</li>
+                    <li><strong>가치 투자자:</strong> 안정적인 현금 흐름과 배당 가능성을 추구하는 투자자</li>
+                    <li><strong>그룹 관련주 투자자:</strong> 한화그룹의 핵심 방위사업 기업으로서 그룹 밸류에이션 투자자</li>
+                    <li><strong>장기 성장 투자자:</strong> 국방 기술 고도화와 신기술 개발에 베팅하는 투자자</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간(Medium) - 국방 수요의 확실성이 있지만 지정학적 불확실성 관리 필요</p>
+                <p><strong>목표주가 전망:</strong> 2026년 말 기준 현재 주가 대비 15-25% 상승 기대 (주가 187,000-203,000원)</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>국방부 2027-2031년 국방 중기계획 발표 및 수주 동향</li>
+                    <li>차기 함정, 차기 천궁 등 대형 사업 발주 추진 현황</li>
+                    <li>우주 감시 시스템 등 신기술 사업 수주</li>
+                    <li>중동, 동남아 수출 계약 성과</li>
+                    <li>2026년 상반기-3분기 영업이익 추이 (9-10% 수준 달성 여부)</li>
+                    <li>원가 관리 및 영업이익률 개선 현황</li>
+                    <li>신규 기술(AI, 우주, 사이버) 개발 진전</li>
+                    <li>배당정책 개시 일정 및 규모</li>
+                </ul>
+                <p>한화시스템이 국방력 강화 사이클에서 수익성을 극대화하고, 신기술 분야에서의 선도 기업으로 성장할 수 있다면, 향후 5-10년간 안정적이고 지속적인 성장이 예상됩니다. 또한 국방 기술 자립화와 국제 수출 확대를 통해, 단순 국내 방위 공급사에서 글로벌 방위사업 기업으로의 도약이 가능할 것으로 전망됩니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH AI Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>한화시스템 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>한화시스템 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 한화시스템 Investor Relations 공개 정보</li>
+                    <li>방위사업청 및 국방부 방위사업 정책 자료</li>
+                    <li>국방부 국방 중기계획 및 예산 공개 정보</li>
+                    <li>국방기술품질원(DTaQ) 기술 평가 자료</li>
+                    <li>SIPRI 및 IHS Jane's Defence 글로벌 방위산업 리포트</li>
+                    <li>Gartner, McKinsey 방위산업 및 기술 트렌드 리포트</li>
+                    <li>삼성항공우주, 현대중공업 등 경쟁사 공시 자료</li>
+                    <li>미국 RAND, 국방안보전략연구소(KIDA) 등 싱크탱크 분석</li>
+                    <li>국방 기술 및 전자 통신 학술 논문</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 최종 업데이트: 2026년 04월 08일 06:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 08일 06:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

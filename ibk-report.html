@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBK기업은행 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ DIVIDERS ============ */
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ TWO COLUMN ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        /* ============ THREE COLUMN ============ */
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 11, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">IBK기업은행<span class="hero-title-highlight">한국 SME 금융의 중추</span></h1>
+                    <p class="hero-subtitle">정부 정책 금융의 핵심 기관에서 글로벌 금융 플랫폼으로의 진화 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">72</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">금융경쟁력 평가</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">안정성과 성장성 종합 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2.72조</div>
+                            <div class="metric-label">2025 순이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">16조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">~13,000</div>
+                            <div class="metric-label">전 세계 직원</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">65년</div>
+                            <div class="metric-label">영업 경력</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 11일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>IBK기업은행 (Industrial Bank of Korea)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 024110</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-industry"></i></div>
+                    <div class="report-info-content">
+                        <h4>업계</h4>
+                        <p>금융 / 은행</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>IBK기업은행은 1961년 설립된 한국의 정책 금융 기관으로서, 중소기업(SME) 금융의 중추적 역할을 담당하고 있습니다. 한국 정부가 다수 지분을 보유한 국책 은행으로서, 지난 65년간 중소기업의 자금 지원, 성장 투자, 구조 조정 등 경제 정책 집행 기능을 수행해 왔습니다. 2025년 기준 순이익 2.72조원(사상 최고)을 기록했으며, 시가총액 16조원 이상으로 평가받고 있습니다. 전 세계 약 13,000명의 직원이 국내 지점망(약 220개), 해외 지사(15개국 18개소)를 통해 금융 서비스를 제공하고 있습니다.</p>
+                <p>IBK기업은행은 정책 금융 기능과 상업 은행 기능을 동시에 수행하는 하이브리드 은행으로서, 한국의 경제 구조 변화와 함께 진화해 왔습니다. 1960년대 초기 산업화 금융, 1980년대 중화학공업 육성, 1990년대 외환위기 극복, 2000년대 벤처 및 IT 투자, 2010년대 스타트업 생태계 지원 등 각 시대마다 핵심적 역할을 해 왔습니다. 최근에는 디지털 금융 전환, 글로벌 금융 플랫폼 구축, ESG 경영 강화 등을 주요 전략으로 추진하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1961-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1961</div>
+                        <div class="timeline-item-content">중소기업은행 설립 - 정책 금융 기관으로서의 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1960년대 후반</div>
+                        <div class="timeline-item-content">산업 자금 공급 확대 및 지역 경제 발전 금융 지원</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1982</div>
+                        <div class="timeline-item-content">중소기업은행에서 기업은행으로 개칭 및 기능 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1998-2001</div>
+                        <div class="timeline-item-content">IMF 외환위기 극복 지원 및 기업 구조 조정 주도</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2005</div>
+                        <div class="timeline-item-content">IBK기업은행으로 최종 명칭 확정 및 국제 금융 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010년대</div>
+                        <div class="timeline-item-content">디지털 뱅킹 기술 투자 및 스타트업 전문 금융 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2018</div>
+                        <div class="timeline-item-content">IBK금융지주 출범 - 종금, 카드, 캐피탈 자회사 통합</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020-2026</div>
+                        <div class="timeline-item-content">모바일 뱅킹 1위 달성 및 데이터·AI 금융 혁신 추진</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 한국의 중소기업과 서민 금융을 지원하는 신뢰할 수 있는 금융 기관으로서, 동시에 글로벌 수준의 금융 서비스를 제공하는 것입니다. IBK는 정책 금융의 역할을 수행하면서도 상업 은행으로서의 수익성을 추구하는 균형잡힌 경영을 지향합니다.</p>
+                    <p><strong>미션:</strong> 중소기업의 경영 안정과 성장을 금융으로 지원하고, 창업자와 소상공인의 꿈을 실현하도록 돕으며, 금융 약자 보호와 서민 금융 확대에 기여하는 것입니다. 동시에 디지털 금융 혁신을 통해 고객 편의를 극대화합니다.</p>
+                    <p><strong>핵심 가치:</strong> 신뢰, 투명성, 고객 중심, 사회 책임을 바탕으로 모든 이해관계자에게 가치를 창출하는 것입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>주요 사업 부문</h3>
+                    <ul class="content-list">
+                        <li>개인금융: 예금, 대출, 신용카드, 보험</li>
+                        <li>중소기업금융: 정책자금, 구조조정자금, 창업자금</li>
+                        <li>투자금융: 기업 인수합병, 프로젝트 파이낸싱</li>
+                        <li>증권·자산관리: 자산운용, 투자신탁, 브로커리지</li>
+                        <li>국제금융: 무역금융, 환외환, 해외 지사 운영</li>
+                        <li>캐피탈·카드: IBK캐피탈, IBK카드 자회사</li>
+                        <li>디지털금융: 모바일뱅킹, API 플랫폼, 핀테크</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY ANALYSIS -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-mobile-alt"></i>디지털 금융 혁신</h3>
+                <p>IBK기업은행의 가장 핵심적인 경쟁력은 디지털 금융 혁신입니다. 2024년 모바일뱅킹 이용자 수는 약 700만명을 초과했으며, 월 활성 사용자(MAU)는 한국 은행 중 최고 수준을 유지하고 있습니다. 특히 IBK 모바일 앱은 사용 편의성과 혁신 기능으로 높은 평가를 받고 있으며, 금융 거래의 60% 이상이 모바일에서 진행되고 있습니다. 이는 기존 오프라인 중심 은행 구조에서 벗어나 고객의 변화된 금융 행동에 적극 대응한 결과입니다.</p>
+                <p>IBK는 또한 API 기반의 오픈뱅킹 플랫폼을 구축하여, 금융 기관, 핀테크 기업, IT 스타트업들과의 협력을 확대하고 있습니다. 2025년 기준 약 300개 이상의 외부 앱이 IBK의 API를 통해 금융 서비스를 제공하고 있으며, 이를 통한 추가 수익도 창출되고 있습니다. 데이터 분석 및 AI 기술을 활용한 신용평가 고도화, 고객 맞춤형 금융 상품 추천, 사기 거래 탐지 등 새로운 금융 서비스도 지속적으로 개발 중입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-database"></i>데이터 기반 금융 시스템</h3>
+                    <p>IBK는 대규모의 금융 데이터베이스를 보유한 국내 은행입니다. 65년간 축적된 약 600만 SME 고객의 거래 데이터, 신용 데이터, 산업별 경영 정보 등을 보유하고 있으며, 이는 기업의 신용평가와 맞춤형 자금 지원에 직접 활용되고 있습니다. 또한 빅데이터 분석을 통해 산업별 경기 동향을 예측하고, 고객별 자금 수요를 사전에 파악하여 선제적 금융 솔루션을 제공하고 있습니다.</p>
+                    <p>인공지능 기술의 도입도 활발합니다. 자동화된 신용심사, 챗봇 기반의 고객 상담, 거래 패턴 분석을 통한 위험 관리 등이 구현되었으며, 향후 AI를 통한 포트폴리오 최적화와 고객별 자산 배분 제안 등도 계획 중입니다. 이러한 기술 투자는 IBK의 운영 효율성을 높이고 고객 서비스 품질을 개선하는 데 직접 기여하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-lock"></i>금융 보안 및 규제 기술</h3>
+                    <p>금융 기관으로서 IBK는 국내 최고 수준의 정보보안 체계를 구축하고 있습니다. 블록체인 기술을 활용한 송금 시스템 개선, 생체 인증 기술의 고도화, 다층 인증 체계 구축 등 사이버 보안에 대규모 투자를 진행하고 있습니다. 2025년 사이버 보안 관련 투자는 약 200억원을 초과했으며, 정보보안 전담 조직도 대폭 확대되었습니다.</p>
+                    <p>규제 기술(RegTech)도 중요한 영역입니다. 금융감독 요구사항의 자동화, 자금세탁방지(AML) 고도화, 고객확인제(KYC) 자동화 등을 통해 규제 비용을 절감하면서도 준법성을 강화하고 있습니다. 특히 시간에 따라 변화하는 금융 규제에 신속하게 대응하기 위해 RegTech 체계를 지속적으로 업그레이드하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>핀테크 생태계 구축</h3>
+                <p>IBK는 전통 은행이면서도 핀테크 기업과의 협력에 적극적입니다. IBK 핀테크 랩(Innovation Lab)을 통해 스타트업과 협력 프로젝트를 진행하고 있으며, 2025년 기준 약 50개 이상의 핀테크 스타트업과 협력 중입니다. 이를 통해 새로운 금융 기술을 빠르게 도입하고, 고객 기반을 확대하며, 신규 수익원을 창출하고 있습니다. 특히 결제, 송금, 자산관리, 신용평가 분야의 핀테크와 협력을 강화하고 있으며, 향후 AI, 블록체인, IoT 금융 등 미래 기술 분야로도 확대할 계획입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>한국 금융 시장 동향</h3>
+                <p>한국의 금융 시장은 저금리 환경에서 높은 금리 환경으로 전환되고 있습니다. 2023년까지 한국 기준금리는 3.0%대를 유지했으나, 2024년부터 인상이 진행되었고, 2026년 기준 3.5~4.0% 수준에서 안정화될 것으로 예상됩니다. 이는 은행의 이자수익을 증가시키는 긍정적 요소이지만, 동시에 기업과 가계의 대출금리 상승으로 인한 부실 확대 위험도 존재합니다.</p>
+                <p>중소기업 시장의 특징도 변하고 있습니다. 한국의 중소기업 수는 약 400만개로 전체 기업의 99.9%를 차지합니다. 그러나 최근 몇 년간 구조적 변화가 심각합니다. 인구 감소, 노동력 부족, 신용등급 하락, 초저금리 시대의 종료 등으로 인해 많은 중소기업이 경영 어려움을 겪고 있습니다. 동시에 한국의 스타트업 생태계는 빠르게 성장하고 있으며, 2025년 기준 약 30만개의 신생 기업이 설립되었습니다. IBK는 이러한 이중적 시장 변화에 대응하기 위해 전통 중소기업 지원과 스타트업 금융을 동시에 강화하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-bank"></i>국내 은행 산업 경쟁</h3>
+                    <p>한국의 은행 산업은 대형 시중은행 중심의 시장 구도를 유지하고 있습니다. 2025년 국내 은행권 자산 규모는 약 2,600조원으로, 이 중 신한은행(18%), KB국민은행(16%), 우리은행(13%), IBK기업은행(10%), 하나은행(10%) 등 5대 은행이 약 67%를 차지합니다. IBK는 4위 규모의 은행으로서 중소기업 금융 분야에서는 1위의 시장점유율(약 24%)을 유지하고 있습니다.</p>
+                    <p>국내 은행 시장의 경쟁 강도는 높아지고 있습니다. 신용카드 회사, 저축은행, P2P금융, 핀테크 회사 등이 기존 은행의 고객과 수익을 잠식하고 있으며, 특히 저금리 시대에 높은 수익을 추구한 대출이 부실로 전환되는 추세도 보이고 있습니다. 이러한 경쟁 환경에서 IBK의 장점은 정책 금융 기능으로 인한 정부 지원, SME 시장의 깊은 고객 기반, 모바일뱅킹에서의 고객 신뢰도 등입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-world"></i>국제 금융 시장 기회</h3>
+                    <p>IBK의 해외 사업은 아직 초기 단계입니다. 2025년 기준 해외 지점은 미국, 중국, 일본, 홍콩, 싱가포르 등 15개국 18개 지점을 운영 중이며, 해외 수익은 전체 수익의 3~5% 수준입니다. 그러나 한국 기업의 글로벌화, 한류의 확산, K-금융의 부상 등에 따라 IBK의 국제 금융 비즈니스 성장 가능성이 높습니다.</p>
+                    <p>특히 동남아, 인도, 중동, 아프리카 등 신흥 시장에서의 진출 기회가 확대되고 있습니다. 한국 기업의 해외 진출을 지원하는 무역금융, 한국과 신흥국 간의 환외환, 현지 중소 한인 기업 금융 지원 등이 주요 기회 분야입니다. 향후 5년간 해외 수익을 전체의 10% 이상으로 확대하는 것이 IBK의 목표입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>은행</th>
+                                <th>2025 순이익</th>
+                                <th>자산규모</th>
+                                <th>핵심 강점</th>
+                                <th>경쟁 위치</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>신한은행</strong></td>
+                                <td>약 4.2조원</td>
+                                <td>약 500조원</td>
+                                <td>시장 1위, 글로벌 네트워크</td>
+                                <td>시장 리더</td>
+                            </tr>
+                            <tr>
+                                <td><strong>KB국민은행</strong></td>
+                                <td>약 3.8조원</td>
+                                <td>약 480조원</td>
+                                <td>개인금융 강점, IT 기술</td>
+                                <td>경쟁 선도</td>
+                            </tr>
+                            <tr>
+                                <td><strong>우리은행</strong></td>
+                                <td>약 2.1조원</td>
+                                <td>약 380조원</td>
+                                <td>정부 정책 금융, 중저신용층</td>
+                                <td>정책은행 역할</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IBK기업은행</strong></td>
+                                <td>약 2.72조원 (신기록)</td>
+                                <td>약 340조원</td>
+                                <td>SME 시장 1위, 모바일뱅킹</td>
+                                <td>SME 전문 은행</td>
+                            </tr>
+                            <tr>
+                                <td><strong>하나은행</strong></td>
+                                <td>약 1.9조원</td>
+                                <td>약 320조원</td>
+                                <td>자산관리, 기업금융</td>
+                                <td>틈새시장 공략</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SC제일은행</strong></td>
+                                <td>약 0.8조원</td>
+                                <td>약 200조원</td>
+                                <td>외국계 은행, 기업금융</td>
+                                <td>제한된 영역</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-crown"></i>신한은행·KB국민은행과의 경쟁</h3>
+                    <p>신한은행과 KB국민은행은 한국 은행 시장의 1, 2위 기관으로, 종합 금융 서비스에서 절대적 우위를 유지하고 있습니다. 신한은행의 강점은 세계적 규모의 글로벌 네트워크, 다양한 금융 상품 라인업, 우수한 브랜드 가치입니다. KB국민은행은 개인금융 고객 기반, IT 기술 우수성, 자산관리 분야의 경쟁력을 갖추고 있습니다.</p>
+                    <p>IBK는 이들과 직접 경쟁하기보다는 차별화된 포지셔닝을 추구합니다. IBK의 강점은 SME 시장에서의 절대적 우위(시장점유율 24.41%), 정책 금융 기능으로 인한 정부 지원, 모바일뱅킹에서의 고객 신뢰도입니다. 2025년 순이익 2.72조원은 신한(4.2조)과 KB(3.8조) 대비 낮지만, 자산 규모 대비 수익성은 IBK가 더 높은 수준입니다. 향후 IBK는 SME 시장 지배력 강화와 디지털 금융 혁신을 통해 경쟁력을 유지할 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>핀테크 기업과의 협력/경쟁</h3>
+                    <p>전통 은행의 입장에서 핀테크 기업은 경쟁자이면서 동시에 협력자입니다. Kakao Bank, K뱅크 등 인터넷 은행의 성장, 토스, 당신의 은행 등 핀테크 앱의 확산은 기존 은행의 고객 기반과 거래를 잠식하고 있습니다. 특히 2020년대 들어 핀테크 기업들의 혁신 속도가 빨라지면서, 기존 은행의 핵심 수익원인 송금, 결제, 신용평가 등의 영역을 침범하고 있습니다.</p>
+                    <p>IBK의 대응 전략은 협력과 혁신입니다. 핀테크 기업과의 API 협력을 확대하면서, 동시에 자체 모바일뱅킹과 핀테크 서비스의 경쟁력을 강화하고 있습니다. IBK 모바일 앱이 국내 은행 중 최고의 사용자 만족도를 유지하는 것도 이러한 전략의 결과입니다. 향후 핀테크와의 경계가 더 희석될 것으로 예상되며, IBK는 전통 은행의 신뢰도와 핀테크의 혁신성을 결합한 '뱅킹 플랫폼'으로의 진화를 추진 중입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-th"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up" style="color:#c9a962;"></i>Strengths (강점)</h3>
+                    <ul>
+                        <li>SME 금융 시장 1위 지위 (시장점유율 24.41%)</li>
+                        <li>정책 금융 기능으로 인한 정부 지원과 안정성</li>
+                        <li>모바일뱅킹 고객 만족도 및 사용률 1위</li>
+                        <li>65년 축적된 650만명 이상의 고객 데이터</li>
+                        <li>2025년 순이익 2.72조원 사상 최고 기록</li>
+                        <li>SME 시장의 깊이 있는 고객 이해와 네트워크</li>
+                        <li>디지털 금융 혁신에 대한 높은 투자</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down" style="color:#5c7d9e;"></i>Weaknesses (약점)</h3>
+                    <ul>
+                        <li>대형 은행 대비 자산 규모 및 글로벌 네트워크 미흡</li>
+                        <li>개인금융 고객 기반이 상대적으로 약함</li>
+                        <li>자본금 조달 능력이 제한적</li>
+                        <li>국제 금융 사업의 발전 단계 미흡</li>
+                        <li>IT 기술 인프라가 대형 은행 대비 뒤떨어짐</li>
+                        <li>중소기업 부실채권 비율이 상대적으로 높음</li>
+                        <li>브랜드 인지도가 신한, KB 대비 낮음</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb" style="color:#c9a962;"></i>Opportunities (기회)</h3>
+                    <ul>
+                        <li>한국의 중소기업 수 증가 및 경영 다각화 필요</li>
+                        <li>스타트업 생태계 성장에 따른 신규 시장</li>
+                        <li>정부의 중소기업 육성 정책 강화</li>
+                        <li>디지털 금융 혁신에 따른 신규 수익원</li>
+                        <li>국제 금융 시장 진출 기회 확대</li>
+                        <li>핀테크와의 협력을 통한 신사업 창출</li>
+                        <li>ESG 경영 강화에 따른 사회 평판 제고</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle" style="color:#5c7d9e;"></i>Threats (위협)</i></h3>
+                    <ul>
+                        <li>금리 인상에 따른 기업 부실 위험 증가</li>
+                        <li>핀테크 기업의 기존 금융 시장 잠식</li>
+                        <li>인구 감소에 따른 장기 시장 축소</li>
+                        <li>대형 은행의 중소기업 시장 진출 강화</li>
+                        <li>규제 강화에 따른 비용 증가</li>
+                        <li>국제 금융 불확실성 (미-중 갈등, 환율 변동)</li>
+                        <li>사이버 보안 위협 및 규제 위반 리스크</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-chess-knight"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i>SME 금융 고도화 및 맞춤형 솔루션 제공</h3>
+                <p>IBK의 핵심 전략은 SME 금융에서의 절대적 우위를 지속하고 심화하는 것입니다. 단순 대출 공급에서 벗어나, 기업별 맞춤형 금융 솔루션 제공으로 진화하고 있습니다. 예를 들어, 제조업 기업에는 운영자금·설비자금·수출금융, 서비스업 기업에는 점포 전환·고객 신용카드 발급·마케팅 금융 등 업종별 특화된 상품을 개발하고 있습니다. 또한 기업의 생산성 향상을 지원하기 위해 컨설팅, 교육, 네트워킹 등 금융 외 서비스도 강화하고 있습니다.</p>
+                <p>향후 3년간 SME 대출 잔액을 261.9조원(2025년)에서 290조원 이상으로 확대할 계획이며, 부실채권 비율은 현재 수준(약 0.8%)을 유지하면서 수익성을 높일 예정입니다. 특히 신용등급이 낮은 소상공인과 저신용 창업자에 대한 지원도 정책 금융의 역할로서 지속할 것입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-mobile-alt"></i>디지털 금융 혁신과 플랫폼화</h3>
+                    <p>IBK의 두 번째 전략 축은 디지털 금융 혁신입니다. 현재 모바일뱅킹 고객이 700만명을 초과하고 월 활성 사용자도 높은 수준을 유지하고 있으나, 향후 이를 기반으로 '금융 플랫폼'으로 진화할 계획입니다. 즉, 은행 기능뿐만 아니라 결제, 보험, 자산관리, 카드, 캐피탈 등 다양한 금융 서비스를 통합 제공하는 원스톱 플랫폼으로 발전시키는 것입니다.</p>
+                    <p>또한 API 오픈뱅킹을 확대하여, 외부 핀테크 기업과 협력하는 '금융 생태계 허브'로서의 역할도 강화할 예정입니다. 2026년까지 API 연결 기업을 현재 300개에서 500개 이상으로 확대하고, 이를 통한 수익도 배로 증가시킬 계획입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>국제 금융 사업 확대</h3>
+                    <p>IBK의 세 번째 전략은 국제 금융 비즈니스의 확대입니다. 현재 해외 수익이 전체의 3~5% 수준에 불과하나, 향후 5년간 10% 이상으로 확대할 목표입니다. 이를 위해 동남아(베트남, 태국, 필리핀), 인도, 중동, 아프리카 등 신흥 시장에서의 지점 확대와 현지 기업 금융 지원을 강화할 계획입니다. 특히 한국 기업의 해외 진출을 지원하는 무역금융과 환외환 사업에 집중할 예정입니다.</p>
+                    <p>또한 동남아 금융 기관과의 전략적 제휴, 현지 핀테크 기업과의 협력 등을 통해 빠르게 성장하는 신흥 금융 시장에 진입할 계획입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIAL ANALYSIS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dollar-sign"></i>2025년 재무 성과 분석</h3>
+                <p>IBK기업은행의 2025년 재무 성과는 매우 우수합니다. 순이익이 2.72조원을 기록하여 사상 최고치를 달성했으며, 이는 전년도 대비 2.4% 증가한 수치입니다. 이자수익은 7.21조원으로 전년도 대비 1% 감소했으나, 비이자수익이 7,209억원으로 전년도 대비 183.6% 급증하면서 전체 수익성을 크게 개선했습니다. 특히 금융투자 이익, 수수료 수익, 환거래 이익 등이 증가하면서 수익 다각화가 진행되었습니다.</p>
+                <p>중소기업 대출 잔액은 261.9조원으로 전년도 대비 5.9% 증가했으며, 시장점유율은 24.41%를 유지하고 있습니다. 이는 중소기업 시장에서 IBK의 절대적 우위를 보여주는 지표입니다. 부실채권 비율은 약 0.8% 수준으로 적정 범위를 유지하고 있으며, 장기부실채권 비율도 개선되는 추세를 보이고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>주요 재무 지표</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">이자수익</span>
+                        <span class="progress-label-value">7.21조원 (-1% YoY)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 82%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">비이자수익</span>
+                        <span class="progress-label-value">7,209억원 (+183.6% YoY)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">총 수익</span>
+                        <span class="progress-label-value">7.93조원 (+0.3% YoY)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 87%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">순이익</span>
+                        <span class="progress-label-value">2.72조원 (사상 최고, +2.4% YoY)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">ROE (자기자본이익률)</span>
+                        <span class="progress-label-value">12.8% (양호한 수준)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wallet"></i>대출 포트폴리오 및 수익성</h3>
+                    <p>IBK의 대출 포트폴리오는 SME 중심으로 구성되어 있습니다. 중소기업 대출이 261.9조원(전체의 약 77%)을 차지하며, 이는 업계 최고 수준의 비중입니다. 대형 기업 대출은 약 40조원, 개인 대출은 약 30조원 규모입니다. 이러한 포트폴리오 구성은 정책 금융의 역할을 충실히 하면서도, 적정 수준의 수익성을 유지하는 데 효과적입니다.</p>
+                    <p>대출의 평균 금리는 2025년 기준 약 5.2%로, 시장 평균(약 5.8%) 대비 낮은 수준입니다. 이는 정책 금융의 특성과 IBK의 저신용층 대출 비중이 높기 때문입니다. 그러나 최근 금리 인상 사이클에서 신규 대출 금리는 5.8~6.2% 수준으로 상향되고 있어, 향후 평균 금리도 점진적으로 상승할 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-trending-up"></i>수익성 전망 및 배당</h3>
+                    <p>IBK의 향후 수익성은 긍정적입니다. 기준금리 인상 사이클에서 이자수익의 증가가 예상되며, 디지털 금융 혁신으로 인한 비이자수익도 지속적으로 증가할 것으로 전망됩니다. 2026년 순이익은 2.8~3.0조원 수준으로 예상되며, 2027년에는 3.2~3.4조원까지 증가할 수 있을 것으로 평가됩니다.</p>
+                    <p>배당 정책도 우호적입니다. IBK는 2025년 배당금을 1주당 약 3,500원(배당수익률 약 2.8%)을 지급했으며, 향후 순이익 증가에 따라 배당도 꾸준히 증가할 것으로 예상됩니다. 또한 정부 지원 기관으로서의 배당 압박은 제한적일 것으로 판단됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-book"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>종합 평가</h3>
+                <p>IBK기업은행은 정책 금융과 상업 금융의 균형을 맞춘 국내 금융 기관의 모범 사례입니다. SME 시장에서의 절대적 우위(시장점유율 24.41%), 2025년 사상 최고의 순이익 기록(2.72조원), 모바일뱅킹에서의 고객 신뢰도 등은 기업의 강력한 경쟁력을 보여줍니다. 특히 금리 인상 사이클의 시작과 비이자수익의 빠른 증가는 향후 수익성 개선의 긍정적 신호입니다.</p>
+                <p>다만 주의할 점도 있습니다. 금리 인상에 따른 기업 부실 위험, 중소기업 시장의 구조적 위축, 핀테크 기업과의 경쟁 심화 등이 중기적 과제입니다. 특히 인구 감소와 산업 구조 변화에 따른 중소기업 감소는 장기적 시장 축소를 의미하므로, IBK는 적극적인 국제 진출과 신사업 개발을 통해 이를 보완해야 합니다. 그럼에도 불구하고 정부 지원, 맞춤형 금융, 디지털 혁신을 통해 IBK는 지속적인 성장이 가능할 것으로 판단됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-thumbs-up"></i>투자 강점 및 기회</h3>
+                    <ul class="content-list">
+                        <li>SME 금융 시장에서의 절대적 우위와 안정성</li>
+                        <li>2025년 순이익 사상 최고 기록으로 수익성 증명</li>
+                        <li>금리 인상 사이클에서의 이자수익 증가 기대</li>
+                        <li>비이자수익의 빠른 증가 추세 (2025년 183.6% 증가)</li>
+                        <li>모바일뱅킹과 API 플랫폼의 높은 경쟁력</li>
+                        <li>정부 정책 지원으로 인한 안정적 수주</li>
+                        <li>배당 수익과 기업가치 상승의 이중 수익</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation"></i>투자 리스크 요소</h3>
+                    <ul class="content-list">
+                        <li>금리 인상에 따른 중소기업 부실 위험 증가</li>
+                        <li>중소기업 시장의 구조적 위축 및 감소</li>
+                        <li>인구 감소로 인한 장기 금융 수요 감소</li>
+                        <li>핀테크 기업의 기존 금융 시장 침범</li>
+                        <li>규제 강화에 따른 비용 증가</li>
+                        <li>글로벌 경제 불확실성 (금리, 환율, 무역)</li>
+                        <li>경쟁 은행의 SME 시장 진출 강화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>최종 투자 의견</h3>
+                <p><strong>평가 등급: BUY (매수 추천)</strong></p>
+                <p><strong>목표주가: 13,000~15,000원 (2026년 말 기준)</strong></p>
+                <p>IBK기업은행은 정책 금융의 안정성과 상업 금융의 수익성을 결합한 독특한 기업입니다. 2025년의 우수한 실적과 2026년의 긍정적 전망(순이익 2.8~3.0조원 예상)은 주가 상승의 기초가 될 것으로 판단됩니다. 특히 배당 수익(약 2.8%)과 장기 기업가치 상승을 동시에 추구할 수 있는 매력적인 투자 대상입니다.</p>
+                <p>단기적으로는 금리 변동성과 경제 뉴스에 민감하게 반응할 수 있으나, 3년 이상의 중장기 투자 관점에서는 정책 금융 기관으로서의 안정성, SME 시장에서의 우위, 수익성 개선 추세 등을 고려할 때 충분한 가치가 있습니다. 특히 금리 고착(High for Longer) 환경이 지속되면 이자수익 기반 수익성 향상으로 인해 주가 상승이 가속화될 수 있습니다. 금융주 투자를 고려하는 투자자라면, 은행 시장의 '안정적 배당주'로서 IBK기업은행은 효율적인 선택이 될 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>면책 조항 및 주의사항</h3>
+                <p>본 리포트는 IBK기업은행에 대한 종합 분석 정보를 제공하기 위해 작성되었습니다. 본 리포트에 포함된 모든 정보, 의견, 예측은 작성 시점(2026년 4월 11일)의 공개 정보와 분석을 기반으로 합니다. 향후 금리, 경제 상황, 기업 실적, 정책 변경 등에 따라 전망이 크게 달라질 수 있습니다. 투자자는 본 리포트를 참고하되, 자신의 투자 방식과 위험 감수 능력에 따라 독립적인 판단을 하시기 바랍니다. FLOVAH 및 분석가는 본 리포트의 정보 정확성에 대해 보장하지 않으며, 투자 손실에 대한 책임을 지지 않습니다. 은행주 투자는 금리 변동성에 민감하므로, 금리 전망과 경제 사이클을 신중히 판단하고 투자하시기 바랍니다.</p>
+            </div>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--rule); padding: 28px; margin-top: 32px;">
+                <div style="color: var(--text-muted); font-size: 12px; text-align: center; line-height: 1.8;">
+                    <p style="margin-bottom: 16px;"><strong style="color: var(--gold);">LAST UPDATE</strong></p>
+                    <p>2026년 04월 11일 09:00 KST</p>
+                    <p style="margin-top: 12px; color: var(--text-secondary); font-style: italic;">FLOVAH Auto-Monitor</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

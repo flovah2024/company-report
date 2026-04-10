@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대한항공 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+                <span class="logo">FLOVAH</span>
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 11, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">대한항공<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">글로벌 항공 산업의 리더 대한항공의 통합 전략과 미래 성장 동력 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">70</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">기업가치 평가점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">글로벌 경쟁력과 재무 안정성 종합 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">25.23조</div>
+                            <div class="metric-label">2025 연 통합 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8.3조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">20,000+</div>
+                            <div class="metric-label">전체 직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">57년</div>
+                            <div class="metric-label">운영 경력</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 11일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>대한항공 (Korean Air Lines Co., Ltd.)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 003490</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>회장</h4>
+                        <p>조양호 (회장), 임철희 (대표이사)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-plane"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>대한항공은 1969년 설립된 한국의 대표 항공사로서, 현재 전 세계 130여 개 도시를 운영하는 글로벌 항공 운수 기업입니다. 2025년 기준 통합 연간 매출 25.23조원을 기록하며, 시가총액 8.3조원으로 평가되고 있습니다. 회사는 여객 운수, 항공화물, 항공기 정비, 지상 서비스 등 다양한 항공 관련 사업을 영위하고 있으며, 아시아-태평양 지역의 항공 네트워크 허브로서의 위상을 유지하고 있습니다. 2025년에는 아시아나항공과의 통합을 진행하여 운영 규모를 대폭 확대했으며, 예상 통합 시너지는 연간 3,000~4,000억원의 영업이익 증대로 평가되고 있습니다.</p>
+                <p>대한항공은 한국 항공 산업의 대표주자로서 글로벌 항공 동맹(Sky Team)의 핵심 멤버이며, 국제적 항공 표준 준수 및 운영 효율성에서 업계 최고 수준을 유지하고 있습니다. 최근 우주 사업(OTV 개발) 진출로 미래 항공 산업의 확장 가능성을 모색하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1969-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1969</div>
+                        <div class="timeline-item-content">대한항공 설립 - 국제 항공 운송 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1980년대</div>
+                        <div class="timeline-item-content">광체 항공 네트워크 확장 - 아시아 주요 노선 개설</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1997</div>
+                        <div class="timeline-item-content">IMF 외환위기 극복 - 구조 조정 및 경영 혁신</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000년대</div>
+                        <div class="timeline-item-content">보잉 787, 에어버스 A350 등 신형 항공기 도입</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010</div>
+                        <div class="timeline-item-content">아시아나항공 부분 인수 진행 - 통합 기반 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2015-2020</div>
+                        <div class="timeline-item-content">항공화물 사업 확대 및 프리미엄 서비스 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020-2025</div>
+                        <div class="timeline-item-content">COVID-19 위기 극복 및 항공 수요 회복</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2026년</div>
+                        <div class="timeline-item-content">아시아나항공 완전 통합 예정 - 우주 사업 진출</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 아시아-태평양 항공 네트워크의 글로벌 리더가 되어 고객의 신뢰를 통해 지속 가능한 성장을 이루는 것입니다.</p>
+                    <p><strong>미션:</strong> 안전하고 쾌적한 항공 운송 서비스를 제공하며, 국제 항공 표준을 준수하고 환경 친화적 경영을 추진합니다.</p>
+                    <p><strong>핵심 가치:</strong> 안전 제일, 고객 만족, 윤리 경영, 지속가능성, 투명한 경영 공시를 기본 원칙으로 합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>여객 항공 운수 사업: 국제선 및 국내선</li>
+                        <li>항공 화물 운수 사업: 일반 화물 및 특수 화물</li>
+                        <li>항공기 정비 및 기술 서비스</li>
+                        <li>공항 지상 서비스</li>
+                        <li>호텔 및 관광 사업</li>
+                        <li>우주 산업 진출 (OTV 개발)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객 및 파트너</h3>
+                    <ul class="content-list">
+                        <li>국제 항공 동맹(Sky Team) 멤버 항공사</li>
+                        <li>포춘 500 글로벌 기업 법인 고객</li>
+                        <li>아시아-태평양 주요 공항 운영사</li>
+                        <li>국제 물류 및 화물 기업</li>
+                        <li>관광 및 여행사 파트너</li>
+                        <li>항공기 제조사 (보잉, 에어버스)</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 제휴</h3>
+                    <ul class="content-list">
+                        <li>미국 항공사 및 유럽 항공 동맹</li>
+                        <li>중국 항공사 간 코드쉐어 협력</li>
+                        <li>Exotrail과 우주 OTV 개발 협력</li>
+                        <li>항공기 제조 및 엔진 기업</li>
+                        <li>국제 항공 안전 기구(ICAO)</li>
+                        <li>환경 친화적 항공 지원 단체</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술과 인프라</h3>
+                <p>대한항공의 경쟁력은 선진 항공기, 첨단 항공 운항 시스템, 안전 관리 기술에 있습니다. 현재 보잉 787-9, 에어버스 A350-900, A380 등 세계 최신형 항공기를 운영하고 있으며, 이들 항공기는 연료 효율성과 환경 친화성에서 업계 최고 수준입니다. 특히 장거리 국제선 운영에 필수적인 초대형 항공기 보유 규모가 아시아 항공사 중 선두입니다.</p>
+                <p><strong>항공 운항 시스템:</strong> 대한항공은 실시간 운항 관리 시스템(OREM), 예방적 항공기 정비 기술, 인공지능 기반 탑승객 예측 시스템 등을 운영하여 운항 효율성을 극대화하고 있습니다. 또한 디지털 탑승권, 모바일 체크인, 생체 인식 기술 등 최신 항공사 기술을 도입하여 승객 경험을 지속적으로 개선하고 있습니다.</p>
+                <p><strong>항공 안전 기술:</strong> IOSA(국제 항공 운송 협회 안전 감사) 최고 등급 인증을 유지하고 있으며, 항공기 정비 시설의 자동화 수준은 업계 최고입니다. 항공 안전을 위한 정기적 교육 프로그램과 시뮬레이터 기반 훈련으로 조종사 및 승무원 역량을 지속적으로 강화하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>우주 산업 진출 및 미래 기술</h3>
+                <p><strong>OTV(Orbital Transfer Vehicle) 개발:</strong> 대한항공은 프랑스의 우주 기업 Exotrail과 협력하여 우주 항공 우주선 발사체인 OTV 개발을 진행 중입니다. 이 사업은 항공 산업에서 우주 산업으로의 사업 다각화를 의미하며, 향후 수십 년의 새로운 성장 동력이 될 것으로 기대됩니다. 2026년부터 시험 운영을 진행할 예정입니다.</p>
+                <p><strong>친환경 항공 기술:</strong> 지속적인 지속가능 항공연료(SAF) 도입으로 탄소 배출을 감축하고 있으며, 전기 항공기 개발 분야에도 투자하여 미래 항공 산업의 친환경화에 대비하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">항공기 운영 기술</span>
+                            <span class="progress-label-value">85%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">항공 안전 관리</span>
+                            <span class="progress-label-value">92%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">디지털 운영 시스템</span>
+                            <span class="progress-label-value">78%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">항공기 정비 자동화</span>
+                            <span class="progress-label-value">82%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 82%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">우주 사업 기술</span>
+                            <span class="progress-label-value">45%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 45%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>연구 개발 투자</h3>
+                <p>대한항공은 연간 항공기 구매 및 항공사 운영 비용의 5-6%를 기술 개발에 투자하고 있습니다. 이는 항공기 정비 기술, 안전 시스템, 운항 효율성 향상, 친환경 기술 등에 집중되어 있습니다. 특히 아시아나항공 통합 이후 항공기 정비 시설의 통합 최적화와 디지털 운영 플랫폼 고도화에 역점을 두고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tags"></i>주요 기술 스택</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">Boeing 787</span>
+                    <span class="tech-badge">Airbus A350</span>
+                    <span class="tech-badge">Airbus A380</span>
+                    <span class="tech-badge">OREM System</span>
+                    <span class="tech-badge">AI Prediction</span>
+                    <span class="tech-badge">Mobile Check-in</span>
+                    <span class="tech-badge">SAF Fuel</span>
+                    <span class="tech-badge">OTV Technology</span>
+                    <span class="tech-badge">Biometric ID</span>
+                    <span class="tech-badge">E-aircraft</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>글로벌 항공 시장 현황</h3>
+                <p>글로벌 항공 시장은 COVID-19 이후 강력한 회복 추세를 보이고 있습니다. 2025년 글로벌 항공 여객 수요는 사상 최고 수준에 도달했으며, 이는 국제 항공 운송 협회(IATA) 전망에서도 2026년까지 지속적 성장을 예측하고 있습니다. 특히 아시아-태평양 지역의 항공 수요가 가장 빠르게 증가하고 있으며, 이는 대한항공의 핵심 시장입니다.</p>
+                <p><strong>항공 화물 시장:</strong> 글로벌 이커머스 급성장으로 항공 화물 수요가 역사적 고점을 유지하고 있습니다. 특히 아시아에서 유럽으로의 수출 물류와 반도체, 전자제품 등 고부가가치 화물 운송이 증가하고 있어, 대한항공의 화물 사업 수익성이 크게 향상되었습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i>아시아나항공 통합 전략</h3>
+                <p>대한항공의 아시아나항공 통합은 2026년 12월 완료 예정입니다. 이 통합은 한국 항공 산업사에서 가장 큰 규모의 인수 합병이며, 예상 통합 시너지는 연간 3,000~4,000억원의 운영이익 증대로 평가되고 있습니다. 통합을 통해 달성할 사항은 다음과 같습니다:</p>
+                <p><strong>운영 효율화:</strong> 중복된 노선, 항공기, 공항 슬롯을 최적화하여 운영 비용 절감, 항공기 정비 시설 통합으로 정비 효율 향상, 항공기 순수 운영 비용(CASM) 개선으로 수익성 증대.</p>
+                <p><strong>네트워크 강화:</strong> 노선 중복성 제거를 통한 수익 노선 확대, 아시아나항공의 강점인 일본 노선과 대한항공의 유럽 노선을 통합하여 경쟁력 강화, 환승 고객 증가로 네트워크 가치 향상.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>아시아 항공 시장의 성장 기회</h3>
+                <p>아시아-태평양 지역은 글로벌 항공 시장에서 가장 빠르게 성장하는 지역입니다. 아세안 경제 발전, 중국의 경제 회복, 인도의 급성장으로 항공 수요가 지속적으로 증가할 것으로 예상됩니다. 특히 한국, 일본, 싱가포르를 허브로 하는 대한항공은 이러한 성장 기회를 최대한 활용할 수 있는 지리적 이점을 가지고 있습니다.</p>
+                <p>또한 저가 항공사(LCC)의 급성장과 수소 연료 항공기 등 새로운 기술의 등장으로 항공 산업의 경쟁 구도가 변화하고 있습니다. 이러한 변화 속에서 대한항공은 프리미엄 서비스 강화와 효율성 개선을 통해 경쟁 우위를 유지해야 합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>주요 경쟁사 비교 분석</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>항공사</th>
+                                <th>2025 매출</th>
+                                <th>항공기 수</th>
+                                <th>주요 강점</th>
+                                <th>주요 약점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>대한항공</strong></td>
+                                <td>25.23조원</td>
+                                <td>180여 대</td>
+                                <td>아시아 허브, 안전 우수, 통합 시너지</td>
+                                <td>인수 통합 리스크, 채무 비율</td>
+                            </tr>
+                            <tr>
+                                <td><strong>싱가포르항공</strong></td>
+                                <td>18.2조원</td>
+                                <td>120여 대</td>
+                                <td>브랜드 가치, 효율성, 수익성</td>
+                                <td>소규모 네트워크, 성장 제한</td>
+                            </tr>
+                            <tr>
+                                <td><strong>일본항공(JAL)</strong></td>
+                                <td>22.1조원</td>
+                                <td>170여 대</td>
+                                <td>일본 시장 지배력, 프리미엄 서비스</td>
+                                <td>수익성 낮음, 차용금 증가</td>
+                            </tr>
+                            <tr>
+                                <td><strong>중국국제항공</strong></td>
+                                <td>28.5조원</td>
+                                <td>250여 대</td>
+                                <td>대규모 네트워크, 정부 지원</td>
+                                <td>수익성 낮음, 과도한 채무</td>
+                            </tr>
+                            <tr>
+                                <td><strong>아시아나항공</strong></td>
+                                <td>12.8조원</td>
+                                <td>120여 대</td>
+                                <td>일본 노선 강점, 화물 사업</td>
+                                <td>경영 악화, 통합 예정</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bar-chart"></i>경쟁력 분석</h3>
+                <p><strong>대한항공 vs 싱가포르항공:</strong> 싱가포르항공은 순이익률, 자본효율성, 브랜드 가치에서 우수하지만, 네트워크 규모와 성장 잠재력은 대한항공이 앞서고 있습니다. 아시아나항공 통합 후 네트워크 효율성이 향상되면 대한항공의 경쟁력이 한층 강화될 것으로 예상됩니다.</p>
+                <p><strong>대한항공 vs 일본항공:</strong> 일본항공은 일본 국내선에서 독점적 지위를 유지하고 있으나, 수익성이 낮고 차용금이 증가하는 추세입니다. 대한항공은 아시아나항공 통합으로 일본 노선의 중복성을 제거하여 효율성을 높일 수 있어, 중기적으로 경쟁 우위를 강화할 것으로 전망됩니다.</p>
+                <p><strong>대한항공 vs 중국 항공사:</strong> 중국 항공사들은 규모 면에서 크지만, 수익성과 운영 효율성에서 뒤지고 있습니다. 한중 항공 분쟁과 지정학적 리스크로 인해 경쟁이 심화될 가능성이 있으나, 대한항공의 차별화된 서비스와 효율성이 경쟁력 유지의 핵심입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-square"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-check-circle"></i>강점 (Strengths)</h3>
+                    <ul>
+                        <li>아시아-태평양 항공 네트워크의 최고 위치</li>
+                        <li>최신형 항공기 보유로 경쟁력 우위</li>
+                        <li>안전 관리 및 운영 효율성 업계 최고</li>
+                        <li>Sky Team 동맹을 통한 글로벌 네트워크 확대</li>
+                        <li>항공기 정비 및 기술 서비스 독립 역량</li>
+                        <li>프리미엄 서비스 브랜드 인지도</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>아시아나 통합 과정에서의 비용 부담</li>
+                        <li>상대적으로 높은 채무 수준</li>
+                        <li>중국 항공사 대비 네트워크 규모 열위</li>
+                        <li>저가 항공사 급성장에 의한 수익성 압박</li>
+                        <li>한반도 지정학적 리스크 노출</li>
+                        <li>연료비 상승에 따른 원가 압박</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회 (Opportunities)</h3>
+                    <ul>
+                        <li>아시아 항공 시장의 지속적 성장</li>
+                        <li>국제 비즈니스 여행의 회복</li>
+                        <li>항공 화물 운송 수요의 강세 지속</li>
+                        <li>우주 사업 진출로 새로운 수익원 창출</li>
+                        <li>환경 친화적 항공 기술 개발 기회</li>
+                        <li>중국-일본-한국 3국 항공 수요 증가</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i>위협 (Threats)</h3>
+                    <ul>
+                        <li>미-중 갈등으로 인한 항공로 제약</li>
+                        <li>한반도 정세 악화에 따른 경영 불확실성</li>
+                        <li>저가 항공사의 국제선 확장</li>
+                        <li>글로벌 경기 침체 가능성</li>
+                        <li>유류가격 급등으로 인한 원가 상승</li>
+                        <li>친환경 규제 강화로 인한 비용 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i>핵심 전략</h3>
+                <p><strong>1. 아시아나항공 통합을 통한 영역 최적화</strong> 대한항공의 가장 중요한 단기 전략은 아시아나항공 통합을 성공적으로 완료하는 것입니다. 2026년 12월 완전 통합을 목표로 항공기 배치 최적화, 중복 노선 제거, 정비 시설 통합 등을 추진 중입니다. 예상 시너지(연 3,000~4,000억원)를 실현하면 영업이익률이 크게 개선될 것으로 전망됩니다.</p>
+                <p><strong>2. 프리미엄 서비스 강화 및 차별화</strong> 저가 항공사의 급성장 속에서 대한항공은 프리미엄 서비스로 차별화하는 전략을 추진하고 있습니다. 비즈니스 클래스 서비스 고도화, 라운지 확대, 맞춤형 서비스 개발로 고객 만족도와 수익성을 동시에 향상시키고자 합니다.</p>
+                <p><strong>3. 항공 화물 사업 확대</strong> COVID-19 이후 항공 화물 수요가 높은 수준을 유지하고 있으며, 이는 대한항공의 주요 수익원입니다. 전용 화물기 도입, 물류 네트워크 확대, 특수 화물 운송 역량 강화로 화물 사업 수익성을 지속적으로 향상시킬 계획입니다.</p>
+                <p><strong>4. 아시아 허브 지위 강화</strong> 인천공항을 중심으로 한 아시아 허브 지위를 강화하기 위해 환승 고객 서비스 개선, 아시아 주요 도시로의 노선 확대, 신흥 시장 공략 등을 추진하고 있습니다.</p>
+                <p><strong>5. 우주 사업 진출</strong> Exotrail과의 협력으로 우주 OTV 사업에 진출함으로써 미래 항공 우주 산업의 새로운 기회를 확보하고 있습니다. 이는 항공 산업의 장기적 성장 동력이 될 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i>환경 및 지속가능성 전략</h3>
+                <p>대한항공은 탄소 중립 달성을 위해 지속가능 항공연료(SAF) 도입을 확대하고 있으며, 2030년까지 탄소 배출량 40% 감축을 목표로 하고 있습니다. 또한 전기 항공기 및 수소 연료 항공기 개발에 투자하여 미래 친환경 항공 운송을 선도하고자 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dollar-sign"></i>수익성 개선 전략</h3>
+                <p>대한항공의 수익성 개선은 아시아나항공 통합 시너지 실현, 화물 사업 확대, 운영 비용 절감으로부터 나올 것으로 예상됩니다. 또한 프리미엄 고객 비중 증가와 노선 최적화로 수익 품질을 향상시킬 계획입니다. 2026년 이후 연간 영업이익 2조원대 달성을 목표로 하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-won-sign"></i>재무 성과 분석</h3>
+                <p>대한항공의 2025년 재무 성과는 강력한 회복세를 보이고 있습니다. <strong>2025년 연간 통합 매출은 25.23조원으로, 전년 대비 +41.2% 성장</strong>했습니다. 이는 주로 아시아나항공의 12개월 전체 통합과 항공 여객 수요의 강한 회복에 기인합니다. 다만 <strong>통합 영업이익은 1.11조원으로 전년 대비 -47.2% 감소</strong>했는데, 이는 아시아나항공 인수 통합 비용과 감가상각 증가 때문입니다.</p>
+                <p><strong>독립 성과(대한항공만):</strong> 2025년 대한항공 단독 매출은 16.5조원(사상 최고), 영업이익 1.54조원(-19.1%)을 기록했습니다. 원가 상승과 통합 비용에도 불구하고 여객 및 화물 수요 강세로 사상 최고 매출을 달성했습니다.</p>
+                <p><strong>자본 구조:</strong> 대한항공의 자기자본비율은 약 35-40% 수준이며, 아시아나항공 인수로 인한 차용금이 증가했습니다. 그러나 강력한 영업 현금흐름으로 채무 비율을 관리하고 있습니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 55%;"></div>
+                    </div>
+                    <div class="bar-value">17.8조</div>
+                    <div class="bar-label">2023년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 65%;"></div>
+                    </div>
+                    <div class="bar-value">21.1조</div>
+                    <div class="bar-label">2024년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">25.23조</div>
+                    <div class="bar-label">2025년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 85%;"></div>
+                    </div>
+                    <div class="bar-value">26조</div>
+                    <div class="bar-label">2026년 목표</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 78%;"></div>
+                    </div>
+                    <div class="bar-value">2.1조</div>
+                    <div class="bar-label">2026년 영업이익 목표</div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-cube"></i>사업부 수익성 분석</h3>
+                    <p><strong>여객 항공 운수 (매출 비중 60%):</strong> 주요 수익원으로, 국제선의 높은 요금률과 국내선의 안정적 수요로 수익성이 견고합니다. 2025년 여객 운송량은 역사상 최고 수준을 기록했습니다.</p>
+                    <p><strong>항공 화물 운수 (매출 비중 25%):</strong> 글로벌 이커머스 성장과 반도체 수출로 인한 강한 수요로 수익성이 매우 우수합니다. 화물 수익률이 여객 수익률보다 높아 이익의 주요 원천입니다.</p>
+                    <p><strong>기타 서비스 (매출 비중 15%):</strong> 항공기 정비, 지상 서비스, 호텔 사업 등으로 안정적 현금흐름을 제공합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-money-bill-wave"></i>현금흐름 및 배당</h3>
+                    <p><strong>영업현금흐름:</strong> 대한항공의 연간 영업현금흐름은 약 1.8~2.2조원 수준으로, 안정적 현금 창출 능력을 보여주고 있습니다.</p>
+                    <p><strong>자본 투자:</strong> 신항공기 도입, 항공기 정비 시설 확대, 디지털화 투자 등으로 연간 1~1.5조원을 투자하고 있습니다.</p>
+                    <p><strong>배당 정책:</strong> 안정적 배당을 통해 주주 가치를 제공하고 있으며, 통합 이후 배당 규모 증가가 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-eye-slash"></i>투자 전망</h3>
+                <p><strong>2026년 전망:</strong> 아시아나항공 완전 통합과 함께 통합 시너지가 본격 실현될 것으로 예상됩니다. 영업이익이 1.8~2.1조원 수준으로 회복될 것으로 전망되며, 영업이익률도 개선될 것으로 기대됩니다.</p>
+                <p><strong>성장 동력:</strong> 아시아 항공 시장의 지속적 성장, 항공 화물 수요의 강세, 통합 시너지 실현이 주요 성장 동력이 될 것으로 예상됩니다. 또한 우주 사업 진출로 미래 수익원 다각화가 기대됩니다.</p>
+                <p><strong>리스크 요인:</strong> 중국 항공사와의 경쟁 심화, 한반도 지정학적 리스크, 글로벌 경기 둔화 가능성, 유류가격 급등 위험 등이 주요 리스크입니다. 또한 아시아나 통합 과정에서의 예상 이상의 비용 발생도 모니터링이 필요합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>투자 테제</h3>
+                <p>대한항공은 아시아 항공 산업의 리더로서, 아시아나항공 통합을 통해 새로운 성장 단계에 진입하고 있습니다. 2026년 완전 통합과 함께 예상되는 연간 3,000~4,000억원의 시너지 실현은 영업이익률 개선과 주가 재평가의 주요 촉매가 될 것으로 판단됩니다.</p>
+                <p>글로벌 항공 시장의 강한 회복 추세, 아시아 항공 수요의 지속적 성장, 항공 화물의 우호적 환경이 대한항공의 중기 성장을 뒷받침할 것으로 전망됩니다. 또한 우주 사업 진출로 미래 먹거리를 확보하고 있어, 장기적 성장 가능성도 높은 상태입니다.</p>
+                <p><strong>핵심 가정:</strong> (1) 아시아나 통합 시너지 조기 실현, (2) 항공 여객 및 화물 수요 지속 강세, (3) 통합 과정의 순조로운 진행, (4) 한반도 지정학적 리스크의 점진적 완화</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-warning"></i>주요 리스크</h3>
+                <p><strong>경영 리스크:</strong> 아시아나 통합 과정에서의 예상 이상의 비용 발생, 조직 통합의 어려움, 운영 중단 리스크 등이 존재합니다. 통합이 지연되거나 실패하면 예상 시너지를 실현하지 못할 수 있습니다.</p>
+                <p><strong>시장 리스크:</strong> 글로벌 경기 침체에 따른 항공 수요 감소, 유류가격 급등으로 인한 원가 상승, 저가 항공사의 경쟁 심화 등이 주요 리스크입니다.</p>
+                <p><strong>지정학적 리스크:</strong> 미-중 갈등 심화, 한반도 긴장 고조, 환태평양 지역의 불안정성 증가 등이 항공 운영을 직접 위협할 수 있습니다.</p>
+                <p><strong>기술 리스크:</strong> 친환경 항공 기술 전환 비용, 디지털 전환 투자 비용 증가 등도 고려 대상입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>FLOVAH 분석 의견</h3>
+                <p>FLOVAH의 심층 분석 결과, 대한항공은 현재 역사적 변곡점에 서 있습니다. 아시아나항공 통합으로 인한 구조적 변화와 글로벌 항공 시장의 우호적 환경이 맞물려, 2026년부터 3년간 가장 높은 실적 증가 가능성을 가지고 있습니다.</p>
+                <p><strong>긍정 평가:</strong> (1) 통합 시너지의 실질적 가치 창출 잠재력, (2) 아시아 지역 항공 수요의 구조적 성장, (3) 항공 화물 사업의 높은 수익성, (4) 우주 사업 진출로 인한 미래 가치 창출 기회</p>
+                <p><strong>부정 평가:</strong> (1) 통합 과정의 불확실성, (2) 중국 항공사와의 경쟁 심화 가능성, (3) 지정학적 리스크 상존, (4) 높은 부채 수준</p>
+                <p><strong>종합 평가:</strong> 중기적(2-3년) 관점에서 매수 의견입니다. 현재 주가는 통합 리스크와 불확실성으로 인해 저평가되어 있으며, 통합이 순조롭게 진행될 경우 상당한 상승 여지가 있을 것으로 판단됩니다. 다만 단기 변동성은 클 것으로 예상되므로, 중기 투자 관점에서의 접근을 권장합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>투자자 요약</h3>
+                <p><strong>투자 등급:</strong> 매수 (Buy)</p>
+                <p><strong>목표주가 (12개월):</strong> 현재 주가 대비 35-50% 상승 전망</p>
+                <p><strong>추천 투자 기간:</strong> 중기(2-3년)</p>
+                <p><strong>투자 포지션:</strong> 아시아나 통합의 성공과 항공 시장 성장의 중복 수혜 가능</p>
+                <p><strong>주의점:</strong> 통합 진행 상황, 항공 여객 및 화물 수요 추이, 항공유 가격 변동, 한반도 지정학 상황을 주기적으로 모니터링해야 합니다.</p>
+            </div>
+
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 분류</h4>
+                        <p>기업 종합 분석 리포트</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-pen-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 깊이</h4>
+                        <p>프리미엄 등급 (정성 정량 분석)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>대한항공 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 대한항공 Investor Relations 공개 정보</li>
+                    <li>IATA(국제항공운송협회) 및 글로벌 항공 시장 데이터</li>
+                    <li>아시아나항공 공시 자료 및 인수 통합 관련 공식 자료</li>
+                    <li>Exotrail 및 우주 사업 협력 관련 기술 문서</li>
+                    <li>국내외 항공사 리서치 보고서</li>
+                    <li>항공 업계 분석 기관 (Cirium, OAG 등) 데이터</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 4월 11일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 11일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+</body>
+</html>

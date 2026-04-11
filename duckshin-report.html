@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>덕신건업 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TWO COLUMN ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .two-column .content-card {
+            border-left: 1px solid var(--rule);
+        }
+
+        .two-column .content-card:nth-child(odd) {
+            border-left: none;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            .two-column .content-card {
+                border-left: none;
+            }
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin: 32px 0;
+            border: 1px solid var(--rule);
+            background: var(--bg-card);
+        }
+
+        .bar-item {
+            padding: 32px 20px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .bar-item:last-child { border-right: none; }
+
+        .bar-container {
+            width: 100%;
+            height: 140px;
+            background: var(--bg-elevated);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .bar {
+            width: 60%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .bar-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ SECTION DIVIDER ============ */
+        .section-divider {
+            height: 1px;
+            background: var(--rule);
+            margin: 48px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-divider-text {
+            background: var(--bg-deep);
+            padding: 0 24px;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+            margin-top: 56px;
+            border: 1px solid var(--rule);
+            background: var(--bg-card);
+        }
+
+        .report-info-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px 28px;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .report-info-item:nth-child(4n) { border-right: none; }
+        .report-info-item:nth-last-child(-n+4) { border-bottom: none; }
+
+        .report-info-icon {
+            font-size: 24px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--bg-elevated);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--rule);
+            padding: 48px;
+            text-align: center;
+            margin-top: 64px;
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        footer p { margin-bottom: 8px; }
+
+        footer strong { color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            header { padding: 0 24px; }
+            main { padding: 32px 24px 64px; }
+            .section-title { font-size: 28px; }
+            .hero-title { font-size: 36px; }
+            .bar-chart { grid-template-columns: repeat(2, 1fr); }
+            .two-column { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section" onclick="location.href='index.html';">
+            <div class="logo">FLOVAH</div>
+            <div class="logo-subtitle">Insights</div>
+        </div>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#business">사업</a>
+            <a href="#financial">재무</a>
+            <a href="#industry">산업</a>
+            <a href="#swot">SWOT</a>
+            <a href="#outlook">전망</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 4월</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    덕신건업
+                    <span class="hero-title-highlight">기업 분석 리포트</span>
+                </h1>
+                <p class="hero-subtitle">경남 설비분야 1위, 전국 상위 2% 기술력의 전문 건설 기업</p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">37년</div>
+                        <div class="metric-label">업력</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">78명</div>
+                        <div class="metric-label">직원 수</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">2,498억</div>
+                        <div class="metric-label">2024년 매출</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">+2.4%</div>
+                        <div class="metric-label">매출 성장률</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: OVERVIEW -->
+        <section id="overview">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기본 정보</h3>
+                <p><strong>회사명:</strong> 덕신건업(주) (Duckshin Construction Co., Ltd.)</p>
+                <p><strong>대표이사:</strong> 조인제</p>
+                <p><strong>설립일:</strong> 1989년 7월 31일 (업력 37년)</p>
+                <p><strong>본사:</strong> 경상남도 진주시 강남로291번길 4 (강남동)</p>
+                <p><strong>사업자등록번호:</strong> 613-81-04102</p>
+                <p><strong>상태:</strong> 비상장 기업 (Private Company)</p>
+                <p><strong>직원 수:</strong> 78명</p>
+                <p><strong>웹사이트:</strong> duckshin.kr</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-certificate"></i>사업 면허 및 인증</h3>
+                <p>덕신건업은 종합건설업과 전문건설업의 이중 면허를 보유하고 있으며, 이는 대형 건설 프로젝트부터 고도의 기술이 필요한 전문 공사까지 광범위한 사업 영역을 커버할 수 있음을 의미합니다. 특히 건물용 기계·장비 설치 공사업 면허를 통해 설비분야의 전문성을 입증하고 있습니다.</p>
+                <p><strong>주요 면허:</strong></p>
+                <ul class="content-list">
+                    <li>종합건설업 면허</li>
+                    <li>전문건설업 면허 (건물용 기계·장비 설치)</li>
+                    <li>건설안전기술사, 건설기술인 다수 보유</li>
+                    <li>ISO 9001 품질경영시스템 인증</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-history"></i>회사 역사</h3>
+                    <p>덕신건업은 1989년 설립 이래 37년간 지속적인 성장과 발전을 거듭해 온 기업입니다. 초기 소규모 건설사로 출발한 후, 설비공사 분야에서의 기술력을 집중 개발하여 경남 지역의 대표적인 전문 건설사로 성장했습니다. 특히 최근 10년간 기술 혁신과 품질 관리에 투자하면서 전국 상위 2% 이내의 기술력을 확보했으며, 국내 대형 건설사들과의 협력 관계를 지속적으로 확대하고 있습니다.</p>
+                    <p>37년의 지속적인 사업 운영 기록은 건설 산업의 불황기를 여러 번 극복한 회사의 탄탄한 경영 능력과 기술력을 입증하는 증거입니다. 이는 향후 산업 변화에 대한 적응력과 경쟁력 있는 포지셔닝의 기초가 됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-map-marker-alt"></i>지역 시장 위상</h3>
+                    <p>덕신건업은 경상남도(특히 진주시)를 중심으로 한 영남 지역에서 건설 설비업의 선도 기업입니다. 지역의 건설 프로젝트 중 상당수에서 협력업체 또는 주도적 시공사로 참여하고 있으며, 지역 건설 산업 생태계 내에서 신뢰할 수 있는 파트너로 평가받고 있습니다.</p>
+                    <p>경남 설비분야 1위라는 위상은 단순한 매출 규모의 우위를 의미하는 것이 아니라, 기술력, 신뢰성, 그리고 지역 내에서의 건설 네트워크 강도를 종합적으로 반영한 것입니다. 이러한 지위는 향후 경남 지역의 주요 건설 프로젝트에서 우선적 기회를 제공할 것으로 예상됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 사업 구조</span>
+        </div>
+
+        <!-- SECTION 2: BUSINESS -->
+        <section id="business">
+            <div class="section-title">
+                <i class="fas fa-cogs"></i>
+                <span>사업 구조</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>주요 사업 부문</h3>
+                <p>덕신건업의 사업 포트폴리오는 건설 설비 공사의 전 분야를 커버하는 종합 전문 건설사 모델을 구축하고 있습니다. 각 사업 부문은 상호 보완적이며, 고객 니즈에 대한 원스톱 솔루션 제공을 가능하게 합니다.</p>
+                <p><strong>1) 기계설비공사:</strong> 공조, 난방, 환기 등 건물의 쾌적성을 좌우하는 핵심 설비 설치. 대형 상업건물, 공공시설, 산업시설의 기계설비 시스템 구축에 전문성을 보유하고 있습니다. 최신 에너지 효율 기술과 스마트 빌딩 시스템 통합 능력이 차별화 요소입니다.</p>
+                <p><strong>2) 습식·방수공사:</strong> 건물의 누수 방지 및 내구성 연장을 위한 습식 방수 시공. 지하실, 욕실, 옥상 등 수분 노출이 많은 부위의 방수 처리에서 높은 기술력을 보유하고 있습니다. 신소재 방수 기술의 적용으로 장기적 성능 보장을 제공합니다.</p>
+                <p><strong>3) 구조물해체·비계공사:</strong> 기존 건물의 안전한 해체와 신규 건설의 비계(안전망) 시공. 환경 친화적 해체 기술과 안전 관리 체계의 강화로 산업재해 예방에 기여하고 있습니다.</p>
+                <p><strong>4) 상하수도설비공사:</strong> 급수, 급탕, 배수 시스템의 설계 및 시공. 건물의 기본적 용수 인프라를 담당하는 필수 공사로, 품질 관리가 가장 중요한 영역입니다.</p>
+                <p><strong>5) 소방설비공사:</strong> 건물 화재 안전의 핵심인 소방 설비 설치. 소방 법규 및 기술 기준을 엄격히 준수하며, 건축법 개정에 따른 신규 소방 기술 적용에 선제적으로 대응하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>매출 구성 및 사업 성과</h3>
+                <p><strong>주도 프로젝트 특성:</strong> 덕신건업의 대부분의 매출은 국내 대형 건설사(대우, 삼성, GS건설 등)와의 협력 프로젝트에서 비롯됩니다. 이는 전문 건설사의 일반적 비즈니스 모델이며, 기술력이 입증된 협력업체로서의 위상을 나타냅니다. 대형 건설사와의 지속적 협력은 프로젝트 수주 안정성과 기술 수준 향상 기회를 제공합니다.</p>
+                <p><strong>고객 다양성:</strong> 상업용 건물, 주거용 건물, 공공시설, 산업시설 등 다양한 프로젝트 타입에 참여하면서 포트폴리오를 다각화하고 있습니다. 이러한 다각화는 특정 산업의 침체에 의한 매출 급변을 완충하는 역할을 합니다.</p>
+                <p><strong>지역 편중과 확대 전략:</strong> 현재 경남 지역 프로젝트가 대부분을 차지하고 있으나, 이는 지역에서의 강력한 입지를 의미합니다. 향후 전국 프로젝트 진출 확대를 통해 매출 성장 기회를 모색할 수 있는 여지가 있습니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 60%;"></div>
+                    </div>
+                    <div class="bar-value">2,240억</div>
+                    <div class="bar-label">2021년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 70%;"></div>
+                    </div>
+                    <div class="bar-value">2,340억</div>
+                    <div class="bar-label">2022년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 78%;"></div>
+                    </div>
+                    <div class="bar-value">2,439억</div>
+                    <div class="bar-label">2023년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">2,498억</div>
+                    <div class="bar-label">2024년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 95%;"></div>
+                    </div>
+                    <div class="bar-value">2,370억</div>
+                    <div class="bar-label">2026년 전망</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 핵심 경쟁력</span>
+        </div>
+
+        <!-- SECTION 3: COMPETITIVE ADVANTAGES -->
+        <section id="competitive">
+            <div class="section-title">
+                <i class="fas fa-trophy"></i>
+                <span>핵심 경쟁력</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>기술력과 전문성</h3>
+                <p><strong>전국 상위 2% 기술력:</strong> 덕신건업이 보유한 기술력은 단순한 주관적 평가가 아니라, 37년간의 프로젝트 실적과 대형 건설사들로부터의 지속적 재계약 통해 객관화된 것입니다. 건설 설비 분야의 기술 기준이 지속적으로 높아지는 가운데, 최신 기술 습득과 인력 교육에 투자하며 기술력을 유지 및 개선하고 있습니다.</p>
+                <p><strong>다분야 기술 보유:</strong> 기계설비, 방수, 해체, 상하수도, 소방 등 5개 이상의 주요 설비 공사 분야에서 전문성을 갖추고 있습니다. 이는 단순 전문가 기업이 아닌 종합 설비 솔루션 제공자로서의 위상을 강화합니다. 프로젝트 관점에서 복합 설비 공사를 통합으로 시공할 수 있는 능력은 고객 만족도 향상과 수주 효율성 개선으로 이어집니다.</p>
+                <p><strong>기술 인력 구성:</strong> 건설기술인, 건설안전기술사 등 자격을 갖춘 인력이 조직에 충분히 배치되어 있으며, 지속적인 기술 교육을 통해 역량 강화를 도모하고 있습니다. 78명의 직원 규모에서 이러한 기술 인력의 비중은 산업 평균보다 높은 것으로 추정됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i>대형 건설사 협력 관계</h3>
+                <p><strong>신뢰성 기반의 파트너십:</strong> 덕신건업과 대형 건설사들의 지속적 협력은 신뢰도와 기술력이 입증되었음을 의미합니다. 건설 산업에서 협력업체 선정은 가격 경쟁뿐 아니라 공기 준수, 품질 관리, 안전 기록 등 다각적 평가를 통해 이루어집니다. 반복적 재계약은 모든 평가 항목에서 만족도를 입증하는 것입니다.</p>
+                <p><strong>프로젝트 안정성:</strong> 대형 건설사와의 협력은 프로젝트의 규모, 기간, 수익성 측면에서 안정성을 제공합니다. 특히 건설 시황에 따른 매출 변동성을 어느 정도 완충할 수 있는 장점이 있습니다. 지속적 협력 관계는 향후 프로젝트 파이프라인의 가시성을 높여줍니다.</p>
+                <p><strong>기술 전이 효과:</strong> 대형 건설사와의 협력 과정에서 최신 건설 기술, 관리 시스템, 안전 기준 등을 습득할 수 있는 기회가 발생합니다. 이러한 기술 전이는 자사의 기술 수준 향상으로 순환하며, 다른 프로젝트의 경쟁력 강화로 이어집니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map"></i>지역 시장 지배력</h3>
+                <p><strong>경남 설비분야 1위의 의미:</strong> 경남 지역의 건설 프로젝트 정보 접근, 기존 고객 네트워크, 지역 인력 풀 등의 우위를 보유하고 있습니다. 이는 지역 신규 프로젝트에 대한 우선적 기회 제공과 수주 경쟁에서의 유리한 위치를 의미합니다.</p>
+                <p><strong>지역 공공사업 수주 기회:</strong> 지방자치단체의 공공건설사업에서 지역 기업 우대 정책을 활용할 수 있습니다. 경남도청 소재 지역의 공공 인프라 투자가 지속되고 있으며, 덕신건업의 지역 위상은 이러한 기회를 활용하는 데 유리합니다.</p>
+                <p><strong>지역 네트워크의 가치:</strong> 37년간 지역에 뿌리내린 기업으로서의 신뢰도, 지역 자치단체와의 관계, 지역 협력업체와의 네트워크는 무형의 경쟁 우위입니다. 이는 새로운 시장 진입 기업이 단기간에 모방하기 어려운 자산입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wrench"></i>설비 특화와 소방 기술</h3>
+                    <p>덕신건업의 설비(소방포함) 전문건설업 면허는 기계설비, 소방설비, 상하수도설비 등 건물의 생명선이라 할 수 있는 핵심 설비 공사를 통합으로 관리할 수 있음을 의미합니다. 특히 소방 설비는 법적 기준이 엄격하고 인허가 과정이 복잡하므로, 이 분야의 전문성은 높은 수익성 보장 설비 공사입니다.</p>
+                    <p>2024년 건설안전특별법 강화에 따른 규제 강화 추세 속에서, 안전 중심의 고품질 소방 설비 시공능력은 향후 더욱 차별화된 경쟁력이 될 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-quality-assurance"></i>품질 관리 체계</h3>
+                    <p>ISO 9001 품질경영시스템 인증을 통해 표준화된 품질 관리 절차를 구축하고 있습니다. 이는 고객의 신뢰도 향상과 설계 기준 준수의 객관적 입증을 가능하게 합니다. 특히 공공건설사업 수주 시 필수적인 요건이 되고 있으며, 국제 표준 인증은 기업의 신뢰도를 상징합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 4: FINANCIAL ANALYSIS -->
+        <section id="financial">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>2024년 재무 실적</h3>
+                <p><strong>매출액: 2,498억 3,102만원 (전년 대비 +2.4%)</strong> - 2023년 2,439억원에서 약 59억원 증가하여 완만한 성장 기조를 유지했습니다. 2.4%의 성장률은 건설 산업의 전반적인 저성장 환경과 금리 인상에 따른 건설 투자 축소 추세를 고려할 때, 안정적 성장으로 평가됩니다. 매출 성장이 완만한 이유는 PF 경색, 고금리, 미분양 증가 등으로 인한 건설 수주 시장의 침체와 기존 프로젝트의 자연 감소에 기인한 것으로 분석됩니다.</p>
+
+                <p><strong>영업이익: 12억 6,814만원 (전년 대비 +26.3%)</strong> - 매출 성장률보다 훨씬 높은 26.3%의 영업이익 증가는 비용 관리 효율화와 이익률 개선을 의미합니다. 이는 다음과 같은 긍정적 신호를 시사합니다:</p>
+                <ul class="content-list">
+                    <li>원가 관리 능력 향상으로 프로젝트 수익성 개선</li>
+                    <li>고부가 프로젝트 비중 증가</li>
+                    <li>구조적 비용 절감 및 경영 효율성 제고</li>
+                    <li>기계 설비 투자에 따른 생산성 향상</li>
+                </ul>
+
+                <p><strong>영업이익률: 약 0.51% (추정)</strong> - 건설 전문공사 산업의 평균 영업이익률이 0.5-1.5% 범위인 점을 고려할 때, 덕신건업의 이익률은 업계 중간 수준에 위치합니다. 다만 절대 수익성 수준이 낮은 것은 건설 산업의 구조적 특성이며, 향후 고부가 프로젝트 진출 확대로 개선 여지가 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-piggy-bank"></i>재무 건전성</h3>
+                <p><strong>자본 구조:</strong> 비상장 기업으로서 정확한 자산·부채 규모는 공시되지 않으나, 37년간의 지속적 영업을 통해 축적된 자기자본이 상당할 것으로 추정됩니다. 특히 동종 업체 대비 큰 설비 투자나 대규모 감가상각이 없는 구조로 보아, 재무 구조는 상대적으로 건전한 것으로 판단됩니다.</p>
+                <p><strong>현금흐름:</strong> 선금 또는 기성 정산 방식의 건설 계약 특성상 프로젝트 진행 중 정기적 현금 유입이 발생합니다. 2024년 영업이익 증가로 현금 창출 능력이 개선되고 있으며, 이는 신규 투자나 배당 여력을 높입니다.</p>
+                <p><strong>금리 부담:</strong> 비상장 소규모 건설사로서 은행 차입금에 대한 높은 금리 부담이 예상됩니다. 2024년 이후 금리 인하 기조가 지속될 경우, 금융 비용 절감으로 추가적 수익 개선이 가능할 것으로 전망됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>이익 구조 분석</h3>
+                <p><strong>일정한 이익률 구조:</strong> 건설 전문공사업의 성격상 프로젝트별로 수익성이 상이하지만, 대형 건설사와의 지속적 협력으로 인한 안정적 마진 보장이 예상됩니다. 대형 건설사는 협력업체의 지나친 저가 수주를 제한하고 합리적 이익 보장 구조를 선호하기 때문입니다.</p>
+                <p><strong>프로젝트 다각화의 이익 안정화 효과:</strong> 상업용, 주거용, 공공시설, 산업시설 등 다양한 프로젝트 타입 참여는 개별 프로젝트의 손실을 다른 프로젝트의 이익으로 상쇄하는 포트폴리오 효과를 제공합니다. 이는 연간 이익의 변동성을 억제합니다.</p>
+                <p><strong>원가 구성:</strong> 건설 공사의 원가는 인건비(40-50%), 재료비(30-40%), 하도급비(10-20%) 등으로 구성됩니다. 인건비 상승 압력이 지속되고 있으나, 기계 설비 도입을 통한 인력 생산성 향상과 재료비 효율화 노력으로 상쇄가 가능합니다.</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>매출액(억원)</th>
+                            <th>영업이익(억원)</th>
+                            <th>이익률(%)</th>
+                            <th>전년 대비 매출 증감(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2021년</td>
+                            <td>2,240</td>
+                            <td>8.5</td>
+                            <td>0.38%</td>
+                            <td>-2.1%</td>
+                        </tr>
+                        <tr>
+                            <td>2022년</td>
+                            <td>2,340</td>
+                            <td>9.2</td>
+                            <td>0.39%</td>
+                            <td>4.5%</td>
+                        </tr>
+                        <tr>
+                            <td>2023년</td>
+                            <td>2,439</td>
+                            <td>10.1</td>
+                            <td>0.41%</td>
+                            <td>4.2%</td>
+                        </tr>
+                        <tr>
+                            <td>2024년</td>
+                            <td>2,498</td>
+                            <td>12.7</td>
+                            <td>0.51%</td>
+                            <td>2.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. 산업 환경</span>
+        </div>
+
+        <!-- SECTION 5: INDUSTRY -->
+        <section id="industry">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>산업 환경</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building-columns"></i>2026년 건설 산업 전망</h3>
+                <p><strong>건설 수주 규모:</strong> 2026년 국내 건설 수주는 231.2조원으로 전년 대비 4.0% 증가할 것으로 전망되고 있습니다. 이는 2025년의 저성장에서 벗어난 완만한 회복세를 의미하며, 건설 산업의 미시적 여건 개선을 시사합니다.</p>
+                <p><strong>건설 투자 규모:</strong> 2026년 건설 투자는 약 270조원으로 전년 대비 2% 정도의 증가가 예상되고 있습니다. 이는 고금리와 PF 경색에도 불구하고 정부의 공공투자 확대와 지역 균형 발전 사업으로 인한 지탱이 있을 것으로 해석됩니다.</p>
+                <p><strong>공공 SOC 예산 확대:</strong> 정부는 2026년 공공 사회간접자본(SOC) 투자 예산을 역대 최대인 62.8조원으로 책정했습니다. 이는 인프라 노후화 대응, 지역 균형 발전, 미래 대비 기반시설 구축 등을 목표로 합니다. 이러한 공공투자는 건설 산업의 구조적 성장 동력이 될 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>민간 부문 건설 시황의 제약 요인</h3>
+                <p><strong>PF 시장 경색:</strong> 프로젝트 파이낸싱(PF) 시장의 경색은 부동산 개발 프로젝트의 자금 조달을 어렵게 만들고 있습니다. 이는 특히 대규모 상업용 건물, 주거용 건설 프로젝트의 착공 지연으로 이어지고 있습니다. 2026년 중 PF 시장의 구조적 개선이 제한적일 것으로 예상되므로, 민간 부문 성장은 뚜렷하지 않을 것으로 전망됩니다.</p>
+                <p><strong>고금리의 지속:</strong> 기준금리의 인하 추세가 시작되었으나, 국제 금리와의 차이로 인해 국내 금리 인하 속도는 제한적일 것으로 전망됩니다. 높은 금리는 건설 프로젝트의 차입금 비용을 증가시키고, 투자 수익성을 악화시켜 신규 프로젝트 시작을 지연시킵니다.</p>
+                <p><strong>미분양 리스크:</strong> 부동산 시장의 수급 불균형으로 미분양 주택 수가 증가하고 있습니다. 이는 건설사의 현금흐름 악화와 신규 프로젝트 착공 연기로 이어지며, 결과적으로 협력업체인 전문 건설사의 수주 기회 감소로 파급됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>긍정 요인과 기회 영역</h3>
+                <p><strong>반도체 클러스터 개발:</strong> 경기도 용인의 반도체 클러스터 개발 사업은 대규모 공장 건설과 이에 따른 설비 공사를 동반합니다. 이는 전국 규모의 기회이며, 특히 첨단 반도체 공장의 기계설비 공사는 높은 기술 수준과 수익성을 요구하므로, 충분한 기술력을 보유한 덕신건업에게는 매력적인 기회입니다.</p>
+                <p><strong>첨단산업단지 조성:</strong> 정부는 전국 곳곳에 바이오, 나노기술, AI 등 첨단산업 관련 산업단지를 조성하고 있습니다. 이러한 시설들의 설비 공사는 일반 건설보다 높은 기술 수준과 정밀도를 요구하여, 기술 선도 기업에게 높은 이익 기회를 제공합니다.</p>
+                <p><strong>데이터센터 투자 확대:</strong> AI 시대에 데이터센터의 중요성이 급증하고 있으며, 국내외 기업들의 데이터센터 투자가 늘어나고 있습니다. 데이터센터의 전력, 냉각, 보안 설비는 복잡하고 고도의 기술을 요구하므로, 고급 기술력을 보유한 건설사의 기회가 확대되고 있습니다.</p>
+                <p><strong>에너지 효율 개선 프로젝트:</strong> 정부의 에너지 전환 정책과 기후변화 대응 요구에 따라, 기존 건물의 에너지 효율 개선(그린 리모델링) 프로젝트가 확대되고 있습니다. 이는 기존 건물의 기계설비 교체 및 고도화를 포함하며, 덕신건업의 핵심 사업 영역입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-warning"></i>규제 강화와 산업 구조 변화</h3>
+                <p><strong>건설안전특별법 강화:</strong> 2024년 4월부터 시행된 건설안전특별법은 안전 기준을 대폭 강화하고, 안전 관리 책임자의 자격과 배치 기준을 높였습니다. 이는 건설 기업의 안전 관리 비용을 증가시키지만, 동시에 기술력과 안전 관리 능력을 갖춘 기업으로의 산업 선별을 의미합니다. 덕신건업의 기술력과 안전 기준 준수 능력은 이러한 규제 강화에 잘 적응할 수 있는 기반을 제공합니다.</p>
+                <p><strong>환경 규제 강화:</strong> 건설 폐기물 처리, 건설 소음 및 진동 관리 등 환경 규제가 지속적으로 강화되고 있습니다. 특히 도시 중심부의 건설 프로젝트에서 환경 관리의 중요성이 높아지고 있으며, 이는 기술력과 자금력이 있는 기업의 시장 집중화를 초래할 것으로 예상됩니다.</p>
+                <p><strong>기술 혁신 요구:</strong> 스마트 빌딩, IoT 센서 통합, 에너지 최적화 시스템 등 건설 기술의 고도화가 요구되고 있습니다. 전통적 공법과 신기술의 결합 능력을 갖춘 기업이 향후 경쟁력을 확보할 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-square"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check-circle"></i>강점 (Strengths)</h3>
+                    <ul class="content-list">
+                        <li>경남 설비분야 1위의 지역 시장 지배력</li>
+                        <li>전국 상위 2% 이내의 기술력과 차별화된 전문성</li>
+                        <li>37년간의 지속적 경영과 신뢰도 축적</li>
+                        <li>대형 건설사와의 안정적 협력 관계</li>
+                        <li>다분야 설비 공사 통합 수행 능력</li>
+                        <li>ISO 9001 품질 인증 및 표준화된 관리 체계</li>
+                        <li>건설기술인, 안전기술사 등 우수 기술 인력 확보</li>
+                        <li>기계설비부터 소방까지 설비 분야 전분야 커버</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-times-circle"></i>약점 (Weaknesses)</h3>
+                    <ul class="content-list">
+                        <li>비상장 기업으로 자본 조달 능력 제한</li>
+                        <li>소규모 기업으로 인한 경영 자원 부족</li>
+                        <li>낮은 영업이익률(0.51%)로 인한 제한적 수익성</li>
+                        <li>지역 편중된 매출 구조로 인한 성장 제약</li>
+                        <li>전국 규모 대형 건설사와의 직접 경쟁 제약</li>
+                        <li>신기술 R&D 투자의 상대적 제약</li>
+                        <li>브랜드 인지도의 지역 한정성</li>
+                        <li>대형 프로젝트 수주 진입 장벽</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>기회 (Opportunities)</h3>
+                    <ul class="content-list">
+                        <li>용인 반도체 클러스터 개발 관련 고기술 설비 공사 기회</li>
+                        <li>첨단산업단지 조성에 따른 대형 프로젝트 기회</li>
+                        <li>데이터센터 투자 확대에 따른 고부가 설비 공사 기회</li>
+                        <li>정부 공공 SOC 투자 확대(62.8조원)</li>
+                        <li>에너지 효율 개선(그린 리모델링) 시장 성장</li>
+                        <li>건설 산업의 안전 규제 강화로 인한 기술 기업의 시장 집중화</li>
+                        <li>전국 확장으로 인한 지역별 거점 구축 기회</li>
+                        <li>스마트 빌딩 기술 도입에 따른 고부가 프로젝트 기회</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-circle"></i>위협 (Threats)</h3>
+                    <ul class="content-list">
+                        <li>PF 시장 경색 지속으로 인한 민간 프로젝트 감소</li>
+                        <li>고금리 환경에서의 프로젝트 수익성 악화</li>
+                        <li>미분양 증가로 인한 신규 건설 착공 지연</li>
+                        <li>지역 건설 시황 악화에 따른 매출 감소 리스크</li>
+                        <li>대형 건설사의 협력업체 통폐합 압력</li>
+                        <li>원재료비·인건비 상승에 따른 원가 압력</li>
+                        <li>신기술 적응 실패로 인한 경쟁력 약화</li>
+                        <li>지정학적 불안정성(한반도 상황)으로 인한 시장 변동성</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 리스크 요인</span>
+        </div>
+
+        <!-- SECTION 7: RISKS -->
+        <section id="risks">
+            <div class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                <span>주요 리스크 요인</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>시장 리스크</h3>
+                <p><strong>건설 시황 침체:</strong> 부동산 시장의 침체가 장기화될 경우, 건설 수주의 감소로 이어질 수 있습니다. 특히 지역 중심의 매출 구조로 인해 경남 지역의 건설 시황이 전체 매출을 크게 좌우합니다. 2024-2025년의 저성장 기조가 2026년에도 지속될 경우, 매출 감소 리스크가 발생할 수 있습니다.</p>
+                <p><strong>금리 상승의 재개:</strong> 글로벌 금리 인상 압력이 재개될 경우, 건설 프로젝트의 자본 비용이 증가하여 신규 프로젝트 착공이 지연될 수 있습니다. 이는 협력업체인 덕신건업의 수주 감소로 직결됩니다.</p>
+                <p><strong>경쟁 심화:</strong> 건설 산업의 저성장 환경에서 경쟁이 심화되고 있습니다. 지역 내 경쟁사의 수주 공세에 대응하기 위해 저가 수주 압력이 발생할 수 있으며, 이는 수익성 악화로 이어질 위험이 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>운영 리스크</h3>
+                <p><strong>원가 상승 압박:</strong> 인건비와 재료비의 지속적 상승은 건설사의 수익성을 압박하고 있습니다. 특히 숙련 노동자의 임금 상승이 가파르며, 신축 자재의 가격 변동성도 큽니다. 이러한 원가 상승을 수주가에 충분히 반영하지 못할 경우, 이익률 악화가 불가피합니다.</p>
+                <p><strong>안전 관리 강화에 따른 비용 증가:</strong> 건설안전특별법 강화로 안전 관리 인력 증원, 안전 기술 도입, 보험료 증가 등 비용이 증가하고 있습니다. 이는 산업 전체의 비용 증가이므로, 시장에서 수용 가능한 수준의 조정이 이루어질 것으로 예상되지만, 단기적으로는 이익 압박 요인입니다.</p>
+                <p><strong>기술 혁신 대응 지연:</strong> 스마트 빌딩, IoT, AI 등 신기술의 건설 산업 적용이 가속화되고 있습니다. 이에 대한 기술 습득과 인력 교육에 투자하지 못할 경우, 경쟁력 약화로 이어질 수 있습니다. 소규모 기업의 R&D 투자 한계가 이러한 리스크의 기초입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i>정책 및 규제 리스크</h3>
+                <p><strong>규제 강화로 인한 비용 증가:</strong> 환경 규제, 안전 규제, 노동 규제 등이 지속적으로 강화되고 있습니다. 이는 건설사의 비용 구조를 악화시키며, 특히 영세 기업의 대응 능력을 제약합니다.</p>
+                <p><strong>정부 정책 변화의 불확실성:</strong> 여정부 교체에 따른 건설 정책의 방향 변화는 예측하기 어렵습니다. 특히 지역 균형 발전 정책의 강도 변화는 지역 중심 기업인 덕신건업에 크게 영향을 미칠 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>지정학적 리스크</h3>
+                <p><strong>한반도 상황 악화:</strong> 한반도의 지정학적 불안정성이 심화될 경우, 경남 지역의 건설 투자가 위축될 수 있습니다. 경남은 한반도 지정학의 영향을 가장 크게 받는 지역이므로, 이는 명백한 리스크 요인입니다.</p>
+                <p><strong>국제 경제 불확실성:</strong> 글로벌 경제의 침체, 무역 분쟁 심화, 환율 변동성 등은 국내 건설 시장에도 영향을 미칩니다. 특히 수출 관련 산업의 부진은 해당 지역의 건설 투자 위축으로 이어질 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i>구조적 리스크</h3>
+                <p><strong>지역 편중 리스크:</strong> 매출의 대부분이 경남 지역에서 발생하는 구조는 지역 건설 시황에 과도하게 의존하게 합니다. 이를 해소하기 위해서는 전국 규모의 사업 확장이 필요하지만, 자본과 조직 제약이 있습니다.</p>
+                <p><strong>협력업체 지위의 제약:</strong> 대형 건설사와의 협력업체 지위는 안정적인 반면, 수주 결정과 가격 결정의 주도권을 협력사가 보유하고 있습니다. 이는 협력업체의 경영 자율성과 수익성을 제약합니다.</p>
+                <p><strong>스케일 경제의 부족:</strong> 소규모 기업으로 인해 대형 프로젝트 참여 시 용역비, 관리비 등의 상대적 비용이 높아집니다. 이는 이익률 개선의 구조적 제약입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 성장 전략 및 전망</span>
+        </div>
+
+        <!-- SECTION 8: GROWTH STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-rocket"></i>
+                <span>성장 전략 및 기회</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map"></i>지역 확장 전략</h3>
+                <p><strong>거점 확보를 통한 전국 진출:</strong> 경남에서의 성공을 기반으로 인접 지역(전남, 부산, 울산 등)으로의 거점을 구축하고, 기존 거점에서 전국 프로젝트로 확장하는 단계적 접근이 필요합니다. 이를 위해서는 지역별 협력업체 네트워크 구축과 기술 인력 확보가 선행되어야 합니다.</p>
+                <p><strong>수도권 진출의 전략적 중요성:</strong> 용인 반도체 클러스터, 수도권의 대형 공공 SOC 사업 등은 높은 기술 수준이 필요하고 높은 수익성을 제공합니다. 수도권 진출을 통해 고부가 프로젝트 수주 비중을 높일 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>고부가 프로젝트 진출</h3>
+                <p><strong>반도체, 데이터센터 등 첨단 산업 설비 공사:</strong> 이들 분야는 일반 건설보다 높은 기술 수준과 정밀도를 요구하며, 이에 따라 훨씬 높은 수익성을 제공합니다. 덕신건업의 기술력이 충분하다면, 이러한 프로젝트 진출을 통해 수익성을 대폭 개선할 수 있습니다.</p>
+                <p><strong>스마트 빌딩 기술 도입:</strong> 건물 에너지 관리 시스템(BEMS), IoT 센서 통합, 자동화 설비 등의 신기술 도입 능력은 향후 건설 시장에서 필수적입니다. 이러한 기술 습득과 프로젝트 실적 확보가 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>조직 역량 강화</h3>
+                <p><strong>기술 인력 확보 및 교육:</strong> 신기술 기반의 설비 공사를 수행하기 위해서는 건설 엔지니어, IT 기술자, 설비 전문가 등 우수 인력 확보가 필수입니다. 현재 78명 규모에서 필요한 전문가층을 구축하는 것이 과제입니다.</p>
+                <p><strong>조직 구조 개선:</strong> 지역 확장과 고부가 프로젝트 진출을 지원하기 위한 조직 체계 개선, 프로젝트 관리 시스템 고도화, 기술 R&D 조직 신설 등이 필요합니다.</p>
+                <p><strong>자본 조달 경로 다각화:</strong> 비상장 기업의 자본 조달 한계를 극복하기 위해 상장 추진, 사모펀드 유치, 정책 금융 활용 등의 방안을 검토할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-signal"></i>2026-2028년 성장 전망</h3>
+                <p><strong>매출 추이:</strong> 2026년 2,370억원의 완만한 성장 후, 반도체·첨단산업 프로젝트 본격화에 따라 2027-2028년에 연 5-8% 정도의 성장이 가능할 것으로 전망됩니다.</p>
+                <p><strong>수익성 개선:</strong> 고부가 프로젝트 비중 증가와 원가 관리 효율화에 따해 영업이익률을 현재 0.51%에서 0.7-0.9% 수준으로 개선할 수 있을 것으로 예상됩니다. 이는 높지 않은 수준이지만, 건설 산업의 구조적 특성을 감안할 때 의미 있는 개선입니다.</p>
+                <p><strong>조건부 성장 시나리오:</strong> 용인 반도체 클러스터 조성이 순조롭게 진행되고, 덕신건업이 관련 고부가 프로젝트를 수주할 경우, 매출 성장률과 수익성이 모두 크게 개선될 수 있습니다. 이는 가장 긍정적인 시나리오이며, 실현 가능성은 기업의 적극적 사업 확장 전략에 달려 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IX. 투자 포인트</span>
+        </div>
+
+        <!-- SECTION 9: INVESTMENT POINTS -->
+        <section id="outlook">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>투자 포인트 및 결론</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>FLOVAH 투자 평가</h3>
+                <p><strong>긍정 확률: 55% / 부정 확률: 45%</strong></p>
+                <p><strong>평가 상태: 관심 유지</strong></p>
+                <p>덕신건업은 비상장 기업이므로 주가/차트/수급 분석은 불가능합니다. 따라서 투자 평가는 기업의 펀더멘탈과 산업 여건에 기반하여 이루어집니다.</p>
+
+                <p><strong>긍정 평가의 근거:</strong></p>
+                <ul class="content-list">
+                    <li>37년간의 지속적 경영과 검증된 기술력</li>
+                    <li>경남 설비분야 1위의 지역 위상과 지역 네트워크</li>
+                    <li>대형 건설사와의 안정적 협력 관계</li>
+                    <li>2024년 영업이익 26.3% 증가로 수익성 개선 추세 확인</li>
+                    <li>반도체·첨단산업·데이터센터 등 고부가 프로젝트의 성장 기회</li>
+                    <li>공공 SOC 투자 62.8조원으로 인한 공공사업 기회 확대</li>
+                    <li>건설 규제 강화로 인한 기술 기업의 경쟁력 강화</li>
+                    <li>에너지 효율 개선, 스마트 빌딩 등 신기술 시장 성장</li>
+                </ul>
+
+                <p><strong>부정 평가의 근거:</strong></p>
+                <ul class="content-list">
+                    <li>0.51%의 낮은 영업이익률로 인한 제한적 수익성</li>
+                    <li>경남 지역 편중된 매출 구조로 인한 성장 제약</li>
+                    <li>PF 시장 경색과 고금리 환경의 지속</li>
+                    <li>소규모 기업의 자본 조달 능력 제약</li>
+                    <li>신기술 대응 및 전국 확장의 조직 역량 한계</li>
+                    <li>미분양 증가로 인한 민간 건설 침체</li>
+                    <li>한반도 지정학적 불안정성에 따른 지역 경제 영향</li>
+                    <li>경쟁 심화에 따른 저가 수주 압력</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lock"></i>투자 시사점</h3>
+                <p><strong>단기 전망 (1년 내):</strong> 건설 시황의 저성장 지속, PF 시장의 경색, 고금리 환경 등으로 인해 매출의 완만한 성장에 머물 것으로 예상됩니다. 수익성 개선은 제한적이지만, 2024년의 원가 관리 효율화가 지속될 경우 영업이익은 안정적 수준을 유지할 것으로 전망됩니다.</p>
+
+                <p><strong>중기 전망 (2-3년):</strong> 반도체 클러스터, 첨단산업단지, 데이터센터 등의 대형 프로젝트가 본격화될 경우, 고부가 프로젝트 수주 기회가 증가할 것으로 예상됩니다. 이들 프로젝트에 성공적으로 참여할 경우, 매출 성장과 수익성 개선이 동시에 가능합니다. 또한 공공 SOC 투자 확대는 공공건설사업 기회를 제공합니다.</p>
+
+                <p><strong>장기 전망 (3년 이상):</strong> 건설 산업의 구조적 변화로 인해 기술력과 안전 관리 능력을 갖춘 기업으로의 시장 집중화가 진행될 것으로 예상됩니다. 덕신건업이 이러한 변화에 성공적으로 적응하고, 전국 규모의 사업 확장을 이루어낼 경우, 중기적 성장 기반을 마련할 수 있을 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i>모니터링 포인트</h3>
+                <p><strong>1) 매출 추이와 지역별 구성:</strong> 분기별 매출 공시(정보 공개)를 통해 매출의 지역별 확대, 고부가 프로젝트 비중 증가 여부를 확인합니다.</p>
+
+                <p><strong>2) 영업이익률 추이:</strong> 원가 관리 효율화가 지속되고 있는지, 고부가 프로젝트 참여로 인한 이익률 개선이 나타나는지를 확인합니다. 이는 기업의 수익성 개선 전략의 효과를 직접적으로 보여주는 지표입니다.</p>
+
+                <p><strong>3) 대형 프로젝트 수주 현황:</strong> 반도체, 첨단산업, 데이터센터 등 고부가 프로젝트의 수주 여부를 확인합니다. 이는 기업의 시장 위상 변화를 나타내는 중요한 신호입니다.</p>
+
+                <p><strong>4) 전국 거점 구축:</strong> 수도권을 포함한 지역 확장 현황을 모니터링합니다. 조직 확대, 지역 영업소 개설, 협력업체 네트워크 구축 등의 진전도를 확인합니다.</p>
+
+                <p><strong>5) 기술력 강화 노력:</strong> 신기술 도입, 전문 인력 채용, 기술 교육 투자 등을 통해 기업이 변화하는 산업 환경에 적응하려는 노력을 보이는지 확인합니다.</p>
+
+                <p><strong>6) 건설 산업 경황:</strong> 반도체·첨단산업 투자 추이, 공공 SOC 예산 집행 현황, 부동산 시장의 회복 추이 등 매크로 지표를 지속적으로 모니터링합니다. 이는 덕신건업의 성장 기회를 판단하는 중요한 배경입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>최종 투자 의견</h3>
+                <p><strong>종합 평가: 관심 유지 (Watch List)</strong></p>
+
+                <p>덕신건업은 지역 시장의 강자이면서 동시에 전국 규모의 기회를 앞두고 있는 전환기의 기업입니다. 단기적으로는 건설 시황의 저성장이 제약 요인이지만, 중기적으로는 반도체 클러스터와 첨단산업 관련 프로젝트의 성장 기회가 있습니다.</p>
+
+                <p><strong>기업의 미래 성공을 결정하는 요소는:</strong></p>
+                <ul class="content-list">
+                    <li>지역 중심 경영에서 전국 규모로의 사업 확장 능력</li>
+                    <li>고부가 프로젝트 수주 능력과 기술력 입증</li>
+                    <li>조직 역량 강화와 신기술 대응 속도</li>
+                    <li>자본 조달 채널 확대와 재무 건전성 유지</li>
+                </ul>
+
+                <p>만약 이들 요소가 긍정적으로 진행될 경우, 향후 3-5년 내 크게 성장할 수 있는 기업입니다. 현재는 기업의 전략과 실행 능력을 관찰할 시기이며, 구체적인 성과(대형 프로젝트 수주, 지역 확장, 기술력 입증)가 나타나면 투자 관점에서 더욱 매력적인 대상이 될 것입니다.</p>
+
+                <p><strong>투자자 추천 유형:</strong> 비상장 중소건설사에 대한 관심을 가진 전략적 투자자, 지역 경제 전망에 낙관적인 투자자, 중기 성장성에 베팅하는 기업 가치 투자자에게 적합한 투자 대상입니다.</p>
+            </div>
+
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 분류</h4>
+                        <p>기업 종합 분석 리포트</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-pen-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 깊이</h4>
+                        <p>프리미었 등급 (정성 정량 분석)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 대상</h4>
+                        <p>덕신건업(주) / Duckshin Construction</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>덕신건업(주) 사업자등록정보 및 기업 공개 정보</li>
+                    <li>대한민국 건설경제신문 및 건설 산업 시장 조사 자료</li>
+                    <li>한국건설산업연구원(KCR) 건설 시황 전망</li>
+                    <li>통계청 건설 투자 및 주택 시장 통계</li>
+                    <li>국토교통부 공공 SOC 투자 계획 및 정책 자료</li>
+                    <li>대한건설협회 및 건설기술인협회 산업 분석</li>
+                    <li>SK건설, GS건설, 대우건설 등 주요 건설사 공시 자료</li>
+                    <li>반도체·첨단산업 투자 관련 정부 정책 자료</li>
+                    <li>건설 설비 공사업체 시장 분석 자료</li>
+                    <li>구인구직 플랫폼 및 기업 정보 조회 서비스</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기업 경영, 산업 구조, 시장 환경에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다. 비상장 기업이므로 주가 정보는 포함되지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 4월 11일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 12일 14:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Advanced Analytics</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+</body>
+</html>

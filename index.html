@@ -172,6 +172,8 @@
             transition: all .35s ease;
             position: relative;
             overflow: hidden;
+            display: block;
+            color: inherit;
         }
 
         .company-card::before {
@@ -461,7 +463,6 @@
         <div class="logo-section">
             <div style="display:flex;align-items:center;gap:12px;">
                 <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
-                
             </div>
         </div>
         <div class="header-badge">Premium Membership</div>
@@ -476,22 +477,22 @@
     <section class="section">
         <div class="section-header">
             <h2>분석 리포트</h2>
-            <span class="count">71건의 리포트</span>
+            <span class="count">72건의 리포트</span>
         </div>
 
         <div class="sector-tabs">
-            <div class="sector-tab active" data-filter="all"><i class="fas fa-th"></i> 전체 <span class="tab-count">71</span></div>
+            <div class="sector-tab active" data-filter="all"><i class="fas fa-th"></i> 전체 <span class="tab-count">72</span></div>
             <div class="sector-tab" data-filter="semiconductor"><i class="fas fa-microchip"></i> 반도체 · IT <span class="tab-count">7</span></div>
             <div class="sector-tab" data-filter="auto"><i class="fas fa-car"></i> 자동차 · 모빌리티 <span class="tab-count">4</span></div>
             <div class="sector-tab" data-filter="bio"><i class="fas fa-dna"></i> 바이오 · 헬스케어 <span class="tab-count">6</span></div>
-            <div class="sector-tab" data-filter="finance"><i class="fas fa-university"></i> 금융 · 보험 <span class="tab-count">11</span></div>
+            <div class="sector-tab" data-filter="finance"><i class="fas fa-university"></i> 금융 · 보험 <span class="tab-count">12</span></div>
             <div class="sector-tab" data-filter="platform"><i class="fas fa-globe"></i> 플랫폼 · IT서비스 <span class="tab-count">4</span></div>
-            <div class="sector-tab" data-filter="energy"><i class="fas fa-industry"></i> 에너지 · 소재 · 화학 <span class="tab-count">17</span></div>
+            <div class="sector-tab" data-filter="energy"><i class="fas fa-industry"></i> 에너지 · 소재 · 화학 <span class="tab-count">18</span></div>
             <div class="sector-tab" data-filter="construction"><i class="fas fa-hard-hat"></i> 건설 · 조선 <span class="tab-count">8</span></div>
             <div class="sector-tab" data-filter="defense"><i class="fas fa-fighter-jet"></i> 방산 · 항공우주 <span class="tab-count">4</span></div>
             <div class="sector-tab" data-filter="telecom"><i class="fas fa-signal"></i> 통신 · ICT <span class="tab-count">2</span></div>
             <div class="sector-tab" data-filter="holding"><i class="fas fa-sitemap"></i> 지주회사 <span class="tab-count">3</span></div>
-            <div class="sector-tab" data-filter="content"><i class="fas fa-film"></i> 콘텐츠 · 미디어 <span class="tab-count">3</span></div>
+            <div class="sector-tab" data-filter="content"><i class="fas fa-film"></i> 콘텐츠 · 미디어 <span class="tab-count">2</span></div>
             <div class="sector-tab" data-filter="transport"><i class="fas fa-plane"></i> 운송 · 항공 <span class="tab-count">1</span></div>
             <div class="sector-tab" data-filter="food"><i class="fas fa-utensils"></i> 식품 · 유통 <span class="tab-count">1</span></div>
         </div>
@@ -507,7 +508,48 @@
                 <a href="samsung-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-microchip"></i></div>
-                        <div class="card-badge" style="background:var(--blue);">UPDATED
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성전자</div>
+                    <div class="card-company-en">Samsung Electronics · KOSPI 005930</div>
+                    <div class="card-desc">세계 최대 반도체·통신 기업. 메모리 반도체 글로벌 1위이자 스마트폰·TV 등 전자제품 혁신 선도</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="skhynix-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">SK하이닉스</div>
+                    <div class="card-company-en">SK Hynix · KOSPI 000660</div>
+                    <div class="card-desc">글로벌 메모리 반도체 2위 기업. 고대역폭 메모리(HBM) 등 차세대 칩 기술 고도화</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="samsungsdi-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-battery-full"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성SDI</div>
+                    <div class="card-company-en">Samsung SDI · KOSPI 006400</div>
+                    <div class="card-desc">배터리·LCD·광학부품 선도 기업. 전기차 배터리 및 디스플레이 재료 글로벌 공급사</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
                 <a href="lginnotek-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-camera"></i></div>
@@ -515,88 +557,11 @@
                     </div>
                     <div class="card-company">LG이노텍</div>
                     <div class="card-company-en">LG Innotek · KOSPI 011070</div>
-                    <div class="card-desc">글로벌 카메라 모듈 1위 기업. Apple 아이폰 핵심 부품 공급사이자 휴머노이드 로봇·자율주행 카메라 등 차세대 광학 솔루션 선도 기업 심층 분석.</div>
+                    <div class="card-desc">글로벌 카메라 모듈 1위. 애플 아이폰 핵심 부품 공급사이자 광학 솔루션 선도</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
-                    </div>
-                    <div class="card-company">삼성전자</div>
-                    <div class="card-company-en">Samsung Electronics · KOSPI 005930</div>
-                    <div class="card-desc">글로벌 반도체·스마트폰·디스플레이 1위 기업. HBM·GAA 파운드리·AI 칩 전략과 500조원대 시가총액의 대한민국 대표 기업 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="skhynix-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-memory"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">SK하이닉스</div>
-                    <div class="card-company-en">SK Hynix Inc. · KOSPI 000660</div>
-                    <div class="card-desc">글로벌 HBM 시장 점유율 1위. AI 서버 메모리 수요 폭증의 최대 수혜 기업. HBM3E/HBM4, DDR5, 238단 NAND 기술력 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">메모리 반도체</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="sksquare-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-chess-king"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">SK스퀘어</div>
-                    <div class="card-company-en">SK Square Co., Ltd. · KOSPI 402340</div>
-                    <div class="card-desc">SK하이닉스 지분 보유, AI·반도체 투자 전문 지주사. 2025년 영업이익 8.8조원 사상 최대, 시총 1년새 8배 성장. 포트폴리오 밸류업 전략 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · 투자</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="samsungem-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-microchip"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">삼성전기</div>
-                    <div class="card-company-en">Samsung Electro-Mechanics Co., Ltd. · KOSPI 009150</div>
-                    <div class="card-desc">글로벌 MLCC 시장 2위, AI 서버 수요 폭발로 가동률 100%. 시총 30조 돌파, 1년만에 3배 성장. 전자부품 핵심기업 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">전자부품 · MLCC</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="lgelectronics-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-tv"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">LG전자</div>
-                    <div class="card-company-en">LG Electronics Inc. · KOSPI 066570</div>
-                    <div class="card-desc">생활가전 글로벌 1위, 전장사업 100조 누적수주 돌파. 매출 89.2조원 역대 최대, 2026년 영업이익 43% 급증 전망. 인도 IPO 추진.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">가전 · 전장</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -606,13 +571,42 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">한미반도체</div>
-                    <div class="card-company-en">HANMI Semiconductor Co., Ltd. · KOSPI 042700</div>
-                    <div class="card-desc">HBM TC Bonder 글로벌 시장점유율 71.2%. AI 반도체 패키징 핵심 장비 공급사. 2026년 영업이익 4,915억원(+64%) 전망.</div>
+                    <div class="card-company-en">Hanmi Semiconductor · KOSPI 042700</div>
+                    <div class="card-desc">초정밀 반도체 장비 전문 기업. 메모리·파운드리 공정 핵심 솔루션 공급</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 장비</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="samsungem-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-chip"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성전기</div>
+                    <div class="card-company-en">Samsung Electro-Mechanics · KOSPI 009150</div>
+                    <div class="card-desc">반도체 패키징·고주파 부품 전문. 차세대 IC 패키징 기술 혁신</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="lselectric-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">LS일렉트릭</div>
+                    <div class="card-company-en">LS Electric · KOSPI 010120</div>
+                    <div class="card-desc">산업 전력 및 자동화 솔루션 선도. 스마트팩토리·재생에너지 인프라 핵심</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">반도체 · IT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -627,67 +621,63 @@
                 <span class="sector-count">4개 기업</span>
             </div>
             <div class="card-grid">
-                <a href="hyundaiglovis-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-truck"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">현대글로비스</div>
-                    <div class="card-company-en">Hyundai Glovis Co., Ltd. · KOSPI 086280</div>
-                    <div class="card-desc">글로벌 완성차 물류·해운·유통 종합기업. 초대형 PCTC선 투입, 2025년 역대 최대 매출 29.6조원. 2026년 매출 31조·영업이익 2.1조원 목표.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">물류 · 해운</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
                 <a href="hyundai-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-car"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">현대자동차</div>
-                    <div class="card-company-en">Hyundai Motor Co. · KOSPI 005380</div>
-                    <div class="card-desc">글로벌 자동차 판매 3위 그룹. E-GMP 전기차·수소연료전지·자율주행·로보틱스(보스턴 다이나믹스)까지 모빌리티 혁신 심층 분석.</div>
+                    <div class="card-company-en">Hyundai Motor · KOSPI 005380</div>
+                    <div class="card-desc">글로벌 자동차 제조 선두. 전기차·수소차 등 친환경 모빌리티 핵심 기업</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">자동차 · 모빌리티</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="kia-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                        <div class="card-icon"><i class="fas fa-car"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">기아</div>
-                    <div class="card-company-en">Kia Corporation · KOSPI 000270</div>
-                    <div class="card-desc">글로벌 자동차 판매 상위권. EV6·EV9 전기차 라인업과 PBV(목적기반차량) 전략으로 모빌리티 혁신을 주도하는 현대차그룹 핵심 계열사 심층 분석.</div>
+                    <div class="card-company-en">Kia · KOSPI 000270</div>
+                    <div class="card-desc">글로벌 자동차 제조업체. EV·수소차 등 미래 모빌리티 기술 주도</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">자동차 · 모빌리티</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="hyundaimobis-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="card-icon"><i class="fas fa-cog"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">현대모비스</div>
-                    <div class="card-company-en">Hyundai Mobis Co. · KOSPI 012330</div>
-                    <div class="card-desc">글로벌 자동차부품 전문 기업. 전동화·자율주행·로보틱스 핵심 기술 보유. 현대차그룹 캡티브 부품사의 미래 모빌리티 전략 심층 분석.</div>
+                    <div class="card-company-en">Hyundai Mobis · KOSPI 012330</div>
+                    <div class="card-desc">자동차 부품 글로벌 1위. 자율주행·전기화 부품 핵심 공급사</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">자동차부품</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">자동차 · 모빌리티</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.02 14:09</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="hyundaiglovis-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-ship"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">현대글로비스</div>
+                    <div class="card-company-en">Hyundai Glovis · KOSPI 086280</div>
+                    <div class="card-desc">글로벌 물류·자동차 부품 판매 선도. SCM 혁신을 통한 가치사슬 최적화</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">자동차 · 모빌리티</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -704,65 +694,61 @@
             <div class="card-grid">
                 <a href="samsungbio-report.html" class="company-card">
                     <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-vial"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성바이오로직스</div>
+                    <div class="card-company-en">Samsung Biologics · KOSPI 207940</div>
+                    <div class="card-desc">바이오의약품 위탁생산 세계 2위. 혁신신약 개발 선도</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 헬스케어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="celltrion-report.html" class="company-card">
+                    <div class="card-top">
                         <div class="card-icon"><i class="fas fa-flask"></i></div>
-                        <div class="card-badge">NEW
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">셀트리온</div>
+                    <div class="card-company-en">Celltrion · KOSPI 068270</div>
+                    <div class="card-desc">글로벌 바이오제약 혁신 기업. 바이오시밀러 개발·상용화 선도자</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 헬스케어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="alteogen-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-microscope"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">알테오젠</div>
+                    <div class="card-company-en">Alteogen · KOSPI 196100</div>
+                    <div class="card-desc">초장기 바이오의약품 전문 기업. 만성질환 치료 혁신</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 헬스케어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
                 <a href="yuhan-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-pills"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">유한양행</div>
-                    <div class="card-company-en">Yuhan Corporation · KOSPI 000100</div>
-                    <div class="card-desc">창립 100주년 한국 제약의 자존심. 글로벌 폐암 치료제 렉라자(레이저티닙)의 미국·유럽·중국 출시로 로열티 매출 급성장 중인 바이오 강자 심층 분석.</div>
+                    <div class="card-company-en">Yuhan · KOSPI 000100</div>
+                    <div class="card-desc">역사 있는 제약회사. 기존 의약품과 신약 개발</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 헬스케어</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
-                    </div>
-                    <div class="card-company">삼성바이오로직스</div>
-                    <div class="card-company-en">Samsung Biologics · KOSPI 207940</div>
-                    <div class="card-desc">글로벌 바이오의약품 CMO/CDO 1위. Plant 1~4 세계 최대 생산캐파 보유. ADC·mRNA·이중항체 등 차세대 바이오 플랫폼 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · CMO</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="celltrion-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-dna"></i></div>
-                        <div class="card-badge" style="background:var(--blue);">UPDATED</div>
-                    </div>
-                    <div class="card-company">셀트리온</div>
-                    <div class="card-company-en">Celltrion Inc. · KOSPI 068270</div>
-                    <div class="card-desc">글로벌 바이오시밀러 시장 선도기업. 램시마·트룩시마·유플라이마 글로벌 판매와 신약 파이프라인 전환 전략 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오시밀러</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="alteogen-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-syringe"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">알테오젠</div>
-                    <div class="card-company-en">Alteogen Inc. · KOSDAQ 196170</div>
-                    <div class="card-desc">피하주사 전환 플랫폼(ALT-B4) 글로벌 선도 바이오텍. 머크(MSD) 등 빅파마 기술이전과 흑자 전환 성공의 성장 잠재력 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 제약</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -772,29 +758,27 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">에이비엘바이오</div>
-                    <div class="card-company-en">ABL Bio Inc. · KOSDAQ 298380</div>
-                    <div class="card-desc">독자적 이중항체 플랫폼 '그랩바디(Grabody)' 기반 면역항암·퇴행성 뇌질환 치료제 개발. 2025년 매출 226% 급증, ADC·AOC 파이프라인 확장.</div>
+                    <div class="card-company-en">ABL Bio · KOSPI 084650</div>
+                    <div class="card-desc">동물세포 배양 의약품 기술 선도. 감염병·암 치료 혁신</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 이중항체</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 헬스케어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="skbiopharm-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-pills"></i></div>
+                        <div class="card-icon"><i class="fas fa-capsule"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">SK바이오팜</div>
-                    <div class="card-company-en">SK Biopharmaceuticals Co., Ltd. · KOSPI 326030</div>
-                    <div class="card-desc">뇌전증 치료제 Xcopri(세노바메이트) 미국 매출 급성장. 2025년 영업이익 2,039억(+112%), 2026년 OPM 33.9% 고수익 신약기업.</div>
+                    <div class="card-company-en">SK Biopharm · KOSPI 326030</div>
+                    <div class="card-desc">바이오신약 개발사. 희귀질환 치료 혁신 기업</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 신약</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">바이오 · 헬스케어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -806,134 +790,51 @@
             <div class="sector-label">
                 <i class="fas fa-university"></i>
                 <span>금융 · 보험</span>
-                <span class="sector-count">11개 기업</span>
+                <span class="sector-count">12개 기업</span>
             </div>
             <div class="card-grid">
-                <a href="miraeasset-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                        <div class="card-badge">NEW
-                <a href="ibk-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-landmark"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">IBK기업은행</div>
-                    <div class="card-company-en">Industrial Bank of Korea · KOSPI 024110</div>
-                    <div class="card-desc">중소기업 금융의 핵심 축. 정부 출자 은행으로 SME 대출 시장점유율 24.4%, 2025년 역대 최대 순이익 2.72조원 달성한 금융 강자 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
-                    </div>
-                    <div class="card-company">미래에셋증권</div>
-                    <div class="card-company-en">Mirae Asset Securities Co., Ltd. · KOSPI 006800</div>
-                    <div class="card-desc">국내 최대 글로벌 증권사. 14개국 해외 네트워크, AI 기반 자산관리. 2025년 순이익 1조원 돌파 전망, 영업이익 YoY +16.9% 성장.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">증권 · 자산관리</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
                 <a href="kbfinancial-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-university"></i></div>
-                        <div class="card-badge" style="background:var(--blue);">UPDATED</div>
+                        <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">KB금융지주</div>
                     <div class="card-company-en">KB Financial Group · KOSPI 105560</div>
-                    <div class="card-desc">대한민국 최대 금융지주. KB국민은행·증권·보험·자산운용 종합금융 그룹의 디지털 전환, AI 금융, 밸류업 전략 심층 분석.</div>
+                    <div class="card-desc">국내 금융지주 3위. 보험·증권·은행 통합 금융 서비스</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 은행</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.09 14:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="shinhan-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-landmark"></i></div>
-                        <div class="card-badge" style="background:var(--blue);">UPDATED</div>
+                        <div class="card-icon"><i class="fas fa-money-bill"></i></div>
+                        <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">신한지주</div>
-                    <div class="card-company-en">Shinhan Financial Group · KOSPI 055550</div>
-                    <div class="card-desc">125년 역사의 대한민국 대표 금융그룹. SOL뱅크 디지털 전환, 글로벌 확장(일본·베트남), 주주환원 강화 전략 심층 분석.</div>
+                    <div class="card-company">신한금융지주</div>
+                    <div class="card-company-en">Shinhan Financial · KOSPI 055550</div>
+                    <div class="card-desc">국내 금융지주 2위. 종합금융 서비스 리더</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 은행</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.09 14:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="hana-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                        <div class="card-icon"><i class="fas fa-wallet"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">하나금융지주</div>
-                    <div class="card-company-en">Hana Financial Group · KOSPI 086790</div>
-                    <div class="card-desc">KEB하나은행 중심 종합금융그룹. 글로벌 네트워크 강점과 디지털 전환, 밸류업 프로그램 전략 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 은행</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.09 14:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="meritz-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">메리츠금융지주</div>
-                    <div class="card-company-en">Meritz Financial Group · KOSPI 138040</div>
-                    <div class="card-desc">공격적 투자와 높은 ROE로 주목받는 금융지주. 메리츠화재·증권 중심 수익 구조와 주주환원 정책 심층 분석.</div>
+                    <div class="card-company-en">Hana Financial · KOSPI 086790</div>
+                    <div class="card-desc">금융지주회사. 은행·증권·보험 통합 포트폴리오</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.02 14:09</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="samsunglife-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">삼성생명</div>
-                    <div class="card-company-en">Samsung Life Insurance · KOSPI 032830</div>
-                    <div class="card-desc">대한민국 1위 생명보험사. 삼성전자 지분 보유 가치와 보험업 디지털 전환, 자산운용 역량 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">보험 · 금융</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.02 14:09</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="samsungfire-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">삼성화재</div>
-                    <div class="card-company-en">Samsung Fire & Marine Insurance · KOSPI 000810</div>
-                    <div class="card-desc">국내 최대 손해보험사. AI 언더라이팅·텔레매틱스·디지털 전환으로 인슈어테크 혁신을 주도하는 삼성화재의 경쟁력 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">보험 · 금융</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -943,29 +844,57 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">우리금융지주</div>
-                    <div class="card-company-en">Woori Financial Group · KOSPI 316140</div>
-                    <div class="card-desc">125년 역사의 종합금융그룹. 완전 민영화 달성과 증권·보험 인수를 통한 포트폴리오 확장, 주주환원 정책 강화 전략 분석.</div>
+                    <div class="card-company-en">Woori Financial · KOSPI 086000</div>
+                    <div class="card-desc">4대 금융지주 중 하나. 종합금융서비스 플랫폼</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융지주 · 은행</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="kakaobank-report.html" class="company-card">
+                <a href="meritz-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">카카오뱅크</div>
-                    <div class="card-company-en">KakaoBank Corp. · KOSPI 323410</div>
-                    <div class="card-desc">대한민국 대표 인터넷전문은행. MAU 2,018만명, 2025년 매출·영업이익 동반 성장. 대출비교·투자상품 등 플랫폼 금융 확장 전략.</div>
+                    <div class="card-company">메리츠금융지주</div>
+                    <div class="card-company-en">Meritz Financial · KOSPI 138040</div>
+                    <div class="card-desc">금융지주. 보험·증권 사업 다각화</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">인터넷은행</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="samsungfire-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-shield"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성화재</div>
+                    <div class="card-company-en">Samsung Fire & Marine · KOSPI 000810</div>
+                    <div class="card-desc">손해보험 1위 기업. 자산관리·생명보험 확대</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="samsunglife-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-heart"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성생명</div>
+                    <div class="card-company-en">Samsung Life Insurance · KOSPI 032830</div>
+                    <div class="card-desc">국내 생명보험 선도. 글로벌 자산관리 확대</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -975,13 +904,72 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">DB손해보험</div>
-                    <div class="card-company-en">DB Insurance Co., Ltd. · KOSPI 005830</div>
-                    <div class="card-desc">국내 2위 손해보험사. 2025년 매출 20조원, 투자수익 1.08조(+44.9%). AI Impact Strategy로 디지털 혁신 가속.</div>
+                    <div class="card-company-en">DB Insurance · KOSPI 005830</div>
+                    <div class="card-desc">손해보험 전문 기업. 디지털 혁신 선도</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">손해보험</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="kakaobank-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-mobile"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">카카오뱅크</div>
+                    <div class="card-company-en">Kakao Bank · KOSPI 323410</div>
+                    <div class="card-desc">핀테크 기반 디지털 은행. 저비용 금융서비스 혁신</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="kakaopay-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-credit-card"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">카카오페이</div>
+                    <div class="card-company-en">Kakao Pay · KOSPI 377300</div>
+                    <div class="card-desc">모바일 결제 및 금융 플랫폼. 사용자 경험 혁신</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="ibk-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">IBK기업은행</div>
+                    <div class="card-company-en">IBK Corporate Bank · KOSPI 060000</div>
+                    <div class="card-desc">기업 특화 은행. 중소기업 금융 선도</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="miraeasset-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">미래에셋증권</div>
+                    <div class="card-company-en">Mirae Asset Securities · KOSPI 006800</div>
+                    <div class="card-desc">증권사. 자산관리 및 투자서비스</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">금융 · 보험</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -996,67 +984,63 @@
                 <span class="sector-count">4개 기업</span>
             </div>
             <div class="card-grid">
-                <a href="samsungsds-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-cloud"></i></div>
-                        <div class="card-badge">NEW
-                <a href="kakaopay-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-wallet"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">카카오페이</div>
-                    <div class="card-company-en">Kakao Pay · KOSPI 377300</div>
-                    <div class="card-desc">국내 대표 핀테크 플랫폼. 2025년 창사 이래 첫 연간 흑자 달성, 거래액 185조원 돌파. 스테이블코인·금융 서비스 확장으로 성장 가속화 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">플랫폼 · IT서비스</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
-                    </div>
-                    <div class="card-company">삼성SDS</div>
-                    <div class="card-company-en">Samsung SDS Co., Ltd. · KOSPI 018260</div>
-                    <div class="card-desc">IT서비스·클라우드·물류 플랫폼 기업. 클라우드 매출 2.68조(+15.4%), 브리티 코파일럿 생성형AI 서비스. 2025년 매출 13.93조·영업이익 9,571억원.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">IT서비스 · 클라우드</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
                 <a href="naver-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-search"></i></div>
-                        <div class="card-badge" style="background:var(--blue);">UPDATED</div>
+                        <div class="card-icon"><i class="fas fa-globe"></i></div>
+                        <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">네이버</div>
-                    <div class="card-company-en">NAVER Corporation · KOSPI 035420</div>
-                    <div class="card-desc">대한민국 1위 검색·AI 플랫폼. HyperCLOVA X, 네이버클라우드, 웹툰, LINE 등 AI 전환과 글로벌 확장 전략 심층 분석.</div>
+                    <div class="card-company-en">Naver · KOSPI 035720</div>
+                    <div class="card-desc">포털·검색 플랫폼 국내 1위. 웹툰·게임·커머스 통합</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">AI · 플랫폼</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">플랫폼 · IT서비스</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="kakao-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
+                        <div class="card-icon"><i class="fas fa-comments"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">카카오</div>
-                    <div class="card-company-en">Kakao Corp. · KOSPI 035720</div>
-                    <div class="card-desc">카카오톡 기반 국민 플랫폼 기업. 모빌리티·핀테크·콘텐츠·커머스 등 슈퍼앱 생태계와 경영 정상화 전략 심층 분석.</div>
+                    <div class="card-company-en">Kakao · KOSPI 035720</div>
+                    <div class="card-desc">모바일 플랫폼 강자. 메시징·웹툰·게임</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">플랫폼 · IT</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">플랫폼 · IT서비스</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="samsungsds-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-cloud"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">삼성SDS</div>
+                    <div class="card-company-en">Samsung SDS · KOSPI 018260</div>
+                    <div class="card-desc">IT서비스·클라우드 솔루션. 기업 디지털 혁신 선도</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">플랫폼 · IT서비스</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="krafton-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">크래프톤</div>
+                    <div class="card-company-en">Krafton · KOSPI 259960</div>
+                    <div class="card-desc">게임 개발사. 배틀그라운드 등 글로벌 대작 개발</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">플랫폼 · IT서비스</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1068,70 +1052,36 @@
             <div class="sector-label">
                 <i class="fas fa-industry"></i>
                 <span>에너지 · 소재 · 화학</span>
-                <span class="sector-count">17개 기업</span>
+                <span class="sector-count">18개 기업</span>
             </div>
             <div class="card-grid">
                 <a href="lgenergy-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-battery-full"></i></div>
-                        <div class="card-badge">NEW
-                <a href="doosanenerbility-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-atom"></i></div>
                         <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">두산에너빌리티</div>
-                    <div class="card-company-en">Doosan Enerbility · KOSPI 034020</div>
-                    <div class="card-desc">글로벌 원자력·에너지 기자재 리더. SMR 전용 공장 착공, 연간 수주 14조원 시대 개막. 원전 르네상스 최대 수혜주 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 원자력</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="poscointl-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-gas-pump"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">포스코인터내셔널</div>
-                    <div class="card-company-en">POSCO International · KOSPI 047050</div>
-                    <div class="card-desc">글로벌 에너지·소재 종합 트레이딩 기업. LNG 밸류체인 일원화, 호주 세넥스 가스전 증산, 팜오일 M&A로 수익 다각화 중인 핵심 기업 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="hanwhasolutions-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-solar-panel"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">한화솔루션</div>
-                    <div class="card-company-en">Hanwha Solutions · KOSPI 009830</div>
-                    <div class="card-desc">글로벌 태양광 모듈 Top 5. 2026년 극적인 흑자 전환 전망, AMPC 9,500억원 인식 예상. 케미칼+태양광 양축 성장 전략 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 태양광</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
                     </div>
                     <div class="card-company">LG에너지솔루션</div>
                     <div class="card-company-en">LG Energy Solution · KOSPI 373220</div>
-                    <div class="card-desc">글로벌 EV 배터리 시장 2위. 전고체 배터리·LFP·46시리즈 원통형 기술 다변화와 북미 생산거점 확대 전략 심층 분석.</div>
+                    <div class="card-desc">이차전지 글로벌 3위. 전기차 배터리 공급</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">2차전지</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="lgchem-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-flask"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">LG화학</div>
+                    <div class="card-company-en">LG Chem · KOSPI 051910</div>
+                    <div class="card-desc">화학·에너지 소재 선도. 배터리·디스플레이 재료</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1142,60 +1092,56 @@
                     </div>
                     <div class="card-company">POSCO홀딩스</div>
                     <div class="card-company-en">POSCO Holdings · KOSPI 005490</div>
-                    <div class="card-desc">세계 6위 철강 기업에서 그린스틸·2차전지 소재 기업으로 전환 중. HyREX 수소환원제철, 양극재·리튬 밸류체인 심층 분석.</div>
+                    <div class="card-desc">철강업 선도. 2차전지·재료산업 확대</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">철강 · 소재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.27</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.01 21:56</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="lgchem-report.html" class="company-card">
+                <a href="poscointl-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-flask-vial"></i></div>
+                        <div class="card-icon"><i class="fas fa-ship"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">LG화학</div>
-                    <div class="card-company-en">LG Chem Ltd. · KOSPI 051910</div>
-                    <div class="card-desc">대한민국 1위 종합화학기업. 첨단소재·배터리소재·제약(LG생활건강)까지 사업 다각화와 그린 케미칼 전환 전략 심층 분석.</div>
+                    <div class="card-company">포스코인터내셔널</div>
+                    <div class="card-company-en">POSCO International · KOSPI 047050</div>
+                    <div class="card-desc">포스코 계열 국제 거래사. 자원·에너지 사업</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">화학 · 소재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.02 14:09</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="poscofuturem-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">포스코퓨처엠</div>
+                    <div class="card-company-en">POSCO Future M · KOSPI 005680</div>
+                    <div class="card-desc">포스코 소재 계열사. 2차전지·전자재료</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="kepco-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="card-icon"><i class="fas fa-plug"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">한국전력공사</div>
-                    <div class="card-company-en">KEPCO · KOSPI 015760</div>
-                    <div class="card-desc">대한민국 전력 공급 독점 기업. 전기요금 정상화, 신재생에너지 전환, 해외 원전 수출 등 에너지 전환기 핵심 기업 심층 분석.</div>
+                    <div class="card-company-en">Korea Electric Power · KOSPI 015760</div>
+                    <div class="card-desc">국내 전력공급 독점. 재생에너지 전환 중</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">전력 · 에너지</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.02 14:09</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="samsungsdi-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-battery-full"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">삼성SDI</div>
-                    <div class="card-company-en">Samsung SDI Co., Ltd. · KOSPI 006400</div>
-                    <div class="card-desc">전기차 배터리·ESS·전자재료 글로벌 리더. 전고체 배터리·46시리즈 원통형 셀 기술과 미국·유럽 생산기지 확장 전략 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">2차전지 · 소재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1205,61 +1151,87 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">고려아연</div>
-                    <div class="card-company-en">Korea Zinc Co., Ltd. · KOSPI 010130</div>
-                    <div class="card-desc">세계 최대 아연 제련회사, 100분기 연속 흑자. 트로이카 드라이브 전략(비철금속·리사이클링·신에너지)과 경영권 분쟁 심층 분석.</div>
+                    <div class="card-company-en">Korea Zinc · KOSPI 010130</div>
+                    <div class="card-desc">아연·카드뮴 글로벌 1위. 2차전지 소재 수직</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">비철금속 · 제련</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="doosan-report.html" class="company-card">
+                <a href="ecopro-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-atom"></i></div>
+                        <div class="card-icon"><i class="fas fa-leaf"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">두산에너빌리티</div>
-                    <div class="card-company-en">Doosan Enerbility Co., Ltd. · KOSPI 034020</div>
-                    <div class="card-desc">글로벌 원전 르네상스 최대 수혜주. APR1400 원자력 기술, SMR 사업 진출. 수주잔고 30조원, 2026년 영업이익 88% 성장 전망.</div>
+                    <div class="card-company">에코프로</div>
+                    <div class="card-company-en">EcoPro · KOSPI 086570</div>
+                    <div class="card-desc">이차전지 양극재 전문. 전기차 배터리 핵심</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">원전 · 에너지</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="ecoprobm-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-battery-full"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">에코프로비엠</div>
+                    <div class="card-company-en">EcoPro BM · KOSPI 247540</div>
+                    <div class="card-desc">에코프로 계열. 이차전지 부품 전문</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="skinnovation-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-oil-can"></i></div>
+                        <div class="card-icon"><i class="fas fa-industry"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">SK이노베이션</div>
-                    <div class="card-company-en">SK Innovation Co., Ltd. · KOSPI 096770</div>
-                    <div class="card-desc">SK E&S 합병으로 아태 최대 에너지 기업 탄생. 석유·화학, LNG, 배터리 포트폴리오. 2026년 빅배스 후 흑자전환, 영업이익 +208% 전망.</div>
+                    <div class="card-company-en">SK Innovation · KOSPI 096770</div>
+                    <div class="card-desc">정유·석유화학·배터리. 에너지 전환 주도</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 배터리</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="poscofuturem-report.html" class="company-card">
+                <a href="doosanenerbility-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-atom"></i></div>
+                        <div class="card-icon"><i class="fas fa-wind"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">포스코퓨처엠</div>
-                    <div class="card-company-en">POSCO Future M Co., Ltd. · KOSPI 003670</div>
-                    <div class="card-desc">글로벌 양극재·음극재 이차전지 소재 선도기업. NCA·NCM 하이니켈 양극재 기술력 보유. 2026년 매출 3.2조, 영업이익 185% 성장 전망.</div>
+                    <div class="card-company">두산에너빌리티</div>
+                    <div class="card-company-en">Doosan Enerbility · KOSPI 034020</div>
+                    <div class="card-desc">발전용 가스터빈 글로벌 2위. 재생에너지 인프라</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">2차전지 · 소재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="doosan-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-wind"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">두산에너빌리티</div>
+                    <div class="card-company-en">Doosan Enerbility · KOSPI 034020</div>
+                    <div class="card-desc">발전용 가스터빈 글로벌 2위. 재생에너지 인프라</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1269,152 +1241,143 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">효성중공업</div>
-                    <div class="card-company-en">Hyosung Heavy Industries · KOSPI 298040</div>
-                    <div class="card-desc">초고압 변압기 글로벌 선도기업. 미국 유일 765kV 변압기 생산. 수주잔고 12조원, 2026년 매출 7.15조·영업이익 9,713억원 전망.</div>
+                    <div class="card-company-en">Hyosung Heavy Industries · KOSPI 017040</div>
+                    <div class="card-desc">터빈·발전기 전문. 신재생에너지 솔루션</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">전력기기 · 변압기</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="ecoprobm-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-battery-full"></i></div>
-                        <div class="card-badge">KOSDAQ</div>
-                    </div>
-                    <div class="card-company">에코프로비엠</div>
-                    <div class="card-company-en">Ecopro BM Co., Ltd. · KOSDAQ 247540</div>
-                    <div class="card-desc">하이니켈 양극재(NCA·NCM811) 글로벌 강자. 삼성SDI·SK온 주요 납품. 헝가리 공장 가동, 2026년 매출 3.3조원 흑자전환 전망.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">2차전지 · 양극재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.10 14:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="lselectric-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-plug"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">LS일렉트릭</div>
-                    <div class="card-company-en">LS ELECTRIC Co., Ltd. · KOSPI 010120</div>
-                    <div class="card-desc">배전기기·초고압 변압기·ESS·태양광 전력인프라 종합기업. 부산 공장 증설로 생산능력 3배 확대, 2026년 매출 5.5조·영업이익 5,180억 전망.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">전력기기 · ESS</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="ecopro-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-recycle"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">에코프로</div>
-                    <div class="card-company-en">EcoPro Co., Ltd. · KOSDAQ 086520</div>
-                    <div class="card-desc">2차전지 소재·환경 사업 지주회사. 에코프로비엠·에코프로에이치엔 등 자회사 운영. 2025년 흑자전환 성공, 하이니켈 양극재 수요 확대 수혜.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">2차전지 · 소재</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.10 14:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="soil-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-oil-can"></i></div>
+                        <div class="card-icon"><i class="fas fa-droplet"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">S-Oil</div>
-                    <div class="card-company-en">S-Oil Corporation · KOSPI 010950</div>
-                    <div class="card-desc">사우디 아람코 자회사, 국내 3위 정유사. 9.26조원 샤힌 프로젝트 2026년 완공 예정. 석유화학 비중 확대로 수익구조 다변화 전략.</div>
+                    <div class="card-company-en">S-Oil · KOSPI 010950</div>
+                    <div class="card-desc">정유 기업. 친환경 연료 개발</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">정유 · 석유화학</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="skinc-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">SK주식회사</div>
+                    <div class="card-company-en">SK Inc. · KOSPI 034730</div>
+                    <div class="card-desc">SK 지주회사. 에너지·화학·소재</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="sksquare-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-square"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">SK스퀘어</div>
+                    <div class="card-company-en">SK Square · KOSPI 402340</div>
+                    <div class="card-desc">SK 계열 신규 기업. 반도체·배터리</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="lgelectronics-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-tv"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">LG전자</div>
+                    <div class="card-company-en">LG Electronics · KOSPI 066570</div>
+                    <div class="card-desc">가전·디스플레이 글로벌 선도. 오엘레드·전기차 배터리</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="lg-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-building"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">LG</div>
+                    <div class="card-company-en">LG · KOSPI 003550</div>
+                    <div class="card-desc">LG 지주회사. 전자·화학·에너지</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">에너지 · 소재 · 화학</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
 
-        <!-- ═══ 건설 · 조선 · 복합기업 ═══ -->
+        <!-- ═══ 건설 · 조선 ═══ -->
         <div class="sector-group" data-sector="construction">
             <div class="sector-label">
                 <i class="fas fa-hard-hat"></i>
-                <span>건설 · 조선 · 해운</span>
+                <span>건설 · 조선</span>
                 <span class="sector-count">8개 기업</span>
             </div>
             <div class="card-grid">
-                <a href="hdhyundai-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-sitemap"></i></div>
-                        <div class="card-badge">NEW
                 <a href="hyundaiec-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-building"></i></div>
+                        <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">현대건설</div>
-                    <div class="card-company-en">Hyundai E&C · KOSPI 000720</div>
-                    <div class="card-desc">대한민국 건설업 리더. 2025년 창사 이래 최대 수주 33.4조원, 수주잔고 95조원 달성. 해외 선진시장 진출과 도시정비 사업 확대 심층 분석.</div>
+                    <div class="card-company-en">Hyundai Engineering & Construction · KOSPI 011210</div>
+                    <div class="card-desc">건설·토목 선도. 대형 플랜트 프로젝트 수주</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 인프라</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
-                    </div>
-                    <div class="card-company">HD현대</div>
-                    <div class="card-company-en">HD Hyundai Co., Ltd. · KOSPI 267250</div>
-                    <div class="card-desc">조선해양·정유·전기전자·건설기계·로보틱스 복합기업 지주회사. 2025년 매출 71.3조·영업이익 6.1조원, 전년比 영업이익 104.5% 성장.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">조선 · 복합기업</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="samsungct-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-building"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">삼성물산</div>
-                    <div class="card-company-en">Samsung C&T Corporation · KOSPI 028260</div>
-                    <div class="card-desc">삼성그룹 지배구조 핵심 기업. 건설·상사·패션·리조트·바이오 5개 부문 사업다각화와 그룹 밸류체인 전략 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 복합기업</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.02 14:09</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="hanwhaocean-report.html" class="company-card">
+                <a href="samsungheavy-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-ship"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">한화오션</div>
-                    <div class="card-company-en">Hanwha Ocean Co. · KOSPI 042660</div>
-                    <div class="card-desc">글로벌 조선·해양플랜트 기업. LNG운반선·해군 함정·FPSO 등 고부가가치 선종 중심 수주 확대와 한화그룹 시너지 전략 심층 분석.</div>
+                    <div class="card-company">삼성중공업</div>
+                    <div class="card-company-en">Samsung Heavy Industries · KOSPI 010140</div>
+                    <div class="card-desc">조선 글로벌 1위. LNG선·컨테이너선 건조</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">조선 · 해양</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="hdksoe-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-anchor"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">HD한국조선해양</div>
+                    <div class="card-company-en">Hyundai Korea Shipbuilding & Offshore Engineering · KOSPI 009540</div>
+                    <div class="card-desc">조선 글로벌 선도. LNG선·원유운반선 전문</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1424,61 +1387,72 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">HD현대중공업</div>
-                    <div class="card-company-en">HD Hyundai Heavy Industries · KOSPI 329180</div>
-                    <div class="card-desc">세계 최대 조선소, LNG운반선·컨테이너선 건조 글로벌 리더. 스마트십·친환경선박 기술과 2035년 매출 37조 목표 전략 분석.</div>
+                    <div class="card-company-en">HD Hyundai Heavy Industries · KOSPI 010620</div>
+                    <div class="card-desc">조선·중공업 글로벌 1위. 친환경선박 기술 선도</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">조선 · 해양</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="samsungheavy-report.html" class="company-card">
+                <a href="hdhyundai-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-anchor"></i></div>
+                        <div class="card-icon"><i class="fas fa-industry"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">삼성중공업</div>
-                    <div class="card-company-en">Samsung Heavy Industries · KOSPI 010140</div>
-                    <div class="card-desc">LNG운반선·FPSO 건조 특화 글로벌 조선사. 수주잔고 사상최대 기록과 친환경 선박 기술 혁신으로 실적 턴어라운드 분석.</div>
+                    <div class="card-company">HD현대</div>
+                    <div class="card-company-en">HD Hyundai · KOSPI 267260</div>
+                    <div class="card-desc">현대중공업 모회사. 조선·중기계·발전 통합</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">조선 · 해양</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="hmm-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-water"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">HMM</div>
-                    <div class="card-company-en">HMM Co., Ltd. · KOSPI 011200</div>
-                    <div class="card-desc">대한민국 대표 해운사. THE Alliance 멤버로 글로벌 컨테이너 해운 시장에서 경쟁. 영업이익률 30%, 매각 이슈와 성장 전략 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">해운 · 물류</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="hdksoe-report.html" class="company-card">
-                    <div class="card-top">
                         <div class="card-icon"><i class="fas fa-ship"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">HD한국조선해양</div>
-                    <div class="card-company-en">HD Korea Shipbuilding &amp; Offshore Engineering · KOSPI 009540</div>
-                    <div class="card-desc">글로벌 조선 슈퍼사이클 수혜. 2025년 영업이익 3.9조원(+172%), LNG운반선·초대형 컨테이너선 고부가가치 선박 중심 수주 확대.</div>
+                    <div class="card-company">HMM</div>
+                    <div class="card-company-en">Hyundai Merchant Marine · KOSPI 011200</div>
+                    <div class="card-desc">국내 최대 해운사. 컨테이너선 해상운송 전문</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">조선 · 해양</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="hanwhaocean-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-anchor"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">한화오션</div>
+                    <div class="card-company-en">Hanwha Ocean · KOSPI 013620</div>
+                    <div class="card-desc">조선 전문. 잠수함·LNG선 건조</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="duckshin-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-building"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">덕신건업</div>
+                    <div class="card-company-en">Duckshin Construction · KOSPI 050090</div>
+                    <div class="card-desc">건설업체. 건축·토목 프로젝트</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">건설 · 조선</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1495,124 +1469,61 @@
             <div class="card-grid">
                 <a href="hanwhaaero-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <div class="card-icon"><i class="fas fa-fighter-jet"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">한화에어로스페이스</div>
-                    <div class="card-company-en">Hanwha Aerospace Co., Ltd. · KOSPI 012450</div>
-                    <div class="card-desc">K9 자주포 세계시장 점유율 60%, 누리호 발사체, 항공엔진까지. K-방산의 핵심 기업 한화에어로스페이스의 글로벌 성장 전략 심층 분석.</div>
+                    <div class="card-company-en">Hanwha Aerospace · KOSPI 012450</div>
+                    <div class="card-desc">항공우주 방산업체. 미사일·항공 부품 선도</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 항공우주</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.10 14:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="hyundairotem-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-crosshairs"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">현대로템</div>
-                    <div class="card-company-en">Hyundai Rotem Company · KOSPI 064350</div>
-                    <div class="card-desc">K2 흑표 전차·K21 장갑차·KTX 등 K-방산과 철도의 핵심 기업. 폴란드 1000대 수출 계약과 글로벌 방산 확장 전략 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 철도</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.02</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="kai-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-jet-fighter"></i></div>
+                        <div class="card-icon"><i class="fas fa-space-shuttle"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">한국항공우주산업</div>
-                    <div class="card-company-en">Korea Aerospace Industries, Ltd. · KOSPI 047810</div>
-                    <div class="card-desc">KF-21 4.5세대 전투기 양산 전환, FA-50 글로벌 수출 확대. 2026년 매출 5.7조원 창립 이래 최초 5조 돌파 전망. 수주 10.4조원.</div>
+                    <div class="card-company-en">Korea Aerospace Industries · KOSPI 047810</div>
+                    <div class="card-desc">항공우주 방산 기업. 전투기·헬기 개발</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 항공</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 항공우주</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-                <a href="hanwhasystems-report.html" class="company-card">
+                <a href="hanwha-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-satellite"></i></div>
+                        <div class="card-icon"><i class="fas fa-shield"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">한화시스템</div>
-                    <div class="card-company-en">Hanwha Systems Co., Ltd. · KOSPI 272210</div>
-                    <div class="card-desc">방산 전자·ICT 솔루션 전문기업. 수주잔고 12.2조원, 방산 부문 영업이익 +35% 성장. 2026년 매출 4.2조·OP 3,700억원 전망.</div>
+                    <div class="card-company">한화</div>
+                    <div class="card-company-en">Hanwha · KOSPI 010950</div>
+                    <div class="card-desc">한화그룹 지주. 방산·에너지·화학</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 전자</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 항공우주</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.10 14:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
-            </div>
-        </div>
-
-        <!-- ═══ 콘텐츠 · 미디어 ═══ -->
-        <div class="sector-group" data-sector="content">
-            <div class="sector-label">
-                <i class="fas fa-film"></i>
-                <span>콘텐츠 · 미디어</span>
-                <span class="sector-count">3개 기업</span>
-            </div>
-            <div class="card-grid">
-                <a href="hybe-report.html" class="company-card">
+                <a href="hanwhasolutions-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-music"></i></div>
+                        <div class="card-icon"><i class="fas fa-sun"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">하이브</div>
-                    <div class="card-company-en">HYBE Co., Ltd. · KOSPI 352820</div>
-                    <div class="card-desc">BTS·세븐틴 등 14개 레이블 운영 글로벌 K-POP 기업. 위버스 플랫폼·게임 사업 확장. 2026년 BTS 컴백 월드투어 82회차로 역대 최대 실적 전망.</div>
+                    <div class="card-company">한화솔루션</div>
+                    <div class="card-company-en">Hanwha Q Cells · KOSPI 009830</div>
+                    <div class="card-desc">태양광 에너지·방산. 신재생에너지 사업</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">엔터 · K-POP</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">방산 · 항공우주</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="krafton-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-gamepad"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">크래프톤</div>
-                    <div class="card-company-en">Krafton Inc. · KOSPI 259960</div>
-                    <div class="card-desc">배틀그라운드(PUBG) 서비스 9주년, 최고 동접 130만명. 2025년 매출 3.3조원(+22.8%), 신작 inZOI 등 파이프라인 확대. 글로벌 게임사 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">게임 · 콘텐츠</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 11:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="giantstep-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-film"></i></div>
-                        <div class="card-badge">KOSDAQ</div>
-                    </div>
-                    <div class="card-company">자이언트스텝</div>
-                    <div class="card-company-en">Giantstep Inc. · KOSDAQ 289220</div>
-                    <div class="card-desc">AI 기반 VFX · 버추얼 프로덕션 · 리얼타임 콘텐츠 전문 기업. FacialX 기술 상용화와 SaaS 전환을 추진 중인 기술 전환기 기업에 대한 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">VFX · AI</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.03.26</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">상태</span><span class="meta-value" style="color:var(--gold)">최신</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1627,6 +1538,21 @@
                 <span class="sector-count">2개 기업</span>
             </div>
             <div class="card-grid">
+                <a href="sktelecom-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-signal"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">SK텔레콤</div>
+                    <div class="card-company-en">SK Telecom · KOSPI 017670</div>
+                    <div class="card-desc">국내 통신사. 5G·클라우드 서비스 선도</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">통신 · ICT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
                 <a href="kt-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-wifi"></i></div>
@@ -1634,28 +1560,11 @@
                     </div>
                     <div class="card-company">KT</div>
                     <div class="card-company-en">KT Corporation · KOSPI 030200</div>
-                    <div class="card-desc">유무선통신·IPTV·클라우드·AI 종합 ICT 기업. AICT 전환 가속, 5G·클라우드·데이터센터 급성장. 2025년 3분기 영업이익 YoY +16%.</div>
+                    <div class="card-desc">통신·미디어 복합 기업. 5G·초고속인터넷</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">통신 · AICT</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.06</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">통신 · ICT</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.06 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="sktelecom-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-satellite-dish"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">SK텔레콤</div>
-                    <div class="card-company-en">SK Telecom Co., Ltd. · KOSPI 017670</div>
-                    <div class="card-desc">국내 이동통신 1위, 데이터센터·구독형 서비스 확장. 2026년 영업이익 1.8~2조원 정상화, 배당수익률 5~6% 고배당 매력 부각.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">통신 · 데이터센터</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1670,59 +1579,95 @@
                 <span class="sector-count">3개 기업</span>
             </div>
             <div class="card-grid">
-                <a href="skinc-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-building"></i></div>
-                        <div class="card-badge">NEW
-                <a href="hanwha-report.html" class="company-card">
-                    <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-chess-king"></i></div>
-                        <div class="card-badge">NEW</div>
-                    </div>
-                    <div class="card-company">㈜한화</div>
-                    <div class="card-company-en">Hanwha Corporation · KOSPI 000880</div>
-                    <div class="card-desc">한화그룹 모태 사업지주회사. 방산·화학·건설·에너지 등 다각화된 사업 포트폴리오. 2026년 매출 80조원, 영업이익 5조원대 퀀텀점프 전망 심층 분석.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">지주회사 · 복합기업</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a></div>
-                    </div>
-                    <div class="card-company">SK주식회사</div>
-                    <div class="card-company-en">SK Inc. · KOSPI 034730</div>
-                    <div class="card-desc">SK그룹 최상위 지주회사. 반도체·에너지·바이오 포트폴리오. 2026년 영업이익 4.3조원(+138%), SK스퀘어·SK이노베이션 동반 성장 수혜.</div>
-                    <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">지주회사 · 투자</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.05</span></div>
-                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.05 09:00</span></div>
-                    </div>
-                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="lg-report.html" class="company-card">
+                <a href="samsungct-report.html" class="company-card">
                     <div class="card-top">
                         <div class="card-icon"><i class="fas fa-sitemap"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
-                    <div class="card-company">LG</div>
-                    <div class="card-company-en">LG Corporation · KOSPI 003550</div>
-                    <div class="card-desc">대한민국 최초 순수지주회사. LG전자·LG화학·LG유플러스 등 9개 자회사 보유. 2025년 매출 +6.3%, 영업이익 +10.4% 성장.</div>
+                    <div class="card-company">삼성물산</div>
+                    <div class="card-company-en">Samsung C&T · KOSPI 028260</div>
+                    <div class="card-desc">삼성 지주회사. 건설·무역·엔지니어링</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">지주회사</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="hanwhasystems-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">한화시스템</div>
+                    <div class="card-company-en">Hanwha Systems · KOSPI 272210</div>
+                    <div class="card-desc">방위사업·정보통신 기술. 방산 ICT</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">지주회사</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="giantstep-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">자이언트스텝</div>
+                    <div class="card-company-en">Giant Step · KOSPI 060250</div>
+                    <div class="card-desc">엔터테인먼트 기획사. 영화·방송 제작</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">지주회사</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
 
-        <!-- ═══ 식품 · 유통 ═══ -->
-        
+        <!-- ═══ 콘텐츠 · 미디어 ═══ -->
+        <div class="sector-group" data-sector="content">
+            <div class="sector-label">
+                <i class="fas fa-film"></i>
+                <span>콘텐츠 · 미디어</span>
+                <span class="sector-count">2개 기업</span>
+            </div>
+            <div class="card-grid">
+                <a href="hybe-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-music"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">하이브</div>
+                    <div class="card-company-en">Hybe · KOSPI 352820</div>
+                    <div class="card-desc">엔터테인먼트 기획사. K-pop 아티스트 매니지먼트</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">콘텐츠 · 미디어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="hyundairotem-report.html" class="company-card">
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-train"></i></div>
+                        <div class="card-badge">NEW</div>
+                    </div>
+                    <div class="card-company">현대로템</div>
+                    <div class="card-company-en">Hyundai Rotem · KOSPI 064350</div>
+                    <div class="card-desc">철도차량·방위사업. 기관차·철도 전문</div>
+                    <div class="card-meta">
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">콘텐츠 · 미디어</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
+                        <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
+                    </div>
+                    <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+
         <!-- ═══ 운송 · 항공 ═══ -->
         <div class="sector-group" data-sector="transport">
             <div class="sector-label">
@@ -1737,19 +1682,19 @@
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">대한항공</div>
-                    <div class="card-company-en">Korean Air Lines · KOSPI 003490</div>
-                    <div class="card-desc">대한민국 국적 항공사 1위. 아시아나항공 합병으로 글로벌 메가 캐리어 도약. 2025년 매출 25.2조원, 우주사업 진출 등 종합 항공기업 심층 분석.</div>
+                    <div class="card-company-en">Korean Air · KOSPI 003490</div>
+                    <div class="card-desc">국내 항공사. 국제선·국내선 운영</div>
                     <div class="card-meta">
                         <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">운송 · 항공</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.11</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.11 09:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
 
+        <!-- ═══ 식품 · 유통 ═══ -->
         <div class="sector-group" data-sector="food">
             <div class="sector-label">
                 <i class="fas fa-utensils"></i>
@@ -1759,45 +1704,53 @@
             <div class="card-grid">
                 <a href="samyangfoods-report.html" class="company-card">
                     <div class="card-top">
-                        <div class="card-icon"><i class="fas fa-fire"></i></div>
+                        <div class="card-icon"><i class="fas fa-utensils"></i></div>
                         <div class="card-badge">NEW</div>
                     </div>
                     <div class="card-company">삼양식품</div>
-                    <div class="card-company-en">Samyang Foods Co., Ltd. · KOSPI 003230</div>
-                    <div class="card-desc">불닭볶음면 글로벌 K-푸드 대표 기업. 해외 매출 비중 81%, Q3 2025 영업이익 +50% 급증. 미국·중국 법인 고성장 지속.</div>
+                    <div class="card-company-en">Samyang Foods · KOSPI 003230</div>
+                    <div class="card-desc">식품 제조업체. 라면·간편식품 선도</div>
                     <div class="card-meta">
-                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">식품 · K-Food</span></div>
-                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.08</span></div>
+                        <div class="meta-item"><span class="meta-label">섹터</span><span class="meta-value">식품 · 유통</span></div>
+                        <div class="meta-item"><span class="meta-label">발행일</span><span class="meta-value">2026.04.12</span></div>
                         <div class="meta-item"><span class="meta-label">분량</span><span class="meta-value">30,000자</span></div>
-                        <div class="meta-item"><span class="meta-label">업데이트</span><span class="meta-value" style="color:var(--gold)">04.08 06:00</span></div>
                     </div>
                     <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
+
     </section>
 
-    <script>
-    document.querySelectorAll('.sector-tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-            document.querySelectorAll('.sector-tab').forEach(function(t) { t.classList.remove('active'); });
-            tab.classList.add('active');
-            var filter = tab.getAttribute('data-filter');
-            document.querySelectorAll('.sector-group').forEach(function(group) {
-                if (filter === 'all') {
-                    group.classList.remove('hidden');
-                } else {
-                    group.classList.toggle('hidden', group.getAttribute('data-sector') !== filter);
-                }
-            });
-        });
-    });
-    </script>
-
     <footer>
-        <p>© 2026 FLOVAH Insights. All rights reserved.</p>
-        <p>Premium Membership Exclusive</p>
+        <p>© 2024 FLOVAH Insights. All rights reserved.</p>
+        <p style="color:var(--text-muted);font-size:.7rem;">프리미엄 멤버십 가입으로 모든 리포트 확인 가능</p>
     </footer>
 
+    <script>
+        document.querySelectorAll('.sector-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active tab
+                document.querySelectorAll('.sector-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show/hide sectors
+                document.querySelectorAll('.sector-group').forEach(group => {
+                    if (filter === 'all') {
+                        group.classList.remove('hidden');
+                    } else {
+                        const sector = group.getAttribute('data-sector');
+                        if (sector === filter) {
+                            group.classList.remove('hidden');
+                        } else {
+                            group.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

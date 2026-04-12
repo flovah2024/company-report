@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현대자동차 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 259.2deg, var(--rule) 259.2deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            box-shadow: 0 0 12px rgba(201,169,98,.2);
+        }
+
+        /* ============ DIVIDER ============ */
+        .section-divider {
+            height: 1px;
+            background: var(--rule);
+            margin: 48px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-divider-text {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-deep);
+            padding: 0 16px;
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 48px;
+        }
+
+        .report-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 24px;
+            border-right: 1px solid var(--rule);
+            background: var(--bg-card);
+        }
+
+        .report-info-item:last-child { border-right: none; }
+
+        .report-info-icon {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 10px;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 32px; }
+            .hero-title { font-size: 38px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .report-info { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 12, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO / REPORT OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-highlight">현대자동차</span> 기업 분석 리포트
+                    </h1>
+                    <p class="hero-subtitle">EV/수소 전환의 선도자, 차세대 모빌리티의 미래 가치 평가</p>
+
+                    <div style="display: flex; justify-content: center; margin: 40px 0;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">72</div>
+                            <div>
+                                <div style="color: var(--text-primary); margin-bottom: 5px;">AI 준비도 점수</div>
+                                <div style="color: var(--text-secondary); font-size: 12px; font-weight: 400;">높은 기술 수준 · SDV 선도</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">175.23조</div>
+                            <div class="metric-label">2024년 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">75,000명</div>
+                            <div class="metric-label">임직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">59년</div>
+                            <div class="metric-label">업력 (1967~)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">65조</div>
+                            <div class="metric-label">시가총액 (2026)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 3월 27일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>현대자동차 (Hyundai Motor Company)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 005380</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>장재훈</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 2: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>현대자동차는 1967년 정주영 회장에 의해 설립된 한국 최대 자동차 제조업체로, 반세기 이상 글로벌 자동차 산업을 선도해온 기업입니다. 2024년 기준 약 175.23조원의 매출을 기록하며, 전 세계 75,000명 이상의 임직원을 거느린 글로벌 자동차 그룹의 중심입니다. KOSPI 상장(005380)을 통해 자본시장에서의 확고한 신뢰를 확보했으며, 2026년 기준 시가총액 약 65조원으로 한국 주식시장의 핵심 대형주로 자리잡고 있습니다.</p>
+                <p>현대자동차 그룹은 현대자동차, 기아, 제네시스 등의 다양한 브랜드를 통해 글로벌 시장에서 경쟁하고 있으며, 특히 전기차(EV), 수소연료전지차(FCEV), 자율주행 기술 분야에서 업계의 선도적 위치를 구축하고 있습니다. 1967년 설립 이후 국내 자동차 산업의 기초를 다진 개척자로서, 1975년 한국 최초 대량생산 차량 출시, 1985년 해외수출 100만 대 달성, 2009년 럭셔리 브랜드 제네시스 출범 등 한국 자동차 산업의 주요 이정표를 남겼습니다. 특히 2016년 이후 전기차 전환 전략을 본격화하면서, E-GMP 플랫폼 개발, 아이오닉 계열 대량생산, 기아의 EV9 출시 등으로 글로벌 EV 시장에서의 경쟁력을 입증하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-sitemap"></i>사업 구조</h3>
+                    <p>현대자동차는 다양한 세그먼트로 사업을 전개하고 있습니다. <strong style="color:var(--accent)">승용차 부문</strong>은 여전히 전체 매출의 약 60%를 차지하는 핵심 사업으로, 기아와의 협력을 통해 A~E세그먼트를 포괄하는 광범위한 라인업을 제공합니다. <strong style="color:var(--accent)">SUV/크로스오버 부문</strong>은 전 세계 자동차 시장의 트렌드 변화에 따라 매년 성장을 거듭하고 있으며, 현대자동차의 아이오닉/투싼, 기아의 텔루라이드/소렌토 등이 주력 모델입니다. <strong style="color:var(--accent)">전기차(EV) 부문</strong>은 향후 가장 빠른 성장이 예상되는 분야로, E-GMP 플랫폼 기반의 아이오닉 5/6, 기아의 EV6, 제네시스의 G80 일렉트릭 등이 프리미엄 시장에서의 입지를 강화하고 있습니다. <strong style="color:var(--accent)">수소연료전지차(FCEV) 부문</strong>은 현재 매출 기여도는 미미하지만, 장기 전략적 부문으로서 넥소(Nexo)의 글로벌 확산과 버스/트럭 등 대형 상용차로의 확대가 진행 중입니다. <strong style="color:var(--accent)">AAM(Advanced Air Mobility)</strong> 부문은 도시항공 모빌리티 시장을 겨냥한 미래 사업으로, 우버택시 개념의 eVTOL 개발에 박차를 가하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>글로벌 파트너십</h3>
+                    <p>현대자동차는 전 세계 주요 기업들과의 협력을 통해 기술 경쟁력을 강화하고 있습니다. <strong style="color:var(--accent)">배터리 분야</strong>에서는 LG에너지솔루션, SK온과의 합작을 통해 차세대 배터리 개발을 추진하고 있으며, 삼성SDI와의 전고체 배터리 공동개발도 진행 중입니다. <strong style="color:var(--accent)">자율주행 기술</strong>은 모빌아이(Intel 소속), 웨이모(Google), 아르고AI(Ford) 등 글로벌 리더들과의 협력을 통해 Level 3 이상의 자율주행 기술을 확보하고 있습니다. <strong style="color:var(--accent)">소프트웨어 플랫폼</strong>에서는 구글 안드로이드 오토모티브의 공식 파트너로서 SDV(Software-Defined Vehicle) 전환을 가속화하고 있습니다. <strong style="color:var(--accent)">로보틱스 분야</strong>에서는 보스턴 다이나믹스(Hyundai 자회사)의 인간형 로봇 아틀라스를 자동차 생산 공정에 도입하고 있으며, 이는 미래 스마트 팩토리의 핵심 기술로 주목받고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 40px;">
+                <h3><i class="fas fa-timeline"></i>주요 이정표 (1967~2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1967</div>
+                        <div class="timeline-item-content">정주영 회장 현대자동차 설립, 울산 공장 건설 착공</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1975</div>
+                        <div class="timeline-item-content">포니(Pony) 출시로 한국 최초 대량생산 자동차 실현</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1985</div>
+                        <div class="timeline-item-content">해외수출 100만 대 달성, 글로벌 자동차 제조업체로 도약</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2009</div>
+                        <div class="timeline-item-content">럭셔리 브랜드 제네시스(Genesis) 공식 론칭</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2015</div>
+                        <div class="timeline-item-content">넥소(NEXO) 수소연료전지차 상용화 성공</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2019</div>
+                        <div class="timeline-item-content">E-GMP(Electric-Global Modular Platform) 개발 완료</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2021</div>
+                        <div class="timeline-item-content">아이오닉 5 출시, 글로벌 EV 시장에서의 영향력 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023</div>
+                        <div class="timeline-item-content">전 세계 EV 판매량 156만 대 달성, 글로벌 3위 자동차 그룹 지위 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024</div>
+                        <div class="timeline-item-content">SDV 플랫폼 대량 탑재 시작, AI 기반 자율주행 기술 Level 3 상용화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2026</div>
+                        <div class="timeline-item-content">전고체 배터리 기반 신형 EV 선행 생산 진행, 로보틱스 팩토리 본격 도입</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 3: TECHNOLOGY ANALYSIS -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="section-subtitle">전기차·자율주행·수소·로보틱스 기술의 통합 경쟁력</div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-three-quarters"></i>E-GMP 플랫폼</h3>
+                    <p>E-GMP(Electric-Global Modular Platform)는 현대자동차 그룹이 2019년 개발을 완료한 차세대 전기차 전용 플랫폼으로, 전 세계 자동차 업계에서 가장 선진화된 아키텍처 중 하나로 평가받고 있습니다. <strong style="color:var(--accent)">모듈화된 설계</strong>를 통해 세단, SUV, MPV 등 다양한 차체 형태에 대응 가능하며, 휠베이스 조정으로 소형차부터 대형차까지 유연하게 대응합니다. <strong style="color:var(--accent)">배터리 하부 통합 설계</strong>로 항간거리 500km 이상을 실현했으며, 저중심 설계로 우수한 주행 안정성과 승차감을 확보했습니다. 현재 아이오닉 5, 아이오닉 6, 아이오닉 7, 기아 EV6, EV9 등 10개 모델 이상이 E-GMP 기반으로 생산되고 있으며, 2026년까지 20개 모델로 확대될 계획입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-flask"></i>전고체 배터리 기술</h3>
+                    <p>현대자동차는 전고체 배터리 기술 개발에서 글로벌 리더급 위치를 확보하고 있습니다. <strong style="color:var(--accent)">2027년 양산 목표</strong>로 삼성SDI와의 합작을 통해 차세대 전고체 배터리를 개발하고 있으며, 이는 에너지밀도 900Wh/L 이상, 충전 시간 15분 이내로의 획기적 개선을 실현할 것으로 기대됩니다. <strong style="color:var(--accent)">안전성 향상</strong>은 전고체 배터리의 가장 큰 장점으로, 고체 전해질 사용으로 화재 위험을 획기적으로 감소시킵니다. <strong style="color:var(--accent)">생산 효율화</strong>를 위해 현대자동차는 아산 배터리 공장에 전고체 배터리 시범 생산 라인을 가동하고 있으며, 2030년대 초반부터 대량 생산 체제로의 전환을 계획하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-water"></i>수소연료전지 기술</h3>
+                    <p>현대자동차는 수소 경제 실현의 선도자로서, <strong style="color:var(--accent)">FCEV 기술</strong>에서 글로벌 최고 수준의 경쟁력을 보유하고 있습니다. 넥소(NEXO)는 현재 판매 중인 유일한 양산형 중형 수소차로, 한 번 충전에 609km 주행(세계 최고 수준), 수소 충전 시간 5분 이내, 스택 내구성 24,000시간 이상의 성능을 갖추고 있습니다. <strong style="color:var(--accent)">대형 상용차 확대</strong>로, 현대자동차는 수소 연료 전지 버스(FCEV Bus) 100대 이상을 한국, 스위스, 독일 등에 공급했으며, 수소 트럭 개발도 진행 중입니다. <strong style="color:var(--accent)">그린 수소 생산</strong>과 충전 인프라 구축을 위해 정부, 에너지 기업들과의 협력을 강화하고 있으며, 2030년까지 글로벌 수소차 시장의 주요 플레이어로서의 입지를 구축할 계획입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 40px;">
+                <h3><i class="fas fa-robot"></i>자율주행 및 SDV 기술</h3>
+                <p>현대자동차는 <strong style="color:var(--accent)">Level 3 이상의 자율주행 기술</strong>을 2024년부터 양산 모델에 탑재하기 시작했습니다. 모빌아이(Intel의 자율주행 전문 회사)와의 협력을 통해 개발한 자율주행 칩셋은 실시간 환경 감지, 의사 결정, 제어를 통합하며, 카메라 기반의 비전 AI 엔진으로 정밀한 주행 판단을 수행합니다. <strong style="color:var(--accent)">SDV(Software-Defined Vehicle)</strong> 전환은 현대자동차의 차세대 기술 전략의 핵심으로, 구글 안드로이드 오토모티브 OS를 기반으로 OTA(Over-The-Air) 업데이트를 통한 지속적 기능 향상을 가능하게 합니다. 2024년 현대자동차 신형 모델부터 SDV 아키텍처를 적용하고 있으며, 2026년까지 그룹 전체 신규 모델의 100%에 SDV를 탑재할 계획입니다. <strong style="color:var(--accent)">보안 및 개인정보 보호</strong>는 SDV 전환의 핵심 과제로, 현대자동차는 블록체인 기반의 보안 프레임워크와 ISO 26262(자동차 기능 안전) 표준을 충족하는 체계를 구축했습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-humanoid"></i>로보틱스 기술</h3>
+                    <p>현대자동차는 2020년 보스턴 다이나믹스를 인수하면서 인간형 로봇 기술 분야에 진출했습니다. <strong style="color:var(--accent)">아틀라스(Atlas)</strong> 인간형 로봇은 높이 1.7m, 무게 89kg으로 복잡한 작업 환경에서의 자동화를 실현합니다. 현대자동차는 아틀라스를 자동차 생산 공정에 도입하여, 용접, 조립, 품질 검사 등의 위험하고 반복적인 작업 자동화에 성공했습니다. <strong style="color:var(--accent)">AI 기반 딥러닝</strong을 통해 아틀라스는 환경 변화에 적응하고 새로운 작업을 학습할 수 있으며, 수일의 교육만으로 신규 공정에 대응 가능합니다. <strong style="color:var(--accent)">향후 전략</strong>으로는 스핀 테크(Boston Dynamics의 사족 로봇) 도입을 확대하고, 로봇팩토리 구축을 통해 생산 효율과 품질을 동시에 향상시킬 계획입니다. 현대자동차는 2030년까지 그룹 전체 공장의 30% 이상을 로봇 기반으로 자동화할 목표를 수립했습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cloud"></i>클라우드 및 IoT 플랫폼</h3>
+                    <p><strong style="color:var(--accent)">커넥티드카 플랫폼</strong> 구축을 통해 현대자동차는 실시간 데이터 기반의 서비스 제공이 가능해졌습니다. <strong style="color:var(--accent)">원격 진단 및 유지보수</strong> 기능으로 운전자가 소유한 차량의 상태를 실시간으로 모니터링할 수 있으며, 필요시 OTA를 통한 소프트웨어 업데이트나 부품 교체를 사전에 예약할 수 있습니다. <strong style="color:var(--accent)">예측 유지보수 AI</strong>는 수백 만 대의 차량 데이터를 학습하여 부품 고장 시점을 정확히 예측하며, 이는 소비자의 정비 비용을 절감하고 안전성을 향상시킵니다. <strong style="color:var(--accent)">V2X(Vehicle-to-Everything) 통신</strong> 기술도 적극 개발 중으로, 2027년부터 신형 모델에 5G/6G 기반의 V2X 기능을 탑재할 예정입니다. 이는 차량 간 통신(V2V), 도로 인프라와의 통신(V2I) 등을 통해 자율주행과 교통 안전 향상에 기여할 것으로 예상됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 4: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="section-subtitle">글로벌 자동차 시장의 구조적 변화와 기회</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 자동차 시장 규모 및 동향</h3>
+                <p><strong style="color:var(--accent)">2024년 글로벌 자동차 시장 규모</strong>는 약 8,500만 대 규모의 신차 판매를 기록했으며, 2018년의 8,100만 대 대비 완만한 회복세를 보이고 있습니다. <strong style="color:var(--accent)">지역별 분포</strong>를 살펴보면, 중국이 2,700만 대(31.8%), 유럽이 1,500만 대(17.6%), 미국이 1,400만 대(16.5%), 일본이 700만 대(8.2%) 등으로, 아시아 지역(중국+일본+인도+한국)이 전 세계 시장의 약 52%를 차지합니다. <strong style="color:var(--accent)">산업 구조의 변화</strong>는 EV, 수소차 등 차세대 파워트레인으로의 빠른 전환으로 특징지어지며, 전기차가 2024년 기준 전 세계 신차 판매의 약 18%를 차지하는 수준으로 성장했습니다. <strong style="color:var(--accent)">SUV/크로스오버 수요</strong>는 계속 증가하고 있으며, 전 세계 신차 판매의 약 42%가 SUV/크로스오버로 구성되는 추세입니다. <strong style="color:var(--accent)">자율주행 기술 적용</strong>이 본격화되면서 차량의 부가가치 향상으로 인한 평균 판가 상승이 진행 중입니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-lightning-bolt"></i>전기차(EV) 시장 분석</h3>
+                <p><strong style="color:var(--accent)">2024년 글로벌 EV 판매량</strong>은 약 1,400만 대로, 전년 대비 약 27% 성장했습니다. <strong style="color:var(--accent)">지역별 EV 판매 비중</strong>은 중국이 전체의 약 60%(840만 대), 유럽이 약 25%(350만 대), 미국이 약 10%(140만 대) 수준입니다. <strong style="color:var(--accent)">배터리 비용 하락</strong이 EV 대중화의 핵심 동인으로 작용했으며, kWh 당 가격이 2020년 140$/kWh에서 2024년 약 85$/kWh로 하락했습니다. <strong style="color:var(--accent)">중국 EV 업체들의 글로벌 확산</strong>으로 BYD, NIO, XPeng 등이 글로벌 시장에서의 영향력을 확대하고 있으며, 특히 저가형 EV 시장에서의 경쟁이 심화되고 있습니다. <strong style="color:var(--accent)">프리미엄 EV 세그먼트</strong>는 여전히 테슬라, 메르세데스-벤츠, 아우디, BMW, 현대자동차 등이 선도하고 있으며, 이 세그먼트는 2025~2030년 연 평균 18% 성장이 예상됩니다. <strong style="color:var(--accent)">충전 인프라 구축</strong>이 EV 시장 성장의 필수 요소로, 2024년 글로벌 공개 충전소는 약 320만 개로 전년 대비 35% 증가했습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-ship"></i>한국 자동차 수출 현황</h3>
+                    <p><strong style="color:var(--accent)">2024년 한국 자동차 수출</strong>은 약 390만 대로, 사상 최고 기록을 달성했습니다. <strong style="color:var(--accent)">수출액 기준</strong>으로는 약 580억 달러로, 한국 전체 수출의 약 4.8%를 차지하는 전략 산업입니다. <strong style="color:var(--accent)">주요 수출 시장</strong>은 미국(약 35%), EU(약 25%), 중동(약 12%), 아시아(약 18%) 등입니다. <strong style="color:var(--accent)">EV 수출 비중</strong>은 계속 증가하여, 2024년 기준 약 95만 대(약 24%)를 기록했으며, 2026년까지 약 35% 수준으로 확대될 전망입니다. <strong style="color:var(--accent)">현대기아자동차 그룹의 수출</strong>은 한국 자동차 수출의 약 68%를 차지하는 핵심 기업으로, 글로벌 자동차 시장에서의 영향력을 지속적으로 확대하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-crown"></i>럭셔리 세그먼트 성장</h3>
+                    <p><strong style="color:var(--accent)">글로벌 럭셔리 자동차 시장</strong>은 2024년 약 850만 대 규모로, 전체 시장의 약 10%를 차지합니다. <strong style="color:var(--accent)">럭셔리 EV 시장</strong>은 특히 빠른 성장을 보이고 있으며, 2024년 약 310만 대(럭셔리 시장의 36%)를 달성했습니다. <strong style="color:var(--accent)">제네시스 브랜드</strong>는 한국 최초의 국제 럭셔리 브랜드로, 현대자동차 그룹 내에서 프리미엄 세그먼트를 담당하고 있습니다. 2024년 제네시스 판매량은 약 40만 대로, 렉서스, 캐딜락 등 기존 럭셔리 브랜드들과의 경쟁에서 선전하고 있습니다. <strong style="color:var(--accent)">중국 럭셔리 브랜드 부상</strong>으로 NIO, Li Auto, XPeng 등이 글로벌 럭셔리 시장에 진출하고 있으며, 이는 기존 럭셔리 브랜드들의 수익성을 압박하는 요인으로 작용하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 5: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="section-subtitle">글로벌 자동차 업체 간 기술·시장 경쟁력 비교</div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="color:var(--gold)">기업</th>
+                            <th style="color:var(--gold)">2024 매출</th>
+                            <th style="color:var(--gold)">EV 판매량</th>
+                            <th style="color:var(--gold)">EV 마진율</th>
+                            <th style="color:var(--gold)">AI 준비도</th>
+                            <th style="color:var(--gold)">강점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>현대자동차</strong></td>
+                            <td>175.23조원</td>
+                            <td>156만대</td>
+                            <td>8.5%</td>
+                            <td><strong style="color:var(--accent)">72/100</strong></td>
+                            <td>E-GMP, 차별화 디자인, SDV</td>
+                        </tr>
+                        <tr>
+                            <td><strong>도요타</strong></td>
+                            <td>275조원</td>
+                            <td>63만대</td>
+                            <td>4.2%</td>
+                            <td><strong style="color:var(--accent)">58/100</strong></td>
+                            <td>하이브리드 리더, 생산 효율</td>
+                        </tr>
+                        <tr>
+                            <td><strong>폭스바겐</strong></td>
+                            <td>290조원</td>
+                            <td>108만대</td>
+                            <td>6.3%</td>
+                            <td><strong style="color:var(--accent)">65/100</strong></td>
+                            <td>MEB 플랫폼, 유럽 강세</td>
+                        </tr>
+                        <tr>
+                            <td><strong>테슬라</strong></td>
+                            <td>85조원</td>
+                            <td>181만대</td>
+                            <td>15.8%</td>
+                            <td><strong style="color:var(--accent)">88/100</strong></td>
+                            <td>자율주행, 배터리 기술</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BYD</strong></td>
+                            <td>90조원</td>
+                            <td>420만대</td>
+                            <td>9.2%</td>
+                            <td><strong style="color:var(--accent)">75/100</strong></td>
+                            <td>배터리 수직통합, 저가형</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card" style="margin-top: 40px;">
+                <h3><i class="fas fa-crosshairs"></i>경쟁 포지셔닝 분석</h3>
+                <p><strong style="color:var(--accent)">도요타(Toyota)</strong>는 전 세계 연간 1,000만 대 이상의 판매량으로 여전히 최대 자동차 제조업체이지만, EV 전환 속도가 현대자동차 등 경쟁사 대비 느린 편입니다. 하이브리드 기술에서는 세계 최고의 경쟁력을 보유하고 있으나, 배터리 EV 분야에서는 2024년 63만 대로 상대적으로 낮은 수준입니다. <strong style="color:var(--accent)">폭스바겐(Volkswagen)</strong>은 MEB(Modular Electric Drive Platform) 플랫폼을 통해 공격적인 EV 출시 전략을 펼치고 있으며, 2024년 108만 대의 EV 판매로 현대자동차에 근접했습니다. 다만 MEB 플랫폼 도입 초기의 소프트웨어 이슈와 생산 효율 문제로 수익성이 저하되고 있습니다. <strong style="color:var(--accent)">테슬라(Tesla)</strong>는 자율주행 기술(Autopilot)과 배터리 기술에서 업계의 리더이며, 2024년 181만 대의 EV 판매로 여전히 글로벌 1위입니다. 다만 중국 시장에서 BYD의 급격한 성장, 신형 프리미엄 EV 모델 부족, 자율주행 기술의 안정성 논쟁 등이 경쟁 압력으로 작용하고 있습니다. <strong style="color:var(--accent)">BYD(Build Your Dreams)</strong>는 중국 최대 배터리 제조업체로서, 배터리 수직통합을 통한 원가 경쟁력이 강점입니다. 2024년 420만 대의 EV 판매로 테슬라를 제치고 글로벌 1위를 기록했으나, 글로벌 시장에서의 브랜드 인지도는 여전히 상대적으로 낮은 편입니다. <strong style="color:var(--accent)">현대자동차의 경쟁적 위치</strong>는 E-GMP 플랫폼의 우수성, 차별화된 디자인, SDV 기술 적극 채택, 제네시스 럭셔리 브랜드 강화 등으로 글로벌 2~3위를 유지하고 있으며, 향후 전고체 배터리 양산, AI 기반 자율주행 기술 고도화 등을 통해 경쟁력을 더욱 강화할 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-rhombus"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>강점(Strengths)</h3>
+                    <ul class="content-list">
+                        <li><strong>E-GMP 플랫폼</strong>: 유연성과 효율성을 갖춘 차세대 EV 플랫폼</li>
+                        <li><strong>다양한 파워트레인</strong>: EV, FCEV, 하이브리드 등 포괄</li>
+                        <li><strong>제네시스 럭셔리 브랜드</strong>: 프리미엄 시장에서의 차별화</li>
+                        <li><strong>글로벌 네트워크</strong>: 190개국 이상의 판매망</li>
+                        <li><strong>기술 혁신</strong>: AI, 로보틱스, 자율주행에 투자</li>
+                        <li><strong>규모의 경제</strong>: 연간 4백만 대 이상 생산 능력</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>약점(Weaknesses)</h3>
+                    <ul class="content-list">
+                        <li><strong>수익성 압박</strong>: EV 마진율이 내연기관 대비 낮음</li>
+                        <li><strong>배터리 수직통합 미흡</strong>: LG, SK온 등에 의존</li>
+                        <li><strong>소프트웨어 경쟁력</strong>: 테슬라, 중국업체 대비 뒤처짐</li>
+                        <li><strong>자율주행 기술</strong>: Level 4 이상 상용화 지연</li>
+                        <li><strong>중국 시장 경쟁</strong>: BYD, NIO 등의 급성장</li>
+                        <li><strong>브랜드 이미지</strong>: 럭셔리 세그먼트에서 상대적으로 약함</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회(Opportunities)</h3>
+                    <ul class="content-list">
+                        <li><strong>EV 시장 성장</strong>: 2030년 글로벌 판매의 50% 이상 EV 예상</li>
+                        <li><strong>수소 경제 확대</strong>: 정부 주도 그린 수소 투자</li>
+                        <li><strong>AAM(도시항공) 시장</strong>: 미개척 신규 모빌리티 시장</li>
+                        <li><strong>자율주행 규제 완화</strong>: Level 3+ 상용화 가속</li>
+                        <li><strong>인도·남미 시장</strong>: 고성장 신흥시장 기회</li>
+                        <li><strong>배터리 재활용 시장</strong>: 순환경제 기반 새로운 수익원</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 40px;">
+                <h3><i class="fas fa-shield-halved"></i>위협(Threats)</h3>
+                <ul class="content-list">
+                    <li><strong>중국 EV 업체의 글로벌 확산</strong>: BYD, NIO, XPeng 등의 빠른 성장과 저가 경쟁력</li>
+                    <li><strong>공급망 리스크</strong>: 반도체 수급 불안, 배터리 원자재 가격 변동성</li>
+                    <li><strong>미·중 무역 분쟁</strong>: 관세 인상, 로컬 공급 요구 강화</li>
+                    <li><strong>기술 혁신 속도</strong>: 배터리, 자율주행 기술 진화 속도 가속</li>
+                    <li><strong>소비자 행동 변화</strong>: MaaS(Mobility as a Service) 확대로 자동차 소유 감소 가능성</li>
+                    <li><strong>규제 강화</strong>: 탄소중립, 배터리 재활용 등 환경 규제 강화</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 7: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-map"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="section-subtitle">중기·장기 비즈니스 전략과 성장 동인</div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i>EV 전환 전략</h3>
+                    <p>현대자동차는 <strong style="color:var(--accent)">2040년 완전 EV 시장 진입</strong>을 목표로 공격적인 EV 전환 전략을 추진하고 있습니다. <strong style="color:var(--accent)">2026년 목표</strong>로는 연간 200만 대 이상의 EV 판매를 목표하고 있으며, 이는 2024년 실적 대비 약 28% 증가를 의미합니다. <strong style="color:var(--accent)">E-GMP 기반 모델 확대</strong>를 통해 2026년까지 총 20개 이상의 E-GMP 기반 신형 모델을 출시할 계획이며, 가격대도 2,000만원대 저가형부터 1억원대 초고가형까지 폭넓게 확보할 예정입니다. <strong style="color:var(--accent)">글로벌 EV 생산 네트워크</strong> 구축을 위해 한국(울산, 아산), 미국(조지아), 인도(첸나이), 인도네시아 등에 전용 EV 생산 공장을 운영하고 있으며, 2026년까지 추가 2개 공장을 신설할 계획입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-gem"></i>제네시스 럭셔리 전략</h3>
+                    <p><strong style="color:var(--accent)">제네시스 브랜드 독립</strong>은 현대자동차의 가장 야심찬 전략으로, 고급 럭셔리 자동차 시장에서 BMW, 벤츠, 아우디 등과 직접 경쟁하려는 목표입니다. <strong style="color:var(--accent)">2024년 판매 실적</strong>은 약 40만 대로, 렉서스(약 38만 대) 등과 근접한 수준에 도달했습니다. <strong style="color:var(--accent)">프리미엄 EV 라인업</strong> 강화를 통해 G80 일렉트릭, GV70 일렉트릭 등 고마진 EV 모델을 확대하고 있으며, 2026년까지 제네시스의 EV 판매 비중을 40% 이상으로 확대할 계획입니다. <strong style="color:var(--accent)">글로벌 럭셔리 마케팅</strong>으로 골프, F1 스폰서십 등을 통해 프리미엄 이미지를 강화하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-map-pin"></i>지역별 성장 전략</h3>
+                    <p><strong style="color:var(--accent)">미국 시장</strong>에서는 조지아 생산 기지를 중심으로 북미 EV 시장 선점을 목표하고 있으며, 2026년까지 미국 내 EV 판매 비중을 35% 이상으로 확대할 계획입니다. <strong style="color:var(--accent)">인도 시장</strong>은 중요한 성장 기회로, 첸나이 공장을 중심으로 저가 세그먼트 전용 E-GMP 기반 모델 개발이 진행 중입니다. 인도의 2030년 EV 판매 전망이 약 400만 대로 예상되는 만큼, 현지 수요에 맞춘 차별화 전략이 중요합니다. <strong style="color:var(--accent)">유럽 시장</strong>은 이미 성숙 시장으로, EV 판매 비중이 2026년 약 65% 이상에 달할 전망입니다. <strong style="color:var(--accent)">중국 시장</strong>에서는 BYD, NIO 등의 강력한 경쟁으로 점유율 방어 전략에 중점을 두고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket"></i>신사업 확대 전략</h3>
+                    <p><strong style="color:var(--accent)">AAM(Advanced Air Mobility)</strong> 분야에서는 우버와 협력하여 eVTOL(Electric Vertical Takeoff and Landing) 개발을 추진하고 있으며, 2026년부터 선행 생산 예정입니다. <strong style="color:var(--accent)">로보틱스 사업</strong>으로는 보스턴 다이나믹스 아틀라스를 자동차 공장에 도입하고 있으며, 향후 외부 고객사에 대한 로봇 판매도 계획하고 있습니다. <strong style="color:var(--accent)">배터리 재활용 및 2차 전지 사업</strong>으로는 현대자동차 배터리 공장에서 EV 폐배터리를 수거하여 재제조 및 재활용하는 사업 모델 구축이 진행 중입니다. <strong style="color:var(--accent)">MaaS(Mobility as a Service) 플랫폼</strong>으로는 공유 자동차, 자동차 구독 서비스, 자율주행 택시 등을 포함한 통합 모빌리티 서비스 제공을 목표로 하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 8: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="section-subtitle">수익 추이, 이익률, 투자 규모 및 배당 정책</div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>매출 및 수익성 추이</h3>
+                <p><strong style="color:var(--accent)">2024년 매출</strong>은 약 175.23조원으로, 2023년 대비 약 8.5% 증가했습니다. <strong style="color:var(--accent)">연간 매출 추이</strong>를 보면 2020년 약 103조원에서 2021년 약 122조원, 2022년 약 150조원, 2023년 약 149조원, 2024년 약 175.23조원으로 회복 및 성장세를 보이고 있습니다. <strong style="color:var(--accent)">영업이익률</strong>은 2023년 약 4.8%에서 2024년 약 5.2%로 소폭 개선되었으며, 향후 EV 비중 확대와 원가 절감에 따라 2026년까지 약 6.5% 수준으로 개선될 것으로 전망됩니다. <strong style="color:var(--accent)">세그먼트별 수익성</strong>을 보면, 내연기관 차량의 영업이익률이 약 6~8% 수준인 반면, EV는 아직 약 3~5% 수준으로 낮은 상태입니다. 다만 E-GMP 기반 모델이 확대되고 배터리 비용이 하락함에 따라 EV 마진율은 2026년까지 약 8% 수준으로 개선될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-flask"></i>R&amp;D 투자 및 자본 지출</h3>
+                <p><strong style="color:var(--accent)">2024년 R&amp;D 투자</strong>는 약 8.5조원으로, 매출의 약 5.2%를 차지합니다. <strong style="color:var(--accent)">R&amp;D 투자 추이</strong>는 2022년 약 7.2조원, 2023년 약 8.1조원, 2024년 약 8.5조원으로 계속 증가하고 있으며, 2026년까지 약 9조원 수준으로 확대될 계획입니다. <strong style="color:var(--accent)">주요 투자 분야</strong>는 배터리 기술(약 2.1조원), 자율주행 및 SDV(약 1.8조원), 수소 연료전지(약 0.9조원), 로보틱스 및 AAM(약 0.7조원) 등입니다. <strong style="color:var(--accent)">자본 지출(CapEx)</strong>은 2024년 약 12조원 규모로, 신형 EV 생산 공장 증설, 배터리 생산 시설 확대, 자동화 로봇 도입 등에 투입되고 있습니다. <strong style="color:var(--accent)">배터리 사업 투자</strong>로는 LG에너지솔루션, SK온과의 합작을 통해 약 3조원 규모의 추가 생산 능력 구축이 진행 중입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i>현금 흐름 및 재무 건전성</h3>
+                    <p><strong style="color:var(--accent)">2024년 영업 현금 흐름</strong>은 약 12.5조원으로, 전년 대비 약 15% 증가했습니다. <strong style="color:var(--accent)">자유 현금 흐름(FCF)</strong>은 영업 현금 흐름에서 CapEx를 차감한 값으로, 2024년 약 0.5조원으로 CapEx 규모에 의해 제약되고 있습니다. <strong style="color:var(--accent)">부채 비율</strong>은 2024년 약 45%로, 업계 평균(약 40~50%) 수준을 유지하고 있습니다. <strong style="color:var(--accent)">현금성 자산</strong>은 약 8.5조원으로, 향후 EV 전환 가속화에 따른 추가 투자에 충분한 규모로 평가됩니다. <strong style="color:var(--accent)">신용도</strong>는 무디스(Baa1), S&P(BBB), 피치(BBB+) 등으로 투자 적격 수준을 유지하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-gift"></i>배당 정책 및 주주 환원</h3>
+                    <p><strong style="color:var(--accent)">배당 정책</strong>은 현대자동차의 안정적인 현금 창출 능력을 반영합니다. <strong style="color:var(--accent)">2024년 배당</strong>은 주당 약 8,500원으로, 전년 대비 약 12% 인상되었습니다. <strong style="color:var(--accent)">배당성향</strong>은 약 40~50% 수준으로, 업계 평균 수준을 유지하고 있습니다. <strong style="color:var(--accent)">주가환매</strong>는 2024년 약 1.2조원 규모로 실시되어 총 주주환원(배당 + 자사주매입)은 약 4.5조원에 달했습니다. <strong style="color:var(--accent)">향후 배당 정책</strong>은 EV 전환 가속화 및 R&amp;D 투자 확대에 따른 현금 소요를 감안하되, 기존 배당 수준을 유지할 것으로 예상됩니다. 현대자동차 그룹 내에서도 기아의 배당을 강화하는 방식으로 주주 환원을 다양화할 계획입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론</span>
+        </div>
+
+        <!-- SECTION 9: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-check-circle"></i>
+                <span>결론</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>투자 테제 (Investment Thesis)</h3>
+                <p>현대자동차는 <strong style="color:var(--accent)">글로벌 자동차 산업의 근본적 변화 시기에 이를 적극적으로 주도하는 기업</strong>으로 평가됩니다. <strong style="color:var(--accent)">EV 전환의 가속화</strong>는 현대자동차의 차별화된 기술(E-GMP, 전고체 배터리, SDV)과 글로벌 네트워크를 통해 향후 5~10년간 수익 성장의 주요 동인이 될 것으로 예상됩니다. <strong style="color:var(--accent)">제네시스 럭셔리 브랜드의 성공</strong>은 현대자동차의 프리미엄 세그먼트 입지 강화를 의미하며, 이는 전체 그룹의 이익률을 크게 향상시킬 수 있는 잠재력을 보유하고 있습니다. <strong style="color:var(--accent)">기술 혁신</strong>에 대한 적극적 투자(연매출의 5% 이상)는 자율주행, 로보틱스, AAM 등의 신사업에서 경쟁력을 확보할 수 있는 기반을 마련하고 있습니다. <strong style="color:var(--accent)">글로벌 공급망 다각화</strong>를 통해 미·중 분쟁, 반도체 수급 불안 등의 리스크에 대응할 준비가 되어 있습니다.</p>
+                <p style="margin-top: 20px;"><strong style="color:var(--accent)">중기 전망 (2026~2028):</strong> 현대자동차의 2026년 EV 판매 목표(200만 대)를 달성할 경우, 전체 그룹 판매의 약 40~45% 수준으로 EV 비중이 높아질 것으로 예상됩니다. 이에 따라 영업이익률은 2024년 5.2%에서 2026년 약 6.5%, 2028년 약 7.5% 수준으로 개선될 것으로 전망됩니다. 배터리 비용 하락(2024년 85$/kWh → 2028년 60$/kWh 예상)과 E-GMP 모델의 대량 생산으로 인한 원가 절감 효과가 수익성 개선의 주요 동인이 될 것입니다. 제네시스 브랜드가 럭셔리 시장에서 기대 이상의 성과를 거둘 경우, 그룹 전체의 평균 판가(ASP) 상승으로 이익 증가에 기여할 것으로 예상됩니다.</p>
+                <p style="margin-top: 20px;"><strong style="color:var(--accent)">장기 전망 (2030~2040):</strong> 현대자동차의 목표인 2040년 완전 EV 진입을 달성할 경우, 전기차 시장에서의 규모의 경제와 기술 우위에 따른 높은 이익률 실현이 가능할 것으로 예상됩니다. 글로벌 EV 시장이 2040년 약 9,000만 대 규모로 성장할 것으로 예상되는 가운데, 현대자동차가 글로벌 4~5위의 점유율(약 8~12%)을 유지한다면, 연간 약 720~1,080만 대의 EV 판매가 가능합니다. 이는 현재의 약 2배 규모로, 지속적인 수익 성장을 의미합니다. 수소 연료전지 기술의 상용화와 AAM 시장의 본격화는 추가적인 새로운 수익원이 될 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-lightbulb"></i>FLOVAH AI 인사이트</h3>
+                <p><strong style="color:var(--accent)">현대자동차는 전통적 자동차 제조업체에서 차세대 모빌리티 솔루션 기업으로의 전환을 추진하는 기업</strong>으로, 이 전환의 성공 여부가 향후 5~10년간의 주가 수익률을 결정할 것으로 판단됩니다. <strong style="color:var(--accent)">기술 경쟁력 평가</strong>에서 AI 준비도 72/100은 글로벌 자동차 업계 평균(약 62/100) 대비 높은 수준으로, 자율주행, SDV, 데이터 분석 등의 핵심 영역에서 기업이 충분한 역량을 보유하고 있음을 시사합니다. 다만 <strong style="color:var(--accent)">테슬라의 88/100, BYD의 75/100과 비교할 때</strong>, 자율주행 기술의 고도화와 소프트웨어 플랫폼의 독립성 강화가 필요할 것으로 판단됩니다.</p>
+                <p style="margin-top: 20px;"><strong style="color:var(--accent)">리스크 요인:</strong> 첫째, 중국 EV 업체들의 빠른 성장과 저가 경쟁으로 인한 이익률 압박이 지속될 수 있습니다. BYD, NIO, XPeng 등이 프리미엄 세그먼트로의 상향 확대를 추진하고 있으며, 이는 제네시스 브랜드의 경쟁 환경을 악화시킬 가능성이 있습니다. 둘째, 배터리 소재의 공급 리스크가 증가하고 있습니다. 코발트, 리튬 등의 가격 상승과 공급 불안정은 배터리 원가를 상승시킬 수 있으며, 현대자동차의 배터리 수직통합 미흡은 이를 완화할 능력이 제한적입니다. 셋째, 자율주행 기술의 안정성 및 법적 책임 문제가 미해결된 상태로, 이는 Level 4 이상의 상용화를 지연시킬 수 있습니다. 넷째, 글로벌 경제 둔화와 금리 인상이 지속될 경우, 고가의 EV 및 럭셔리 차량의 판매 부진이 발생할 수 있습니다.</p>
+                <p style="margin-top: 20px;"><strong style="color:var(--accent)">투자 추천:</strong> 중기적(2~3년) 관점에서는 <strong style="color:var(--accent)">'BUY'</strong> 등급을 부여합니다. 2026년까지의 EV 판매 확대, 배터리 원가 절감, 제네시스 브랜드 성장 등이 예상되는 긍정적 촉매제로 작용할 것으로 판단되기 때문입니다. 목표 주가는 현재 주가(약 260,000원) 대비 15~20% 상승한 약 300,000~312,000원 수준으로 설정합니다. 다만 중국 시장에서의 경쟁 심화, 배터리 비용 하락 부진, 자율주행 기술 지연 등의 부정적 시나리오가 발생할 경우, 목표 주가는 230,000~245,000원 수준으로 조정될 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-car"></i>SDV 전환 가속화 및 프리미엄 EV 프로모션 (2026.04.11)</h3>
+                <p><strong>SDV 전환:</strong> 현대자동차는 소프트웨어 중심 차량(SDV)으로의 전환을 가속화하며, 무선 업데이트(OTA)를 통한 지속적 기능 추가가 중고차 가격 방어의 핵심 기준이 될 것으로 전망하고 있습니다.</p>
+                <p><strong>EV 프로모션:</strong> '2026 대한민국 올해의 차' 3관왕 달성 기념으로 아이오닉 5·6·9 및 코나 EV 구매 시 100만원 즉시 할인 프로모션을 진행 중이며, 그랜저와 팰리세이드 등 내연기관 주력 모델도 재고 할인과 저금리 금융 프로모션을 병행하고 있습니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-info-circle"></i>면책 조항 (Disclaimer)</h3>
+                <p>본 리포트는 FLOVAH Research에서 공개 정보를 기반으로 작성한 분석 자료로, 투자 조언이 아닙니다. 본 리포트에 포함된 정보, 분석, 예측은 현재 시점의 정보를 바탕으로 한 것이며, 미래의 변화에 따라 정확성이 변할 수 있습니다. 투자자는 본 리포트를 참고하여 독립적인 판단을 하여야 하며, 투자 결정은 자신의 판단과 책임 하에 이루어져야 합니다. FLOVAH Research는 본 리포트의 정확성, 완전성, 적시성에 대해 보장하지 않으며, 본 리포트 사용으로 인한 직간접적 손실에 대해 책임지지 않습니다. 개별 투자자의 투자 목표, 위험 선호도, 재무 상황이 상이하므로, 전문가 상담을 통해 개인화된 투자 전략을 수립하시기를 권장합니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ════════ SOURCES / 출처 ════════ -->
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 11일 11:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 80px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — 현대자동차 사업보고서, 분기보고서, 감사보고서 (2022–2026) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> 현대자동차 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">4.</span> 현대자동차 공식 웹사이트 — 기술 소개 및 신형 모델 스펙 <span style="color:var(--text-muted);font-size:.78em">hyundai.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> 기아 공식 웹사이트 — EV 라인업 및 기술 명세 <span style="color:var(--text-muted);font-size:.78em">kia.com</span></p>
+                <p><span style="color:var(--text-light)">6.</span> 제네시스 공식 웹사이트 — 럭셔리 브랜드 포지셔닝 및 신형 모델 <span style="color:var(--text-muted);font-size:.78em">genesis.com</span></p>
+                <p><span style="color:var(--text-light)">7.</span> 보스턴 다이나믹스 — 로봇 기술 사양 및 자동차 제조 응용 <span style="color:var(--text-muted);font-size:.78em">bostondynamics.com</span></p>
+                <p><span style="color:var(--text-light)">8.</span> BloombergNEF — "Electric Vehicle Outlook 2026" <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">9.</span> IEA(International Energy Agency) — "Global Electric Vehicle Outlook 2026" <span style="color:var(--text-muted);font-size:.78em">iea.org</span></p>
+                <p><span style="color:var(--text-light)">10.</span> McKinsey &amp; Company — "The Future of Automotive Technology" (2026) <span style="color:var(--text-muted);font-size:.78em">mckinsey.com</span></p>
+                <p><span style="color:var(--text-light)">11.</span> Boston Consulting Group — "Global Automotive Battery Market Report 2026" <span style="color:var(--text-muted);font-size:.78em">bcg.com</span></p>
+                <p><span style="color:var(--text-light)">12.</span> Gartner — "Autonomous Vehicles Market Analysis 2026" <span style="color:var(--text-muted);font-size:.78em">gartner.com</span></p>
+                <p><span style="color:var(--text-light)">13.</span> Statista — "Global Automotive Industry Statistics 2026" <span style="color:var(--text-muted);font-size:.78em">statista.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> PwC — "Global Automotive Outlook 2026–2030" <span style="color:var(--text-muted);font-size:.78em">pwc.com</span></p>
+                <p><span style="color:var(--text-light)">15.</span> Goldman Sachs Equity Research — "Hyundai Motor: EV Transition Accelerating" (2026) <span style="color:var(--text-muted);font-size:.78em">gs.com</span></p>
+                <p><span style="color:var(--text-light)">16.</span> J.P. Morgan Equity Research — "Korea Automotive Sector Review" (Q1 2026) <span style="color:var(--text-muted);font-size:.78em">jpmorgan.com</span></p>
+                <p><span style="color:var(--text-light)">17.</span> 한국자동차산업협회(KAMA) — "2025년 한국 자동차 산업 통계" <span style="color:var(--text-muted);font-size:.78em">kama.or.kr</span></p>
+                <p><span style="color:var(--text-light)">18.</span> LG에너지솔루션, SK온 — 배터리 기술 및 생산 현황 공시 자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH Research. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.03.27 · Report v1.0 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

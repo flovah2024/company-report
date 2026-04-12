@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 1, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">카카오<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">국민 메신저 카카오톡에서 AI 플랫폼으로 진화하는 카카오의 경쟁력과 미래 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">77</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">8.1조</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">22조+</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">16,000+</div>
+                            <div class="metric-label">그룹 직원수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4,800만</div>
+                            <div class="metric-label">카카오톡 MAU</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 카카오 기업 소개</h3>
+                <p>카카오는 2010년 설립되어 한국의 가장 영향력 있는 IT 플랫폼 기업으로 성장했습니다. 카카오톡이라는 국민 메신저를 기반으로 디지털 생활 전반의 허브 역할을 하고 있습니다. 2025년에 역대 최대 매출인 8조 991억원을 달성했으며, 영업이익은 7,320억원으로 전년 대비 48% 증가했습니다. 현재 국내 인터넷 플랫폼 시장에서 네이버와 함께 양대 축을 이루며, AI 시대로의 전환을 적극 추진하고 있습니다.</p>
+                <p>카카오의 핵심 사업 영역은 크게 다섯 가지로 구분됩니다. 첫째, 카카오톡 기반의 커뮤니케이션 및 메신저 서비스입니다. 둘째, 카카오페이와 카카오뱅크를 통한 금융 서비스입니다. 셋째, 카카오모빌리티를 통한 모빌리티 및 배달 서비스입니다. 넷째, 카카오엔터테인먼트와 카카오게임즈를 통한 콘텐츠 및 게임 서비스입니다. 다섯째, AI 기술 개발과 서비스를 통한 미래 성장입니다. CEO 정신아 대표이사는 2024년 연임이 확정되어 2028년까지 리더십을 이어갈 예정입니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995년</div>
+                        <div class="timeline-text">전신인 다음커뮤니케이션 설립 - 한국 인터넷 포털 시장의 선구자</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">카카오 설립 및 카카오톡 출시 - 국내 스마트폰 혁명을 선도</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012년</div>
+                        <div class="timeline-text">카카오톡 사용자 1억 명 돌파 - 아시아 최대 메신저 플랫폼으로 성장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014년</div>
+                        <div class="timeline-text">카카오페이 출시 - 핀테크 시장 개척</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">카카오뱅크 정식 출범 - 혁신 금융 서비스 제공</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019년</div>
+                        <div class="timeline-text">카카오 상장 및 다음 통합 완료 - 통합 플랫폼 전략 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022년</div>
+                        <div class="timeline-text">카나나(Kana AI) 개발 시작 - 자체 AI 모델 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">카나나 본격 서비스 및 AI 기반 톡비즈 확대 - AI 플랫폼으로의 전환 가속화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">역대 최대 매출 8조 원 돌파 - 글로벌 AI 경쟁력 강화 추진</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>카카오의 기술 전략 및 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> AI 기술 및 카나나 플랫폼</h3>
+                <p>카카오는 2022년부터 자체 AI 모델인 카나나(Kana AI)를 개발하여 국내 생성형 AI 시장의 경쟁력을 확보했습니다. 카나나는 한국어 이해 및 생성에 최적화된 대규모 언어 모델(LLM)로, ChatGPT나 클로드 같은 해외 모델과 경쟁할 수 있는 수준에 도달했습니다. 특히 한국 문화와 언어 특성을 이해하는 능력이 뛰어나며, 비즈니스 환경에서의 성능 최적화에 중점을 두고 있습니다.</p>
+                <p>카나나는 카카오의 전략적 자산으로, 카카오톡 플랫폼 내 AI 기반 서비스들에 통합되고 있습니다. 카카오톡 채팅창에서 즉시 이용 가능한 AI 어시스턴트, 이미지 생성, 음성 변환 등 다양한 기능을 제공합니다. 또한 톡비즈(Talk Biz)라는 중소 상인 및 사업가를 위한 카카오톡 기반 쇼핑 플랫폼의 고도화에 카나나를 활용하여 수익 창출을 가속화하고 있습니다. 카나나 서비스의 확대는 카카오의 2026년 이후 주요 수익 성장 동인으로 예상됩니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">대규모언어모델(LLM)</span>
+                    <span class="tech-badge">한국어최적화</span>
+                    <span class="tech-badge">생성형AI</span>
+                    <span class="tech-badge">음성AI</span>
+                    <span class="tech-badge">이미지생성</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-comments"></i> 카카오톡 플랫폼의 기술적 경쟁력</h3>
+                <p>카카오톡은 한국에서 월 활성 사용자 4,800만 명을 보유한 국민 메신저입니다. 단순한 메신저를 넘어 커머스, 금융, 음악, 뉴스, 게임 등 다양한 서비스가 통합된 '슈퍼앱(Super App)' 플랫폼으로 진화했습니다. 카카오톡 플랫폼의 기술적 강점은 다음과 같습니다.</p>
+                <ul>
+                    <li><strong>엄청난 사용자 네트워크:</strong> 4,800만 MAU는 한국 인구의 90% 이상을 커버하는 수준으로, 국내 최강 플랫폼 규모입니다.</li>
+                    <li><strong>AI 통합 메시징:</strong> 자연어 처리, 이미지 인식, 챗봇 등 AI 기술을 메시징 서비스에 자연스럽게 통합했습니다.</li>
+                    <li><strong>오픈 API 생태계:</strong> 개발자들이 카카오톡 위에 다양한 서비스를 구축할 수 있는 개방적 플랫폼입니다.</li>
+                    <li><strong>실시간 데이터 처리:</strong> 4,800만 사용자의 실시간 커뮤니케이션 데이터를 안정적으로 처리하는 강력한 인프라입니다.</li>
+                    <li><strong>보안 및 프라이버시:</strong> 엔드-투-엔드 암호화와 개인 정보 보호 기술을 지속적으로 강화하고 있습니다.</li>
+                </ul>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-landmark"></i> 카카오페이 핀테크 기술</h3>
+                    <p>카카오페이는 카카오톡 기반의 결제 시스템으로 한국 핀테크 시장의 선두주자입니다. 손쉬운 결제 경험과 금융 포용성을 제공하는 기술 기반의 서비스입니다. 블록체인 기반 추적, 머신러닝 기반 부정거래 탐지, API 기반 결제 연동 등 최신 금융 기술을 적용했습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-database"></i> 클라우드 및 인프라</h3>
+                    <p>카카오는 자체 클라우드 인프라(카카오클라우드)를 구축하여 독립적인 인프라 운영 능력을 확보했습니다. AWS, 구글 클라우드와의 협력을 통해 글로벌 확장성도 갖추고 있습니다. 대규모 트래픽 처리와 고가용성 시스템 운영 기술을 보유했습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-link"></i> 블록체인 및 Web3</h3>
+                    <p>카카오는 자체 블록체인 플랫폼인 클레이튼(Klaytn)을 개발하여 Web3 생태계 조성을 주도하고 있습니다. NFT, DeFi, 메타버스 관련 서비스 개발에 활용되고 있으며, 암호화폐 거래 기반도 제공합니다. 블록체인 기술을 통해 투명하고 신뢰 가능한 거래 시스템을 구축하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 기술 투자 및 R&D 전략</h3>
+                <p>카카오는 매년 총 수익의 10% 이상을 연구개발에 투자하여 기술 혁신을 지속하고 있습니다. AI, 클라우드, 블록체인, 보안 등 미래 기술에 집중 투자하고 있으며, 국내외 대학과의 협력 연구를 통해 인재 확보도 적극적으로 추진 중입니다. 또한 벤처캐피탈 활동을 통해 유망 기술 스타트업에 투자하여 생태계를 강화하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>시장 규모 및 성장 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 한국 인터넷 및 플랫폼 시장</h3>
+                <p>한국의 인터넷 시장은 전 세계에서 가장 경쟁적이면서도 성숙한 시장입니다. 높은 인터넷 보급률(97%), 빠른 인터넷 속도, 강한 모바일 문화 등이 특징입니다. 2025년 기준 한국 인터넷 시장 규모는 약 30조 원대로 추정되며, 매년 5-7%의 성장률을 보이고 있습니다.</p>
+                <p>플랫폼 경제 시장은 더욱 빠르게 성장하고 있습니다. 전자상거래, 결제, 배달, 콘텐츠 스트리밍 등 다양한 플랫폼 서비스가 일상생활의 필수 요소가 되었습니다. 카카오톡 기반의 플랫폼들은 한국 디지털 경제의 핵심 인프라로 작동하고 있으며, 시장 점유율 측면에서 압도적 위치를 차지하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-credit-card"></i> 핀테크 시장의 급속한 확장</h3>
+                    <p>한국의 핀테크 시장은 급속도로 확장하고 있습니다. 2025년 기준 국내 핀테크 시장 규모는 약 50조 원으로 추정되며, 매년 15% 이상의 고성장을 기록 중입니다. 카카오페이와 카카오뱅크는 이 시장에서 최상위 기업으로, 거래량과 사용자 수에서 지속적인 성장을 이루고 있습니다.</p>
+                    <p>결제 수단의 다양화, 금융 포용성 증대, 글로벌 송금 수요 증가 등이 성장 동인입니다. 카카오페이는 한국뿐 아니라 태국 등 동남아 지역으로도 확장하여 글로벌 성장 기반을 조성하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-film"></i> 디지털 콘텐츠 및 게임 시장</h3>
+                    <p>한국의 디지털 콘텐츠 시장은 2025년 약 12조 원 규모로 추정되며, 게임, 웹툰, 영상 등이 핵심 성장 영역입니다. 카카오엔터테인먼트는 웹툰, 웹소설 플랫폼(카카오페이지 등)에서 국내 최대 점유율을 차지했습니다.</p>
+                    <p>카카오게임즈는 모바일 게임 개발 및 퍼블리싱에서 주요 기업으로, 글로벌 게임 시장 진출을 적극 추진 중입니다. AI를 활용한 게임 개발, 창작자 지원 프로그램 등을 통해 시장 리더십을 강화하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i> AI 시장의 폭발적 성장과 카카오의 기회</h3>
+                <p>전 세계 AI 시장은 2025년 약 600억 달러에서 2030년 1,500억 달러 이상으로 성장할 것으로 예상됩니다. 이는 매년 25% 이상의 고성장 추세입니다. 한국 AI 시장도 매년 20% 이상 성장하고 있으며, 기업용 AI 서비스, 엔터프라이즈 AI 솔루션, AI 모델 개발 등이 주요 성장 영역입니다.</p>
+                <p>카카오는 자체 AI 모델 카나나를 통해 이 거대한 시장에 직접 참여하고 있습니다. B2B 기업 서비스, B2C 소비자 서비스, B2B2C 플랫폼 기반 AI 서비스 등 다양한 수익화 모델을 개발하고 있습니다. AI 기술의 빠른 발전과 국내 규제 완화로 인해 카카오의 AI 사업 성장 가능성은 매우 높은 상태입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-taxi"></i> 모빌리티 및 로지스틱 시장</h3>
+                <p>카카오모빌리티는 택시 호출(카카오택시), 배달(배민, 요기요 통합), 주차(카카오T주차) 등 모빌리티 전반을 아우르는 플랫폼입니다. 한국의 모빌리티 시장은 2025년 약 8조 원 규모이며, 배달 시장의 성장이 특히 주목됩니다.</p>
+                <p>코로나 이후 온라인 배달 문화의 확산으로 배달 시장이 급성장했으며, 현재는 마진율 개선과 수익성 강화가 주요 과제입니다. AI를 활용한 배송 최적화, 동료 배치 효율화, 고객 만족도 개선 등을 통해 수익성을 높이는 전략을 추진 중입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> <span>주요 경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 경쟁 환경 개요</h3>
+                <p>카카오는 한국의 인터넷 플랫폼 시장에서 네이버와 양대 축을 이루며 경쟁하고 있습니다. 또한 글로벌 기업들(구글, 메타, 아마존 등)의 진출, 국내 스타트업의 도전, 특정 영역 전문 기업들(토스, 쿠팡 등)과의 경쟁도 심화되고 있습니다. 각 영역별 주요 경쟁사는 다음과 같습니다.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>경쟁 영역</th>
+                        <th>주요 경쟁사</th>
+                        <th>카카오의 경쟁 우위</th>
+                        <th>도전 과제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>메신저/커뮤니케이션</strong></td>
+                        <td>네이버라인, 밴드, WhatsApp</td>
+                        <td>압도적 사용자 기반(4,800만), AI 통합, 오픈 플랫폼</td>
+                        <td>기존 사용자 확보 어려움, 글로벌 경쟁</td>
+                    </tr>
+                    <tr>
+                        <td><strong>검색/포털</strong></td>
+                        <td>네이버, 구글</td>
+                        <td>통합 생태계 연동, 카카오톡 기반 배분</td>
+                        <td>검색 기술 격차, 글로벌 경쟁력 부족</td>
+                    </tr>
+                    <tr>
+                        <td><strong>결제/금융</strong></td>
+                        <td>네이버페이, 삼성페이, 토스, 토스뱅크</td>
+                        <td>카카오톡 기반 사용자 확보, 통합 금융 서비스</td>
+                        <td>토스의 공격적 성장, 기존 금융권 진출</td>
+                    </tr>
+                    <tr>
+                        <td><strong>배달/커머스</strong></td>
+                        <td>배달의민족(우아한형제들), 쿠팡, 마켓컬리</td>
+                        <td>배민 통합으로 시장 점유율 1위, 통합 플랫폼</td>
+                        <td>배민 수익성 개선 필요, 쿠팡과의 경쟁 심화</td>
+                    </tr>
+                    <tr>
+                        <td><strong>웹툰/콘텐츠</strong></td>
+                        <td>네이버 웹툰, 레진코믹스, 글로벌 OTT</td>
+                        <td>카카오페이지의 웹툰/소설 기반, 글로벌 확장</td>
+                        <td>네이버의 강력한 콘텐츠 기반, 글로벌 경쟁</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI 서비스</strong></td>
+                        <td>네이버 하이퍼클로바, 구글 GeminiAI, OpenAI ChatGPT</td>
+                        <td>카나나 LLM, 한국어 최적화, 카카오톡 통합</td>
+                        <td>글로벌 AI 기업과의 기술 격차, 빠른 기술 발전</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3><i class="fas fa-city"></i> 네이버와의 경쟁 분석</h3>
+                <p>네이버는 한국의 포털 검색, 콘텐츠 플랫폼(웹툰, 쇼핑 등)에서 카카오보다 더 강한 위치를 차지하고 있습니다. 특히 검색 엔진과 콘텐츠 기반의 광고 수익에서 네이버가 우위입니다. 다만 메신저(라인) 사용자는 카카오톡에 비해 현저히 낮으며, 금융 서비스 진출도 카카오보다 늦었습니다.</p>
+                <p>카카오의 장점은 압도적 메신저 기반과 이를 통한 통합 플랫폼 전략입니다. 반면 네이버는 검색과 콘텐츠 기반의 다양한 수익 모델을 갖고 있습니다. 양사 모두 AI 기술 개발에 적극적이며, 향후 AI 기반 서비스 경쟁이 심화될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 구글코리아</h3>
+                    <p>구글은 검색, 클라우드, AI(Gemini) 등에서 압도적 기술력을 보유했습니다. 한국 시장에서의 점유율은 제한적이지만, AI 기술 측면에서 카카오의 강력한 경쟁자입니다. 특히 B2B 클라우드와 AI 서비스에서 구글의 경쟁력이 높습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-credit-card"></i> 토스</h3>
+                    <p>토스는 금융 기술에 특화된 핀테크 기업으로, 결제, 송금, 투자 등을 통합 서비스합니다. 토스뱅크 출범으로 은행권 진출을 완료했습니다. 카카오페이와의 직접 경쟁이 가장 심한 기업이며, 사용자 경험 측면에서 높은 평가를 받고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-box"></i> 쿠팡</h3>
+                    <p>쿠팡은 전자상거래, 배송, 구독 서비스에 특화된 기업입니다. 빠른 배송(쿠팡 로켓배송)과 강력한 물류 기반이 특징입니다. 카카오모빌리티와의 배달 시장 경쟁이 심화되고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>카카오의 경쟁 전략: SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>압도적 메신저 기반: 국민 메신저 카카오톡의 4,800만 MAU</li>
+                        <li>통합 플랫폼 전략: 메신저, 금융, 배달, 콘텐츠를 연결한 슈퍼앱</li>
+                        <li>광대한 사용자 데이터: AI 모델 학습과 개선를 위한 거대 데이터셋</li>
+                        <li>자체 AI 모델: 카나나의 한국어 최적화 기술</li>
+                        <li>강력한 핀테크 기반: 카카오페이와 카카오뱅크의 시장 리더십</li>
+                        <li>높은 브랜드 신뢰도: 한국인의 일상과 밀접한 기업 이미지</li>
+                        <li>다양한 수익원: 광고, 결제 수수료, 구독료, 거래 수수료 등</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>규제 리스크: 플랫폼 독과점에 대한 정부 규제 강화</li>
+                        <li>배민 수익성: 배달 부문의 낮은 마진율 및 가격 경쟁</li>
+                        <li>AI 기술 격차: 글로벌 AI 기업(OpenAI, Google)과의 기술 수준 차이</li>
+                        <li>글로벌 경쟁력 부족: 카카오톡의 국내 중심 사용자</li>
+                        <li>콘텐츠 기반의 약화: 네이버 대비 검색과 콘텐츠 기반 부족</li>
+                        <li>계열사 간 갈등: 배민, 카카오게임즈 등 계열사와의 통합 어려움</li>
+                        <li>변화하는 사용자 선호도: MZ세대의 플랫폼 다양화</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>AI 시장의 폭발적 성장: 카나나 기반 B2B/B2C 서비스 확대</li>
+                        <li>금융 포용성 확대: 금융 미접근층을 위한 핀테크 성장</li>
+                        <li>동남아 시장 진출: 카카오페이의 태국 등 해외 확장</li>
+                        <li>메타버스/Web3: 클레이튼 블록체인 기반 새로운 경제권 형성</li>
+                        <li>글로벌 게임 시장: 카카오게임즈의 국제 게임 개발/퍼블리싱</li>
+                        <li>엔터프라이즈 AI 솔루션: 기업용 AI 서비스의 급속한 성장</li>
+                        <li>음성/비디오 커머스: 라이브 스트리밍 기반 신개념 쇼핑</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>정부 규제 강화: 플랫폼 독과점 규제, 데이터 보호 규제</li>
+                        <li>경쟁 기업의 성장: 토스, 쿠팡 등 신흥 플랫폼의 공격적 성장</li>
+                        <li>글로벌 기업의 한국 시장 진출: Google, Meta의 한국 시장 공략</li>
+                        <li>기술 변화의 빠른 속도: AI 기술의 급속한 진화에 따른 대응 압박</li>
+                        <li>사용자 이탈: 메신저 시장의 포화와 사용자 선호도 변화</li>
+                        <li>글로벌 경제 불확실성: 환율 변동, 글로벌 경기 침체</li>
+                        <li>사이버 보안 위험: 대규모 사용자 데이터에 대한 보안 위협</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>카카오의 미래 경영 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> AI 기술 혁신과 '카나나' 중심 전략</h3>
+                <p>카카오의 가장 중요한 전략은 AI 기술 기반의 디지털 전환입니다. 자체 개발한 대규모 언어 모델(LLM) 카나나를 카카오톡 플랫폼에 통합하여 사용자 경험을 혁신하고 있습니다. AI를 통해 개인화된 추천, 자동화된 고객 서비스, 창의적인 콘텐츠 생성 등을 제공함으로써 플랫폼의 부가가치를 높이는 것이 목표입니다.</p>
+                <p>또한 B2B 기업 고객을 대상으로 카나나 기반 AI 솔루션을 제공하여 새로운 수익원을 창출하려고 합니다. 기업의 고객 관리, 데이터 분석, 업무 자동화 등에 AI를 활용하는 'Enterprise AI' 시장에서의 위치 강화를 추진 중입니다. 이는 카카오의 2026년 이후 주요 성장 동인이 될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-store"></i> 톡비즈(Talk Biz) 수익화 및 커머스 강화</h3>
+                <p>톡비즈는 중소 상인과 사업가를 위한 카카오톡 기반 온라인 쇼핑몰 플랫폼입니다. 개인 사업자부터 소규모 기업까지 쉽게 카카오톡 내에서 상품을 판매할 수 있는 환경을 제공합니다. 카나나 AI 기술과 결합하면, 상품 추천, 가격 책정 최적화, 고객 맞춤형 마케팅 등을 자동화할 수 있습니다.</p>
+                <p>톡비즈의 확대는 카카오톡의 4,800만 사용자를 직접 상업화하는 전략입니다. 거래 수수료, 광고비, 구독료 등 다양한 수익 모델을 통해 카카오의 매출 성장을 가속화할 수 있습니다. 또한 중소 상인들의 디지털 전환을 지원함으로써 사회적 가치 창출도 함께 달성할 수 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-sitemap"></i> 계열사 구조 조정 및 시너지</h3>
+                    <p>카카오는 다양한 계열사(배민, 카카오게임즈, 카카오엔터테인먼트, 카카오페이, 카카오뱅크 등)를 보유하고 있습니다. 이들 계열사 간의 시너지를 극대화하는 것이 중요한 전략입니다. 예를 들어, 카카오톡과 배민의 통합, 카카오페이와 전자상거래의 결합, 게임과 스트리밍 콘텐츠의 연계 등을 통해 통합 생태계를 강화하려고 합니다.</p>
+                    <p>동시에 각 계열사의 독립성과 자율성을 존중하면서도 그룹 차원의 전략적 목표를 추구해야 합니다. 배민의 수익성 개선, 카카오게임즈의 글로벌 게임 개발, 콘텐츠 기업의 IP 활용 등이 우선 과제입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 글로벌 콘텐츠 및 게임 확장</h3>
+                    <p>카카오엔터테인먼트와 카카오게임즈의 글로벌 진출은 중요한 성장 전략입니다. 한국 웹툰, 게임, 드라마 등의 콘텐츠는 글로벌 수요가 증가하고 있습니다. Netflix, YouTube, 국제 게임 플랫폼 등을 통해 한국 콘텐츠를 전 세계에 판매하는 것이 목표입니다.</p>
+                    <p>특히 일본, 동남아, 중동 시장에서의 성장 기회가 크다고 평가되고 있습니다. AI를 활용한 콘텐츠 추천, 자동 자막 생성, 현지화 등을 통해 글로벌 시장 진입을 가속화할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 광고 비즈니스 다각화 및 강화</h3>
+                <p>카카오톡의 4,800만 사용자는 광고 수익화의 거대한 기반입니다. 현재 카카오톡 피드 광고, 검색 광고, 스토리 광고 등을 운영하고 있으며, AI를 통한 타겟팅 개선과 광고 효율성 증대를 추진 중입니다.</p>
+                <p>또한 카카오톡 내 기업 계정(Business Account)의 활성화, 챗봇 기반 광고(Conversational Ads), AI 기반 개인화 광고 등 새로운 광고 형식을 개발하고 있습니다. 이는 중소 기업의 마케팅 수요와 대기업의 광고 예산을 동시에 수취할 수 있는 전략입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> <span>재무 현황 및 성장 추이</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 최근 5년 매출 추이 및 분석</h3>
+                <p>카카오의 매출은 2021년 5.4조 원에서 2025년 8.1조 원으로 지난 5년간 연평균 10.7%의 성장률을 기록했습니다. 2025년에는 역대 최대 매출인 8조 991억 원을 달성했으며, 8조 원 고지를 처음으로 돌파했습니다. 이는 배민 통합으로 인한 배달 부문의 성장, 핀테크 사업 확대, AI 서비스 본격화 등이 주요 드라이버입니다.</p>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">최근 5년 연간 매출 추이 (억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 55%;"></div>
+                            </div>
+                            <div class="bar-value">54,000</div>
+                            <div class="bar-label">2021년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 65%;"></div>
+                            </div>
+                            <div class="bar-value">63,300</div>
+                            <div class="bar-label">2022년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 72%;"></div>
+                            </div>
+                            <div class="bar-value">71,500</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 78%;"></div>
+                            </div>
+                            <div class="bar-value">78,200</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">80,991</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 영업이익 및 수익성 개선</h3>
+                <p>카카오의 2025년 영업이익은 7,320억 원으로, 2024년 4,930억 원 대비 48% 증가했습니다. 이는 매출 성장보다 더 빠른 속도로 수익성이 개선되고 있음을 의미합니다. 주요 수익성 개선 요인은 다음과 같습니다.</p>
+                <ul>
+                    <li><strong>배민 효율화:</strong> 배달 부문의 거래량 증가 및 마진율 개선</li>
+                    <li><strong>고수익 사업 비중 확대:</strong> 광고, 금융, AI 등 고마진 사업의 비중 증가</li>
+                    <li><strong>스케일 효과:</strong> 매출 증가에 따른 고정비 분산 효과</li>
+                    <li><strong>AI 서비스 수익화:</strong> 카나나 기반 유료 서비스 시작</li>
+                    <li><strong>구독 서비스 강화:</strong> 광고 제거, 프리미엄 기능 등 구독료 수익 증대</li>
+                </ul>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">최근 3년 영업이익 추이 (억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 45%;"></div>
+                            </div>
+                            <div class="bar-value">2,860</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 67%;"></div>
+                            </div>
+                            <div class="bar-value">4,930</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">7,320</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wallet"></i> 사업 부문별 매출 구성</h3>
+                    <p><strong>플랫폼 및 커뮤니케이션(40%):</strong> 카카오톡, AI, 광고 등 핵심 플랫폼 수익</p>
+                    <p><strong>배달 및 모빌리티(35%):</strong> 배민, 카카오택시 등 O2O 서비스</p>
+                    <p><strong>금융(15%):</strong> 카카오페이, 카카오뱅크 등 핀테크 사업</p>
+                    <p><strong>콘텐츠 및 엔터(10%):</strong> 게임, 웹툰, 스트리밍 등</p>
+                    <p>향후 AI 및 금융 부문의 비중이 확대될 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-percent"></i> 영업이익률 및 효율성</h3>
+                    <p>2025년 영업이익률은 9.0%로, 2024년 6.3% 대비 2.7%포인트 개선됐습니다. 이는 카카오가 규모의 경제를 실현하고 고수익 사업의 비중을 높이고 있음을 보여줍니다.</p>
+                    <p>향후 AI 서비스의 확대, 배민 효율화 지속, 금융 수익 확대 등을 통해 영업이익률을 10% 초반 수준까지 높일 수 있을 것으로 예상됩니다. 이는 글로벌 IT 플랫폼 기업들(Meta 10-12%, Google 20-25%) 수준과 비교했을 때 여전히 개선 여지가 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 재무 상태 및 자본 구조</h3>
+                <p>카카오의 재무 상태는 건전합니다. 2025년 기준 순자산은 약 4조 원으로, 자본금 대비 강한 수익성을 보유하고 있습니다. 부채 수준은 적절하게 관리되고 있으며, 주요 차입금은 배민 인수 및 해외 투자에 따른 것입니다.</p>
+                <p>현금 흐름은 양호하며, 운영 활동으로 인한 현금 창출이 안정적입니다. 이는 배당금 지급, 추가 투자, 자사주 매입 등 주주 환원 활동을 지속할 수 있는 기반을 제공합니다. 향후 AI 및 글로벌 사업에 대한 투자 확대가 예상되며, 이를 위한 충분한 재정 여유가 있는 상황입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 6.5: NEWS -->
+        <section id="news">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> <span>최근 뉴스 및 이슈</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-user-tie"></i>정신아 대표 연임 확정 및 AI 사업 가속 (2026.04.11)</h3>
+                <p><strong>대표 연임:</strong> 정신아 카카오 대표가 연임을 확정하고, 2026년 연간 연결 매출액 10% 이상 성장과 영업이익률 10% 달성을 목표로 설정했습니다. 카카오톡을 중심으로 AI로 재편된 핵심 사업 전략을 속도감 있게 추진할 계획입니다.</p>
+                <p><strong>에이전틱 AI 생태계:</strong> 전 국민이 매일 접할 수 있는 카카오만의 차별화된 에이전틱(Agentic) AI 생태계를 구축할 계획이며, 카카오페이는 소상공인 상생 캠페인 '오래오래 함께가게'의 규모를 전년 60개사에서 100개사로 67% 확대했습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 2026년 주요 경영 이슈</h3>
+                <p><strong>CEO 정신아 연임으로 경영 안정성 확보:</strong> CEO 정신아가 2028년까지 추가 2년간의 임기를 위해 재선임되었습니다. 이는 카카오의 AI 중심 경영 전략과 글로벌 확장 계획이 지속될 것을 의미하며, 투자자들에게 경영 안정성과 중장기 비전의 연속성을 보장합니다.</p>
+                <p><strong>카카오페이 SME 지원 프로그램 확대:</strong> "함께가게(Together Shop)" 프로그램을 통해 중소상인 지원을 본격화하고 있습니다. 기존 60개에서 100개 브랜드 파트너십으로 확대하여, 중소 상인의 디지털 전환과 매출 증대를 지원하는 사회적 기여 활동을 강화하고 있습니다.</p>
+                <p><strong>2026년 경영 목표 상향:</strong> 카카오는 2026년 매출 성장 10% 이상, 영업이익률 10% 달성을 목표로 설정했습니다. 이는 AI 기반 사업 수익화, 배민 효율성 개선, 비이자수익 확대를 통한 본격적인 수익 성장 단계 진입을 의미합니다.</p>
+                <p><strong>AI 중심 비즈니스 전환 가속화:</strong> 카카오톡 플랫폼을 중심으로 한 AI 기반 서비스 고도화가 진행 중입니다. 카나나 AI 모델의 고도화, 엔터프라이즈 AI 솔루션 수익화, 개인맞춤형 AI 서비스 확대 등을 통해 AI 시대의 진정한 수익화를 추진하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-book-open"></i> 종합 평가</h3>
+                <p>카카오는 한국의 가장 강력한 인터넷 플랫폼 기업으로서, AI 시대로의 전환을 성공적으로 추진 중입니다. 국민 메신저 카카오톡의 4,800만 사용자 기반과 자체 개발한 AI 모델 카나나는 카카오의 핵심 경쟁 자산입니다. 2025년 8조 원의 매출 달성과 48% 증가한 영업이익은 카카오의 성장 모멘텀이 지속되고 있음을 증명합니다.</p>
+                <p>카카오는 현재 세 가지 주요 전환기에 있습니다. 첫째, AI 기술 기반의 플랫폼 고도화 단계입니다. 카나나를 통해 사용자 경험을 혁신하고 B2B 기업 고객을 확보하는 것이 주요 과제입니다. 둘째, 배민 효율화를 통한 수익성 개선 단계입니다. 배달 시장의 성숙화와 경쟁 심화 속에서 배민의 마진율을 높이는 것이 중요합니다. 셋째, 글로벌 콘텐츠 및 금융 서비스 확장입니다. 국내 시장의 포화 속에서 해외 시장 진출이 필수적입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 주요 기회 및 리스크</h3>
+                <p><strong>주요 기회:</strong></p>
+                <ul>
+                    <li>AI 시장의 폭발적 성장 (연 25% 이상): 카나나 기반 B2B/B2C 서비스 수익화 가능</li>
+                    <li>금융 시장의 확대: 카카오페이/뱅크의 지속적 성장 및 해외 확장</li>
+                    <li>동남아 시장 진출: 카카오페이의 태국 등 신흥 시장 성장</li>
+                    <li>톡비즈 본격화: 중소 상인을 위한 AI 기반 커머스 플랫폼으로 수익화</li>
+                    <li>글로벌 콘텐츠 수요: 한류 콘텐츠의 지속적 인기로 콘텐츠 사업 성장</li>
+                </ul>
+                <p><strong>주요 리스크:</strong></p>
+                <ul>
+                    <li>규제 강화: 플랫폼 독과점, 데이터 보호, 금융 규제 등 정부 규제 위험</li>
+                    <li>경쟁 심화: 토스, 쿠팡, 네이버 등 기업의 공격적 경쟁</li>
+                    <li>배민 수익성: 배달 시장의 마진율 개선 실패 시 성장성 제약</li>
+                    <li>AI 기술 격차: 글로벌 AI 기업과의 기술 수준 차이 지속</li>
+                    <li>사용자 포화: 메신저 시장의 포화와 신규 사용자 확보 어려움</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 긍정적 (Positive)</strong></p>
+                <p>카카오는 중기적으로 긍정적인 성장 전망을 갖고 있습니다. AI 기술의 조기 확보, 강력한 플랫폼 기반, 수익성 개선 추세 등이 긍정 요인입니다. 다만 단기적으로는 규제 리스크, 배민 수익성, 경쟁 심화 등의 불확실성이 존재합니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>중기(1-3년) 성장 투자자:</strong> AI 기술 발전과 금융 사업 확대에 베팅하는 투자자</li>
+                    <li><strong>배당 투자자:</strong> 안정적 현금 흐름과 배당 성장을 원하는 투자자</li>
+                    <li><strong>테크 성장 투자자:</strong> 플랫폼 경제와 AI 혁신에 투자하는 투자자</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간(Medium) - 강력한 기반이 있지만 규제 리스크와 경쟁 리스크는 관리 필요</p>
+                <p><strong>목표주가 전망:</strong> 2026년 말 기준 현재 주가 대비 15-25% 상승 기대</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>카나나 기반 엔터프라이즈 AI 수익화 현황</li>
+                    <li>배민 영업이익 개선율 추이</li>
+                    <li>톡비즈 월간 거래액 및 수익 성장률</li>
+                    <li>카카오페이/뱅크의 해외 확장 진전</li>
+                    <li>정부 규제 정책 변화 및 영향도</li>
+                </ul>
+                <p>카카오가 AI 시대의 진정한 수익화에 성공하고 배민의 수익성을 개선하며 글로벌 사업을 확대할 수 있다면, 국내뿐 아니라 글로벌 IT 플랫폼 기업으로서의 위상 강화가 가능할 것입니다. 향후 카카오의 AI 및 금융 사업 성장이 주가 상승을 견인할 것으로 전망됩니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 1일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH AI Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>카카오 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>카카오 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 카카오 Investor Relations 공개 정보</li>
+                    <li>IDC, Gartner, CounterPoint Research 등 글로벌 시장 조사 기관 리포트</li>
+                    <li>한국통신사업자연합회 및 한국인터넷진흥원 통계</li>
+                    <li>OpenAI, Google DeepMind, Meta AI 등 글로벌 AI 기업 기술 리포트</li>
+                    <li>배민, 카카오페이, 카카오뱅크 등 계열사 공시 자료</li>
+                    <li>네이버, 토스, 쿠팡 등 경쟁사 공시 자료</li>
+                    <li>국내외 주요 금융기관 및 증권사 리서치 리포트</li>
+                    <li>AI 및 핀테크 분야 학술 논문 및 업계 리포트</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 최종 업데이트: 2026년 4월 2일 00:03 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 11일 11:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

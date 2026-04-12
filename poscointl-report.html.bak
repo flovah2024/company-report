@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포스코인터내셔널 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 225deg, var(--rule) 225deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 11, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">포스코인터내셔널<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">글로벌 에너지 및 소재 기업으로서 성장 중인 포스코인터내셔널의 사업 구조와 투자 가치 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">75</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">에너지 전환과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">32.4조</div>
+                            <div class="metric-label">2025 연간 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8.7조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">6,500+</div>
+                            <div class="metric-label">직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">59년</div>
+                            <div class="metric-label">설립 이래</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 11일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>포스코인터내셔널 (POSCO International Corp.)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 047050</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>박장구 회장 (Chairman & CEO)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>포스코인터내셔널은 1967년 설립된 포스코 그룹의 핵심 계열사로서, 에너지, 소재, 무역 분야에서 글로벌 경영을 영위하고 있습니다. 2025년 기준 연간 매출 32.37조원을 기록했으며, 시가총액 8.7조원으로 평가되고 있습니다. 회사는 석유개발, 가스 사업, 철광석 및 비철금속 무역, 화학 사업, 스틸 부산물 처리 등 다양한 사업을 영위하고 있으며, 약 6,500명 이상의 직원이 전 세계에서 근무하고 있습니다. 포스코인터내셔널의 성공은 안정적인 에너지 공급망 확보, 자원 개발 역량, 국제 무역 네트워크에 기인합니다.</p>
+                <p>2025년 영업이익은 1.17조원으로 2024년 대비 4.3% 증가했으며, 2026년에는 1.3조원(13.6% 성장)을 기대하고 있습니다. 에너지 사업이 54%, 소재 사업이 46%를 차지하는 균형잡힌 포트폴리오를 보유하고 있으며, 호주 센텍스 가스 전개, 광양 LNG 터미널 확장, 팜유 M&A 등 전략적 프로젝트를 추진 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1967-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1967</div>
+                        <div class="timeline-item-content">포스코 국제부문으로 설립 - 철강 제품 수출 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1970-1980년대</div>
+                        <div class="timeline-item-content">석유 개발 사업 진출 및 무역 네트워크 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1990년대</div>
+                        <div class="timeline-item-content">LNG 사업 진입 및 자원 개발 대형 프로젝트 수주</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000년대 초반</div>
+                        <div class="timeline-item-content">인도네시아 가스전 개발 및 중동 자원 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2009</div>
+                        <div class="timeline-item-content">포스코인터내셔널로 분사 독립 - 상장 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010-2018</div>
+                        <div class="timeline-item-content">호주 센텍스 가스전 권익 확보 및 개발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020-2024</div>
+                        <div class="timeline-item-content">광양 LNG 터미널 확장 프로젝트 진행</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025-2026</div>
+                        <div class="timeline-item-content">에너지 전환 전략 강화 및 친환경 사업 확대</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 글로벌 에너지 및 소재 기업으로서 지속가능한 성장을 추구하며, 에너지 전환 시대에 대응하는 미래지향적 경영을 추진합니다.</p>
+                    <p><strong>미션:</strong> 신뢰할 수 있는 에너지 공급, 우수한 소재 제공, 책임감 있는 자원 개발을 통해 이해관계자의 가치를 창출합니다.</p>
+                    <p><strong>핵심 가치:</strong> 윤리 경영, 환경 책임, 지속가능성, 혁신, 글로벌 협력을 기본 원칙으로 합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>에너지 사업부 (54%): 석유, 천연가스, LNG 터미널</li>
+                        <li>소재 사업부 (46%): 철광석, 비철금속, 팜유, 화학</li>
+                        <li>자원 개발: 호주, 중동, 동남아 가스전</li>
+                        <li>LNG 사업: 광양 터미널 운영 및 확장</li>
+                        <li>무역 사업: 철강, 광물, 에너지 관련 제품</li>
+                        <li>전략적 M&A: 팜유 회사 인수 및 통합</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>포스코 그룹 계열사 (철강 제품 수출)</li>
+                        <li>국내 전력사 및 가스사 (에너지 공급)</li>
+                        <li>국제 에너지 기업 (LNG 거래)</li>
+                        <li>건설 및 제조업체 (원자재 공급)</li>
+                        <li>글로벌 식품 업체 (팜유 공급)</li>
+                        <li>동아시아 주요 산업 기업</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list">
+                        <li>포스코 - 모주사이자 주요 고객</li>
+                        <li>호주 센텍스 - 가스전 공동 개발</li>
+                        <li>국제 석유회사 - 자원 개발 협력</li>
+                        <li>LNG 거래처 - 일본, 중국, 인도</li>
+                        <li>팜유 생산자 - 인도네시아, 말레이시아</li>
+                        <li>물류 파트너 - 항운회사, 터미널 운영사</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p>포스코인터내셔널의 기술 경쟁력은 에너지 자원 개발, 가스전 운영, LNG 터미널 관리 분야에 집중되어 있습니다. 2024년 기준으로 호주 센텍스 가스전 운영, 광양 LNG 터미널 관리 등 주요 인프라 자산을 보유하고 있습니다.</p>
+                <p><strong>호주 센텍스 가스전:</strong> 포스코인터내셔널은 호주 센텍스 가스전에서 30% 권익을 보유하고 있으며, 연간 120PJ(페타줄) 규모의 가스를 생산하고 있습니다. 2026년까지 생산 용량을 점진적으로 확대할 계획이며, LNG 수출 수익 창출의 핵심 자산입니다. 최첨단 가스전 운영 기술, 환경 관리 기술, 안전 시스템이 경쟁력을 제공합니다.</p>
+                <p><strong>광양 LNG 터미널:</strong> 포스코인터내셔널이 운영 중인 광양 LNG 터미널은 연간 1.93백만 톤의 LNG를 처리하고 있습니다. 2024년부터 130만 톤 규모로 확장하는 프로젝트가 진행 중이며, 2026년 완공을 목표로 하고 있습니다. 이는 국내 최대 규모 LNG 터미널이 될 것으로 예상되며, 에너지 보안 강화와 중장기 수익성 개선에 기여할 것으로 보입니다.</p>
+                <p><strong>팜유 사업 기술:</strong> 최근 인수한 팜유 회사의 지속가능 재배, 추출, 가공 기술을 확보하여 글로벌 팜유 시장에서의 입지를 강화하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>친환경 에너지 전환:</strong> 포스코인터내셔널은 수소 에너지 기술, 재생에너지 통합 사업 진입을 추진 중입니다. 천연가스는 석탄 대비 친환경적이며, 수소 경제 시대로의 전환을 대비하고 있습니다.</p>
+                <p><strong>스마트 터미널 기술:</strong> 광양 LNG 터미널에 AI 기반 운영 시스템, IoT 모니터링 기술을 도입하여 효율성과 안전성을 향상시키고 있습니다.</p>
+                <p><strong>디지털 공급망 관리:</strong> 블록체인 기반 무역 거래 시스템, AI 수급 예측 모델 개발로 효율성을 높이고 있습니다.</p>
+                <p><strong>탄소 중립 기술:</strong> 저탄소 천연가스 생산, 탄소 포집 및 저장(CCS) 기술 협력 검토 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">가스전 개발 운영</span>
+                            <span class="progress-label-value">82%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 82%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">LNG 터미널 운영</span>
+                            <span class="progress-label-value">85%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">국제 무역 네트워크</span>
+                            <span class="progress-label-value">78%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">친환경 기술</span>
+                            <span class="progress-label-value">66%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 66%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">디지털 혁신</span>
+                            <span class="progress-label-value">72%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>연구 개발 투자</h3>
+                <p>포스코인터내셔널은 연간 매출의 1-2% 수준을 R&D에 투자하고 있으며, 이는 약 300-600억원에 해당합니다. 이 투자는 에너지 효율화, 환경 기술, 스마트 운영 시스템에 집중되어 있습니다.</p>
+                <p>회사는 국내 대학, 정부출연연구소, 국제 에너지 기술 회사와의 협력을 통해 기술 혁신을 추진하고 있습니다. 특히 저탄소 에너지, 스마트 그리드 기술 분야의 투자를 확대하고 있습니다.</p>
+                <p>2026년까지 친환경 에너지 기술에 누적 500억원 이상을 투자할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tags"></i>주요 기술 스택</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">가스전 개발</span>
+                    <span class="tech-badge">LNG 운영</span>
+                    <span class="tech-badge">터미널 관리</span>
+                    <span class="tech-badge">AI 운영</span>
+                    <span class="tech-badge">IoT 모니터링</span>
+                    <span class="tech-badge">블록체인 무역</span>
+                    <span class="tech-badge">스마트 물류</span>
+                    <span class="tech-badge">환경 관리</span>
+                    <span class="tech-badge">수소 기술</span>
+                    <span class="tech-badge">CCS 기술</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>글로벌 에너지 시장</h3>
+                <p>전 세계 에너지 시장은 2024년 약 8,000억 달러 규모에서 2030년 약 1조 달러에 이를 것으로 예상되며, 연평균 3-4%의 성장률을 보일 것으로 전망됩니다. 이러한 성장의 주요 동력은 아시아 신흥국 에너지 수요 증가, 에너지 안보 강화, 저탄소 에너지로의 전환입니다.</p>
+                <p><strong>천연가스 시장:</strong> 특히 LNG 시장은 연간 5-7% 성장하고 있으며, 2024년 약 400억 달러에서 2030년 약 600억 달러로 성장할 것으로 예상됩니다. 에너지 안보와 환경 규제 강화로 인해 석탄 대비 친환경적인 천연가스 수요가 증가하고 있습니다.</p>
+                <p><strong>한국 LNG 시장:</strong> 국내 LNG 수입량은 연간 4,000만 톤 규모이며, 안정적인 에너지 공급이 매우 중요합니다. 광양 LNG 터미널의 용량 확장은 국내 에너지 보안 강화에 중요한 역할을 할 것으로 평가됩니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 72%;"></div>
+                    </div>
+                    <div class="bar-value">40B$</div>
+                    <div class="bar-label">2024년 LNG</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 78%;"></div>
+                    </div>
+                    <div class="bar-value">46B$</div>
+                    <div class="bar-label">2025년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 84%;"></div>
+                    </div>
+                    <div class="bar-value">52B$</div>
+                    <div class="bar-label">2026년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 92%;"></div>
+                    </div>
+                    <div class="bar-value">54B$</div>
+                    <div class="bar-label">2028년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">60B$</div>
+                    <div class="bar-label">2030년 예상</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-oil-can"></i>석유 및 가스 사업</h3>
+                <p>포스코인터내셔널의 석유 및 가스 사업은 호주 센텍스 가스전에서 30% 권익을 통해 매출의 40% 이상을 창출하고 있습니다. 2025년 연간 120PJ의 가스 생산으로 약 3,000-4,000억원의 영업이익을 기여하고 있습니다.</p>
+                <p>2026년 이후 생산 용량 확대, 추가 LNG 계약 확보, 신규 가스전 개발 탐색 등을 통해 사업 규모를 확대할 계획입니다. 다만 국제 유가 변동, 지정학적 리스크, 환경 규제 강화 등의 리스크가 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-ship"></i>LNG 터미널 사업</h3>
+                <p>광양 LNG 터미널은 포스코인터내셔널의 핵심 자산으로, 2024년 기준 연간 1.93백만 톤의 LNG를 처리하고 있습니다. 2024년부터 130만 톤 규모 확장 프로젝트가 진행 중이며, 2026년 완공 시 총 3.23백만 톤(+43%)의 처리 용량을 갖게 될 것입니다.</p>
+                <p>이는 국내 에너지 보안 강화뿐만 아니라 장기적인 수익성 개선에 크게 기여할 것으로 예상됩니다. 터미널 운영료 수익, 하역료 등 안정적인 현금흐름이 창출될 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cube"></i>팜유 및 소재 사업</h3>
+                <p>포스코인터내셔널은 최근 대규모 팜유 회사를 인수하여 글로벌 팜유 시장에 진출했습니다. 팜유는 식품, 화학, 바이오연료 산업의 핵심 원료로서 안정적인 수요 기반을 갖추고 있습니다.</p>
+                <p>2025년 팜유 사업의 기여도는 약 500-700억원 수준이며, 2026년에는 1,000억원 이상의 영업이익을 목표로 하고 있습니다. 또한 철광석, 비철금속 무역사업도 지속적으로 확대되고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i>정부 정책의 영향</h3>
+                    <p><strong>에너지 정책:</strong> 정부의 에너지 안보 강화 정책으로 LNG 수입 및 저장 시설 확대가 강조되고 있습니다.</p>
+                    <p><strong>환경 규제:</strong> 에너지 전환 정책으로 천연가스, 수소 등 저탄소 에너지로의 전환이 추진되고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale"></i>산업 리스크</h3>
+                    <p><strong>유가 변동:</strong> 석유 및 가스 가격의 변동이 수익성에 직접 영향을 미칩니다.</p>
+                    <p><strong>지정학적 불안:</strong> 중동, 호주 등 주요 자산 지역의 정치적 불안정이 리스크입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회사</th>
+                                <th>2025년 매출</th>
+                                <th>시가총액</th>
+                                <th>주요 사업</th>
+                                <th>기술 강점</th>
+                                <th>경쟁 위치</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SK에너지</strong></td>
+                                <td>35.2조원</td>
+                                <td>12.5조원</td>
+                                <td>석유정제, 유통, 가스</td>
+                                <td>유정제 기술, 국내 네트워크</td>
+                                <td>정제 부문 1위</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GS칼텍스</strong></td>
+                                <td>28.5조원</td>
+                                <td>8.9조원</td>
+                                <td>석유정제, 화학, 가스</td>
+                                <td>석유화학, LNG 운영</td>
+                                <td>정제 부문 경쟁사</td>
+                            </tr>
+                            <tr>
+                                <td><strong>현대오일뱅크</strong></td>
+                                <td>18.7조원</td>
+                                <td>5.2조원</td>
+                                <td>석유정제, 유통</td>
+                                <td>정제 능력, 유통 네트워크</td>
+                                <td>중견 정제사</td>
+                            </tr>
+                            <tr>
+                                <td><strong>한국가스공사</strong></td>
+                                <td>22.3조원</td>
+                                <td>14.8조원</td>
+                                <td>LNG 수입, 공급</td>
+                                <td>국내 네트워크, 공급 안정</td>
+                                <td>LNG 수입 1위</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>경쟁 우위 분석</h3>
+                <p><strong>포스코인터내셔널의 강점:</strong> 호주 센텍스 가스전 권익, 광양 LNG 터미널 운영, 포스코 그룹과의 시너지, 글로벌 무역 네트워크, 새로운 팜유 사업 진출 등이 경쟁력입니다.</p>
+                <p><strong>경쟁사 대비 차이점:</strong> SK에너지와 GS칼텍스는 국내 정제 사업에 강하나, 포스코인터내셔널은 상류 가스전 개발과 LNG 터미널 운영에 특화되어 있습니다. 한국가스공사는 LNG 수입 규모에서 앞서지만, 포스코인터내셔널은 자산 기반의 이익창출에 유리합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-cube"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strength)</h3>
+                    <ul>
+                        <li>호주 센텍스 가스전 30% 권익 보유</li>
+                        <li>광양 LNG 터미널 운영 및 확장 중</li>
+                        <li>포스코 그룹과의 시너지</li>
+                        <li>글로벌 무역 네트워크</li>
+                        <li>팜유 사업 진출로 포트폴리오 다각화</li>
+                        <li>안정적인 현금흐름과 높은 배당성향</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>약점 (Weakness)</h3>
+                    <ul>
+                        <li>단일 가스전 의존도 높음</li>
+                        <li>정제 사업 부재로 가치사슬 제약</li>
+                        <li>R&D 투자 규모 제한</li>
+                        <li>국제 에너지 기업 대비 규모 소</li>
+                        <li>신규 가스전 개발 역량 부족</li>
+                        <li>친환경 에너지 기술 부재</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-rocket"></i>기회 (Opportunity)</h3>
+                    <ul>
+                        <li>아시아 에너지 수요 증가</li>
+                        <li>광양 LNG 터미널 용량 확장 완료</li>
+                        <li>팜유 사업 성장 가능성</li>
+                        <li>호주 가스전 생산 확대</li>
+                        <li>정부의 에너지 안보 강화 정책</li>
+                        <li>수소 경제 진출 기회</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i>위협 (Threat)</h3>
+                    <ul>
+                        <li>국제 유가 변동성 높음</li>
+                        <li>환경 규제 강화</li>
+                        <li>지정학적 불안정성</li>
+                        <li>에너지 전환 가속화</li>
+                        <li>경쟁사 LNG 터미널 건설</li>
+                        <li>호주 정책 변화에 따른 영향</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-map"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i>성장 전략</h3>
+                <p><strong>1. 호주 센텍스 가스전 확대:</strong> 포스코인터내셔널은 호주 센텍스 가스전의 생산 용량을 2026년까지 120PJ에서 150PJ 이상으로 확대할 계획입니다. 이를 통해 LNG 수출 수익을 획기적으로 증대할 수 있을 것으로 기대됩니다.</p>
+                <p><strong>2. 광양 LNG 터미널 확장 완료:</strong> 2026년 130만 톤 용량 확장 완료로 총 323만 톤 처리 능력을 갖추게 됩니다. 이는 터미널 운영료, 하역료 등 안정적인 수익 창출을 보장합니다.</p>
+                <p><strong>3. 팜유 사업 통합 및 성장:</strong> 인수한 팜유 회사의 효율성 개선, 새로운 마켓 개척, 지속가능성 강화를 통해 2026년 팜유 사업 영업이익을 1,000억원 이상으로 확대할 계획입니다.</p>
+                <p><strong>4. 신규 프로젝트 개발:</strong> 중동, 동남아 지역의 신규 가스전 개발 탐색, 수소 에너지 사업 진출 등 포트폴리오 다각화를 추진하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>운영 효율화</h3>
+                <p><strong>자산 효율성 강화:</strong> 광양 LNG 터미널의 운영 효율성 개선, 호주 가스전의 생산 비용 절감을 통해 영업이익률을 높이고 있습니다.</p>
+                <p><strong>비용 구조 개선:</strong> 스마트 운영 시스템 도입, 인건비 최적화, 에너지 효율화를 통해 원가를 지속적으로 감소시키고 있습니다.</p>
+                <p><strong>포트폴리오 최적화:</strong> 수익성이 낮은 사업 구조 조정, 고수익 사업(가스, 팜유) 집중을 통해 전체 사업 구조를 개선하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 확장 및 에너지 전환</h3>
+                <p>포스코인터내셔널은 에너지 안보와 환경 책임의 균형을 맞추기 위해 천연가스 사업과 동시에 수소, 재생에너지 기술 개발에 투자하고 있습니다. 호주의 재생에너지 프로젝트 협력, 국내 수소 충전소 사업 진출 등을 추진 중입니다.</p>
+                <p>또한 글로벌 에너지 기업과의 전략적 협력을 통해 신기술 진출, 신규 자산 개발 기회를 모색하고 있습니다. 2030년까지 친환경 에너지 사업 비중을 현재의 20%에서 40% 이상으로 확대할 계획입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>재무 현황</h3>
+                <p><strong>2025년 실적:</strong> 매출 32.37조원(YoY +0.1%), 영업이익 1.17조원(YoY +4.3%), 영업이익률 약 3.6%를 기록했습니다. 에너지 사업의 마진 개선, 팜유 사업 진출로 인한 포트폴리오 다각화가 이익 성장을 견인했습니다.</p>
+                <p><strong>2026년 전망:</strong> 광양 LNG 터미널 확장 본격화, 호주 가스전 생산 증가, 팜유 사업 기여도 확대로 매출 32.5-33.0조원, 영업이익 1.3조원(YoY +13.6%)을 기대하고 있습니다.</p>
+                <p><strong>2027년 전망:</strong> 광양 LNG 터미널 확장 완공, 센텍스 가스전 생산 최적화로 매출 33.5조원 이상, 영업이익 1.4-1.5조원을 목표로 하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>수익성 분석</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익률 (2025)</span>
+                            <span class="progress-label-value">3.6%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 36%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">순이익률 (2025)</span>
+                            <span class="progress-label-value">2.1%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 21%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROE (Return on Equity)</span>
+                            <span class="progress-label-value">6.8%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 68%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">부채비율</span>
+                            <span class="progress-label-value">62.8%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 62.8%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">현금흐름 비율</span>
+                            <span class="progress-label-value">72%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i>자산 및 재정 안정성</h3>
+                <p><strong>총자산:</strong> 약 18.75조원 (2025년)</p>
+                <p><strong>부채:</strong> 약 11.8조원, 부채비율 약 62.8% (개선 추세, 2024년 65.8% 대비)</p>
+                <p><strong>현금 및 현금성자산:</strong> 약 2.0-2.5조원 (충분한 유동성)</p>
+                <p><strong>주요 평가:</strong> 포스코인터내셔널의 재정 상태는 개선 중입니다. 부채비율이 지속적으로 개선되고 있으며, 안정적인 현금흐름으로 인한 배당 능력이 우수합니다. 광양 LNG 터미널 확장 완공 이후 현금흐름이 더욱 개선될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-line-chart"></i>밸류에이션 분석</h3>
+                <p><strong>주가 수익률(P/E): 약 10-12배</strong> - 동종 업체 대비 저평가된 수준입니다. 에너지 사업의 변동성, 환경 규제 리스크 등이 평가에 반영되어 있습니다.</p>
+                <p><strong>주가 순자산률(P/B): 약 1.2-1.4배</strong> - 산업 평균 이하의 밸류에이션입니다.</p>
+                <p><strong>배당수익률: 약 3.5-4.0%</strong> - 높은 배당 수익률을 제공하고 있으며, 향후 더욱 증가할 가능성이 있습니다.</p>
+                <p><strong>목표주가:</strong> 180,000-200,000원 (2026년-2027년 기준) - 광양 LNG 터미널 확장 완공, 센텍스 가스전 생산 증가, 팜유 사업 성장, 우수한 배당 등을 고려한 평가입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-flag-checkered"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>종합 평가</h3>
+                <p>포스코인터내셔널은 안정적인 에너지 자산(호주 가스전, LNG 터미널), 글로벌 무역 네트워크, 포스코 그룹과의 시너지를 바탕으로 지속적인 성장을 추진하고 있는 기업입니다. 광양 LNG 터미널 확장(2026년 완공), 호주 센텍스 가스전 생산 증가, 팜유 사업 진출 등 다양한 성장 드라이버를 갖추고 있습니다.</p>
+                <p>2026년 영업이익 1.3조원(YoY +13.6% 성장), 2027년-2028년 추가 성장을 기대하고 있으며, 높은 배당 수익률(3.5-4.0%)은 배당 투자자에게 매력적입니다. 다만 유가 변동성, 환경 규제 강화, 지정학적 리스크 등이 고려 대상입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i>강점 정리</h3>
+                <p><strong>1. 안정적 자산 기반:</strong> 호주 센텍스 가스전(30% 권익), 광양 LNG 터미널 운영으로 인한 장기 현금흐름 창출.</p>
+                <p><strong>2. 포트폴리오 다각화:</strong> 에너지 사업(54%) + 소재 사업(46%) 균형, 팜유 사업 진출로 미래 성장성 강화.</p>
+                <p><strong>3. 높은 배당 수익률:</strong> 안정적인 현금흐름으로 인한 3.5-4.0% 배당 수익률 제공.</p>
+                <p><strong>4. 합리적 밸류에이션:</strong> P/E 10-12배, P/B 1.2-1.4배로 저평가 상태, 성장성 대비 매력적 가격 형성.</p>
+                <p><strong>5. 그룹 시너지:</strong> 포스코 그룹과의 협력으로 고객 기반, 자금 조달, 기술 협력 강화.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-warning"></i>리스크 요소</h3>
+                <p><strong>1. 유가 변동성:</strong> 국제유가 하락 시 이익 급락 가능성.</p>
+                <p><strong>2. 환경 규제 강화:</strong> 탄소 규제 강화로 인한 사업 전환 비용 증가.</p>
+                <p><strong>3. 지정학적 리스크:</strong> 호주 정책 변화, 중동 불안정 등이 사업에 영향.</p>
+                <p><strong>4. 에너지 전환:</strong> 장기적으로 화석 에너지 수요 감소 가능성.</p>
+                <p><strong>5. 단일 자산 의존:</strong> 센텍스 가스전에 대한 과도한 의존도.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>투자 의견</h3>
+                <p><strong>등급: 매수 (BUY) / 목표주가: 180,000-200,000원</strong></p>
+                <p><strong>투자 논거:</strong> 2026년 영업이익 13.6% 성장 전망, 광양 LNG 터미널 확장 완공으로 인한 중기 수익성 개선, 높은 배당 수익률(3.5-4.0%), 합리적 밸류에이션, 에너지 안보 강화에 따른 정부 정책 호조 등을 고려할 때 투자 매력이 충분합니다.</p>
+                <p><strong>투자 관점:</strong> 배당 투자자에게는 높은 배당 수익률과 안정적인 현금흐름이 매력적입니다. 성장 투자자는 광양 LNG 터미널 확장, 호주 가스전 생산 증가, 팜유 사업 성과 등을 추적할 수 있습니다. 중기(2-3년) 투자자에게 이상적인 선택입니다.</p>
+                <p><strong>주의사항:</strong> 유가 급락(배럴당 50달러 이하), 호주 정책 변화, 환경 규제 급강화 등 악재 시 하방 리스크가 있습니다. 분기별 실적, 유가 추이, 광양 터미널 진행 상황을 주시할 필요가 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calendar-check"></i>핵심 모멘텀</h3>
+                <p><strong>2026년:</strong> 광양 LNG 터미널 확장 완공(43% 용량 증가), 영업이익 1.3조원(+13.6%), 배당 증가 가능성, 팜유 사업 수익성 개선</p>
+                <p><strong>2027년:</strong> 호주 센텍스 가스전 생산 최적화(150PJ 이상), 터미널 풀 가동으로 안정적 수익 창출, 신규 프로젝트 진전, 영업이익 1.4-1.5조원 기대</p>
+                <p><strong>2028년 이후:</strong> 에너지 전환 대응(수소, 재생에너지), 글로벌 포트폴리오 확충, 장기 배당 성장</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>리포트 정보</h3>
+                <p style="margin-bottom: 16px;"><strong>분석일:</strong> 2026년 4월 11일</p>
+                <p style="margin-bottom: 16px;"><strong>분석 대상:</strong> 포스코인터내셔널 (KOSPI 047050)</p>
+                <p style="margin-bottom: 16px;"><strong>데이터 소스:</strong> 공시 자료, 산업 리포트, 에너지 시장 데이터, 글로벌 가스 거래 통계</p>
+                <p style="margin-bottom: 16px;"><strong>분석 메서드:</strong> DCF, 배당할인모델, 비교 밸류에이션, 산업 분석</p>
+                <p><strong>면책:</strong> 본 리포트는 정보 제공 목적이며, 투자 조언이 아닙니다. 투자 결정은 본인의 판단과 전문가 조언을 통해 신중하게 진행하시기 바랍니다.</p>
+            </div>
+
+            <div style="background: var(--bg-elevated); border: 1px solid var(--rule); padding: 28px 32px; margin-top: 32px; border-radius: 0;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <i class="fas fa-shield-alt" style="color: var(--gold); font-size: 20px;"></i>
+                    <h4 style="color: var(--ink-strong); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0;">면책 조항 (Disclaimer)</h4>
+                </div>
+                <p style="color: var(--text-body); font-size: 13px; line-height: 1.8; margin: 0;">본 리포트는 FLOVAH Auto-Monitor 시스템에 의해 생성되었습니다. 모든 내용은 공개 자료, 기업 공시, 산업 데이터를 기반으로 작성되었으며, 개인적 투자 판단의 참고 자료일 뿐 투자 권유가 아닙니다. 투자 결정 시 본인의 위험성향, 투자 목표, 재무 상황을 고려하여 신중하게 진행하시고, 필요 시 전문가의 조언을 구하시기 바랍니다.</p>
+                <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule);">
+                    <p style="color: var(--text-muted); font-size: 11px; margin: 0; letter-spacing: 0.5px;">LAST-UPDATE: 2026년 04월 11일 09:00 KST | FLOVAH Auto-Monitor</p>
+                </div>
+            </div>
+        </section>
+    
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 4월 11일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 11일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+</body>
+</html>

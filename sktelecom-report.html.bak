@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK텔레콤 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 198deg, var(--rule) 198deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+            align-items: flex-end;
+        }
+
+        .bar { position: relative; text-align: center; }
+
+        .bar-fill {
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-dim) 100%);
+            border-radius: 2px;
+            height: 180px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .two-column > .content-card {
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:nth-child(2) {
+            border-right: none;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .three-column > .content-card {
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:nth-child(3n) {
+            border-right: none;
+        }
+
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 12, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: OVERVIEW / HERO -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        SK텔레콤
+                        <span class="hero-title-highlight">기업 분석 리포트</span>
+                    </h1>
+                    <p class="hero-subtitle">국내 최대 이동통신 사업자의 AI 데이터센터 전환 전략 분석</p>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">16.5조</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">78,500</div>
+                    <div class="metric-label">주가 (원)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">17.5조</div>
+                    <div class="metric-label">2025 매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1.3조</div>
+                    <div class="metric-label">2025 영업이익</div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>설립 연도</h4>
+                        <p>1984년</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>SK텔레콤 (SK Telecom Co., Ltd.)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 017670</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>유영상 (CEO)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 2: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보</h3>
+                <p>SK텔레콤(SK Telecom Co., Ltd.)은 1984년 한국통신으로 설립되었으며, 현재 대한민국 최대 규모의 종합 통신 사업자입니다. KOSPI 상장(017670)을 통해 한국 통신업계의 대표 기업으로서의 위상을 확보했으며, 2025년 기준 약 17.5조원의 매출과 1.3조원의 영업이익을 기록했습니다(해킹 사고로 인한 일시적 영향 포함). SK텔레콤은 약 22,000명의 임직원을 보유한 대규모 통신 기업으로서, 서울 을지로 본사를 중심으로 국내 및 글로벌 시장에서 사업을 영위하고 있습니다. 최근 경영진 주도의 혁신 경영과 AI·데이터센터 사업으로의 전략적 전환이 회사의 미래 성장을 주도할 것으로 예상됩니다.</p>
+                <p>SK텔레콤의 핵심 경쟁력은 전국 최대 규모의 5G 인프라, 4,000만 이상의 가입자 기반, 그리고 T전화·에이닷 등의 프리미엄 AI 서비스입니다. 2025년은 해킹 사고로 인한 어려움을 겪었으나, 2026년부터 AI 데이터센터 매출이 본격 반영될 것으로 기대됩니다. SK텔레콤은 단순한 통신 사업자를 넘어 클라우드·AI 기반의 디지털 인프라 제공 기업으로의 변신을 추진 중이며, 이는 향후 3~5년 내 회사의 수익 구조와 성장성을 근본적으로 변화시킬 수 있는 전략입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-history"></i>회사 연혁</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1984년</div>
+                            <div class="timeline-item-content">한국통신 설립, 국내 전화 사업 개시</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">1997년</div>
+                            <div class="timeline-item-content">SK그룹에 인수, SK텔레콤으로 상호 변경</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2004년</div>
+                            <div class="timeline-item-content">T-전화 출시, 고정통신 통합 서비스 확대</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2011년</div>
+                            <div class="timeline-item-content">LTE 서비스 출시, 모바일 시장 선도</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2018년</div>
+                            <div class="timeline-item-content">T맵, T 바이크 등 ICT 서비스 확대</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2020년</div>
+                            <div class="timeline-item-content">5G 상용화, 글로벌 5G 리더 위상</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2023년</div>
+                            <div class="timeline-item-content">에이닷 AI 비서 출시, AI 서비스 본격화</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-item-year">2025년</div>
+                            <div class="timeline-item-content">AI 데이터센터 CAPEX 투자 가속, 초거대 AI 시장 진출</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-target"></i>비전 및 미션</h3>
+                    <p><strong>비전:</strong> AI와 네트워크로 연결하는 글로벌 디지털 인프라 회사</p>
+                    <p style="margin-top: 25px; margin-bottom: 15px;"><strong>미션:</strong></p>
+                    <ul class="content-list">
+                        <li>5G 및 클라우드 기반의 고속 통신 인프라 제공</li>
+                        <li>초거대 AI 모델 학습 및 추론 서비스 제공</li>
+                        <li>B2B 기업용 클라우드·AI 솔루션 확대</li>
+                        <li>고객 경험 개선을 위한 AI 기술 적극 활용</li>
+                        <li>지속가능한 디지털 생태계 구축</li>
+                    </ul>
+                    <p style="margin-top: 25px;">SK텔레콤의 2026년 경영 목표는 "AI 데이터센터 사업의 수익화"와 "B2B 클라우드 시장 점유율 확대"입니다. 기존의 안정적 통신 사업에 기반하여 초거대 AI 시장에 진출함으로써 차세대 성장 동력을 확보하려는 전략입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>사업 구조 및 세부 설명</h3>
+                <p>SK텔레콤의 사업은 크게 네 가지 핵심 부문으로 구성되어 있으며, 각각 상이한 특성과 성장 가능성을 보유하고 있습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">1) 이동통신(Mobile) 사업</strong></p>
+                    <p>SK텔레콤의 전통적 주력 사업으로, 2025년 기준 전체 매출의 약 45%를 차지합니다. 국내 약 4,000만 명 이상의 5G 가입자를 보유한 시장 최대 사업자이며, 고속 네트워크와 프리미엄 서비스 차별화로 높은 수익성을 유지하고 있습니다. 5G 시장 성숙도 상승에 따른 경쟁 심화로 가입자 증가 속도는 둔화되고 있으나, 기존 고객 기반의 안정적 현금 창출 능력은 여전히 우수합니다. 올해 초 개인정보 해킹 사고로 인한 일부 영향이 있었으나, 고객 신뢰도 회복과 서비스 고도화를 통해 극복 중입니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">2) 고정통신 및 B2B 사업</strong></p>
+                    <p>SK텔레콤의 두 번째 주력 사업으로, 2025년 기준 약 30%의 매출을 차지합니다. 광대역 인터넷, 구내통신 기기, T전화 등의 고정통신 서비스에서 높은 점유율을 유지하고 있으며, 대기업 및 중견기업을 대상으로 한 B2B 클라우드 솔루션 판매가 빠르게 확대 중입니다. 특히 SK C&C와의 협업을 통한 엔터프라이즈 솔루션 판매가 증가 추세를 보이고 있으며, 이는 향후 주요 성장 동력이 될 가능성이 높습니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">3) AI 데이터센터 및 클라우드 사업</strong></p>
+                    <p>SK텔레콤의 신성장 동력으로, 2026년부터 본격 수익 반영이 예상됩니다. 춘천, 광주, 대전 등지에 구축 중인 고성능 GPU 데이터센터는 초거대 AI 모델 학습, 추론 서비스 제공, 그리고 기업용 클라우드 인프라로 활용될 예정입니다. 2026년 AI 데이터센터 CAPEX는 약 1조원 대를 상회할 것으로 예상되며, 이는 향후 3년간 누적 2~3조원 규모로 확대될 가능성이 있습니다. 수익 측면에서는 2026년부터 초기 수익이 창출되고, 2027년 이후 본격적인 이익 기여가 예상됩니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">4) 구독형 AI 서비스(A.DDot 및 T전화) 사업</strong></p>
+                    <p>SK텔레콤이 개발한 에이닷(A.DDot)은 개인 사용자용 구독형 AI 비서 서비스로, 2023년 출시 이후 빠른 가입자 성장을 기록하고 있습니다. T전화는 AI 기반의 프리미엄 음성 서비스로, 고객 경험 개선과 스팸 차단 기능 강화를 통해 차별성을 확보하고 있습니다. 이들 서비스는 아직 전체 매출의 2~3% 수준이지만, 구독 경제의 확대와 AI 활용도 상승에 따라 고마진 수익원으로 성장할 가능성이 높습니다.</p>
+                </div>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>삼성전자</li>
+                        <li>현대자동차</li>
+                        <li>SK 그룹 계열사</li>
+                        <li>LG전자</li>
+                        <li>네이버, 카카오</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>글로벌 파트너십</h3>
+                    <ul class="content-list">
+                        <li>NVIDIA (GPU)</li>
+                        <li>QUALCOMM (5G)</li>
+                        <li>Microsoft Azure</li>
+                        <li>OpenAI 등 AI 기업</li>
+                        <li>40+ 국가 이동통신 제휴</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>주요 서비스 포트폴리오</h3>
+                    <ul class="content-list">
+                        <li>5G 이동통신</li>
+                        <li>AI 데이터센터</li>
+                        <li>에이닷 (A.DDot) 서비스</li>
+                        <li>T전화, T맵</li>
+                        <li>B2B 클라우드 솔루션</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 3: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-flask"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i>5G 네트워크 기술</h3>
+                <p>SK텔레콤의 5G 네트워크 기술은 국내외에서 가장 높은 평가를 받고 있습니다. 2020년 상용화 이후 현재까지 약 4,000만 명 이상의 가입자를 확보했으며, 전국 주요 도시와 기간선을 커버하는 광대한 네트워크를 구축했습니다. SK텔레콤의 5G 기술 경쟁력은 다음 세 가지 요소에 기반하고 있습니다.</p>
+
+                <div style="margin-top: 20px;">
+                    <p><strong style="color: var(--gold);">1. 네트워크 아키텍처 최적화:</strong> SK텔레콤은 O-RAN 기술을 조기에 도입하여 네트워크 유연성과 비용 효율성을 동시에 확보했습니다. 이를 통해 기지국 유지비용을 절감하면서도 서비스 품질을 지속적으로 개선할 수 있습니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">2. 엣지 컴퓨팅(MEC) 기술:</strong> 네트워크 말단에 컴퓨팅 자원을 배치하여 초저지연(1ms 이하) 서비스를 실현합니다. 이는 자율주행, 실시간 게임, 의료 원격진료 등 차세대 응용 분야의 기반이 됩니다.</p>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <p><strong style="color: var(--gold);">3. 슬라이싱 기술(Network Slicing):</strong> 단일 물리 네트워크를 논리적으로 분할하여 서로 다른 품질의 서비스를 동시에 제공합니다. 이를 통해 고급 사용자, 기업 고객, IoT 기기 등 다양한 요구사항을 동시에 충족할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-server"></i>AI 데이터센터 인프라</h3>
+                    <p style="margin-bottom: 20px;"><strong>핵심 기술 스택:</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기술 계층</th>
+                                <th>주요 구성</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>GPU 인프라</strong></td>
+                                <td>NVIDIA H100, A100</td>
+                            </tr>
+                            <tr>
+                                <td><strong>연결 기술</strong></td>
+                                <td>고속 InfiniBand</td>
+                            </tr>
+                            <tr>
+                                <td><strong>냉각 기술</strong></td>
+                                <td>액체냉각, 친환경</td>
+                            </tr>
+                            <tr>
+                                <td><strong>소프트웨어</strong></td>
+                                <td>CUDA, PyTorch</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket"></i>AI 서비스 기술</h3>
+                    <p style="margin-bottom: 20px;"><strong>개발 중인 서비스:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">에이닷 (개인 AI 비서)</span>
+                            <span class="progress-label-value">상용 중</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">엔터프라이즈 AI 솔루션</span>
+                            <span class="progress-label-value">베타 운영</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">초거대 AI 모델 학습</span>
+                            <span class="progress-label-value">초기 서비스</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i>신기술 R&D 및 미래 전략</h3>
+                <p>SK텔레콤은 5G·AI 기술의 결합을 통해 차세대 서비스 개발을 추진 중입니다. 특히 6G 기술 표준화, 양자 컴퓨팅 활용 연구, 홀로그램 통신 등 미래형 통신 기술 개발에 적극 투자하고 있습니다. 2026년 기준 R&D 투자액은 매출의 약 4~5% 수준으로, 통신업계에서도 높은 수준을 유지하고 있습니다. 또한 대학 및 연구기관, 그리고 스타트업과의 개방형 혁신(Open Innovation)을 통해 최신 기술 트렌드를 신속하게 내부화하는 전략을 실행 중입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 4: MARKET ANALYSIS -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-americas"></i>한국 이동통신 시장</h3>
+                <p>2025년 기준 한국의 이동통신 시장 규모는 약 18~19조원으로, SK텔레콤은 약 35~38%의 시장 점유율로 1위 사업자입니다. 그러나 이동통신 시장은 성숙 단계에 진입했으며, 가입자 증가율은 연 1~2% 수준의 저성장 국면을 보이고 있습니다. 5G 서비스 가입자는 약 4,000만 명으로 국내 이동통신 가입자의 약 70% 수준에 이르렀으며, 추가 증가 여지가 제한적입니다. 따라서 기존 고객의 지속적 유지, 고부가가치 서비스 개발을 통한 ARPU(Average Revenue Per User) 증가, 그리고 기업용 5G 서비스 확대가 핵심 전략이 되고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-laptop"></i>국내 AI 데이터센터 시장</h3>
+                    <p>국내 AI 데이터센터 시장은 현재 매우 초기 단계이지만, 초거대 AI 모델 학습 수요와 기업용 생성형 AI 서비스 확대에 따라 폭발적 성장이 예상됩니다. 시장 조사 기관들은 2026~2030년 동안 연 40~50%의 성장률을 전망하고 있으며, 2030년 시장 규모는 10조원을 상회할 것으로 예측됩니다. SK텔레콤, KT, 현대컴퓨터네트워크 등 기존 통신·IT 업체들이 주요 플레이어로 부상하고 있으며, 하이퍼스케일러(Google, Amazon, Microsoft) 자본의 유입도 가속화될 것으로 예상됩니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-cloud"></i>B2B 클라우드 및 AI 솔루션</h3>
+                    <p>국내 B2B 클라우드 시장은 연 15~20% 성장 중이며, 기업의 디지털 변환(DX) 투자 확대에 따라 향후 가속화될 것으로 예상됩니다. 특히 생성형 AI를 활용한 업무 자동화, 데이터 분석, 콘텐츠 생성 등 새로운 사용 사례가 지속적으로 개발되고 있습니다. SK텔레콤은 SK C&C와의 협력을 통해 엔터프라이즈 고객층에 AI 솔루션을 공급하려는 전략을 추진 중이며, 2026년부터 의미 있는 매출 기여가 예상됩니다. 기존 이동통신 고객인 대기업 및 중견기업을 타겟으로 한 교차판매(Cross-selling)가 핵심 전략입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>시장 규모 및 성장 전망</h3>
+                <p style="margin-bottom: 28px;"><strong>2024~2030년 예상 시장 규모 (조원):</strong></p>
+                <div class="bar-chart">
+                    <div class="bar">
+                        <div class="bar-fill" style="height: 120px;">
+                            <div class="bar-value">17.3</div>
+                        </div>
+                        <div class="bar-label">2024<br/>이동통신</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-fill" style="height: 125px;">
+                            <div class="bar-value">17.5</div>
+                        </div>
+                        <div class="bar-label">2025<br/>이동통신</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-fill" style="height: 130px;">
+                            <div class="bar-value">17.8</div>
+                        </div>
+                        <div class="bar-label">2026<br/>이동통신</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-fill" style="height: 95px;">
+                            <div class="bar-value">1.2</div>
+                        </div>
+                        <div class="bar-label">2026<br/>데이터센터</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-fill" style="height: 140px;">
+                            <div class="bar-value">3.5</div>
+                        </div>
+                        <div class="bar-label">2028<br/>데이터센터</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-fill" style="height: 155px;">
+                            <div class="bar-value">5.2</div>
+                        </div>
+                        <div class="bar-label">2030<br/>데이터센터</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 5: COMPETITOR ANALYSIS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-crown"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users-crown"></i>경쟁 환경 개요</h3>
+                <p>SK텔레콤의 주요 경쟁사는 국내 통신 시장에서 KT와 LG U+이며, 국제 시장에서는 중국 이동통신 기업들(China Mobile, China Telecom)과 경쟁하고 있습니다. 이동통신 시장의 성숙도가 높아짐에 따라 경쟁 초점은 전통적인 음성·데이터 서비스에서 프리미엄 서비스, 5G 기반 IoT 솔루션, 그리고 AI·데이터센터 서비스로 빠르게 이동하고 있습니다. SK텔레콤은 최대 규모의 5G 인프라와 고객 기반을 보유하고 있어 경쟁에서 유리한 위치를 점하고 있지만, AI 데이터센터 분야에서는 하이퍼스케일러 기업들의 진출로 인한 경쟁 심화가 예상됩니다.</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>SK텔레콤</th>
+                            <th>KT</th>
+                            <th>LG U+</th>
+                            <th>평가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>시장 점유율</strong></td>
+                            <td>35~38%</td>
+                            <td>30~32%</td>
+                            <td>25~27%</td>
+                            <td>SK 최우위</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5G 가입자</strong></td>
+                            <td>4,000만</td>
+                            <td>3,200만</td>
+                            <td>2,400만</td>
+                            <td>SK 선도</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ARPU 수준</strong></td>
+                            <td>약 65,000원</td>
+                            <td>약 62,000원</td>
+                            <td>약 60,000원</td>
+                            <td>SK 우수</td>
+                        </tr>
+                        <tr>
+                            <td><strong>데이터센터</strong></td>
+                            <td>계획 중/투자 가속</td>
+                            <td>기존 보유</td>
+                            <td>제한적</td>
+                            <td>SK 투자 우위</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI 서비스</strong></td>
+                            <td>에이닷 (상용)</td>
+                            <td>준비 단계</td>
+                            <td>미흡</td>
+                            <td>SK 앞서감</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2025 매출</strong></td>
+                            <td>17.5조원</td>
+                            <td>16.2조원</td>
+                            <td>13.8조원</td>
+                            <td>SK 최대</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i>SK텔레콤의 강점</h3>
+                    <ul class="content-list">
+                        <li>최대 규모 5G 인프라</li>
+                        <li>4,000만명 가입자 기반</li>
+                        <li>AI 서비스 선도</li>
+                        <li>SK 그룹 시너지</li>
+                        <li>높은 ARPU 수준</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i>SK텔레콤의 약점</h3>
+                    <ul class="content-list">
+                        <li>높은 CAPEX 부담</li>
+                        <li>데이터센터 초기단계</li>
+                        <li>해킹 사고 영향</li>
+                        <li>대규모 노조 활동</li>
+                        <li>AI 기술 독보적 경쟁력 미흡</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i>경쟁 포지셔닝</h3>
+                    <ul class="content-list">
+                        <li>이동통신: 시장 선도</li>
+                        <li>데이터센터: 성장 초기</li>
+                        <li>AI 서비스: 앞서 나감</li>
+                        <li>B2B 솔루션: 확대 중</li>
+                        <li>종합경쟁력: 상위권</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 6: SWOT ANALYSIS -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-compass"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-thumbs-up"></i>Strengths (강점)</h3>
+                    <ul class="content-list">
+                        <li><strong>최대 규모 네트워크:</strong> 전국 5G 기지국 약 115,000개, 최우수 커버리지</li>
+                        <li><strong>거대 고객 기반:</strong> 이동통신 4,000만, 고정통신 500만+ 가입자</li>
+                        <li><strong>높은 수익성:</strong> ARPU 65,000원, 영업마진 22~25%</li>
+                        <li><strong>AI 서비스 선도:</strong> 에이닷(A.DDot) 구독형 서비스 상용화</li>
+                        <li><strong>SK 그룹 시너지:</strong> SK C&C, SK바이오팜 등과의 협력 기회</li>
+                        <li><strong>글로벌 네트워크:</strong> 40개국 이상 국제 로밍 파트너</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>Weaknesses (약점)</h3>
+                    <ul class="content-list">
+                        <li><strong>데이터센터 경험 부족:</strong> GPU 기반 초거대 AI 인프라 운영 노하우 제한</li>
+                        <li><strong>높은 CAPEX 부담:</strong> 연 1조원+ 추가 투자로 인한 재무 압박</li>
+                        <li><strong>보안 이슈:</strong> 2025년 개인정보 해킹으로 인한 신뢰도 하락</li>
+                        <li><strong>노동조합 활동:</strong> 빈번한 파업으로 인한 업무 차질</li>
+                        <li><strong>AI 기술력 평가:</strong> 초거대 AI 모델 개발 역량 미흡</li>
+                        <li><strong>이동통신 시장 성숙:</strong> 가입자 증가 한계, 경쟁 심화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-star"></i>Opportunities (기회)</h3>
+                    <ul class="content-list">
+                        <li><strong>AI 데이터센터 수요 폭증:</strong> 생성형 AI, LLM 시장 급성장으로 인한 인프라 수요 급증</li>
+                        <li><strong>B2B 클라우드 시장 성장:</strong> 기업 DX 투자 확대, 연 15~20% 성장률</li>
+                        <li><strong>6G 기술 선점:</strong> 차세대 통신 기술 표준화 과정에서의 영향력 확대</li>
+                        <li><strong>엣지 AI 시장:</strong> MEC 기반 산업용 AI 솔루션 수요 증가</li>
+                        <li><strong>국제 시장 확대:</strong> 동남아, 인도 등 신흥 시장 진출 기회</li>
+                        <li><strong>IoT 및 5G 활용:</strong> 자율주행, 스마트시티, 의료 등 새로운 응용 분야</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-bomb"></i>Threats (위협)</h3>
+                    <ul class="content-list">
+                        <li><strong>하이퍼스케일러 진출:</strong> Google, Amazon, Microsoft의 국내 데이터센터 사업 확대</li>
+                        <li><strong>과열된 경쟁:</strong> 대형 자본의 AI 데이터센터 시장 진입으로 인한 수익성 악화</li>
+                        <li><strong>정부 규제:</strong> 통신 요금 규제, 망 중립성, 과도한 과세 가능성</li>
+                        <li><strong>기술 진부화 위험:</strong> 5G에서 6G로의 전환 과정에서의 투자 손실 가능성</li>
+                        <li><strong>국제 분쟁:</strong> 미중 기술 갈등의 영향, 반도체 공급 차질 위험</li>
+                        <li><strong>고객 이탈:</strong> OTT 서비스 확대로 인한 통신 수요 감소</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 7: STRATEGY ANALYSIS -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target-alt"></i>SK텔레콤의 중기 전략(2026~2028)</h3>
+                <p>SK텔레콤은 "통신 우위 기업에서 AI·데이터센터 기업으로의 전환"을 핵심 전략으로 추진하고 있습니다. 이는 성숙한 이동통신 시장에서의 수익 정체를 극복하고, 고성장 AI 인프라 시장에 진입하기 위한 필수 전략입니다. 구체적인 실행 계획은 다음과 같습니다.</p>
+
+                <div style="margin-top: 30px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">1) AI 데이터센터 CAPEX 급증 (2026~2028)</strong></p>
+                    <p>SK텔레콤은 2026~2028년 3년간 약 2조5천억원~3조원의 CAPEX를 AI 데이터센터 구축에 투자할 계획입니다. 춘천(경기), 광주(전남), 대전(충청) 등 세 지역에 고성능 GPU 클러스터를 완공할 예정이며, 각 센터는 100,000개 규모 이상의 GPU를 보유하게 될 것으로 예상됩니다. 이를 통해 2026년부터 초기 수익이 발생하기 시작할 것으로 기대됩니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">2) B2B 클라우드·AI 솔루션 확대</strong></p>
+                    <p>SK C&C와의 협력을 통해 기업 고객 대상 AI 솔루션 판매를 확대합니다. 기존 이동통신·고정통신 고객인 대기업 및 중견기업을 타겟으로 한 교차판매가 핵심 전략입니다. 2026년 기준 B2B 클라우드 매출이 전체 수익의 5~7%를 차지할 것으로 예상되며, 향후 10% 이상으로 확대될 가능성이 높습니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">3) 구독형 AI 서비스 확대</strong></p>
+                    <p>에이닷(A.DDot) 서비스의 가입자를 현재 100만명 수준에서 2028년 500만명 이상으로 확대하는 것이 목표입니다. T전화 등 프리미엤 음성 서비스와의 번들링, 마케팅 강화, 기능 고도화를 통해 구독 고착화를 추진할 계획입니다. 고마진 수익원으로서의 역할 확대가 기대됩니다.</p>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <p><strong style="color: var(--accent); font-size: 15px;">4) 기존 이동통신 사업의 효율화</strong></p>
+                    <p>ARPU 상승을 통한 수익성 개선에 주력합니다. 프리미엄 5G 서비스, 고정통신과의 번들 상품 확대, 그리고 기업용 5G 솔루션 판매를 통해 고객당 수익을 증대시킬 계획입니다. 동시에 운영비 절감을 위한 자동화, AI 기반 고객 관리 시스템 도입 등을 추진할 예정입니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i>2026~2028 매출·이익 전망</h3>
+                    <p style="margin-bottom: 20px;"><strong>매출 구성 변화 (조원):</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2025 이동통신</span>
+                            <span class="progress-label-value">7.8조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 44%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026 데이터센터</span>
+                            <span class="progress-label-value">1.2조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 23%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2028 데이터센터</span>
+                            <span class="progress-label-value">3.5조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-wallet"></i>영업이익 복구 시나리오</h3>
+                    <p><strong>2025년 이후 회복 단계:</strong></p>
+                    <ul class="content-list">
+                        <li><strong>2025:</strong> 1.3조원 (해킹 영향)</li>
+                        <li><strong>2026:</strong> 1.8~1.99조원 (정상화)</li>
+                        <li><strong>2027:</strong> 2.1~2.3조원</li>
+                        <li><strong>2028:</strong> 2.5~2.7조원</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-size: 15px;">AI 데이터센터 매출의 기여도가 2028년에는 전체 영업이익의 15~20% 수준까지 확대될 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>성공 요인 및 위험 요소</h3>
+                <p style="margin-bottom: 20px;"><strong>성공을 위한 핵심 요소:</strong></p>
+                <ul class="content-list">
+                    <li>안정적 CAPEX 자금 조달 및 재무 건전성 유지</li>
+                    <li>데이터센터 운영 효율성 확보 (PUE 1.2 이하 목표)</li>
+                    <li>고급 고객 확보 및 가용성 보증(SLA) 준수</li>
+                    <li>AI 서비스 차별화 및 사용자 경험 개선</li>
+                    <li>경쟁사 대비 가격 경쟁력 유지</li>
+                </ul>
+
+                <p style="margin-top: 25px; margin-bottom: 15px;"><strong>주요 위험 요소:</strong></p>
+                <ul class="content-list">
+                    <li>높은 CAPEX로 인한 재무 레버리지 상승</li>
+                    <li>AI 데이터센터 수익성 부족 또는 지연</li>
+                    <li>반도체 공급 부족 또는 GPU 가격 급등</li>
+                    <li>글로벌 기업과의 경쟁 심화로 인한 마진율 하락</li>
+                    <li>정부 정책 변화 또는 규제 강화</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 8: FINANCIAL ANALYSIS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-credit-card"></i>주요 재무 지표 (최근 3년)</h3>
+                <div style="overflow-x: auto; margin-top: 24px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>지표</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                                <th>2025</th>
+                                <th>추세</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>매출 (조원)</strong></td>
+                                <td>16.8</td>
+                                <td>17.3</td>
+                                <td>17.5</td>
+                                <td>↑ 완만</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익 (조원)</strong></td>
+                                <td>1.2</td>
+                                <td>1.18</td>
+                                <td>1.3</td>
+                                <td>↑ 회복 중</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률 (%)</strong></td>
+                                <td>7.1</td>
+                                <td>6.8</td>
+                                <td>7.4</td>
+                                <td>↑ 정상화</td>
+                            </tr>
+                            <tr>
+                                <td><strong>당기순이익 (조원)</strong></td>
+                                <td>0.85</td>
+                                <td>0.78</td>
+                                <td>0.82</td>
+                                <td>↑ 점진적</td>
+                            </tr>
+                            <tr>
+                                <td><strong>배당금 (원)</strong></td>
+                                <td>3,200</td>
+                                <td>3,300</td>
+                                <td>3,500</td>
+                                <td>↑ 안정적</td>
+                            </tr>
+                            <tr>
+                                <td><strong>배당수익률 (%)</strong></td>
+                                <td>4.5</td>
+                                <td>4.8</td>
+                                <td>5.0~5.5</td>
+                                <td>↑ 강화</td>
+                            </tr>
+                            <tr>
+                                <td><strong>총 자산 (조원)</strong></td>
+                                <td>42.5</td>
+                                <td>44.2</td>
+                                <td>48.5</td>
+                                <td>↑ 증가</td>
+                            </tr>
+                            <tr>
+                                <td><strong>부채비율 (%)</strong></td>
+                                <td>78</td>
+                                <td>82</td>
+                                <td>88</td>
+                                <td>↑ 상승</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-percent"></i>수익성 분석</h3>
+                    <p style="margin-bottom: 20px;"><strong>핵심 수익성 지표:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익률</span>
+                            <span class="progress-label-value">7.4%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 74%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">순이익률</span>
+                            <span class="progress-label-value">4.7%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 47%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROE (자기자본이익률)</span>
+                            <span class="progress-label-value">8.2%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROA (자산이익률)</span>
+                            <span class="progress-label-value">1.7%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 34%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-money-bill"></i>현금 흐름 및 배당</h3>
+                    <p style="margin-bottom: 20px;"><strong>현금 창출 능력:</strong></p>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업활동 현금흐름</span>
+                            <span class="progress-label-value">2.8조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">자유 현금 흐름</span>
+                            <span class="progress-label-value">1.2조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 43%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">배당금 (총)</span>
+                            <span class="progress-label-value">1.8조원</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 64%;"></div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 15px;">SK텔레콤은 안정적 배당정책을 유지하고 있으며, 향후 배당수익률은 5~6% 수준으로 유지될 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>재무 안정성 및 위험 평가</h3>
+                <p style="margin-bottom: 20px;"><strong>긍정적 요소:</strong></p>
+                <ul class="content-list">
+                    <li>안정적 영업활동 현금흐름 (연 2.5~3조원 수준)</li>
+                    <li>높은 배당 성향으로 인한 주주가치 제공</li>
+                    <li>신용등급 A 수준으로 안정적인 채무 신용도</li>
+                    <li>디바이더블 인컴(배당) 주식으로서의 매력</li>
+                </ul>
+
+                <p style="margin-top: 25px; margin-bottom: 15px;"><strong>우려 요소:</strong></p>
+                <ul class="content-list">
+                    <li>CAPEX 급증으로 인한 부채 증가 (부채비율 80% 초과)</li>
+                    <li>AI 데이터센터 투자의 불확실성으로 인한 재무 부담</li>
+                    <li>금리 상승으로 인한 이자비용 증가</li>
+                    <li>유동성 비율 저하 가능성</li>
+                </ul>
+
+                <p style="margin-top: 25px; font-size: 15px;"><strong>평가:</strong> SK텔레콤의 재무 건전성은 여전히 업계 수준 이상으로 평가되나, AI 데이터센터로의 전략적 전환으로 인한 CAPEX 집중 시기가 지속될 경우 차입 비율이 더욱 상승할 수 있습니다. 따라서 단기(2026~2027년)에는 배당성향 조정 가능성이 있으나, 중기(2028년 이후)에는 AI 데이터센터 사업의 수익화로 인해 재무 구조가 개선될 것으로 기대됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 9: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-compass"></i>종합 평가</h3>
+                <p>SK텔레콤은 국내 최대 규모의 통신 인프라와 안정적 현금 창출 능력을 기반으로, AI·데이터센터 시장으로의 전략적 전환을 추진 중인 기업입니다. 2025년 해킹 사고로 인한 일시적 어려움을 겪었으나, 2026년부터 정상적인 실적 회복과 새로운 성장 동력의 발현이 기대됩니다.</p>
+
+                <p style="margin-top: 20px;">SK텔레콤의 가장 큰 강점은 기존 통신 사업이 제공하는 안정적 현금흐름과 4,000만명 이상의 고객 기반입니다. 이를 기반으로 AI 데이터센터, 클라우드 솔루션, 구독형 AI 서비스 등 고마진 신사업으로의 다각화를 추진할 수 있는 재정적 여유가 있습니다. 특히 2026년부터 본격화될 AI 데이터센터 매출은 향후 회사 성장률을 크게 향상시킬 수 있는 주요 변수입니다.</p>
+
+                <p style="margin-top: 20px;">그러나 주의할 점도 있습니다. 첫째, AI 데이터센터 시장은 아직 초기 단계로, 예상 대비 수익화가 지연될 가능성이 있습니다. 둘째, Google, Amazon, Microsoft 등 글로벌 하이퍼스케일러들의 국내 진출로 인한 경쟁 심화가 예상됩니다. 셋째, 높은 CAPEX로 인한 부채 증가가 계속될 경우, 배당성향 조정이나 신용등급 하락 위험이 있습니다.</p>
+
+                <p style="margin-top: 20px;">종합적으로 평가하면, SK텔레콤은 전략적으로는 올바른 방향으로 나아가고 있으나, 실행 과정에서의 다양한 위험 요소에 대한 면밀한 모니터링이 필요한 기업입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-bullseye"></i>투자 추천 등급</h3>
+                    <p style="margin-bottom: 25px; font-size: 14px; line-height: 1.8;"><strong style="color: var(--gold); font-size: 16px;">BUY (매수)</strong></p>
+                    <p><strong>목표가:</strong> 87,000~92,000원 (12개월 기준)</p>
+                    <p style="margin-top: 15px; margin-bottom: 20px;"><strong>투자 근거:</strong></p>
+                    <ul class="content-list">
+                        <li>AI 데이터센터 사업 수익화 (2026년~)</li>
+                        <li>B2B 클라우드 시장 성장 가능성</li>
+                        <li>안정적 배당 수익 (5~6%)</li>
+                        <li>5G 시장 리더십 지속</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-lightbulb"></i>투자자용 주의사항</h3>
+                    <p style="margin-bottom: 20px;"><strong>모니터링 포인트:</strong></p>
+                    <ul class="content-list">
+                        <li>분기별 데이터센터 매출 현황</li>
+                        <li>부채비율 및 배당성향 추이</li>
+                        <li>경쟁사(KT, LG U+) 및 글로벌 기업 동향</li>
+                        <li>AI 서비스(에이닷) 가입자 성장률</li>
+                        <li>정부 정책 및 규제 변화</li>
+                    </ul>
+
+                    <p style="margin-top: 20px; font-size: 14px;"><strong>투자 적합 투자자:</strong> 중장기 배당 수익 추구자, 통신/IT 기술 성장에 베팅하는 투자자, 포트폴리오 분산 추구자</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i>향후 주요 이벤트 (2026~2027)</h3>
+                <ul class="content-list">
+                    <li><strong>2026년 1Q:</strong> 첫 AI 데이터센터 매출 공시 (춘천 시설)</li>
+                    <li><strong>2026년 2Q:</strong> 에이닷 가입자 200만명 달성</li>
+                    <li><strong>2026년 3Q:</strong> B2B 클라우드 매출 의미 있는 성장 보고</li>
+                    <li><strong>2026년 4Q:</strong> 광주·대전 데이터센터 부분 완공</li>
+                    <li><strong>2027년:</strong> 연간 AI 데이터센터 매출 1조원 이상 달성</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-graduation-cap"></i>최종 의견</h3>
+                <p>SK텔레콤은 한국 통신 산업의 장기적 구조 변화(성숙시장 → AI·클라우드 중심)에 가장 잘 적응하고 있는 기업으로 평가됩니다. 2025년 해킹 사고라는 일시적 악재를 극복하고, 2026년부터의 AI 데이터센터 사업 수익화를 통해 새로운 성장 궤도에 진입할 것으로 기대됩니다.</p>
+
+                <p style="margin-top: 20px;">배당 수익률 5~6% 수준의 안정적 배당과 함께, AI 시대의 필수 인프라 제공 기업으로서의 성장 가능성을 동시에 추구할 수 있는 기업입니다. 단, 높은 CAPEX 부담, 글로벌 경쟁 심화, 정부 규제 등의 위험 요소에 대해서는 지속적인 모니터링이 필요합니다.</p>
+
+                <p style="margin-top: 20px; font-style: italic; color: var(--text-secondary);"><strong>투자 기간:</strong> 3~5년 중장기 투자 권장 | <strong>위험도:</strong> 중간 | <strong>수익성:</strong> 중상 (배당 + 기업가치 상승)</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="position:fixed;bottom:0;left:0;right:0;background:rgba(15,16,20,.95);border-top:1px solid var(--rule);padding:12px 24px;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--text-muted);z-index:500;backdrop-filter:blur(10px)">
+        <div>보고서 작성일: <span style="color:var(--text-body)">2026년 04월 05일 09:00 KST</span></div>
+        <div style="display:flex;gap:20px;align-items:center">
+            <span>v2.1 | FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+
+    <footer style="max-width:1080px;margin:0 auto;padding:60px 40px 120px">
+        <div style="border-top:1px solid var(--rule);padding-top:40px">
+            <h2 style="font-family:'Orbit',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:.06em;margin-bottom:28px">SOURCES · 출처</h2>
+
+            <div style="columns:2;column-gap:40px;font-size:.88rem;line-height:2.2;color:var(--text-secondary)">
+                <p><span style="color:var(--text-light)">1.</span> 금융감독원 전자공시시스템(DART) — SK텔레콤 사업보고서, 분기보고서, 감사보고서 (2022–2025) <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">2.</span> 한국거래소(KRX) — KOSPI 시장 종목정보, 주가 및 거래량 데이터 <span style="color:var(--text-muted);font-size:.78em">krx.co.kr</span></p>
+                <p><span style="color:var(--text-light)">3.</span> SK텔레콤 공식 IR 자료 — 기업설명회(IR Day) 발표자료, 경영실적 설명자료 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">4.</span> SK텔레콤 공식 웹사이트 — 기술 소개 및 서비스 안내 <span style="color:var(--text-muted);font-size:.78em">sktelecom.com</span></p>
+                <p><span style="color:var(--text-light)">5.</span> IDC — "Global AI Infrastructure and Services Forecast" (2025) <span style="color:var(--text-muted);font-size:.78em">idc.com</span></p>
+                <p><span style="color:var(--text-light)">6.</span> Gartner — "Data Center Hardware and Infrastructure Market Analysis" (2025) <span style="color:var(--text-muted);font-size:.78em">gartner.com</span></p>
+                <p><span style="color:var(--text-light)">7.</span> McKinsey &amp; Company — "AI and the Telecommunications Industry" (2025) <span style="color:var(--text-muted);font-size:.78em">mckinsey.com</span></p>
+                <p><span style="color:var(--text-light)">8.</span> Statista — "5G and Mobile Network Market Size and Growth Forecast" (2024–2030) <span style="color:var(--text-muted);font-size:.78em">statista.com</span></p>
+                <p><span style="color:var(--text-light)">9.</span> Bloomberg Intelligence — "South Korea Telecommunications Sector Review" (2025 Q1) <span style="color:var(--text-muted);font-size:.78em">bloomberg.com</span></p>
+                <p><span style="color:var(--text-light)">10.</span> KT 및 LG U+ DART 공시자료 — 경쟁사 비교 분석용 <span style="color:var(--text-muted);font-size:.78em">dart.fss.or.kr</span></p>
+                <p><span style="color:var(--text-light)">11.</span> 나이스신용평가, 한국기업평가 — SK텔레콤 신용등급 및 재무분석 자료 <span style="color:var(--text-muted);font-size:.78em">nicerating.com</span></p>
+                <p><span style="color:var(--text-light)">12.</span> CB Insights — "State of Telecommunications and 5G Innovation" (2025) <span style="color:var(--text-muted);font-size:.78em">cbinsights.com</span></p>
+                <p><span style="color:var(--text-light)">13.</span> PwC — "Technology Outlook 2025: AI and Cloud Computing Trends" <span style="color:var(--text-muted);font-size:.78em">pwc.com</span></p>
+                <p><span style="color:var(--text-light)">14.</span> World Economic Forum — "Digital Transformation and 5G Ecosystems Report" (2024) <span style="color:var(--text-muted);font-size:.78em">weforum.org</span></p>
+                <p><span style="color:var(--text-light)">15.</span> OECD — "Broadband and Digital Transformation: Korea Market Analysis" <span style="color:var(--text-muted);font-size:.78em">oecd.org</span></p>
+                <p><span style="color:var(--text-light)">16.</span> NVIDIA — "AI Infrastructure Demand and GPU Market Outlook" (2025) <span style="color:var(--text-muted);font-size:.78em">nvidia.com</span></p>
+                <p><span style="color:var(--text-light)">17.</span> Arthur D. Little — "Strategic Analysis of AI and Data Center Investments in Asia" (2025) <span style="color:var(--text-muted);font-size:.78em">adlittle.com</span></p>
+                <p><span style="color:var(--text-light)">18.</span> SK텔레콤 개인정보 보호 사건 관련 보도자료 및 대응 현황 <span style="color:var(--text-muted);font-size:.78em">뉴스 데이터베이스</span></p>
+            </div>
+
+            <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <p style="font-size:.8rem;color:var(--text-muted)">© 2026 FLOVAH Insights. All rights reserved.</p>
+                <p style="font-size:.8rem;color:var(--text-muted)">Published 2026.04.05 · Report v2.1 · Premium Membership Exclusive</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight active nav on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const animateProgressBars = () => {
+            const bars = document.querySelectorAll('.progress-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 100);
+                }
+            });
+        };
+
+        // Animate bar charts on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bar, .progress-bar-fill, .content-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성물산 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 259.2deg, var(--rule) 259.2deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+        }
+
+        /* ============ DIVIDER ============ */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 64px 0 48px;
+            text-align: center;
+        }
+
+        .section-divider::before, .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            padding: 0 28px;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 2, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">삼성물산<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">삼성그룹의 건설·상사·패션·리조트 사업을 통합하는 글로벌 종합기업의 경쟁력과 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">72</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 변혁과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">40.7조</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">KRW 48.53T</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">10,000+</div>
+                            <div class="metric-label">직원수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">88년</div>
+                            <div class="metric-label">영업 경력</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 2일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>삼성물산 (Samsung C&T Corporation)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 028260</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>오세철 사장</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>삼성물산은 1938년 설립된 한국의 글로벌 종합기업으로서, 건설, 상사, 패션, 리조트 등 다양한 사업 분야에서 국제적 경쟁력을 갖추고 있습니다. 2025년 기준 연간 매출 40조 7,420억원, 영업이익 3조 2,930억원을 기록했으며, 시가총액은 약 KRW 48.53T로 평가되고 있습니다. 삼성물산은 삼성그룹의 지배구조 핵심 기업으로서 그룹의 시너지를 극대화하는 역할을 수행하고 있으며, 약 10,000명 이상의 직원이 전 세계에서 근무하고 있습니다. 회사는 초고층 건설, 플랜트 사업, 글로벌 무역 및 투자, 패션 브랜드 운영, 프리미엄 리조트 사업 등을 통해 종합적인 사업 포트폴리오를 구축하고 있습니다.</p>
+                <p>삼성물산의 성공은 88년의 장기 경영 역사 속에서 산업 변화에 적응하고 지속적으로 사업을 혁신해온 결과입니다. 특히 한국 경제의 성장기에 중추적 역할을 수행했으며, 현재는 글로벌 시장에서 한국을 대표하는 종합상사 및 건설회사로서의 위상을 유지하고 있습니다. 삼성그룹의 순환적 지배구조와 경영 다각화 전략의 중심 기업으로서 향후 그룹 재편과 최적 구조 개편의 주요 대상이 될 가능성이 높습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1938-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1938</div>
+                        <div class="timeline-item-content">삼성물산 설립 - 삼성그룹 건설·무역 사업의 기초 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1960-1970년대</div>
+                        <div class="timeline-item-content">국내 건설 시장 선도 및 중동 플랜트 수주로 국제 경쟁력 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1980년대</div>
+                        <div class="timeline-item-content">초고층 건축 및 대형 플랜트 프로젝트 완공 - 기술력 입증</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1990년대</div>
+                        <div class="timeline-item-content">상사 사업 확대 및 국제 무역 포트폴리오 다각화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000년대</div>
+                        <div class="timeline-item-content">빈폴 및 에잇세컨즈 등 패션 브랜드 인수 및 성장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2005</div>
+                        <div class="timeline-item-content">에버랜드 리조트 인수 - 리조트 사업 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010-2015</div>
+                        <div class="timeline-item-content">친환경 건설 및 스마트 건설 기술 투자 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2019-2026</div>
+                        <div class="timeline-item-content">디지털 전환, 바이오헬스케어 투자, ESG 경영 강화</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 글로벌 최고 수준의 종합기업으로서 건설, 상사, 패션, 리조트 사업을 통해 인류의 삶의 질을 향상시키고 사회 가치를 창출하는 것입니다. 삼성물산은 단순 사업 영역의 확대를 넘어 각 분야에서 업계 최고의 기술과 서비스를 제공하고자 합니다.</p>
+                    <p><strong>미션:</strong> 고객 중심 경영과 기술 혁신을 통해 건설 산업의 선도, 글로벌 무역 네트워크 구축, 프리미엄 패션 및 리조트 브랜드 가치 극대화를 추구합니다. 특히 지속가능한 경영과 ESG 가치 실현을 핵심 경영 목표로 삼고 있습니다.</p>
+                    <p><strong>핵심 가치:</strong> 기술 우수성, 신뢰성, 윤리 경영, 지속가능성, 혁신을 경영의 중심으로 삼고, 이해관계자 모두의 가치 창출을 추구합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>건설 사업부: 초고층 건축, 주택, 토목, 플랜트 프로젝트</li>
+                        <li>상사 사업부: 글로벌 무역, 투자, 금융 서비스</li>
+                        <li>패션 사업부: 빈폴, 에잇세컨즈 등 브랜드 운영</li>
+                        <li>리조트·레저 사업부: 에버랜드, 관광시설 운영</li>
+                        <li>화학·바이오 사업부: 화학제품, 바이오헬스케어</li>
+                        <li>신재생에너지 및 환경 사업부</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>삼성그룹 계열사 - 건설, 상사 서비스 제공</li>
+                        <li>글로벌 에너지 회사 - LNG 플랜트, 정유 시설</li>
+                        <li>중동 국부펀드 및 정부기관 - 대형 프로젝트</li>
+                        <li>미국 및 유럽 부동산 디벨로퍼</li>
+                        <li>글로벌 패션 소매업체 및 백화점</li>
+                        <li>아시아 태평양 및 중동 기업들</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list">
+                        <li>현대건설, GS건설 - 건설 산업 경쟁 및 협력</li>
+                        <li>삼성전자, 삼성화학 - 그룹 시너지 창출</li>
+                        <li>LVMH, Kering - 럭셔리 패션 협력 가능성</li>
+                        <li>글로벌 물류·항운사 - 상사 사업 협력</li>
+                        <li>국제 금융기관 - 프로젝트 파이낸싱</li>
+                        <li>국제 대학 및 연구기관 - 기술 혁신 협력</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 1.5: 최근 뉴스 및 이슈 -->
+        <section id="news">
+            <div class="section-title">
+                <i class="fas fa-newspaper"></i>
+                <span>최근 뉴스 및 이슈</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bolt"></i>2026년 전략적 이니셔티브</h3>
+                <p><strong>스마트빌딩 플랫폼 협력:</strong> 2026년 3월 마스턴투자운용과 상업용 부동산의 스마트빌딩 플랫폼 협력모델을 구축했습니다. 삼성물산의 스마트빌딩 플랫폼 '바인드(Bynd)'를 마스턴투자운용의 상업용 빌딩에 시범 적용·운영하며, 향후 글로벌 스마트 빌딩 시장 진출을 가속화할 계획입니다.</p>
+                <p><strong>카타르 에너지 LNG 프로젝트:</strong> 삼성물산은 카타르 에너지와의 대규모 LNG 프로젝트에 참여하여 중동 에너지 시장에서의 위상을 강화하고 있습니다. 이 프로젝트는 2026-2027년 기간의 주요 매출 성장 동력이 될 것으로 예상됩니다.</p>
+                <p><strong>일본 BESS 개발 협력:</strong> 2026년 3월 동경법인이 일본 이렉스와 BESS(배터리 에너지 저장장치) 사업의 공동 개발 MOU를 체결했습니다. 양사는 향후 일본 내 BESS 프로젝트 개발을 위한 합작법인 설립을 계획하고 있으며, 이를 통해 재생에너지 기반 인프라 시장에서의 경쟁력을 강화할 것으로 예상됩니다.</p>
+                <p><strong>2026년 임원 인사:</strong> 3월 부사장 10명, 상무 21명을 승진시켰으며, 경영기획실장 송규종 부사장을 리조트부문 대표이사 사장 겸 삼성웰스토리 대표이사로 승진 내정하는 등 리조트·레저 사업 강화 신호를 보내고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-cogs"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술 역량</h3>
+                <p>삼성물산의 기술 경쟁력은 건설, 특히 초고층 건축과 플랜트 사업에 집중되어 있습니다. 회사는 높이 600미터 이상의 초고층 건축물 설계 및 시공 경험, 복합형 플랜트 프로젝트의 통합 관리 능력, 글로벌 공급망 관리 기술을 보유하고 있습니다. 2024년 이후 스마트 건설 기술, 바이오·헬스케어 투자, 디지털 전환에 집중하고 있으며, 이러한 기술 혁신은 향후 경쟁력 강화의 핵심이 될 것으로 예상됩니다.</p>
+                <p><strong>초고층 건설 기술:</strong> 삼성물산은 국내 최고 수준의 초고층 건설 능력을 보유하고 있습니다. 서울의 주요 랜드마크 건설, 두바이·베트남·인도네시아 등 해외 초고층 프로젝트 완공 경험을 통해 기술력을 입증했습니다. 특히 복잡한 지반 조건에서의 기초 공사, 대규모 철골 구조 시공, 고급 건축 마감 기술 등이 차별화된 강점입니다. 2026년까지 AI 기반 건설 안전 관리 시스템과 BIM(Building Information Modeling) 기술을 고도화하여 건설 생산성을 20% 이상 향상시킬 계획입니다.</p>
+                <p><strong>플랜트 및 화학 공정 기술:</strong> 삼성물산은 중동의 석유화학 프로젝트, 동남아의 LNG 터미널, 아프리카의 광물 처리 시설 등 대규모 플랜트 프로젝트를 성공적으로 완공한 경험을 보유하고 있습니다. 복잡한 공정 설계, 국제 안전 기준 준수, 현지 인력 교육과 기술 이전 능력이 강점입니다. 향후 탄소 중립 플랜트, 재생에너지 기반 제조 시설 등 친환경 플랜트 기술 개발에 투자할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>스마트 건설 및 디지털 전환:</strong> 삼성물산은 건설 산업의 디지털 혁신을 주도하기 위해 IoT 센서, 드론, AI 분석 기술 등을 건설 현장에 적용하고 있습니다. 실시간 안전 모니터링, 자동 품질 검사, 로봇 시공 등의 기술을 2026년까지 주요 프로젝트에 도입할 예정입니다. 이는 건설 비용 감소, 공기 단축, 안전성 향상을 동시에 실현할 수 있을 것으로 기대됩니다.</p>
+                <p><strong>바이오·헬스케어 투자:</strong> 삼성물산은 바이오 의약품 제조, 정밀의료, 헬스케어 서비스 등 신성장 분야에 전략적 투자를 시작했습니다. 특히 바이오 제조 시설 건설 경험과 상사 사업의 국제 네트워크를 활용하여 글로벌 바이오 기업과의 협력을 강화하고 있습니다. 2026-2028년 기간에 바이오 관련 사업 매출을 현재 대비 300% 이상 증대할 목표를 설정했습니다.</p>
+                <p><strong>친환경 건설 및 ESG 기술:</strong> 삼성물산은 탄소 중립 건설, 친환경 건축자재 개발, 순환 경제 기반의 건설 폐기물 처리 등 ESG 관련 기술에 집중 투자 중입니다. 태양광과 풍력을 활용한 건설 장비, 친환경 콘크리트, 건설 수초 재활용 기술 등을 개발하고 있으며, 국제적 환경 규제 강화에 대응하는 경쟁력을 구축하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">초고층 건설 기술</span>
+                            <span class="progress-label-value">88%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 88%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">플랜트·화학 공정</span>
+                            <span class="progress-label-value">82%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 82%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">스마트 건설 기술</span>
+                            <span class="progress-label-value">71%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 71%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">바이오헬스케어</span>
+                            <span class="progress-label-value">65%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">디지털 전환 수준</span>
+                            <span class="progress-label-value">72%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>연구 개발 투자</h3>
+                <p>삼성물산은 연간 매출의 2-3% 수준을 R&D에 투자하고 있으며, 이는 약 800억원에서 1,200억원 규모입니다. 이 투자는 스마트 건설, 친환경 기술, 바이오헬스케어, 디지털 변혁 등 미래 경쟁력 강화에 집중되어 있습니다. 삼성 건설기술연구원, 삼성물산 종합연구소 등 전문 연구 기관들이 기술 개발을 주도하고 있으며, 국내 대학 및 국제 연구 기관과의 협력을 통해 개방형 혁신을 추진하고 있습니다. 특히 2024년부터 스마트 건설과 바이오 기술에 R&D 투자를 대폭 증대했으며, 향후 5년간 누적 1조원 이상의 R&D 투자를 계획하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tags"></i>주요 기술 스택</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">초고층 건축</span>
+                    <span class="tech-badge">플랜트 EPC</span>
+                    <span class="tech-badge">BIM 모델링</span>
+                    <span class="tech-badge">IoT 센서</span>
+                    <span class="tech-badge">AI 안전관리</span>
+                    <span class="tech-badge">드론 기술</span>
+                    <span class="tech-badge">친환경 건설</span>
+                    <span class="tech-badge">바이오제조</span>
+                    <span class="tech-badge">스마트팩토리</span>
+                    <span class="tech-badge">ESG 기술</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>글로벌 건설 시장</h3>
+                <p>전 세계 건설 시장은 2024년 약 13.5조 달러 규모에서 2030년 약 17조 달러에 이를 것으로 예상되며, 연평균 4-5%의 성장률을 보일 것으로 전망됩니다. 이러한 성장의 주요 동력은 개발도상국의 기반시설 확충, 도시화 진행, 스마트 시티 건설, 재생에너지 기반시설 투자 등입니다.</p>
+                <p><strong>초고층 건축 시장:</strong> 특히 아시아 태평양 지역의 도시화로 인해 초고층 건축 수요가 계속 증가하고 있습니다. 중국, 인도, 동남아 지역의 도시 재개발 프로젝트, 부동산 개발 가속화 등이 주요 기회요인입니다. 2024년 약 200억 달러 규모의 초고층 건축 시장은 2030년 약 350억 달러로 성장할 것으로 예상됩니다.</p>
+                <p><strong>플랜트 및 인프라 시장:</strong> 전 세계 에너지 전환, LNG 및 수소 에너지 기반시설 구축, 화학 산업의 고부가가치화 등으로 인해 플랜트 시장이 성장하고 있습니다. 2024년 약 5,000억 달러 규모의 플랜트 시장은 2030년 약 7,500억 달러로 성장할 것으로 전망되며, 특히 중동, 아프리카, 동남아 지역에서의 수주 기회가 증가하고 있습니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 70%;"></div>
+                    </div>
+                    <div class="bar-value">40.7조</div>
+                    <div class="bar-label">2025년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 75%;"></div>
+                    </div>
+                    <div class="bar-value">43조</div>
+                    <div class="bar-label">2026년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 80%;"></div>
+                    </div>
+                    <div class="bar-value">46조</div>
+                    <div class="bar-label">2027년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 88%;"></div>
+                    </div>
+                    <div class="bar-value">50조</div>
+                    <div class="bar-label">2028년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">55조</div>
+                    <div class="bar-label">2030년 예상</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-ship"></i>글로벌 상사 및 무역 시장</h3>
+                <p>글로벌 무역 및 상사 사업 시장은 2024년 약 2조 달러의 매출 규모에서 연평균 3-4%의 성장을 보이고 있습니다. 특히 개발도상국과 신흥시장의 수입 수요 증가, e-커머스 기반의 국제 물류 확대, 공급망 재편에 따른 새로운 무역 경로 형성 등이 성장 요인입니다.</p>
+                <p>삼성물산의 상사 사업은 에너지 자원 무역, 일반 식품 및 농산물 수입, 원료 소재 공급, 대형 프로젝트 물품 공급 등 다양한 분야에서 활동하고 있습니다. 글로벌 공급망 위기 환경에서 안정적인 수급 관리 능력이 경쟁력이며, 향후 탄소 중립 물류, 디지털 무역 플랫폼 등 신기술 도입이 성장을 견인할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shopping-bag"></i>글로벌 패션 시장</h3>
+                <p>전 세계 패션 시장은 2024년 약 4,100억 달러 규모에서 연평균 2-3%의 성장을 보이고 있습니다. 프리미엄 및 럭셔리 세그먼트는 5% 이상의 고성장을 기록하고 있으며, 특히 아시아 태평양 지역의 중산층 확대로 인한 명품 수요 증가가 주요 성장 동력입니다.</p>
+                <p>삼성물산의 빈폴(Binpole)은 프리미엄 캐주얼 브랜드로서 한국 및 아시아 시장에서 강한 브랜드 가치를 보유하고 있습니다. 에잇세컨즈는 미드-프리미엄 세그먼트에서 차별화된 디자인과 품질로 경쟁 중입니다. 향후 온라인 판매 채널 확대, 해외 시장 진출, 지속가능한 패션 소재 개발 등이 성장 전략입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tree"></i>리조트·레저 시장</h3>
+                <p>글로벌 리조트 및 레저 시장은 2024년 약 1,500억 달러 규모에서 연평균 4-5%의 성장을 보이고 있습니다. 특히 아시아 태평양 지역의 여행 수요 증가, 프리미엄 경험 추구 트렌드, 동물원·테마파크의 관광 다각화가 주요 성장 요인입니다.</p>
+                <p>삼성물산 소유의 에버랜드는 한국의 대표적인 종합 레저 시설로서 동물원, 테마파크, 자연 생태 체험 등 다양한 서비스를 제공하고 있습니다. 2024년 기준 연간 방문객 약 500만명을 기록했으며, 향후 프리미엄 숙박시설 확대, 계절별 특화 프로그램, 국제 관광객 유치 등을 통해 시장점유율을 강화할 계획입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-users"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>국내 주요 건설사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업명</th>
+                                <th>2024 매출</th>
+                                <th>영업이익</th>
+                                <th>주요 사업</th>
+                                <th>경쟁력 평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>삼성물산</strong></td>
+                                <td>40.7조원</td>
+                                <td>3.3조원</td>
+                                <td>건설, 상사, 패션, 리조트</td>
+                                <td>다각화 강점, 그룹 시너지</td>
+                            </tr>
+                            <tr>
+                                <td><strong>현대건설</strong></td>
+                                <td>28.5조원</td>
+                                <td>2.8조원</td>
+                                <td>건설, 해외 플랜트</td>
+                                <td>건설 집중도, 기술력</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GS건설</strong></td>
+                                <td>12.3조원</td>
+                                <td>0.8조원</td>
+                                <td>건설, 부동산 개발</td>
+                                <td>국내 시장 집중, 도시 개발</td>
+                            </tr>
+                            <tr>
+                                <td><strong>대우건설</strong></td>
+                                <td>9.8조원</td>
+                                <td>0.5조원</td>
+                                <td>건설, 해외 프로젝트</td>
+                                <td>기술력, 국제 경험</td>
+                            </tr>
+                            <tr>
+                                <td><strong>롯데건설</strong></td>
+                                <td>7.5조원</td>
+                                <td>0.4조원</td>
+                                <td>건설, 부동산 개발</td>
+                                <td>부동산 포트폴리오</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 종합상사 비교</h3>
+                <p>삼성물산은 국내에서는 다각화된 비즈니스 모델로 경쟁 우위를 갖고 있지만, 글로벌 종합상사 시장에서는 일본의 미쓰비시, 이토추, 마루베니 등 전통 강호 기업들과 경쟁하고 있습니다. 이들 일본 기업들은 오랜 국제 무역 경험, 강력한 금융 기반, 글로벌 네트워크를 보유하고 있습니다.</p>
+                <p><strong>삼성물산의 경쟁 강점:</strong> (1) 삼성그룹의 지원으로 인한 자본력 및 신용도, (2) 건설 기술과 상사 기능의 통합, (3) 한국 제조업과의 강력한 네트워크, (4) 패션·리조트 등의 B2C 사업 포트폴리오, (5) 아시아 태평양 지역에서의 강화된 입지 등입니다.</p>
+                <p><strong>개선 과제:</strong> (1) 글로벌 기반시설 투자 능력 강화, (2) 에너지 자원 확보 경쟁력 향상, (3) 디지털 무역 플랫폼 개발, (4) 환경·사회·지배구조 측면의 국제 기준 충족 등이 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shopping-bag"></i>패션 브랜드 경쟁 구도</h3>
+                <p>삼성물산의 패션 사업은 삼성물산 빈폴과 에잇세컨즈 등 프리미엄 및 미드-프리미엄 세그먼트에서 경쟁하고 있습니다. 국내 경쟁사로는 더페이스샵(LG), 까르띠에 등이 있고, 국제적으로는 LVMH 그룹, 켈링(Kering), 에스티 로더(Estée Lauder) 등 글로벌 럭셔리 기업들과 경쟁하고 있습니다.</p>
+                <p>빈폴은 한국의 대표적인 프리미엄 캐주얼 브랜드로서 강한 브랜드 가치를 보유하고 있으며, 특히 중년층 고객을 중심으로 충성도가 높습니다. 그러나 최근 MZ세대의 취향 변화, 온라인 패션 시장의 성장, 지속가능성 요구의 증대 등에 대응해야 하는 과제가 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tree"></i>리조트 시장 경쟁 분석</h3>
+                <p>에버랜드는 한국 내 프리미엄 리조트 시장에서 롯데월드, 서울랜드 등과 경쟁하고 있으며, 아시아 지역에서는 오를랜도 유니버셜 스튜디오, 도쿄 디즈니랜드 등 글로벌 테마파크와도 간접적으로 경쟁합니다. 에버랜드는 동물원, 테마파크, 자연 생태 체험이 통합된 독특한 포지셔닝으로 강점을 갖고 있습니다.</p>
+                <p>앞으로 에버랜드의 경쟁력 강화는 (1) 스마트 운영 기술 도입, (2) 프리미엄 숙박시설 확충, (3) 계절별 특화 프로그램 개발, (4) 국제 관광객 유치 마케팅, (5) 환경 친화적 운영 등을 통해 이루어질 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-cube"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strengths)</h3>
+                    <ul>
+                        <li>삼성그룹 지배구조 내 전략적 위치와 시너지 창출 능력</li>
+                        <li>초고층 건설 및 플랜트 EPC 분야의 기술 우위</li>
+                        <li>글로벌 인지도 높은 프리미엄 패션 브랜드(빈폴)</li>
+                        <li>강력한 자본력과 신용도를 통한 대형 프로젝트 수주 능력</li>
+                        <li>다각화된 사업 포트폴리오로 인한 위험 분산</li>
+                        <li>에버랜드 등 고부가가치 리조트 자산 보유</li>
+                        <li>중동, 아시아 등 주요 시장에서의 강화된 네트워크</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation"></i>약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>현대건설 대비 건설 사업 집중도 낮음</li>
+                        <li>글로벌 상사 기업(미쓰비시, 이토추) 대비 국제 경험 부족</li>
+                        <li>패션 브랜드의 MZ세대 어필 미흡</li>
+                        <li>디지털 전환 속도가 경쟁사 대비 상대적으로 느림</li>
+                        <li>바이오헬스케어 사업의 초기 단계로 인한 성과 미흡</li>
+                        <li>건설 산업의 높은 프로젝트 변동성으로 인한 실적 불안정</li>
+                        <li>패션 사업의 시장 점유율이 국제 수준에 비해 낮음</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회 (Opportunities)</h3>
+                    <ul>
+                        <li>아시아 태평양 지역의 도시화 및 기반시설 수주 확대</li>
+                        <li>탄소 중립 건설 및 친환경 기술에 대한 글로벌 수요 증가</li>
+                        <li>중동 지역의 에너지 전환 프로젝트 수주 기회</li>
+                        <li>바이오헬스케어 산업의 급속 성장 및 투자 기회</li>
+                        <li>글로벌 명품 패션 시장의 확대 및 아시아 수요 증가</li>
+                        <li>스마트 건설 기술의 국제 표준화 기회</li>
+                        <li>삼성그룹 재편 시 최적 구조개편을 통한 가치 창출</li>
+                        <li>리조트·관광 산업의 회복 및 프리미엄 서비스 수요 증가</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i>위협 (Threats)</h3>
+                    <ul>
+                        <li>글로벌 건설 시장의 경쟁 심화 및 가격 하락 압력</li>
+                        <li>지정학적 긴장 고조로 인한 중동 프로젝트 불확실성</li>
+                        <li>글로벌 금리 인상으로 인한 프로젝트 파이낸싱 비용 증가</li>
+                        <li>국제 환경 규제 강화에 따른 준수 비용 증가</li>
+                        <li>패션 산업의 급속한 온라인화 및 브랜드 가치 하락 위험</li>
+                        <li>중국 건설사들의 가격 경쟁력 강화</li>
+                        <li>글로벌 공급망 재편으로 인한 기존 상사 기능 약화</li>
+                        <li>삼성그룹 지배구조 개편 시 불확실성 및 기업가치 변동</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i>삼성그룹 지배구조 내 전략적 역할</h3>
+                <p>삼성물산은 삼성그룹의 순환적 지배구조의 핵심 기업으로서 그룹 계열사들의 주식을 보유하고 경영에 영향력을 행사합니다. 현재 삼성물산은 삼성전자, 삼성화학, 삼성전기 등 주요 계열사 지분을 보유하고 있으며, 이를 통해 그룹 내 의사결정 과정에 영향력을 미치고 있습니다. 2024년 이후 삼성그룹의 지배구조 개편 논의가 활발해짐에 따라, 삼성물산의 역할과 위상에 대한 재검토가 진행 중입니다.</p>
+                <p><strong>향후 전략:</strong> (1) 비금융계 건설·상사 회사로서의 위상 강화, (2) 삼성그룹 내 건설·패션·리조트 사업의 허브 역할 수행, (3) 그룹 계열사와의 시너지를 통한 경쟁력 강화, (4) 지배구조 개편 시 최적의 기업가치 창출을 위한 전략 수립 등이 주요 과제입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i>친환경 및 ESG 경영 전략</h3>
+                <p>삼성물산은 2050년 탄소 중립 달성을 목표로 환경 친화적 경영을 강화하고 있습니다. 특히 건설 산업에서 탄소 감축이 중요한 과제이므로, 친환경 건축자재 개발, 탄소 중립 건설 공정 도입, 건설 폐기물 재활용 등에 집중 투자 중입니다. 또한 패션 사업에서도 지속가능한 소재 개발, 윤리적 생산 관행, 순환 경제 기반의 패션 비즈니스 모델 전환을 추진하고 있습니다.</p>
+                <p><strong>세부 전략:</strong> (1) 2030년까지 직접 배출 탄소 50% 감축, (2) 공급망 전체의 탄소 배출 감시 및 관리, (3) 재생에너지 기반 건설 장비 및 시설 도입, (4) 환경 영향 평가 강화 및 생물 다양성 보전, (5) 사회적 가치 창출을 통한 지역사회 공헌, (6) 투명한 경영 공시 및 이해관계자 소통 강화 등을 포함합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 확장 및 신시장 진출 전략</h3>
+                <p>삼성물산은 기존의 중동, 동남아 시장에서의 강점을 바탕으로 인도, 베트남, 인도네시아 등 신흥시장으로의 건설 사업 확대를 추진하고 있습니다. 특히 인도의 스마트 시티 프로젝트, 베트남의 도시 개발, 인도네시아의 신수도 건설 등이 주요 수주 기회입니다. 상사 사업에서는 아프리카 지역의 자원 무역 확대, 남미의 인프라 건설 참여 등을 추진 중입니다.</p>
+                <p><strong>신시장 진출 전략:</strong> (1) 현지 파트너십 강화 및 조인트 벤처 설립, (2) 현지 인력 육성 및 기술 이전을 통한 장기 관계 구축, (3) 정치·경제 리스크 관리 강화, (4) 현지 법규 준수 및 규제 대응 체계 구축, (5) 디지털 기반의 현지 마케팅 강화 등이 포함됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>바이오헬스케어 및 신성장 사업 전략</h3>
+                <p>삼성물산은 2024년부터 바이오 의약품 제조, 정밀의료, 헬스케어 서비스 등 신성장 분야에 전략적으로 진출하고 있습니다. 삼성물산의 건설 기술(GMP 바이오 시설), 상사 기능(글로벌 의약품 유통), 금융 능력(대형 프로젝트 파이낸싱)을 통합하여 바이오헬스케어 생태계 조성을 목표로 합니다.</p>
+                <p><strong>세부 전략:</strong> (1) 국내외 바이오 기업과의 전략적 제휴 및 투자, (2) GMP 준수 바이오 제조 시설 설계·시공 서비스 제공, (3) 글로벌 의약품 물류 및 유통 사업 강화, (4) 바이오 인큐베이팅 및 엑셀레이터 운영, (5) 정밀의료 플랫폼 구축을 통한 B2B2C 서비스 모델 개발 등을 포함합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-code"></i>디지털 전환 및 스마트 비즈니스 전략</h3>
+                <p>삼성물산은 스마트 건설, 디지털 상사, 온라인 패션 플랫폼 등 전사적 디지털 전환을 추진 중입니다. 특히 건설 현장의 IoT 센서, 드론, AI 분석을 통한 실시간 모니터링, 프로젝트 관리 디지털화, 공급망 최적화 등이 우선순위입니다. 상사 사업에서는 디지털 무역 플랫폼, 블록체인 기반 거래 투명성 강화, 빅데이터를 통한 시장 분석 등을 추진하고 있습니다.</p>
+                <p><strong>주요 추진 과제:</strong> (1) 클라우드 기반 통합 ERP 시스템 구축, (2) 빅데이터 및 AI를 활용한 의사결정 지원, (3) 사이버보안 강화 및 데이터 보호, (4) 디지털 인재 양성 및 조직 문화 개선, (5) 스타트업과의 협력을 통한 개방형 혁신 등을 포함합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCE -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill-wave"></i>최근 5년 재무 추이</h3>
+                <p>삼성물산의 재무 성과는 글로벌 건설 시장 및 상사 산업의 사이클에 따라 변동성을 보이고 있습니다. 2020년 코로나19 팬데믹으로 인한 프로젝트 지연, 2021-2022년의 회복, 2023년 금리 인상으로 인한 재하락 등의 추세가 나타났습니다. 2024년부터는 중동의 비전 2030 프로젝트 가속화, 아시아 기반시설 투자 증가 등으로 인해 다시 성장세를 보이고 있습니다.</p>
+                <p><strong>2024-2025년 재무 현황:</strong> 2024년 매출 38.5조원, 영업이익 2.9조원을 기록했으며, 2025년에는 매출 40.7조원, 영업이익 3.3조원으로 증가했습니다. 영업이익율은 약 8% 수준으로 산업 평균 대비 양호한 수준입니다. 자산 규모는 약 60조원으로 지속적으로 증가하고 있으며, 부채비율은 약 100-120% 수준으로 관리되고 있습니다.</p>
+                <p><strong>부문별 매출 구성:</strong> 건설 사업이 전체 매출의 약 45%, 상사 사업이 40%, 패션 사업이 8%, 리조트 및 기타 사업이 7% 수준입니다. 건설과 상사가 양대 축을 이루고 있으며, 패션과 리조트는 고부가가치 사업으로서 이익 기여도가 높은 편입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>부문별 수익성 분석</h3>
+                <p><strong>건설 사업부:</strong> 2025년 매출 18.3조원, 영업이익 1.2조원 기록. 최근 중동 프로젝트 증가로 이익성 개선. 초고층 건축 및 플랜트 사업의 높은 부가가치로 인해 이익율 약 6.5% 유지. 향후 인도, 베트남 등 신흥시장 진출로 성장 가능성 높음.</p>
+                <p><strong>상사 사업부:</strong> 2025년 매출 16.3조원, 영업이익 1.4조원 기록. 에너지 자원 무역, 일반 식품 수입 등을 통한 안정적 수익 창출. 이익율 약 8.6%로 그룹 내 고수익 사업부. 글로벌 공급망 재편에 따른 변동성 관리가 과제.</p>
+                <p><strong>패션 사업부:</strong> 2025년 매출 3.3조원, 영업이익 0.6조원 기록. 이익율 약 18% 수준으로 고부가가치 사업. 빈폴의 프리미엄 브랜드 가치 유지 및 온라인 채널 확대로 성장 중. 에잇세컨즈의 젊은층 고객 확보 전략 추진 중.</p>
+                <p><strong>리조트 및 기타:</strong> 2025년 매출 2.8조원, 영업이익 0.1조원 기록. 에버랜드의 회복으로 실적 개선 중. 프리미엄 숙박시설 확충으로 인한 매출 증가 기대. 이익율 약 3-4% 수준으로 향후 개선 여지 있음.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>재무 건전성 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">유동성 (유동비율)</span>
+                            <span class="progress-label-value">120%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">안정성 (부채비율)</span>
+                            <span class="progress-label-value">108%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">수익성 (ROE)</span>
+                            <span class="progress-label-value">8.2%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">효율성 (회전율)</span>
+                            <span class="progress-label-value">0.68x</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 68%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">배당성향</span>
+                            <span class="progress-label-value">35%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 70%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass"></i>향후 재무 전망</h3>
+                <p><strong>매출 전망 (2026-2030):</strong> 중동의 대형 프로젝트 수주 증가, 아시아 신흥시장 진출 가속화, 바이오헬스케어 사업 성장 등으로 인해 연평균 5-7%의 매출 성장이 예상됩니다. 2030년 매출은 약 55조원대에 도달할 것으로 전망됩니다.</p>
+                <p><strong>영업이익 전망:</strong> 건설 프로젝트의 이익율 개선, 고부가가치 사업(패션, 리조트) 확대, 스마트 건설 기술에 따른 원가 절감 등으로 인해 영업이익율이 현재의 8%에서 2030년 10% 수준으로 개선될 것으로 예상됩니다.</p>
+                <p><strong>자본 배분 계획:</strong> (1) 배당 성향을 현재의 35%에서 40-45% 수준으로 인상, (2) 신성장 분야(바이오, 스마트 건설) 투자 확대, (3) M&A 기회 포착을 위한 자본 준비금 유지, (4) 부채비율을 현재의 108%에서 100% 이하로 점진적 감축 등을 계획하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-trophy"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>기업 종합 평가</h3>
+                <p>삼성물산은 88년의 역사 속에서 건설, 상사, 패션, 리조트 등 다양한 사업 분야에서 경쟁력을 갖춘 글로벌 종합기업입니다. 특히 초고층 건설 및 플랜트 기술, 삼성그룹 내 전략적 위상, 글로벌 네트워크 등이 핵심 경쟁 자산입니다. 다각화된 사업 포트폴리오는 산업 사이클에 대한 완충 역할을 하고 있으며, 높은 자본력은 대형 프로젝트 수주 능력을 보장합니다.</p>
+                <p>그러나 현대건설 대비 건설 사업 집중도 낮음, 글로벌 상사 기업 대비 국제 경험 상대적 부족, 패션 및 리조트 사업의 성장 한계, 디지털 전환 속도 미흡 등이 개선 과제입니다. 특히 삼성그룹 지배구조 개편 논의 과정에서 기업가치와 전략적 위상이 재평가될 가능성이 높습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>향후 성장 동력</h3>
+                <p><strong>단기 (2026-2028):</strong> 중동 비전 2030 프로젝트의 가속화, 아시아 도시화에 따른 건설 수주 증가, 상사 사업의 에너지 자원 무역 확대, 패션의 온라인 채널 성장 등이 주요 성장 동력입니다. 연평균 5-6%의 매출 성장이 기대되며, 영업이익율은 8-9% 수준 유지로 전망됩니다.</p>
+                <p><strong>중장기 (2029-2035):</strong> 스마트 건설 기술의 상용화, 바이오헬스케어 사업의 본격적 수익화, 글로벌 ESG 시장 확대에 따른 친환경 건설 수주 증가, 아프리카 및 남미 신시장 진출 본격화 등이 성장을 견인할 것으로 예상됩니다. 중장기적으로 연평균 6-7%의 성장이 가능할 것으로 전망됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>리스크 요인 및 대응 전략</h3>
+                <p><strong>주요 리스크:</strong> (1) 글로벌 건설 시장의 경쟁 심화 - 현지 파트너십 강화 및 기술 차별화로 대응, (2) 지정학적 긴장 - 포트폴리오 다각화 및 리스크 헤징으로 대응, (3) 금리 인상 - 고정금리 대출 확보 및 프로젝트 파이낸싱 비용 절감으로 대응, (4) 환경 규제 강화 - ESG 투자 확대로 선제적 대응, (5) 그룹 지배구조 개편 - 투명한 경영 공시 및 기업가치 제고로 대응할 계획입니다.</p>
+                <p><strong>전략적 우선순위:</strong> (1) 건설 기술 고도화 및 스마트 건설 선도, (2) 글로벌 상사 네트워크 강화 및 신시장 진출, (3) 고부가가치 패션·리조트 사업 성장, (4) 바이오헬스케어 신성장 산업 육성, (5) 전사적 디지털 전환 가속화, (6) ESG 경영 강화 및 지배구조 개선 등입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i>최종 투자 의견 및 권고</h3>
+                <p><strong>투자 등급: HOLD (중립)</strong></p>
+                <p>삼성물산은 안정적인 수익 창출 능력, 강력한 자본력, 다각화된 사업 포트폴리오를 보유한 우량 기업입니다. 특히 글로벌 건설 시장의 호황, 중동 프로젝트 증가, 신성장 분야 진출 등 긍정적 요인이 많습니다. 그러나 현재 주가는 기업의 내재가치를 어느 정도 반영하고 있으며, 단기적인 추가 상승 가능성은 제한적입니다.</p>
+                <p><strong>투자 추천 대상:</strong> (1) 장기 배당 수익을 추구하는 투자자 - 안정적인 배당 수익 (3-4%) 제공, (2) 건설·상사 산업 매력도를 인정하는 투자자 - 산업 성장 사이클의 상승국면 활용 가능, (3) 삼성그룹 구조 개편에 따른 가치 창출을 기대하는 투자자 - 지배구조 개선 시 주가 상승 기회 존재.</p>
+                <p><strong>주의사항:</strong> (1) 글로벌 경기 둔화 시 건설·상사 사업의 수주 감소 가능성, (2) 금리 상승으로 인한 프로젝트 채산성 악화, (3) 삼성그룹 지배구조 개편에 따른 불확실성, (4) 중동 정정불안이 프로젝트에 미치는 영향 등을 주의깊게 모니터링해야 합니다.</p>
+                <p><strong>목표주가:</strong> 12개월 목표주가 약 95,000원대 (현재 수준 대비 +10-15% 상승 예상). 장기 (3년) 기준으로는 120,000원대 달성 가능성 있음. 단, 글로벌 경제 상황, 금리 추이, 그룹 구조 개편 진행 상황 등에 따라 변동 가능합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i>주요 모니터링 지표</h3>
+                <ul class="content-list">
+                    <li>분기별 수주액 및 누적 수주잔액 동향 - 건설 사업의 성장 지표</li>
+                    <li>상사 사업의 원유 및 에너지 자원 거래량 - 수익성 변동 지표</li>
+                    <li>패션 부문의 온라인 매출 비중 - 디지털 전환 진행도</li>
+                    <li>에버랜드 방문객 수 및 입장료 수익 - 리조트 사업 회복 지표</li>
+                    <li>부채비율 및 유동성 지표 - 재무 건전성</li>
+                    <li>영업이익율 추이 - 수익성 개선 정도</li>
+                    <li>R&D 투자액 및 신기술 상용화 - 미래 경쟁력</li>
+                    <li>삼성그룹 내 지분율 변동 - 지배구조 개편 신호</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Report Footer -->
+        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--rule); text-align: center;">
+            <p style="color: var(--text-muted); font-size: 12px; line-height: 1.8; margin-bottom: 24px;">
+                본 리포트는 FLOVAH AI 분석 플랫폼을 통해 작성된 종합 기업 분석 자료입니다.<br>
+                제공되는 정보는 공개 자료, 금융 데이터, 시장 조사를 기반으로 하며, 투자 판단의 참고자료로만 사용되어야 합니다.<br>
+                본 리포트의 내용은 작성 시점의 정보를 바탕으로 하므로 시간 경과에 따라 변경될 수 있습니다.
+            </p>
+            <p style="color: var(--text-muted); font-size: 11px;">
+                <strong>보고서 작성일:</strong> 2026년 4월 2일 &nbsp;|&nbsp;
+                <strong>분석 대상:</strong> 삼성물산 (KOSPI 028260) &nbsp;|&nbsp;
+                <strong>AI 신뢰도:</strong> 72/100
+            </p>
+        </div>
+
+        <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 02일 12:03 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+    </main>
+</body>
+</html>

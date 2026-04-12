@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Oil 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 8, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">S-Oil<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">사우디아람코 자회사로서 강력한 정유·석유화학 역량으로 아시아 시장을 주도하는 S-Oil의 성장 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">78</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">에너지 기업 수익성 지수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">정유 마진과 프로젝트 가치 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">37조</div>
+                            <div class="metric-label">2026 예상 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.22~3.2조</div>
+                            <div class="metric-label">2026 영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">~9.3조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">90%</div>
+                            <div class="metric-label">샤힌 프로젝트</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> S-Oil 기업 소개</h3>
+                <p>S-Oil(에쓰오일)은 한국의 주요 정유 기업으로, KOSPI 상장사(종목코드: 010950)로서 강력한 정유·석유화학 역량을 보유하고 있습니다. 2025년 말 시가총액은 약 9.3조원으로 한국의 주요 에너지 기업입니다. S-Oil의 가장 큰 특징은 사우디아람코가 주요 지분을 보유한 국제 정유 기업이라는 점입니다. 이를 통해 안정적인 원유 공급, 글로벌 최고의 정유 기술, 국제 시장 네트워크를 확보하고 있습니다.</p>
+                <p>2026년 S-Oil의 예상 매출은 37조원으로, 상당한 규모의 한국 에너지 기업입니다. 영업이익 전망은 1.22~3.2조원으로 분석사에 따라 편차가 있으나, 이는 국제 유가와 정유 마진 변화에 매우 민감한 사업 특성을 반영합니다. 특히 '샤힌 프로젝트'라는 대규모 투자 사업이 진행 중이며, 이 프로젝트의 완공이 S-Oil의 장기 성장을 견인할 주요 요소입니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1976년</div>
+                        <div class="timeline-text">S-Oil 설립 - 한국의 주요 정유 기업으로 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1987년</div>
+                        <div class="timeline-text">사우디아람코 진출 - 국제 정유 기업으로 변모</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1992년</div>
+                        <div class="timeline-text">온산 정유 공장 가동 - 최신 시설을 갖춘 기반 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2006년</div>
+                        <div class="timeline-text">석유화학 사업 확대 - 정유뿐 아니라 화학 제품 생산</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">KOSPI 상장 - 투명한 기업지배구조 확립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">샤힌 프로젝트 승인 - 9.258조원 투자 대규모 프로젝트 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022년</div>
+                        <div class="timeline-text">에너지 가격 급등 - 높은 정유 마진으로 기록적 수익</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">샤힌 프로젝트 기계적 준공 예정 - 생산 능력 대폭 증대</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>정유·석유화학 기술 및 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 정유 기술 및 역량</h3>
+                <p>S-Oil은 사우디아람코의 지원으로 세계 최고 수준의 정유 기술을 보유하고 있습니다. 온산 정유 공장은 한국 최대 규모의 정유 시설로, 일일 생산량 54만 배럴(BPD)의 원유를 처리할 수 있습니다. 이는 한국의 총 정유 능력의 약 15%를 담당하는 수준입니다. S-Oil의 정유 기술은 저유황유, 친환경 연료 등 고급 제품 생산에 특화되어 있으며, 국제 환경 규제를 앞서 만족합니다.</p>
+                <p>정유 마진은 S-Oil의 수익성을 결정하는 핵심 요소입니다. 국제 유가, 수급 상황, 제품 믹스 등에 따라 마진이 크게 변동되지만, S-Oil은 사우디아람코의 기술과 네트워크로 산업 평균보다 높은 마진을 유지하려고 합니다. 친환경 제품 생산 기술 강화, 에너지 효율화, 자동화 수준 향상 등이 마진 개선의 주요 전략입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">정유기술</span>
+                    <span class="tech-badge">친환경연료</span>
+                    <span class="tech-badge">고도화기술</span>
+                    <span class="tech-badge">자동화</span>
+                    <span class="tech-badge">효율성개선</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 석유화학 사업 확대</h3>
+                <p>S-Oil은 기존의 순수 정유 사업을 넘어 석유화학 사업으로 사업 다각화를 추진하고 있습니다. 정유 과정의 부산물인 나프타를 활용하여 기초 화학 원료를 생산하고, 이를 고부가가치 화학 제품으로 전환합니다. 폴리에틸렌(PE), 폴리프로필렌(PP), 벤젠, 톨루엔 등의 화학 제품은 정유 사업의 마진율(3-5%)보다 높은 수익성(8-15%)을 제공합니다.</p>
+                <p>샤힌 프로젝트가 완공되면, S-Oil의 석유화학 생산 능력이 크게 확대될 것입니다. 이는 단순 정유 기업에서 통합 에너지 화학 기업으로의 변모를 의미하며, 장기적 수익성 향상의 핵심입니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> 탄소 중립 기술</h3>
+                    <p>S-Oil은 국제 환경 규제와 기후 변화 대응 차원에서 탄소 감축 기술에 투자하고 있습니다. 재생에너지 활용, 이산화탄소 포집, 에너지 효율화 등을 통해 운영 과정의 탄소 배출을 줄이려고 합니다. 또한 바이오 기반 연료 생산 기술도 개발 중이며, 이는 향후 에너지 시장의 전환 기조에 대응하는 전략입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> 디지털화 및 자동화</h3>
+                    <p>S-Oil은 정유 공장의 운영 효율성을 높이기 위해 디지털 기술과 자동화를 적극 도입하고 있습니다. IoT 센서, 빅데이터 분석, AI 기반 최적화 등을 통해 운영비를 절감하고 안전성을 향상시킵니다. 스마트 팩토리 기술은 S-Oil의 경쟁 우위를 강화하는 중요한 요소입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 글로벌 기술 네트워크</h3>
+                    <p>사우디아람코와의 관계를 통해 S-Oil은 글로벌 최고 수준의 정유 기술, 운영 노하우, 연구 역량을 접할 수 있습니다. 국제 정유 시장의 최신 트렌드를 신속하게 반영하고, 글로벌 표준의 안전 및 환경 기준을 충족할 수 있는 기반을 갖추고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 샤힌 프로젝트: 대규모 투자 사업</h3>
+                <p>샤힌 프로젝트는 S-Oil의 가장 중요한 장기 성장 동인입니다. 총 투자액 9.258조원으로, 한국의 최대 규모 에너지 프로젝트 중 하나입니다. 2017년 프로젝트 승인 이후 꾸준히 진행되어 왔으며, 2026년 6월 기계적 준공 목표를 두고 있습니다. 샤힌 프로젝트의 주요 내용은 다음과 같습니다.</p>
+                <ul>
+                    <li><strong>생산 설비 확대:</strong> 정유 일일 처리 능력 증가로 매출 기반 확대</li>
+                    <li><strong>고도화 기술 도입:</strong> 최신 정유 기술 적용으로 제품 품질 개선 및 마진율 향상</li>
+                    <li><strong>석유화학 통합:</strong> 정유와 석유화학을 일괄 처리하는 통합 시설 구축</li>
+                    <li><strong>에너지 효율성:</strong> 최신 운영 기술로 에너지 소비 최소화</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>글로벌 에너지 시장과 성장기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 정유 시장 현황과 전망</h3>
+                <p>글로벌 정유 시장은 2025년 약 2조 달러 규모로, 세계 에너지 수요의 기초를 이루고 있습니다. 전통적으로 정유 산업은 저성장 산업으로 분류되지만, 신흥국의 에너지 수요 증가, 친환경 연료 전환, 석유화학 제품의 고급화 등으로 인해 구조적 변화를 겪고 있습니다. 특히 아시아 태평양 지역은 전 세계 정유 시장의 약 40%를 차지하며, 지속적인 성장을 기록하고 있습니다.</p>
+                <p>한국은 아시아 태평양 지역의 중요한 정유 허브입니다. 한국의 정유 산업은 일일 처리 능력 약 350만 배럴(BPD)로, 세계 5위 수준입니다. S-Oil은 한국 정유 시장의 약 15%를 차지하는 주요 기업으로, 국내뿐 아니라 아시아 시장에서 중요한 역할을 하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-fuel-pump"></i> 아시아 에너지 수요의 급증</h3>
+                    <p>인도, 인도네시아, 베트남 등 신흥 아시아 국가들의 에너지 수요가 급속도로 증가하고 있습니다. 자동차 등록대수 증가, 화학 산업 발전, 인프라 건설 등이 석유 및 석유화학 제품에 대한 수요를 견인합니다. 이러한 추세는 향후 10년 이상 지속될 것으로 전망되며, S-Oil과 같은 아시아 정유 기업에게 성장 기회를 제공합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i> 정유 마진의 변동성과 기회</h3>
+                    <p>정유 마진은 국제 유가, 원유 수급, 제품 수요 등의 영향을 받아 큰 변동성을 보입니다. 2022년 에너지 위기 이후 마진이 축소되었으나, 중장기적으로는 OPEC 감산, 신흥국 수요 증가 등으로 인해 마진 회복이 예상됩니다. S-Oil은 샤힌 프로젝트 완공으로 생산성을 높이고, 고부가가치 제품 비중을 확대하여 마진을 개선할 계획입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 에너지 전환 시대의 기회와 도전</h3>
+                <p>전 세계적으로 탄소 중립, 재생에너지 확대, 전기차 보급 등 에너지 전환이 진행 중입니다. 이는 장기적으로 석유 수요 감소를 의미하지만, 동시에 정유 기업들이 적응하고 진화할 기회를 제공합니다. S-Oil은 고급 화학 제품, 친환경 연료, 에너지 효율성 기술 등에 투자하여 에너지 전환 시대를 주도하려고 합니다. 또한 기존의 석유 기반 사업을 유지하면서도, 바이오 연료, 수소 에너지 등 새로운 에너지 분야로의 다각화를 추구합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 석유화학 제품의 고급화 추세</h3>
+                <p>석유화학 시장은 저부가가치 제품에서 고부가가치 제품으로의 이동이 가속화되고 있습니다. 일반 플라스틱에서 특수 플라스틱, 기초 화학에서 첨단 소재로의 전환이 진행 중입니다. S-Oil이 이러한 고급 제품 생산으로 사업 포트폴리오를 개선한다면, 정유 사업의 저마진을 보완할 수 있습니다. 샤힌 프로젝트는 이러한 고도화 전략의 핵심 투자입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> <span>주요 경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 한국 정유 산업 경쟁 환경</h3>
+                <p>한국의 정유 산업은 SK에너지, GS칼텍스, 현대오일뱅크, S-Oil, 롯데정유 등 주요 5개 사가 시장을 나누어 가지고 있는 과점 산업입니다. 이들 기업은 정유 기술과 규모에서 큰 차이가 없지만, 자본력, 기술 수준, 시장 점유율에서 약간의 차이를 보입니다. S-Oil은 사우디아람코의 지원으로 글로벌 경쟁력을 갖춘 독특한 위치를 차지하고 있습니다.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>기업</th>
+                        <th>시장 점유율</th>
+                        <th>강점</th>
+                        <th>도전 과제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SK에너지</strong></td>
+                        <td>약 30%</td>
+                        <td>한국 최대 정유사, 강력한 자본력</td>
+                        <td>기존 설비 노후화, 환경 규제</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GS칼텍스</strong></td>
+                        <td>약 25%</td>
+                        <td>안정적 사업 운영, 기술력</td>
+                        <td>성장 프로젝트 부족, 경쟁심화</td>
+                    </tr>
+                    <tr>
+                        <td><strong>S-Oil</strong></td>
+                        <td>약 15%</td>
+                        <td>사우디아람코 지원, 샤힌 프로젝트</td>
+                        <td>규모 부족, 경제성 불확실성</td>
+                    </tr>
+                    <tr>
+                        <td><strong>현대오일뱅크</strong></td>
+                        <td>약 15%</td>
+                        <td>현대그룹 지원, 에너지 다각화</td>
+                        <td>정유 외 사업 미흡, 수익성 개선 필요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>롯데정유</strong></td>
+                        <td>약 15%</td>
+                        <td>효율적 운영, 롯데그룹 지원</td>
+                        <td>성장 동인 부족, 구조 조정 진행</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 글로벌 정유사와의 경쟁 분석</h3>
+                <p>S-Oil은 한국의 정유 기업 중에서는 상당한 경쟁력을 갖추고 있으나, 글로벌 정유사(Exxon Mobil, Shell, Chevron 등)와의 직접 경쟁은 제한적입니다. 대신 아시아 지역의 정유사(Pertamina, Chevron Pacific, CNOOC 등)와 경쟁하고 있습니다. S-Oil의 강점은 기술 수준과 운영 효율성이며, 약점은 규모와 글로벌 네트워크의 부족입니다. 사우디아람코와의 관계는 이러한 약점을 보완하는 중요한 자산입니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-landmark"></i> 국내 에너지 기업과의 경쟁</h3>
+                    <p>SK에너지는 한국 최대 정유사로 S-Oil보다 규모가 2배 이상입니다. 다만 S-Oil의 사우디아람코 연계와 샤힌 프로젝트는 독특한 경쟁 우위를 제공합니다. GS칼텍스와의 경쟁도 치열하며, 기술과 마진율을 중심으로 경쟁합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 국제 유가와의 연동</h3>
+                    <p>S-Oil의 수익성은 국제 유가와 정유 마진에 직접 연동됩니다. 유가가 높으면 높을수록 S-Oil의 수익성이 개선되는 구조입니다. 따라서 국제 정유사와의 글로벌 경쟁보다는, 국제 유가 추세와 수급 관계가 S-Oil의 경영 성과를 결정하는 더 중요한 요소입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 마진율 경쟁 및 효율성</h3>
+                    <p>정유 산업은 마진율이 낮은 경쟁 산업입니다. S-Oil은 샤힌 프로젝트 완공으로 생산성을 높이고, 운영 비용을 절감하여 마진율을 개선하려고 합니다. 이는 국내 정유사들과의 경쟁에서 우위를 차지하기 위한 필수 전략입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>S-Oil의 경쟁 전략: SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>사우디아람코 연계: 글로벌 최고 수준의 기술과 원유 공급</li>
+                        <li>샤힌 프로젝트: 생산 능력 확대와 수익성 개선의 핵심 동인</li>
+                        <li>기술 우위: 고도화 정유 기술과 환경 친화적 운영</li>
+                        <li>한국 시장 위치: 아시아 정유 허브로서의 전략적 위치</li>
+                        <li>석유화학 확대: 고부가가치 제품으로의 사업 다각화</li>
+                        <li>운영 효율성: 현대적 시설과 자동화 수준</li>
+                        <li>글로벌 수출: 국내 정유 제품의 국제 경쟁력</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>규모 부족: SK에너지 등 대형사 대비 시장 점유율 낮음</li>
+                        <li>수익성 변동: 국제 유가와 정유 마진에 높은 의존도</li>
+                        <li>프로젝트 리스크: 샤힌 프로젝트의 경제성 불확실성</li>
+                        <li>저마진 사업: 정유 사업의 본질적 저마진 특성</li>
+                        <li>환경 규제: 강화되는 탄소 규제에 따른 비용 증가</li>
+                        <li>구조적 한계: 세계적 에너지 전환 추세에 따른 수요 감소</li>
+                        <li>대출금 부담: 샤힌 프로젝트 투자로 인한 높은 부채</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>아시아 에너지 수요 증가: 신흥국의 석유 수요 지속</li>
+                        <li>정유 마진 회복: OPEC 감산으로 인한 마진 개선</li>
+                        <li>샤힌 프로젝트 완공: 생산성 및 수익성 대폭 개선</li>
+                        <li>석유화학 고급화: 고부가가치 화학 제품의 성장</li>
+                        <li>친환경 연료: 저황 유, 바이오 연료 등의 수요 증가</li>
+                        <li>지역 리더십: 아시아 정유 시장에서의 경쟁 우위 강화</li>
+                        <li>통합 정유화학: 정유와 화학의 통합으로 수익성 향상</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>에너지 전환: 전 세계적 탄소 중립으로 인한 석유 수요 감소</li>
+                        <li>국제 유가 하락: 유가 약세 시 수익성 악화</li>
+                        <li>정제유 수요 침체: 선진국의 수요 감소</li>
+                        <li>경쟁 심화: 국내 정유사 간 경쟁 및 글로벌 기업 진출</li>
+                        <li>환경 규제 강화: 탄소세, 배출권 거래제 등의 비용 증가</li>
+                        <li>프로젝트 지연: 샤힌 프로젝트의 완공 지연 위험</li>
+                        <li>부채 리스크: 높은 부채로 인한 재무 압박</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>S-Oil의 미래 경영 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hammer"></i> 샤힌 프로젝트 성공적 완공 및 상업화</h3>
+                <p>S-Oil의 가장 중요한 경영 과제는 샤힌 프로젝트의 성공적 완공입니다. 2026년 6월 기계적 준공 목표로 진행 중이며, 이후 시운전 단계를 거쳐 본격 운영에 들어갈 예정입니다. 프로젝트가 성공적으로 완공되면 S-Oil의 생산 능력이 상당히 확대되고, 수익성도 크게 개선될 것으로 예상됩니다. 다만 대규모 프로젝트이기 때문에 일정 지연, 비용 초과 등의 위험이 존재합니다. S-Oil은 신중한 프로젝트 관리를 통해 목표를 달성하려고 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 석유화학 사업의 고도화 및 수익성 개선</h3>
+                <p>샤힌 프로젝트의 핵심은 정유와 석유화학의 통합입니다. 기존 정유 사업의 저마진(3-5%)을 고부가가치 석유화학 제품(8-15%)으로 전환함으로써 전체 사업의 수익성을 높이려는 전략입니다. 특수 플라스틱, 고성능 화학, 친환경 소재 등 고급 화학 제품 개발에 집중하여, 시장에서의 경쟁 우위를 확보할 계획입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> 에너지 전환 대응 및 친환경 사업 확대</h3>
+                    <p>S-Oil은 기존의 석유 기반 사업을 유지하면서도, 에너지 전환 시대에 대응하기 위해 친환경 사업을 확대하려고 합니다. 바이오 기반 연료, 재생에너지, 수소 에너지 등의 개발과 투자를 추진하여, 향후 에너지 시장의 변화에 선제적으로 대응할 계획입니다. 특히 한국의 탄소 중립 목표에 부응하여, 저탄소 연료와 제품 개발에 집중합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> 디지털화 및 운영 효율성 강화</h3>
+                    <p>S-Oil은 정유 공장의 운영 효율성을 높이기 위해 디지털 기술과 자동화를 강화합니다. 빅데이터 분석, AI 기반 최적화, IoT 센서 네트워크 등을 활용하여 비용을 절감하고 품질을 향상시킵니다. 또한 사이버 보안 강화로 운영 안정성을 보장합니다. 이러한 디지털 전환은 중장기 경쟁력 강화의 핵심입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i> 글로벌 파트너십 강화 및 수출 확대</h3>
+                <p>S-Oil은 사우디아람코와의 관계를 바탕으로 글로벌 에너지 네트워크를 활용하여 수출을 확대할 계획입니다. 한국의 고품질 정유 제품을 아시아, 유럽, 아메리카 등 전 세계 시장에 판매하여 수익을 극대화합니다. 또한 에너지 관련 프로젝트에 대한 국제 협력도 강화할 것입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> <span>재무 현황 및 성장 추이</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 매출 성장 추이 및 전망</h3>
+                <p>S-Oil의 2026년 예상 매출은 37조원으로, 전년 대비 상당한 규모의 기업입니다. 매출 규모는 주로 국제 유가 수준과 정유 마진에 의해 결정됩니다. 2022년 에너지 위기 시에는 기록적 매출을 기록했으나, 2023년 이후 유가 약세로 인해 매출이 감소했습니다. 향후 국제 유가 회복, 샤힌 프로젝트 완공에 따른 생산 증가, 석유화학 비중 확대 등으로 인해 매출 성장을 기대할 수 있습니다.</p>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">예상 매출 규모 (조원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 70%;"></div>
+                            </div>
+                            <div class="bar-value">35T</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">37T</div>
+                            <div class="bar-label">2026F</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 95%;"></div>
+                            </div>
+                            <div class="bar-value">39T</div>
+                            <div class="bar-label">2027F</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 영업이익 및 수익성</h3>
+                <p>S-Oil의 2026년 영업이익 전망은 1.22~3.2조원으로, 분석사에 따라 상당한 편차를 보입니다. 이는 국제 유가와 정유 마진의 불확실성을 반영합니다. 보수 전망(1.22조원)은 낮은 유가와 정유 마진을 가정한 것이고, 강세 전망(3.2조원)은 유가 회복과 마진 개선을 가정한 것입니다. 샤힌 프로젝트 완공으로 인한 효율성 개선은 어느 정도 영업이익을 지지할 것으로 예상됩니다.</p>
+                <ul>
+                    <li><strong>국제 유가의 영향:</strong> WTI 유가 추이가 수익성을 결정하는 가장 중요한 요소</li>
+                    <li><strong>정유 마진 변화:</strong> 국내외 수급 상황에 따른 마진 변동</li>
+                    <li><strong>샤힌 프로젝트의 기여:</strong> 생산성 향상으로 인한 비용 절감</li>
+                    <li><strong>석유화학 비중:</strong> 고마진 제품 비중 증가로 인한 평균 마진 개선</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-percent"></i> 영업이익률 및 효율성</h3>
+                    <p>정유 산업의 일반적인 영업이익률은 3-7% 수준입니다. 2026년 S-Oil의 영업이익률은 3.3~8.6% 범위로 예상되며, 유가와 마진에 따라 크게 변동됩니다. 샤힌 프로젝트 완공으로 인한 비용 절감과 석유화학 고도화로 인한 마진 개선이 실현되면, 영업이익률을 업계 평균 이상 수준으로 유지할 수 있을 것으로 기대됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-pie"></i> 사업 부문별 수익 구성</h3>
+                    <p><strong>정유 사업(70%):</strong> 여전히 주요 수익원이지만 저마진</p>
+                    <p><strong>석유화학 사업(25%):</strong> 고마진 제품으로 수익성 개선 중</p>
+                    <p><strong>기타 사업(5%):</strong> 유틸리티, 서비스 등</p>
+                    <p>샤힌 프로젝트 완공 후 석유화학 사업의 비중은 35~40%로 확대될 예정입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 재무 상태 및 부채 구조</h3>
+                <p>S-Oil은 샤힌 프로젝트 투자로 인해 상당한 규모의 부채를 보유하고 있습니다. 2025년 말 부채 규모는 약 10조원을 초과할 것으로 추정됩니다. 다만 프로젝트 완공 후 현금흐름 개선으로 인해 부채 상환 계획이 진행될 것으로 예상됩니다. S-Oil은 충분한 자본금과 신용도를 바탕으로 재정 관리를 하고 있으며, 부채 비율 개선을 위해 적극적인 현금흐름 관리를 추진 중입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-book-open"></i> 종합 평가</h3>
+                <p>S-Oil은 한국의 주요 정유 기업으로, 사우디아람코의 지원과 샤힌 프로젝트라는 대규모 성장 동인을 보유하고 있습니다. 2026년 37조원의 예상 매출과 1.22~3.2조원의 영업이익 전망은 국제 유가와 정유 마진에 따라 크게 변동될 수 있습니다. 다만 샤힌 프로젝트 완공과 석유화학 사업 고도화는 중장기적 수익성 개선의 중요한 추동력이 될 것입니다.</p>
+                <p>S-Oil은 현재 에너지 전환의 과도기에 있습니다. 기존의 석유 기반 사업을 유지하면서도 친환경 에너지, 고급 화학 제품 등으로의 사업 다각화를 추진하고 있습니다. 이러한 균형잡힌 전략이 성공한다면, S-Oil은 장기적으로 안정적인 성장을 달성할 수 있을 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 주요 기회 및 리스크</h3>
+                <p><strong>주요 기회:</strong></p>
+                <ul>
+                    <li>샤힌 프로젝트 완공: 생산 능력과 수익성의 대폭 개선</li>
+                    <li>아시아 에너지 수요 증가: 신흥국의 지속적인 석유 수요</li>
+                    <li>정유 마진 회복: OPEC 감산으로 인한 국제 유가 회복</li>
+                    <li>석유화학 고도화: 고부가가치 제품의 확대와 마진 개선</li>
+                    <li>사우디아람코 네트워크: 글로벌 에너지 시장에서의 협력 기회</li>
+                </ul>
+                <p><strong>주요 리스크:</strong></p>
+                <ul>
+                    <li>에너지 전환: 전 세계적 탄소 중립으로 인한 장기적 석유 수요 감소</li>
+                    <li>국제 유가 약세: 지정학적 위험 완화로 인한 유가 하락</li>
+                    <li>프로젝트 리스크: 샤힌 프로젝트의 일정 지연 또는 비용 초과</li>
+                    <li>부채 부담: 높은 부채로 인한 재무 압박과 신용도 저하 위험</li>
+                    <li>경쟁 심화: 국내외 정유사의 경쟁 심화로 인한 마진 압박</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 중립(Neutral)</strong></p>
+                <p>S-Oil은 장기적 성장 잠재력을 갖춘 기업이지만, 단기적으로는 유가 변동성과 프로젝트 리스크로 인한 불확실성이 존재합니다. 샤힌 프로젝트의 성공적 완공과 석유화학 사업의 고도화가 중기(1-3년) 성과를 결정할 것입니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>중기 성장 투자자:</strong> 샤힌 프로젝트 완공으로 인한 성장성에 베팅하는 투자자</li>
+                    <li><strong>에너지 산업 투자자:</strong> 한국 에너지 기업의 성장과 안정성을 추구하는 투자자</li>
+                    <li><strong>배당 투자자:</strong> 안정적인 현금흐름과 배당 성장을 원하는 투자자</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간(Medium) - 산업 특성상 유가 변동성이 있으나, 사우디아람코 지원과 샤힌 프로젝트가 위험을 부분 상쇄</p>
+                <p><strong>목표주가 전망:</strong> 2026년 말 기준 현재 주가 대비 10-20% 상승 기대</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>샤힌 프로젝트 기계적 준공 달성 여부(6월 목표)</li>
+                    <li>국제 유가 추이 및 정유 마진 변화</li>
+                    <li>분기별 영업이익 실적과 사업 환경 변화</li>
+                    <li>석유화학 제품의 수익 기여도 확대 현황</li>
+                    <li>부채 상환 계획 및 재무 건전성 개선</li>
+                </ul>
+                <p>S-Oil이 샤힌 프로젝트를 성공적으로 완공하고, 이를 통해 생산성과 수익성을 개선할 수 있다면, 중장기적으로 한국의 주요 에너지 기업으로서의 위상을 강화할 수 있을 것입니다. 특히 석유화학 사업의 고도화와 에너지 전환 대응이 성공한다면, 향후 10년의 주요 수익원이 될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-industry"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>S-Oil 공시 자료 및 시장 조사</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>S-Oil 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 S-Oil Investor Relations 공개 정보</li>
+                    <li>사우디아람코 공시 자료 및 국제 협력 정보</li>
+                    <li>국제 유가 정보 (WTI, Brent 등)</li>
+                    <li>한국에너지공사 및 에너지 통계 자료</li>
+                    <li>정유·석유화학 산업 분석 리포트</li>
+                    <li>국내외 투자은행 및 증권사 리서치 리포트</li>
+                    <li>국제 정유 산업 분석 기관(IEA, EIA) 자료</li>
+                    <li>경쟁사 공시 자료 및 산업 동향 정보</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 유가 변동, 프로젝트 리스크, 규제 정책 등에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights</strong> | 최종 업데이트: 2026년 04월 08일 06:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 08일 06:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Insights</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

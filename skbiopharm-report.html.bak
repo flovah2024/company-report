@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK바이오팜 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 8, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">SK바이오팜<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">혁신 신약 개발로 글로벌 제약 시장에 도전하는 SK바이오팜의 성장 전략 및 경쟁 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">82</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">바이오 기업 성장성 지수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">신약 개발 역량과 시장 성장성 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">706.7B</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">203.9B</div>
+                            <div class="metric-label">2025 영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">108,500원</div>
+                            <div class="metric-label">주가 (Feb 2026)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">~9.8조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> SK바이오팜 기업 소개</h3>
+                <p>SK바이오팜은 SK그룹의 핵심 바이오 신약 개발 회사로, 2009년 설립 이후 혁신 신약 개발에 집중해왔습니다. KOSPI 상장사(종목코드: 326030)로서 글로벌 제약 시장에서 한국 기업의 위상을 높이는 데 기여하고 있습니다. 2025년 매출 706.7억원, 영업이익 203.9억원을 기록하며 전년 대비 영업이익이 112% 증가하는 놀라운 실적을 달성했습니다.</p>
+                <p>SK바이오팜의 핵심 가치는 혁신적인 신약 개발 역량에 있습니다. 간질 치료제 '엑스코프리(Xcopri, cenobamate)'는 SK바이오팜의 대표 상품으로, 미국 시장에서 큰 성공을 거두고 있습니다. 2025년 3분기 미국 매출이 172.2억원에 달하며 전년 동기 대비 51.9% 성장했습니다. 이는 SK바이오팜이 글로벌 신약 개발 능력을 갖춘 진정한 혁신 기업임을 입증합니다. SK그룹의 강력한 재정 지원과 글로벌 네트워크를 바탕으로, SK바이오팜은 다수의 파이프라인 신약 개발을 진행 중입니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2009년</div>
+                        <div class="timeline-text">SK바이오팜 설립 - SK그룹의 신약 개발 전담 자회사로 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016년</div>
+                        <div class="timeline-text">엑스코프리(Xcopri) 개발 착수 - 혁신 간질 치료제 개발 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019년</div>
+                        <div class="timeline-text">KOSPI 상장 - 독립적인 공개 기업으로 성장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">엑스코프리 FDA 승인 - 미국 시장 진출의 첫 신약 승인</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">엑스코프리 미국 판매 개시 - 글로벌 신약 수익화 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">엑스코프리 유럽 승인 - 글로벌 확장 가속화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">다양한 신약 임상 3상 진행 - 파이프라인 확대 중</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">매출 706.7억원 달성 및 영업이익 112% 증가 - 강력한 성장 모멘텀</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>신약 개발 기술과 파이프라인</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 엑스코프리(Xcopri) 신약 개발 및 글로벌 성공</h3>
+                <p>엑스코프리는 SK바이오팜의 대표 신약으로, 난치성 간질 치료제입니다. 기존 간질 치료제와 달리 새로운 메커니즘의 작용 방식으로 약물 내성 간질 환자들에게 새로운 치료 옵션을 제공합니다. 2020년 미국 FDA 승인 이후 글로벌 제약 시장에서 빠르게 성장하고 있습니다. 2025년 3분기 미국 매출만 172.2억원으로, 전년 동기 대비 51.9% 성장했습니다. 이는 엑스코프리가 글로벌 시장에서 높은 수요를 창출하고 있음을 의미합니다.</p>
+                <p>엑스코프리의 성공은 단순한 제약사의 성공을 넘어, 한국 바이오 기업의 글로벌 경쟁력을 입증하는 사례입니다. 국내 바이오 기업이 개발한 신약이 미국, 유럽 등 글로벌 선진 시장에서 규제 승인을 받고 실제 환자들에게 치료 기회를 제공하고 있습니다. 향후 엑스코프리는 아시아 등 신흥 시장으로도 확대될 예정이며, 추가 적응증(indication) 개발도 진행 중입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">신약개발(NDA)</span>
+                    <span class="tech-badge">간질치료제</span>
+                    <span class="tech-badge">FDA승인</span>
+                    <span class="tech-badge">글로벌임상</span>
+                    <span class="tech-badge">난치병치료</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dna"></i> 신약 개발 파이프라인 및 다각화 전략</h3>
+                <p>SK바이오팜은 엑스코프리의 성공에 안주하지 않고, 다양한 신약 개발 파이프라인을 진행 중입니다. 현재 여러 치료 영역에서 임상 3상 또는 그 이후 단계의 신약들을 보유하고 있습니다. 주요 파이프라인은 다음과 같습니다.</p>
+                <ul>
+                    <li><strong>신경계 질환 파이프라인:</strong> 알츠하이머병, 파킨슨병 등 퇴행성 신경질환 치료제 개발 중</li>
+                    <li><strong>자가면역질환 치료제:</strong> 류마티스 관절염, 염증성 장질환 등의 치료 옵션 개발</li>
+                    <li><strong>특수질환(Rare Disease):</strong> 희귀 유전질환 치료제 개발로 높은 수익성 추구</li>
+                    <li><strong>신흥 적응증:</strong> 기존 신약의 새로운 용도 개발로 수익 확대</li>
+                </ul>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-microscope"></i> 임상 시험 역량</h3>
+                    <p>SK바이오팜은 미국, 유럽, 일본, 중국 등 글로벌 임상 시험 네트워크를 구축했습니다. 국제 임상 시험을 통해 신약의 안전성과 효능을 검증하며, 다양한 규제 당국과의 협력 관계를 형성했습니다. 이는 신약 개발 가속화와 규제 승인 가능성을 높이는 중요한 경쟁 우위입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> AI 기반 신약 발굴</h3>
+                    <p>SK바이오팜은 AI 기술을 활용하여 신약 후보 물질 발굴의 시간과 비용을 단축하려고 합니다. 머신러닝 기반 컴파운드 스크리닝, 약동학 예측 등 고급 기술을 도입하여 신약 개발 효율성을 향상시키고 있습니다. 이는 향후 더 많은 신약을 더 빠르게 개발할 수 있는 기반을 마련합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i> 글로벌 파트너십</h3>
+                    <p>SK바이오팜은 국제 제약사, 바이오 기업, 학연기관과의 협력을 통해 신약 개발 속도를 높이고 있습니다. 기술 라이센싱, 임상 공동개발, 마케팅 파트너십 등 다양한 형태의 협력 관계로 글로벌 시장 진출을 가속화하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 연구개발 투자 및 전략</h3>
+                <p>SK바이오팜은 매년 매출의 30% 이상을 연구개발에 투자하는 혁신 기반 기업입니다. 이는 글로벌 대형 제약사(15-25%) 대비 훨씬 높은 수준으로, SK바이오팜의 신약 개발 집중도가 얼마나 높은지를 보여줍니다. SK그룹의 강력한 재정 지원으로 단기 성과가 부족해도 장기 신약 개발을 지속할 수 있는 구조를 갖추고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>글로벌 제약 시장 규모 및 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 제약 시장 성장 추세</h3>
+                <p>전 세계 제약 시장은 2025년 약 1,500억 달러 규모로, 매년 4-5%의 안정적인 성장을 기록하고 있습니다. 고령 인구 증가, 만성질환의 확산, 신약 개발 기술의 혁신 등이 제약 시장의 지속적인 성장을 견인하고 있습니다. 특히 바이오 신약의 비중이 화학 약물을 빠르게 추월하고 있으며, 향후 제약 산업의 중심이 생물 기반 신약으로 이동할 것으로 예상됩니다.</p>
+                <p>미국은 세계 최대 제약 시장으로, 전체 시장의 약 45%를 차지하고 있습니다. 고가의 신약 가격, 강력한 지적재산권 보호, 발전된 의료 시스템으로 인해 신약 개발의 가장 중요한 시장입니다. SK바이오팜의 엑스코프리가 미국에서 큰 성공을 거두고 있는 것도 이러한 시장 역학 때문입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-brain"></i> 신경계 질환 시장의 급속 성장</h3>
+                    <p>간질, 알츠하이머병, 파킨슨병 등 신경계 질환 치료제 시장은 전 세계적으로 약 500억 달러 규모이며, 매년 6-7%의 빠른 성장을 기록하고 있습니다. 고령화 사회로의 진입으로 인해 신경계 질환 발병률이 급증하고 있으며, 이에 따라 새로운 치료 옵션에 대한 수요도 증가하고 있습니다. SK바이오팜의 엑스코프리는 이 시장의 성장 추세에 완벽하게 부합하는 제품입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-heart"></i> 희귀질환(Orphan Drug) 시장</h3>
+                    <p>희귀질환 치료제 시장은 상대적으로 환자 수는 적지만, 높은 가격책정으로 인해 매우 수익성 높은 시장입니다. 글로벌 희귀질환 시장은 약 100억 달러 규모이며, 매년 10% 이상 성장하고 있습니다. SK바이오팜이 추진하는 희귀질환 치료제 개발이 성공할 경우, 엑스코프리보다 더 높은 수익성을 달성할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-stethoscope"></i> 아시아 제약 시장의 성장 기회</h3>
+                <p>아시아 지역, 특히 중국, 인도, 일본, 한국 등의 제약 시장이 빠르게 성장하고 있습니다. 아시아 제약 시장은 현재 전 세계의 약 25%를 차지하며, 매년 8-10%의 높은 성장률을 보이고 있습니다. 특히 중국은 제약 시장이 빠르게 확대되고 있으며, 국가적으로 혁신 신약 개발을 장려하고 있습니다. SK바이오팜이 엑스코프리를 아시아 시장으로 확대할 경우 매출 성장의 새로운 동력을 확보할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dna"></i> 바이오 신약 시장의 구조적 성장</h3>
+                <p>화학 약물(small molecule)은 특허 만료로 인한 제네릭 경쟁에 시달리고 있는 반면, 바이오 신약(biologic, 바이오시밀러 포함)은 높은 기술 진입장벽으로 인해 더 오래 독점권을 유지할 수 있습니다. 전 세계 신약 개발의 중심이 바이오 신약으로 이동하고 있으며, SK바이오팜이 보유한 바이오 신약 개발 역량은 장기적 경쟁 우위를 의미합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> <span>주요 경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 신약 개발 기업 경쟁 환경</h3>
+                <p>바이오 신약 개발 분야는 글로벌 제약 대형사(Pfizer, Merck, Roche 등), 바이오 기업(Regeneron, Moderna 등), 지역 신약 개발사 등이 경쟁하는 다층적인 시장입니다. SK바이오팜은 중소 바이오 기업 중에서 글로벌 신약 승인을 달성한 성공적인 사례이지만, 여전히 글로벌 제약 대형사나 규모가 큰 바이오 기업보다는 자본과 기술 역량이 부족합니다. 한국 내에서는 일동제약, 화이자 코리아, 셀트리온 등과 경쟁하고 있습니다.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>경쟁 주체</th>
+                        <th>주요 제품</th>
+                        <th>SK바이오팜의 경쟁 우위</th>
+                        <th>도전 과제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>글로벌 대형 제약사</strong></td>
+                        <td>Pfizer, Merck, Roche 등 다양한 신약</td>
+                        <td>빠른 혁신, 한국 기반 글로벌 네트워크</td>
+                        <td>규모, 자본, 기술 역량에서 격차</td>
+                    </tr>
+                    <tr>
+                        <td><strong>글로벌 바이오 기업</strong></td>
+                        <td>Regeneron, Moderna, Amgen 등</td>
+                        <td>한국 근거 임상, 비용 경쟁력</td>
+                        <td>기술 수준, 파이프라인 규모 격차</td>
+                    </tr>
+                    <tr>
+                        <td><strong>국내 바이오사</strong></td>
+                        <td>셀트리온(바이오시밀러), 일동제약 신약</td>
+                        <td>엑스코프리의 글로벌 성공, SK그룹 지원</td>
+                        <td>신약 파이프라인 다각화 필요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>신약 개발 벤처</strong></td>
+                        <td>초기 단계 신약 개발사</td>
+                        <td>상장사로서의 신뢰, 임상 역량, 자금력</td>
+                        <td>신약 개발 속도 경쟁</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 글로벌 신약 개발 기업과의 경쟁 분석</h3>
+                <p>SK바이오팜은 엑스코프리로 글로벌 신약 승인을 달성했지만, 여전히 기술 수준과 파이프라인 규모에서는 글로벌 선진 바이오 기업들(Regeneron, Biogen 등)보다 뒤쳐져 있습니다. 다만, 한국 기반의 비용 경쟁력, 빠른 임상 시험 능력, SK그룹의 강력한 재정 지원은 SK바이오팜만의 경쟁 우위입니다. 향후 파이프라인 신약들이 성공적으로 개발될 경우, SK바이오팜은 진정한 글로벌 신약 기업으로의 위상을 확보할 수 있습니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-hospital"></i> 셀트리온과의 전략 차이</h3>
+                    <p>셀트리온은 바이오시밀러 개발에 특화된 기업으로, 기존 바이오 신약의 복제약 생산으로 빠른 수익화를 달성했습니다. 반면 SK바이오팜은 완전 신규 신약 개발에 집중하며 더 높은 진입장벽과 잠재 수익성을 추구하고 있습니다. 이는 개발 위험은 크지만, 성공 시 더 큰 보상을 기대할 수 있는 전략입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 국제 제약사와의 협력</h3>
+                    <p>SK바이오팜은 글로벌 제약사와의 기술 파트너십, 라이센싱, 공동 개발 등으로 글로벌 시장 진출을 가속화하고 있습니다. 이러한 협력은 SK바이오팜의 신약을 글로벌 시장으로 빠르게 배포하는 데 중요한 역할을 합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 가격 경쟁력과 수익성</h3>
+                    <p>SK바이오팜은 한국 기반의 제조 비용 우위로 글로벌 시장에서 가격 경쟁력을 확보하고 있습니다. 특히 신흥 시장에서의 가격 책정이 글로벌 대형사보다 더 유리할 수 있으며, 이는 시장 확산 속도를 높이는 요소가 됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>SK바이오팜의 경쟁 전략: SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>엑스코프리의 글로벌 성공: 증명된 신약 개발 역량</li>
+                        <li>SK그룹 지원: 강력한 재정 및 기술 지원</li>
+                        <li>다양한 신약 파이프라인: 여러 치료 영역의 신약 개발 진행</li>
+                        <li>글로벌 임상 네트워크: 선진국 임상 시험 능력</li>
+                        <li>높은 R&D 투자: 매출의 30% 이상 연구개발 투자</li>
+                        <li>한국 기반의 비용 경쟁력: 제조 및 개발 비용 우위</li>
+                        <li>신약 개발 경험: FDA 승인 신약 보유</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>규모 부족: 글로벌 대형 제약사 대비 자본 부족</li>
+                        <li>단일 히트상품 의존: 엑스코프리에 대한 높은 의존도</li>
+                        <li>기술 수준 격차: 글로벌 선진 바이오사 대비 기술 격차</li>
+                        <li>파이프라인 부족: 상업화 단계 신약 부족</li>
+                        <li>글로벌 마케팅 약세: 국제 마케팅 인프라 부족</li>
+                        <li>신약 개발 위험: 높은 실패율의 신약 개발 특성</li>
+                        <li>규제 리스크: 각국 규제 당국의 신약 승인 불확실성</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>글로벌 제약 시장 성장: 연 4-5% 시장 성장</li>
+                        <li>고령화 시대 신경계 질환 치료제 수요 증가</li>
+                        <li>아시아 제약 시장 확대: 중국, 인도 시장의 빠른 성장</li>
+                        <li>엑스코프리 추가 적응증 개발: 기존 신약의 추가 용도</li>
+                        <li>희귀질환 시장 성장: 높은 수익성의 오팬드러그 시장</li>
+                        <li>바이오 기업 인수합병: 글로벌 제약사의 인수 가능성</li>
+                        <li>AI 신약 발굴 기술 활용: 개발 속도 및 효율성 향상</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>글로벌 제약사의 경쟁: 기존 대형사의 공격적 신약 개발</li>
+                        <li>규제 환경 변화: 신약 승인 기준 강화</li>
+                        <li>신약 개발 실패: 파이프라인 신약의 개발 실패 위험</li>
+                        <li>엑스코프리 매출 둔화: 시장 포화 또는 경쟁사 출현</li>
+                        <li>지적재산권 분쟁: 특허 침해 소송 위험</li>
+                        <li>신약 가격 규제: 각국의 신약 가격 인하 규제</li>
+                        <li>경기 침체: 의료비 지출 감소로 인한 매출 영향</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>SK바이오팜의 미래 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 신약 파이프라인 다각화 및 다음 히트상품 개발</h3>
+                <p>SK바이오팜의 가장 중요한 전략은 엑스코프리에 대한 의존도를 낮추고 다양한 신약 파이프라인을 성공적으로 개발하는 것입니다. 현재 진행 중인 임상 3상 신약들이 성공적으로 규제 승인을 받을 경우, SK바이오팜의 매출 성장이 크게 가속화될 것입니다. 신경계 질환, 자가면역질환, 희귀질환 등 다양한 치료 영역에서의 신약 포트폴리오 구축이 중요합니다.</p>
+                <p>특히 2026-2027년에 다수의 신약이 임상 3상을 완료하거나 규제 승인을 받을 가능성이 높습니다. 이러한 신약들의 성공은 SK바이오팜을 단일 상품 의존 기업에서 다양한 포트폴리오를 갖춘 신약 기업으로 변모시킬 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 엑스코프리의 글로벌 지역 확대 및 추가 적응증 개발</h3>
+                <p>엑스코프리는 현재 미국, 유럽에서 승인되었으며, 향후 아시아(특히 중국, 일본), 캐나다 등 추가 지역으로 확대할 계획입니다. 각 지역의 규제 요구사항에 맞춘 임상 시험을 통해 빠르게 신약 승인을 확보하고, 글로벌 마케팅을 통해 시장 점유율을 높일 것입니다.</p>
+                <p>또한 간질 외 다른 적응증(예: 신경통증, 정신질환 등)에 대한 엑스코프리의 효능을 연구하여, 기존 신약의 시장을 확대할 계획입니다. 이는 신약의 생명주기를 연장하고 전체 수익성을 극대화하는 전략입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i> 글로벌 파트너십 및 협력 강화</h3>
+                    <p>SK바이오팜은 글로벌 제약사, 바이오 기업, 학연기관과의 협력을 통해 신약 개발 속도를 높이려고 합니다. 라이센싱 파트너십으로 해외 시장 진출을 가속화하고, 기술 공동개발을 통해 신약 개발 역량을 강화할 계획입니다. 또한 대형 제약사의 인수 타겟이 될 수도 있으며, 이 경우 주주 가치를 극대화할 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> AI 및 첨단 기술 활용</h3>
+                    <p>SK바이오팜은 AI, 머신러닝, 빅데이터 분석 등 첨단 기술을 신약 개발에 적극 활용할 계획입니다. 이를 통해 신약 개발 시간을 단축하고, 더 효율적인 임상 시험 설계를 구현하며, 신약 실패율을 낮출 수 있습니다. AI 기반 신약 발굴은 SK바이오팜의 개발 효율성을 획기적으로 높일 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill"></i> 수익성 개선과 마진율 관리</h3>
+                <p>2025년 영업이익이 112% 증가한 것은 엑스코프리 판매량 증가 때문입니다. SK바이오팜은 이러한 수익성 개선 추세를 지속해야 합니다. 제조 효율화, 마케팅 비용 최적화, 고마진 신약 개발 등을 통해 영업이익률을 계속 높여야 합니다. 2026년 목표는 엑스코프리 매출 성장과 신규 신약의 상업화를 통해 매출 900억원 이상, 영업이익 250억원 이상 달성입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> <span>재무 현황 및 성장 추이</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 매출 성장 추이 및 분석</h3>
+                <p>SK바이오팜은 2025년 매출 706.7억원을 기록했습니다. 이는 엑스코프리의 본격적인 매출 성장, 특히 미국 시장에서의 매출 확대 때문입니다. 2025년 3분기 미국 매출만 172.2억원으로 전년 동기 대비 51.9% 증가했으니, 연간 기준으로도 상당한 규모의 미국 매출을 창출하고 있습니다. 이는 엑스코프리가 글로벌 시장에서의 실질적인 판매 성공을 의미합니다.</p>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">매출 및 영업이익 추이 (억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 20%;"></div>
+                            </div>
+                            <div class="bar-value">매출</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 45%;"></div>
+                            </div>
+                            <div class="bar-value">427B</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">706.7B</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 35%;"></div>
+                            </div>
+                            <div class="bar-value">923.4B</div>
+                            <div class="bar-label">2026F</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 영업이익 및 수익성 개선</h3>
+                <p>SK바이오팜의 2025년 영업이익은 203.9억원으로, 2024년 96.1억원 대비 112% 증가했습니다. 이는 매출 증가보다 더 빠른 속도로 영업이익이 성장하고 있음을 의미하며, 규모의 경제 효과가 나타나고 있음을 보여줍니다. 2026년 영업이익은 312.8억원으로 예상되며, 이는 2025년 대비 53.7% 성장입니다.</p>
+                <ul>
+                    <li><strong>엑스코프리 매출 성장:</strong> 미국 시장에서의 판매량 증가로 고마진 수익 창출</li>
+                    <li><strong>제조 효율화:</strong> 상업 생산의 규모 확대로 제조 원가 감소</li>
+                    <li><strong>마케팅 효율성:</strong> 기존 신약 마케팅 비용의 효율화</li>
+                    <li><strong>R&D 효율:</strong> 신약 개발 투자의 상용화 단계 진입으로 수익화 개시</li>
+                </ul>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">영업이익 성장 추이 (억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 30%;"></div>
+                            </div>
+                            <div class="bar-value">57.5B</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 65%;"></div>
+                            </div>
+                            <div class="bar-value">203.9B</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">312.8B</div>
+                            <div class="bar-label">2026F</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-percent"></i> 영업이익률 및 효율성</h3>
+                    <p>2025년 영업이익률은 28.8%로, 매우 높은 수준입니다. 이는 신약 기업의 특성상 초기 개발 비용을 회수한 후 고마진 판매 단계에 진입했음을 의미합니다. 2026년 예상 영업이익률은 33.9%로, 더욱 개선될 것으로 전망됩니다. 이는 글로벌 대형 제약사(15-25% 수준)보다도 훨씬 높은 수익성입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-pie"></i> 사업 부문별 매출 구성</h3>
+                    <p><strong>엑스코프리(간질 치료제): 85%</strong> - 핵심 수익원으로 매출의 대부분 차지</p>
+                    <p><strong>기타 신약 개발: 10%</strong> - 신규 신약 판매 개시 단계</p>
+                    <p><strong>라이센싱 수익: 5%</strong> - 기술 파트너십 관련 수익</p>
+                    <p>향후 신규 신약이 추가로 상업화될 경우, 엑스코프리에 대한 의존도가 낮아질 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 재무 상태 및 자본 구조</h3>
+                <p>SK바이오팜은 SK그룹의 강력한 지원으로 충분한 현금흐름을 유지하고 있습니다. 2025년 기준 순자산은 약 1.2조원으로, 안정적인 자본 구조를 갖추고 있습니다. 영업 현금흐름이 점점 증가하고 있으며, 이는 신약 판매를 통한 실질적인 현금 창출이 이루어지고 있음을 의미합니다. SK바이오팜은 추가 신약 개발 투자, 해외 임상 시험 확대, 글로벌 마케팅 강화 등에 필요한 자금을 충분히 보유하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-book-open"></i> 종합 평가</h3>
+                <p>SK바이오팜은 한국 바이오 신약 산업의 대표 성공 사례입니다. 엑스코프리의 FDA 승인 및 글로벌 판매 성공은 한국 기업이 글로벌 신약 경쟁에서 승리할 수 있음을 증명했습니다. 2025년 706.7억원의 매출과 203.9억원의 영업이익은 신약 기업의 수익화 단계 진입을 의미하며, 강력한 성장 모멘텀을 보여줍니다.</p>
+                <p>SK바이오팜은 현재 중요한 전환점에 있습니다. 첫째, 엑스코프리의 글로벌 시장 확대를 통한 매출 성장입니다. 미국뿐 아니라 유럽, 아시아 시장으로의 신약 확대가 예정되어 있습니다. 둘째, 신약 파이프라인의 상업화입니다. 현재 진행 중인 임상 3상 신약들이 규제 승인을 받을 경우 추가 매출 성장이 가능합니다. 셋째, 글로벌 신약 기업으로의 위상 확보입니다. 단일 신약 기업에서 다양한 포트폴리오를 갖춘 신약 개발사로 성장하는 것이 중기 목표입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 주요 기회 및 리스크</h3>
+                <p><strong>주요 기회:</strong></p>
+                <ul>
+                    <li>엑스코프리 글로벌 확대: 미국 성공에 이어 유럽, 아시아 시장 진출 가능</li>
+                    <li>신약 파이프라인 상업화: 임상 3상 신약들의 규제 승인 가능성</li>
+                    <li>고령화 시장 성장: 신경계 질환 치료제 수요 증가</li>
+                    <li>희귀질환 시장: 높은 수익성의 오팬드러그 개발</li>
+                    <li>M&A 가능성: 글로벌 제약사의 인수 또는 협력</li>
+                </ul>
+                <p><strong>주요 리스크:</strong></p>
+                <ul>
+                    <li>신약 개발 실패: 파이프라인 신약의 임상 실패 위험</li>
+                    <li>엑스코프리 판매 둔화: 시장 포화 또는 경쟁사 출현</li>
+                    <li>규제 리스크: 신약 승인 지연 또는 거부</li>
+                    <li>가격 규제: 각국의 신약 가격 인하 정책</li>
+                    <li>기술 격차: 글로벌 선진 바이오사 대비 기술 수준 차이</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 긍정적 (Positive)</strong></p>
+                <p>SK바이오팜은 중기(1-3년) 성장 투자에 매력적인 기업입니다. 엑스코프리의 증명된 성공, 강력한 신약 파이프라인, SK그룹의 지원, 높은 수익성 등이 긍정 요인입니다. 다만 신약 개발의 본질적인 불확실성, 엑스코프리에 대한 의존도, 글로벌 경쟁 등의 리스크가 존재합니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>성장 투자자:</strong> 신약 개발 성공으로 인한 높은 성장성에 베팅하는 투자자</li>
+                    <li><strong>바이오 산업 투자자:</strong> 한국 바이오 산업의 글로벌 경쟁력 강화에 투자하는 투자자</li>
+                    <li><strong>기술 혁신 투자자:</strong> 신약 개발 기술 혁신의 가치를 인정하는 투자자</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간-높음(Medium-High) - 신약 개발의 불확실성이 있으나, 엑스코프리의 성공으로 위험이 부분 완화됨</p>
+                <p><strong>목표주가 전망:</strong> 2026년 말 기준 현재 주가 대비 20-30% 상승 기대</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>엑스코프리 추가 지역(아시아, 캐나다) 승인 및 매출 성장</li>
+                    <li>신약 파이프라인의 임상 3상 결과 발표</li>
+                    <li>신규 신약의 규제 승인 및 상업화</li>
+                    <li>분기별 매출 성장률 및 영업이익 추이</li>
+                    <li>글로벌 파트너십 체결 및 협력 확대</li>
+                </ul>
+                <p>SK바이오팜이 신약 파이프라인을 성공적으로 개발하고, 엑스코프리의 글로벌 시장 확대를 가속화할 수 있다면, 국내 바이오 신약 기업으로서 글로벌 경쟁력을 갖춘 진정한 다국적 신약 회사로 성장할 수 있습니다. 2026-2027년이 SK바이오팜의 성장 궤도를 결정짓는 중요한 시기가 될 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-flask"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>SK바이오팜 공시 자료 및 시장 조사</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>SK바이오팜 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 SK바이오팜 Investor Relations 공개 정보</li>
+                    <li>FDA, EMA 등 글로벌 의약품 규제 당국 승인 정보</li>
+                    <li>뿐만 아니라, 국내 제약 시장 조사 기관 리포트</li>
+                    <li>글로벌 제약 시장 분석 기관(Frost & Sullivan, Evaluate Pharma) 리포트</li>
+                    <li>바이오 신약 개발 정보 데이터베이스(FDA, EMA, 임상 시험 정보)</li>
+                    <li>국내외 제약 기업 공시 자료</li>
+                    <li>학술 논문 및 업계 리포트</li>
+                    <li>주요 금융기관 및 증권사 리서치 리포트</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 신약 개발, 규제, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights</strong> | 최종 업데이트: 2026년 04월 08일 06:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 08일 06:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Insights</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

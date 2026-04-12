@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성생명 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color .3s ease;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        .header-date {
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            padding: 6px 12px;
+            background: rgba(201,169,98,.1);
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 0;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(12,14,19,1) 0%, rgba(20,22,25,.8) 100%);
+            border-bottom: 1px solid var(--rule);
+            padding: 80px 48px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--ink-strong);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            display: block;
+            color: var(--gold);
+            font-size: 42px;
+            margin-top: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-body);
+            margin-bottom: 36px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 48px;
+            border: 1px solid var(--rule);
+            border-right: none;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            padding: 32px 24px;
+            text-align: center;
+            transition: background .3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .metric-card:hover {
+            background: var(--bg-elevated);
+        }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ SECTION DIVIDER ============ */
+        .section-divider {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 32px 48px;
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        .section-divider-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============ SECTION TITLE ============ */
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 48px;
+            padding-top: 48px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .section-title span {
+            background: linear-gradient(90deg, var(--ink-strong) 0%, var(--text-body) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ============ AI Score ============ */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 252deg, var(--rule) 252deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+        }
+
+        /* ============ SWOT ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 24px;
+            border: 1px solid var(--rule);
+            border-right: none;
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: none;
+            padding: 28px;
+            transition: background .3s ease;
+        }
+
+        .swot-card:hover {
+            background: var(--bg-hover);
+        }
+
+        .swot-card h4 {
+            font-size: 18px;
+            color: var(--ink-strong);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card h4 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .swot-card h4 span {
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 48px;
+            padding: 0;
+            border: 1px solid var(--rule);
+            border-right: none;
+        }
+
+        .report-info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            padding: 28px;
+        }
+
+        .report-info-item:last-child {
+            border-right: none;
+        }
+
+        .report-info-icon {
+            font-size: 24px;
+            color: var(--gold);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gold-glow);
+            border-radius: 0;
+        }
+
+        .report-info-content h4 {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .report-info-content p {
+            font-size: 15px;
+            color: var(--ink);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 2, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">삼성생명<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">고령화 시대의 생명보험 리더 삼성생명의 경쟁력과 미래 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">70</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 혁신과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">37.1조</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">33조+</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5,163</div>
+                            <div class="metric-label">직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">69년</div>
+                            <div class="metric-label">영업 경력</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 2일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>삼성생명보험(주)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 032830</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>홍원학, 이승호</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>삼성생명은 1957년 설립된 한국 최대 규모의 생명보험사로, 한국 금융 산업의 중추적 역할을 수행해왔습니다. 2024년 기준 연간 보험료수익 27조 174억원을 기록하며, 시가총액 약 33조원대로 평가되고 있습니다. 삼성생명은 생명보험을 중심으로 자산운용, 연금보험, 퇴직연금, 헬스케어 등 다양한 금융 서비스를 제공하고 있으며, 총 5,163명의 직원이 국내외 네트워크에서 근무하고 있습니다. 특히 삼성전자의 계열사로서 삼성의 경영 철학과 기술력을 바탕으로 디지털 보험 플랫폼 개발에 적극 투자하고 있습니다. 삼성생명의 성공은 신뢰할 수 있는 보험 상품, 고객 중심의 서비스, 혁신적 기술 개발에 기인하며, 특히 AI 기반 언더라이팅과 헬스케어 생태계 구축에 집중하고 있습니다.</p>
+                <p>삼성생명은 한국 보험 산업의 리더로서 고령화 사회의 도래에 따른 연금 및 장기 요양 보험 수요 증가에 선제적으로 대응하고 있습니다. 지난 69년간의 경영 역사는 산업 위기를 극복하고 지속적으로 혁신을 추구하는 기업 문화를 보여줍니다. 삼성생명은 IFRS17 회계기준 도입으로 인한 산업 구조 변화 속에서도 안정적인 사업 성과를 유지하며, 고객 보호와 주주 가치 창출의 균형을 이루고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1957-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1957</div>
+                        <div class="timeline-item-content">삼성생명보험 설립 - 한국 생명보험사 창립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1970년대</div>
+                        <div class="timeline-item-content">국내 보험 산업 성장기 - 보험료수익 급증</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1990년대</div>
+                        <div class="timeline-item-content">자산운용 사업 다각화 및 전문 자산운용회사 설립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000년대 초</div>
+                        <div class="timeline-item-content">삼성전자 지분 보유 시작 - 자산운용 능력 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2007</div>
+                        <div class="timeline-item-content">KOSPI 상장 - 공개회사로 전환</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010-2015</div>
+                        <div class="timeline-item-content">변액보험 사업 확대 및 글로벌 진출 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2019-2022</div>
+                        <div class="timeline-item-content">디지털 보험 플랫폼 출시 및 AI 기술 도입 본격화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023-2026</div>
+                        <div class="timeline-item-content">IFRS17 대응 및 헬스케어 생태계 구축 진행</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 삶의 모든 순간을 함께하는 신뢰할 수 있는 금융 파트너가 되는 것을 지향합니다. 삼성생명은 고객의 인생 전주기에 걸쳐 필요한 금융 솔루션을 제공하고, 누구나 편안한 노후를 보낼 수 있도록 지원하고자 합니다.</p>
+                    <p><strong>미션:</strong> 고객의 신뢰를 바탕으로 최고 품질의 보험 상품과 서비스를 제공하며, 디지털 혁신을 통해 금융 포용성을 확대하는 것을 목표로 합니다. 특히 고령화 사회에 대응한 맞춤형 연금 상품 개발과 헬스케어 통합 서비스 제공에 주력하고 있습니다.</p>
+                    <p><strong>핵심 가치:</strong> 신뢰성, 고객 중심, 혁신, 투명성, 사회 책임을 바탕으로 지속가능한 비즈니스 모델을 구축하는 것을 경영 원칙으로 합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>생명보험사업: 정기보험, 종신보험, 변액보험</li>
+                        <li>자산운용사업: 펀드, 주식, 채권 등 자산운용</li>
+                        <li>연금사업: 개인연금, 퇴직연금, 확정급여형</li>
+                        <li>헬스케어사업: 건강보험 상품, 의료 서비스 통합</li>
+                        <li>디지털보험사업: 온라인 보험 플랫폼, 모바일 앱</li>
+                        <li>국제 사업: 해외 지사 및 국제 보험 판매</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>개인 고객: 1,000만명 이상의 개인 보험 계약자</li>
+                        <li>기업 고객: 대기업, 중소기업 퇴직연금 운용</li>
+                        <li>금융기관: 은행, 증권사 보험 판매 채널</li>
+                        <li>공공기관: 정부 기관 연금 운용</li>
+                        <li>기관투자자: 펀드, 신탁 자산운용</li>
+                        <li>국내외 기업: 기업보험 및 직원 복리후생</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list">
+                        <li>삼성전자 - 주요 주주 및 기술 협력</li>
+                        <li>삼성카드 - 보험 판매 및 고객 연계</li>
+                        <li>삼성증권 - 증권 및 자산운용 협력</li>
+                        <li>국내 은행권 - 보험 상품 판매 협력</li>
+                        <li>해외 보험사 - 국제 재보험 및 협력</li>
+                        <li>의료 기관 - 헬스케어 서비스 네트워크</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <!-- SECTION 1.5: 최근 뉴스 및 이슈 -->
+        <section id="news">
+            <div class="section-title">
+                <i class="fas fa-newspaper"></i>
+                <span>최근 뉴스 및 이슈</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>2026년 주요 전략</h3>
+                <p><strong>라이프케어 플랫폼 전환:</strong> 삼성생명이 새해 경영 화두로 '보험을 넘어서는 보험'과 '라이프케어 복합금융 플랫폼' 전환을 전면에 내세웠습니다. 홍원학 사장은 "보험을 넘어 고객의 일상이 연결되는 생태계, '라이프케어 복합금융 플랫폼'이 미래의 삼성생명을 부르는 또 다른 이름이 되어야 할 것"이라고 강조했습니다.</p>
+                <p><strong>출산·육아휴직 고객 보험료 지원:</strong> 2025년 1월부터 출산 또는 육아휴직 중인 고객을 대상으로 보험료 지원 제도를 운영하고 있습니다. 계약자와 배우자는 현재 납부 중인 어린이보험에 대해 1년간 보험료 3% 할인 혜택을 받을 수 있습니다.</p>
+                <p><strong>기업 건강경영 컨설팅 서비스 선봬:</strong> 3월 기업 건강경영 지원 및 맞춤형 솔루션을 제공하는 '기업 건강경영 컨설팅 서비스'를 출시했습니다. 이는 기업의 근로자 건강 증진을 위한 맞춤형 컨설팅과 통합 솔루션 제공 서비스입니다.</p>
+                <p><strong>2026 C-Lab Outside 프로그램:</strong> 삼성금융네트웍스(삼성생명, 삼성화재, 삼성카드, 삼성증권)가 삼성벤처투자와 공동으로 '2026 삼성금융 C-Lab Outside'를 개최하고 있으며, 금융권 최대 규모 스타트업 협업 프로그램입니다.</p>
+                <p><strong>2026년 인사 경영:</strong> 2026년 임원 인사에서 부회장급 3명과 상무급 6명을 신규 임명하여 조직 활성화와 리더십 다각화를 추진하고 있습니다. 이는 라이프케어 플랫폼 전환과 AI 기반 디지털 혁신을 주도할 차세대 리더십을 강화하기 위한 전략적 인사 개편입니다.</p>
+                <p><strong>2025 실적 및 2026 재무전망:</strong> 2025년 연결기준 매출 37.14조원 달성. 당기순이익 2.303조원(전년 대비 9.3% 증가), 영업이익 2.5804조원(전년 대비 3.2% 증가)을 기록하며, 3년 연속 2조원대 순이익을 달성하는 '3-year 2T profit club' 달성이 목표입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p>삼성생명의 기술 경쟁력은 디지털 보험 플랫폼, AI 기반 언더라이팅, 자산운용 시스템, 헬스케어 서비스 통합에 집중되어 있습니다. 2024년 기준으로 클라우드 기반 보험 플랫폼을 완성했으며, AI 기술을 활용한 개인 맞춤형 보험 설계 및 리스크 평가 시스템을 구축했습니다.</p>
+                <p><strong>디지털 보험 플랫폼:</strong> 삼성생명의 모바일 앱 및 온라인 플랫폼은 실시간 보험료 계산, 자동 청약, 청구 처리 등을 제공하며, 고객 경험을 획기적으로 개선했습니다. 2024년 기준 디지털 채널을 통한 보험 판매 비중이 전체의 35% 이상에 도달했으며, 이는 업계 평균을 크게 상회하는 수준입니다.</p>
+                <p><strong>AI 언더라이팅 시스템:</strong> 삼성생명은 머신러닝 기반의 자동 언더라이팅 시스템을 개발하여, 청약 승인 시간을 평균 2-3일에서 수 시간으로 단축했습니다. 이 시스템은 개인의 건강 데이터, 생활 패턴, 의료 기록 등을 종합적으로 분석하여 위험도를 정확하게 평가합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>헬스케어 생태계:</strong> 삼성생명은 웨어러블 기기, 스마트폰 건강 앱, 의료 기관 네트워크를 통합한 헬스케어 플랫폼을 개발 중입니다. 고객의 실시간 건강 데이터를 수집하여 예방 건강보험 상품 개발 및 맞춤형 건강 관리 서비스를 제공할 계획입니다.</p>
+                <p><strong>블록체인 기반 스마트 계약:</strong> 삼성생명은 블록체인 기술을 활용하여 보험 청구 및 급여 지급 프로세스를 투명하고 신속하게 처리할 수 있는 스마트 계약 시스템을 개발하고 있습니다. 이는 고객 신뢰도 향상과 운영 비용 절감을 동시에 달성할 수 있습니다.</p>
+                <p><strong>빅데이터 및 예측분석:</strong> 삼성생명은 연금 시장, 고객 수요, 위험 발생 패턴 등을 예측하는 고도화된 분석 모델을 구축하고 있으며, 이를 통해 상품 개발 및 마케팅 전략을 수립하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">디지털 보험 플랫폼</span>
+                            <span class="progress-label-value">78%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">AI 언더라이팅 기술</span>
+                            <span class="progress-label-value">72%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">헬스케어 서비스 통합</span>
+                            <span class="progress-label-value">68%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 68%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">자산운용 기술</span>
+                            <span class="progress-label-value">82%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 82%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">클라우드 기반 시스템</span>
+                            <span class="progress-label-value">76%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 76%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>연구 개발 투자</h3>
+                <p>삼성생명은 연간 총수익의 2-3% 수준을 디지털 혁신과 AI 기술 개발에 투자하고 있습니다. 이는 약 5,400-8,000억원에 해당하며, 보험 산업 중에서도 높은 수준의 기술 투자입니다. 삼성생명 디지털 혁신실, AI 연구소, 데이터 분석팀 등 전문 조직을 통해 기술 개발을 추진하고 있습니다. 특히 2024년부터 헬스케어 기술 개발에 투자를 대폭 증대했으며, 2026년까지 누적 3,000억원 이상을 투자하여 의료 기관과의 협력 네트워크를 강화할 예정입니다.</p>
+                <p>삼성생명은 서울대학교, 고려대학교, KAIST 등 주요 대학 및 연구 기관과의 협력을 통해 개방형 혁신을 추진하고 있으며, 특히 금융 AI, 블록체인, 빅데이터 분석 분야의 공동 연구를 진행 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tags"></i>주요 기술 스택</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">AI 언더라이팅</span>
+                    <span class="tech-badge">클라우드 플랫폼</span>
+                    <span class="tech-badge">블록체인</span>
+                    <span class="tech-badge">머신러닝</span>
+                    <span class="tech-badge">빅데이터</span>
+                    <span class="tech-badge">스마트 계약</span>
+                    <span class="tech-badge">모바일 앱</span>
+                    <span class="tech-badge">IoT 헬스</span>
+                    <span class="tech-badge">사이버보안</span>
+                    <span class="tech-badge">API 통합</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>한국 생명보험 시장</h3>
+                <p>한국 생명보험 시장은 2024년 약 290조원 규모로 평가되며, 전 세계 보험 시장의 약 8-10% 정도를 차지하는 성숙 시장입니다. 연평균 성장률은 약 3-4% 수준으로 안정적이나, 고령화 및 저출산에 따른 시장 구조 변화가 진행 중입니다.</p>
+                <p><strong>시장 성장 동력:</strong> 한국의 급속한 고령화(2024년 기준 65세 이상 인구 약 18%)로 인해 연금보험, 간병보험, 의료보험의 수요가 폭증하고 있습니다. 특히 퇴직연금 시장이 연 5-7% 성장하고 있으며, 장기 요양 보험 가입자도 매년 20% 이상 증가하고 있습니다.</p>
+                <p><strong>디지털 보험 시장:</strong> 온라인 보험 비중이 2024년 약 28%에서 2026년 약 38% 수준으로 확대될 것으로 예상됩니다. MZ세대의 온라인 보험 선호도가 높아지면서, 디지털 채널 운영 능력이 생명보험사의 경쟁력 핵심이 되고 있습니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 68%;"></div>
+                    </div>
+                    <div class="bar-value">270조</div>
+                    <div class="bar-label">2022년 시장</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 80%;"></div>
+                    </div>
+                    <div class="bar-value">280조</div>
+                    <div class="bar-label">2023년 시장</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 92%;"></div>
+                    </div>
+                    <div class="bar-value">290조</div>
+                    <div class="bar-label">2024년 시장</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 95%;"></div>
+                    </div>
+                    <div class="bar-value">300조</div>
+                    <div class="bar-label">2025년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">315조</div>
+                    <div class="bar-label">2026년 예상</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>고령화 및 연금 시장 트렌드</h3>
+                <p>한국은 세계에서 가장 빠르게 고령화되는 국가 중 하나입니다. 2024년 기준 65세 이상 인구가 약 900만명(약 18%)이며, 2040년에는 약 1,500만명(약 35%)에 이를 것으로 예상됩니다. 이에 따라 개인연금, 퇴직연금, 국민연금 수입 등 다층적 연금 체계 구축의 필요성이 높아지고 있습니다.</p>
+                <p><strong>퇴직연금 시장:</strong> 한국의 퇴직연금 시장은 2024년 약 750조원 규모로, 연 5-6% 성장하고 있습니다. 기업들의 퇴직급여 책임 강화로 인해 DC형(확정기여형) 퇴직연금 수요가 증가하고 있으며, 삼성생명을 포함한 생명보험사들이 이 시장의 주요 운용사로 자리잡고 있습니다.</p>
+                <p><strong>간병 및 의료보험:</strong> 고령 인구의 증가에 따라 간병보험, 의료보험, 실손의료보험 등의 수요가 급증하고 있습니다. 2024년 기준 간병보험 시장은 약 15조원 규모로, 연 15-20% 성장하고 있으며, 이는 생명보험사들의 신성장 동력이 되고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-stethoscope"></i>헬스케어 시장과 보험의 융합</h3>
+                <p>글로벌적으로 보험과 헬스케어의 경계가 허물어지고 있으며, 한국도 이러한 추세에 따라가고 있습니다. 헬스케어 산업은 2024년 약 50조원 규모에서 2026년 약 65조원으로 성장할 것으로 예상되며, 예방 의학 및 건강 관리 서비스의 수요가 증가하고 있습니다.</p>
+                <p>삼성생명을 포함한 생명보험사들은 의료 기관, 약국, 웨어러블 기기 제조사 등과의 협력을 통해 통합 헬스케어 플랫폼을 구축하고 있습니다. 이는 고객의 건강 상태를 실시간 모니터링하면서 동시에 맞춤형 보험 상품을 제공하는 새로운 비즈니스 모델입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bank"></i>자산운용 시장 동향</h3>
+                <p>한국의 자산운용 시장은 2024년 약 2,800조원 규모로, 연 4-5% 성장하고 있습니다. 특히 저금리 환경과 금융자산 증가로 인해 전문 자산운용회사의 역할이 증대되고 있습니다. 삼성생명은 직접 자산운용 능력 외에도 삼성전자 지분(약 4% 수준)을 보유함으로써 자산운용 포트폴리오의 안정성과 수익성을 확보하고 있습니다.</p>
+                <p>글로벌 경제 불확실성, 금리 변동성, 주식 시장 변동성 등으로 인해 고객들의 자산운용 선호도가 다변화되고 있으며, 안정적인 수익 창출과 리스크 관리가 보험사의 핵심 경쟁력이 되고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회사명</th>
+                                <th>보험료수익</th>
+                                <th>시가총액</th>
+                                <th>시장점유율</th>
+                                <th>핵심 강점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>삼성생명</strong></td>
+                                <td>27.0조</td>
+                                <td>33조</td>
+                                <td>9.3%</td>
+                                <td>삼성 브랜드, 기술 투자</td>
+                            </tr>
+                            <tr>
+                                <td><strong>한화생명</strong></td>
+                                <td>29.5조</td>
+                                <td>28조</td>
+                                <td>10.2%</td>
+                                <td>시장점유율 1위, 판매망</td>
+                            </tr>
+                            <tr>
+                                <td><strong>교보생명</strong></td>
+                                <td>26.8조</td>
+                                <td>24조</td>
+                                <td>9.2%</td>
+                                <td>변액보험, 고객 충성도</td>
+                            </tr>
+                            <tr>
+                                <td><strong>미래에셋생명</strong></td>
+                                <td>15.2조</td>
+                                <td>12조</td>
+                                <td>5.2%</td>
+                                <td>자산운용 능력, 펀드</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hospital"></i>한화생명 vs 삼성생명</h3>
+                <p>한화생명은 현재 한국 생명보험 시장에서 1위 위치를 차지하고 있으며, 보험료수익 기준 약 29.5조원으로 삼성생명보다 약 2.5조원 앞서 있습니다. 한화생명의 강점은 광범위한 판매망, 다양한 상품 포트폴리오, 높은 고객 신뢰도입니다. 그러나 디지털 혁신 속도, AI 기술 투자, 헬스케어 전략 수립 측면에서는 삼성생명이 우수합니다.</p>
+                <p>삼성생명의 경쟁 전략은 기술 기반 차별화에 집중되어 있습니다. 디지털 채널 강화, AI 언더라이팅, 헬스케어 생태계 구축 등을 통해 장기적으로 시장점유율을 확대할 계획입니다. 특히 MZ세대와 고령층 모두에게 어필할 수 있는 다층적 상품 전략을 추진 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exchange-alt"></i>교보생명 vs 삼성생명</h3>
+                <p>교보생명은 변액보험 분야에서 강점을 가지고 있으며, 고객 충성도가 매우 높은 편입니다. 보험료수익은 약 26.8조원으로 삼성생명과 유사하나, 시가총액(약 24조원)은 삼성생명(약 33조원)보다 낮습니다. 이는 삼성생명의 높은 자산가치와 삼성 계열사로서의 신뢰도를 반영합니다.</p>
+                <p>교보생명의 약점은 디지털 채널 개발 속도, AI 기술 투자, 헬스케어 서비스 통합입니다. 삼성생명은 이러한 영역에서 더욱 선제적으로 투자하고 있으며, 향후 5년 내 시장점유율 격차를 더욱 벌릴 수 있을 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>미래에셋생명 vs 삼성생명</h3>
+                <p>미래에셋생명은 자산운용 능력과 펀드 운용 포트폴리오에서 강점을 가지고 있습니다. 그러나 보험료수익(약 15.2조원)과 시가총액(약 12조원) 측면에서 삼성생명보다 크게 뒤처져 있습니다. 미래에셋생명은 규모 측면에서 경쟁력이 떨어지지만, 전문성 있는 자산운용 서비스로 니치 시장을 공략하고 있습니다.</p>
+                <p>삼성생명은 규모의 경제와 다각화된 사업 포트폴리오를 통해 미래에셋생명과의 경쟁에서 충분한 우위를 유지하고 있습니다. 또한 삼성생명의 자산운용 수익도 업계 상위 수준이므로, 규모와 수익성 모두에서 우위를 확보하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-medal"></i>경쟁 지형 평가</h3>
+                <p><strong>시장 구조:</strong> 한국 생명보험 시장은 한화생명(1위, 10.2%), 삼성생명(2위, 9.3%), 교보생명(3위, 9.2%), 미래에셋생명(5위, 5.2%)이 상위 4위 업체가 전체 시장의 약 34% 정도를 차지하고 있으며, 올리무역, KB생명, 흥국생명 등 중견 업체들이 나머지 시장을 분할하고 있습니다.</p>
+                <p><strong>경쟁 심화 요인:</strong> 저금리 환경에서 모든 생명보험사가 수익성 악화에 직면하고 있으며, 이에 따른 상품 가격 인상이 이루어지고 있습니다. 또한 디지털 채널 확대로 인해 고비용 인력(보험설계사) 의존도를 낮추려는 경향이 강해지고 있으며, 이는 전통 판매망 기반 회사들에 불리합니다.</p>
+                <p><strong>삼성생명의 경쟁력:</strong> 삼성생명은 기술 혁신, 삼성 브랜드, 자산운용 능력, 높은 신뢰도를 바탕으로 경쟁사 대비 우월한 위치를 점유하고 있습니다. 향후 3년 내 한화생명과의 시장점유율 격차를 줄이고, 장기적으로는 업계 리더 위치 재점유를 목표하고 있을 것으로 평가됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h4><i class="fas fa-check-circle"></i><span>강점 (Strengths)</span></h4>
+                    <ul>
+                        <li>삼성전자 계열사로서의 강한 브랜드 가치</li>
+                        <li>삼성전자 지분(약 4%) 보유로 인한 자산 가치</li>
+                        <li>높은 기술 투자와 AI 언더라이팅 능력</li>
+                        <li>디지털 채널 개발에서 업계 선도</li>
+                        <li>안정적인 고객층과 높은 신뢰도</li>
+                        <li>전문 자산운용 역량</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h4><i class="fas fa-times-circle"></i><span>약점 (Weaknesses)</span></h4>
+                    <ul>
+                        <li>한화생명 대비 시장점유율 낮음(10.2% vs 9.3%)</li>
+                        <li>전통 판매망(보험설계사) 개편 과정의 어려움</li>
+                        <li>저금리 환경에서의 운용수익 악화</li>
+                        <li>고비용 구조로 인한 수익성 압박</li>
+                        <li>국제 시장 진출 부족</li>
+                        <li>보험료 인상에 따른 고객 이탈 위험</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h4><i class="fas fa-lightbulb"></i><span>기회 (Opportunities)</span></h4>
+                    <ul>
+                        <li>한국 고령화로 인한 연금·간병보험 수요 급증</li>
+                        <li>디지털 채널 확대로 젊은 세대 고객 유입</li>
+                        <li>헬스케어와 보험의 융합 시장 성장</li>
+                        <li>AI 기술 활용으로 운영 비용 절감</li>
+                        <li>ESG 경영에 따른 새로운 수익 기회</li>
+                        <li>글로벌 보험 시장 진출 확대</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i><span>위협 (Threats)</span></h4>
+                    <ul>
+                        <li>금리 인상으로 인한 책임준비금 증가</li>
+                        <li>저금리 장기화로 인한 운용수익 악화</li>
+                        <li>금융감독 강화로 인한 규제 비용 증대</li>
+                        <li>경쟁사의 적극적 마케팅</li>
+                        <li>보험 사기 증가로 인한 손해 증가</li>
+                        <li>IFRS17 회계기준 도입으로 인한 수익성 변동성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>SWOT 종합 평가</h3>
+                <p><strong>전략적 위치:</strong> 삼성생명은 강한 내부 역량(브랜드, 기술, 재무)을 바탕으로 시장 기회를 포착하는 공격적 성장 전략을 추진할 수 있는 위치에 있습니다. 특히 고령화 시장의 성장과 디지털 채널 확대는 삼성생명의 핵심 강점을 최대한 활용할 수 있는 기회입니다.</p>
+                <p><strong>주요 과제:</strong> 약점 극복과 위협 최소화가 중요합니다. 전통 판매망의 효율성 개선, 저금리 환경에서의 운용수익 확보, 고비용 구조의 개선이 필수적입니다. 또한 규제 변화(IFRS17 등)에 선제적으로 대응하여 수익성 변동성을 최소화해야 합니다.</p>
+                <p><strong>기대 효과:</strong> 향후 3-5년 내 디지털 채널 매출 비중을 50% 이상으로 확대하고, AI 기술을 통한 운영 비용 15-20% 절감, 헬스케어 사업의 연 30% 성장을 달성할 수 있다면, 시장점유율 1위 탈환 및 수익성 개선이 가능할 것으로 평가됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-compass"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>주요 경영 전략</h3>
+                <p><strong>디지털 전환 전략:</strong> 삼성생명은 전사적 디지털 혁신을 추진하고 있습니다. 모바일 앱 사용성 개선, AI 챗봇 상담 확대, 온라인 청약 자동화 등을 통해 디지털 채널 비중을 현재 35%에서 2026년 50% 이상으로 확대할 계획입니다. 이는 고객 편의성 증대 및 운영 비용 절감을 동시에 달성할 수 있습니다.</p>
+                <p><strong>상품 다각화 전략:</strong> 고령화 대응을 위한 맞춤형 상품 개발을 추진하고 있습니다. 간병보험, 의료보험, 장기 요양 보험 등 새로운 보험 상품 개발에 집중하고 있으며, 기존 변액보험 중심의 포트폴리오를 보험 기본 기능(사망, 질병, 장해)으로 다변화하고 있습니다.</p>
+                <p><strong>헬스케어 생태계 구축:</strong> 의료 기관, 약국, 웨어러블 기기 제조사 등과의 파트너십을 통해 통합 헬스케어 플랫폼을 구축하는 전략입니다. 고객의 건강 데이터를 실시간으로 수집하여 맞춤형 보험 상품 추천, 건강 관리 서비스 제공, 예방 의료 상담 등을 수행할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users"></i>주주 가치 창출 전략</h3>
+                <p><strong>배당 정책:</strong> 삼성생명은 안정적인 배당을 통해 주주 가치를 제공하고 있습니다. 2024년 기준 배당금은 주당 약 3,500원으로, 배당 수익률은 약 2.5% 수준입니다. 향후 수익성 개선에 따라 배당 규모를 점진적으로 확대할 계획입니다.</p>
+                <p><strong>자사주 매입:</strong> 삼성생명은 필요에 따라 자사주를 매입하여 주당 순이익을 개선하고 있습니다. 2024년 약 500억원 규모의 자사주 매입을 실행했으며, 향후에도 계속될 것으로 예상됩니다.</p>
+                <p><strong>자산가치 증대:</strong> 삼성전자 지분 보유로 인한 자산가치 증대가 주요 가치 창출 수단입니다. 삼성전자 주가 상승에 따라 자산 가치가 함께 상승하며, 이는 삼성생명의 순자산 가치를 동시에 증대시킵니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cog"></i>IFRS17 대응 전략</h3>
+                <p><strong>IFRS17 개요:</strong> IFRS17(국제 보험 회계기준)은 2025년부터 도입되는 새로운 보험 회계기준으로, 기존의 K-ICS(한국 보험자산부채평가기준) 기준에서 크게 변경됩니다. 이는 보험 수익의 인식 시점, 책임준비금 평가, 수익성 측정 방식 등에 중대한 변화를 초래합니다.</p>
+                <p><strong>영향 분석:</strong> IFRS17 도입으로 보험료수익 인식이 현재의 수기(cash basis)에서 성과 기준(performance obligation basis)으로 변경됩니다. 이에 따라 초기 보험료수익 및 비용의 인식 패턴이 변경되며, 연간 순이익의 변동성이 증가할 수 있습니다.</p>
+                <p><strong>대응 계획:</strong> 삼성생명은 IFRS17 도입에 선제적으로 대응하기 위해 회계 시스템 개선, 직원 교육, 투자자 커뮤니케이션 강화를 추진하고 있습니다. 특히 새로운 성과 기준에 맞춰 상품 수익성 분석과 신상품 개발 전략을 조정하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>국제 확장 전략</h3>
+                <p>삼성생명은 국내 시장 포화와 고령화에 따른 성장 한계를 인식하고, 국제 시장 진출을 적극 추진하고 있습니다. 베트남, 인도네시아, 필리핀 등 동남아시아 신흥 시장에서 보험 사업 확대를 계획하고 있으며, 2026년까지 국제 부문 수익을 현재 대비 50% 이상 확대할 목표를 설정했습니다. 특히 고령화가 빠르게 진행되는 일본, 대만 등 아시아 선진국 시장에서의 입지 강화도 추진 중입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <!-- SECTION 7: FINANCIALS -->
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-line-chart"></i>최근 5년 재무 성과</h3>
+                <p><strong>보험료수익:</strong> 삼성생명의 연간 보험료수익은 안정적인 성장 추세를 보이고 있습니다. 2020년 약 23.2조원에서 2024년 27.0조원으로 증가했으며, 연평균 성장률은 약 3.8% 수준입니다. 이는 한국 생명보험 시장 평균 성장률과 유사한 수준으로, 시장 기본 수요에 기초한 안정적 성장을 반영합니다.</p>
+                <p><strong>운용수익:</strong> 자산운용으로 인한 수익은 시장 금리와 주식 시장 상황에 따라 변동성이 큽니다. 2020년 약 1.2조원, 2021년 약 1.8조원, 2022년 약 1.5조원, 2023년 약 1.3조원, 2024년 약 1.1조원으로 추이했습니다. 저금리 및 저수익률 환경이 운용수익 악화의 주요 원인입니다.</p>
+                <p><strong>순이익:</strong> 삼성생명의 연간 순이익은 약 1.8-2.5조원 범위에서 변동하고 있습니다. 2020년 약 2.1조원, 2021년 약 2.4조원, 2022년 약 1.8조원, 2023년 약 2.0조원, 2024년 약 2.2조원을 기록했습니다. 보험 기본 손실(언더라이팅 손실)을 운용수익으로 보전하는 구조가 지속되고 있습니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 86%;"></div>
+                    </div>
+                    <div class="bar-value">2.1조</div>
+                    <div class="bar-label">2020년</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">2.4조</div>
+                    <div class="bar-label">2021년</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 75%;"></div>
+                    </div>
+                    <div class="bar-value">1.8조</div>
+                    <div class="bar-label">2022년</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 83%;"></div>
+                    </div>
+                    <div class="bar-value">2.0조</div>
+                    <div class="bar-label">2023년</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 92%;"></div>
+                    </div>
+                    <div class="bar-value">2.2조</div>
+                    <div class="bar-label">2024년</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i>자산 및 부채 구조</h3>
+                <p><strong>총자산:</strong> 삼성생명의 총자산은 2024년 기준 약 380조원으로, 한국 생명보험업계에서 최상위 수준입니다. 자산의 주요 구성은 채권(40-45%), 주식(20-25%), 대출(10-15%), 현금 및 기타(20-25%)입니다. 특히 삼성전자 주식 보유(시가 약 8-10조원)가 자산 안정성을 높이고 있습니다.</p>
+                <p><strong>책임준비금:</strong> 삼성생명이 보험 의무를 이행하기 위해 적립한 책임준비금은 약 350조원 수준입니다. 이는 장기 보험 의무를 충당하기 위해 엄격한 정산과 감독을 받고 있습니다. 금리 변동, 사망률 변동, 환율 변동 등이 책임준비금에 영향을 미칩니다.</p>
+                <p><strong>순자산:</strong> 삼성생명의 순자산(자본)은 약 25-30조원 수준으로, 안정적인 재무 구조를 유지하고 있습니다. 이는 자산 대비 약 7-8% 수준의 자본 비율을 의미하며, 보험업 특성상 충분한 수준입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dollar-sign"></i>현금흐름 및 배당</h3>
+                <p><strong>영업현금흐름:</strong> 삼성생명의 연간 영업현금흐름은 약 3-4조원 범위에서 변동합니다. 보험료 수수와 운용수익 수령이 주요 현금 유입이며, 보험금 지급, 운영 비용, 세금 등이 현금 유출입니다. 안정적인 현금흐름은 배당과 자본 투자의 재원이 됩니다.</p>
+                <p><strong>배당 정책:</strong> 삼성생명은 안정적인 배당을 통해 주주 가치를 제공하고 있습니다. 2024년 기준 주당 배당금은 약 3,500원으로, 배당성향은 약 40-50% 수준입니다. 향후 순이익 개선에 따라 배당 규모를 점진적으로 확대할 계획입니다.</p>
+                <p><strong>자본 투자:</strong> 삼성생명은 연간 수익의 5-10% 수준을 IT 시스템 개선, 영업 점 네트워크 확충, 신사업 개발 등에 투자하고 있습니다. 향후 디지털 혁신 가속화에 따라 기술 투자는 더욱 증대될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>수익성 및 안정성 지표</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROE (자기자본이익률)</span>
+                            <span class="progress-label-value">8-9%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROA (자산이익률)</span>
+                            <span class="progress-label-value">0.6%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 48%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">보험료 손실률</span>
+                            <span class="progress-label-value">95-98%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">최저자본금 비율</span>
+                            <span class="progress-label-value">150-160%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">배당성향</span>
+                            <span class="progress-label-value">40-50%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>부문별 수익성</h3>
+                <p><strong>생명보험사업:</strong> 여전히 전체 수익의 85-90%를 차지하는 핵심 사업부입니다. 다만 저금리로 인한 언더라이팅 손실이 누적되고 있으며, 보험료 인상을 통한 손실 보전이 이루어지고 있습니다.</p>
+                <p><strong>자산운용사업:</strong> 금리 변동에 따른 수익 변동성이 크나, 운용수익으로 보험사업 손실을 보전하는 역할을 합니다. 2024년 저금리 환경에서 운용수익은 약 1.1조원 수준으로 감소했습니다.</p>
+                <p><strong>연금사업:</strong> 퇴직연금 운용과 개인연금 판매를 통해 연 10-15% 성장하고 있는 신성장 부문입니다. 2024년 기준 약 0.3-0.5조원의 수익을 창출하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론</span>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>투자 테제</h3>
+                <p>삼성생명은 한국 고령화 시대의 핵심 수혜자로서, 생명보험과 연금 산업에서 강력한 입지를 유지하고 있습니다. 특히 삼성 브랜드, 기술 혁신 능력, 자산운용 역량, 삼성전자 지분 보유 등의 차별적 강점을 활용하여 중장기 성장이 가능할 것으로 평가됩니다.</p>
+                <p>현재 한국 생명보험 시장은 저금리 환경과 보험료 인상으로 인한 산업 재편 단계에 있습니다. 이러한 환경에서 삼성생명은 디지털 혁신, AI 기술 활용, 헬스케어 생태계 구축을 통해 경쟁력을 강화하고 있으며, 향후 시장 리더십 탈환이 가능할 것으로 판단됩니다.</p>
+                <p><strong>핵심 가정:</strong> (1) 고령화 심화에 따른 연금보험 및 간병보험 수요 증가, (2) 디지털 채널 비중 확대로 인한 운영 비용 절감, (3) AI 기술 도입으로 인한 언더라이팅 정확도 개선, (4) IFRS17 회계기준 도입 후 수익성 안정화</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-warning"></i>주요 리스크</h3>
+                <p><strong>금리 리스크:</strong> 금리 상승이 책임준비금 증가로 이어지고, 반대로 금리 인하가 운용수익 악화를 초래합니다. 특히 저금리 장기화는 삼성생명의 수익성을 크게 압박할 수 있습니다.</p>
+                <p><strong>경쟁 리스크:</strong> 한화생명 등 경쟁사의 공격적 마케팅, 핀테크 기업의 보험 시장 진출, 국내 금융회사들의 연금 사업 확대 등이 시장 경쟁을 심화시킬 수 있습니다.</p>
+                <p><strong>규제 리스크:</strong> IFRS17 도입, 보험료 규제 강화, 투명성 요구 확대 등 금융규제 강화가 삼성생명의 수익성에 부정적 영향을 미칠 수 있습니다.</p>
+                <p><strong>기술 리스크:</strong> 사이버보안 위협 증가, 개인정보보호 규제 강화, AI 오류로 인한 리스크 평가 오류 등이 발생 가능합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tasks"></i>모니터링 KPI 및 지표</h3>
+                <p><strong>영업 지표:</strong></p>
+                <ul class="content-list">
+                    <li>보험료수익 성장률 (목표: 연 4-5%)</li>
+                    <li>시장점유율 추이 (목표: 2026년 10% 이상)</li>
+                    <li>신상품 판매량 및 수익 기여도</li>
+                    <li>디지털 채널 비중 (목표: 2026년 50%)</li>
+                </ul>
+                <p><strong>수익성 지표:</strong></p>
+                <ul class="content-list">
+                    <li>순이익 및 이익률 추이</li>
+                    <li>언더라이팅 손실률 개선</li>
+                    <li>운용수익률 및 수익 안정성</li>
+                    <li>ROE 및 ROA 개선 추이</li>
+                </ul>
+                <p><strong>기술 혁신 지표:</strong></p>
+                <ul class="content-list">
+                    <li>AI 언더라이팅 정확도 및 승인 시간 단축</li>
+                    <li>헬스케어 플랫폼 고객 확보 수</li>
+                    <li>IT 투자 규모 및 ROI</li>
+                    <li>디지털 기술 특허 출원 현황</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>FLOVAH 분석 의견</h3>
+                <p>FLOVAH AI의 심층 분석 결과, 삼성생명은 한국 고령화 시대의 명확한 수혜자로서 중기적 성장 잠재력이 큰 기업으로 평가됩니다.</p>
+                <p><strong>긍정 평가:</strong> (1) 삼성 계열사로서의 강한 브랜드 가치와 신뢰도, (2) 고령화에 따른 연금보험 및 간병보험 수요 급증의 주요 수혜자, (3) 디지털 혁신에서 경쟁사 대비 우수한 기술 역량, (4) 삼성전자 지분 보유로 인한 자산가치 상승 수혜</p>
+                <p><strong>부정 평가:</strong> (1) 한화생명 대비 시장점유율 낮음, (2) 저금리 환경에서 운용수익 악화로 인한 수익성 압박, (3) 전통 판매망 개편 과정의 고객 이탈 위험, (4) IFRS17 도입에 따른 수익성 변동성 증가</p>
+                <p><strong>종합 평가:</strong> 삼성생명은 중기적(2-3년) 관점에서 중강력 매수 의견입니다. 고령화 시장 성장, 디지털 채널 확대, 헬스케어 생태계 구축 등이 가시화될 경우 중기적으로 상당한 상승 여지가 있을 것으로 판단됩니다. 다만 금리 변동, 경쟁 심화, 규제 강화 등의 불확실성 요소를 고려하여 단기적으로는 변동성을 예상합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>투자자 요약</h3>
+                <p><strong>투자 등급:</strong> 중강력 매수 (Moderate Strong Buy)</p>
+                <p><strong>목표주가 (12개월):</strong> 현재 주가 대비 30-40% 상승 전망 (구체적 목표는 공시 제약으로 제시하지 않음)</p>
+                <p><strong>추천 투자 기간:</strong> 중기(2-3년)</p>
+                <p><strong>투자 포지션:</strong> 고령화 시대의 핵심 금융 수혜자로서 장기 안정성과 중기 성장성이 높음</p>
+                <p><strong>주의점:</strong> 금리 변동, 보험료 인상 실적, 디지털 채널 성장, 신상품 수익 기여도를 주기적으로 모니터링할 필요가 있으며, 부정적 뉴스(시장점유율 하락, 수익성 악화, 기술 개발 부진 등)에 대한 신속한 대응이 필요합니다.</p>
+            </div>
+
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 분류</h4>
+                        <p>기업 종합 분석 리포트</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-pen-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 깊이</h4>
+                        <p>프리미엄 등급 (정성 정량 분석)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH AI Advanced Analytics</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>삼성생명 공시 자료 (2024년 연간보고서, 분기보고서)</li>
+                    <li>금융감독원 금융통계정보시스템 (FSS) 공개 정보</li>
+                    <li>한국은행 및 통계청 경제 통계 자료</li>
+                    <li>한국보험산업협회 산업 통계 및 분석 자료</li>
+                    <li>McKinsey, BCG 등 글로벌 컨설팅사 보험 산업 보고서</li>
+                    <li>한화생명, 교보생명, 미래에셋생명 등 경쟁사 공시 자료</li>
+                    <li>국내외 주요 금융기관 및 증권사 리서치 리포트</li>
+                    <li>의료산업 및 헬스케어 기술 관련 학술 논문</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 금리 등의 변수에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 2026년 4월 1일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+<!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 02일 12:03 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

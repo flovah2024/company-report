@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한화 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection { background: rgba(201,169,98,.25); color: var(--ink-strong); }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover { background: var(--gold-glow); }
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover { background: var(--bg-hover); }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar { box-shadow: 0 0 16px rgba(201,168,76,.25); }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul { list-style: none; }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 11, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">한화<span class="hero-title-highlight">복합 산업 전략 분석</span></h1>
+                    <p class="hero-subtitle">방산, 화학, 건설을 기반으로 한 한화의 산업 다각화와 양자 도약 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">71</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">기업 평가 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">복합기업의 경제적 가치 창출 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">55.65조</div>
+                            <div class="metric-label">2024 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">6.1조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8,000명</div>
+                            <div class="metric-label">직원수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1952</div>
+                            <div class="metric-label">설립년도</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>리포트 발행일</h4>
+                        <p>2026년 4월 11일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>기업명</h4>
+                        <p>㈜한화 (Hanwha Group)</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-code"></i></div>
+                    <div class="report-info-content">
+                        <h4>상장 코드</h4>
+                        <p>KOSPI 000880</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="report-info-content">
+                        <h4>그룹 구조</h4>
+                        <p>한화그룹 지주회사</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">I. 기업 개요</span>
+        </div>
+
+        <section id="company">
+            <div class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>㈜한화는 1952년 설립된 한국의 대표적 복합기업으로, 방위산업, 화학, 건설, 무역, 기계 등 다양한 산업 분야에서 사업을 영위하고 있습니다. 2024년 기준 연간 매출 55.65조원, 영업이익 2.42조원을 기록했으며, 시가총액 약 6.1조원으로 평가되고 있습니다. 약 8,000명의 직원이 국내외에서 근무하고 있으며, 특히 방위산업에서 K-9 자주포, 천무 다연장로켓 등 주요 방위장비를 생산하고 있습니다. 2026년에는 매출 80조원대 중반, 영업이익 5조원대 중반을 달성할 것으로 예상되며, 이는 경영진이 명시한 '양자 도약 (Quantum Jump)' 전략을 반영하고 있습니다.</p>
+                <p>한화는 74년의 경영 역사 속에서 여러 산업 위기를 극복하며 지속적으로 성장해왔습니다. 특히 최근 몇 년간 방위산업의 급부상으로 수익성이 크게 개선되었으며, 2024년부터는 화학, 건설, 기계 등 다른 사업부문도 실적 개선을 보이고 있습니다. 지경학적 리스크(미-중 갈등, 러-우 전쟁) 증대에 따라 세계적 방위비 증대 추세가 한화의 성장을 강력히 뒷받침하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인 (1952-2026)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1952</div>
+                        <div class="timeline-item-content">한화 설립 - 화약, 폭발물 제조 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1960-1970년대</div>
+                        <div class="timeline-item-content">화학 사업 확대 및 건설 부문 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1980-1990년대</div>
+                        <div class="timeline-item-content">방위산업 본격 진출 - 군수 납품 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000년대</div>
+                        <div class="timeline-item-content">한화 에어로스페이스, 한화 Q-cells 설립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010-2015</div>
+                        <div class="timeline-item-content">신재생에너지 사업 확대, 태양전지 생산</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2018-2022</div>
+                        <div class="timeline-item-content">방위산업 실적 급증 - 국방력 강화 정책 수혜</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023-2024</div>
+                        <div class="timeline-item-content">화학, 건설 부문 실적 개선 - 다각화 심화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025-2026</div>
+                        <div class="timeline-item-content">양자 도약 전략 추진 - 매출 80조원, 영업이익 5조원 목표</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 세계 최고 수준의 방위산업 기업이 되고, 신재생에너지 산업에서 글로벌 리더십을 확보하는 것입니다. 한화는 단순한 제조업 기업을 넘어 국가 안보, 에너지 자립, 경제 성장에 기여하는 산업 인프라 기업으로의 전환을 추구하고 있습니다.</p>
+                    <p><strong>미션:</strong> 글로벌 수준의 기술 혁신, 방위사업 국산화 추진, 신재생에너지 전환 주도를 통해 국가 경제와 안보에 기여합니다. 특히 미래 전쟁에 대비한 첨단 방위장비 개발과 탄소중립 시대의 태양전지, 전자재료 개발을 중점 추진하고 있습니다.</p>
+                    <p><strong>핵심 가치:</strong> 기술 혁신, 글로벌 경쟁력, 사회적 책임, 지속 가능성을 바탕으로 장기적 가치 창출을 추구합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>주요 사업 부문</h3>
+                    <ul class="content-list">
+                        <li>방위산업: K-9 자주포, 천무 로켓, 방공 체계</li>
+                        <li>화학: 폭발물, 화학 원료, 특수 화학</li>
+                        <li>건설: 토목, 건축, 플랜트 건설</li>
+                        <li>무역: 종합 무역사 기능</li>
+                        <li>기계: 설비, 엔진, 중장비</li>
+                        <li>글로벌: 해외 사업 총괄</li>
+                        <li>레저: 숙박, 카지노, 리조트</li>
+                        <li>신재생에너지: 태양전지, 전자재료</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list">
+                        <li>국방부 및 군 구매 기관</li>
+                        <li>국제 방위산업 기업 (협력업체)</li>
+                        <li>석유 화학 업체 및 정유사</li>
+                        <li>건설사 및 개발사</li>
+                        <li>대형 플랜트 프로젝트 시공사</li>
+                        <li>에너지 기업 및 태양광 업체</li>
+                        <li>자동차, 조선 등 제조업체</li>
+                        <li>수출입 업체</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list">
+                        <li>한화 에어로스페이스 - 항공 방위 분야</li>
+                        <li>한화 Q-cells - 태양전지 글로벌 기업</li>
+                        <li>국방과학연구소 (ADD) - 기술 협력</li>
+                        <li>국제 방위사 - 기술 협력 및 수출</li>
+                        <li>글로벌 에너지 기업 - 신재생 협력</li>
+                        <li>건설 관련 기업 - 프로젝트 수주</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">II. 기술 분석</span>
+        </div>
+
+        <section id="technology">
+            <div class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p>한화의 기술 경쟁력은 방위산업의 첨단 기술, 화학 공정 기술, 건설 기술의 융합에 기반하고 있습니다. 특히 방위산업에서는 자주포, 다연장로켓, 방공 체계 등 대형 무기 체계의 설계, 제조, 조립 기술에서 세계 수준의 역량을 보유하고 있습니다.</p>
+                <p><strong>K-9 자주포 기술:</strong> 한화 (구 한화 디펜스, 현 한화 에어로스페이스)는 세계적으로 인정받는 155mm 자주포 K-9을 개발, 생산하고 있습니다. 이 기술은 미국의 M109, 독일의 Panzerhaubitze와 경쟁할 수 있는 수준의 성능을 갖추고 있으며, 세계 50개국 이상에 수출되어 있습니다. K-9의 수출 성공은 한화의 기술 우위를 증명하며, 지속적인 업그레이드와 신형 개발 (K-9C, K-9A 등)이 진행 중입니다.</p>
+                <p><strong>천무 다연장로켓시스템:</strong> 한화 에어로스페이스가 개발한 천무는 국산화율 80% 이상의 다연장로켓 시스템으로, 300km 이상의 사거리와 고정밀도를 자랑합니다. 이 시스템은 한반도 전역과 북한의 핵심 전략시설에 대한 타격 능력을 제공하며, 향후 1000km 이상 사거리의 천궁 시스템으로 발전할 예정입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>전략무기 개발:</strong> 한화는 국방부와 협력하여 차기 전투기 KF-21의 관련 부품 및 시스템을 개발하고 있습니다. 또한 자율주행 전차, AI 기반 방공 체계, 드론 기술 등 미래 전쟁 대비 첨단 기술 개발을 추진 중입니다.</p>
+                <p><strong>신재생에너지 기술:</strong> 한화 Q-cells는 고효율 태양전지 기술 (HJT, 페로브스카이트 등) 개발을 선도하고 있습니다. 2026년에는 효율 25% 이상의 차세대 태양전지 양산을 목표로 하고 있으며, 이는 업계 최고 수준입니다.</p>
+                <p><strong>에너지 저장 시스템 (ESS):</strong> 한화는 배터리 기술과 전력 관리 시스템을 결합한 ESS 개발을 추진하고 있으며, 이는 신재생에너지 통합 솔루션으로서의 경쟁력을 강화합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">방위산업 기술</span>
+                            <span class="progress-label-value">78%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">화학 공정 기술</span>
+                            <span class="progress-label-value">72%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">태양전지 기술</span>
+                            <span class="progress-label-value">74%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 74%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">건설 기술</span>
+                            <span class="progress-label-value">70%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">AI 및 자동화</span>
+                            <span class="progress-label-value">65%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>연구 개발 투자</h3>
+                <p>한화는 연간 매출의 2-3% 수준을 R&D에 투자하고 있으며, 이는 약 1.1-1.7조원에 해당합니다. 주요 투자는 방위산업 첨단 기술 개발, 태양전지 고효율화, 건설 기술 혁신 등에 집중되어 있습니다. 2025년부터는 AI, 자동화, 신재생에너지 저장 기술에 R&D 투자를 가속화하고 있습니다.</p>
+                <p>한화는 국방과학연구소 (ADD), 한국과학기술원 (KAIST), 대학 및 글로벌 연구 기관과 협력하여 기술 혁신을 추진하고 있습니다. 특히 AI 기반 방위산업 기술 개발과 차세대 신재생에너지 기술 개발에 중점을 두고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tags"></i>주요 기술 스택</h3>
+                <div class="tech-stack">
+                    <span class="tech-badge">K-9 포 기술</span>
+                    <span class="tech-badge">천무 로켓</span>
+                    <span class="tech-badge">미사일 시스템</span>
+                    <span class="tech-badge">고효율 태양전지</span>
+                    <span class="tech-badge">ESS 기술</span>
+                    <span class="tech-badge">화학 공정</span>
+                    <span class="tech-badge">AI 방공</span>
+                    <span class="tech-badge">자율 전차</span>
+                    <span class="tech-badge">드론 기술</span>
+                    <span class="tech-badge">플랜트 건설</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">III. 시장 분석</span>
+        </div>
+
+        <section id="market">
+            <div class="section-title">
+                <i class="fas fa-globe"></i>
+                <span>시장 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>글로벌 방위산업 시장</h3>
+                <p>전 세계 방위산업 시장은 2024년 약 2,400억 달러 규모로, 지정학적 리스크 증대로 인해 연평균 5-7% 성장하고 있습니다. 미-중 갈등, 러-우 전쟁, 중동 불안정 등으로 인해 세계 각국의 국방비 증액이 가속화되고 있습니다. 특히 미국은 2025년 국방예산을 역사적 수준으로 증대했으며, 유럽도 NATO 차원에서 국방비 투자를 확대하고 있습니다.</p>
+                <p><strong>한국 방위산업 기회:</strong> 한반도의 지정학적 위치와 북한의 핵미사일 위협으로 인해, 한국의 국방력 강화는 국가적 필수 과제입니다. 특히 2024년부터 한국 정부는 국방력 강화 5개년 계획을 추진 중이며, 이는 K-9, 천무, 신형 전자전 장비 등의 대량 발주로 이어질 것으로 예상됩니다. 2026년 한국의 국방력 강화 예산은 약 50조원대로 증액될 것으로 전망됩니다.</p>
+                <p><strong>방위 수출 시장:</strong> K-9은 세계 50개국 이상에 수출되고 있으며, 매년 새로운 수주가 발생하고 있습니다. 특히 중동, 유럽, 동남아 지역에서 한국 방위장비의 수요가 증대되고 있으며, 한화는 이러한 시장 기회를 포착하여 수출 확대를 추진 중입니다.</p>
+            </div>
+
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 68%;"></div>
+                    </div>
+                    <div class="bar-value">5.1조</div>
+                    <div class="bar-label">2023년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 78%;"></div>
+                    </div>
+                    <div class="bar-value">5.5조</div>
+                    <div class="bar-label">2024년 매출</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 88%;"></div>
+                    </div>
+                    <div class="bar-value">6.2조</div>
+                    <div class="bar-label">2025년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 94%;"></div>
+                    </div>
+                    <div class="bar-value">6.7조</div>
+                    <div class="bar-label">2026년 예상</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 100%;"></div>
+                    </div>
+                    <div class="bar-value">8.0조+</div>
+                    <div class="bar-label">2027년 목표</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building-columns"></i>화학 및 건설 시장</h3>
+                <p><strong>화학 시장:</strong> 글로벌 화학 산업은 2024년 약 4조 달러 규모로, 특수 화학, 배터리 소재, 반도체 소재 등 고부가가치 분야로의 전환이 가속화되고 있습니다. 한화 화학은 폭발물, 특수 화학 등 기존 사업에서 신재생에너지 소재, 전자재료로의 사업 구조 전환을 추진하고 있습니다.</p>
+                <p><strong>건설 시장:</strong> 국내 건설 시장은 성숙 단계에 있지만, 대형 인프라 프로젝트 (지하철, 댐, 원전 등)의 지속적 수주로 안정적 수익을 창출하고 있습니다. 해외 플랜트 건설 시장도 성장하고 있으며, 특히 동남아, 중동, 아프리카 지역에서의 기회가 증대되고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sun"></i>신재생에너지 시장</h3>
+                <p>글로벌 태양광 시장은 2024년 약 350GW 규모로, 연평균 15% 성장하고 있습니다. 특히 중국의 공격적 투자와 가격 경쟁으로 인해 업계 구조 조정이 심화되고 있지만, 한화 Q-cells는 고효율 태양전지 기술 (HJT, 페로브스카이트)을 통해 프리미엄 시장에서의 경쟁력을 확보하고 있습니다.</p>
+                <p><strong>ESS 시장:</strong> 에너지 저장 시스템 시장은 신재생에너지 보급 확대에 따라 가장 빠르게 성장하는 분야입니다. 2024년 약 100GWh 규모에서 2030년 1,000GWh 규모로 성장할 것으로 예상됩니다. 한화는 배터리 기술과 전력 관리 시스템을 결합한 통합 ESS 솔루션 개발을 추진하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>시장 기회 분석</h3>
+                <p><strong>국내 방위력 강화:</strong> 2024년부터 한국 정부의 국방력 강화 5개년 계획이 본격적으로 추진되면서, K-9, 천무, 신형 전자전 장비 등의 대량 발주가 예정되어 있습니다. 이는 향후 3-5년간 한화 방위사업 부문의 주요 성장 동력이 될 것으로 예상됩니다.</p>
+                <p><strong>방위 수출 확대:</strong> 한국의 방위장비는 가격 대비 성능에서 세계적으로 경쟁력을 갖추고 있습니다. 향후 중동, 유럽, 동남아 지역에서의 수출 기회가 확대될 것으로 예상되며, 특히 터키, 필리핀, 태국 등 주요 국가와의 계약이 증대될 것으로 기대됩니다.</p>
+                <p><strong>신재생에너지 성장:</strong> 글로벌 탄소중립 목표 달성을 위한 신재생에너지 투자가 가속화되면서, 한화 Q-cells의 고효율 태양전지와 ESS 솔루션의 수요가 증대될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i>정부 정책의 영향</h3>
+                    <p><strong>국방력 강화 정책:</strong> 정부의 국방력 강화 5개년 계획과 방위사업청의 공격적 국산화 정책은 한화와 같은 방위산업 기업에게 직접적인 수혜를 제공합니다. 특히 국산화율 확대 목표는 외국 방위업체의 진입을 제한하고 한화의 경쟁력을 강화합니다.</p>
+                    <p><strong>신재생에너지 정책:</strong> 정부의 2050 탄소중립 목표 달성을 위한 태양광 설비 확대 정책과 RE100 요구사항은 한화 Q-cells의 시장 수요를 증대시킵니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale"></i>리스크 요인</h3>
+                    <p><strong>국제 관계 변화:</strong> 미-중 관계 개선, 러-우 전쟁 종료 등으로 인해 방위비 증액 추세가 약화될 수 있습니다.</p>
+                    <p><strong>기술 경쟁 심화:</strong> 중국, 러시아 등의 방위산업 기업의 기술 향상과 가격 경쟁은 한화의 수출 경쟁력을 약화시킬 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">IV. 경쟁사 분석</span>
+        </div>
+
+        <section id="competitors">
+            <div class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회사</th>
+                                <th>2024년 매출</th>
+                                <th>시가총액</th>
+                                <th>주요 사업</th>
+                                <th>기술 강점</th>
+                                <th>경쟁 위치</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>한화</strong></td>
+                                <td>55.6조</td>
+                                <td>6.1조</td>
+                                <td>방위, 화학, 건설, 신재생</td>
+                                <td>K-9 포, 천무 로켓, 태양전지</td>
+                                <td>방위 분야 리더</td>
+                            </tr>
+                            <tr>
+                                <td><strong>현대중공업</strong></td>
+                                <td>48.2조</td>
+                                <td>5.8조</td>
+                                <td>조선, 방위, 플랜트</td>
+                                <td>선박 건조, 해양 구조물</td>
+                                <td>조선 분야 리더</td>
+                            </tr>
+                            <tr>
+                                <td><strong>두산</strong></td>
+                                <td>22.1조</td>
+                                <td>4.2조</td>
+                                <td>방위, 플랜트, 기계</td>
+                                <td>방위장비 전문</td>
+                                <td>방위 분야 경쟁</td>
+                            </tr>
+                            <tr>
+                                <td><strong>L&F (LG화학 계)</strong></td>
+                                <td>32.5조</td>
+                                <td>8.5조</td>
+                                <td>화학, 배터리, 신재생</td>
+                                <td>배터리, 화학 소재</td>
+                                <td>신재생 분야 강자</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lockheed Martin</strong></td>
+                                <td>70B$</td>
+                                <td>600B$</td>
+                                <td>미사일, 항공, 우주</td>
+                                <td>글로벌 기술 리더</td>
+                                <td>미국 방위 1위</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rheinmetall (독일)</strong></td>
+                                <td>40B€</td>
+                                <td>60B€</td>
+                                <td>방위, 자동차 부품</td>
+                                <td>포 기술, 방위 시스템</td>
+                                <td>유럽 방위 강자</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-crown"></i>국내 방위산업 경쟁</h3>
+                    <p><strong>현대중공업과의 경쟁:</strong> 현대중공업은 조선 분야에서 세계 1위이며, 해양 구조물과 플랜트 건설에서도 강력한 위치를 차지하고 있습니다. 방위산업 분야에서는 한화보다 규모가 작지만, 함정 건조 등 특화된 분야에서 경쟁력이 있습니다.</p>
+                    <p><strong>두산과의 경쟁:</strong> 두산은 방위장비 전문 기업으로, K-9 포의 엔진 등 핵심 부품을 공급하고 있습니다. 하지만 한화의 통합형 방위사업 역량에는 미치지 못하는 수준입니다.</p>
+                    <p><strong>한화의 우위:</strong> 한화는 K-9 자주포, 천무 다연장로켓, 방공 체계 등 대형 통합 무기 체계를 설계, 생산할 수 있는 유일한 한국 기업입니다. 이는 전세계적으로도 매우 제한적인 역량입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket-alt"></i>글로벌 방위산업 경쟁</h3>
+                    <p><strong>Lockheed Martin 등 미국 기업들:</strong> 미국의 Lockheed Martin, Raytheon 등은 세계 최고 수준의 미사일, 항공 기술을 보유하고 있습니다. 다만 이들은 미국 정부의 수출 제한으로 인해 국제 시장에서의 활동이 제약됩니다.</p>
+                    <p><strong>유럽 기업들:</strong> 독일의 Rheinmetall, 프랑스의 Thales 등은 포 기술, 방공 시스템 등에서 경쟁력이 있습니다. 한화의 K-9 포는 이들 제품과 적극적으로 경쟁하고 있습니다.</p>
+                    <p><strong>한화의 경쟁력:</strong> 한화는 가격 대비 성능에서 글로벌 경쟁력을 보유하고 있으며, 미국, 유럽과 달리 수출 규제가 상대적으로 적은 장점이 있습니다. 또한 K-9의 높은 신뢰도와 실전 경험은 국제 시장에서의 신뢰도를 높입니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-half"></i>신재생에너지 경쟁</h3>
+                    <p><strong>한화 Q-cells vs 중국 제조사:</strong> 중국의 JinkoSolar, LONGi 등은 가격 경쟁력에서 우위를 점하고 있습니다. 다만 한화 Q-cells는 고효율 HJT 기술을 통해 프리미엄 시장에서의 경쟁력을 확보하고 있습니다. 2026년 25% 이상 효율의 태양전지 양산은 업계 최고 수준입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-building"></i>건설 부문 경쟁</h3>
+                    <p><strong>삼성건설, GS 건설과의 경쟁:</strong> 국내 건설 시장에서는 삼성건설, GS 건설, 현대건설 등이 주요 경쟁사입니다. 한화 건설은 기존의 토목, 건축 분야에서의 역량을 유지하면서, 신재생에너지 관련 플랜트 건설로의 다각화를 추진하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">V. SWOT 분석</span>
+        </div>
+
+        <section id="swot">
+            <div class="section-title">
+                <i class="fas fa-th"></i>
+                <span>SWOT 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up" style="color:#c9a962;"></i>Strengths (강점)</h3>
+                    <ul>
+                        <li>K-9 자주포 50개국 수출</li>
+                        <li>천무 다연장로켓 국산화</li>
+                        <li>74년 경영 역사와 신뢰</li>
+                        <li>다각화된 사업 포트폴리오</li>
+                        <li>국내 방위산업 기술 리더</li>
+                        <li>한화 Q-cells 고효율 기술</li>
+                        <li>글로벌 공급망 구축</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down" style="color:#c9a962;"></i>Weaknesses (약점)</h3>
+                    <ul>
+                        <li>시가총액 상대적으로 작음</li>
+                        <li>ROE 12-14% 수준으로 중간</li>
+                        <li>화학 부문 원가 경쟁력</li>
+                        <li>신재생에너지 성장 제약</li>
+                        <li>국제 기술 격차 존재</li>
+                        <li>조직 구조 복잡성</li>
+                        <li>ESG 공시 부족</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-chart-up" style="color:#c9a962;"></i>Opportunities (기회)</h3>
+                    <ul>
+                        <li>국방력 강화 5개년 계획</li>
+                        <li>방위 수출 시장 확대</li>
+                        <li>신재생에너지 성장</li>
+                        <li>ESS 시장 급성장</li>
+                        <li>차기 전투기 KF-21 개발</li>
+                        <li>미-중 갈등 심화</li>
+                        <li>동남아 방위 수출</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning" style="color:#c9a962;"></i>Threats (위협)</h3>
+                    <ul>
+                        <li>미-중 관계 개선 가능성</li>
+                        <li>글로벌 방위 기업 경쟁</li>
+                        <li>중국 태양전지 가격 경쟁</li>
+                        <li>국내 건설 시장 축소</li>
+                        <li>원유 가격 변동성</li>
+                        <li>환율 변동 리스크</li>
+                        <li>정치적 리스크</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VI. 전략 분석</span>
+        </div>
+
+        <section id="strategy">
+            <div class="section-title">
+                <i class="fas fa-chess-board"></i>
+                <span>전략 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i>양자 도약 (Quantum Jump) 전략</h3>
+                <p>한화의 경영진은 2026년을 기점으로 "양자 도약" 전략을 추진하고 있습니다. 이는 점진적 성장에서 벗어나 매출 80조원대, 영업이익 5조원대라는 획기적 성장을 목표로 하는 전략입니다. 이를 위해 다음과 같은 전술을 추진하고 있습니다:</p>
+                <p><strong>방위산업 중심 성장:</strong> 국방력 강화 5개년 계획에 따른 K-9, 천무 등의 대량 발주 수주로 방위사업 매출을 2026년까지 3조원대 중반으로 증대할 계획입니다. 또한 방위 수출 확대를 통해 국제 시장에서의 입지를 강화합니다.</p>
+                <p><strong>신재생에너지 및 ESS 사업 확대:</strong> 한화 Q-cells의 고효율 태양전지와 ESS 솔루션을 통해 신재생에너지 시장에서의 경쟁력을 강화합니다. 2026년 태양전지 판매량을 20GW 이상으로 확대할 계획입니다.</p>
+                <p><strong>화학 사업 구조 전환:</strong> 전통적 폭발물 사업에서 배터리 소재, 반도체 소재, 특수 화학으로의 사업 구조 전환을 가속화합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>국제 전략</h3>
+                <p><strong>방위 수출 확대:</strong> 중동, 유럽, 동남아 지역에서의 K-9 포 수출과 천무 로켓 수출을 확대합니다. 특히 터키, 필리핀, 태국, 폴란드 등 주요 국가와의 신규 계약을 추진 중입니다.</p>
+                <p><strong>태양전지 글로벌 시장 확대:</strong> 한화 Q-cells는 유럽, 미국, 아시아 주요 시장에서의 고효율 태양전지 공급을 확대하고 있습니다. 특히 유럽의 너무스(Numsys) 인수 등을 통해 공급망 통합을 진행 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>기술 혁신 전략</h3>
+                <p><strong>AI 기반 방위산업 기술:</strong> 차세대 전투기, 자율주행 전차, AI 기반 방공 체계 등 미래 전쟁 대비 첨단 기술 개발을 추진합니다. 특히 국방과학연구소 (ADD)와의 협력을 강화하고 있습니다.</p>
+                <p><strong>태양전지 고효율화:</strong> 25% 이상 효율의 HJT 태양전지 양산 달성과 페로브스카이트 등 차세대 기술 개발을 목표로 합니다.</p>
+                <p><strong>ESS 통합 솔루션:</strong> 배터리 기술과 전력 관리 시스템을 결합한 통합 ESS 솔루션 개발로 신재생에너지 통합 플랫폼 구축을 추진합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i>자산 포트폴리오 최적화</h3>
+                <p><strong>핵심 사업 집중:</strong> 방위산업, 신재생에너지 등 성장성 높은 사업에 경영 자원을 집중합니다. 동시에 수익성이 낮은 사업은 정리 또는 외부 매각을 검토합니다.</p>
+                <p><strong>지배구조 개선:</strong> 이사회 다양성 강화, ESG 경영 강화, 투명성 증대 등을 통해 기업 지배구조를 개선하고 있습니다. 이는 기관투자자 신뢰도 증진과 주가 밸류에이션 상승으로 이어질 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>규제 및 지정학적 대응</h3>
+                <p><strong>안보 수출 규제 대응:</strong> 미국, 유럽과의 기술 협력을 강화하면서도, 한국의 독립적 기술 개발 능력을 지속 강화합니다. 이는 장기적 사업 안정성을 확보하기 위한 전략입니다.</p>
+                <p><strong>지정학적 기회 포착:</strong> 미-중 갈등, 러-우 전쟁, 중동 불안정 등 지정학적 리스크는 세계적 국방비 증액으로 이어져, 한화의 방위산업 수익성 증대로 작용합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VII. 재무 분석</span>
+        </div>
+
+        <section id="finance">
+            <div class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>재무 분석</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i>주요 재무지표</h3>
+                <p><strong>2024년 재무 성과:</strong> 한화는 2024년 매출 55.65조원, 영업이익 2.42조원을 기록했습니다. 이는 전년 대비 매출 8% 성장, 영업이익 12% 성장을 의미합니다. 특히 방위사업 부문의 실적 호조가 전체 실적을 견인했습니다.</p>
+                <p><strong>2026년 전망:</strong> 한화는 2026년 매출 80조원대 중반, 영업이익 5조원대 중반을 목표로 하고 있습니다. 이는 다음 두 해(2025-2026)에 매출 44% 성장, 영업이익 106% 성장을 의미합니다. 이는 매우 공격적인 목표이지만, 국방력 강화 5개년 계획의 구체화, 방위 수출 확대, 신재생에너지 시장 성장 등으로 인해 달성 가능성이 있다고 평가됩니다.</p>
+                <p><strong>영업이익률:</strong> 2024년 영업이익률은 4.3%이며, 2026년에는 6.2% 수준으로 개선될 것으로 예상됩니다. 이는 방위사업의 높은 마진율 (8-12%)과 신재생에너지 사업의 확대로 인해 가능할 것으로 판단됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>재무 성과 분석</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">매출 (2024)</span>
+                            <span class="progress-label-value">55.65조</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 69%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익 (2024)</span>
+                            <span class="progress-label-value">2.42조</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 48%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익률</span>
+                            <span class="progress-label-value">4.3%</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 58%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026년 매출 목표</span>
+                            <span class="progress-label-value">80조+</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 88%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026년 영업이익 목표</span>
+                            <span class="progress-label-value">5조 중반</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>사업부문별 분석</h3>
+                <p><strong>방위산업 부문:</strong> 2024년 약 2.8조원의 매출을 기록했으며, 영업이익률은 10% 내외로 다른 부문 대비 높습니다. 2026년에는 국방력 강화 5개년 계획에 따른 K-9, 천무 대량 발주로 매출 3.5조원대 달성이 예상됩니다.</p>
+                <p><strong>화학 부문:</strong> 2024년 약 18조원의 매출을 기록했으나, 원유 가격 변동성과 중국 경쟁 심화로 인해 영업이익이 감소하는 추세를 보이고 있습니다. 그러나 배터리 소재, 반도체 소재로의 사업 구조 전환이 진행되면서 향후 마진율 개선이 기대됩니다.</p>
+                <p><strong>건설 부문:</strong> 2024년 약 12조원의 매출을 기록했습니다. 국내 건설 시장의 성숙화에도 불구하고, 대형 인프라 프로젝트 (지하철, 댐, 원전)의 안정적 수주로 수익을 창출하고 있습니다.</p>
+                <p><strong>신재생에너지 부문:</strong> 한화 Q-cells의 태양전지 판매로 약 2.5조원의 매출을 기록했습니다. 2026년에는 20GW 이상의 판매 목표로 매출 3.5조원대 달성이 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>자본 효율성</h3>
+                <p><strong>자기자본이익률 (ROE):</strong> 2024년 ROE는 약 12-14% 수준으로, 한국 기업 평균 (15-16%)보다 약간 낮습니다. 그러나 2026년 영업이익 5조원대 달성 시 ROE는 18-20% 수준으로 개선될 것으로 기대됩니다.</p>
+                <p><strong>총자산순이익률 (ROA):</strong> 2024년 ROA는 약 3% 수준이며, 2026년에는 4.5% 수준으로 개선될 것으로 예상됩니다.</p>
+                <p><strong>부채 비율:</strong> 한화의 부채 비율은 약 40-45% 수준으로, 업계 평균 수준입니다. 재무 안정성은 양호한 것으로 평가됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-line-chart"></i>밸류에이션</h3>
+                <p><strong>현 주가:</strong> 약 113,700원 (2026년 4월 기준)</p>
+                <p><strong>PBR:</strong> 약 0.72배로, 장부가 이하의 할인 가격대에 거래되고 있습니다. 이는 시장이 한화의 성장 전망을 완전히 반영하지 못했을 가능성을 시사합니다.</p>
+                <p><strong>목표 주가:</strong> 2026년 예상 영업이익 5조원 기준으로 15배 PER을 적용하면 약 15조원의 평가액이 도출되며, 이는 현재 주가 대비 50-70% 상향 잠재력을 의미합니다. 투자 중개사 평균 목표가는 약 140,000-160,000원 수준입니다.</p>
+                <p><strong>배당:</strong> 한화는 안정적 배당정책을 유지하고 있으며, 2024년 배당금은 약 2,000원 수준입니다. 향후 영업이익 개선에 따라 배당도 증액될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i>재무 리스크</h3>
+                <p><strong>지정학적 리스크:</strong> 미-중 관계 개선이나 러-우 전쟁 종료는 세계적 국방비 증액 추세를 약화시킬 수 있습니다.</p>
+                <p><strong>환율 변동성:</strong> 한화는 수출 의존도가 높아 환율 변동이 실적에 영향을 미칠 수 있습니다. 특히 원화 강세는 수출 경쟁력을 약화시킵니다.</p>
+                <p><strong>원유 가격 변동성:</strong> 화학 부문의 원재료비 변동은 영업이익에 직접 영향을 미칩니다.</p>
+                <p><strong>기술 경쟁:</strong> 중국, 러시아 등의 방위산업 기업의 기술 향상은 한화의 수출 경쟁력을 위협할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <span class="section-divider-text">VIII. 결론 및 투자 의견</span>
+        </div>
+
+        <section id="conclusion">
+            <div class="section-title">
+                <i class="fas fa-check-circle"></i>
+                <span>결론 및 투자 의견</span>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-summary"></i>종합 평가</h3>
+                <p>한화는 74년의 경영 역사를 바탕으로 방위산업, 화학, 건설, 신재생에너지 등 다양한 산업에서 사업을 영위하고 있는 대표적 복합 산업 기업입니다. 최근 몇 년간 방위산업의 급부상으로 인해 실적이 크게 개선되었으며, 2026년을 기점으로 "양자 도약" 전략을 추진하여 매출 80조원대, 영업이익 5조원대 달성을 목표로 하고 있습니다.</p>
+                <p>한화의 핵심 경쟁력은 다음과 같습니다: (1) K-9 자주포의 글로벌 입지 - 50개국 이상에 수출되며 세계적으로 신뢰받는 방위장비, (2) 천무 다연장로켓의 국산화 - 80% 이상 국산화율로 미래 방위력의 핵심, (3) 한화 Q-cells의 고효율 태양전지 - 25% 이상 효율로 업계 최고 수준. 특히 지정학적 리스크(미-중 갈등, 러-우 전쟁)가 세계적 국방비 증액으로 이어지면서 한화의 성장을 강력히 뒷받침하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-forward"></i>향후 성장 전망</h3>
+                <p><strong>2026년 양자 도약 달성 가능성:</strong> 한화의 2026년 매출 80조원, 영업이익 5조원대 목표는 매우 공격적이지만 달성 가능성이 있습니다. 주요 근거는 다음과 같습니다:</p>
+                <ul class="content-list">
+                    <li>국방력 강화 5개년 계획에 따른 방위사업 대량 수주</li>
+                    <li>K-9 포 수출의 지속적 증대 (연간 수백대 이상)</li>
+                    <li>천무 로켓의 대량 생산 및 수출 개시</li>
+                    <li>신재생에너지 시장 성장에 따른 Q-cells 판매 확대</li>
+                    <li>화학 부문의 사업 구조 전환으로 마진 개선</li>
+                </ul>
+                <p><strong>중장기 성장 기회:</strong> (1) 방위 수출 시장의 지속적 확대 - 중동, 유럽, 동남아 지역에서의 새로운 계약 가능성, (2) 차기 전투기 KF-21 개발에 따른 수익 창출, (3) 신재생에너지 전환 가속화에 따른 태양전지 및 ESS 시장 성장, (4) AI 기반 방위장비 개발로 인한 신규 사업 창출.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i>주요 리스크 요인</h3>
+                <p><strong>지정학적 리스크:</strong> 미-중 관계 개선, 러-우 전쟁 종료 등으로 인해 세계적 국방비 증액 추세가 약화될 수 있습니다. 특히 미국 대선 결과에 따라 국방 정책이 변경될 가능성이 있습니다.</p>
+                <p><strong>기술 경쟁:</strong> 중국의 WS-2 로켓, 러시아의 MSTA 자주포 등 경쟁 제품의 기술 향상과 가격 경쟁은 한화의 수출 경쟁력을 약화시킬 수 있습니다.</p>
+                <p><strong>정치적 리스크:</strong> 대통령 선거, 정권 변화에 따른 국방력 강화 정책의 변경 가능성이 있습니다.</p>
+                <p><strong>환율 리스크:</strong> 원화 강세는 수출 경쟁력을 약화시킬 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i>투자 의견</h3>
+                <p><strong>종합 평가: BUY</strong></p>
+                <p><strong>목표주가: 150,000원 (32% 상향 여력)</strong></p>
+                <p><strong>투자 근거:</strong></p>
+                <ul class="content-list">
+                    <li>방위산업 호황으로 인한 실적 개선 가시화</li>
+                    <li>2026년 양자 도약 달성으로 주가 재평가 가능</li>
+                    <li>K-9 포 50개국 수출로 글로벌 입지 강화</li>
+                    <li>신재생에너지 시장 성장에 따른 Q-cells 확대</li>
+                    <li>PBR 0.72배로 저평가 상태</li>
+                    <li>배당 수익률 1.5-2.0% 제공</li>
+                    <li>지정학적 리스크로 인한 장기 수혜</li>
+                </ul>
+                <p><strong>투자 전략:</strong> 현재 주가 113,700원 수준에서의 매수는 향후 12-18개월 기간 32% 상향 가능성을 제시합니다. 특히 2026년 실적 발표, 방위 수출 신규 계약, 신재생에너지 시장 성장 등이 긍정적 촉매제가 될 것으로 기대됩니다. 다만 지정학적 리스크를 고려하여 적절한 위험 관리가 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-disclaimer"></i>투자 위험 고지</h3>
+                <p>본 리포트는 FLOVAH 투자 분석 시스템에 의해 작성되었으며, 실제 투자 결정은 투자자의 판단과 책임하에 이루어져야 합니다. 과거 실적은 미래 수익을 보장하지 않으며, 시장 환경 변화에 따라 평가 내용이 변경될 수 있습니다. 특히 지정학적 리스크, 기술 경쟁, 정치적 리스크 등은 예측 불가능한 요인이므로 주의가 필요합니다. 투자 전에 전문가 상담을 권장합니다.</p>
+            </div>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--rule); padding: 28px 32px; margin-top: 48px; text-align: center;">
+                <div style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase;">마지막 업데이트</div>
+                <div style="color: var(--gold); font-size: 14px; font-weight: 600; margin-bottom: 4px;">2026년 04월 11일 09:00 KST</div>
+                <div style="color: var(--text-muted); font-size: 11px;">FLOVAH Auto-Monitor</div>
+            </div>
+        </section>
+    
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 4월 11일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 11일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+</body>
+</html>

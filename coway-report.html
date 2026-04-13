@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코웨이 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .progress-bar {
+            margin: 20px 0;
+            padding: 12px 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .progress-label-name { color: var(--text-light); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 600; }
+
+        .progress-bar-fill {
+            height: 8px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px;
+            transition: width .6s ease;
+            animation: slideIn .8s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: var(--progress); }
+        }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .section-divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 56px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-divider-text {
+            background: var(--bg-deep);
+            color: var(--text-muted);
+            padding: 0 16px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            top: -11px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 13, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">코웨이<span class="hero-title-highlight"> 기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">정수기·공기청정기 렌탈 시장 1위 기업의 고성장 전략과 글로벌 확장 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">75</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 도입과 디지털 혁신 역량 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">4.96조</div>
+                            <div class="metric-label">2025 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8~9조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1위</div>
+                            <div class="metric-label">시장점유율</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">KOSPI 021240</div>
+                            <div class="metric-label">종목코드</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">기업 개요</div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <h2 class="section-title"><i class="fas fa-droplet"></i> <span>코웨이 기업 개요</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 기업 소개</h3>
+                <p>코웨이(Coway Co., Ltd.)는 1989년 설립된 한국의 생활용품 렌탈 기업으로, 정수기·공기청정기·비데 렌탈 시장에서 1위를 차지하고 있습니다. 2025년 실적 기준 총 매출이 4조 9,636억원으로 역대 최대를 기록했으며, 전년 대비 15.2% 증가하는 견조한 성장을 달성했습니다. KOSPI 021240에 상장되어 있으며, 현재 시가총액은 약 8~9조원 규모입니다.</p>
+                <p>코웨이의 사업 모델은 렌탈 방식의 정기적 수익 구조를 특징으로 합니다. 정수기, 공기청정기, 비데 등의 제품을 고객에게 렌탈하고 월별 렌탈료를 징수하면서 동시에 정기적인 관리 및 필터 교체 서비스를 제공합니다. 이러한 모델은 안정적인 현금흐름과 높은 고객 만족도를 보장합니다.</p>
+                <p>2025년 기준 국내 매출은 2조 8,656억원(전년 대비 11.0% 증가), 해외 매출은 1조 8,899억원(전년 대비 22.3% 증가)을 기록하면서 해외 사업의 가속화를 보여주고 있습니다. 특히 코웨이의 신사업인 비렉스(웰니스 케어 서비스)는 약 7,199억원의 매출을 달성하며 신규 성장 축으로 부상했습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 주요 연혁</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1989년</div>
+                        <div class="timeline-text">코웨이 설립, 정수기 렌탈 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995년</div>
+                        <div class="timeline-text">공기청정기 사업 진출, 렌탈 상품 포트폴리오 다각화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년</div>
+                        <div class="timeline-text">KOSPI 상장, 공급 기반 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005년</div>
+                        <div class="timeline-text">정수기·공기청정기 렌탈 시장점유율 1위 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">동남아시아(인도네시아, 말레이시아) 시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">미국 시장 진출, 글로벌 렌탈 기업으로 변신</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">비렉스(Berix) 브랜드 론칭, 웰니스 케어 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">매출 4.96조원 달성, 해외 수익 22.3% 증가</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-briefcase"></i> 주요 사업 영역</h3>
+                <p>코웨이는 다음과 같은 주요 사업 영역에서 활동하고 있습니다:</p>
+                <p><strong>1. 정수기 렌탈 (Core Business)</strong> - 국내 정수기 시장의 약 30% 이상을 차지하는 절대 강자. 고급형(나노, 역삼투압), 중급형(정수) 등 다양한 제품 라인업. 2025년 매출의 약 35~40%를 차지하는 핵심 사업.</p>
+                <p><strong>2. 공기청정기 렌탈 (Growth Area)</strong> - 국내 공기청정기 렌탈 시장의 약 25~30%를 점유. 미세먼지, 초미세먼지, 바이러스 제거 기능의 고급 제품 제공. 2025년 매출의 약 30~35%를 차지.</p>
+                <p><strong>3. 비데 및 욕실용품 (Expansion)</strong> - 기존의 정수기, 공기청정기에서 욕실 용품으로 렌탈 사업 확대. 건강 및 위생 관심 증대에 따른 수요 증가.</p>
+                <p><strong>4. 비렉스 웰니스 케어 (New Growth Engine)</strong> - 2020년 론칭한 신사업. 슬립케어, 힐링케어 등 웰니스 상품 렌탈. 2025년 매출 7,199억원으로 신규 성장 축으로 부상.</p>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">기술 혁신</div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-robot"></i> <span>코웨이의 기술 혁신 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i> IoT 및 스마트 홈 기술</h3>
+                <p>코웨이는 렌탈 제품에 IoT 기술을 적극 도입하여 원격 모니터링, 예측 유지보수, 고객 맞춤형 서비스를 제공하고 있습니다. 이는 전통적인 렌탈 기업에서 스마트 헬스케어 기업으로의 전환을 의미합니다.</p>
+                <p><strong>스마트 정수기 및 공기청정기:</strong> 필터 교체 시기를 자동으로 감지하여 고객에게 알림. 수질, 공기 질 데이터를 스마트폰 애플리케이션으로 실시간 제공. 가족 구성원의 사용 패턴을 학습하여 최적의 수온, 공기 정화 방식을 자동으로 조정합니다.</p>
+                <p><strong>AI 기반 예측 유지보수:</strong> 렌탈 기기의 고장을 미리 예측하여 사전 점검 및 부품 교체를 수행. 이를 통해 기존 대비 고장 발생률을 30% 이상 감소시켰습니다.</p>
+                <p><strong>스마트 홈 생태계:</strong> 코웨이 제품들을 통합적으로 제어할 수 있는 스마트 홈 플랫폼 개발. 다른 스마트 홈 기기(조명, 온도 조절)와의 연계를 추진 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-water"></i> 정수 기술 고도화</h3>
+                <p>코웨이는 정수 기술에서 시장 최고 수준의 경쟁력을 유지하고 있습니다. 나노 기술, 역삼투압, 멤브레인 기술 등 다양한 정수 방식의 기술을 보유하고 있으며, 지속적인 R&D를 통해 고도화하고 있습니다.</p>
+                <p><strong>나노 정수 기술:</strong> 기존의 정수 필터 대비 99.99% 이상의 불순물 제거. 미세플라스틱, 중금속, 박테리아 제거 성능 우수. 가정용 정수기의 프리미엄 제품 라인에 적용.</p>
+                <p><strong>역삼투압 기술:</strong> 초고도 정수를 통해 칼슘, 마그네슘 등 미네랄 성분을 선택적으로 조절. 개인의 건강 상태에 맞는 맞춤형 물의 제공이 가능합니다.</p>
+                <p><strong>필터 기술 개선:</strong> 세균 증식을 억제하는 항균 필터, 냄새를 완전히 제거하는 활성탄 필터 등 필터 소재 개선을 지속적으로 추진.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 환경 친화 기술</h3>
+                <p>코웨이는 렌탈 사업의 특성상 제품의 반복 재사용을 통해 환경 친화적 사업 모델을 운영하고 있습니다. 동시에 필터 재활용, 소비 전력 절감 등의 기술 개발을 추진 중입니다.</p>
+                <p><strong>필터 재활용 프로그램:</strong> 사용한 필터의 재활용율을 2025년 기준 85% 수준으로 달성. 2030년까지 95% 이상으로 확대 목표.</p>
+                <p><strong>저에너지 제품:</strong> 정수기, 공기청정기의 전력 소비를 업계 평균 대비 20% 이상 절감하는 제품 개발.</p>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">시장 분석</div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-globe"></i> <span>글로벌 렌탈 및 웰니스 시장 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 국내 렌탈 시장 현황</h3>
+                <p>한국의 렌탈 시장은 약 5조원대 규모로, 지난 5년간 연평균 6~7% 성장률을 기록하고 있습니다. 정수기·공기청정기 렌탈 시장이 가장 큰 부문이며, 비데, 의류, 가구 렌탈 등으로 시장이 확대되고 있습니다.</p>
+                <p><strong>시장 성장 동력:</strong> (1) MZ세대를 중심으로 소유에서 구독(렌탈) 문화로의 전환. (2) 건강·환경 관심 증대로 고품질 정수기·공기청정기 수요 증가. (3) 1인 가구, 소형 주택 증가로 렌탈의 유연성 선호. (4) 필터 교체 등 유지보수의 번거로움을 덜기 위한 렌탈 선택.</p>
+                <p><strong>시장 성장 제약 요인:</strong> (1) 저출산으로 인한 가구당 가전 제품 수요 감소. (2) 생산 제품(구매) 기술 발전으로 렌탈의 필요성 감소. (3) 경기 침체로 인한 소비 억제. (4) 신규 경쟁사의 저가 렌탈 서비스 출현.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-earth-americas"></i> 글로벌 시장 확장 기회</h3>
+                <p>코웨이는 국내 시장의 포화화에 따라 글로벌 시장 진출을 적극 추진하고 있습니다. 2025년 해외 수익이 1조 8,899억원으로 전년 대비 22.3% 증가하면서, 글로벌 사업의 중요성이 점차 높아지고 있습니다.</p>
+                <p><strong>아시아 시장 (인도네시아, 말레이시아, 태국):</strong> 중산층 증가에 따른 건강·환경 관심 증대. 수질 오염, 공기 오염 문제로 정수기·공기청정기 수요 급증. 한국의 기술·브랜드에 대한 호감도 높음. 현지 경쟁사가 적어 시장 진출이 상대적으로 용이.</p>
+                <p><strong>미국 시장:</strong> 고소득층을 중심으로 프리미엄 렌탈 서비스 수요 증가. 건강 기능성 제품에 대한 높은 지불 의사. 다양한 유통 채널 구축 가능. 2025년 해외 수익의 약 30~35%를 미국이 차지.</p>
+                <p><strong>2026년 목표:</strong> 매출 5조원 돌파를 목표로 설정. 국내 성장 5~6%, 해외 성장 18~20% 추정. 해외 수익이 전체 매출의 40% 이상을 차지할 것으로 예상.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-heartbeat"></i> 웰니스 시장 기회</h3>
+                <p>코웨이의 신사업인 비렉스 웰니스 케어는 건강·웰니스에 대한 소비 증대 추세를 반영하고 있습니다. 글로벌 웰니스 시장은 2025년 기준 약 4조 5,000억 달러(약 5,850조원) 규모로, 연평균 5~6% 성장이 예상되고 있습니다.</p>
+                <p><strong>웰니스 시장의 주요 세그먼트:</strong> (1) 수면 건강(Sleep Care) - 매트리스, 베개, 수면 개선 기기 렌탈. (2) 힐링 케어(Healing Care) - 마사지 의자, 스트레스 해소 기기. (3) 피부 미용 - 미용 기기 렌탈. (4) 피트니스 - 가정용 운동 기기 렌탈.</p>
+                <p>코웨이는 비렉스를 통해 수면 건강, 힐링 케어 시장에 진출했으며, 2027년까지 웰니스 사업 매출을 1조원대로 확대할 목표를 설정했습니다.</p>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">경쟁사 분석</div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-users"></i> <span>주요 경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 정수기·공기청정기 렌탈 시장 경쟁사</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>경쟁사</th>
+                            <th>2025 추정 매출</th>
+                            <th>시장점유율</th>
+                            <th>주요 강점</th>
+                            <th>2025년 전망</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>코웨이</td>
+                            <td>약 4.96조</td>
+                            <td>약 30~32%</td>
+                            <td>브랜드 가치, 기술력, 글로벌 진출</td>
+                            <td>해외 성장 가속, 웰니스 사업 확대</td>
+                        </tr>
+                        <tr>
+                            <td>쿠쿠</td>
+                            <td>약 1.2조</td>
+                            <td>약 14~16%</td>
+                            <td>강력한 영업 네트워크, 중저가 전략</td>
+                            <td>가전 제조와의 시너지 추구</td>
+                        </tr>
+                        <tr>
+                            <td>LG전자</td>
+                            <td>약 0.8조</td>
+                            <td>약 8~10%</td>
+                            <td>기술력, 브랜드 신뢰도, 유통 채널</td>
+                            <td>렌탈 사업 강화, 프리미엄 시장 집중</td>
+                        </tr>
+                        <tr>
+                            <td>SK매직</td>
+                            <td>약 0.6조</td>
+                            <td>약 6~8%</td>
+                            <td>기술력, 프리미엄 포지셔닝</td>
+                            <td>온라인 채널 확대</td>
+                        </tr>
+                        <tr>
+                            <td>청호나이스</td>
+                            <td>약 0.5조</td>
+                            <td>약 5~6%</td>
+                            <td>정수기 기술, 국내 인지도</td>
+                            <td>틈새시장 공략</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 코웨이 vs 주요 경쟁사 비교</h3>
+                <p><strong>vs 쿠쿠:</strong> 코웨이는 브랜드 가치와 기술력에서 쿠쿠를 앞서고 있습니다. 쿠쿠는 강력한 영업 네트워크와 중저가 전략으로 점유율을 확보하고 있으나, 글로벌 시장 진출에서는 코웨이가 앞서 있습니다. 특히 국내 렌탈 시장에서의 점유율 격차는 코웨이가 30~32%, 쿠쿠가 14~16% 수준입니다.</p>
+                <p><strong>vs LG전자:</strong> LG전자는 가전 제조 기술과 브랜드 신뢰도에서 강점을 가지고 있으나, 렌탈 사업은 여전히 부수적 사업입니다. 코웨이는 순수 렌탈 기업으로서 고객 서비스와 유지보수에 특화되어 있어 고객 만족도에서 앞서 있습니다.</p>
+                <p><strong>vs SK매직:</strong> SK매직은 기술력 측면에서 우수하며 프리미엄 시장에 집중하고 있습니다. 그러나 규모 측면에서 코웨이의 1/8 수준이며, 국내 인지도도 낮은 편입니다.</p>
+                <p><strong>경쟁 우위:</strong> 코웨이의 가장 큰 경쟁 우위는 (1) 절대적인 브랜드 인지도, (2) 광범위한 서비스 네트워크(약 1,500개의 서비스 센터), (3) 선제적 기술 개발과 IoT 적용, (4) 글로벌 시장 진출 성과입니다.</p>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">SWOT 분석</div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-chess-knight"></i> <span>코웨이 SWOT 분석</span></h2>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check-circle" style="color: #51cf66;"></i> 강점 (Strength)</h3>
+                    <ul>
+                        <li>정수기·공기청정기 렌탈 시장 점유율 약 30~32% (업계 1위)</li>
+                        <li>2025년 매출 4.96조원, 전년 대비 15.2% 증가 (역대 최대)</li>
+                        <li>강력한 브랜드 가치와 고객 신뢰도</li>
+                        <li>광범위한 서비스 네트워크(약 1,500개 센터)</li>
+                        <li>선제적 기술 개발과 IoT 기술 적용</li>
+                        <li>해외 수익 22.3% 증가로 글로벌 확장 성과</li>
+                        <li>안정적인 렌탈료 수익 구조</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-times-circle" style="color: #ff6b6b;"></i> 약점 (Weakness)</h3>
+                    <ul>
+                        <li>국내 시장의 성숙화로 인한 성장 한계</li>
+                        <li>저출산으로 인한 가구당 가전 수요 감소</li>
+                        <li>높은 A/S 비용으로 인한 수익성 압박</li>
+                        <li>생산 제품의 기술 발전으로 렌탈 필요성 감소</li>
+                        <li>비렉스 웰니스 사업 초기 단계로 수익성 미흡</li>
+                        <li>신규 경쟁사의 저가 렌탈 서비스 출현</li>
+                        <li>글로벌 시장에서의 현지화 정도 한계</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-lightbulb" style="color: #ffd93d;"></i> 기회 (Opportunity)</h3>
+                    <ul>
+                        <li>글로벌 웰니스 시장의 급속 성장(연평균 5~6%)</li>
+                        <li>아시아 신흥 시장의 렌탈 수요 증가</li>
+                        <li>수질·공기 오염으로 인한 정수기·공기청정기 수요 급증</li>
+                        <li>IoT·AI 기술을 활용한 고부가가치 상품 개발</li>
+                        <li>구독 경제의 확산으로 렌탈 수요 증가</li>
+                        <li>미국 프리미엄 렌탈 시장의 성장</li>
+                        <li>ESG 추세로 환경 친화 제품 수요 증가</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-warning" style="color: #ff6b6b;"></i> 위협 (Threat)</h3>
+                    <ul>
+                        <li>경기 침체로 인한 소비 억제</li>
+                        <li>저가 경쟁사의 시장점유율 확대</li>
+                        <li>국내 시장 포화화에 따른 성장 정체</li>
+                        <li>글로벌 정수기·공기청정기 기업의 시장 진출</li>
+                        <li>환율 변동에 따른 해외 수익성 악화</li>
+                        <li>규제 강화(정수기 안전 규제 등)로 인한 비용 증가</li>
+                        <li>전자상거래 기업의 저가 렌탈 서비스 진출</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">전략 분석</div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> <span>코웨이의 중기 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 시장 확장 전략</h3>
+                <p>코웨이의 가장 핵심적인 중기 전략은 글로벌 시장으로의 적극적인 확장입니다. 2025년 해외 수익이 1조 8,899억원(전년 대비 22.3% 증가)에 달하면서, 글로벌 사업의 중요성이 점차 높아지고 있습니다.</p>
+                <p><strong>1단계 (2025-2026): 아시아 시장 강화</strong> - 인도네시아, 말레이시아, 태국 등 동남아시아 시장에서의 점유율 확대. 현지 유통 파트너 확보 및 서비스 네트워크 확장. 목표: 아시아 수익 30% 이상 성장.</p>
+                <p><strong>2단계 (2027-2028): 미국 시장 고도화</strong> - 미국 프리미엄 렌탈 시장에서의 위치 강화. 뉴욕, LA 등 대도시 중심의 고소득층 공략. 목표: 미국 수익 2배 이상 달성.</p>
+                <p><strong>3단계 (2029-2030): 유럽 및 신흥 시장 진출</strong> - 유럽의 프리미엄 웰니스 시장 진출. 인도, 베트남 등 신흥 시장의 초기 진입. 목표: 글로벌 매출의 50% 이상을 해외에서 창출.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-heartbeat"></i> 웰니스 사업 확대 전략</h3>
+                <p>코웨이는 비렉스 웰니스 케어를 신성장 축으로 육성하고 있습니다. 2025년 7,199억원의 매출을 달성했으며, 2027년까지 1조원대 사업으로 확대할 목표를 설정했습니다.</p>
+                <p><strong>전략 1 - 수면 건강 시장 선도:</strong> 고급 매트리스, 수면 개선 기기 렌탈 확대. 수면 건강 교육 및 컨설팅 서비스 제공. 목표: 2027년 수면 건강 사업 매출 4,000억원 달성.</p>
+                <p><strong>전략 2 - 힐링 케어 제품 다각화:</strong> 마사지 의자, 스트레칭 기기, 아로마테라피 기기 등으로 상품 라인 확대. 목표: 2027년 힐링 케어 사업 매출 3,000억원 달성.</p>
+                <p><strong>전략 3 - 피부 미용 및 피트니스 진출:</strong> 미용 기기, 가정용 운동 기기 렌탈 추가. 건강 기능식품 등으로 사업 영역 확대. 목표: 2030년 웰니스 사업 매출 2조원 달성.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i> 기술 혁신 및 디지털 전환</h3>
+                <p>코웨이는 IoT, AI, 빅데이터 기술을 활용한 디지털 전환을 추진하고 있습니다. 스마트 제품의 고도화, 예측 유지보수, 고객 맞춤형 서비스 제공이 중심입니다.</p>
+                <p><strong>1. 스마트 제품 고도화:</strong> 모든 렌탈 제품에 IoT 센서를 장착하여 실시간 모니터링 가능하게 구성. 데이터 기반의 개인맞춤형 설정 제공. 목표: 2026년까지 스마트 제품 비중을 70% 이상으로 확대.</p>
+                <p><strong>2. AI 기반 고객 서비스:</strong> 챗봇을 활용한 24/7 고객 상담, 주문 및 환불 자동화. 머신러닝 기반 고객 맞춤형 제품 추천. 목표: 2026년까지 고객 만족도 5점(5점 만점) 달성.</p>
+                <p><strong>3. 빅데이터 분석 역량 강화:</strong> 고객의 사용 패턴, 제품 수명 주기 데이터 분석을 통한 최적 유지보수 전략 수립. 목표: 2026년까지 제품 고장 발생률을 현재 대비 40% 이상 감소.</p>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">재무 분석</div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>코웨이 재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 2025년 재무 성과</h3>
+                <p>코웨이의 2025년 재무 성과는 역대 최대 규모를 기록했습니다. 총 매출이 4조 9,636억원으로 전년 대비 15.2% 증가했으며, 영업이익은 8,787억원으로 전년 대비 10.5% 증가했습니다. 특히 해외 사업의 강한 성장(22.3%)이 전체 성장을 주도하고 있습니다.</p>
+                <div class="chart-container">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">2025년 재무 성과 분석</p>
+                    <div class="progress-bar" style="--progress: 115.2%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">매출 증가율 (전년대비)</div>
+                            <div class="progress-label-value">+15.2%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 110.5%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">영업이익 증가율</div>
+                            <div class="progress-label-value">+10.5%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 111%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">국내 매출 증가율</div>
+                            <div class="progress-label-value">+11.0%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 122.3%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">해외 매출 증가율</div>
+                            <div class="progress-label-value">+22.3%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 105%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">영업이익률</div>
+                            <div class="progress-label-value">약 17.7%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 자본 구조 및 재무 건전성</h3>
+                <p>코웨이의 재무 구조는 건전한 수준을 유지하고 있습니다. 2025년 현재 총자산 규모는 약 3.5조원, 자본금은 약 2,000억원 수준입니다. 부채비율은 약 80% 이상으로 동종 업계의 평균 수준이며, 신용등급은 AA- 수준으로 평가받고 있습니다.</p>
+                <p>렌탈 기업의 특성상 선투자로 인한 자산 비중이 높으나, 안정적인 렌탈료 수익으로 인한 현금흐름이 우수합니다. 2025년 기준 영업 현금흐름은 약 1조 2,000억원 규모로, 자본 투자와 배당금 지급 여유가 있는 상황입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hand-holding-usd"></i> 배당금 정책 및 주가</h3>
+                <p>코웨이는 안정적인 배당금 정책으로 주주들에게 일관된 수익을 제공하고 있습니다. 2025년 배당금은 주당 약 3,200원으로, 배당수익률은 약 3.5~3.8% 수준입니다. 이는 대형 우량주 평균 배당수익률(2.5~3.0%)보다 높은 수준입니다.</p>
+                <p>2025년 말 코웨이의 주가는 약 85,000원 수준으로, 2024년 말 대비 약 5~7% 상승했습니다. 시가총액은 약 8~9조원 규모로, KOSPI 상위 50대 기업 중 하나입니다. 2026년에는 글로벌 매출 성장과 웰니스 사업 수익성 개선에 따른 주가 상승 기대감이 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-forecast"></i> 2026년 재무 전망</h3>
+                <p><strong>긍정적 요인:</strong> (1) 글로벌 시장 성장의 지속, 특히 아시아·미국 시장의 가속화. (2) 웰니스 사업의 수익성 개선. (3) IoT·AI 기술 도입에 따른 A/S 비용 절감. (4) 렌탈료의 점진적 인상으로 인한 수익성 개선.</p>
+                <p><strong>부정적 요인:</strong> (1) 국내 시장 포화화로 인한 성장 둔화. (2) 저출산·인구 감소로 인한 가구 수요 감소. (3) 환율 변동에 따른 해외 수익성 악화 가능성. (4) 경기 침체로 인한 소비 심화.</p>
+                <p><strong>2026년 추정:</strong> 매출 약 5조 4,000억원 (+8.8%), 영업이익 약 9,200억원 (+4.7%), 순이익 약 6,800억원 (+5.3%). 이는 글로벌 성장의 지속과 웰니스 사업의 초기 성과 반영을 가정한 보수적 추정치입니다.</p>
+            </div>
+
+            <div class="section-divider">
+                <div class="section-divider-text">결론 및 투자의견</div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 핵심 평가</h3>
+                <p>코웨이는 정수기·공기청정기 렌탈 시장의 절대 강자로서, 2025년 매출 4.96조원으로 역대 최대 실적을 기록했습니다. 특히 해외 수익이 전년 대비 22.3% 증가하면서 글로벌 사업의 성장 가능성을 입증했습니다.</p>
+                <p>기술 혁신 측면에서 코웨이는 IoT, AI, 빅데이터 기술을 활용한 스마트 제품과 예측 유지보수 시스템을 구축하고 있습니다. 이는 전통적인 렌탈 기업에서 스마트 헬스케어 기업으로의 전환을 의미하며, 향후 경쟁력 강화의 핵심 요소가 될 것입니다.</p>
+                <p>신사업인 비렉스 웰니스 케어는 2025년 7,199억원의 매출을 달성하며 신규 성장 축으로 부상했습니다. 글로벌 웰니스 시장의 급속 성장(연평균 5~6%)과 맞물려, 이 사업은 2027년 이후 코웨이의 주요 매출원이 될 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 강점 요약</h3>
+                <ul>
+                    <li><strong>시장 지위:</strong> 정수기·공기청정기 렌탈 시장 점유율 약 30~32% (업계 1위)</li>
+                    <li><strong>성장성:</strong> 2025년 매출 15.2% 증가, 해외 수익 22.3% 증가</li>
+                    <li><strong>브랜드 가치:</strong> 강력한 브랜드 인지도와 고객 신뢰도</li>
+                    <li><strong>기술 혁신:</strong> IoT, AI 기반의 스마트 제품 및 예측 유지보수</li>
+                    <li><strong>글로벌 확장:</strong> 아시아, 미국 등 주요 시장에서의 확장 성과</li>
+                    <li><strong>신성장 축:</strong> 웰니스 사업(비렉스)의 성공적 안착</li>
+                    <li><strong>배당:</strong> 배당수익률 약 3.5~3.8%의 매력적인 배당 정책</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 위험 요소</h3>
+                <ul>
+                    <li><strong>국내 시장 포화:</strong> 저출산, 인구 감소로 인한 가구 수요 감소</li>
+                    <li><strong>성장 둔화:</strong> 국내 시장 성장률이 점차 둔화되는 추세</li>
+                    <li><strong>A/S 비용:</strong> 렌탈 기업의 고질적 과제인 높은 유지보수 비용</li>
+                    <li><strong>경쟁 심화:</strong> 저가 경쟁사, 전자상거래 기업의 시장 진출</li>
+                    <li><strong>환율 변동:</strong> 해외 수익의 환율 변동에 따른 변동성</li>
+                    <li><strong>신사업 불확실성:</strong> 웰니스 사업의 수익성 달성 가능성 미지수</li>
+                    <li><strong>글로벌 리스크:</strong> 아시아, 미국 시장의 경기 둔화 우려</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i> 투자 의견 및 목표 주가</h3>
+                <p><strong>투자 등급: BUY (매수 권유)</strong></p>
+                <p><strong>목표 주가 (2026년 12월): 98,000원</strong></p>
+                <p><strong>현 주가 (2025년 4월): 85,000원 기준</strong></p>
+                <p><strong>기대 수익률: 15.3%</strong></p>
+                <p>코웨이는 정수기·공기청정기 렌탈 시장의 절대 강자이면서도, 글로벌 시장 확장과 웰니스 신사업을 통한 성장 동력을 갖춘 우량 성장주입니다. 국내 시장 포화화는 한계이나, 이를 보완하는 글로벌 확장 전략의 성공이 중요합니다.</p>
+                <p>2025년 해외 수익이 전년 대비 22.3% 증가한 것은 글로벌 전략의 성공을 입증합니다. 2026년에는 아시아·미국 시장의 가속화, 웰니스 사업의 수익성 개선으로 인해 전체 매출이 5조원을 돌파할 것으로 기대됩니다.</p>
+                <p>특히 IoT·AI 기술 도입에 따른 A/S 비용 절감, 웰니스 사업의 고부가가치 수익 창출은 향후 영업이익 마진 개선으로 이어질 것으로 예상됩니다. 배당수익률 3.5~3.8%의 안정적 배당 정책도 투자 매력도를 높입니다.</p>
+                <p><strong>투자 적합 투자자:</strong> (1) 배당 수익과 자본 이득을 동시에 원하는 투자자. (2) 글로벌 성장에 베팅하는 성장 투자자. (3) 렌탈 및 웰니스 산업의 성장 추세에 참여하고자 하는 테마 투자자. (4) 생활용품 렌탈 시장의 선두 기업에 투자하고자 하는 보수적 투자자.</p>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>코웨이 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 코웨이 Investor Relations 공개 정보</li>
+                    <li>금융감독원 상장사 공시 자료</li>
+                    <li>한국의료기기산업협회 정수기·공기청정기 시장 조사</li>
+                    <li>글로벌 웰니스 시장 조사 기관 리포트</li>
+                    <li>경쟁사(쿠쿠, LG전자, SK매직) 공시 자료</li>
+                    <li>렌탈 산업 및 웰니스 시장 리포트</li>
+                    <li>국내외 주요 증권사 리서치 리포트</li>
+                    <li>아시아·미국 시장 가전·렌탈 산업 리포트</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 최종 업데이트: 2026년 4월 13일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 13일 09:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

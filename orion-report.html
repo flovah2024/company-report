@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오리온 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 0;
+            transition: height .4s ease;
+        }
+
+        .bar-container:hover .bar { opacity: .85; }
+
+        .bar-value {
+            color: var(--gold);
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 16px;
+            margin-bottom: 4px;
+        }
+
+        .bar-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 32px;
+            transition: background .3s ease, border-color .3s ease;
+        }
+
+        .swot-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold-dim);
+        }
+
+        .swot-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .swot-card ul { list-style: none; }
+
+        .swot-card li {
+            padding: 10px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15.5px;
+            position: relative;
+            line-height: 1.65;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: 1fr 1fr; }
+            main { padding: 56px 24px 80px; }
+            header { padding: 0 24px; }
+        }
+
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            padding: 40px 48px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color .3s ease;
+        }
+
+        footer a:hover { color: var(--gold-light); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-section" onclick="window.location.href='index.html'">
+            <div>
+                <div class="logo">FLOVAH</div>
+                <div class="logo-subtitle">Insights</div>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#overview" class="active">Report</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026.04.13</span>
+            <span class="flovah-badge">PREMIUM</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview">
+            <h2 class="section-title">
+                <i class="fas fa-building"></i>
+                <span>기업 개요</span>
+            </h2>
+            <p class="section-subtitle">오리온의 글로벌 제과 사업과 2025년 사상 최대 순이익</p>
+
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        오리온 기업 분석
+                        <span class="hero-title-highlight">글로벌 제과의 강자</span>
+                    </h1>
+                    <p class="hero-subtitle">아시아 시장을 중심으로 글로벌 제과 사업을 확대하는 오리온의 성장 전략</p>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">3.3조</div>
+                    <div class="metric-label">2025년 매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">68.8%</div>
+                    <div class="metric-label">해외매출 비중</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5.3조</div>
+                    <div class="metric-label">당기순이익</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4.3조</div>
+                    <div class="metric-label">현재 시가총액</div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 40px;">
+                <h3><i class="fas fa-info-circle"></i> 회사 개요</h3>
+                <p><strong>오리온</strong>은 한국의 대표 식품·제과 기업으로, KOSPI 271560 종목으로 상장되어 있습니다. 2025년 실적은 매출 3조 3,324억원(전년대비 7.3% 증가), 당기순이익 5,332억원으로 역대 최대 순이익을 달성했습니다. 이는 회사의 강한 수익성과 글로벌 시장에서의 경쟁력을 보여줍니다.</p>
+                <p>오리온은 <strong>초코파이, 오! 감자, 꼬북칩</strong> 등 세계적으로 인정받는 글로벌 제과 브랜드를 보유하고 있습니다. 특히 해외매출이 전체 매출의 68.8%를 차지하며, 중국, 베트남, 러시아 등 아시아 시장을 중심으로 글로벌 확장을 추진하고 있습니다. 오리온의 제품들은 아시아, 유럽, 아메리카, 중동 등 100개국 이상에서 판매되고 있습니다.</p>
+                <p>한국 법인(1조 976억원), 중국 법인(1조 2,701억원), 베트남 법인(5,145억원) 등 지역별 자회사들이 각각 강한 성과를 거두고 있습니다. 중국에서만 전체 매출의 38%를 차지하며, 이는 오리온의 중국 시장 진출 성공을 보여줍니다. 특히 베트남은 신흥 시장으로서 높은 성장률을 기록하고 있습니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 24px;">
+                <h3><i class="fas fa-history"></i> 주요 발전 역사</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1956년</div>
+                        <div class="timeline-item-content">오리온 설립, 초코파이 개발 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1974년</div>
+                        <div class="timeline-item-content">초코파이 본격 생산 및 판매 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1988년</div>
+                        <div class="timeline-item-content">중국 시장 진출, 상하이 법인 설립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">1995년</div>
+                        <div class="timeline-item-content">KOSPI 상장, 국내 제과 업계 선도</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2005년</div>
+                        <div class="timeline-item-content">아시아 시장 확장, 베트남/태국 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2010년</div>
+                        <div class="timeline-item-content">러시아, 인도네시아 등 신흥 시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2018년</div>
+                        <div class="timeline-item-content">해외매출 비중 60% 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년</div>
+                        <div class="timeline-item-content">사상 최대 순이익 달성, 글로벌 확장 가속화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology">
+            <h2 class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </h2>
+            <p class="section-subtitle">제과 생산 기술과 품질 관리 시스템</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 제과 제조 기술</h3>
+                <p>오리온은 <strong>고속 생산 라인과 자동화 기술</strong>에 특화되어 있습니다. 초코파이, 오! 감자, 꼬북칩 등의 제품을 초당 수십 개 생산할 수 있는 최첨단 제조 시설을 보유하고 있습니다. 이는 높은 생산 효율성과 제품 일관성을 보장합니다. 특히 오리온의 제조 기술은 아시아 지역에서 제과 산업 표준으로 인정받고 있습니다.</p>
+                <p>오리온의 연구개발 팀은 지속적으로 새로운 제과 기술을 개발하고 있습니다. 건강한 성분을 사용한 저설탕 제품, 자연 향료 기술, 그리고 수출 시장에 최적화된 패키징 기술 등이 주요 R&D 분야입니다. 이러한 기술적 혁신은 제품의 품질을 높이고 각 지역의 소비자 선호도에 맞춘 제품 개발을 가능하게 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-check-circle"></i> 품질 관리 시스템</h3>
+                <p>오리온은 <strong>국제 수준의 품질 관리 시스템</strong>을 구축했습니다. 모든 생산 시설이 HACCP, ISO 22000, FDA 기준을 충족하며, 실시간 품질 검사 시스템을 도입하고 있습니다. 각 제품은 출하 전 엄격한 검사 절차를 거치며, 불량률은 산업 평균 대비 매우 낮습니다.</p>
+                <p>또한 오리온은 원재료 공급망 관리에도 적극 투자하고 있습니다. 글로벌 원재료 소싱 전담 부서를 운영하여 안정적인 공급과 원가 절감을 동시에 추구합니다. 이러한 철저한 품질 관리는 오리온 제품의 안전성과 신뢰도를 높이는 핵심 요소입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> 지속가능 생산</h3>
+                    <p>오리온은 환경 친화적 생산 기술에 투자하고 있습니다. 에너지 효율적인 생산 시설, 재활용 가능한 패키징, 그리고 폐기물 감소 프로그램 등을 통해 환경 영향을 최소화합니다. 특히 중국과 베트남 시장에서 지속가능성이 경쟁력이 되면서, 오리온의 환경 관리 노력은 시장 차별화 요소가 되고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i> 공급망 네트워크</h3>
+                    <p>오리온은 세계 각지에 30개 이상의 생산 시설과 70개 이상의 유통 센터를 운영하고 있습니다. 이러한 글로벌 공급망 네트워크는 빠른 배송, 낮은 물류비, 그리고 현지 시장에 최적화된 서비스를 가능하게 합니다. 특히 중국과 베트남의 현지 생산 시설은 수급 안정성과 원가 경쟁력을 높이는 데 핵심 역할을 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="market">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 분석</span>
+            </h2>
+            <p class="section-subtitle">글로벌 제과 시장의 성장 기회</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-world"></i> 글로벌 제과 시장</h3>
+                <p>2025년 글로벌 제과 시장은 약 250조원 규모로 추정되며, 연평균 3-4%의 성장률을 보이고 있습니다. 특히 <strong>아시아 태평양 지역</strong>은 글로벌 제과 시장에서 가장 빠르게 성장하는 지역으로, 중국, 인도, 동남아시아의 중산층 확대로 인해 제과 수요가 급증하고 있습니다. 오리온은 이러한 아시아 시장의 성장 추세를 가장 잘 활용하는 기업 중 하나입니다.</p>
+                <p>중국은 전 세계 제과 시장의 약 25%를 차지하는 최대 시장이며, 오리온은 중국에서 초코파이, 오! 감자 등의 브랜드로 높은 인지도와 판매량을 기록하고 있습니다. 베트남, 태국, 인도네시아 등 동남아 시장도 오리온의 고성장 지역으로, 미들클래스의 확대와 현지 식습관의 변화가 긍정적 요인으로 작용하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shopping-cart"></i> 제과 시장 트렌드</h3>
+                <p>글로벌 제과 시장은 몇 가지 주요 트렌드를 보이고 있습니다. 첫째, <strong>프리미엄 제품 선호도의 증가</strong>입니다. 소비자들의 소득 증가와 함께 고급 제과 제품에 대한 수요가 높아지고 있습니다. 오리온의 프리미엄 라인인 '초코파이 프리미엄' 등이 이러한 추세를 반영하고 있습니다.</p>
+                <p>둘째, <strong>건강식 트렌드의 확산</strong>입니다. 저설탕, 무글루텐, 유기농 제과 제품에 대한 수요가 증가하고 있습니다. 오리온은 이를 반영하여 건강한 재료를 사용한 신제품 개발을 확대하고 있습니다.</p>
+                <p>셋째, <strong>로컬라이제이션 전략</strong>입니다. 각 지역의 문화와 식습관에 맞춘 제품 개발이 중요해지고 있습니다. 오리온은 중국용 초코파이(홍차맛), 베트남용 제품(현지 향료 활용) 등으로 현지화 전략을 성공적으로 추진하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 지역별 시장 분석</h3>
+                <p><strong>중국 시장</strong>은 오리온 전체 매출의 38%를 차지하는 최대 시장입니다. 2025년 중국 법인 매출은 1조 2,701억원으로 전년대비 7.7% 성장했으며, 영업이익은 2,439억원으로 전년대비 10.4% 증가했습니다. 중국의 도시화와 소비 증가로 인해 향후 높은 성장 가능성을 보유하고 있습니다.</p>
+                <p><strong>베트남 시장</strong>은 오리온의 신흥 시장으로서 가장 높은 성장률을 보이고 있습니다. 2025년 베트남 법인 매출은 5,145억원으로 전년대비 8.2% 증가했으며, 영업이익은 1,001억원으로 전년대비 14.4% 증가했습니다. 낮은 기저로 인한 높은 성장률이 지속될 것으로 예상됩니다.</p>
+                <p><strong>한국 시장</strong>은 여전히 오리온의 안정적 수익 기지입니다. 2025년 한국 법인 매출은 1조 976억원으로 전년대비 2.6% 성장했으며, 영업이익은 1,785억원으로 전년대비 5.7% 증가했습니다. 성숙 시장이지만 브랜드 파워와 유통 인프라를 통해 안정적 수익을 창출하고 있습니다.</p>
+            </div>
+        </section>
+
+        <section id="competitors">
+            <h2 class="section-title">
+                <i class="fas fa-shield-alt"></i>
+                <span>경쟁사 분석</span>
+            </h2>
+            <p class="section-subtitle">글로벌 제과 시장의 주요 경쟁사들</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>주요 브랜드</th>
+                                <th>강점</th>
+                                <th>약점</th>
+                                <th>평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>오리온</strong></td>
+                                <td>초코파이, 오! 감자, 꼬북칩</td>
+                                <td>글로벌 브랜드, 높은 수익성</td>
+                                <td>제한된 제품 포트폴리오</td>
+                                <td>최강</td>
+                            </tr>
+                            <tr>
+                                <td><strong>롯데웰푸드</strong></td>
+                                <td>칸쵸, 가나, 월드콘</td>
+                                <td>다양한 제품 라인, 글로벌 네트워크</td>
+                                <td>높은 경영 비용</td>
+                                <td>강자</td>
+                            </tr>
+                            <tr>
+                                <td><strong>크라운해태</strong></td>
+                                <td>하이초콜릿, 빼빼로, 크라운</td>
+                                <td>국내 시장 점유, 브랜드 인지도</td>
+                                <td>국제 경쟁력 약화</td>
+                                <td>약화</td>
+                            </tr>
+                            <tr>
+                                <td><strong>해태제과</strong></td>
+                                <td>신라면, 할리, 뼈다귀</td>
+                                <td>국내 유통망</td>
+                                <td>글로벌 입지 약함</td>
+                                <td>약화</td>
+                            </tr>
+                            <tr>
+                                <td><strong>농심</strong></td>
+                                <td>신라면, 우동사리</td>
+                                <td>국제 라면 브랜드</td>
+                                <td>제과류 약세</td>
+                                <td>약화</td>
+                            </tr>
+                            <tr>
+                                <td><strong>몬델레즈</strong></td>
+                                <td>오레오, 나비스코, 클로에타</td>
+                                <td>글로벌 슈퍼 브랜드</td>
+                                <td>높은 원가</td>
+                                <td>강자</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 경쟁 위상 분석</h3>
+                <p>오리온은 현재 <strong>아시아 태평양 지역의 제과 시장에서 최강자</strong>로 평가받고 있습니다. 초코파이, 오! 감자, 꼬북칩 등의 브랜드는 아시아 지역에서 글로벌 급의 인지도를 보유하고 있으며, 소비자 충성도가 매우 높습니다. 특히 중국과 베트남에서의 시장 점유율은 경쟁사 대비 월등히 높습니다.</p>
+                <p>반면 글로벌 제과 시장 전체에서는 몬델레즈(오레오, 나비스코) 같은 국제 대형사들과의 경쟁이 있습니다. 다만 오리온은 아시아 시장의 지역적 우위와 높은 영업이익률로 인해 글로벌 경쟁사 대비 경쟁력이 있습니다. 롯데웰푸드는 오리온과 유사한 포지션을 갖고 있지만, 최근 경영 어려움으로 인해 경쟁력이 약화되고 있습니다.</p>
+            </div>
+        </section>
+
+        <section id="swot">
+            <h2 class="section-title">
+                <i class="fas fa-sliders"></i>
+                <span>SWOT 분석</span>
+            </h2>
+            <p class="section-subtitle">오리온의 강점과 기회</p>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-arrow-up"></i> 강점</h3>
+                    <ul>
+                        <li>글로벌 인지도 높은 브랜드</li>
+                        <li>강한 수익성과 현금흐름</li>
+                        <li>아시아 시장 지배력</li>
+                        <li>효율적인 생산 기술</li>
+                        <li>높은 영업이익률(15%+)</li>
+                        <li>안정적 공급망 네트워크</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-arrow-down"></i> 약점</h3>
+                    <ul>
+                        <li>제한된 제품 포트폴리오</li>
+                        <li>신제품 개발 속도 미흡</li>
+                        <li>글로벌 시장 점유율 낮음</li>
+                        <li>원재료 가격 변동 민감</li>
+                        <li>홍콩/싱가포르 시장 약세</li>
+                        <li>중국 규제 리스크</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--gold);"><i class="fas fa-leaf"></i> 기회</h3>
+                    <ul>
+                        <li>동남아 시장의 높은 성장</li>
+                        <li>신흥 시장의 소비 증가</li>
+                        <li>프리미엄 제품 수요 증가</li>
+                        <li>건강식 제품 시장 확대</li>
+                        <li>인도, 인도네시아 추가 진출</li>
+                        <li>해외매출 70% 이상 달성 가능</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color: var(--blue);"><i class="fas fa-exclamation-triangle"></i> 위협</h3>
+                    <ul>
+                        <li>중국 정책 규제 강화</li>
+                        <li>글로벌 경기 침체</li>
+                        <li>국제 경쟁사의 공격</li>
+                        <li>원가 상승 압박</li>
+                        <li>로컬 브랜드의 부상</li>
+                        <li>환율 변동성 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy">
+            <h2 class="section-title">
+                <i class="fas fa-bullseye"></i>
+                <span>전략분석</span>
+            </h2>
+            <p class="section-subtitle">글로벌 시장 확대를 위한 차별화 전략</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 시장 지배 전략</h3>
+                <p>오리온은 <strong>아시아 중심의 글로벌 시장 지배 전략</strong>을 추구합니다. 중국, 베트남, 러시아 등 신흥 시장에서의 시장 점유율을 높이고, 기존 시장에서의 수익성을 극대화하는 것이 목표입니다. 특히 초코파이는 아시아 지역에서 가장 인정받는 제과 브랜드이며, 이를 활용한 새로운 제품 개발과 지역별 맞춤형 마케팅이 효과적으로 진행되고 있습니다.</p>
+                <p>오리온은 각 지역별로 현지화 전담 팀을 구성하여, 지역 소비자의 취향과 식습관에 맞춘 제품을 개발합니다. 중국의 홍차맛 초코파이, 베트남의 매운맛 오! 감자 등이 그 예이며, 이러한 지역화 전략은 높은 성공률을 보이고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-cubes"></i> 포트폴리오 확대</h3>
+                    <p>오리온은 기존의 초콜릿, 스낵 중심의 포트폴리오를 확대하고 있습니다. 초콜릿 바, 에너지 바, 프로틴 바 등 건강 지향적 제품군을 추가하고 있으며, 이는 건강식 트렌드를 반영한 전략입니다. 또한 세계 각 지역의 로컬 브랜드를 인수·합병하여 지역 시장에서의 영향력을 확대하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-lightbulb"></i> 디지털 전환과 혁신</h3>
+                    <p>오리온은 디지털 전환을 통한 효율성 증대에 투자하고 있습니다. 공급망 관리 시스템의 고도화, AI 기반 수요 예측, 그리고 온라인 판매 채널 확대 등이 주요 전략입니다. 특히 이커머스 채널을 통한 직접 판매 확대로 수익률을 높이고 소비자와의 직접 연결을 강화하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i> 전략적 파트너십</h3>
+                <p>오리온은 글로벌 유통 기업, 소매 체인, 그리고 온라인 플랫폼과의 전략적 파트너십을 강화하고 있습니다. 아마존, 알리바바, 라자다 등 글로벌 이커머스 플랫폼과의 협력을 통해 온라인 판매 채널을 확대하고 있으며, 이는 지역적 유통 장벽을 극복하는 데 효과적입니다.</p>
+            </div>
+        </section>
+
+        <section id="financial">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                <span>재무분석</span>
+            </h2>
+            <p class="section-subtitle">2025-2026년 실적 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 핵심 재무지표</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>2024</th>
+                                <th>2025</th>
+                                <th>2026E</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>매출액</strong></td>
+                                <td>3.10조원</td>
+                                <td>3.33조원</td>
+                                <td>3.55조원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익</strong></td>
+                                <td>5,440억원</td>
+                                <td>5,582억원</td>
+                                <td>5,850억원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률</strong></td>
+                                <td>17.5%</td>
+                                <td>16.8%</td>
+                                <td>16.5%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>당기순이익</strong></td>
+                                <td>5,110억원</td>
+                                <td>5,332억원</td>
+                                <td>5,600억원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>해외매출 비중</strong></td>
+                                <td>68.2%</td>
+                                <td>68.8%</td>
+                                <td>70%+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 매출 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 85%;"></div>
+                        </div>
+                        <div class="bar-value">3.10조</div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 91%;"></div>
+                        </div>
+                        <div class="bar-value">3.33조</div>
+                        <div class="bar-label">2025년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;"></div>
+                        </div>
+                        <div class="bar-value">3.55조</div>
+                        <div class="bar-label">2026E</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 영업이익 추이</h3>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2024년</span>
+                        <span class="progress-label-value">5,440억원</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 93%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2025년</span>
+                        <span class="progress-label-value">5,582억원</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span class="progress-label-name">2026E</span>
+                        <span class="progress-label-value">5,850억원</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map"></i> 지역별 매출 현황 (2025)</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>지역</th>
+                                <th>매출액</th>
+                                <th>YoY 성장</th>
+                                <th>영업이익</th>
+                                <th>영업이익률</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>한국</strong></td>
+                                <td>1조 976억원</td>
+                                <td>+2.6%</td>
+                                <td>1,785억원</td>
+                                <td>16.3%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>중국</strong></td>
+                                <td>1조 2,701억원</td>
+                                <td>+7.7%</td>
+                                <td>2,439억원</td>
+                                <td>19.2%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>베트남</strong></td>
+                                <td>5,145억원</td>
+                                <td>+8.2%</td>
+                                <td>1,001억원</td>
+                                <td>19.5%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>기타 지역</strong></td>
+                                <td>3,502억원</td>
+                                <td>+5.1%</td>
+                                <td>357억원</td>
+                                <td>10.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="latest-news">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i>
+                <span>최신 뉴스</span>
+            </h2>
+            <p class="section-subtitle">2026년 4월 기준 주요 뉴스</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-store"></i> 베트남 신규 생산 시설 완공 (2026.04.05)</h3>
+                <p><strong>시설 투자:</strong> 오리온이 베트남 호치민 인근에 건설 중이던 신규 생산 시설 완공을 발표했습니다. 총 3,500억원이 투자된 이 시설은 초코파이, 오! 감자, 꼬북칩 등 주요 제품의 생산 능력을 2배 이상 증가시킬 것으로 예상됩니다. 이는 베트남 시장의 높은 성장률을 활용하고 동남아시아 전역의 수출 거점으로 활용할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-box-open"></i> 신제품 라인 출시 성공 (2026.04.08)</h3>
+                <p><strong>신제품 개발:</strong> 오리온이 프리미엄 라인의 건강식 제과 제품 출시를 공식 발표했습니다. 저설탕, 고단백, 무글루텐 특성을 갖춘 신제품들이 한국, 중국, 베트남의 주요 마트에서 판매 중이며, 예상을 초과하는 초기 판매량을 기록했습니다. 이는 글로벌 건강식 트렌드에 대응하는 오리온의 전략을 보여줍니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i> 알리바바와 전략적 파트너십 강화 (2026.04.10)</h3>
+                <p><strong>디지털 전환:</strong> 오리온이 중국의 이커머스 거대 기업 알리바바와 전략적 파트너십을 확대하기로 합의했습니다. 타오바오, 티몰, 알리바바 국제 등 주요 플랫폼에서 오리온 제품의 판매 비중을 30% 증가시킬 계획입니다. 이는 온라인 채널을 통한 직접 판매를 확대하고 소비자 접점을 강화하는 전략의 일환입니다.</p>
+            </div>
+        </section>
+
+        <section id="conclusion">
+            <h2 class="section-title">
+                <i class="fas fa-check-double"></i>
+                <span>결론 및 투자의견</span>
+            </h2>
+            <p class="section-subtitle">글로벌 시장 확대의 수익성 있는 성장</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crystal-ball"></i> 향후 전망</h3>
+                <p>오리온은 2026년 <strong>매출 3.55조원 달성</strong>과 <strong>해외매출 비중 70% 이상</strong>을 목표로 하고 있습니다. 베트남 신규 생산 시설 완공, 신제품 라인 확대, 그리고 아마존, 알리바바 등 글로벌 이커머스 플랫폼과의 협력 강화가 이를 뒷받침할 것으로 예상됩니다. 특히 개발도상국의 높은 성장률과 소비 증가가 장기적 성장 기반이 될 것입니다.</p>
+                <p>영업이익은 안정적 수준(약 5,850억원)을 유지할 것으로 예상되며, 당기순이익은 5,600억원 이상의 사상 최대 실적을 달성할 가능성이 높습니다. 영업이익률은 장기적으로는 16-17% 수준으로 안정화될 것으로 전망됩니다. 이는 글로벌 제과 기업 중에서도 최고 수준의 수익성입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 리스크 요인</h3>
+                <p>주요 리스크는 <strong>중국 정책 변화</strong>입니다. 중국은 오리온 전체 매출의 38%를 차지하는 최대 시장이므로, 중국의 식품 규제 강화나 관세 정책 변화는 실적에 큰 영향을 미칠 수 있습니다. 또한 중국의 로컬 브랜드 경쟁 심화도 주시해야 할 요소입니다.</p>
+                <p>글로벌 경기 침체, 원재료 가격 상승, 그리고 환율 변동성도 중요한 리스크입니다. 특히 설탕, 카카오, 기타 원재료의 국제 가격이 상승할 경우 원가 상승 압박이 발생할 수 있습니다. 또한 베트남, 인도네시아 등 신흥 시장의 경제 불확실성도 고려해야 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 최종 의견</h3>
+                <p>오리온은 <strong>글로벌 제과 시장에서 안정적인 수익성을 바탕으로 차별화된 성장을 추구</strong>하는 기업입니다. 초코파이, 오! 감자, 꼬북칩 등의 브랜드는 아시아 시장에서 최고의 위상을 유지하고 있으며, 중국과 베트남 시장의 높은 성장률은 향후 수익 성장을 주도할 것으로 예상됩니다.</p>
+                <p>2025년 사상 최대 순이익 달성과 해외매출 비중의 지속적 확대는 오리온의 글로벌 확장 전략이 성공하고 있음을 보여줍니다. 특히 신흥 시장에서의 높은 영업이익률(베트남 19.5%, 중국 19.2%)은 오리온의 브랜드 파워와 생산 효율성을 보여줍니다.</p>
+                <p><strong>종합 평가:</strong> 매수 추천 - 안정적인 수익성과 신흥 시장 성장의 조합으로 장기적 가치 창출 기대. 배당 수익률도 높은 편이어서 배당 투자자에게도 매력적. 다만 중국 정책 변화와 환율 변동성은 주시 필요</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026.04.13 09:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Insights</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+
+</body>
+
+</html>

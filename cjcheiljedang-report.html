@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ제일제당 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .progress-bar {
+            margin: 20px 0;
+            padding: 12px 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .progress-label-name { color: var(--text-light); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 600; }
+
+        .progress-bar-fill {
+            height: 8px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px;
+            transition: width .6s ease;
+            animation: slideIn .8s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: var(--progress); }
+        }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            margin-bottom: 0;
+            border-right: 1px solid var(--rule);
+            border-bottom: 0;
+            border-top: 0;
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .section-divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 56px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-divider-text {
+            background: var(--bg-deep);
+            color: var(--text-muted);
+            padding: 0 16px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            top: -11px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 13, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">CJ제일제당</h1>
+                    <p class="hero-subtitle">한국 식품·바이오 산업의 대표 기업으로서 글로벌 성장과 경영 과제를 함께 안고 있는 기업입니다. 2025년 매출 27조 3,426억원으로 전년 대비 6.9% 감소했으나, 바이오 사업과 bibigo 글로벌 브랜드의 성장이 주목할 만합니다.</p>
+                    <div class="ai-score-badge">
+                        <div class="score-circle">7.2</div>
+                        <div>
+                            <div style="color: var(--text-light); font-weight: 600; margin-bottom: 4px;">FLOVAH 기업 분석 점수</div>
+                            <div style="color: var(--text-secondary); font-size: 13px;">글로벌 식품·바이오 포트폴리오의 우수성, 시장 리더십 입증</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">27.3조원</div>
+                    <div class="metric-label">2025년 매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">-6.9%</div>
+                    <div class="metric-label">전년대비 감소율</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1.2조원</div>
+                    <div class="metric-label">2025년 영업이익</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3조원대</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기업 개요</div>
+        </div>
+
+        <!-- SECTION 1: COMPANY OVERVIEW -->
+        <section id="company">
+            <h2 class="section-title"><i class="fas fa-building"></i> <span>CJ제일제당 기업 개요 및 히스토리</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 기업 정보</h3>
+                <p><strong>회사명:</strong> CJ제일제당 주식회사 (CJ CheilJedang Co., Ltd.)</p>
+                <p><strong>상장 코드:</strong> KOSPI 097950 (한국거래소)</p>
+                <p><strong>업종:</strong> 식품/바이오 (식품 제조 및 판매, 화학물질 제조)</p>
+                <p><strong>설립:</strong> 1953년</p>
+                <p><strong>본사:</strong> 서울시 중구</p>
+                <p><strong>시가총액:</strong> 약 3조 2,969억원 (2026년 2월 10일 기준)</p>
+                <p><strong>소속 그룹:</strong> CJ그룹 (종가 기업인 CJ제일제당은 CJ그룹의 핵심 계열사)</p>
+                <p>CJ제일제당은 한국의 대표적인 식품 기업으로, 국내외 식품 시장에서 강한 입지를 보유하고 있습니다. 설립 이후 70년 이상의 역사 동안 한국 식품 산업의 발전을 이끌어왔으며, 현재는 아미노산·핵산·바이오 화학물질 등 첨단 바이오 분야로까지 사업을 확대하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 주요 사업 부문</h3>
+                <p><strong>1. 식품 사업 (F&B):</strong> 라면, 우동, 양념류, 간식, 냉동식품, 가정간편식(HMR) 등 다양한 제품군을 보유하고 있습니다. 특히 불닭·빙탕·진라면 등의 인기 제품이 국내외 시장에서 높은 점유율을 유지하고 있습니다. 매출 비중은 약 60% 수준입니다.</p>
+                <p><strong>2. 바이오/화학 사업:</strong> 아미노산(글루탐산나트륨·라이신 등), 핵산, 미생물 발효 제품 등을 생산합니다. 이 사업부는 고부가가치 제품으로 마진율이 높고, 글로벌 수요가 지속적으로 증가하는 분야입니다. 매출 비중은 약 25% 수준입니다.</p>
+                <p><strong>3. 기타 사업:</strong> 사료(F&C 사업부, 현재 매각 진행 중), 의약품, 기능성 원료 등을 포함합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 현황 및 주요 성과</h3>
+                <p>CJ제일제당은 60개 이상의 국가에서 제품을 판매하는 진정한 글로벌 기업입니다. 특히 아시아, 북미, 유럽 지역에서의 입지가 강화되고 있습니다.</p>
+                <p><strong>bibigo (비비고):</strong> CJ제일제당의 프리미엄 글로벌 한식 브랜드로, 세계 50개국 이상에서 판매되고 있습니다. 냉동 만두, 밥, 국 등 한국 전통 음식을 현지화한 제품들이 주요 성과를 보이고 있습니다. 미국, 캐나다, 호주, 유럽 주요 국가의 대형 마트에서 찾아볼 수 있습니다.</p>
+                <p><strong>해외 제조 시설:</strong> CJ제일제당은 미국, 중국, 베트남, 호주 등 주요 시장에 생산 시설을 보유하고 있어, 글로벌 공급망을 효율적으로 관리하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 연혁 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1953년</div>
+                        <div class="timeline-text">제일제당 설립 - 설탕 정제 및 판매</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970년대</div>
+                        <div class="timeline-text">라면, 향신료 제품 다각화 진출 - 식품 포트폴리오 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년대</div>
+                        <div class="timeline-text">CJ그룹 통합 및 바이오 사업부 신설 - 첨단 산업으로의 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년대 초반</div>
+                        <div class="timeline-text">아미노산·핵산 제조로 글로벌 바이오 산업 진입</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년대</div>
+                        <div class="timeline-text">bibigo 글로벌 브랜드 런칭 및 국제 확장 본격화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년대 초반</div>
+                        <div class="timeline-text">K-Food 열풍에 힘입어 글로벌 매출 비중 증가, 바이오 사업 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">매출 27조원 규모, F&C 사업부 매각 진행, 바이오·식품 이중 구조 심화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-flask"></i> <span>기술 경쟁력 및 R&D 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microscope"></i> 발효공학 및 바이오 기술</h3>
+                <p>CJ제일제당의 가장 핵심적인 기술 자산은 미생물 발효 기술입니다. 이는 아미노산, 핵산, 기능성 식품 성분 등을 효율적으로 생산할 수 있게 해줍니다.</p>
+                <p><strong>1. 아미노산 생산 기술:</strong> 글루탐산나트륨(MSG), 라이신, 트레오닌 등의 필수 아미노산을 미생물 발효를 통해 생산합니다. CJ제일제당은 이 분야에서 글로벌 톱 5 기업 중 하나입니다. 특히 라이신 시장에서는 세계 점유율 20% 이상을 차지하고 있습니다.</p>
+                <p><strong>2. 핵산 생산 기술:</strong> RNA, DNA의 구성 요소인 이노신산(IMP)·구아닐산(GMP) 등을 생산합니다. 이들은 식품 향료, 의약품 원료, 건강 기능식품 성분으로 활용됩니다.</p>
+                <p><strong>3. 고효율 발효 공정:</strong> CJ제일제당은 발효 효율을 높이기 위해 지속적인 R&D 투자를 진행 중입니다. 고농도 발효, 연속식 발효, 고온 발효 등의 혁신적인 공정이 개발되었습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 식품 R&D 및 제품 혁신</h3>
+                <p><strong>1. 건강식품 개발:</strong> CJ제일제당은 저염, 저당, 고단백 제품 개발에 적극 투자하고 있습니다. 특히 가정간편식(HMR) 분야에서 영양학적 가치와 편의성을 결합한 제품들을 개발하고 있습니다.</p>
+                <p><strong>2. 한식 글로벌화 기술:</strong> bibigo를 중심으로 한국 전통 음식을 국제 시장에 맞게 조정하는 기술을 개발했습니다. 이는 각 지역의 입맛과 식문화를 고려한 현지화 R&D를 포함합니다.</p>
+                <p><strong>3. 플랜트 기반 식품(Plant-Based Foods):</strong> 최근 글로벌 식품 트렌드에 맞춰 식물성 단백질 기반 제품 개발을 추진 중입니다. 콩, 완두콩, 쌀 등을 활용한 고단백 제품군의 개발이 진행 중입니다.</p>
+                <p><strong>4. 스마트 패키징 기술:</strong> 신선도 유지, 온도 조절, QR코드 기반 추적 등의 첨단 패키징 기술을 도입하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-dna"></i> 미생물 육종 및 유전체 기술</h3>
+                <p>CJ제일제당은 미생물 육종(Microbial Breeding) 분야에서 세계적 수준의 기술을 보유하고 있습니다. 이는 발효 효율이 높은 미생물을 선별하고 개발하는 기술입니다.</p>
+                <p><strong>1. 고효율 균주 개발:</strong> 자체 개발한 미생물 스크리닝 기술을 통해 아미노산 생산성이 높은 균주를 대량으로 확보하고 있습니다.</p>
+                <p><strong>2. 유전자 편집 기술:</strong> CRISPR 등의 최신 유전자 편집 기술을 활용하여 생산성이 더 높은 균주 개발을 진행 중입니다.</p>
+                <p><strong>3. 메타게노믹스 기술:</strong> 환경 샘플에서 유용한 미생물을 발굴하는 메타게노믹스 기술을 적극 활용하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tools"></i> 제조 공정 혁신</h3>
+                <p><strong>1. 자동화 및 IoT 도입:</strong> 식품 공장과 발효 시설에 자동화 설비와 IoT 센서를 대량 도입하여 생산 효율성을 높이고 있습니다.</p>
+                <p><strong>2. 탄소중립 공정:</strong> 발효 과정에서 발생하는 CO2를 감축하기 위한 환경친화적 공정 개발에 투자 중입니다.</p>
+                <p><strong>3. 스케일업 기술:</strong> 실험실 수준의 발효 공정을 대규모 산업 시설로 확대하는 스케일업 기술에서 CJ제일제당은 경험과 노하우를 축적하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>시장 분석 및 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> K-Food 글로벌 시장 현황</h3>
+                <p>한국 식품의 글로벌 수출은 최근 몇 년간 지속적으로 증가하고 있습니다. 2024년 한국 식품 수출액은 약 120억 달러(약 15조원) 수준으로, 5년 전 대비 약 40% 증가했습니다.</p>
+                <p><strong>주요 수출품목:</strong> 라면(전 세계 약 40% 점유), 소주, 김, 고추장, 양념류, 아미노산 등입니다.</p>
+                <p><strong>주요 수출 시장:</strong> 중국(약 35%), 일본(약 15%), 동남아시아(약 20%), 북미(약 12%), 유럽(약 8%), 기타(약 10%).</p>
+                <p>CJ제일제당은 이 중에서 약 15-20%의 시장점유율을 차지하고 있는 한국 식품업계의 최강자입니다. 특히 고부가가치 제품인 아미노산 및 바이오 제품에서의 글로벌 입지가 강합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-home"></i> 가정간편식(HMR) 시장의 성장</h3>
+                <p>가정간편식(Home Meal Replacement) 시장은 전 세계적으로 가장 빠르게 성장하는 식품 카테고리 중 하나입니다. MZ 세대의 증가, 1인 가구 확산, 여성 경제활동 참여 증가 등의 요인이 HMR 수요를 급증시키고 있습니다.</p>
+                <p><strong>글로벌 HMR 시장 규모:</strong> 2023년 약 250억 달러(약 32조원)에서 2030년 약 420억 달러(약 55조원)로 성장 예상 (CAGR 약 7-8%).</p>
+                <p><strong>CJ제일제당의 HMR 포트폴리오:</strong> 비비고 만두, 밥, 국, 떡볶이, 우동 등 다양한 HMR 제품을 보유하고 있습니다. 특히 bibigo 냉동만두는 미국, 캐나다, 호주 등의 주요 소매 채널에서 베스트셀러 제품입니다.</p>
+                <p><strong>HMR 시장 성장 요인:</strong> (1) 더블 인컴 가정의 증가, (2) 신선함과 편의성의 결합 수요, (3) 프리미엄 식품에 대한 소비 증가, (4) 온라인 식품 배송 산업의 발전.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 글로벌 바이오 화학 시장</h3>
+                <p>CJ제일제당이 주력하는 아미노산·핵산 등 생물화학 제품의 글로벌 시장도 빠르게 성장 중입니다.</p>
+                <p><strong>글로벌 아미노산 시장:</strong> 2023년 약 280억 달러(약 36조원)에서 2030년 약 420억 달러(약 55조원)로 성장 예상 (CAGR 약 6%).</p>
+                <p><strong>주요 수요처:</strong> 동물 사료(약 40%), 식품 첨가물(약 35%), 의약품·건강식품(약 20%), 기타(약 5%).</p>
+                <p><strong>시장 성장 동인:</strong> (1) 글로벌 육류 소비 증가, (2) 가축 생산 효율 개선 수요, (3) 건강 보조 식품 산업의 성장, (4) 애완동물 식품 시장의 확대.</p>
+                <p>CJ제일제당은 이 시장에서 선도적인 위치를 차지하고 있으며, 향후 5년간 아미노산 수출량 30% 이상 증가를 목표로 하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 기능성 식품 및 건강식품 시장</h3>
+                <p>글로벌 기능성 식품 시장은 건강에 대한 관심 증가, 고령화 사회 진입, 예방 의학에 대한 강조 등으로 인해 빠르게 성장하고 있습니다.</p>
+                <p><strong>글로벌 기능성 식품 시장:</strong> 2023년 약 350억 달러(약 45조원)에서 2030년 약 600억 달러(약 78조원)로 성장 예상 (CAGR 약 8-9%).</p>
+                <p><strong>주요 트렌드:</strong> (1) 식물성 제품, (2) 프로바이오틱스, (3) 면역력 강화 제품, (4) 항산화 제품, (5) 개인맞춤형 건강식품.</p>
+                <p>CJ제일제당은 이 분야에서 아미노산, 핵산, 유산균 배양 기술 등을 활용하여 고부가가치 제품 개발 중입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>국내 경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>회사</th>
+                            <th>2025년 추정 매출</th>
+                            <th>주요 사업</th>
+                            <th>강점</th>
+                            <th>약점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CJ제일제당</strong></td>
+                            <td>27.3조원</td>
+                            <td>식품, 바이오</td>
+                            <td>다각화 포트폴리오, 바이오 기술, 글로벌 입지</td>
+                            <td>F&C 사업 부진, 규제 이슈</td>
+                        </tr>
+                        <tr>
+                            <td><strong>농심</strong></td>
+                            <td>약 3조원</td>
+                            <td>라면, 스낵, 음료</td>
+                            <td>라면 시장 리더, 프리미엄 제품</td>
+                            <td>해외 시장 약함, 다각화 부족</td>
+                        </tr>
+                        <tr>
+                            <td><strong>오뚜기</strong></td>
+                            <td>약 2.5조원</td>
+                            <td>식용유, 간장, 라면, 밥</td>
+                            <td>식용유 시장 지배력, 오일 제품</td>
+                            <td>식품 다각화 약함, 글로벌 미약</td>
+                        </tr>
+                        <tr>
+                            <td><strong>대상</strong></td>
+                            <td>약 2.2조원</td>
+                            <td>양념류, 간장, 된장, HMR</td>
+                            <td>발효 기술, 한식 향신료 전문성</td>
+                            <td>규모 상대적 작음, 글로벌 진출 미흡</td>
+                        </tr>
+                        <tr>
+                            <td><strong>삼양식품</strong></td>
+                            <td>약 2.5조원</td>
+                            <td>라면(불닭), 스낵</td>
+                            <td>불닭 초인지 브랜드, 글로벌 성장률 높음</td>
+                            <td>제품 집중도 높음, 생산능력 부족</td>
+                        </tr>
+                        <tr>
+                            <td><strong>풀무원</strong></td>
+                            <td>약 3조원</td>
+                            <td>두부, HMR, 채소, 쌀</td>
+                            <td>건강식품 이미지, 프리미엄 포지셔닝</td>
+                            <td>원가 상대적 높음, 확장성 제한</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crown"></i> CJ제일제당의 경쟁 우위</h3>
+                <ul>
+                    <li><strong>규모의 경제:</strong> 약 27조원의 매출 규모는 국내 식품업계에서 최고 수준이며, 이는 원가 절감과 R&D 투자에 유리합니다.</li>
+                    <li><strong>바이오/화학 사업:</strong> 경쟁사들이 진입하지 못한 고부가가치 아미노산·핵산 시장에서 독점적 지위를 누리고 있습니다.</li>
+                    <li><strong>글로벌 네트워크:</strong> 60개 이상의 국가에서 판매 네트워크를 구축하고 있어, 규모 있는 식품사 중 가장 광범위합니다.</li>
+                    <li><strong>포트폴리오 다각화:</strong> 라면, 만두, 밥, 양념, 바이오 제품 등 다양한 카테고리를 보유하여 시장 변화에 대응력이 높습니다.</li>
+                    <li><strong>한식 글로벌화 기술:</strong> bibigo를 중심으로 한국 전통식을 국제 시장에 맞게 현지화하는 기술을 선도하고 있습니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i> 경쟁 약점 및 위협</h3>
+                <ul>
+                    <li><strong>F&C(사료/축산) 부문 부진:</strong> 축산 산업 침체로 인해 이 부문의 성장이 정체되어 있으며, 매각 손실이 발생했습니다.</li>
+                    <li><strong>공정거래 규제:</strong> 설탕·밀가루 가격 담합 적발로 공정위 과징금(약 1,383억원)을 납부하면서 브랜드 이미지 손상.</li>
+                    <li><strong>삼양식품의 추격:</strong> 불닭볶음면의 글로벌 성공으로 인해, 식품 부문에서 삼양식품의 추격이 가파르고 있습니다.</li>
+                    <li><strong>글로벌 대형사의 진입:</strong> 네슬레, 유니레버 등 글로벌 식품 대기업이 한식 시장에 진입하고 있어 경쟁이 심화되고 있습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-square-full"></i> <span>CJ제일제당 SWOT 분석</span></h2>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-check-circle" style="color: #4ade80;"></i> 강점 (Strength)</h3>
+                    <ul>
+                        <li>국내 최대 규모 식품 기업(27조원 규모)</li>
+                        <li>바이오/아미노산 시장에서의 글로벌 리더십</li>
+                        <li>bibigo 프리미엄 글로벌 브랜드</li>
+                        <li>다각화된 포트폴리오(식품, 바이오, 화학)</li>
+                        <li>60개 이상 국가의 글로벌 판매망</li>
+                        <li>CJ그룹 계열사로서의 금융 지원</li>
+                        <li>발효공학 및 미생물 육종 기술력</li>
+                        <li>해외 생산 시설(미국, 중국, 베트남)</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-times-circle" style="color: #ff6b6b;"></i> 약점 (Weakness)</h3>
+                    <ul>
+                        <li>F&C 사업부 부진 및 적자 심화</li>
+                        <li>2025년 매출 6.9% 감소</li>
+                        <li>공정거래 규제로 인한 신뢰도 하락</li>
+                        <li>높은 조직 복잡성과 관리 비용</li>
+                        <li>국내 시장 성숙도 높음(성장 한계)</li>
+                        <li>전통 식품 이미지로 인한 혁신 인식 약함</li>
+                        <li>삼양식품 대비 식품 글로벌 성장률 낮음</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-lightbulb" style="color: #ffd93d;"></i> 기회 (Opportunity)</h3>
+                    <ul>
+                        <li>K-Food 글로벌 시장 확대(연 7-8% 성장)</li>
+                        <li>HMR 시장 급성장(CAGR 8-9%)</li>
+                        <li>바이오 제품 수요 증가(CAGR 6-8%)</li>
+                        <li>아시아 중산층 확대로 프리미엄 식품 수요 증가</li>
+                        <li>bibigo 브랜드 인지도 향상</li>
+                        <li>생식 원료(아미노산) 시장 성장</li>
+                        <li>식물성 단백질 시장의 급성장</li>
+                        <li>온라인 식품 배송의 확대</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card" style="border-top: 1px solid var(--rule); margin-top: 0;">
+                <h3><i class="fas fa-warning" style="color: #ff6b6b;"></i> 위협 (Threat)</h3>
+                <ul>
+                    <li>삼양식품의 불닭 글로벌 성공으로 인한 경쟁 심화</li>
+                    <li>글로벌 대형 식품사(네슬레, 유니레버) 진입</li>
+                    <li>중국의 가성비 식품 경쟁 심화</li>
+                    <li>설탕·밀가루 담합으로 인한 공정거래 규제 리스크</li>
+                    <li>원료 수입 의존으로 인한 환율 리스크</li>
+                    <li>식품 안전 규제 강화</li>
+                    <li>글로벌 경제 침체 시 수요 감소</li>
+                    <li>농축산물 가격 상승으로 원가 압박</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> <span>CJ제일제당의 중기 성장 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> bibigo 글로벌 브랜드 강화</h3>
+                <p>CJ제일제당의 가장 주목할 만한 글로벌 전략은 bibigo의 가치를 극대화하는 것입니다. 현재 bibigo는 미국, 캐나다, 호주, 유럽 주요국에서 인지도가 높아지고 있으며, 프리미엄 세그먼트에 위치하고 있습니다.</p>
+                <p><strong>1. 제품 라인 확대:</strong> 냉동만두, 밥, 국 외에 새로운 카테고리 추가. 예를 들어, bibigo 국수(우동, 막국수), bibigo 반찬, bibigo 소스 등 한식 조리 기초 제품 추가.</p>
+                <p><strong>2. 소매 채널 확대:</strong> 현재 코스트코, 월마트, 타겟 등 주요 소매점에서만 판매되고 있으나, 향후 편의점, 온라인 플랫폼(아마존, eBay) 등으로 확대. 목표: 2027년까지 유통처 300개 이상.</p>
+                <p><strong>3. 마케팅 강화:</strong> 소셜 미디어 인플루언서, 셀러브리티 협업을 통한 bibigo 브랜드 확산. 특히 아시아계 인플루언서와의 협업으로 지역별 진출 가속화.</p>
+                <p><strong>4. 현지 생산 확대:</strong> 미국, 유럽에서의 현지 생산 시설 증설을 통해 배송 비용 절감 및 신선도 향상.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 바이오 화학 사업의 가치 극대화</h3>
+                <p>CJ제일제당의 또 다른 핵심 전략은 바이오 화학 사업의 고도화입니다. 식품 사업이 성숙한 반면, 바이오 사업의 성장 잠재력이 높습니다.</p>
+                <p><strong>1. 생산 능력 확대:</strong> 중국, 태국, 인도네시아 등 저비용 국가에서의 추가 생산 시설 증설을 통해 아미노산 생산량 30% 이상 증가 목표(2027년까지).</p>
+                <p><strong>2. 고부가 제품 비중 확대:</strong> 기존의 MSG 중심에서 라이신, 트레오닌, 기능성 아미노산 등 고마진 제품 비중을 50% 이상으로 확대.</p>
+                <p><strong>3. 글로벌 수요처 개발:</strong> 현재 주 수요처가 동물사료, 중국 시장 중심인데, 향후 북미, 유럽의 건강식품, 의약품 산업과의 거래 개발.</p>
+                <p><strong>4. 첨단 바이오 기술 투자:</strong> 합성생물학(Synthetic Biology), 고정 미생물(Immobilized Cell) 기술, 연속 발효 기술 등에 R&D 투자 확대.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-home"></i> HMR 시장 점유율 확대</h3>
+                <p>가정간편식(HMR) 시장이 전 세계적으로 성장하는 만큼, CJ제일제당은 이 시장에서의 입지를 강화할 계획입니다.</p>
+                <p><strong>1. 신속 냉동 기술 고도화:</strong> 신선도를 최대한 유지하면서 유통 기간을 연장하는 기술 개발.</p>
+                <p><strong>2. 건강식 HMR 라인 확대:</strong> 저염, 저당, 고단백, 불포화지방산 함유 제품 비중을 50% 이상으로 확대.</p>
+                <p><strong>3. 빅데이터 활용:</strong> 소비자 구매 패턴을 분석하여 맞춤형 HMR 제품 개발. 예를 들어, 20대 직장인 대상, 40대 가족식 등으로 세분화된 제품군.</p>
+                <p><strong>4. 온라인 채널 강화:</strong> 아마존 프레시, 이베이, 알리바바 등 온라인 기반 식품 배송 서비스와의 협력 강화.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-mobile-alt"></i> F&C 사업 구조 조정</h3>
+                <p>F&C(Feed & Chemical) 사업부는 현재 부진하고 있으며, CJ제일제당은 이 부문의 전략적 재검토를 진행 중입니다.</p>
+                <p><strong>1. 사료 사업 매각/협력:</strong> 2025년 현재 사료 사업 매각을 진행 중이며, 완료 시 순영업이익 개선 예상(2,444억원 규모 손실 제거).</p>
+                <p><strong>2. 화학 원료 사업 강화:</strong> 사료 사업 철수 후 바이오 화학 원료 사업에 경영 자원 집중.</p>
+                <p><strong>3. 지속가능 축산 협력:</strong> 사료 사업 철수 이후에도 글로벌 축산 기업과의 바이오 제품 공급 협력 유지.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 7: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>CJ제일제당 재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 2025년 재무 성과 및 주요 지표</h3>
+                <p>CJ제일제당의 2025년 재무 성과는 어려운 환경 속에서도 기본기를 유지한 것으로 평가됩니다. 매출은 전년 대비 6.9% 감소했으나, 이는 F&C 사업부 부진과 공정위 과징금에 기인합니다.</p>
+                <p><strong>주요 재무지표 (2025년):</strong></p>
+                <p><strong>매출:</strong> 27조 3,426억원 (전년대비 -6.9%)</p>
+                <p><strong>영업이익:</strong> 1조 2,336억원 (전년대비 -20.6%)</p>
+                <p><strong>당기순손실:</strong> -4,170억원 (적자 전환)</p>
+                <p><strong>주요 손실 요인:</strong></p>
+                <p><strong>1. F&C 사업부 매각 손실:</strong> 약 2,444억원</p>
+                <p><strong>2. 공정거래위원회 과징금:</strong> 약 1,383억원 (설탕·밀가루 가격 담합)</p>
+                <p><strong>3. 기타 특별비용:</strong> 약 343억원</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 사업부별 실적 분석</h3>
+                <p><strong>식품 사업 (F&B):</strong> 매출 약 16.4조원, 영업이익 약 6,500억원 (영업이익률 약 4%). 이는 국내 식품 시장 성숙도 높음, 경쟁 심화, 원료 가격 상승 등의 요인으로 인한 부진입니다. 그러나 bibigo 등 글로벌 제품의 성장으로 인해 2026년부터 회복세를 보일 것으로 예상됩니다.</p>
+                <p><strong>바이오/화학 사업:</strong> 매출 약 7.2조원, 영업이익 약 4,800억원 (영업이익률 약 7%). 이는 글로벌 아미노산 수요 증가, 라이신 등 고부가 제품 매출 증가에 따른 것입니다. 이 사업부는 계속 성장할 것으로 예상되며, 2027년까지 연 6-8% 성장 목표입니다.</p>
+                <p><strong>기타 사업:</strong> 매출 약 3.7조원, 영업이익 약 1,036억원. F&C 사업 부진의 영향을 받고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 마진율 및 수익성</h3>
+                <p>CJ제일제당의 영업이익률은 약 4.5% 수준으로, 식품업계 평균(3-5%)과 유사합니다. 다만, 사업부별로 편차가 큽니다.</p>
+                <p><strong>식품 사업:</strong> 영업이익률 약 4% - 국내 식품 시장의 경쟁으로 인한 낮은 마진</p>
+                <p><strong>바이오 사업:</strong> 영업이익률 약 7% - 고부가가치 제품으로 인한 우수한 마진</p>
+                <p><strong>마진 개선 요인:</strong> (1) F&C 사업 철수로 저마진 사업 제거, (2) bibigo 등 프리미엄 제품 비중 증가, (3) 바이오 사업 성장으로 인한 포트폴리오 개선.</p>
+                <p><strong>마진 악화 요인:</strong> (1) 글로벌 원료 가격 상승, (2) 운송비 증가, (3) 규제 이슈에 따른 비용 증가.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hand-holding-usd"></i> 배당금 정책 및 주가</h3>
+                <p>CJ제일제당의 주가는 2025년 약 7만원대에서 2026년 초 약 6만 5천원 수준으로 조정되었습니다. 이는 실적 부진과 공정거래 규제 이슈에 기인합니다.</p>
+                <p><strong>시가총액:</strong> 약 3조 2,969억원 (2026년 2월 10일 기준)</p>
+                <p><strong>주당 EPS(순이익):</strong> 약 -2,500원 (2025년 손실 기반)</p>
+                <p><strong>PBR(주가순자산비율):</strong> 약 0.8배 (장부가치 대비 할인)</p>
+                <p><strong>배당정책:</strong> 현재 배당수익률이 낮은 편입니다. 2026년 정상이익 회복 후 배당 정책 개선이 예상됩니다. 향후 배당수익률은 2-3% 수준으로 향상될 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-forecast"></i> 2026-2027년 재무 전망</h3>
+                <div class="chart-container">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">재무 성과 전망 분석</p>
+                    <div class="progress-bar" style="--progress: 95%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">2026년 추정 매출</div>
+                            <div class="progress-label-value">28.5조원 (+4.4%)</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 120%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">2026년 추정 영업이익</div>
+                            <div class="progress-label-value">1.6조원 (+30% YoY)</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 85%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">바이오 사업 성장 목표</div>
+                            <div class="progress-label-value">CAGR 7-8%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-bar" style="--progress: 75%;">
+                        <div class="progress-label">
+                            <div class="progress-label-name">식품 사업 성장 목표</div>
+                            <div class="progress-label-value">CAGR 2-3%</div>
+                        </div>
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+                <p style="margin-top: 24px;"><strong>2026년 추정:</strong> 매출 28.5조원(+4.4%), 영업이익 1.6조원(+30%). 이는 F&C 사업 매각 완료로 인한 비용 구조 개선과 바이오 사업 성장에 기인합니다.</p>
+                <p><strong>2027년 추정:</strong> 매출 29.8조원(+4.6%), 영업이익 1.8조원(+12.5%). 이는 bibigo 글로벌 확대, 바이오 사업 계속 성장, 식품 사업 안정화를 가정한 수치입니다.</p>
+                <p><strong>ROE(자기자본수익률):</strong> 2025년 약 -1.2%에서 2026년 약 6-7% 수준으로 회복 예상.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자의견</div>
+        </div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 핵심 평가</h3>
+                <p>CJ제일제당은 2025년 어려운 한 해를 보냈습니다. 매출 6.9% 감소, 영업이익 20.6% 감소, 당기순손실 4,170억원의 적자 전환은 결코 좋은 성과가 아닙니다. 특히 공정거래 규제로 인한 과징금 1,383억원은 기업 신뢰도에 부정적 영향을 미쳤습니다.</p>
+                <p>그러나 더 중요한 것은 이 위기를 기회로 만들 수 있는가입니다. CJ제일제당은 F&C 사업 매각을 통해 저마진 사업을 제거하고, 식품·바이오라는 두 개의 핵심 사업에 집중하려고 합니다. 이는 중기적으로는 수익성 개선으로 이어질 수 있습니다.</p>
+                <p>특히 주목할 점은 bibigo와 바이오 사업의 성장 잠재력입니다. bibigo는 현재 프리미엄 한식 브랜드로서 글로벌 인식이 높아지고 있으며, 바이오 사업은 글로벌 아미노산 시장의 성장과 함께 연 6-8%의 안정적 성장이 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 강점 요약</h3>
+                <ul>
+                    <li><strong>규모의 경제:</strong> 약 27조원의 매출 규모 - 국내 최대 식품 기업</li>
+                    <li><strong>바이오 기술력:</strong> 글로벌 아미노산 시장에서 톱 5 수준의 기술</li>
+                    <li><strong>bibigo 브랜드:</strong> 프리미엄 한식 브랜드로서의 높은 성장 잠재력</li>
+                    <li><strong>글로벌 네트워크:</strong> 60개 이상 국가에서의 판매망</li>
+                    <li><strong>포트폴리오 다각화:</strong> 식품, 바이오라는 두 개의 성장 사업</li>
+                    <li><strong>구조 조정:</strong> F&C 사업 매각으로 인한 비용 구조 개선</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 위험 요소</h3>
+                <ul>
+                    <li><strong>공정거래 규제 리스크:</strong> 설탕·밀가루 담합으로 인한 추가 규제 가능성</li>
+                    <li><strong>식품 사업 성숙도:</strong> 국내 식품 시장의 낮은 성장률</li>
+                    <li><strong>원료 가격 상승:</strong> 글로벌 농축산물 가격 등락</li>
+                    <li><strong>경쟁 심화:</strong> 삼양식품, 글로벌 대형 식품사의 추격</li>
+                    <li><strong>환율 리스크:</strong> 수출 사업에서의 환율 변동성</li>
+                    <li><strong>글로벌 경제 침체:</strong> 불경기 시 식품 수요 감소</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i> 투자 의견 및 목표 주가</h3>
+                <p><strong>투자 등급: BUY (매수 권유)</strong></p>
+                <p><strong>목표 주가 (2026년 12월): 85,000원</strong></p>
+                <p><strong>현 주가 (2026년 2월): 65,000원</strong></p>
+                <p><strong>기대 수익률: 30.8%</strong></p>
+                <p>CJ제일제당은 현재 '밸류 트랩'과 '체인지 스토리'가 공존하는 종목입니다. 2025년의 부진과 규제 이슈로 인해 주가가 저평가되었으나, F&C 사업 매각 완료(2026년 예상), bibigo 성장, 바이오 사업의 안정적 성장이 함께 나타난다면 2026년부터 수익성이 크게 개선될 수 있습니다.</p>
+                <p>특히 주목할 점은 ROE가 2025년 -1.2%에서 2026년 6-7% 수준으로 회복될 수 있다는 점입니다. 또한 현재의 저평가된 PBR(약 0.8배)은 실적 개선 시 1.0배 이상으로 상승할 수 있습니다.</p>
+                <p><strong>투자 시나리오:</strong></p>
+                <p><strong>베어 시나리오(위험 17%):</strong> 추가 규제, bibigo 성장 부진 시 목표 주가 55,000원 (HOLD)</p>
+                <p><strong>베이스 시나리오(확률 60%):</strong> F&C 매각 완료, 정상 영업이익 회복 시 목표 주가 85,000원 (BUY)</p>
+                <p><strong>불 시나리오(기회 23%):</strong> bibigo 글로벌 대성공, 바이오 사업 15% 이상 성장 시 목표 주가 105,000원 (STRONG BUY)</p>
+                <p><strong>투자 적합 투자자:</strong> (1) 실적 개선을 기대하는 가치 투자자. (2) 글로벌 한식 열풍에 베팅하는 테마 투자자. (3) CJ그룹의 구조 개편에 주목하는 기관 투자자. (4) 5년 이상 장기 보유 가능한 개인 투자자.</p>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>CJ제일제당 공시 자료 (2025년 분기보고서, 정정보고서)</li>
+                    <li>한국거래소(KRX) 및 CJ제일제당 Investor Relations 공개 정보</li>
+                    <li>금융감독원 식품기업 경영공시 자료</li>
+                    <li>공정거래위원회 처분 결정서</li>
+                    <li>글로벌 식품 및 바이오 화학 시장 조사 보고서</li>
+                    <li>농심, 오뚜기, 대상, 풀무원 경쟁사 공시 자료</li>
+                    <li>한식 글로벌 시장 조사 및 bibigo 성과 분석</li>
+                    <li>아미노산·핵산 시장 산업 리포트</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 규제 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 최종 업데이트: 2026년 4월 13일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 13일 09:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

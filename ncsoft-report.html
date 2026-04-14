@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엔씨소프트 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 4월 15일</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">엔씨소프트<span class="hero-title-highlight">리니지 IP와 신작 도전의 분기점</span></h1>
+                    <p class="hero-subtitle">MMORPG 글로벌 강자 NCsoft — 리니지 의존 탈피와 다변화 신작의 성패 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">62</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">투자 매력 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">신작 흥행 가시성 확인 전까지는 중립</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 3.8조</div>
+                            <div class="metric-label">시가총액 (2026.04)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.7조</div>
+                            <div class="metric-label">2024년 연결 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">70%+</div>
+                            <div class="metric-label">리니지 IP 매출 비중</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">28년</div>
+                            <div class="metric-label">창립 후 업력</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 엔씨소프트 기업 소개</h3>
+                <p>엔씨소프트는 1997년 김택진 대표가 설립한 한국 대표 게임 회사로, 1998년 출시된 '리니지'는 한국 온라인 MMORPG의 원형을 만든 전설적 타이틀이다. 이후 리니지2, 아이온, 블레이드&소울, 리니지M, 리니지2M, 리니지W 등 연속된 성공으로 글로벌 MMORPG의 강자로 자리잡았다.</p>
+                <p>그러나 최근 몇 년간 리니지 IP에 대한 과도한 의존, 과금 구조에 대한 유저 반발, 중국·일본 매출 감소, 신작 부재로 주가와 실적이 정점 대비 크게 조정되었다. 2024년 쓰론 앤 리버티(TL) 글로벌 출시, 2025~2026년 아이온2·LLL(신규 슈터) 등의 신작 라인업이 성패를 가를 분기점이 되고 있다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1997년</div>
+                        <div class="timeline-text">김택진 대표, 엔씨소프트 설립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1998년</div>
+                        <div class="timeline-text">'리니지' 출시 — 한국 MMORPG 시대 개막</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003년</div>
+                        <div class="timeline-text">리니지2 출시, KOSPI 상장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008년</div>
+                        <div class="timeline-text">아이온 출시 — 글로벌 MMORPG 시장 진입</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012년</div>
+                        <div class="timeline-text">블레이드 & 소울 출시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">리니지M 모바일 출시 — 역대 최고 매출 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">트릭스터M·블레이드&소울2 등 신작 라인업 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">'쓰론 앤 리버티(TL)'를 아마존 게임즈와 글로벌 퍼블리싱 계약</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">TL 글로벌 출시, 신작 '아이온2' 개발 본격화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-gamepad"></i> <span>엔씨소프트의 핵심 기술과 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> MMORPG 엔진·서버 기술</h3>
+                <p>엔씨소프트는 수십만 명이 동시 접속하는 대규모 월드를 안정적으로 운영하는 MMORPG 서버 기술에서 세계 최고 수준을 유지해왔다. 프리뷰·파티·PvP·길드 시스템 등 복잡한 상호작용을 낮은 지연시간으로 처리하는 기술 스택은 리니지·아이온·TL에 공통적으로 적용돼 있다. 언리얼 엔진 기반의 최신 그래픽 파이프라인도 빠르게 도입했다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> AI·자연어·생성형 기술</h3>
+                <p>엔씨소프트는 한국 게임사 중 가장 일찍부터 AI R&D에 투자해왔으며, 자체 거대언어모델(LLM) VARCO 시리즈를 개발했다. VARCO는 게임 NPC 대사 생성, 플레이어 맞춤형 퀘스트, 사내 업무 자동화 등에 활용되고 있으며, 생성형 AI를 활용한 콘텐츠 제작 파이프라인은 경쟁 우위로 평가받는다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 퍼블리싱·글로벌 운영 역량</h3>
+                <p>NCsoft는 북미·유럽·일본·대만 자회사를 통해 직접 서비스를 운영해왔다. 2023년 쓰론 앤 리버티는 아마존 게임즈와의 퍼블리싱 계약으로 글로벌 마케팅·운영 리소스를 외부에서 확보하는 전략적 변화를 시도했다. 이는 자체 서비스 대비 마진은 낮지만 리치(reach)와 초기 유저 유입이 크게 확대되는 장점이 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 라이브 서비스 노하우 — GaaS 모델</h3>
+                <p>리니지 시리즈는 20년 이상 운영되며 지속적으로 패치·이벤트·신규 클래스 업데이트를 이어왔다. 이러한 라이브 서비스 운영 노하우, 유저 데이터 기반 운영, 콘텐츠 릴리즈 파이프라인은 신작에도 그대로 이식되는 핵심 자산이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>시장 환경과 산업 구조</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 글로벌 게임 시장 구조</h3>
+                <p>2025년 글로벌 게임 시장은 약 2,500억 달러 규모로 모바일 50%·PC 25%·콘솔 25% 비중을 차지한다. MMORPG는 PC·모바일 내에서 비교적 작지만 안정적인 카테고리(약 100억 달러)이며, 아시아, 특히 한국·중국·대만의 비중이 절대적이다. 텐센트, 미호요, 넷이즈, 엔씨, 블리자드, 스마일게이트가 주요 경쟁 축이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 한국 MMORPG 시장의 포화</h3>
+                <p>한국 모바일 MMORPG 시장은 리니지M·리니지2M·리니지W·오딘·나이트크로우 등으로 완전 포화 상태다. 과금 구조에 대한 유저 피로감, 방치형·수집형 RPG로의 트렌드 이동, 콘솔·AAA·글로벌 시장 선호 증가로 전통 MMORPG의 성장세는 둔화됐다. 이에 따라 NCsoft는 해외 시장과 비-MMO 장르 진출을 가속화하고 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 글로벌 라이브 서비스 시장</h3>
+                <p>쓰론 앤 리버티의 아마존 퍼블리싱, 아이온2의 글로벌 동시 출시 전략은 한국 IP의 글로벌 라이브 서비스 확장을 의미한다. 글로벌 시장에서 NCsoft의 주된 경쟁자는 블리자드(WoW), 파이널판타지14(스퀘어에닉스), 길드워2(아레나넷), 신규 진입자인 중국 미호요·텐센트 IP다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 과금·규제 환경 변화</h3>
+                <p>한국·독일·벨기에·중국 등에서 확률형 아이템 규제가 강화되고 있으며, 이는 전통적 NCsoft 과금 모델의 수정 압박으로 작용한다. 반면 TL은 북미·유럽 기준에 맞춘 완화된 BM(비즈니스 모델)으로 출시돼 글로벌 수용성을 확보하려 한다. 이러한 BM 전환이 성공할지가 향후 수년의 관건이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-users"></i> <span>경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 경쟁사</h3>
+                <p>NCsoft는 MMORPG 운영 노하우·서버 기술·IP 파워에서 우위를 가지지만, 현재 글로벌 신작 경쟁은 장르를 넘어선 전방위 싸움이다. 특히 미호요·텐센트의 해외 확장은 한국 게임사 전체의 구조적 위협 요인이다.</p>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>포지션 및 특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>크래프톤</strong></td>
+                            <td>배틀그라운드·다크앤다커·인조이. 글로벌 슈터·신규 IP로 차별화.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>넷마블</strong></td>
+                            <td>마블·세븐나이츠·쿠키런킹덤. 캐주얼·IP 라이선스 중심.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>카카오게임즈</strong></td>
+                            <td>오딘·아키에이지. 국내 MMORPG 경쟁자.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>미호요(중국)</strong></td>
+                            <td>원신·붕괴:스타레일. 글로벌 서브컬처 RPG 신흥 강자.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>텐센트</strong></td>
+                            <td>중국 최대 게임사, 엔씨의 중국 파트너이자 글로벌 경쟁자.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-crosshairs"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+            <div class="swot-card strengths">
+                <h3><i class="fas fa-check"></i> STRENGTHS</h3>
+                <ul>
+                    <li>리니지 IP의 높은 브랜드 인지도와 롱런</li>
+                    <li>MMORPG 서버·운영 기술의 압도적 노하우</li>
+                    <li>자체 AI·엔진·퍼블리싱 역량</li>
+                    <li>보수적 재무구조와 풍부한 현금</li>
+                </ul>
+            </div>
+            <div class="swot-card weaknesses">
+                <h3><i class="fas fa-check"></i> WEAKNESSES</h3>
+                <ul>
+                    <li>리니지 IP 매출 비중 70% 이상의 편중</li>
+                    <li>유저·국회의 과금 구조 비판</li>
+                    <li>신작 공백기에 매출 빠르게 감소</li>
+                    <li>개발·운영 인력 고정비 부담</li>
+                </ul>
+            </div>
+            <div class="swot-card opportunities">
+                <h3><i class="fas fa-check"></i> OPPORTUNITIES</h3>
+                <ul>
+                    <li>TL의 글로벌 흥행과 콘솔 진출</li>
+                    <li>아이온2·LLL 등 신규 IP 성공 시 리레이팅</li>
+                    <li>AI 기반 콘텐츠 제작 효율화</li>
+                    <li>자사주 매입·소각 등 주주환원 강화</li>
+                </ul>
+            </div>
+            <div class="swot-card threats">
+                <h3><i class="fas fa-check"></i> THREATS</h3>
+                <ul>
+                    <li>중국·글로벌 라이브 서비스 경쟁 심화</li>
+                    <li>확률형 아이템 규제 강화</li>
+                    <li>리니지 유저 이탈 가속</li>
+                    <li>개발 지연·런칭 품질 리스크</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>전략 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 글로벌 신작 라인업 전환</h3>
+                <p>2024년 TL의 아마존 퍼블리싱 글로벌 출시, 2025~2026년 아이온2·LLL(슈터)·프로젝트G(서브컬처 RPG) 등 비-리니지 장르 확대를 통해 매출 다변화를 추진한다. 목표는 리니지 IP 매출 비중을 현재 70%+에서 50% 이하로 낮추는 것이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 콘솔·AAA 시장 진출</h3>
+                <p>PC·콘솔 크로스플레이 지원, 언리얼엔진 기반 고품질 그래픽, 글로벌 퍼블리셔 협업을 통해 전통적 한국 모바일 중심에서 글로벌 AAA 시장으로 포지셔닝을 전환한다. TL의 플레이스테이션·엑스박스 출시 확대가 핵심 시험대다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> BM(비즈니스 모델) 개선과 유저 신뢰 회복</h3>
+                <p>확률형 뽑기 축소, 구독형·시즌패스형 수익모델 확대, 확률 정보 공개 강화, 글로벌 기준에 맞춘 BM 조정으로 유저 신뢰를 회복한다. TL 글로벌 버전은 이미 구매형 콘텐츠 중심으로 구성됐다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 비용 구조 개선·주주환원</h3>
+                <p>인력 구조조정, 프로젝트 재평가, 외부 퍼블리싱 활용으로 고정비 부담을 줄이고, 자사주 소각·특별배당·분기배당 도입 등을 통해 주주환원을 강화한다. 2024년부터 자사주 일부 소각·배당 확대가 진행되고 있다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 재무 지표 (연결 기준)</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead><tr><th>항목</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody>
+                        <tr><td>매출액</td><td>1.77조</td><td>1.74조</td><td>1.90조</td><td>2.10조</td></tr>
+                        <tr><td>영업이익</td><td>0.13조</td><td>0.05조</td><td>0.15조</td><td>0.22조</td></tr>
+                        <tr><td>영업이익률</td><td>7.3%</td><td>2.9%</td><td>7.9%</td><td>10.5%</td></tr>
+                        <tr><td>당기순이익</td><td>0.14조</td><td>0.07조</td><td>0.13조</td><td>0.18조</td></tr>
+                        <tr><td>부채비율</td><td>15%</td><td>18%</td><td>17%</td><td>16%</td></tr>
+                        <tr><td>ROE</td><td>4%</td><td>2%</td><td>4%</td><td>6%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 16px;">엔씨소프트는 2023~2024년 신작 공백과 리니지 매출 감소로 영업이익률이 한 자릿수까지 급락했다. 2025년 TL 글로벌 라이브·아이온2 출시가 이익 회복의 핵심 변수다. 재무구조는 여전히 건전하지만, 고정비 구조의 조정이 진행 중이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 투자 포인트 요약</h3>
+                <p>NCsoft는 한국 MMORPG의 대표 기업이지만, 현재는 전환기에 놓인 턴어라운드 스토리다. TL 글로벌·아이온2·LLL 등의 성패에 따라 주가는 크게 엇갈릴 수 있다. 견고한 재무구조와 풍부한 현금 덕분에 하방 리스크는 제한적이지만, 상단은 신작 성공 여부에 달려 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 리스크와 체크포인트</h3>
+                <p>리스크는 신작 런칭 지연, TL·아이온2 성과 부진, 확률형 아이템 규제, 중국·글로벌 경쟁자의 약진이다. 체크포인트는 분기별 TL 글로벌 매출, 아이온2 사전예약·런칭 지표, 비-리니지 매출 비중 변화다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> FLOVAH 총평</h3>
+                <p>현재 밸류에이션은 신작 기대감이 상당 부분 반영된 상태로, 중립~약한 긍정 의견이 적정하다. 단기 트레이딩보다는 TL·아이온2의 런칭 품질과 초기 지표를 확인한 뒤 비중 조절을 고려할 것을 권장한다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 15일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Insights Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>엔씨소프트 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>엔씨소프트 공시 자료 (사업보고서, IR자료)</li>
+                    <li>한국거래소(KRX) 및 NCsoft Investor Relations</li>
+                    <li>Sensor Tower, Newzoo 글로벌 게임 시장 리포트</li>
+                    <li>Amazon Games 퍼블리싱 관련 공식 발표</li>
+                    <li>한국콘텐츠진흥원 게임 산업 백서</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights Advanced Analytics</strong> | 최종 업데이트: 2026년 04월 15일 08:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 15일 08:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

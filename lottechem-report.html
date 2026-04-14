@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롯데케미칼 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 4월 15일</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">롯데케미칼<span class="hero-title-highlight">석유화학 다운사이클·수소·배터리 소재 전환</span></h1>
+                    <p class="hero-subtitle">국내 대표 석유화학사 — 다운사이클 극복과 수소·스페셜티 전환 전략</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">52</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">투자 매력 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">석유화학 사이클 저점 인식, 수소·소재 전환 가시성 대기</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 3.2조</div>
+                            <div class="metric-label">시가총액 (2026.04)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">20조+</div>
+                            <div class="metric-label">2024년 연결 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">450만톤+</div>
+                            <div class="metric-label">에틸렌 생산능력</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3대 전환</div>
+                            <div class="metric-label">수소·배터리소재·스페셜티</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 롯데케미칼 기업 소개</h3>
+                <p>롯데케미칼은 롯데그룹의 핵심 계열사이자 한국 대표 석유화학사다. 여수·대산·울산 콤플렉스에서 에틸렌·프로필렌·스티렌·PVC·PET·카보네이트 등 광범위한 기초 석유화학 제품을 생산한다. 말레이시아(LCTitan), 미국(LC USA), 인도네시아 등 글로벌 자산도 보유하고 있다.</p>
+                <p>2022년 이후 글로벌 석유화학 다운사이클에 본격 진입해, 영업이익이 급락하거나 적자로 돌아서는 등 어려운 시기를 겪고 있다. 이에 대응해 롯데케미칼은 '2030 비전'으로 수소 밸류체인, 배터리 소재(전해액·양극재·동박), 바이오·재활용 등 스페셜티 화학 비중을 대폭 확대하는 전환 전략을 추진하고 있다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1976년</div>
+                        <div class="timeline-text">호남석유화학 설립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년대</div>
+                        <div class="timeline-text">여수·대산 콤플렉스 본격 가동</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012년</div>
+                        <div class="timeline-text">롯데케미칼로 사명 변경</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016년</div>
+                        <div class="timeline-text">말레이시아 Lotte Chemical Titan 상장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">삼성SDI 전자재료부문 일부 인수</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">수소·배터리소재 중심 2030 비전 발표</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022년</div>
+                        <div class="timeline-text">전해액·동박 등 배터리소재 JV 발표</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">LC USA 에탄 크래커 가동</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">수소 밸류체인 투자 가속화, 스페셜티 비중 확대</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-flask"></i> <span>롯데케미칼의 핵심 기술과 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 에틸렌·다운스트림 생산 기술</h3>
+                <p>롯데케미칼은 에틸렌 생산능력 연 약 450만톤 이상으로 국내 2위, 글로벌 TOP10 수준이다. 나프타 크래킹(NCC)과 에탄 크래킹(ECC, 미국)을 모두 운영하며, 다양한 원료·공정 경쟁력을 확보하고 있다. PE·PP·SM·PVC·PET 등 다운스트림 라인업도 광범위하다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 배터리 소재 — 양극재·전해액·동박·LFP</h3>
+                <p>2022년 이후 롯데에너지머티리얼즈(구 일진머티리얼즈) 인수, 전해액 JV, LFP 양극재 합작 등으로 배터리 소재 포트폴리오를 구축하고 있다. 특히 동박 사업은 글로벌 상위 3~4위권으로 성장했다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 수소·암모니아 밸류체인</h3>
+                <p>롯데케미칼은 대산·울산 콤플렉스에 수소 생산·저장·유통 인프라를 확대하며, 청록·블루·그린수소 밸류체인 구축을 추진한다. 포스코·GS·SK 등과 수소 컨소시엄을 운영 중이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 바이오·재활용 소재</h3>
+                <p>rPET(재생 PET), PLA, 바이오 기반 폴리올 등 바이오·재활용 스페셜티 포트폴리오를 확대한다. EU 재활용 의무화 등 규제에 선제 대응하는 기술 기반이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>시장 환경과 산업 구조</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 글로벌 석유화학 시장</h3>
+                <p>글로벌 석유화학 시장은 약 4~5조 달러 규모의 거대 시장이지만, 2022년 이후 중국 증설·수요 둔화로 에틸렌 마진이 역사적 저점 수준까지 내려갔다. 중국 '12·13차 5개년 계획'의 대규모 증설이 글로벌 공급과잉의 주 원인이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 한국 석유화학 산업</h3>
+                <p>국내 석유화학 산업은 LG화학·롯데케미칼·한화솔루션·SK지오센트릭·GS칼텍스 등이 주축이다. 대부분 여수·울산·대산 등 거점에서 대규모 콤플렉스를 운영한다. 수출 비중이 높아 글로벌 사이클에 민감하다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 배터리 소재·전기차 수요</h3>
+                <p>2020년대 후반 글로벌 EV·ESS 수요 확대에 따라 배터리 소재 시장은 연 20%+ 고성장이다. 양극재·전해액·동박·분리막 등 소재별로 차별화된 경쟁자가 존재하며, 롯데케미칼은 동박·LFP 양극재에서 선두권을 노린다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 수소·탈탄소 시장</h3>
+                <p>글로벌 수소 시장은 2030년까지 연 2,000억 달러 이상 규모로 성장할 전망이다. 한국·일본·유럽·미국 모두 수소 경제 로드맵을 가동 중이며, 롯데케미칼은 암모니아·수소 액화·튜브트레일러 등 인프라 투자에 나서고 있다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-users"></i> <span>경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 경쟁사</h3>
+                <p>국내에서는 LG화학·한화솔루션·SK지오센트릭과, 글로벌에서는 Sabic·Dow·ExxonMobil·Sinopec 등과 경쟁한다. 롯데케미칼은 규모·포트폴리오 다변화에서는 경쟁력이 있으나, 원가·수직계열 측면에서 중동·미국 메이저 대비 구조적 열세가 있다.</p>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>포지션 및 특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>LG화학</strong></td>
+                            <td>석유화학·배터리·첨단소재. 국내 1위.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>한화솔루션</strong></td>
+                            <td>PVC·태양광·신재생. 에너지 확장.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SK지오센트릭</strong></td>
+                            <td>SK이노베이션 화학 자회사. 친환경 전환.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sabic</strong></td>
+                            <td>사우디 국영 석유화학. 원가 경쟁력 우위.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dow·ExxonMobil</strong></td>
+                            <td>글로벌 메이저. 대규모 통합 자산.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-crosshairs"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+            <div class="swot-card strengths">
+                <h3><i class="fas fa-check"></i> STRENGTHS</h3>
+                <ul>
+                    <li>여수·대산 콤플렉스의 규모와 입지</li>
+                    <li>미국 LC USA·말레이시아 LCTitan 등 글로벌 자산</li>
+                    <li>배터리 소재·수소로의 포트폴리오 전환 속도</li>
+                    <li>롯데그룹의 자금·유통 시너지</li>
+                </ul>
+            </div>
+            <div class="swot-card weaknesses">
+                <h3><i class="fas fa-check"></i> WEAKNESSES</h3>
+                <ul>
+                    <li>NCC 원가 구조상 중동·미국 대비 열세</li>
+                    <li>배터리 소재 사업의 초기 적자 부담</li>
+                    <li>재무부담 증가 — 대규모 CAPEX</li>
+                    <li>석유화학 다운사이클 직격 타격</li>
+                </ul>
+            </div>
+            <div class="swot-card opportunities">
+                <h3><i class="fas fa-check"></i> OPPORTUNITIES</h3>
+                <ul>
+                    <li>배터리 소재 장기 성장</li>
+                    <li>수소·암모니아 인프라 선점</li>
+                    <li>중국 증설 둔화·구조조정 시 반등</li>
+                    <li>EU·미국 그린규제 대응 친환경 소재</li>
+                </ul>
+            </div>
+            <div class="swot-card threats">
+                <h3><i class="fas fa-check"></i> THREATS</h3>
+                <ul>
+                    <li>중국 석유화학 공급과잉 장기화</li>
+                    <li>유가·나프타 변동성</li>
+                    <li>EV 소재 가격 변동성</li>
+                    <li>CBAM 등 탄소세 부담</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>전략 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 석유화학 본업 최적화</h3>
+                <p>저마진 기초화학 설비는 구조조정하고, 스페셜티·고부가 라인업 중심으로 전환한다. PE·PP의 고부가 그레이드 확대, 친환경·재활용 소재 라인업 강화가 핵심이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 배터리 소재 본격화</h3>
+                <p>롯데에너지머티리얼즈(동박), LFP 양극재, 전해액 JV 등을 통해 배터리 소재 매출을 2030년까지 5조원 이상으로 확대 목표. K-배터리(LG에너지·삼성SDI·SK온) 및 글로벌 완성차 공급망과의 장기 계약이 핵심이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 수소·암모니아 밸류체인 구축</h3>
+                <p>대산·울산을 중심으로 수소 생산·저장·유통 인프라를 확대하고, 해외 암모니아 수입·개질 허브를 구축한다. 국내외 수소 컨소시엄 참여를 통해 초기 시장을 선점한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 재무·자본구조 개선</h3>
+                <p>비주력 자산 매각, 자본적 지출 우선순위 재조정, 부채비율 관리를 통해 다운사이클 국면에서 재무 안정성을 유지한다. 필요 시 유상증자·하이브리드 본드 발행도 검토 가능하다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 재무 지표 (연결 기준)</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead><tr><th>항목</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody>
+                        <tr><td>매출액</td><td>22.0조</td><td>20.1조</td><td>21.0조</td><td>22.5조</td></tr>
+                        <tr><td>영업이익</td><td>-0.28조</td><td>-0.45조</td><td>0.20조</td><td>0.70조</td></tr>
+                        <tr><td>영업이익률</td><td>-1.3%</td><td>-2.2%</td><td>1.0%</td><td>3.1%</td></tr>
+                        <tr><td>당기순이익</td><td>-0.35조</td><td>-0.50조</td><td>0.10조</td><td>0.50조</td></tr>
+                        <tr><td>부채비율</td><td>78%</td><td>85%</td><td>82%</td><td>78%</td></tr>
+                        <tr><td>ROE</td><td>-2%</td><td>-3%</td><td>1%</td><td>3%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 16px;">롯데케미칼은 2023~2024년 연속 영업적자를 기록하며 석유화학 다운사이클의 직격을 받았다. 2025년 이후 중국 증설 둔화·수요 회복에 따라 점진적 턴어라운드가 예상되나, 배터리 소재·수소 투자의 초기 부담이 당분간 재무에 압박 요인으로 작용한다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 투자 포인트 요약</h3>
+                <p>롯데케미칼은 전형적인 사이클 바텀 종목으로, 석유화학 업황 반등과 배터리 소재·수소 사업의 가시화가 주가 반등의 양대 축이다. 현재 PBR·주가순자산배수는 역사적 저점 수준에 가깝다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 리스크와 체크포인트</h3>
+                <p>리스크는 중국 공급과잉 장기화, 신사업 투자 부담 누적, 재무구조 악화, 유가 급등 시 나프타 원가 압박이다. 체크포인트는 분기별 에틸렌 스프레드, 배터리 소재 매출 성장률, 부채비율 변화다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> FLOVAH 총평</h3>
+                <p>단기적으로는 실적 모멘텀이 약하지만, 중장기적으로는 배터리 소재·수소 전환이 리레이팅 트리거가 될 수 있다. 사이클 저점 인식이 명확한 시점 이후의 분할 매수가 합리적이다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 15일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Insights Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>롯데케미칼 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>롯데케미칼 공시 자료 (사업보고서, IR자료)</li>
+                    <li>한국거래소(KRX) 및 Lotte Chemical IR</li>
+                    <li>S&P Platts, ICIS 석유화학 스프레드 데이터</li>
+                    <li>한국석유화학협회, IEA 에너지 전망</li>
+                    <li>EU Green Deal, IRA 등 규제 자료</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights Advanced Analytics</strong> | 최종 업데이트: 2026년 04월 15일 08:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 15일 08:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

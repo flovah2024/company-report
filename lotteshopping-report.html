@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>롯데쇼핑 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 4월 15일</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">롯데쇼핑<span class="hero-title-highlight">백화점·마트·하이마트 종합 유통</span></h1>
+                    <p class="hero-subtitle">국내 최대 종합 유통 기업 — 백화점·마트·하이마트·이커머스 재편</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">54</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">투자 매력 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">백화점 견조·마트 회복·롯데온 구조조정 진행</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 1.9조</div>
+                            <div class="metric-label">시가총액 (2026.04)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">14조+</div>
+                            <div class="metric-label">2024년 연결 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">30+</div>
+                            <div class="metric-label">롯데백화점·아울렛</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">롯데그룹</div>
+                            <div class="metric-label">모그룹</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 롯데쇼핑 기업 소개</h3>
+                <p>롯데쇼핑은 국내 최대 종합 유통 기업으로 롯데백화점, 롯데마트, 롯데하이마트, 롯데슈퍼, 롯데온(이커머스)을 운영한다. 롯데백화점은 본점·잠실·부산·대구·동부산 등 주요 도시에 30여 개 점포를 보유하며, 국내 백화점 매출 1~2위다. 하이마트는 국내 1위 가전전문점, 롯데마트는 국내 3위 대형마트다.</p>
+                <p>최근 10년간 오프라인 유통 둔화, 이커머스 부상, 중국 시장 철수, 롯데온 통합 실패 등 복합적 도전을 겪었다. 2023~2025년 롯데쇼핑은 백화점 프리미엄화, 마트·슈퍼 효율화, 롯데온 구조조정, 하이마트 재정비를 동시에 진행하며 체질 개선 구간에 있다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1979년</div>
+                        <div class="timeline-text">롯데쇼핑(롯데백화점) 설립 — 소공동 본점</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1998년</div>
+                        <div class="timeline-text">마그넷(후 롯데마트) 출범</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년</div>
+                        <div class="timeline-text">롯데쇼핑 KOSPI 상장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2006년</div>
+                        <div class="timeline-text">롯데하이마트 인수 — 전자전문점 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2011년</div>
+                        <div class="timeline-text">중국·베트남 등 해외 확장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">중국 시장 철수 본격화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">롯데온 통합 이커머스 출범</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">백화점·마트 재정비, 롯데온 구조조정</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">잠실·동부산 등 프리미엄 백화점 강화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-store"></i> <span>롯데쇼핑의 핵심 기술과 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 종합 유통 플랫폼·물류 인프라</h3>
+                <p>롯데쇼핑은 전국 130여 개 백화점·마트·아울렛·하이마트·슈퍼 등을 보유한 국내 최대 규모의 오프라인 유통 인프라를 가진다. 롯데글로벌로지스 등 그룹 물류 인프라와의 시너지도 크다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 백화점 프리미엄 MD 역량</h3>
+                <p>본점·잠실·동부산 등 플래그십 점포의 명품·프리미엄 패션 MD 경쟁력은 신세계백화점과 함께 국내 TOP2다. 대형 리뉴얼 및 VIP 서비스 강화를 통해 고객 LTV 상승에 집중한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 하이마트·가전유통 기술</h3>
+                <p>롯데하이마트는 국내 가전전문점 1위로, TV·냉장고·세탁기·노트북·모바일 등 풀 라인업 가전 유통과 AS·설치·렌탈·중고 서비스를 종합적으로 제공한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 이커머스 — 롯데온</h3>
+                <p>롯데온은 백화점·마트·하이마트·홈쇼핑을 통합한 옴니 플랫폼이지만, 출범 이후 GMV·UX 측면에서 쿠팡·네이버·SSG+G마켓에 밀린 점을 보완하기 위해 구조조정·MD 재편을 진행 중이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>시장 환경과 산업 구조</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 국내 백화점 시장</h3>
+                <p>국내 백화점 매출은 연 약 40조원 수준이며, 롯데·신세계·현대백화점의 3강 구도다. 명품·럭셔리 중심 매출이 점유율을 주도하며, 프리미엄화·체험형 매장 전환이 트렌드다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 대형마트·슈퍼 시장</h3>
+                <p>오프라인 마트·슈퍼는 구조적 둔화 국면이나, PB·창고형·신선식품·근거리 슈퍼가 성장 세그먼트다. 롯데마트는 이마트·홈플러스 대비 3위 수준이며, 구조조정으로 점포 효율성 개선을 추진 중이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 가전 유통 시장</h3>
+                <p>국내 가전 유통은 롯데하이마트, 전자랜드, 삼성디지털프라자·LG베스트샵(제조사 직영), 쿠팡·네이버·11번가(이커머스)가 경쟁한다. 하이마트는 오프라인 가전전문점 1위로 유지되지만 이커머스 대비 마진 압박이 크다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 이커머스 경쟁</h3>
+                <p>국내 이커머스 GMV는 연 230조원 이상. 쿠팡·네이버 양강 구조에서 롯데온은 명품·프리미엄·대형가전 등 특정 카테고리 강점으로 차별화를 시도 중이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-users"></i> <span>경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 경쟁사</h3>
+                <p>롯데쇼핑은 국내 유일의 '백화점 + 마트 + 슈퍼 + 가전전문점 + 이커머스' 풀라인업 유통사다. 다만 각 세그먼트에서 1위가 아닌 2~3위 포지션이 많아, 집중·효율화 과제를 안고 있다.</p>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>포지션 및 특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>신세계·이마트·SSG</strong></td>
+                            <td>오프라인 백화점·마트·이커머스 라이벌.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>현대백화점</strong></td>
+                            <td>프리미엄 백화점 경쟁.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>쿠팡·네이버</strong></td>
+                            <td>이커머스 양강.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>홈플러스·코스트코</strong></td>
+                            <td>마트·창고형.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>하이마트 대체 — 전자랜드·삼성·LG</strong></td>
+                            <td>가전 유통 경쟁.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-crosshairs"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+            <div class="swot-card strengths">
+                <h3><i class="fas fa-check"></i> STRENGTHS</h3>
+                <ul>
+                    <li>백화점·마트·하이마트·슈퍼·이커머스 풀라인업</li>
+                    <li>프리미엄 백화점 2위 지위와 VIP 네트워크</li>
+                    <li>롯데그룹 내 물류·결제·브랜드 시너지</li>
+                    <li>전국 130+ 점포 인프라</li>
+                </ul>
+            </div>
+            <div class="swot-card weaknesses">
+                <h3><i class="fas fa-check"></i> WEAKNESSES</h3>
+                <ul>
+                    <li>롯데온 이커머스 성과 미흡</li>
+                    <li>마트·슈퍼 수익성 둔화</li>
+                    <li>중국 사업 철수의 손실 누적</li>
+                    <li>고정비·인건비 부담</li>
+                </ul>
+            </div>
+            <div class="swot-card opportunities">
+                <h3><i class="fas fa-check"></i> OPPORTUNITIES</h3>
+                <ul>
+                    <li>프리미엄 백화점 명품·VIP 수요 구조적 성장</li>
+                    <li>하이마트 구조조정 후 수익성 개선</li>
+                    <li>부동산 유동화와 점포 재활용</li>
+                    <li>이커머스 구조조정 후 집중·효율화</li>
+                </ul>
+            </div>
+            <div class="swot-card threats">
+                <h3><i class="fas fa-check"></i> THREATS</h3>
+                <ul>
+                    <li>이커머스 경쟁 심화</li>
+                    <li>소비 침체·가계부채</li>
+                    <li>인구 고령화·점포 활용도 하락</li>
+                    <li>소비 트렌드 변화 속도</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>전략 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 백화점 프리미엄·플래그십 강화</h3>
+                <p>본점·잠실·동부산·월드타워 등 플래그십 백화점을 럭셔리 쇼핑몰+문화공간으로 재정의한다. 명품·VIP·문화 콘텐츠를 결합한 '체험형 럭셔리 플랫폼'을 지향한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 마트·슈퍼 효율화</h3>
+                <p>부진 점포는 축소·폐점하고, 수익성 높은 슈퍼·창고형·PB 중심으로 포맷을 재편한다. 롯데마트 '제로(ZERO)'·'맥스' 등 신규 포맷 실험을 확대한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 하이마트·롯데온 구조조정</h3>
+                <p>하이마트는 점포 재편·온라인 전환을 통해 수익성을 회복한다. 롯데온은 통합 기능 조정, 명품·프리미엄 카테고리 특화로 재포지셔닝한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 부동산 자산 재평가·유동화</h3>
+                <p>보유 부동산의 매각·리츠화·임대 전환을 통해 자본구조를 개선하고, 그룹 차원의 주주환원 강화를 추진한다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 재무 지표 (연결 기준)</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead><tr><th>항목</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody>
+                        <tr><td>매출액</td><td>14.7조</td><td>14.4조</td><td>14.7조</td><td>15.2조</td></tr>
+                        <tr><td>영업이익</td><td>0.46조</td><td>0.50조</td><td>0.58조</td><td>0.68조</td></tr>
+                        <tr><td>영업이익률</td><td>3.1%</td><td>3.5%</td><td>3.9%</td><td>4.5%</td></tr>
+                        <tr><td>당기순이익</td><td>-0.07조</td><td>0.10조</td><td>0.25조</td><td>0.40조</td></tr>
+                        <tr><td>부채비율</td><td>165%</td><td>160%</td><td>150%</td><td>140%</td></tr>
+                        <tr><td>ROE</td><td>-1%</td><td>1%</td><td>2.5%</td><td>4%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 16px;">롯데쇼핑은 매출은 정체됐으나 영업이익률은 백화점 중심으로 점진 개선 중이다. 하이마트·롯데온 구조조정 효과가 본격화되는 2025~2026년 이후 순이익 안정화가 기대된다. 부동산 가치 재평가가 중장기 핵심 요인이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 투자 포인트 요약</h3>
+                <p>롯데쇼핑은 프리미엄 백화점의 견조한 수익성, 마트·하이마트·롯데온의 구조조정, 부동산 자산 가치라는 3가지 축으로 평가된다. 각 세그먼트의 개별 성과보다는 종합 체질 개선 스토리로 봐야 한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 리스크와 체크포인트</h3>
+                <p>리스크는 소비 침체, 이커머스 경쟁 심화, 롯데온 재편 실패 가능성, 부동산 시장 조정이다. 체크포인트는 분기별 백화점 매출, 하이마트·롯데온 턴어라운드 지표, 부채비율 변화다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> FLOVAH 총평</h3>
+                <p>롯데쇼핑은 '저PBR·부동산·프리미엄 백화점' 조합의 가치주 성격이 강하며, 구조조정과 자산 재평가가 가시화될 때 상승 여력이 열린다. 중립~약한 긍정 의견이 적절하다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 15일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Insights Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>롯데쇼핑 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>롯데쇼핑 공시 자료 (사업보고서, IR자료)</li>
+                    <li>한국거래소(KRX) 및 Lotte Shopping IR</li>
+                    <li>산업통상자원부 유통산업 통계</li>
+                    <li>한국백화점협회, 대한상공회의소 자료</li>
+                    <li>경쟁사(신세계·현대·쿠팡) 공시</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights Advanced Analytics</strong> | 최종 업데이트: 2026년 04월 15일 08:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 15일 08:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

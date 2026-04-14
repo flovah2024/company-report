@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT&G 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 4월 15일</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">KT&G<span class="hero-title-highlight">글로벌 담배·헬스케어 리더</span></h1>
+                    <p class="hero-subtitle">국내 담배 시장 점유율 60%대·글로벌 NGP 전환·인삼과 건강기능식품으로 포트폴리오 확대</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">78</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">투자 매력 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">안정적 현금흐름과 배당 매력, 성장성 제한의 트레이드오프</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 15조</div>
+                            <div class="metric-label">시가총액 (2026.04)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5.8조</div>
+                            <div class="metric-label">2024년 연결 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">60%+</div>
+                            <div class="metric-label">국내 담배시장 점유율</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5,800원</div>
+                            <div class="metric-label">연간 배당 (DPS)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> KT&G 기업 소개</h3>
+                <p>KT&G는 1899년 대한제국 전매국으로 출발해 한국담배인삼공사를 거쳐 2002년 KOSPI 상장 후 완전 민영화된 한국의 대표 소비재 기업이다. 국내 담배 시장 점유율 60% 이상의 독점적 지위를 확보하고 있으며, 필립모리스·BAT·JTI에 이은 글로벌 담배 제조사 TOP5 수준의 위상을 가지고 있다.</p>
+                <p>최근 KT&G의 전략적 축은 크게 세 가지다. 첫째, 궐련형 전자담배(NGP, Next Generation Product) '릴(lil)' 브랜드의 글로벌 확장. 둘째, 자회사 한국인삼공사(KGC)의 '정관장' 브랜드를 앞세운 건강기능식품 사업 강화. 셋째, 부동산·연초사업 비주력 자산 재조정을 통한 주주환원 강화. 2024년 기준 연결 매출은 약 5.8조원, 영업이익률 20%대를 유지하며 KOSPI 대표 배당주로 자리매김하고 있다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1899년</div>
+                        <div class="timeline-text">대한제국 전매국으로 출발 — 한국 연초 산업의 시원</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1987년</div>
+                        <div class="timeline-text">한국전매공사에서 한국담배인삼공사로 전환</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1999년</div>
+                        <div class="timeline-text">KT&G로 사명 변경, 민영화 추진</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2002년</div>
+                        <div class="timeline-text">KOSPI 상장 — 완전 민영 기업 전환</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">필립모리스·JTI 등 글로벌 시장 본격 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">궐련형 전자담배 '릴(lil)' 출시 — NGP 시장 진입</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">필립모리스와 글로벌 파트너십 체결</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">'릴' 글로벌 누적 판매 5천만대 돌파</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">해외 매출 비중 40%대 진입, 건강기능식품 매출 1조 돌파</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-leaf"></i> <span>KT&G의 핵심 기술과 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> NGP(궐련형 전자담배) 기술 경쟁력</h3>
+                <p>KT&G의 궐련형 전자담배 '릴(lil)' 시리즈는 자체 개발한 가열 제어 기술과 열원 일체형 설계를 바탕으로 한다. 특히 '릴 하이브리드'는 액상과 궐련형을 결합한 독자 방식으로 필립모리스의 아이코스, BAT의 글로(glo)와 차별화된다. 2023년 출시된 '릴 에이블(lil ABLE)'은 배터리 수명·발열 균일성에서 국제 리뷰 매체의 높은 평가를 받으며 글로벌 확장을 견인하고 있다. R&D 인력은 약 500여 명, 관련 특허 2,000건 이상을 보유 중이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 인삼·건강기능식품 기술 — KGC정관장</h3>
+                <p>자회사 KGC(한국인삼공사)는 6년근 고려인삼 원료 가공 기술과 사포닌 성분 표준화에서 세계 최고 수준의 전문성을 보유하고 있다. '정관장' 브랜드는 대한민국 대표 홍삼 브랜드로 2024년 매출 약 1.3조원을 기록했다. 발효·저분자화 공정, 사포닌 진세노사이드 Rg3·Rh2 고농도 추출 기술 등 차별화된 바이오 공정이 핵심 경쟁력이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 스마트팩토리·제조 자동화</h3>
+                <p>KT&G는 신탄진·영주 공장을 중심으로 스마트팩토리를 구축해왔다. IoT 기반 생산관리, AI 품질 검사, 자동창고 시스템을 적용해 국내 최고 수준의 제조 효율을 달성했다. 특히 NGP 스틱 생산라인은 분당 수천 개 단위의 초정밀 생산능력을 갖춰 글로벌 수출 확대의 기반이 된다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 글로벌 유통·규제 대응 역량</h3>
+                <p>미국·중동·유럽·아시아 등 130개국 이상에 수출하는 글로벌 오퍼레이션을 운영한다. 각국의 까다로운 담배 규제(TPD, FDA PMTA 등)에 대응하는 법무·임상·규제과학 역량이 핵심 자산이다. 2020년 필립모리스와의 글로벌 파트너십 이후 '릴'의 해외 판매망이 빠르게 확장되고 있다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>시장 환경과 산업 구조</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 글로벌 담배·NGP 시장 구조</h3>
+                <p>글로벌 담배 시장은 약 9천억 달러 규모의 성숙 시장이지만, 전통 궐련 판매량은 규제 강화와 금연 추세로 매년 2~3% 감소하는 반면, 궐련형 전자담배(HNB)와 전자담배 시장은 매년 두 자릿수 성장을 이어가고 있다. 2025년 기준 HNB 시장은 약 300억 달러 규모로 추정되며, 필립모리스(아이코스)가 약 60%, BAT(글로)가 약 15%, KT&G(릴)가 약 10% 수준의 점유율을 보유한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 한국 시장 — 독점적 지위</h3>
+                <p>국내 담배 시장은 연간 약 33억 갑 규모로 KT&G가 60% 이상의 점유율을 유지하고 있다. 해외 메이저인 필립모리스, BAT, JTI가 나머지를 분할한다. 규제·증세에도 불구하고 수요는 비탄력적이며, KT&G는 가격 결정력·유통망·브랜드 충성도에서 압도적이다. '에쎄(ESSE)' 브랜드는 국내 단일 브랜드 1위이자 초저타르 시장에서 독보적 포지션을 차지하고 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 건강기능식품 시장 — 정관장의 성장</h3>
+                <p>국내 건강기능식품 시장은 2024년 약 6조원 규모로, 홍삼은 그 중 약 1.3조원의 최대 카테고리다. 정관장은 30%대 시장점유율로 독보적 1위다. 인구 고령화, 면역·웰니스 소비 확대, K-브랜드 글로벌 수요 증가로 시장은 연 6~8% 성장이 예상된다. KT&G는 해외 정관장 매장 확장과 미국·중국·동남아 수출을 통해 해외 매출을 빠르게 늘리고 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 인구·규제·ESG 리스크</h3>
+                <p>담배 산업의 구조적 리스크는 인구 감소, 흡연율 하락, 증세, 광고 규제, ESG 투자 배제 등이다. 다만 NGP와 건강기능식품의 비중 확대, 해외 시장 다각화, 주주환원 강화를 통해 방어적 포트폴리오를 구축 중이다. 국내 흡연율은 지속 하락하지만 고객 1인당 매출은 프리미엄화로 증가하고 있다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-users"></i> <span>경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 경쟁사</h3>
+                <p>KT&G는 전통 궐련 영역에서는 국내 시장 점유율 60%+ 독점력을, NGP에서는 글로벌 TOP3~4 위치를, 건강기능식품에서는 국내 1위를 유지하는 복합 포트폴리오 기업이다. 매출 규모는 빅 플레이어 대비 작지만, 수익성·현금흐름·배당 안정성에서는 세계 최상위권이다.</p>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>포지션 및 특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Philip Morris International (PMI)</strong></td>
+                            <td>HNB 아이코스로 글로벌 NGP 시장 1위. KT&G의 글로벌 파트너이면서 동시에 경쟁자.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>British American Tobacco (BAT)</strong></td>
+                            <td>글로(glo), 뷰즈(Vuse) 보유. 유럽·아프리카·동남아 강세.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Japan Tobacco International (JTI)</strong></td>
+                            <td>Ploom 시리즈. 일본·유럽 중심의 안정적 포지션.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Altria Group</strong></td>
+                            <td>미국 내수 중심. 주주환원 정책의 벤치마크.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Imperial Brands</strong></td>
+                            <td>유럽 중심. 저마진·안정 배당 전략.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-crosshairs"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+            <div class="swot-card strengths">
+                <h3><i class="fas fa-check"></i> STRENGTHS</h3>
+                <ul>
+                    <li>국내 담배시장 60%+ 독점적 점유율과 비탄력적 수요</li>
+                    <li>정관장 브랜드의 건강기능식품 시장 지배력 (점유율 30%+)</li>
+                    <li>연간 5,800원 수준의 고배당·주주환원 모범생</li>
+                    <li>필립모리스와의 글로벌 파트너십을 통한 해외 확장</li>
+                    <li>20%대 영업이익률의 탄탄한 수익성</li>
+                </ul>
+            </div>
+            <div class="swot-card weaknesses">
+                <h3><i class="fas fa-check"></i> WEAKNESSES</h3>
+                <ul>
+                    <li>흡연 인구 감소 추세와 전통 궐련 매출 감소</li>
+                    <li>글로벌 NGP 점유율(≈10%)이 선두와 격차 존재</li>
+                    <li>담배 산업 특성상 ESG 펀드 편입 제약</li>
+                    <li>자회사·비주력 사업의 성장률 둔화</li>
+                </ul>
+            </div>
+            <div class="swot-card opportunities">
+                <h3><i class="fas fa-check"></i> OPPORTUNITIES</h3>
+                <ul>
+                    <li>HNB·NGP 시장의 연 두 자릿수 성장</li>
+                    <li>K-헬스·K-뷰티 트렌드에 따른 건강기능식품 해외 수요 증가</li>
+                    <li>미국 FDA PMTA 승인 확대를 통한 미국 진출 기회</li>
+                    <li>필립모리스·파트너사 유통망을 활용한 '릴' 글로벌 확장</li>
+                    <li>자사주 소각·특별배당 등 주주환원 강화 여력</li>
+                </ul>
+            </div>
+            <div class="swot-card threats">
+                <h3><i class="fas fa-check"></i> THREATS</h3>
+                <ul>
+                    <li>국가별 담배세 인상과 광고·판촉 규제 강화</li>
+                    <li>글로벌 ESG 투자 트렌드로 인한 기관투자 이탈</li>
+                    <li>중국·동남아 현지 브랜드의 저가 경쟁</li>
+                    <li>환율 변동에 따른 해외 매출 변동성</li>
+                    <li>필립모리스 파트너십 의존 리스크</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>전략 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 글로벌 NGP 확장 전략</h3>
+                <p>2027년까지 해외 NGP 매출 비중 30% 이상을 목표로, 미국 FDA PMTA 승인, 유럽·동남아 현지화 모델 출시, 필립모리스 유통망 활용을 통한 '릴' 확장이 핵심이다. '릴 에이블(lil ABLE)'을 중심으로 프리미엄 포지셔닝을 강화하고, 현지 맞춤형 스틱 라인업을 확대한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 건강·웰니스 포트폴리오 강화</h3>
+                <p>자회사 KGC는 해외 직영점·이커머스·디지털 마케팅을 통해 정관장의 글로벌 브랜드화를 추진한다. 젊은 층 타깃의 '굿베이스' 등 서브브랜드 확장, 기능성 원료 기반 개인화 솔루션, 뷰티·이너뷰티 등 인접 카테고리 진출로 헬스케어 전체 매출을 2030년까지 2조원 수준으로 끌어올리는 것이 목표다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> 주주환원·자본구조 최적화</h3>
+                <p>KT&G는 매년 꾸준한 배당 증가와 자사주 매입·소각을 병행하는 총주주환원율 80% 이상의 정책을 유지하고 있다. 2024~2028년 중기계획에서 누적 3조원 이상의 현금배당과 1조원 규모 자사주 소각을 제시한 바 있다. 행동주의 펀드의 압박에 대응해 이사회 구조 개선과 독립성 확대도 진행 중이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag"></i> ESG와 규제 대응</h3>
+                <p>탈탄소 공장 전환, 종이 스틱·저감 담배 등 해 감소 위험 제품(Reduced Risk Products) 개발, 청소년 흡연 방지 캠페인 강화로 규제 리스크에 선제 대응한다. 동시에 인삼·헬스케어 사업 확대를 통해 ESG 친화적 수익원 비중을 높인다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 재무 지표 (연결 기준)</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead><tr><th>항목</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody>
+                        <tr><td>매출액</td><td>5.24조</td><td>5.85조</td><td>6.20조</td><td>6.60조</td></tr>
+                        <tr><td>영업이익</td><td>1.16조</td><td>1.18조</td><td>1.25조</td><td>1.35조</td></tr>
+                        <tr><td>영업이익률</td><td>22.1%</td><td>20.2%</td><td>20.2%</td><td>20.5%</td></tr>
+                        <tr><td>당기순이익</td><td>0.88조</td><td>0.95조</td><td>1.00조</td><td>1.08조</td></tr>
+                        <tr><td>부채비율</td><td>31%</td><td>32%</td><td>33%</td><td>32%</td></tr>
+                        <tr><td>ROE</td><td>8.5%</td><td>8.9%</td><td>9.2%</td><td>9.5%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 16px;">KT&G는 매출 성장세는 완만하지만, 20%대 영업이익률, 30%대 부채비율, 연 1조원대 잉여현금흐름을 꾸준히 창출하는 전형적인 퀄리티 디펜시브 기업이다. EPS·DPS 모두 장기 우상향 추세이며, 현재 배당수익률은 약 5%대로 KOSPI 대표 배당주로 자리잡고 있다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 투자 포인트 요약</h3>
+                <p>KT&G는 안정적인 내수 담배 현금흐름, 성장 중인 글로벌 NGP, 구조적으로 확대 중인 건강기능식품의 3축을 모두 보유한 복합 소비재 기업이다. 매출 성장보다는 현금흐름 창출과 주주환원에 방점이 찍힌 전형적인 방어적 배당주로, 금리 인하기나 변동성 확대 국면에서 특히 매력이 부각된다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 리스크와 체크포인트</h3>
+                <p>주요 리스크는 글로벌 ESG 투자 제한, 흡연인구 감소, 글로벌 NGP 경쟁 심화, 환율 변동성이다. 체크포인트는 분기별 해외 NGP 매출 비중, 정관장의 해외 매출 성장률, 자사주 소각 발표 여부다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> FLOVAH 총평</h3>
+                <p>KT&G는 향후 3~5년간 '고배당 + 완만한 성장'의 조합이 예상되며, 포트폴리오의 방어적 코어 종목으로 활용 가치가 높다. 다만 고성장 테크주 대비 주가 상승 여력은 제한적이며, 주가 상승의 트리거는 주주환원 정책 강화와 해외 NGP 매출의 레벨 업이다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 15일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Insights Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>KT&G 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>KT&G 공시 자료 (사업보고서, IR자료)</li>
+                    <li>한국거래소(KRX) 및 KT&G Investor Relations</li>
+                    <li>Philip Morris International, BAT, JTI 연례보고서</li>
+                    <li>Euromonitor, Nielsen 담배 시장 통계</li>
+                    <li>식품의약품안전처 건강기능식품 시장 통계</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights Advanced Analytics</strong> | 최종 업데이트: 2026년 04월 15일 08:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 15일 08:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

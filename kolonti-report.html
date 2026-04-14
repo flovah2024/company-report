@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코오롱티슈진 기업분석 보고서 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --gold: #c9a962;
+            --blue: #5c7d9e;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .header-logo span {
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            color: var(--ink-strong);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+            margin-left: 3rem;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border-bottom: 1px solid var(--rule);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3rem;
+            color: var(--ink-strong);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero .description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+            background-color: var(--bg-deep);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--gold);
+            background-color: var(--bg-elevated);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbit', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        section h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            color: var(--ink-strong);
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+            min-width: 100px;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content p {
+            color: var(--text-body);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            color: var(--text-body);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Technology */
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-card {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .tech-title {
+            font-size: 13px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Competition Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background-color: var(--bg-elevated);
+            padding: 1rem;
+            text-align: left;
+            font-size: 12px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--rule);
+            color: var(--text-body);
+            font-size: 13px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* SWOT */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .swot-box {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 0;
+            padding: 2rem;
+        }
+
+        .swot-box.strength {
+            border-left: 4px solid #4caf50;
+        }
+
+        .swot-box.weakness {
+            border-left: 4px solid #f44336;
+        }
+
+        .swot-box.opportunity {
+            border-left: 4px solid var(--gold);
+        }
+
+        .swot-box.threat {
+            border-left: 4px solid #ff9800;
+        }
+
+        .swot-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .swot-box.strength .swot-title {
+            color: #4caf50;
+        }
+
+        .swot-box.weakness .swot-title {
+            color: #f44336;
+        }
+
+        .swot-box.opportunity .swot-title {
+            color: var(--gold);
+        }
+
+        .swot-box.threat .swot-title {
+            color: #ff9800;
+        }
+
+        .swot-list {
+            list-style: none;
+        }
+
+        .swot-list li {
+            color: var(--text-body);
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 13px;
+        }
+
+        .swot-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: inherit;
+        }
+
+        /* Financial */
+        .financial-bars {
+            margin-top: 2rem;
+        }
+
+        .bar-group {
+            margin-bottom: 2rem;
+        }
+
+        .bar-label {
+            font-size: 13px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-container {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            font-size: 12px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            position: relative;
+        }
+
+        /* Conclusion */
+        .conclusion-box {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 0;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .conclusion-box h4 {
+            color: var(--gold);
+            font-size: 14px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .conclusion-box p {
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .opinion-badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--bg-deep);
+            padding: 0.5rem 1.5rem;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        /* Update Block */
+        .update-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 1.5rem;
+            margin: 3rem 2rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .update-block span {
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                margin-left: 1rem;
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            header {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="header-logo">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH Logo">
+            <span>FLOVAH</span>
+        </a>
+        <nav>
+            <a href="#overview">기업개요</a>
+            <a href="#technology">기술분석</a>
+            <a href="#market">시장분석</a>
+            <a href="#competition">경쟁사분석</a>
+            <a href="#swot">SWOT분석</a>
+            <a href="#strategy">전략분석</a>
+            <a href="#financial">재무분석</a>
+            <a href="#conclusion">결론및투자의견</a>
+        </nav>
+        <div class="header-date">2026년 4월 14일</div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="overview">
+            <h1>코오롱티슈진</h1>
+            <p class="subtitle">Kolon TissueGene Inc.</p>
+            <p class="description">세계 최초 골관절염 근본 치료제 개발을 선도하는 바이오·헬스케어 기업. TG-C 세포유전자치료제 플랫폼으로 미국 시장 진출을 추진 중이며, 복합유통사업도 병행하는 코오롱그룹 핵심 자회사입니다.</p>
+        </section>
+
+        <!-- Key Metrics -->
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value">7.5조</div>
+                <div class="metric-label">시가총액</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">950160</div>
+                <div class="metric-label">KOSDAQ 종목코드</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">1999년</div>
+                <div class="metric-label">설립 (미국 델라웨어주)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">2017년</div>
+                <div class="metric-label">코스닥 상장</div>
+            </div>
+        </div>
+
+        <!-- Company Overview -->
+        <section>
+            <h2>1. 기업개요</h2>
+
+            <h3>기업 배경 및 역사</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1999년</div>
+                    <div class="timeline-content">
+                        <p><strong>미국 델라웨어주 설립</strong></p>
+                        <p>세포유전자치료제 개발을 위한 본사 설립</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2005년</div>
+                    <div class="timeline-content">
+                        <p><strong>TG-C 개발 시작</strong></p>
+                        <p>골관절염 치료를 위한 세포유전자치료제 플랫폼 개발</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018년</div>
+                    <div class="timeline-content">
+                        <p><strong>FDA 임상 중단</strong></p>
+                        <p>세포 유래 관련 이슈로 임상 중단, 2020년 해제</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020년</div>
+                    <div class="timeline-content">
+                        <p><strong>FDA 임상 재개</strong></p>
+                        <p>미국 3상 임상시험 본격 진행</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2017년</div>
+                    <div class="timeline-content">
+                        <p><strong>코스닥 상장</strong></p>
+                        <p>국내 자본시장 진출 및 글로벌 자금조달</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025년</div>
+                    <div class="timeline-content">
+                        <p><strong>임상 3상 환자 등록 완료</strong></p>
+                        <p>미국 FDA 3상 시험 환자 모집 완료 (1,066명)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026년</div>
+                    <div class="timeline-content">
+                        <p><strong>톱라인 결과 발표 예상</strong></p>
+                        <p>임상 3상 최종 결과 공개 예정</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2027년</div>
+                    <div class="timeline-content">
+                        <p><strong>FDA BLA 제출</strong></p>
+                        <p>미국 신약 허가 신청 예정</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>최대주주 및 지배구조</h3>
+            <div class="card">
+                <p><strong>최대주주:</strong> (주)코오롱</p>
+                <p>코오롱그룹은 국내외 43개 국내 자회사, 44개 해외 자회사를 운영하는 대형 그룹입니다. 코오롱티슈진은 바이오·헬스케어 사업의 핵심 계열사로 그룹의 글로벌 성장 전략에 중추적 역할을 담당합니다.</p>
+                <ul>
+                    <li>코오롱의 강력한 자금력과 기술 지원</li>
+                    <li>글로벌 사업 네트워크 활용</li>
+                    <li>Health & Beauty, L&B 등 기존 사업과의 시너지</li>
+                </ul>
+            </div>
+
+            <h3>2025년 재무현황</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>매출:</strong> 51.59억원 (Health & Beauty, L&B 등 유통사업)</li>
+                    <li><strong>영업손실:</strong> -223.23억원</li>
+                    <li><strong>순손실:</strong> -1,925.87억원</li>
+                    <li><strong>현황:</strong> TG-C 임상개발 및 FDA 승인 추진 단계로 R&D 비용 집중</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technology Analysis -->
+        <section id="technology">
+            <h2>2. 기술분석</h2>
+
+            <h3>TG-C 플랫폼의 기술 특성</h3>
+            <div class="tech-features">
+                <div class="tech-card">
+                    <div class="tech-icon"><i class="fas fa-dna"></i></div>
+                    <div class="tech-title">세포유전자 치료</div>
+                    <div class="tech-desc">Primary human chondrocyte 기반 알로제닉 세포와 TGF-β1 유전자를 조합한 신기술</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon"><i class="fas fa-target"></i></div>
+                    <div class="tech-title">일회 주입</div>
+                    <div class="tech-desc">단일 관절내 주입으로 장기 치료 효과, 환자 부담 최소화</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon"><i class="fas fa-microscope"></i></div>
+                    <div class="tech-title">DMOAD 타겟</div>
+                    <div class="tech-desc">Disease-Modifying Osteoarthritis Drug 지정 추진 중</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="tech-title">차별적 기전</div>
+                    <div class="tech-desc">질병 진행 억제 및 연골 구조 개선의 이중 기능</div>
+                </div>
+            </div>
+
+            <h3>임상 데이터 및 성과</h3>
+            <div class="card">
+                <p><strong>3상 임상시험 현황:</strong></p>
+                <ul>
+                    <li>미국 내 약 30개 사이트에서 1,066명 환자 등록 완료</li>
+                    <li>약 30개월에 걸친 모집 및 치료 진행</li>
+                    <li>무릎 골관절염 대상 대규모 국제 임상</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>기존 임상 결과:</strong></p>
+                <ul>
+                    <li>통증 완화 및 이동성 증대 입증</li>
+                    <li>골관절염 진행 억제 지표 개선</li>
+                    <li>관절 구조 개선 신호 확인</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>FDA 승인 가능성:</strong></p>
+                <ul>
+                    <li>2026년 톱라인 결과 발표 예상</li>
+                    <li>2027년 1분기 BLA 제출 계획</li>
+                    <li>세계 최초 DMOAD 승인 기대</li>
+                </ul>
+            </div>
+
+            <h3>기술적 차별성</h3>
+            <div class="card">
+                <p>TG-C는 단순한 증상 완화가 아닌 질병 근본 치료(Disease-Modifying)를 목표로 하며, 이는 기존 스테로이드 주사나 히알루론산 제제와 차별됩니다. 알로제닉 세포와 유전자 치료의 결합은 장기적 효과와 환자 순응도를 크게 향상시킵니다.</p>
+            </div>
+        </section>
+
+        <!-- Market Analysis -->
+        <section id="market">
+            <h2>3. 시장분석</h2>
+
+            <h3>세포유전자치료제 시장 규모</h3>
+            <div class="card">
+                <p><strong>2026년 글로벌 시장 규모:</strong> 17.5~33.5억 달러</p>
+                <ul>
+                    <li>시장 추정치는 연구기관마다 상이하나, 평균 약 25억 달러 규모로 평가</li>
+                    <li>세포 치료 부문이 전체 시장의 70% 이상 차지</li>
+                    <li>북미 시장이 전체의 40% 이상 점유</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>성장 전망:</strong></p>
+                <ul>
+                    <li>연 평균 성장률(CAGR) 24~36%</li>
+                    <li>2035년 시장 규모 232억 달러 전망</li>
+                    <li>바이오 기술 발전 및 규제 승인 증가로 급성장</li>
+                </ul>
+            </div>
+
+            <h3>골관절염 치료제 시장</h3>
+            <div class="card">
+                <p><strong>시장 규모:</strong> 약 11조 원대</p>
+                <ul>
+                    <li>전세계 골관절염 환자 4.6억 명 이상</li>
+                    <li>고령화로 인한 지속적 환자 증가</li>
+                    <li>DMOAD 승인 시 시장 혁신 예상</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>치료제 시장 구조:</strong></p>
+                <ul>
+                    <li>약물 치료: 진통제, 소염제 등 기존 치료</li>
+                    <li>주사 치료: 스테로이드, 히알루론산 (일시적 효과)</li>
+                    <li>수술 치료: 인공관절 치환 (고비용, 고위험)</li>
+                    <li>차세대 치료: 세포유전자치료제 (근본 치료 가능성)</li>
+                </ul>
+            </div>
+
+            <h3>지역별 시장 기회</h3>
+            <div class="card">
+                <p><strong>미국 시장:</strong> FDA 승인 후 첫 DMOAD로서 프리미엄 가격 책정 가능</p>
+                <p><strong>유럽 시장:</strong> 고령화된 선진국 시장, 높은 리임버스먼트 기대</p>
+                <p><strong>아시아 태평양:</strong> 빠르게 증가하는 중산층과 의료 접근성 개선</p>
+            </div>
+        </section>
+
+        <!-- Competition Analysis -->
+        <section id="competition">
+            <h2>4. 경쟁사분석</h2>
+
+            <h3>세포유전자치료제 시장 경쟁사</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>기업명</th>
+                        <th>주요 제품</th>
+                        <th>개발 단계</th>
+                        <th>기술 특성</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>코오롱티슈진</strong></td>
+                        <td>TG-C</td>
+                        <td>3상 완료 (BLA 예정)</td>
+                        <td>알로제닉 세포+유전자 치료, 일회 주입</td>
+                    </tr>
+                    <tr>
+                        <td>메디포스트</td>
+                        <td>카티스템</td>
+                        <td>3상 IND 승인</td>
+                        <td>제대혈유래 중간엽 줄기세포, 동종 치료</td>
+                    </tr>
+                    <tr>
+                        <td>입셀 바이오솔루션</td>
+                        <td>미정</td>
+                        <td>임상 진입 단계</td>
+                        <td>유도만능줄기세포(iPSC) 기반</td>
+                    </tr>
+                    <tr>
+                        <td>글로벌 제약사</td>
+                        <td>다수 개발중</td>
+                        <td>1~2상</td>
+                        <td>다양한 세포 기반 플랫폼</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>경쟁 우위 분석</h3>
+            <div class="card">
+                <p><strong>코오롱티슈진의 경쟁 우위:</strong></p>
+                <ul>
+                    <li>3상 임상 완료로 FDA 승인 가장 임박</li>
+                    <li>DMOAD 첫 승인 기업이 될 가능성 높음</li>
+                    <li>1,066명 규모의 대규모 임상 데이터</li>
+                    <li>코오롱그룹의 강력한 자금 및 기술 지원</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>경쟁 과제:</strong></p>
+                <ul>
+                    <li>메디포스트의 카티스템도 빠른 진행 중</li>
+                    <li>글로벌 제약사의 잠재적 시장 진출</li>
+                    <li>다양한 기술 플랫폼 간 유효성 비교</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SWOT Analysis -->
+        <section id="swot">
+            <h2>5. SWOT분석</h2>
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <div class="swot-title"><i class="fas fa-arrow-up"></i> 강점(Strength)</div>
+                    <ul class="swot-list">
+                        <li>FDA 3상 완료로 승인 가장 임박</li>
+                        <li>DMOAD 첫 타자 위치 선점</li>
+                        <li>코오롱그룹 강력 백업</li>
+                        <li>1,066명 대규모 임상 데이터</li>
+                        <li>일회 주입의 환자 편의성</li>
+                    </ul>
+                </div>
+                <div class="swot-box weakness">
+                    <div class="swot-title"><i class="fas fa-arrow-down"></i> 약점(Weakness)</div>
+                    <ul class="swot-list">
+                        <li>현재 유의미한 매출 부재</li>
+                        <li>높은 임상 개발 비용</li>
+                        <li>아직 미승인 상태의 불확실성</li>
+                        <li>순손실 지속 중</li>
+                        <li>FDA 승인 지연 리스크</li>
+                    </ul>
+                </div>
+                <div class="swot-box opportunity">
+                    <div class="swot-title"><i class="fas fa-star"></i> 기회(Opportunity)</div>
+                    <ul class="swot-list">
+                        <li>11조 원대 골관절염 시장</li>
+                        <li>세계 최초 DMOAD 승인 기대</li>
+                        <li>글로벌 제약사 협력/인수 기회</li>
+                        <li>적응증 확대 (척추, 류마티스성)</li>
+                        <li>프리미엄 가격 책정 가능</li>
+                    </ul>
+                </div>
+                <div class="swot-box threat">
+                    <div class="swot-title"><i class="fas fa-exclamation-triangle"></i> 위협(Threat)</div>
+                    <ul class="swot-list">
+                        <li>경쟁사(메디포스트 등) 빠른 추진</li>
+                        <li>글로벌 제약사의 진입</li>
+                        <li>임상 실패 가능성</li>
+                        <li>규제 변화 리스크</li>
+                        <li>기술 특허 도전</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy Analysis -->
+        <section id="strategy">
+            <h2>6. 전략분석</h2>
+
+            <h3>핵심 사업 전략</h3>
+            <div class="card">
+                <p><strong>1단계 (2026~2027): 미국 FDA 승인 추진</strong></p>
+                <ul>
+                    <li>톱라인 결과 발표 (2026년 예상)</li>
+                    <li>BLA 신청 (2027년 1분기 예정)</li>
+                    <li>FDA 승인 (2027~2028년 예상)</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>2단계 (2028~2029): 시판 및 상업화</strong></p>
+                <ul>
+                    <li>미국 시장 진출 및 판매 시작</li>
+                    <li>유럽 EMA 등 다른 지역 승인 추진</li>
+                    <li>적응증 확대 임상 진행</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>3단계 (2030년 이후): 확장 전략</strong></p>
+                <ul>
+                    <li>글로벌 제약사와 협력/라이선싱</li>
+                    <li>유럽, 일본 등 주요 시장 진출</li>
+                    <li>추가 적응증 확대 (척추, 대형 관절)</li>
+                </ul>
+            </div>
+
+            <h3>마케팅 및 상업화 전략</h3>
+            <div class="card">
+                <p><strong>목표 환자층:</strong> 40대 이상 중등증 이상 골관절염 환자</p>
+                <p><strong>가격 전략:</strong> 기존 치료 대비 높은 부가가치 인정, 프리미엄 가격 책정</p>
+                <p><strong>유통 전략:</strong> 정형외과, 류마티스학과 중심 의료진 활동</p>
+                <p><strong>환자 교육:</strong> DMOAD 개념 및 장기 효과 홍보</p>
+            </div>
+
+            <h3>리스크 관리 전략</h3>
+            <div class="card">
+                <ul>
+                    <li>FDA 승인 지연 시 응급자금 확보 계획</li>
+                    <li>임상 실패 시 보완 임상 또는 적응증 변경</li>
+                    <li>경쟁사 출현 시 포지셔닝 강화</li>
+                    <li>지적재산권 강력 보호</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Financial Analysis -->
+        <section id="financial">
+            <h2>7. 재무분석</h2>
+
+            <h3>재무 현황 (2025년)</h3>
+            <div class="card">
+                <p><strong>수익 구조:</strong></p>
+                <ul>
+                    <li>Health & Beauty 사업: 유통사업 중심</li>
+                    <li>L&B (Life & Beauty) 사업: 복합유통</li>
+                    <li>TG-C: 아직 상업화 전 R&D 단계</li>
+                </ul>
+            </div>
+
+            <div class="financial-bars">
+                <div class="bar-group">
+                    <div class="bar-label">2025년 매출: 51.59억원</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 15%;">51.59억</div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label">R&D 비용 (임상 개발): ~223억원</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #f44336 0%, #ff7043 100%);">223억</div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label">순손실: -1,925.87억원</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #c62828 0%, #ff5252 100%);">1,926억</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>재무 전망</h3>
+            <div class="card">
+                <p><strong>단기 (2026~2027):</strong></p>
+                <ul>
+                    <li>지속적 손실 예상 (임상 비용 및 FDA 승인 추진)</li>
+                    <li>매출 증가 제한적</li>
+                    <li>코오롱의 자금 지원 필요</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>중기 (2028~2030):</strong></p>
+                <ul>
+                    <li>FDA 승인 후 미국 시장 진출</li>
+                    <li>초기 매출 본격화</li>
+                    <li>손실 감소 및 흑자 전환 가능성</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>장기 (2031년 이후):</strong></p>
+                <ul>
+                    <li>글로벌 확장으로 매출 급증</li>
+                    <li>순이익 창출 및 배당 가능성</li>
+                    <li>시가총액 대폭 상승 기대</li>
+                </ul>
+            </div>
+
+            <h3>자본 조달 전망</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>코오롱 지원:</strong> 그룹 차원의 지속적 자금 지원</li>
+                    <li><strong>주식 유상증자:</strong> 필요 시 추가 자금조달 가능성</li>
+                    <li><strong>기술이전료:</strong> 국제 협력사로부터 선금 수익</li>
+                    <li><strong>신약 개발 비용:</strong> 정부 R&D 지원 프로그램 활용</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>8. 결론 및 투자의견</h2>
+
+            <h3>투자 평가 요약</h3>
+            <div class="conclusion-box">
+                <h4>투자 관점</h4>
+                <p>코오롱티슈진은 세계 최초의 골관절염 질병근본치료제(DMOAD) 개발 기업으로 평가됩니다. FDA 3상 임상 완료로 2027년 상반기 BLA 제출 및 2027~2028년 승인 가능성이 높습니다. DMOAD 첫 타자로서 11조 원대 골관절염 시장에서 프리미엄 가격 책정이 가능합니다.</p>
+                <p>다만 현재는 임상개발 단계로 아직 수익성 없는 상태이며, FDA 승인 불확실성, 경쟁사 진전, 규제 리스크 등을 고려해야 합니다. 장기 투자 관점에서 높은 성장 잠재력을 갖추었으나, 단기 변동성이 클 수 있습니다.</p>
+            </div>
+
+            <h3>투자 의견</h3>
+            <div class="card">
+                <p><strong>등급:</strong> HOLD (중기 전망 긍정적, 단기 변동성 주의)</p>
+                <p><strong>타겟 가격:</strong> 2027년 FDA 승인 시 현재 대비 3~5배 상승 잠재력</p>
+                <p><strong>추천 투자자:</strong> 장기 성장주 투자자, 바이오 신약 개발 기업에 대한 이해도 높은 투자자</p>
+                <p><strong>주의 사항:</strong> FDA 승인 여부가 주가의 가장 중요한 변수. 임상 결과 발표 시점 주가 급변동 가능</p>
+            </div>
+
+            <h3>향후 주요 모니터링 포인트</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>2026년 7월경:</strong> TG-C 3상 톱라인 결과 발표</li>
+                    <li><strong>2027년 1분기:</strong> FDA BLA 신청</li>
+                    <li><strong>2027~2028년:</strong> FDA 승인 예상</li>
+                    <li><strong>2028년 이후:</strong> 상업화 및 매출 본격화</li>
+                    <li><strong>지속 모니터링:</strong> 경쟁사 진전, 적응증 확대 임상, 글로벌 협력</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <div class="update-block">
+        <span>최종 업데이트: 2026년 4월 14일 09:00 UTC</span><br>
+        <span>본 보고서는 공개 정보 기반 분석이며, 투자 권유가 아닙니다.</span>
+    </div>
+
+    <script>
+        // Smooth scroll behavior for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, .card, .metric-card').forEach(el => {
+            el.style.opacity = '0.95';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LG씨엔에스 종합 분석 보고서 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --gold: #c9a962;
+            --blue: #5c7d9e;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .date-display {
+            font-size: 13px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 60px;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 80px;
+        }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            color: var(--ink-strong);
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            padding: 24px;
+            border-radius: 0;
+            border: 1px solid var(--border);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        .metric-change {
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 80px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 28px;
+            background-color: var(--gold);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 20px;
+            color: var(--ink-strong);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item {
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+        }
+
+        /* Grid Styles */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            background-color: var(--bg-elevated);
+            padding: 24px;
+            margin: 20px 0;
+            border-radius: 0;
+            border: 1px solid var(--border);
+        }
+
+        .progress-bar-container {
+            margin: 16px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--border);
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+            transition: width 0.6s ease;
+        }
+
+        /* Table Styles */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: var(--bg-elevated);
+            color: var(--ink-strong);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background-color: var(--bg-elevated);
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--bg-elevated);
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 4px 4px 4px 0;
+            border-radius: 0;
+            border: 1px solid var(--gold);
+        }
+
+        .badge.primary {
+            background-color: var(--gold);
+            color: var(--bg-deep);
+            border-color: var(--gold);
+        }
+
+        .badge.secondary {
+            background-color: var(--blue);
+            color: var(--ink-strong);
+            border-color: var(--blue);
+        }
+
+        /* SWOT Styles */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .swot-card {
+            background-color: var(--bg-elevated);
+            padding: 24px;
+            border-radius: 0;
+            border: 1px solid var(--border);
+        }
+
+        .swot-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .swot-item {
+            margin-bottom: 12px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .swot-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Conclusion Box */
+        .conclusion-box {
+            background-color: var(--bg-elevated);
+            border-left: 4px solid var(--gold);
+            padding: 32px;
+            margin: 40px 0;
+            border-radius: 0;
+        }
+
+        .conclusion-rating {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .rating-item {
+            text-align: center;
+        }
+
+        .rating-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .rating-value {
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Intersection Observer - Fade In */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .last-update-block {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 32px 40px;
+            margin-top: 80px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .update-info {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .update-time {
+            font-family: 'Google Sans', sans-serif;
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            <span class="logo-text">FLOVAH</span>
+        </a>
+        <nav>
+            <a href="#overview">기업개요</a>
+            <a href="#technical">기술분석</a>
+            <a href="#market">시장분석</a>
+            <a href="#competitors">경쟁사</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">전략</a>
+            <a href="#financial">재무</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="date-display">2026년 4월 14일</div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="hero fade-in">
+            <h1 class="hero-title">LG씨엔에스</h1>
+            <p class="hero-subtitle">디지털 혁신의 주역, AI와 클라우드 기술 선도 기업의 가치 분석</p>
+
+            <div class="hero-meta">
+                <div class="metric-card fade-in">
+                    <div class="metric-label">종목코드</div>
+                    <div class="metric-value">064400</div>
+                    <div class="metric-change">KOSPI 상장</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-label">현재 주가</div>
+                    <div class="metric-value">63,500원</div>
+                    <div class="metric-change">2025.12.23 기준</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">6.9조원</div>
+                    <div class="metric-change">신규상장</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-label">설립년도</div>
+                    <div class="metric-value">1987년</div>
+                    <div class="metric-change">39년 역사</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. 기업개요 Section -->
+        <section id="overview" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-building"></i> 기업개요</h2>
+
+            <div class="card">
+                <h3 class="card-title">기본 정보</h3>
+                <div class="card-content">
+                    <p>LG씨엔에스는 LG그룹의 IT서비스 계열사로, 1987년 설립 이후 한국의 대표적인 디지털 혁신 기업으로서의 위상을 확보하고 있습니다. 클라우드, 디지털전환(DX), 인공지능(AI), 스마트팩토리, 스마트시티 등 첨단 기술 분야를 중심으로 포괄적인 IT서비스를 제공하고 있습니다.</p>
+                    <p style="margin-top: 16px;">LG씨엔에스는 2025년 2월 IPO를 통해 코스피 상장사가 되었으며, 61,900원의 공모가에서 현재 63,500원으로 거래되며 약 2.6%의 수익률을 기록하고 있습니다. 2024년 매출 5.98조원, 영업이익 364.51억원의 실적을 바탕으로 안정적인 성장을 추진하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">주요 사업 포트폴리오</h3>
+                <div class="card-content">
+                    <div class="grid-3">
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">클라우드 & AI</h4>
+                            <p>에이전틱 AI 플랫폼, 클라우드 인프라 제공, AI 기반 자동화 서비스</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">DX 컨설팅</h4>
+                            <p>기업 디지털 전환 전략, 시스템 구축, 운영 관리</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">스마트 시티</h4>
+                            <p>도시 인프라 디지털화, 공공 데이터 플랫폼</p>
+                        </div>
+                    </div>
+                    <div class="grid-3" style="margin-top: 24px;">
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">스마트팩토리</h4>
+                            <p>제조 시설 자동화, IoT 솔루션, 제어 시스템</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">DBS(운영관리)</h4>
+                            <p>시스템 관리, 유지보수, 기술 지원</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">엔지니어링</h4>
+                            <p>특화 산업 솔루션, 설계 및 개발</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">회사 발전 과정</h3>
+                <div class="timeline fade-in">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1987년</div>
+                        <div class="timeline-text">LG데이터시스템즈 설립, IT 서비스 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년대</div>
+                        <div class="timeline-text">대규모 시스템 통합 사업(SI) 추진, 금융·통신 고객 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년대</div>
+                        <div class="timeline-text">ERP, 솔루션 사업 확대, 해외 진출 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년대</div>
+                        <div class="timeline-text">클라우드 기술 투자, DX 사업 강화, 데이터센터 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020-2025년</div>
+                        <div class="timeline-text">AI 플랫폼 개발, 에이전틱 AI 공개, 코스피 상장(2025.02)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 기술분석 Section -->
+        <section id="technical" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> 기술분석</h2>
+
+            <div class="card">
+                <h3 class="card-title">주가 추세 분석</h3>
+                <div class="card-content">
+                    <p>LG씨엔에스는 2025년 2월 5일 IPO 이후 긍정적인 상승세를 이어가고 있습니다. 공모가 61,900원에서 현재 63,500원으로 약 2.6% 상승했으며, 이는 신규 상장 회사로서는 안정적인 성과입니다.</p>
+                    <div class="chart-container">
+                        <h4 style="color: var(--text-body); margin-bottom: 20px;">IPO 이후 주가 변화</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>공모가</span>
+                                <span>61,900원</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>현재 주가</span>
+                                <span>63,500원</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 97%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>목표가 추정</span>
+                                <span>90,000원</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">기술적 지표</h3>
+                <div class="card-content">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>지표</th>
+                                    <th>값</th>
+                                    <th>평가</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IPO 이후 수익률</td>
+                                    <td>+2.6%</td>
+                                    <td><span class="badge primary">안정적</span></td>
+                                </tr>
+                                <tr>
+                                    <td>공모가 대비</td>
+                                    <td>61,900원</td>
+                                    <td><span class="badge secondary">기준</span></td>
+                                </tr>
+                                <tr>
+                                    <td>기관투자자 수요</td>
+                                    <td>114:1</td>
+                                    <td><span class="badge primary">높음</span></td>
+                                </tr>
+                                <tr>
+                                    <td>시가총액</td>
+                                    <td>6.9조원</td>
+                                    <td><span class="badge">신규상장</span></td>
+                                </tr>
+                                <tr>
+                                    <td>거래량</td>
+                                    <td>안정적</td>
+                                    <td><span class="badge secondary">양호</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">차트 신호</h3>
+                <div class="card-content">
+                    <p>LG씨엔에스는 신규 상장 이후 안정적인 주가를 유지하고 있습니다. 높은 기관투자자 수요(114:1)는 장기 기관 투자자들의 신뢰를 반영합니다. 향후 AI 및 클라우드 사업 성장에 따른 실적 개선이 주가 상승을 견인할 것으로 예상됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 시장분석 Section -->
+        <section id="market" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-globe"></i> 시장분석</h2>
+
+            <div class="card">
+                <h3 class="card-title">IT 서비스 시장 환경</h3>
+                <div class="card-content">
+                    <p>글로벌 IT 서비스 시장은 AI, 클라우드, 디지털 전환의 확대로 인해 지속적인 성장을 이루고 있습니다. 한국 시장에서도 기업들의 DX 투자 확대와 공공 기관의 디지털화 사업 추진이 IT 서비스 업계의 성장을 견인하고 있습니다.</p>
+                    <div class="grid-2">
+                        <div style="padding: 16px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 8px;">긍정 요인</h4>
+                            <ul style="padding-left: 16px;">
+                                <li style="margin-bottom: 8px;">AI 투자 확대</li>
+                                <li style="margin-bottom: 8px;">클라우드 수요 증가</li>
+                                <li style="margin-bottom: 8px;">공공 DX 프로젝트</li>
+                                <li style="margin-bottom: 8px;">기업 시스템 현대화</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 16px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 8px;">부정 요인</h4>
+                            <ul style="padding-left: 16px;">
+                                <li style="margin-bottom: 8px;">기술 변화 속도</li>
+                                <li style="margin-bottom: 8px;">경기 부진 영향</li>
+                                <li style="margin-bottom: 8px;">인력 부족</li>
+                                <li style="margin-bottom: 8px;">경쟁 심화</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">시장 규모 및 성장률</h3>
+                <div class="card-content">
+                    <p>2024년 LG씨엔에스의 매출은 5.98조원(전년 대비 6.73% 증가), 영업이익은 364.51억원(전년 대비 9.69% 증가)으로 기록되었습니다. 특히 클라우드 & AI 부문의 2025년 1분기 매출이 7,173억원으로 전체 1조2,114억원 중 59%를 차지하여 AI와 클라우드 사업의 집중도를 보여줍니다.</p>
+                    <div class="chart-container">
+                        <h4 style="color: var(--text-body); margin-bottom: 20px;">2024년 실적 성장률</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>매출액 성장</span>
+                                <span>6.73% ↑</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>영업이익 성장</span>
+                                <span>9.69% ↑</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>클라우드 & AI 비중</span>
+                                <span>59%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">시장 포지셔닝</h3>
+                <div class="card-content">
+                    <p>LG씨엔에스는 한국 IT 서비스 시장에서 클라우드와 AI 기술의 선도 기업으로 자리잡고 있습니다. 에이전틱(Agentic) AI 플랫폼 개발, 대규모 데이터센터 운영, 주요 공공 및 금융 기관과의 협력은 시장 리더십을 확보하는 핵심 요소입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 경쟁사 분석 Section -->
+        <section id="competitors" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> 경쟁사분석</h2>
+
+            <div class="card">
+                <h3 class="card-title">주요 경쟁사 비교</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>IT 서비스사</th>
+                                <th>주요 강점</th>
+                                <th>시장 포지셔닝</th>
+                                <th>전략</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LG씨엔에스</strong></td>
+                                <td>AI, 클라우드 기술 리더십</td>
+                                <td>상위권</td>
+                                <td>AI 플랫폼 확대</td>
+                            </tr>
+                            <tr>
+                                <td>삼성SDS</td>
+                                <td>삼성 그룹 지원, 자본력</td>
+                                <td>상위권</td>
+                                <td>반도체 연계</td>
+                            </tr>
+                            <tr>
+                                <td>SK C&C</td>
+                                <td>인프라, 네트워크 강점</td>
+                                <td>상위권</td>
+                                <td>통신연계 DX</td>
+                            </tr>
+                            <tr>
+                                <td>현대오토에버</td>
+                                <td>자동차 산업 특화</td>
+                                <td>중위권</td>
+                                <td>산업 고도화</td>
+                            </tr>
+                            <tr>
+                                <td>카카오엔터프라이즈</td>
+                                <td>클라우드, AI 신기술</td>
+                                <td>신규 경쟁</td>
+                                <td>빠른 성장</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">경쟁 우위 분석</h3>
+                <div class="card-content">
+                    <div class="grid-2">
+                        <div style="padding: 16px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">LG씨엔에스 우위</h4>
+                            <div style="padding-left: 16px;">
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 에이전틱 AI 기술</div>
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 데이터센터 인프라</div>
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 공공 프로젝트 경험</div>
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 통합 솔루션</div>
+                            </div>
+                        </div>
+                        <div style="padding: 16px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 12px;">경쟁사 우위</h4>
+                            <div style="padding-left: 16px;">
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 대기업 지원</div>
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 자본력</div>
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 업계 경험</div>
+                                <div style="margin-bottom: 8px;"><span style="color: var(--gold);">●</span> 산업 특화</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SWOT 분석 Section -->
+        <section id="swot" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-star"></i> SWOT분석</h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <div class="swot-title">강점 (Strength)</div>
+                    <div class="swot-item">에이전틱 AI 플랫폼 개발 및 공개</div>
+                    <div class="swot-item">클라우드 & AI 부문 59% 매출 구성</div>
+                    <div class="swot-item">LG그룹의 신용도 및 지원</div>
+                    <div class="swot-item">공공 및 금융 기관과의 장기 관계</div>
+                    <div class="swot-item">통합 DX 솔루션 제공 능력</div>
+                </div>
+
+                <div class="swot-card">
+                    <div class="swot-title">약점 (Weakness)</div>
+                    <div class="swot-item">신규 상장 기업의 낮은 인지도</div>
+                    <div class="swot-item">기술 변화에 따른 빠른 대응 필요</div>
+                    <div class="swot-item">소규모 고객층 개발</div>
+                    <div class="swot-item">글로벌 경쟁력 부족</div>
+                    <div class="swot-item">신입 인력 수급 어려움</div>
+                </div>
+
+                <div class="swot-card">
+                    <div class="swot-title">기회 (Opportunity)</div>
+                    <div class="swot-item">AI 투자 시장의 급속한 확대</div>
+                    <div class="swot-item">정부 DX 프로젝트 증가</div>
+                    <div class="swot-item">제조업의 스마트팩토리 전환</div>
+                    <div class="swot-item">데이터센터 인프라 수요 증가</div>
+                    <div class="swot-item">국제 시장 진출 기회</div>
+                </div>
+
+                <div class="swot-card">
+                    <div class="swot-title">위협 (Threat)</div>
+                    <div class="swot-item">글로벌 IT 기업의 경쟁 심화</div>
+                    <div class="swot-item">오픈소스 AI 기술의 대중화</div>
+                    <div class="swot-item">경기 부진에 따른 IT 투자 감소</div>
+                    <div class="swot-item">대형 IT 기업들의 AI 강화</div>
+                    <div class="swot-item">규제 강화(개인정보보호)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 전략분석 Section -->
+        <section id="strategy" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> 전략분석</h2>
+
+            <div class="card">
+                <h3 class="card-title">핵심 전략 방향</h3>
+                <div class="card-content">
+                    <div class="grid-2">
+                        <div style="padding: 20px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 16px;">1. 에이전틱 AI 플랫폼 확대</h4>
+                            <p style="font-size: 13px; line-height: 1.7;">에이전틱웍스와 a:xink 서비스를 통해 기업 업무 생산성 26% 개선을 달성하고 있습니다. 향후 이를 다양한 산업으로 확대하는 것이 핵심 전략입니다.</p>
+                        </div>
+                        <div style="padding: 20px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 16px;">2. 데이터센터 확충</h4>
+                            <p style="font-size: 13px; line-height: 1.7;">죽전, 삼송, 자카르타에 모듈형 데이터센터를 구축하여 클라우드 인프라 경쟁력을 강화합니다. 2026년 자카르타 데이터센터 개장은 국제화의 핵심입니다.</p>
+                        </div>
+                        <div style="padding: 20px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 16px;">3. 공공 & 금융 프로젝트 수주</h4>
+                            <p style="font-size: 13px; line-height: 1.7;">외교부 AI 데이터 플랫폼(300억원), NH농협 차세대 시스템(최대 규모) 등 대형 프로젝트 수주로 매출 안정성을 확보합니다.</p>
+                        </div>
+                        <div style="padding: 20px; background-color: var(--bg-elevated);">
+                            <h4 style="color: var(--gold); margin-bottom: 16px;">4. 스마트팩토리 사업 강화</h4>
+                            <p style="font-size: 13px; line-height: 1.7;">제조업의 스마트 전환 수요를 타겟으로 스마트팩토리 솔루션 개발 및 판매를 확대합니다. 향후 고성장 부문입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">중기 성장 전략</h3>
+                <div class="card-content">
+                    <p>향후 3년간 LG씨엔에스는 다음과 같은 성장 전략을 추진할 것으로 예상됩니다:</p>
+                    <ul style="padding-left: 16px; margin-top: 16px;">
+                        <li style="margin-bottom: 12px;"><strong>AI 기술 선도:</strong> 에이전틱 AI 기술을 확보한 시장 리더로서의 입지 강화</li>
+                        <li style="margin-bottom: 12px;"><strong>클라우드 확장:</strong> 국내외 데이터센터 확충으로 클라우드 점유율 증가</li>
+                        <li style="margin-bottom: 12px;"><strong>DX 시장 선점:</strong> 정부 DX 프로젝트와 기업 고객의 전환 수요 포착</li>
+                        <li style="margin-bottom: 12px;"><strong>국제화:</strong> 자카르타 데이터센터를 통한 아시아 시장 진출</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 재무분석 Section -->
+        <section id="financial" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> 재무분석</h2>
+
+            <div class="card">
+                <h3 class="card-title">2024년 연간 실적</h3>
+                <div class="card-content">
+                    <div class="chart-container">
+                        <h4 style="color: var(--text-body); margin-bottom: 20px;">전년 대비 성장률</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>매출액</span>
+                                <span>5.98조원 (+6.73%)</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>영업이익</span>
+                                <span>364.51억원 (+9.69%)</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">
+                                <span>영업이익률</span>
+                                <span>약 6.1%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">부문별 매출 구성 (2025년 1분기)</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>부문</th>
+                                <th>매출액 (억원)</th>
+                                <th>비중</th>
+                                <th>특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>클라우드 & AI</strong></td>
+                                <td>7,173</td>
+                                <td>59%</td>
+                                <td>핵심 성장 부문</td>
+                            </tr>
+                            <tr>
+                                <td>DBS (운영관리)</td>
+                                <td>약 2,000</td>
+                                <td>약 17%</td>
+                                <td>안정적 매출</td>
+                            </tr>
+                            <tr>
+                                <td>스마트 엔지니어링</td>
+                                <td>약 1,500</td>
+                                <td>약 12%</td>
+                                <td>회복 기대</td>
+                            </tr>
+                            <tr>
+                                <td>기타</td>
+                                <td>약 441</td>
+                                <td>약 4%</td>
+                                <td>기타 사업</td>
+                            </tr>
+                            <tr>
+                                <td><strong>합계</strong></td>
+                                <td><strong>12,114</strong></td>
+                                <td><strong>100%</strong></td>
+                                <td><strong>분기 매출</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">재무 효율성</h3>
+                <div class="card-content">
+                    <p>LG씨엔에스의 2024년 실적은 안정적인 성장을 보여주고 있습니다. 매출액 6.73% 증가와 영업이익 9.69% 증가는 경영 효율성 개선을 나타냅니다. 특히 클라우드 & AI 부문이 매출의 59%를 차지하면서 AI 시대의 성장 기업으로 발돋움하고 있습니다.</p>
+                    <p style="margin-top: 16px;">IPO 이후 조달한 자본금은 데이터센터 확충, 기술 개발, 인력 투자에 사용될 것으로 예상됩니다. 이는 향후 매출 성장과 영업이익률 개선으로 이어질 것입니다. 다만, 신규 프로젝트의 초기 단계에서의 원가 증가는 단기적으로 이익률을 압박할 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 결론 및 투자의견 Section -->
+        <section id="conclusion" class="fade-in">
+            <h2 class="section-title"><i class="fas fa-check"></i> 결론및투자의견</h2>
+
+            <div class="conclusion-box">
+                <h3 style="color: var(--ink-strong); margin-bottom: 16px;">투자 종합의견</h3>
+                <p>LG씨엔에스는 AI와 클라우드 기술의 선도 기업으로서, 한국의 IT 서비스 시장에서 향후 핵심 성장 드라이버가 될 것으로 판단됩니다. 신규 상장 기업으로서의 성장성, 기술 경쟁력, 안정적인 매출 구조를 갖춘 매력적인 투자 대상입니다.</p>
+
+                <h4 style="color: var(--gold); margin-top: 24px; margin-bottom: 12px;">핵심 투자 포인트</h4>
+                <ul style="padding-left: 16px;">
+                    <li style="margin-bottom: 8px;"><strong>AI 기술 리더십:</strong> 에이전틱 AI 플랫폼은 업무 효율성 26% 개선 실증으로 시장 수요 확인</li>
+                    <li style="margin-bottom: 8px;"><strong>클라우드 인프라 확충:</strong> 국내외 데이터센터 투자로 향후 매출 성장의 기초 마련</li>
+                    <li style="margin-bottom: 8px;"><strong>대형 프로젝트 수주:</strong> 외교부, NH농협 등 공공 및 금융 기관 프로젝트 확보</li>
+                    <li style="margin-bottom: 8px;"><strong>신흥 시장 개척:</strong> 아시아 DX 시장 진출로 글로벌 성장 기회 확보</li>
+                    <li style="margin-bottom: 8px;"><strong>IPO 이후 성장:</strong> 신규 자본금으로 인한 기술 투자 및 인력 확충 기대</li>
+                </ul>
+
+                <h4 style="color: var(--gold); margin-top: 24px; margin-bottom: 12px;">위험 요소</h4>
+                <ul style="padding-left: 16px;">
+                    <li style="margin-bottom: 8px;">신규 상장 기업의 높은 변동성</li>
+                    <li style="margin-bottom: 8px;">경기 부진에 따른 IT 투자 감소 위험</li>
+                    <li style="margin-bottom: 8px;">기술 변화의 불확실성</li>
+                    <li style="margin-bottom: 8px;">글로벌 IT 기업과의 경쟁 심화</li>
+                    <li style="margin-bottom: 8px;">인력 수급 및 유지의 어려움</li>
+                </ul>
+
+                <div class="conclusion-rating">
+                    <div class="rating-item">
+                        <div class="rating-label">투자의견</div>
+                        <div class="rating-value">BUY</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">목표주가</div>
+                        <div class="rating-value">90,000원</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">투자등급</div>
+                        <div class="rating-value">★★★★★</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">성장성</div>
+                        <div class="rating-value">높음</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">최종 평가</h3>
+                <div class="card-content">
+                    <p>LG씨엔에스는 AI와 클라우드 기술 분야에서 한국의 대표 기업으로 부상하고 있습니다. 2025년 IPO 이후 안정적인 주가 유지와 기관투자자의 높은 수요(114:1)는 시장의 긍정적 평가를 반영합니다.</p>
+                    <p style="margin-top: 16px;">현재 공모가(61,900원) 대비 약 2.6% 상승한 63,500원의 가격은 신규 상장 기업으로서 건전한 밸류에이션을 유지하고 있습니다. 목표주가 90,000원은 추정 영업이익 개선과 클라우드 & AI 부문의 매출 성장을 반영한 것입니다.</p>
+                    <p style="margin-top: 16px;">향후 3년간 에이전틱 AI 기술의 시장 확대, 데이터센터 완공에 따른 매출 성장, 그리고 대형 공공 프로젝트 완료로 인한 이익률 개선이 예상됩니다. 이는 현재 주가 대비 40% 이상의 상승 여지를 의미합니다. 기술 성장주를 선호하는 투자자에게 강력히 추천합니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="last-update-block">
+        <div class="update-info">
+            <span>FLOVAH Insights 리포트</span>
+            <span class="update-time">2026년 4월 14일 16:35</span>
+        </div>
+        <p>본 보고서는 공개된 정보를 기반으로 작성되었으며, 투자 판단의 참고 자료일 뿐 투자를 강요하거나 보장하지 않습니다.</p>
+    </div>
+
+    <script>
+        // Smooth scroll anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in effects
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate progress bars on intersection
+        const progressObserverOptions = {
+            threshold: 0.5
+        };
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill');
+                    fills.forEach(fill => {
+                        fill.style.opacity = '1';
+                    });
+                }
+            });
+        }, progressObserverOptions);
+
+        document.querySelectorAll('.chart-container').forEach(el => {
+            progressObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

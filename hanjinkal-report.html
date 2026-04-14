@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한진칼 기업분석 - FLOVAH Insights</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --gold: #c9a962;
+            --blue: #5c7d9e;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .date-header {
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 60px;
+            padding: 0;
+        }
+
+        section {
+            padding: 80px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: var(--ink);
+            margin: 30px 0 15px 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+            padding: 100px 40px;
+            margin-top: -60px;
+            padding-top: 160px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--ink-strong);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .ticker {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--bg-deep);
+            padding: 6px 12px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-right: 10px;
+        }
+
+        .industry {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 6px 12px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 60px 0;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 0;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .metric-unit {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 40px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-left: 0;
+        }
+
+        .timeline-date {
+            min-width: 120px;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .timeline-content {
+            flex: 1;
+            border-left: 2px solid var(--border);
+            padding-left: 20px;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .content-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 0;
+        }
+
+        .content-block h4 {
+            color: var(--gold);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .content-block p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: var(--bg-card);
+        }
+
+        .comparison-table th {
+            background: var(--bg-elevated);
+            color: var(--ink-strong);
+            padding: 15px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--bg-elevated);
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .swot-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 0;
+        }
+
+        .swot-item.strength {
+            border-top: 3px solid #10b981;
+        }
+
+        .swot-item.weakness {
+            border-top: 3px solid #ef4444;
+        }
+
+        .swot-item.opportunity {
+            border-top: 3px solid var(--gold);
+        }
+
+        .swot-item.threat {
+            border-top: 3px solid #8b5cf6;
+        }
+
+        .swot-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .swot-item.strength .swot-label {
+            color: #10b981;
+        }
+
+        .swot-item.weakness .swot-label {
+            color: #ef4444;
+        }
+
+        .swot-item.opportunity .swot-label {
+            color: var(--gold);
+        }
+
+        .swot-item.threat .swot-label {
+            color: #8b5cf6;
+        }
+
+        .swot-item ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swot-item li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            font-size: 13px;
+            color: var(--text-body);
+            position: relative;
+        }
+
+        .swot-item li:before {
+            content: "•";
+            position: absolute;
+            left: 5px;
+            color: var(--gold);
+        }
+
+        /* Progress Bars */
+        .progress-item {
+            margin: 25px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        /* List Styles */
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Last Update Block */
+        .last-update {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 20px 30px;
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .last-update-text {
+            color: var(--text-secondary);
+        }
+
+        .last-update-time {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 20px;
+                flex-wrap: wrap;
+                height: auto;
+            }
+
+            nav {
+                gap: 15px;
+                font-size: 11px;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            FLOVAH INSIGHTS
+        </a>
+        <nav>
+            <a href="#overview">기업개요</a>
+            <a href="#technology">기술분석</a>
+            <a href="#market">시장분석</a>
+            <a href="#competitors">경쟁사분석</a>
+            <a href="#swot">SWOT분석</a>
+            <a href="#financial">재무분석</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <span class="date-header">2026년 4월 14일</span>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero fade-in">
+            <h1>한진칼</h1>
+            <p class="subtitle">한진그룹 지주회사로서 항공, 물류, 택배 등 복합운송사업을 영위하는 대형 복합운송기업</p>
+            <div>
+                <span class="ticker">180640</span>
+                <span class="industry">지주회사·운송</span>
+            </div>
+        </section>
+
+        <!-- 1. 기업개요 -->
+        <section id="overview">
+            <h2>1. 기업개요</h2>
+
+            <p>한진칼은 2013년 설립된 한진그룹의 지주회사로, 대한항공, 진에어 등 항공사를 비롯하여 한진 택배, 한진 해운 등 글로벌 물류 및 운송 네트워크를 보유한 세계적 수준의 복합운송기업입니다. 특히 2024년 12월 대한항공의 아시아나항공 인수 완료로 세계 10위 수준의 항공사 그룹으로 성장했습니다.</p>
+
+            <div class="metrics fade-in">
+                <div class="metric-card">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">약 7.9조</div>
+                    <div class="metric-unit">원 (2026년 2월)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">KOSPI 순위</div>
+                    <div class="metric-value">88위</div>
+                    <div class="metric-unit">한국거래소</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">현재 주가</div>
+                    <div class="metric-value">173,000</div>
+                    <div class="metric-unit">KRW (2026년 2월)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">설립년도</div>
+                    <div class="metric-value">2013년</div>
+                    <div class="metric-unit">한진그룹 지주회사</div>
+                </div>
+            </div>
+
+            <h3>주요 사업 구조</h3>
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>항공사업</h4>
+                    <p>한진칼의 핵심 사업으로 대한항공(Korean Air)과 진에어(Jin Air, 저가항공사)를 보유하고 있습니다. 2024년 대한항공-아시아나항공 합병 완료로 전 세계 10위 규모의 항공사 그룹으로 성장했으며, 국내외 항공 여객 및 화물 운송에서 핵심적인 역할을 수행합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>물류·택배사업</h4>
+                    <p>한진(Hanjin) 브랜드의 택배 및 물류 사업을 영위하고 있습니다. 국내 및 국제 택배 네트워크를 통해 B2B, B2C 물류 서비스를 제공하며, 전자상거래의 성장과 국제 물류 수요 증가에 따른 성장성이 우수합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>해운사업</h4>
+                    <p>한진해운을 통해 국제 해운 사업을 전개하고 있습니다. 글로벌 무역량 증가와 해운 운임 정상화에 따른 수익성 개선이 진행 중이며, 해양 물류 전문성을 바탕으로 경쟁력을 강화하고 있습니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>호텔·관광사업</h4>
+                    <p>조선호텔, 더파크나인, 더한호텔 등 프리미엄 호텔 브랜드를 운영하고 있습니다. 국내외 관광 수요 회복과 프리미엄 여행객 증가에 따른 매출 확대가 기대되며, 항공사업과의 시너지 창출이 가능합니다.</p>
+                </div>
+            </div>
+
+            <h3>주요 기업 변화 타임라인</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2013년</div>
+                    <div class="timeline-content">
+                        <p>한진칼 지주회사 설립 - 한진그룹의 핵심 지주회사로 출범</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023년 10월</div>
+                    <div class="timeline-content">
+                        <p>미국 운수부(DOT), 대한항공-아시아나항공 합병 승인 완료</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024년 1월</div>
+                    <div class="timeline-content">
+                        <p>일본, 중국 등 주요국 대한항공-아시아나 합병 승인</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024년 12월</div>
+                    <div class="timeline-content">
+                        <p>대한항공, 아시아나항공 지분 63.88% 인수 완료 - 법적 합병 완료</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026년 상반기</div>
+                    <div class="timeline-content">
+                        <p>마일리지 통합 및 AOC 단일화 등 실질적 통합 진행 중</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 기술분석 -->
+        <section id="technology">
+            <h2>2. 기술분석</h2>
+
+            <p>한진칼의 기술 경쟁력은 대한항공과 진에어의 항공 운영 기술, 항공정비 및 엔지니어링, 그리고 물류 자동화 기술에 집중되어 있습니다. 항공산업의 특성상 첨단 항공기 유지보수 기술과 효율적인 운항 관리 시스템이 핵심 경쟁 우위입니다.</p>
+
+            <h3>핵심 기술 역량</h3>
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>항공정비 기술</h4>
+                    <p>대한항공은 Boeing 777, 787, Airbus A380, A350 등 최신 항공기의 정비 및 정상 운영을 위한 첨단 MRO(Maintenance, Repair, Overhaul) 기술을 보유하고 있습니다. 국제 항공정비 표준을 충족하며, 자체 정비 기술로 운영비용 절감을 실현하고 있습니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>운항 관리 시스템</h4>
+                    <p>최신 항공운항관리시스템(ERP) 및 비행 계획 최적화 기술을 통해 연료 효율성을 극대화하고 탄소 배출을 감소시키고 있습니다. 실시간 운항 데이터 분석을 통해 안전성과 정시성을 동시에 달성합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>물류 자동화</h4>
+                    <p>택배 및 물류 센터의 자동분류시스템(ASS), 자동창고시스템(WMS), IoT 기반 패키지 추적 시스템 등을 도입하여 물류 효율성을 제고하고 있습니다. AI 기반 배송 경로 최적화로 배송 시간을 단축하고 비용을 절감합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>디지털 플랫폼</h4>
+                    <p>항공 예약, 체크인, 짐 추적을 위한 모바일 앱 및 웹 플랫폼을 운영하고 있습니다. 고객 경험 개선과 데이터 기반 마케팅을 통해 맞춤형 서비스를 제공하고 있습니다.</p>
+                </div>
+            </div>
+
+            <h3>기술 투자 전략</h3>
+            <p>한진칼은 지속적인 R&D 투자를 통해 다음과 같은 분야에 집중하고 있습니다:</p>
+            <ul>
+                <li><strong>친환경 항공기 도입:</strong> 연료효율 항공기(B787, A350) 도입으로 탄소 배출 감소 및 운영비 절감</li>
+                <li><strong>바이오 항공유(SAF):</strong> 지속 가능한 항공유 사용으로 ESG 경영 강화</li>
+                <li><strong>AI 기반 예측정비:</strong> 항공기 부품 고장을 사전에 예측하여 정비 비용 최적화</li>
+                <li><strong>자동화 물류센터:</strong> 로봇 자동화, AI 기반 수요 예측으로 물류 효율성 극대화</li>
+                <li><strong>블록체인 기술:</strong> 공급망 투명성 강화 및 화물 추적 신뢰도 향상</li>
+            </ul>
+        </section>
+
+        <!-- 3. 시장분석 -->
+        <section id="market">
+            <h2>3. 시장분석</h2>
+
+            <h3>항공산업 시장 현황</h3>
+            <p>2024년부터 전 세계 항공 여객 수요가 회복되고 있으며, 국제선 여객 수요는 2019년 수준을 초과했습니다. 특히 아시아-태평양 지역의 항공 수요가 강하게 회복되고 있으며, 항공 화물 운임도 정상화 추세를 보이고 있습니다.</p>
+
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>여객 운송 시장</h4>
+                    <p>글로벌 항공 여객 시장은 연 2.5~3% 성장률을 기록하고 있습니다. 중국, 인도 등 신흥국의 중산층 증가로 항공 여객 수요가 지속적으로 증가할 것으로 예상됩니다. 특히 장거리 노선과 아시아-북미 노선의 수요가 강세를 보이고 있습니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>항공 화물 시장</h4>
+                    <p>전자상거래와 글로벌 공급망 재편에 따른 항공 화물 수요가 증가하고 있습니다. 의료용품, 반도체, 전자제품 등 고부가가치 화물의 수요가 지속적으로 증가하고 있으며, 항공 화물 운임도 정상화되어 이윤율이 개선되고 있습니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>아시아-태평양 시장</h4>
+                    <p>APAC 지역은 세계 항공 시장 성장의 40% 이상을 차지하는 중요한 시장입니다. 한진칼의 주요 운항 지역인 동아시아, 동남아시아의 항공 수요 성장이 우수하며, 한국을 중심으로 한 허브 역할 강화로 경쟁력이 높아질 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>전자상거래 물류</h4>
+                    <p>세계 전자상거래 시장의 연 10% 이상 성장에 따른 물류 수요 증가가 한진칼의 택배·물류 사업 성장을 견인합니다. 특히 국제 택배 및 크로스보더 이커머스 물류 수요가 급증하고 있습니다.</p>
+                </div>
+            </div>
+
+            <h3>시장 기회 요인</h3>
+            <ul>
+                <li><strong>항공 여객 수요 회복:</strong> 팬데믹 이후 국제 여행 수요 지속 증가</li>
+                <li><strong>항공 화물 운임 정상화:</strong> 2024년 이후 항공 화물 운임 안정화로 수익성 개선</li>
+                <li><strong>공급망 재편:</strong> 미중 무역 갈등으로 인한 생산지 다변화에 따른 물류 수요 증가</li>
+                <li><strong>전자상거래 성장:</strong> 동남아, 인도의 전자상거래 시장 확대에 따른 물류 수요 증대</li>
+                <li><strong>프리미엄 서비스:</strong> 고소득층의 프리미엄 항공 및 호텔 서비스 수요 증가</li>
+            </ul>
+
+            <h3>시장 리스크 요인</h3>
+            <ul>
+                <li><strong>유류가 변동성:</strong> 유가 상승 시 항공사의 수익성 악화 위험</li>
+                <li><strong>경기 침체:</strong> 글로벌 경기 둔화로 인한 항공 여객 및 화물 수요 감소</li>
+                <li><strong>환율 변동:</strong> 한국 원화 약세 회복 시 수익성 악화 가능성</li>
+                <li><strong>지정학적 리스크:</strong> 한반도 긴장, 대만 문제 등으로 인한 동아시아 운항 경로 변화</li>
+                <li><strong>경쟁 심화:</strong> 중국 항공사의 국제선 확장으로 인한 경쟁 심화</li>
+            </ul>
+        </section>
+
+        <!-- 4. 경쟁사분석 -->
+        <section id="competitors">
+            <h2>4. 경쟁사분석</h2>
+
+            <p>한진칼(한진그룹)은 대한항공-아시아나항공 합병으로 아시아 최대 규모의 항공사 그룹이 되었습니다. 글로벌 시장에서 국제선 항공 운송, 물류, 호텔 등 종합 운송 서비스를 제공하는 기업들과 경쟁하고 있습니다.</p>
+
+            <h3>주요 경쟁사 비교</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>한진칼(한진)</th>
+                        <th>대한항공</th>
+                        <th>싱가포르항공</th>
+                        <th>캐세이퍼시픽</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>운항국가</strong></td>
+                        <td>한국</td>
+                        <td>한국</td>
+                        <td>싱가포르</td>
+                        <td>홍콩</td>
+                    </tr>
+                    <tr>
+                        <td><strong>글로벌 순위</strong></td>
+                        <td>약 10위</td>
+                        <td>약 10위</td>
+                        <td>약 50위</td>
+                        <td>약 40위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>보유항공기</strong></td>
+                        <td>600+</td>
+                        <td>330+</td>
+                        <td>120+</td>
+                        <td>250+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주요 강점</strong></td>
+                        <td>아시아 물류 네트워크, 종합 운송</td>
+                        <td>국제선 경쟁력, 화물운송</td>
+                        <td>프리미엄 서비스, 효율성</td>
+                        <td>프리미엄 이미지, 화물</td>
+                    </tr>
+                    <tr>
+                        <td><strong>시가총액</strong></td>
+                        <td>약 7.9조</td>
+                        <td>약 4.5조</td>
+                        <td>약 8조</td>
+                        <td>약 4.2조</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주요 약점</strong></td>
+                        <td>통합 진행 중, 구조조정</td>
+                        <td>아시아나 통합 비용</td>
+                        <td>시장 규모 제약</td>
+                        <td>경쟁력 약화, 중국 경기 의존</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>경쟁 우위 분석</h3>
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>한진칼의 경쟁 우위</h4>
+                    <ul>
+                        <li>아시아 최대 규모의 항공사 그룹 형성</li>
+                        <li>한진 택배를 통한 물류 네트워크 결합</li>
+                        <li>대한항공의 국제 항공사 신용도와 안전도</li>
+                        <li>인천공항 중심의 동아시아 허브 위치</li>
+                        <li>프리미엄 호텔 브랜드 포트폴리오</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h4>경쟁사의 장점</h4>
+                    <ul>
+                        <li>싱가포르항공: 효율적인 운영, 높은 수익성</li>
+                        <li>캐세이퍼시픽: 프리미엄 브랜드 이미지</li>
+                        <li>에미레이츠: 동중부 유럽 거점</li>
+                        <li>터키항공: 유럽-아시아 중간점</li>
+                        <li>중국항공사: 비용 경쟁력</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>경쟁 전략</h3>
+            <p>한진칼은 대한항공-아시아나항공 합병을 통해 아시아 최대 항공사 그룹으로 성장한 만큼, 다음과 같은 전략으로 경쟁력을 강화할 것으로 예상됩니다:</p>
+            <ul>
+                <li><strong>네트워크 효율화:</strong> 중복 노선 정리 및 효율적 운항 배치로 비용 절감</li>
+                <li><strong>고객 통합:</strong> 마일리지, 라운지, 서비스 통합으로 고객 가치 극대화</li>
+                <li><strong>물류 시너지:</strong> 항공 화물과 택배 네트워크 연계로 물류 경쟁력 강화</li>
+                <li><strong>프리미엄 전략:</strong> 대한항공의 프리미엄 이미지와 진에어의 저가 모델 병행</li>
+                <li><strong>아시아 허브 강화:</strong> 인천공항 중심의 동아시아 허브 기능 강화</li>
+            </ul>
+        </section>
+
+        <!-- 5. SWOT분석 -->
+        <section id="swot">
+            <h2>5. SWOT분석</h2>
+
+            <div class="swot-grid">
+                <div class="swot-item strength">
+                    <div class="swot-label">강점 (Strengths)</div>
+                    <ul>
+                        <li>아시아 최대 규모 항공사 그룹 형성</li>
+                        <li>대한항공의 국제 신용도 및 안전도</li>
+                        <li>한진 택배 및 물류 네트워크</li>
+                        <li>인천공항 중심 동아시아 허브</li>
+                        <li>프리미엄 호텔 브랜드 포트폴리오</li>
+                        <li>MRO 정비 기술력</li>
+                    </ul>
+                </div>
+
+                <div class="swot-item weakness">
+                    <div class="swot-label">약점 (Weaknesses)</div>
+                    <ul>
+                        <li>대한항공-아시아나 합병 통합 비용</li>
+                        <li>구조조정으로 인한 단기 손실</li>
+                        <li>시스템 통합의 복잡성</li>
+                        <li>높은 유류비 의존도</li>
+                        <li>강한 원화의 환율 리스크</li>
+                        <li>노사 갈등 가능성</li>
+                    </ul>
+                </div>
+
+                <div class="swot-item opportunity">
+                    <div class="swot-label">기회 (Opportunities)</div>
+                    <ul>
+                        <li>항공 여객 수요 지속 회복</li>
+                        <li>항공 화물 운임 정상화</li>
+                        <li>전자상거래 물류 급증</li>
+                        <li>공급망 재편으로 인한 물류 수요</li>
+                        <li>프리미엄 여행 수요 증가</li>
+                        <li>동남아 시장 성장</li>
+                    </ul>
+                </div>
+
+                <div class="swot-item threat">
+                    <div class="swot-label">위협 (Threats)</div>
+                    <ul>
+                        <li>유가 급등 리스크</li>
+                        <li>글로벌 경기 침체 위험</li>
+                        <li>저가항공사의 경쟁 심화</li>
+                        <li>중국 항공사의 공격적 확장</li>
+                        <li>지정학적 긴장 및 운항경로 제약</li>
+                        <li>기후변화로 인한 탄소세</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 전략분석 -->
+        <section id="strategy">
+            <h2>6. 전략분석</h2>
+
+            <h3>단기 전략 (2026-2027)</h3>
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>통합 완료</h4>
+                    <p>대한항공-아시아나항공의 실질적 통합을 완료합니다. 마일리지 통합, AOC 단일화, 시스템 통합 등 핵심 과제를 2026년 하반기~2027년 상반기에 완료하여 비용 절감을 가속화합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>구조조정 최적화</h4>
+                    <p>중복 노선 정리, 중복 부서 통합, 인력 최적화 등을 통해 운영비를 절감합니다. 국제 경쟁사 수준의 비용 구조(CASK) 달성을 목표로 합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>물류 시너지</h4>
+                    <p>항공 화물과 한진 택배의 네트워크를 결합하여 종합 물류 서비스를 강화합니다. 국제 택배 및 크로스보더 이커머스 물류 시장 진출을 확대합니다.</p>
+                </div>
+                <div class="content-block">
+                    <h4>고객 통합</h4>
+                    <p>통합 디지털 플랫폼, 통합 마일리지 프로그램, 통합 고객서비스를 제공하여 고객 만족도를 높이고 로열티를 강화합니다.</p>
+                </div>
+            </div>
+
+            <h3>중기 전략 (2027-2029)</h3>
+            <ul>
+                <li><strong>수익성 개선:</strong> 합병 시너지 완전 실현으로 영업이익률 10% 이상 달성</li>
+                <li><strong>국제 경쟁력 강화:</strong> 유럽, 미주 노선 확대로 글로벌 항공사 순위 5위권 달성</li>
+                <li><strong>프리미엄 서비스:</strong> 프리미엄 여행객 수요 확대로 고마진 사업 비중 증대</li>
+                <li><strong>친환경 전환:</strong> SAF, 신형 항공기 도입 가속화로 탄소 감축 및 규제 대응</li>
+                <li><strong>물류 시장 선도:</strong> 동아시아 종합 물류 시장에서 선도 기업으로 위치</li>
+            </ul>
+
+            <h3>장기 전략 (2030~)</h3>
+            <ul>
+                <li><strong>메가 캐리어 확립:</strong> 세계 상위 5대 항공사 그룹으로 성장</li>
+                <li><strong>탄소 중립:</strong> 2050년 탄소 중립 달성을 위한 친환경 경영</li>
+                <li><strong>디지털 트랜스포메이션:</strong> AI, 자동화를 통한 완전한 디지털 항공 운송 시스템 구축</li>
+                <li><strong>종합 물류 플랫폼:</strong> 항공, 해운, 택배를 통합한 글로벌 물류 플랫폼 운영</li>
+                <li><strong>우주 물류 진출:</strong> 우주 산업 발전에 따른 우주 물류 시장 선점</li>
+            </ul>
+        </section>
+
+        <!-- 7. 재무분석 -->
+        <section id="financial">
+            <h2>7. 재무분석</h2>
+
+            <h3>2024년 재무 현황</h3>
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-label">매출액</div>
+                    <div class="metric-value">214.4M</div>
+                    <div class="metric-unit">USD (2024년 기준)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">전년 대비 성장</div>
+                    <div class="metric-value">+6%</div>
+                    <div class="metric-unit">2024년 vs 2023년</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">순이익률</div>
+                    <div class="metric-value">21.8%</div>
+                    <div class="metric-unit">Net Profit Margin</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">EBITDA</div>
+                    <div class="metric-value">11.60B</div>
+                    <div class="metric-unit">KRW, 3.48% 마진</div>
+                </div>
+            </div>
+
+            <h3>재무 성과 분석</h3>
+            <p>한진칼은 대한항공-아시아나항공 합병 완료 후 규모의 경제 달성을 통해 수익성 개선을 기대하고 있습니다. 2024년 기준 순이익률 21.8%는 높은 수준이나, 합병 통합 비용으로 인한 일시적 손실 가능성이 있습니다.</p>
+
+            <h3>주요 재무 지표 추이</h3>
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>매출액 추이</h4>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>2023년</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>2024년</span>
+                            <span>106%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 106%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>2025년 추정</span>
+                            <span>115%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 115%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h4>영업이익률 추이</h4>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>2023년</span>
+                            <span>7.5%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>2024년</span>
+                            <span>8.2%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>2025년 목표</span>
+                            <span>10%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>투자 포인트</h3>
+            <ul>
+                <li><strong>합병 시너지:</strong> 2025~2027년 동안 통합 완료로 비용 절감 및 수익 증대 기대</li>
+                <li><strong>수익성 개선:</strong> 항공 화물 운임 정상화로 항공사 이익률 개선</li>
+                <li><strong>배당 수익률:</strong> 대한항공의 배당 수익률 3~4% 수준으로 안정적 현금 흐름</li>
+                <li><strong>물류 성장:</strong> 한진 택배의 장기 성장성으로 안정적 수익원 확보</li>
+                <li><strong>자산 가치:</strong> 대한항공의 국제선 노선, 슬롯, 브랜드 등 무형자산의 높은 가치</li>
+            </ul>
+
+            <h3>리스크 요인</h3>
+            <ul>
+                <li><strong>합병 비용:</strong> 통합 과정에서 예상치 못한 비용 발생 가능성</li>
+                <li><strong>경기 침체:</strong> 글로벌 경기 둔화 시 여객 및 화물 수요 감소</li>
+                <li><strong>유류비 변동:</strong> 유가 급등 시 항공사 이익률 악화</li>
+                <li><strong>구조조정:</strong> 인력 감축 및 노사 갈등 가능성</li>
+                <li><strong>환율 리스크:</strong> 강한 원화는 수출 수익성 악화</li>
+            </ul>
+        </section>
+
+        <!-- 8. 결론 및 투자의견 -->
+        <section id="conclusion">
+            <h2>8. 결론 및 투자의견</h2>
+
+            <h3>종합 평가</h3>
+            <p>한진칼은 2024년 12월 대한항공의 아시아나항공 인수 완료로 아시아 최대 규모의 항공사 그룹으로 성장했습니다. 이는 글로벌 항공산업 재편 속에서 한국의 항공사 경쟁력을 크게 강화한 전략적 성과입니다. 향후 2027년까지의 통합 완료를 통해 규모의 경제 달성, 비용 절감, 수익성 개선을 기대할 수 있습니다.</p>
+
+            <h3>투자 포인트 요약</h3>
+            <div class="content-grid">
+                <div class="content-block">
+                    <h4>긍정 요인</h4>
+                    <ul>
+                        <li>아시아 항공 시장의 장기 성장성</li>
+                        <li>대한항공의 프리미엄 브랜드 가치</li>
+                        <li>한진 물류 네트워크와의 시너지</li>
+                        <li>항공 화물 운임 정상화</li>
+                        <li>국제선 허브 기능 강화</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h4>부정 요인</h4>
+                    <ul>
+                        <li>합병 통합 과정의 불확실성</li>
+                        <li>구조조정으로 인한 단기 손실</li>
+                        <li>높은 유류비 의존도</li>
+                        <li>경기 민감도 높음</li>
+                        <li>환율 리스크</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>재무 전망</h3>
+            <ul>
+                <li><strong>2026년 매출:</strong> 230~240조원 (합병 완전 포함)</li>
+                <li><strong>2026년 영업이익:</strong> 20~25조원 (영업이익률 8.5~10%)</li>
+                <li><strong>2027년 매출:</strong> 250~260조원</li>
+                <li><strong>2027년 영업이익:</strong> 25~30조원 (영업이익률 10~12%, 통합 완료)</li>
+            </ul>
+
+            <h3>투자의견</h3>
+            <p><strong style="color: var(--gold); font-size: 14px;">관심</strong> (HOLD to BUY)</p>
+            <p>한진칼은 대한항공-아시아나항공 합병으로 아시아 항공산업의 구도 변화를 주도하는 기업입니다. 단기적으로는 합병 통합 과정에서 예상하기 어려운 변수들이 있을 수 있으나, 중장기적으로는 아시아 항공 시장의 성장과 함께 수익성이 지속적으로 개선될 것으로 기대됩니다.</p>
+
+            <p>현재 주가 수준에서는 합병 시너지를 기대하는 투자자들에게 매력적인 선택이 될 수 있습니다. 특히 2026년 이후 실질적 통합 완료 시 영업이익률이 10% 이상으로 개선될 것으로 예상되므로, 중기 투자 관점에서 긍정적 평가를 할 수 있습니다.</p>
+
+            <h3>주의사항</h3>
+            <ul>
+                <li><strong>통합 진행 상황 모니터링:</strong> 마일리지 통합, AOC 단일화 등 핵심 통합 과제 진행 상황을 주시</li>
+                <li><strong>유가 및 환율 변동:</strong> 항공산업의 특성상 유가와 환율 변동의 영향이 크므로 관심 필요</li>
+                <li><strong>경기 사이클 주의:</strong> 항공산업은 경기에 민감하므로 글로벌 경기 전망 관심</li>
+                <li><strong>경영진 리더십:</strong> 조원태 회장의 리더십과 통합 전략 추진 능력 평가 필요</li>
+                <li><strong>동사 분할 가능성:</strong> 미래에 항공사와 물류 사업의 분리 가능성 고려</li>
+            </ul>
+
+            <h3>투자 목표 주가</h3>
+            <ul>
+                <li><strong>단기(6개월):</strong> 180,000원 (현재가 대비 +3.5%)</li>
+                <li><strong>중기(12개월):</strong> 210,000원 (현재가 대비 +21.4%)</li>
+                <li><strong>장기(24개월):</strong> 250,000원 (현재가 대비 +44.5%)</li>
+            </ul>
+
+            <p>위 목표 주가는 합병 통합 성공, 항공 여객 및 화물 수요 정상화, 영업이익률 개선 등을 가정한 것입니다. 실제 주가 변동은 이러한 변수들의 실현도에 따라 결정될 것입니다.</p>
+        </section>
+
+        <!-- Last Update Block -->
+        <div class="last-update" style="margin-left: 40px; margin-right: 40px;">
+            <span class="last-update-text">리포트 작성 및 분석 완료</span>
+            <span class="last-update-time">2026년 4월 14일 00:00 KST</span>
+        </div>
+    </main>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section, .metric-card, .content-block').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

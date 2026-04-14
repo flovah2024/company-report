@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLB(에이치엘비) 기업분석 보고서 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --gold: #c9a962;
+            --blue: #5c7d9e;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .header-logo span {
+            font-family: 'Orbit', sans-serif;
+            font-size: 18px;
+            color: var(--ink-strong);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex: 1;
+            margin-left: 3rem;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border-bottom: 1px solid var(--rule);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3rem;
+            color: var(--ink-strong);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero .description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+            background-color: var(--bg-deep);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--gold);
+            background-color: var(--bg-elevated);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbit', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        section h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            color: var(--ink-strong);
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+            min-width: 100px;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content p {
+            color: var(--text-body);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            color: var(--text-body);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Pipeline */
+        .pipeline-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .pipeline-card {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .pipeline-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .pipeline-title {
+            font-size: 13px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pipeline-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Competition Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background-color: var(--bg-elevated);
+            padding: 1rem;
+            text-align: left;
+            font-size: 12px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--rule);
+            color: var(--text-body);
+            font-size: 13px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* SWOT */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .swot-box {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 0;
+            padding: 2rem;
+        }
+
+        .swot-box.strength {
+            border-left: 4px solid #4caf50;
+        }
+
+        .swot-box.weakness {
+            border-left: 4px solid #f44336;
+        }
+
+        .swot-box.opportunity {
+            border-left: 4px solid var(--gold);
+        }
+
+        .swot-box.threat {
+            border-left: 4px solid #ff9800;
+        }
+
+        .swot-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .swot-box.strength .swot-title {
+            color: #4caf50;
+        }
+
+        .swot-box.weakness .swot-title {
+            color: #f44336;
+        }
+
+        .swot-box.opportunity .swot-title {
+            color: var(--gold);
+        }
+
+        .swot-box.threat .swot-title {
+            color: #ff9800;
+        }
+
+        .swot-list {
+            list-style: none;
+        }
+
+        .swot-list li {
+            color: var(--text-body);
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 13px;
+        }
+
+        .swot-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: inherit;
+        }
+
+        /* Financial */
+        .financial-bars {
+            margin-top: 2rem;
+        }
+
+        .bar-group {
+            margin-bottom: 2rem;
+        }
+
+        .bar-label {
+            font-size: 13px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-container {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            font-size: 12px;
+            color: var(--ink-strong);
+            font-weight: 700;
+            position: relative;
+        }
+
+        /* Conclusion */
+        .conclusion-box {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 0;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .conclusion-box h4 {
+            color: var(--gold);
+            font-size: 14px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .conclusion-box p {
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .opinion-badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--bg-deep);
+            padding: 0.5rem 1.5rem;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        /* Update Block */
+        .update-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0;
+            padding: 1.5rem;
+            margin: 3rem 2rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .update-block span {
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                margin-left: 1rem;
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            header {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="header-logo">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH Logo">
+            <span>FLOVAH</span>
+        </a>
+        <nav>
+            <a href="#overview">기업개요</a>
+            <a href="#technology">기술분석</a>
+            <a href="#market">시장분석</a>
+            <a href="#competition">경쟁사분석</a>
+            <a href="#swot">SWOT분석</a>
+            <a href="#strategy">전략분석</a>
+            <a href="#financial">재무분석</a>
+            <a href="#conclusion">결론및투자의견</a>
+        </nav>
+        <div class="header-date">2026년 4월 14일</div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="overview">
+            <h1>HLB</h1>
+            <p class="subtitle">HLB Inc. (에이치엘비)</p>
+            <p class="description">바이오 신약 개발에 특화된 제약 바이오 기업. 리보세라닙, 리라푸그라티닙 등 항암제 파이프라인으로 글로벌 시장 진출을 추진 중이며, CAR-T 기반 차세대 항암제 개발도 진행 중입니다.</p>
+        </section>
+
+        <!-- Key Metrics -->
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value">7.3조</div>
+                <div class="metric-label">시가총액 (2월 기준)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">028300</div>
+                <div class="metric-label">KOSPI 종목코드</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">54,900원</div>
+                <div class="metric-label">현재 주가 (4월 13일)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">-93.95억원</div>
+                <div class="metric-label">EBITDA</div>
+            </div>
+        </div>
+
+        <!-- Company Overview -->
+        <section>
+            <h2>1. 기업개요</h2>
+
+            <h3>기업 배경 및 역사</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1960년대</div>
+                    <div class="timeline-content">
+                        <p><strong>한올바이오파마 설립</strong></p>
+                        <p>국내 제약 산업의 선두주자로 출발</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2000년대</div>
+                    <div class="timeline-content">
+                        <p><strong>바이오 신약 개발 진출</strong></p>
+                        <p>전문의약품 중심에서 바이오 신약 개발로 확대</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2017년</div>
+                    <div class="timeline-content">
+                        <p><strong>스위스 로이반트와 기술 이전</strong></p>
+                        <p>자가면역질환 치료제 HL161 기술 수출 (50,250만 달러)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019년경</div>
+                    <div class="timeline-content">
+                        <p><strong>HLB 지주회사 체제 전환</strong></p>
+                        <p>HLB 그룹 내 각 자회사 독립화</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023년</div>
+                    <div class="timeline-content">
+                        <p><strong>리보세라닙 FDA 재신청</strong></p>
+                        <p>간암 치료제 FDA 승인 추진 본격화</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024년~2025년</div>
+                    <div class="timeline-content">
+                        <p><strong>FDA 심사 진행 중</strong></p>
+                        <p>리보세라닙 간암 치료제 FDA 허가 심사 최종 단계</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026년</div>
+                    <div class="timeline-content">
+                        <p><strong>FDA 승인 최종 판정 예상</strong></p>
+                        <p>3월~7월 사이 FDA 승인 예상</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>조직 구조 및 사업 구성</h3>
+            <div class="card">
+                <p><strong>HLB 그룹의 핵심 자회사:</strong></p>
+                <ul>
+                    <li><strong>HLB테라퓨틱스:</strong> 항암제 파이프라인 개발 (리보세라닙, 리라푸그라티닙)</li>
+                    <li><strong>HLB생명과학:</strong> 생명과학 연구 기반 신약 개발</li>
+                    <li><strong>HLB이노베이션:</strong> CAR-T 기반 차세대 항암제 플랫폼</li>
+                    <li><strong>한올바이오파마:</strong> 기존 전문의약품 및 복합제 판매</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>지주회사로서의 역할:</strong></p>
+                <ul>
+                    <li>자회사별 신약 개발 전략 수립</li>
+                    <li>글로벌 파트너십 및 라이선싱 관리</li>
+                    <li>자금 조달 및 투자 결정</li>
+                </ul>
+            </div>
+
+            <h3>2026년 재무현황</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>EBITDA:</strong> -93.95억원</li>
+                    <li><strong>EBITDA 마진:</strong> -111.62%</li>
+                    <li><strong>현황:</strong> 신약 개발 단계 진행으로 영업손실 지속</li>
+                    <li><strong>52주 주가 변동률:</strong> 36,150원~97,600원 (높은 변동성)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technology Analysis -->
+        <section id="technology">
+            <h2>2. 기술분석</h2>
+
+            <h3>핵심 파이프라인 약물</h3>
+            <div class="pipeline-features">
+                <div class="pipeline-card">
+                    <div class="pipeline-icon"><i class="fas fa-pills"></i></div>
+                    <div class="pipeline-title">리보세라닙 (Rivoceranib)</div>
+                    <div class="pipeline-desc">VEGFR2/FGFR1 다중 표적 저분자 저해제. 간암 1차 치료제로 캄렐리주맙 병용</div>
+                </div>
+                <div class="pipeline-card">
+                    <div class="pipeline-icon"><i class="fas fa-vial"></i></div>
+                    <div class="pipeline-title">리라푸그라티닙 (Lirafugratinib)</div>
+                    <div class="pipeline-desc">FGFR2 표적 치료제. 담관암 및 위암 적응증 추진</div>
+                </div>
+                <div class="pipeline-card">
+                    <div class="pipeline-icon"><i class="fas fa-dna"></i></div>
+                    <div class="pipeline-title">CAR-T 플랫폼</div>
+                    <div class="pipeline-desc">HLB이노베이션의 독자 기술. 차세대 항암제 개발</div>
+                </div>
+            </div>
+
+            <h3>리보세라닙 임상 성과</h3>
+            <div class="card">
+                <p><strong>임상 3상 결과 (전체생존기간, mOS):</strong></p>
+                <ul>
+                    <li>중앙값 23.8개월 달성</li>
+                    <li>현재 허가된 모든 간암 1차 치료제 중 가장 긴 생존기간</li>
+                    <li>기존 표준 치료제 (13~15개월)와 비교하여 획기적 개선</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>글로벌 임상 데이터:</strong></p>
+                <ul>
+                    <li>다국가 대규모 3상 임상시험 완료</li>
+                    <li>캄렐리주맙 (PD-L1 항체) 병용 요법</li>
+                    <li>안전성 프로파일 확인</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>FDA 현황:</strong></p>
+                <ul>
+                    <li>리보세라닙 NDA 제출 완료</li>
+                    <li>캄렐리주맙 BLA 제출 대기 중</li>
+                    <li>양쪽 모두 승인될 경우 병용 요법 승인 예상</li>
+                    <li>심사 기간: 클래스 1 기준 2개월, 클래스 2 기준 최대 6개월</li>
+                </ul>
+            </div>
+
+            <h3>리라푸그라티닙 (FGFR 표적 치료제)</h3>
+            <div class="card">
+                <p><strong>적응증 확대 전략:</strong></p>
+                <ul>
+                    <li><strong>담관암:</strong> FDA NDA 제출 준비 중</li>
+                    <li><strong>위암:</strong> 추가 임상 진행 예정</li>
+                    <li><strong>목표:</strong> 2027년 미국 시장 진출 (선낭암, 담관암, 위암)</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>NCCN 가이드라인 등재:</strong></p>
+                <ul>
+                    <li>선낭암에 대해 리라푸그라티닙 단독요법으로 NCCN 가이드라인 등재</li>
+                    <li>글로벌 임상의들의 인정으로 시장성 강화</li>
+                </ul>
+            </div>
+
+            <h3>CAR-T 기반 차세대 항암제</h3>
+            <div class="card">
+                <p><strong>HLB이노베이션의 독자 기술:</strong></p>
+                <ul>
+                    <li>CAR-T 플랫폼을 통한 맞춤형 항암제 개발</li>
+                    <li>다양한 암종 적응증 가능성</li>
+                    <li>현재 임상 단계에서 긍정적 결과 도출 중</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>성장 동력:</strong></p>
+                <ul>
+                    <li>2026년 임상 성과 지속 발표 예상</li>
+                    <li>기술적 우위와 차별성 강조</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Market Analysis -->
+        <section id="market">
+            <h2>3. 시장분석</h2>
+
+            <h3>간암 치료제 시장</h3>
+            <div class="card">
+                <p><strong>시장 규모:</strong></p>
+                <ul>
+                    <li>2023년: 약 29억 달러</li>
+                    <li>예상 CAGR: 11.8% (2024~2032)</li>
+                    <li>글로벌 간세포암 약물 시장: 2030년 19.5억 달러 전망</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>시장의 의료 필요성:</strong></p>
+                <ul>
+                    <li>전세계 간암 환자: 수백만 명</li>
+                    <li>기존 표준 치료: 중앙값 생존기간 13~15개월</li>
+                    <li>리보세라닙의 23.8개월: 획기적 개선</li>
+                    <li>프리미엄 가격 책정으로 시장 매력도 높음</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>경쟁 구도:</strong></p>
+                <ul>
+                    <li>현재 허가 약물: 소라페닙, 레니바닙 등</li>
+                    <li>리보세라닙의 최고 생존기간으로 포지셔닝</li>
+                    <li>글로벌 협력사(중국 항서제약)와의 파트너십</li>
+                </ul>
+            </div>
+
+            <h3>위암 치료제 시장</h3>
+            <div class="card">
+                <p><strong>시장 규모 및 성장:</strong></p>
+                <ul>
+                    <li>2024년: 약 60.7억 달러</li>
+                    <li>2032년 예상: 219.5억 달러</li>
+                    <li>연평균 성장률: 17.6%</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>리라푸그라티닙의 시장 기회:</strong></p>
+                <ul>
+                    <li>위암 적응증 확대로 추가 수익 기대</li>
+                    <li>높은 성장률의 시장으로 장기 성장성 우수</li>
+                </ul>
+            </div>
+
+            <h3>글로벌 항암제 시장</h3>
+            <div class="card">
+                <p><strong>전체 시장 규모:</strong></p>
+                <ul>
+                    <li>2026년: 약 3,000억 달러 이상</li>
+                    <li>연평균 성장률: 11%</li>
+                    <li>면역항암제 시장: 75조원 규모 (키트루다 57% 점유)</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>표적 항암제의 비중:</strong></p>
+                <ul>
+                    <li>소분자 표적 치료제 (TKI, 저해제) 수요 증가</li>
+                    <li>VEGFR, FGFR 등 새로운 표적 약물 부상</li>
+                    <li>리보세라닙, 리라푸그라티닙의 시장 진출 기회</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Competition Analysis -->
+        <section id="competition">
+            <h2>4. 경쟁사분석</h2>
+
+            <h3>간암 치료제 경쟁사</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>약물명</th>
+                        <th>개발사</th>
+                        <th>적응증</th>
+                        <th>생존기간(mOS)</th>
+                        <th>상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>리보세라닙+캄렐리주맙</strong></td>
+                        <td>HLB 외 항서제약</td>
+                        <td>간암 1차 치료</td>
+                        <td>23.8개월</td>
+                        <td>FDA 심사 중</td>
+                    </tr>
+                    <tr>
+                        <td>소라페닙</td>
+                        <td>바이엘</td>
+                        <td>간암</td>
+                        <td>10.7개월</td>
+                        <td>기 승인</td>
+                    </tr>
+                    <tr>
+                        <td>레니바닙</td>
+                        <td>릴리</td>
+                        <td>간암</td>
+                        <td>13.6개월</td>
+                        <td>기 승인</td>
+                    </tr>
+                    <tr>
+                        <td>티푸라닙</td>
+                        <td>화이자</td>
+                        <td>간암</td>
+                        <td>연구중</td>
+                        <td>개발 중</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>경쟁 우위 분석</h3>
+            <div class="card">
+                <p><strong>HLB의 경쟁 우위:</strong></p>
+                <ul>
+                    <li>리보세라닙 23.8개월: 기 승인 약물 중 최장 생존기간</li>
+                    <li>FDA 심사 최종 단계 진입</li>
+                    <li>캄렐리주맙 병용 요법의 신규성</li>
+                    <li>중국(항서제약) 파트너와 안정적 협력</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>경쟁 과제:</strong></p>
+                <ul>
+                    <li>FDA 승인 지연 시 시장 진출 지연</li>
+                    <li>기존 제약사(릴리, 바이엘, 화이자)의 강력한 경쟁</li>
+                    <li>리라푸그라티닙 등 추가 신약 필요</li>
+                </ul>
+            </div>
+
+            <h3>항암제 시장의 경쟁 동향</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>면역항암제 시장:</strong> 키트루다(머크) 독점 중, 신규 진입 어려움</li>
+                    <li><strong>표적 항암제 시장:</strong> 다양한 기업이 경쟁, VEGFR/FGFR 저해제 수요 증가</li>
+                    <li><strong>CAR-T 면역세포 치료:</strong> 길리어드, 노바티스, 블루버드 바이오 등 경쟁</li>
+                    <li><strong>HLB의 포지셔닝:</strong> 리보세라닙으로 간암 시장 첫 진입, 리라푸그라티닙으로 다중 적응증 확보</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SWOT Analysis -->
+        <section id="swot">
+            <h2>5. SWOT분석</h2>
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <div class="swot-title"><i class="fas fa-arrow-up"></i> 강점(Strength)</div>
+                    <ul class="swot-list">
+                        <li>리보세라닙 최고 생존기간 기록</li>
+                        <li>FDA 심사 최종 단계</li>
+                        <li>다중 파이프라인 (리라푸그라티닙, CAR-T)</li>
+                        <li>중국 시장 진출 기반 (항서제약)</li>
+                        <li>기술 이전료 수익 (HL161)</li>
+                    </ul>
+                </div>
+                <div class="swot-box weakness">
+                    <div class="swot-title"><i class="fas fa-arrow-down"></i> 약점(Weakness)</div>
+                    <ul class="swot-list">
+                        <li>높은 영업손실 지속</li>
+                        <li>FDA 승인 전 수익성 제로</li>
+                        <li>중소 기업 규모의 자본</li>
+                        <li>글로벌 제약사 대비 약한 마케팅</li>
+                        <li>주가 변동성 높음</li>
+                    </ul>
+                </div>
+                <div class="swot-box opportunity">
+                    <div class="swot-title"><i class="fas fa-star"></i> 기회(Opportunity)</div>
+                    <ul class="swot-list">
+                        <li>간암 치료제 시장 11.8% CAGR 성장</li>
+                        <li>위암 시장 17.6% 고성장</li>
+                        <li>FDA 승인 시 초기 독점 기간</li>
+                        <li>글로벌 제약사 인수 가능성</li>
+                        <li>추가 적응증 확대 기회</li>
+                    </ul>
+                </div>
+                <div class="swot-box threat">
+                    <div class="swot-title"><i class="fas fa-exclamation-triangle"></i> 위협(Threat)</div>
+                    <ul class="swot-list">
+                        <li>FDA 승인 지연 또는 불승인</li>
+                        <li>경쟁사 약물의 더 나은 임상 데이터</li>
+                        <li>캄렐리주맙 승인 지연 리스크</li>
+                        <li>글로벌 제약사의 신약 진출</li>
+                        <li>예상 외 임상 부작용 발생</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy Analysis -->
+        <section id="strategy">
+            <h2>6. 전략분석</h2>
+
+            <h3>파이프라인 맞춤 전략</h3>
+            <div class="card">
+                <p><strong>리보세라닙 간암 치료제 전략:</strong></p>
+                <ul>
+                    <li>FDA 승인 추진 (2026년 3월~7월 예상)</li>
+                    <li>유럽 EMA, 일본 PMDA 등 글로벌 승인 병행</li>
+                    <li>초기 시장에서 높은 가격 책정 및 프리미엄 포지셔닝</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>리라푸그라티닝 다중 적응증 확대:</strong></p>
+                <ul>
+                    <li>담관암: FDA NDA 제출 준비</li>
+                    <li>위암: 추가 임상 진행</li>
+                    <li>2027년까지 3개 암종 미국 시장 진입 목표</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>CAR-T 플랫폼 개발:</strong></p>
+                <ul>
+                    <li>HLB이노베이션을 통한 차세대 항암제 개발</li>
+                    <li>다양한 암종 적응증 개발</li>
+                    <li>글로벌 제약사와의 협력 기회</li>
+                </ul>
+            </div>
+
+            <h3>상업화 전략</h3>
+            <div class="card">
+                <p><strong>미국 시장 공략:</strong></p>
+                <ul>
+                    <li>FDA 승인 후 미국 판매사 선정 (in-licensing 또는 co-promotion)</li>
+                    <li>정형외과의, 종양내과 의료진 중심 의약정보활동</li>
+                    <li>환자 교육 및 접근성 프로그램</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>글로벌 파트너십:</strong></p>
+                <ul>
+                    <li>중국: 항서제약 (이미 협력 중)</li>
+                    <li>유럽: EMA 승인 후 현지 판매사 협력</li>
+                    <li>일본: 현지 대형 제약사와 라이선싱 검토</li>
+                </ul>
+            </div>
+
+            <h3>위험 관리 전략</h3>
+            <div class="card">
+                <ul>
+                    <li>FDA 승인 지연 시: 장기 자금 계획 수립</li>
+                    <li>임상 실패 시: 보조 임상 또는 추가 데이터 생성</li>
+                    <li>경쟁사 진입 시: 초기 진출 우위 극대화</li>
+                    <li>지적재산권: 글로벌 특허 보호 강화</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Financial Analysis -->
+        <section id="financial">
+            <h2>7. 재무분석</h2>
+
+            <h3>재무 현황 (2026년 4월)</h3>
+            <div class="card">
+                <p><strong>주요 재무 지표:</strong></p>
+                <ul>
+                    <li><strong>EBITDA:</strong> -93.95억원</li>
+                    <li><strong>EBITDA 마진:</strong> -111.62%</li>
+                    <li><strong>주가:</strong> 54,900원 (4월 13일)</li>
+                    <li><strong>시가총액:</strong> 약 7.3조원 (2월 기준)</li>
+                    <li><strong>52주 주가 범위:</strong> 36,150원~97,600원</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>주가 변동성:</strong></p>
+                <ul>
+                    <li>주간 변동률: +5.53%</li>
+                    <li>월간 변동률: +14.02%</li>
+                    <li>연간 변동률: -2.66%</li>
+                    <li>높은 변동성은 신약 개발 뉴스에 민감함을 의미</li>
+                </ul>
+            </div>
+
+            <div class="financial-bars">
+                <div class="bar-group">
+                    <div class="bar-label">시가총액 추이: 7.3조원 (2월)</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 80%;">7.3조원</div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label">영업손실 (추정 연간): 100억원 이상</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #f44336 0%, #ff7043 100%);">100억원+</div>
+                    </div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar-label">현금 유동성 (보유 현금성자산 추정)</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 60%; background: linear-gradient(90deg, var(--gold) 0%, var(--blue) 100%);">중간 수준</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>재무 전망</h3>
+            <div class="card">
+                <p><strong>단기 (2026~2027):</strong></p>
+                <ul>
+                    <li>지속적 영업손실 (신약 개발, FDA 승인 추진)</li>
+                    <li>FDA 승인 뉴스로 주가 급등 가능성</li>
+                    <li>기술이전료 수익 (HL161 등)</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>중기 (2028~2030):</strong></p>
+                <ul>
+                    <li>리보세라닙 판매 시작 (미국, 글로벌)</li>
+                    <li>리라푸그라티닙 추가 승인 및 판매</li>
+                    <li>손실 감소 및 흑자 전환 가능성</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>장기 (2031년 이후):</strong></p>
+                <ul>
+                    <li>글로벌 항암제 판매로 매출 급증</li>
+                    <li>순이익 창출 및 배당 가능성</li>
+                    <li>시가총액 대폭 상승 기대</li>
+                </ul>
+            </div>
+
+            <h3>자본 조달 및 투자 전망</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>주식 공모:</strong> 필요 시 자본 조달 가능 (현재 시가총액 7.3조원)</li>
+                    <li><strong>기술료 수익:</strong> 스위스 로이반트로부터 기술이전료, 추가 협력 기대</li>
+                    <li><strong>전략적 제휴:</strong> 글로벌 제약사와 라이선싱, co-development 가능성</li>
+                    <li><strong>M&A:</strong> 성공적 신약 개발 시 대형 제약사의 인수 가능성</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>8. 결론 및 투자의견</h2>
+
+            <h3>투자 평가 요약</h3>
+            <div class="conclusion-box">
+                <h4>투자 관점</h4>
+                <p>HLB는 간암 치료제 리보세라닙으로 FDA 승인 최종 심사 단계에 진입했습니다. 현재 허가된 약물 중 최고 생존기간(23.8개월)을 기록하고 있어 승인 시 상당한 시장 점유 가능성이 있습니다. 리라푸그라티닝의 다중 적응증 확대와 CAR-T 기반 차세대 항암제 개발도 장기 성장 동력입니다.</p>
+                <p>다만 현재는 신약 개발 단계로 수익성이 없고, FDA 승인 결과에 따라 주가가 급변동할 수 있습니다. 높은 기술력과 글로벌 파트너십(항서제약)을 바탕으로 한 장기 성장 잠재력이 있으나, 규제 리스크와 임상 불확실성을 감안해야 합니다.</p>
+            </div>
+
+            <h3>투자 의견</h3>
+            <div class="card">
+                <p><strong>등급:</strong> BUY (장기 성장주, 높은 보상/위험 비율)</p>
+                <p><strong>목표 주가:</strong> FDA 승인 시 현재(54,900원) 대비 2~4배 상승 잠재력 (109,800원~219,600원)</p>
+                <p><strong>추천 투자자:</strong> 신약 개발 기업의 높은 위험 수용 가능한 투자자, 바이오 산업 이해도 높은 투자자</p>
+                <p><strong>주의 사항:</strong> FDA 승인 여부가 가장 중요한 변수. 승인 불발 시 대폭 하락 가능</p>
+            </div>
+
+            <h3>향후 주요 모니터링 포인트</h3>
+            <div class="card">
+                <ul>
+                    <li><strong>2026년 3월~7월:</strong> FDA 리보세라닙 최종 판정 (예상)</li>
+                    <li><strong>2026년~2027년:</strong> 리라푸그라티닙 임상 진행 상황</li>
+                    <li><strong>2027년 이후:</strong> 리보세라닙 상업화 및 매출 실적</li>
+                    <li><strong>지속 모니터링:</strong> CAR-T 플랫폼 임상 데이터, 글로벌 협력 소식</li>
+                    <li><strong>주가 변동성:</strong> 주요 뉴스 발표 시점에 급등락 가능</li>
+                </ul>
+            </div>
+
+            <h3>비교 평가</h3>
+            <div class="card">
+                <p><strong>vs. 코오롱티슈진:</strong> HLB는 더 진행된 임상 단계(FDA 심사 중)이지만, 골관절염과 간암이라는 다른 시장을 겨냥하고 있음. 간암 시장의 높은 성장률이 HLB에 유리.</p>
+                <p><strong>vs. 글로벌 제약사:</strong> 시가총액은 작지만 리보세라닙의 최고 임상 성과로 경쟁 가능. 승인 후 글로벌 제약사의 인수 대상이 될 가능성.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="update-block">
+        <span>최종 업데이트: 2026년 4월 14일 09:00 UTC</span><br>
+        <span>본 보고서는 공개 정보 기반 분석이며, 투자 권유가 아닙니다.</span>
+    </div>
+
+    <script>
+        // Smooth scroll behavior for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, .card, .metric-card').forEach(el => {
+            el.style.opacity = '0.95';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

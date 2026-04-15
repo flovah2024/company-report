@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대웅제약 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 16, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+    <main>
+<section id="overview">
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">대웅제약<span class="hero-title-highlight">기업 종합 분석</span></h1>
+            <p class="hero-subtitle">보톡스 나보타·위식도역류제 펙수클루 글로벌 공략. 국내 제약사 해외진출 선두주자</p>
+            <div style="text-align: center;">
+                <div class="ai-score-badge">
+                    <div class="score-circle">75</div>
+                    <div style="flex: 1;">
+                        <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                        <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                    </div>
+                </div>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value">1.5조</div><div class="metric-label">2025 연 매출</div></div>
+                <div class="metric-card"><div class="metric-value">2.3조+</div><div class="metric-label">시가총액</div></div>
+                <div class="metric-card"><div class="metric-value">1,800+</div><div class="metric-label">임직원수</div></div>
+                <div class="metric-card"><div class="metric-value">80개국+</div><div class="metric-label">나보타 수출국</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="content-card">
+        <h3><i class="fas fa-building"></i> 대웅제약 기업 소개</h3>
+        <p>대웅제약은 1945년 설립된 국내 대표 제약사로 지주사 대웅 산하 핵심 자회사입니다. 2025년 연결 기준 매출 1조 5천억원, 영업이익 1,800억원을 달성하며 3년 연속 두 자릿수 성장을 이어가고 있습니다. 보툴리눔 톡신 '나보타', P-CAB 계열 위식도역류 치료제 '펙수클루', SGLT-2 계열 당뇨병 치료제 '엔블로' 등 자체 개발 신약의 글로벌 시장 진출이 성장을 견인하고 있습니다.</p>
+        <p>사업 포트폴리오는 처방약(ETC) 65%, 일반약(OTC) 15%, 수출·바이오 20% 구조입니다. 특히 나보타는 2025년 기준 미국·유럽·중남미 등 80여 개국에 수출되며 연 매출 2,500억원을 돌파한 글로벌 블록버스터로 자리잡았습니다. 대웅제약은 국내 제약사 중 해외 사업 비중이 가장 빠르게 확대되는 회사로, 신약개발 역량과 글로벌 마케팅 역량의 균형을 갖췄다는 평가를 받고 있습니다.</p>
+    </div>
+    <div class="content-card">
+        <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+        <div class="timeline"><div class="timeline-item"><div class="timeline-year">1945년</div><div class="timeline-text">대웅제약 설립</div></div><div class="timeline-item"><div class="timeline-year">2002년</div><div class="timeline-text">지주회사 체제 전환</div></div><div class="timeline-item"><div class="timeline-year">2014년</div><div class="timeline-text">나보타 미국 임상 3상 완료</div></div><div class="timeline-item"><div class="timeline-year">2019년</div><div class="timeline-text">美 FDA 나보타(Jeuveau) 승인 - 국내 바이오 신약 FDA 허가</div></div><div class="timeline-item"><div class="timeline-year">2022년</div><div class="timeline-text">펙수클루 국내 출시 - 자체 개발 P-CAB 신약</div></div><div class="timeline-item"><div class="timeline-year">2023년</div><div class="timeline-text">엔블로 출시 - 국산 SGLT-2 신약</div></div><div class="timeline-item"><div class="timeline-year">2024년</div><div class="timeline-text">펙수클루·엔블로 동시 해외 출시 본격화</div></div><div class="timeline-item"><div class="timeline-year">2025년</div><div class="timeline-text">연매출 1.5조원 돌파 - 3년 연속 두 자릿수 성장</div></div></div>
+    </div>
+</section><div class="section-divider"><div class="section-divider-text">기술 분석</div></div>
+<section id="technology"><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 보툴리눔 톡신 기술</h3>
+            <p>대웅제약의 나보타(Nabota)는 자체 개발 보툴리눔 톡신 균주(CBFC26)를 기반으로 한 국내 유일의 순수 국산 보툴리눔 톡신입니다. 미국 FDA, 유럽 EMA, 브라질 ANVISA 등 주요 규제기관 승인을 받아 세계 80여 개국에 수출되고 있으며, 메디톡스와의 균주 분쟁에서 2023년 최종 승소하며 글로벌 사업 확장의 법적 리스크를 해소했습니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> P-CAB 신약 플랫폼</h3>
+            <p>펙수클루(성분명 펙수프라잔)는 P-CAB(Potassium-Competitive Acid Blocker) 계열 위식도역류 치료제로 기존 PPI 약제 대비 빠른 효과와 긴 지속시간이 강점입니다. 중국·중남미·필리핀 등에서 허가를 확대 중이며, 2030년까지 연매출 1조원 블록버스터로 성장시킬 계획입니다. P-CAB 계열은 HK이노엔의 케이캡과 국내외에서 경쟁하고 있습니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> AI 신약개발 역량</h3>
+            <p>대웅제약은 2022년 AI 신약개발 전담 조직을 신설하고 국내외 AI 기반 신약개발 기업과 파트너십을 확대하고 있습니다. 2024년 '대웅-스탠다임' 공동 프로젝트로 AI로 발굴한 신약 후보물질이 전임상 단계에 진입했습니다. 또한 메타버스 기반 임상시험 플랫폼 도입으로 임상 효율성을 높이고 있습니다.</p>
+        </div></section><div class="section-divider"><div class="section-divider-text">시장 분석</div></div>
+<section id="market"><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 글로벌 보툴리눔 시장</h3>
+            <p>세계 보툴리눔 톡신 시장은 2025년 약 85억 달러 규모로 연 10% 성장 중입니다. 엘러간의 보톡스가 1위, 멘츠의 제오민, 대웅 나보타가 3위권 경쟁 구도를 형성하고 있습니다. 나보타는 미국 시장 점유율 12% 수준으로 성장했으며 미용 시장뿐 아니라 치료용 시장으로 확장을 추진 중입니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 글로벌 P-CAB 시장</h3>
+            <p>P-CAB 계열 위식도역류 치료제는 2030년까지 연 5조원 규모 시장으로 성장할 전망입니다. 일본 다케다의 보노프라잔, HK이노엔의 케이캡과 대웅 펙수클루가 주요 경쟁 제품이며, 미국·유럽 진출이 향후 판도를 결정할 주요 변수입니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 국산 신약 수출 확대</h3>
+            <p>대웅제약은 2024년 총 수출액 4,200억원으로 국내 제약사 중 상위권을 차지했으며, 매출 대비 해외 비중은 28%에 달합니다. 중남미·동남아·중동 등 신흥시장에서 파트너사와의 공동 마케팅을 강화하며 선진국 시장은 직접 판매 체제를 확대하는 투트랙 전략을 구사하고 있습니다.</p>
+        </div></section><div class="section-divider"><div class="section-divider-text">경쟁사 분석</div></div>
+<section id="competitors"><div class="content-card">
+    <h3><i class="fas fa-chess"></i> 주요 경쟁사 비교</h3>
+    <table style="width:100%;border-collapse:collapse;margin-top:16px;">
+        <thead><tr style="background:var(--bg-elevated);">
+            <th style="padding:12px 16px;text-align:left;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--border);">기업</th>
+            <th style="padding:12px 16px;text-align:left;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--border);">차별화 포인트</th>
+            <th style="padding:12px 16px;text-align:left;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--border);">경쟁 포지션</th>
+        </tr></thead><tbody style="color:var(--text-body);font-size:14px;line-height:1.7;">
+        <tr><td style="font-weight:600;color:var(--ink);">메디톡스</td><td>국내 톡신 시장 점유율 높고 균주 분쟁 이력</td><td><span style="color:var(--gold);font-weight:600;">톡신 경쟁</span></td></tr><tr><td style="font-weight:600;color:var(--ink);">HK이노엔</td><td>P-CAB 계열 케이캡으로 국내 1위</td><td><span style="color:var(--gold);font-weight:600;">P-CAB 시장 경쟁</span></td></tr><tr><td style="font-weight:600;color:var(--ink);">종근당</td><td>내수 처방 1위, 유사 신약 파이프라인</td><td><span style="color:var(--gold);font-weight:600;">국내 ETC 경쟁</span></td></tr><tr><td style="font-weight:600;color:var(--ink);">엘러간(애브비)</td><td>글로벌 보톡스 1위</td><td><span style="color:var(--gold);font-weight:600;">해외 미용 시장</span></td></tr></tbody></table>
+</div></section><div class="section-divider"><div class="section-divider-text">SWOT 분석</div></div>
+<section id="swot"><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div class="content-card">
+            <h3 style="color:var(--gold);"><i class="fas fa-check-circle"></i> Strengths (강점)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 나보타 글로벌 80개국 진출</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 펙수클루·엔블로 등 국산 신약 보유</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 해외 매출 비중 28%</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 메디톡스 분쟁 승소로 법적 리스크 해소</li></ul>
+        </div>
+        <div class="content-card">
+            <h3 style="color:var(--blue);"><i class="fas fa-check-circle"></i> Weaknesses (약점)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 신약 R&D 파이프라인 중간 단계 부족</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 미국 직판 체제 구축 중</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 지주사 구조 복잡성</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 내수 약가 압박</li></ul>
+        </div>
+        <div class="content-card">
+            <h3 style="color:var(--gold-light);"><i class="fas fa-check-circle"></i> Opportunities (기회)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 글로벌 P-CAB 시장 급성장</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 보툴리눔 치료용 적응증 확대</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 미용·리제너러티브 의료 시장 확대</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 동남아 신흥시장 진출</li></ul>
+        </div>
+        <div class="content-card">
+            <h3 style="color:var(--blue-dim);"><i class="fas fa-check-circle"></i> Threats (위협)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 글로벌 톡신 경쟁 심화</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 원료 공급망 리스크</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 환율 변동</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 신약 허가 지연</li></ul>
+        </div>
+    </div></section><div class="section-divider"><div class="section-divider-text">전략 분석</div></div>
+<section id="strategy"><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 글로벌 블록버스터 육성</h3>
+            <p>나보타·펙수클루·엔블로 3대 신약의 글로벌 매출을 2030년 연 1조원 수준으로 끌어올리는 '3-Block' 전략을 추진합니다. 나보타는 미국 치료용 시장 진출로 시장 확대를 노리고, 펙수클루는 중국·유럽 허가 확대, 엔블로는 중남미 진출을 가속화합니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 해외 현지화 확대</h3>
+            <p>미국 자회사 Evolus를 통한 직판 체제를 강화하고 중국 법인을 설립해 현지 임상·허가·마케팅 전주기를 자체 수행합니다. 2026년까지 해외 매출 비중 40% 도달을 목표로 합니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> AI·디지털 혁신</h3>
+            <p>신약 후보물질 발굴에 AI를 적극 활용하고 디지털 마케팅 플랫폼을 구축해 의사 대상 DTC(Direct to Customer) 마케팅을 고도화합니다. 또한 데이터 기반 영업 체계로 전환해 효율성을 제고합니다.</p>
+        </div></section><div class="section-divider"><div class="section-divider-text">재무 분석</div></div>
+<section id="finance"><div class="content-card"><h3><i class="fas fa-chart-line"></i> 2025 재무 성과 요약</h3><p>2025년 매출 1조 5,000억원(+12%), 영업이익 1,800억원(+25%), 영업이익률 12% 수준으로 수익성도 개선 추세입니다. 나보타 수출 호조가 핵심 성장 동력이었으며 해외 사업 비중 확대로 이익률이 구조적으로 상승하고 있습니다. 순현금 기조를 유지하며 재무구조는 우수합니다.</p></div>
+    <div class="content-card"><h3><i class="fas fa-chart-bar"></i> 주요 재무 지표</h3><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">매출액 (2025)</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">1.5조</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:38%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">영업이익률</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">12%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:60%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">수출 비중</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">28%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:56%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">R&D 투자율</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">14%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:70%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">부채비율</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">60%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:30%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div></div></section><div class="section-divider"><div class="section-divider-text">결론 및 투자 의견</div></div>
+<section id="conclusion">
+    <div class="content-card">
+        <h3><i class="fas fa-flag-checkered"></i> 종합 결론</h3>
+        <p>대웅제약은 국내 제약사 중 글로벌 신약 상업화 측면에서 가장 앞서 있는 회사로 평가됩니다. 나보타의 안정적 성장과 펙수클루·엔블로의 해외 진출이 본격화되는 2026~2027년 실적이 주가 모멘텀의 핵심입니다. 다만 글로벌 경쟁 심화와 직판 체제 구축 비용 부담은 단기 이익률 압박 요인입니다.</p>
+    </div>
+    <div class="content-card" style="border:1px solid var(--gold);">
+        <h3 style="color:var(--gold);"><i class="fas fa-bullseye"></i> FLOVAH 투자 의견</h3>
+        <p style="color:var(--ink-strong);font-size:16px;line-height:1.8;">긍정적 (Positive). 글로벌 신약 상업화 속도와 해외 매출 비중 확대 추세 견조. 펙수클루 중국 허가 시 강한 주가 모멘텀 예상. 분할 매수 권장.</p>
+        <p style="color:var(--text-muted);font-size:12px;margin-top:16px;border-top:1px solid var(--border);padding-top:12px;">※ 본 리포트는 투자 참고 자료이며, 투자 판단의 책임은 투자자 본인에게 있습니다. FLOVAH Insights는 리서치 및 정보 제공 목적으로 작성됩니다.</p>
+    </div>
+</section></main>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 16일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

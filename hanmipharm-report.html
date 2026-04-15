@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한미약품 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 16, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+    <main>
+<section id="overview">
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">한미약품<span class="hero-title-highlight">기업 종합 분석</span></h1>
+            <p class="hero-subtitle">국내 대표 R&D 중심 제약사. 롤베돈·에페글레나타이드 등 글로벌 라이선싱 신약 다수 보유</p>
+            <div style="text-align: center;">
+                <div class="ai-score-badge">
+                    <div class="score-circle">78</div>
+                    <div style="flex: 1;">
+                        <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                        <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                    </div>
+                </div>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value">1.6조</div><div class="metric-label">2025 연 매출</div></div>
+                <div class="metric-card"><div class="metric-value">4.5조+</div><div class="metric-label">시가총액</div></div>
+                <div class="metric-card"><div class="metric-value">2,400+</div><div class="metric-label">임직원수</div></div>
+                <div class="metric-card"><div class="metric-value">17%</div><div class="metric-label">R&D 투자비중</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="content-card">
+        <h3><i class="fas fa-building"></i> 한미약품 기업 소개</h3>
+        <p>한미약품은 1973년 한미약품공업으로 설립된 한국 대표 연구중심 제약사입니다. 2025년 연결 기준 매출 1조 6천억원, 영업이익 2,400억원 수준으로 국내 상위 제약사 중 R&D 투자비율이 가장 높은 회사입니다. 지주사 한미사이언스를 중심으로 한 한미약품그룹의 핵심 자회사이며, 비만치료제 에페글레나타이드, 호중구 감소증 치료제 롤베돈, 항암제 포지오티닙 등 글로벌 수준의 신약 파이프라인을 보유하고 있습니다.</p>
+        <p>사업 포트폴리오는 전문의약품(ETC)이 매출의 약 85%를 차지하며 일반의약품(OTC)과 수출이 나머지를 구성합니다. 로수젯(고지혈증), 아모잘탄(고혈압), 에소메졸(위장약) 등 연매출 1,000억원 이상 블록버스터 제품 8개를 보유한 제품 경쟁력을 바탕으로 안정적 현금흐름을 창출하고 있습니다. 2023~2024년 오너가 경영권 분쟁 이슈가 있었으나 2025년 박재현 대표 체제로 정리되면서 경영 안정성을 회복했습니다. 글로벌 빅파마와의 라이선스 계약 및 공동개발이 성장 축입니다.</p>
+    </div>
+    <div class="content-card">
+        <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+        <div class="timeline"><div class="timeline-item"><div class="timeline-year">1973년</div><div class="timeline-text">한미약품공업 설립 - 창업자 임성기 회장</div></div><div class="timeline-item"><div class="timeline-year">1989년</div><div class="timeline-text">한미약품으로 사명 변경</div></div><div class="timeline-item"><div class="timeline-year">2010년</div><div class="timeline-text">로수젯 출시 - 국내 대표 블록버스터 탄생</div></div><div class="timeline-item"><div class="timeline-year">2015년</div><div class="timeline-text">사노피·얀센에 신약 5조원 대 기술수출</div></div><div class="timeline-item"><div class="timeline-year">2018년</div><div class="timeline-text">스펙트럼에 롤베돈 기술수출 - 美 FDA 승인</div></div><div class="timeline-item"><div class="timeline-year">2020년</div><div class="timeline-text">창업자 임성기 회장 별세</div></div><div class="timeline-item"><div class="timeline-year">2022년</div><div class="timeline-text">오너 3세 경영 본격화</div></div><div class="timeline-item"><div class="timeline-year">2024년</div><div class="timeline-text">형제의 난 - OCI그룹과의 통합 무산</div></div><div class="timeline-item"><div class="timeline-year">2025년</div><div class="timeline-text">박재현 대표 체제 정리 - 신약 파이프라인 재정비</div></div></div>
+    </div>
+</section><div class="section-divider"><div class="section-divider-text">기술 분석</div></div>
+<section id="technology"><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> LAPSCOVERY 플랫폼</h3>
+            <p>한미약품의 독자 약물전달 플랫폼 LAPSCOVERY는 바이오의약품의 반감기를 늘려 투여 주기를 일주일~한 달로 연장하는 기술입니다. 이 플랫폼을 기반으로 에페글레나타이드(당뇨·비만), 에페페그라데스페라타이드(호중구감소증), 에페소말로이드(희귀병) 등 다수 신약을 개발했습니다. 매주 혹은 매달 투여하는 편의성은 GLP-1 비만치료제 시장에서 중요한 차별점입니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> ORASCOVERY 경구용 플랫폼</h3>
+            <p>정맥 주사용 항암제를 경구용으로 전환하는 플랫폼 기술로, 파트너사 아테넥스를 통해 오락시루(Oral Paclitaxel) 등을 개발 중입니다. 경구 투여가 가능한 항암제는 환자 편의성과 의료비 절감 측면에서 강점이 있으며, 미국·유럽 임상을 활발히 진행하고 있습니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> AI 신약개발 가속</h3>
+            <p>한미약품은 2023년부터 자체 AI 신약개발 플랫폼 'HOLISTIC'을 구축해 신약 후보물질 탐색에 AI를 도입했습니다. 서울대, 카이스트 등과의 산학협력으로 딥러닝 기반 약물설계를 고도화하고 있으며, 이를 통해 후보물질 발굴 기간을 기존 대비 40% 단축했다고 공표했습니다. 신약개발 전주기 디지털화는 글로벌 경쟁력의 핵심 축입니다.</p>
+        </div></section><div class="section-divider"><div class="section-divider-text">시장 분석</div></div>
+<section id="market"><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 국내 의약품 시장</h3>
+            <p>국내 의약품 시장 규모는 2025년 약 30조원으로 고령화에 따라 연 5~6% 안정적 성장 중입니다. 한미약품은 유한양행, GC녹십자, 종근당과 함께 국내 제약 빅4로 분류되며, 로수젯·아모잘탄·에소메졸 등 블록버스터 제품 포트폴리오로 ETC 시장에서 상위권을 유지합니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 글로벌 비만치료제 시장</h3>
+            <p>노보노디스크의 위고비와 일라이릴리의 젭바운드로 촉발된 GLP-1 비만치료제 시장은 2030년 1,500억 달러 규모로 전망됩니다. 한미약품의 에페글레나타이드는 국내 임상 3상을 완료하고 2026년 출시를 목표로 하며, 주사 주기가 긴 차별성과 가격 경쟁력을 강점으로 내세울 계획입니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 항암제 파이프라인</h3>
+            <p>포지오티닙(HER2 돌연변이 비소세포폐암)은 2022년 미국 FDA 거절 이후 재임상을 진행 중입니다. 벨바라페닙(BRAF 돌연변이 흑색종), 오락솔(경구용 파클리탁셀) 등 다수 항암 신약을 개발 중이며, 글로벌 빅파마와의 공동개발·라이선스아웃 가능성이 주가 상승 모멘텀입니다.</p>
+        </div></section><div class="section-divider"><div class="section-divider-text">경쟁사 분석</div></div>
+<section id="competitors"><div class="content-card">
+    <h3><i class="fas fa-chess"></i> 주요 경쟁사 비교</h3>
+    <table style="width:100%;border-collapse:collapse;margin-top:16px;">
+        <thead><tr style="background:var(--bg-elevated);">
+            <th style="padding:12px 16px;text-align:left;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--border);">기업</th>
+            <th style="padding:12px 16px;text-align:left;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--border);">차별화 포인트</th>
+            <th style="padding:12px 16px;text-align:left;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--border);">경쟁 포지션</th>
+        </tr></thead><tbody style="color:var(--text-body);font-size:14px;line-height:1.7;">
+        <tr><td style="font-weight:600;color:var(--ink);">유한양행</td><td>렉라자 레이저티닙 FDA 승인으로 글로벌 신약 보유</td><td><span style="color:var(--gold);font-weight:600;">폐암 신약 경쟁</span></td></tr><tr><td style="font-weight:600;color:var(--ink);">GC녹십자</td><td>혈액제제·백신 중심, 글로벌 확장 적극적</td><td><span style="color:var(--gold);font-weight:600;">전통 제약 강자</span></td></tr><tr><td style="font-weight:600;color:var(--ink);">종근당</td><td>케이캡 등 개량신약 강점, 국내 처방 1위</td><td><span style="color:var(--gold);font-weight:600;">내수 경쟁</span></td></tr><tr><td style="font-weight:600;color:var(--ink);">대웅제약</td><td>나보타·펙수클루 등 해외 공략 가속</td><td><span style="color:var(--gold);font-weight:600;">신약 파이프라인 경쟁</span></td></tr></tbody></table>
+</div></section><div class="section-divider"><div class="section-divider-text">SWOT 분석</div></div>
+<section id="swot"><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div class="content-card">
+            <h3 style="color:var(--gold);"><i class="fas fa-check-circle"></i> Strengths (강점)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 국내 최고 수준의 R&D 투자비율 (17%)</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• LAPSCOVERY 등 독자 플랫폼 기술</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 8개 블록버스터 제품 포트폴리오</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 글로벌 빅파마 네트워크</li></ul>
+        </div>
+        <div class="content-card">
+            <h3 style="color:var(--blue);"><i class="fas fa-check-circle"></i> Weaknesses (약점)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 오너 리스크 및 경영권 이슈 잔존</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 주요 신약 기술수출 반환 이력</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 해외 매출 비중 20% 미만</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 지주사 지배구조 복잡성</li></ul>
+        </div>
+        <div class="content-card">
+            <h3 style="color:var(--gold-light);"><i class="fas fa-check-circle"></i> Opportunities (기회)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• GLP-1 비만치료제 시장 폭발적 성장</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• AI 신약개발 효율화</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 경구용 항암제 차별화</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 아시아 제네릭 시장 확대</li></ul>
+        </div>
+        <div class="content-card">
+            <h3 style="color:var(--blue-dim);"><i class="fas fa-check-circle"></i> Threats (위협)</h3>
+            <ul style="list-style:none;padding:0;"><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 글로벌 빅파마와의 임상 경쟁</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 신약 허가 지연 리스크</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 국내 약가 인하 압박</li><li style="padding:8px 0;border-bottom:1px dashed var(--border);color:var(--text-body);">• 원료의약품 원가 상승</li></ul>
+        </div>
+    </div></section><div class="section-divider"><div class="section-divider-text">전략 분석</div></div>
+<section id="strategy"><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 파이프라인 재구축</h3>
+            <p>2025년 박재현 대표 취임 후 선택과 집중 기조 하에 개발 단계가 앞선 에페글레나타이드·롤베돈 적응증 확대·오락솔에 자원을 집중하고 있습니다. 조기 단계 후보물질은 파트너링을 통해 공동개발하는 자본 효율적 전략을 채택했습니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> 글로벌 파트너십 강화</h3>
+            <p>비만치료제 에페글레나타이드의 글로벌 상업화를 위해 다국적 제약사와 라이선스 협상을 진행 중이며, 2026년 내 계약 체결을 목표로 합니다. 이미 MSD·얀센·사노피 등과의 파트너링 경험을 바탕으로 딜 구조화 역량을 갖추고 있습니다.</p>
+        </div><div class="content-card">
+            <h3><i class="fas fa-circle-check"></i> AI·디지털 전환</h3>
+            <p>신약개발 전주기의 디지털 전환을 위해 AI 약물설계, 임상 데이터 분석, 디지털 마케팅 역량을 강화하고 있습니다. 2025년 IT 투자 규모는 약 500억원으로 전년 대비 30% 증액되었습니다.</p>
+        </div></section><div class="section-divider"><div class="section-divider-text">재무 분석</div></div>
+<section id="finance"><div class="content-card"><h3><i class="fas fa-chart-line"></i> 2025 재무 성과 요약</h3><p>2025년 연결 매출 1조 6,200억원(+7.5%), 영업이익 2,400억원(+18%), 당기순이익 1,850억원으로 3년 연속 성장세를 유지했습니다. 블록버스터 제품 호조와 수출 회복으로 실적이 개선되었고, R&D 투자는 연간 2,750억원 규모(매출 대비 17%)로 국내 제약사 최고 수준을 유지했습니다. 순현금 기조로 재무구조는 견고합니다.</p></div>
+    <div class="content-card"><h3><i class="fas fa-chart-bar"></i> 주요 재무 지표</h3><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">매출액 (2025)</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">1.62조</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:40%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">영업이익률</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">14.8%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:70%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">R&D 투자율</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">17%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:85%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">수출 비중</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">22%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:44%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div><div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:var(--text-body);font-size:14px;font-weight:500;">부채비율</span>
+                <span style="color:var(--gold);font-size:14px;font-weight:700;">45%</span>
+            </div>
+            <div style="height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;">
+                <div class="progress-bar-fill" style="height:100%;width:23%;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 100%);border-radius:4px;"></div>
+            </div>
+        </div></div></section><div class="section-divider"><div class="section-divider-text">결론 및 투자 의견</div></div>
+<section id="conclusion">
+    <div class="content-card">
+        <h3><i class="fas fa-flag-checkered"></i> 종합 결론</h3>
+        <p>한미약품은 국내 최상위권 R&D 경쟁력과 견고한 블록버스터 제품 포트폴리오를 동시에 갖춘 균형 잡힌 제약사입니다. 경영권 분쟁 이슈가 정리되면서 2025년부터 본격적인 파이프라인 가치 재평가 국면에 진입했습니다. 에페글레나타이드의 글로벌 라이선스아웃 성공 여부가 2026~2027년 최대 변수이며, 성공 시 주가의 큰 폭 상승이 기대됩니다.</p>
+    </div>
+    <div class="content-card" style="border:1px solid var(--gold);">
+        <h3 style="color:var(--gold);"><i class="fas fa-bullseye"></i> FLOVAH 투자 의견</h3>
+        <p style="color:var(--ink-strong);font-size:16px;line-height:1.8;">긍정적 (Positive). 안정적 본업 현금흐름과 저평가된 파이프라인 가치로 중장기 매력 보유. 단 오너 리스크 재발 가능성과 신약 임상 실패 리스크는 상존. 분할 매수를 통한 포지션 구축 권장.</p>
+        <p style="color:var(--text-muted);font-size:12px;margin-top:16px;border-top:1px solid var(--border);padding-top:12px;">※ 본 리포트는 투자 참고 자료이며, 투자 판단의 책임은 투자자 본인에게 있습니다. FLOVAH Insights는 리서치 및 정보 제공 목적으로 작성됩니다.</p>
+    </div>
+</section></main>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 16일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

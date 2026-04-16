@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK가스 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 17, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">SK가스<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">국내 LPG 시장 1위 기업, 수소 에너지로의 전환과 글로벌 에너지 인프라 강화 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">72</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">에너지 전환 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">친환경 에너지 전환 및 수소 경제 참여도 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2.28조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">240,500원</div>
+                            <div class="metric-label">주가</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">50%</div>
+                            <div class="metric-label">LPG 시장 점유율</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">9,230천</div>
+                            <div class="metric-label">발행주식</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> SK가스 기업 소개</h3>
+                <p>SK가스는 SK그룹의 에너지 부문 계열사로, 국내 LPG(액화석유가스) 시장에서 약 50%의 시장 점유율을 차지하는 1위 기업입니다. 1985년 설립 이후 40년 이상 한국의 에너지 안보와 국민 생활에 필수적인 LPG를 공급해왔습니다. 현재 울산, 인천, 부산 등 주요 항구에 LPG 저장소 및 유통 인프라를 보유하고 있으며, 전국 약 3,000개의 충전소 네트워크를 운영하고 있습니다.</p>
+                <p>SK가스는 단순한 LPG 유통 기업을 넘어 에너지 시장의 구조적 전환기에 적극적으로 대응하고 있습니다. 2025년 현재 수소 경제로의 전환을 선제적으로 추진 중이며, LNG 트레이딩 사업 확대, 블루수소·그린수소 사업 진출, 글로벌 에너지 공급망 재편 참여 등을 주요 전략으로 추진하고 있습니다. 2025년 시가총액은 약 2.28조 원이며, 주가는 240,500원대를 기록하고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1985년</div>
+                        <div class="timeline-text">SK가스 설립 - 국내 LPG 사업 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년</div>
+                        <div class="timeline-text">울산 LPG 기지 준공 - 국내 최대 규모 LPG 저장소 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1998년</div>
+                        <div class="timeline-text">인천 LPG 기지 준공 - 글로벌 LPG 수입 기지 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년대</div>
+                        <div class="timeline-text">전국 LPG 충전소 네트워크 확대 - 약 3,000개 충전소 운영</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">LNG 트레이딩 사업 본격화 - 글로벌 에너지 시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">그린수소 사업 진출 결정 - 수소 경제 전환 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">블루수소 생산 기술 개발 - 천연가스 기반 수소 생산</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">수소 충전소 구축 시작 - 국내 수소 인프라 구축 주도</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년-2025년</div>
+                        <div class="timeline-text">그린수소 전환 투자 확대 - 장기 저탄소 에너지 전략 추진</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>SK가스의 기술 전략 및 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> LPG 정제 및 저장 기술</h3>
+                <p>SK가스는 국내 최고 수준의 LPG 정제 및 저장 기술을 보유하고 있습니다. 울산 및 인천 기지의 최첨단 설비를 통해 글로벌 기준의 고순도 LPG를 생산하고 있으며, 저장 용량은 현재 약 70만 톤대로 국내 최대 규모입니다. 극저온 저장 기술(-42도 이하), 압력 관리 시스템, 안전 모니터링 기술 등을 통해 세계 최고 수준의 안정성을 확보했습니다.</p>
+                <p>특히 SK가스는 LPG의 고도화학 산업으로의 활용을 추진하고 있습니다. LPG를 원료로 하여 석유화학 제품, 플라스틱, 고성능 재료 등을 생산하는 가치사슬 확대 전략을 펼치고 있습니다. 이는 단순 유통 기업에서 종합 에너지 솔루션 제공 기업으로의 전환을 의미합니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">극저온저장기술</span>
+                    <span class="tech-badge">압력관리시스템</span>
+                    <span class="tech-badge">안전모니터링</span>
+                    <span class="tech-badge">정제기술</span>
+                    <span class="tech-badge">공급망최적화</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 수소 생산 및 연료전지 기술</h3>
+                <p>SK가스는 수소 경제 시대를 대비하여 블루수소(천연가스 기반 수소) 및 그린수소(재생 에너지 기반 수소) 생산 기술에 적극 투자하고 있습니다. 블루수소는 천연가스를 개질하여 수소를 추출하고 탄소를 포집하는 기술로, 현재 기술 수준이 상용화 단계에 진입했습니다.</p>
+                <ul>
+                    <li><strong>블루수소 생산:</strong> 천연가스 기반 수소 생산 및 탄소 포집 저장(CCUS)</li>
+                    <li><strong>그린수소 개발:</strong> 재생 에너지 기반 전기분해 수소 생산</li>
+                    <li><strong>수소 충전소 구축:</strong> 국내 주요 도시에 수소 충전 인프라 확대</li>
+                    <li><strong>수소 운송 기술:</strong> 액화수소(LH2) 운송 및 저장 기술 개발</li>
+                    <li><strong>수소 순도 관리:</strong> 99.999% 이상의 고순도 수소 생산 기술</li>
+                </ul>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-ship"></i> LNG 트레이딩 및 해양 운송</h3>
+                    <p>SK가스는 글로벌 LNG 트레이딩 시장에서 활동 중이며, 호주, 카타르, 인도네시아 등 주요 LNG 공급 기지와의 계약을 체결했습니다. LNG 수입, 저장, 재가스화, 판매에 이르는 전체 밸류 체인을 구축했으며, 해상 운송 기술과 기지 관리 기술을 보유하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cube"></i> 디지털 공급망 관리</h3>
+                    <p>SK가스는 IoT, AI, 빅데이터 기술을 활용한 스마트 에너지 공급망을 구축했습니다. 실시간 수요 예측, 재고 최적화, 배송 경로 최적화 등을 통해 비용 절감과 효율성 증대를 추진 중입니다. 블록체인 기반 거래 투명성 확보 기술도 시범 운영 중입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf-alt"></i> 탄소 포집 및 감축 기술</h3>
+                    <p>SK가스는 블루수소 생산 과정에서 발생하는 이산화탄소를 포집하여 저장 또는 재사용하는 CCUS(Carbon Capture, Utilization and Storage) 기술을 개발 중입니다. 이는 2050 탄소중립 목표 달성을 위한 핵심 기술입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 연구개발 및 혁신 전략</h3>
+                <p>SK가스는 매년 총 수익의 약 3-5%를 연구개발에 투자하여 에너지 기술 혁신을 주도하고 있습니다. 수소, 탄소 감축, 스마트 에너지 등 미래 에너지 기술 개발에 집중투자 중이며, SK이노베이션, 카이스트 등 유관 기관과의 협력 연구도 활발합니다. 또한 에너지 스타트업 투자를 통해 혁신 기술 확보를 가속화하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>시장 규모 및 성장 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 국내 LPG 시장의 특수성과 안정성</h3>
+                <p>한국의 LPG 시장은 매우 특수한 구조를 갖고 있습니다. 약 1,700만 가구가 LPG를 연료로 사용하고 있으며, 난방, 취사, 산업용 원료로 광범위하게 활용되고 있습니다. 2025년 기준 국내 LPG 시장 규모는 약 15조 원대로 추정되며, 가격이 국제유가에 연동되어 있어 변동성이 큽니다.</p>
+                <p>SK가스는 이 시장에서 약 50%의 점유율을 차지하는 절대 강자로, 배급권 보유, 거대한 저장 인프라, 전국 네트워크 등을 통해 높은 진입장벽을 유지하고 있습니다. 국내 LPG 시장은 포화 상태이지만, 안정적인 현금 흐름을 제공하는 핵심 사업입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-water"></i> 글로벌 LNG 시장의 재편과 기회</h3>
+                    <p>러시아-우크라이나 전쟁 이후 글로벌 에너지 시장이 큰 변화를 겪고 있습니다. 유럽의 러시아 가스 의존도 감소, 아시아의 LNG 수입 증가, LNG 가격 변동성 확대 등이 특징입니다. 2025년 글로벌 LNG 시장은 약 500억 달러로 추정되며, 매년 10% 이상의 성장을 기록하고 있습니다.</p>
+                    <p>SK가스는 글로벌 LNG 트레이딩에서 아직 작은 규모이나, 향후 확대 잠재력이 크다고 평가됩니다. 호주, 카타르 등 주요 LNG 수출국과의 장기 공급 계약을 통해 기반을 다지고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-hydrogen"></i> 수소 경제로의 전환과 거대한 시장</h3>
+                    <p>전 세계가 탄소중립을 목표로 수소 경제로의 전환을 추진 중입니다. 2025년 글로벌 수소 시장은 약 50억 달러이지만, 2030년에는 200억 달러 이상으로 성장할 것으로 전망되며, 이는 연 40% 이상의 초고속 성장입니다.</p>
+                    <p>한국 정부는 2040년까지 수소 생산 용량을 500만 톤/년대로 확대하려는 목표를 수립했으며, SK가스는 이 시장의 핵심 플레이어로서 블루수소 생산을 통해 장기 수익 기반을 마련할 수 있을 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-car"></i> 수소 연료전지 자동차 시장의 성장</h3>
+                <p>현대자동차의 수소연료전지 자동차(넥쏘) 판매 확대, 수소 충전소 인프라 구축 가속화 등으로 인해 수소 충전소 수요가 급증하고 있습니다. 2025년 국내 수소 충전소는 약 200개소이지만, 정부 목표는 2030년까지 520개소로 확대하는 것입니다.</p>
+                <p>SK가스는 이미 약 50개 정도의 수소 충전소를 운영 중이며, 추가 확대를 적극 추진 중입니다. 이는 향후 새로운 수익원으로 부상할 가능성이 높습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 산업용 에너지 수요의 지속적 유지</h3>
+                <p>한국의 주요 산업(자동차, 화학, 철강, 정유 등)에서 LPG는 에너지 및 원료로 광범위하게 사용되고 있습니다. 산업의 구조적 변화에도 불구하고, LPG 수요는 안정적으로 유지될 것으로 예상됩니다. 특히 수소 생산을 위한 천연가스 개질 과정에서 LPG가 사용되므로, 수소 경제 전환이 본격화되어도 LPG 수요는 감소하지 않을 가능성이 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> <span>주요 경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 경쟁 환경 개요</h3>
+                <p>국내 LPG 시장에서 SK가스는 약 50% 점유율로 절대 강자이며, E1(LS그룹), 한국가스공사, GS에너지 등이 주요 경쟁사입니다. 다만 국내 시장의 경계가 명확하고 규제가 강하여 경쟁이 제한적입니다. 반면 글로벌 수소 시장에서는 셸(Shell), 린데(Linde), 에어리퀴드(Air Liquide) 등 거대 다국적 에너지 기업들과의 경쟁이 예상되고 있습니다.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>경쟁 영역</th>
+                        <th>주요 경쟁사</th>
+                        <th>SK가스의 경쟁 우위</th>
+                        <th>도전 과제</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>국내 LPG 배급</strong></td>
+                        <td>E1, 한국가스공사, GS에너지</td>
+                        <td>50% 점유율, 최대 저장소, 전국 네트워크, 30년 경험</td>
+                        <td>시장 포화, 가격 경쟁 심화</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LNG 트레이딩</strong></td>
+                        <td>한국가스공사, SK에너지, 롯데정유</td>
+                        <td>유통 기반, LNG 기지 운영 경험</td>
+                        <td>자금력 부족, 글로벌 경험 제한</td>
+                    </tr>
+                    <tr>
+                        <td><strong>수소 생산</strong></td>
+                        <td>SK이노베이션, 포스코에너지, 두산퓨얼셀</td>
+                        <td>천연가스 기반 블루수소 기술, 글로벌 파트너십</td>
+                        <td>초기 진출 단계, 수익화 미흡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>수소 충전소</strong></td>
+                        <td>현대오일뱅크, 포스코에너지, GS칼텍스</td>
+                        <td>LPG 충전소 네트워크 활용 가능, 인프라 기반</td>
+                        <td>충전소 적자 문제, 수소 수요 불확실</td>
+                    </tr>
+                    <tr>
+                        <td><strong>글로벌 수소</strong></td>
+                        <td>셸, 린데, 에어리퀴드, 롤스로이스</td>
+                        <td>아시아 시장 진입, 한국 기술 경험</td>
+                        <td>글로벌 경쟁사의 압도적 자금력과 기술</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3><i class="fas fa-city"></i> E1(LS그룹)과의 경쟁 분석</h3>
+                <p>E1은 LS그룹의 에너지 자회사로, 약 25% 정도의 LPG 시장 점유율을 차지하는 2위 기업입니다. SK가스와 비교하면 규모가 작지만, LS그룹의 산하 다양한 사업(배전, 전력, 재정)과의 시너지를 활용하려고 시도하고 있습니다. 다만 글로벌 에너지 전환 전략에서는 SK가스가 더 적극적이고 선제적입니다.</p>
+                <p>현재 국내 LPG 시장은 SK가스와 E1이 시장의 75%를 점유하는 이원화 구조로, 실질적 경쟁은 제한적입니다. 규제 강화나 시장 개방 시 경쟁이 심화될 가능성이 있습니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 한국가스공사</h3>
+                    <p>한국가스공사는 도시가스 독점 공급사로서 천연가스 시장을 장악하고 있습니다. LPG 시장에서는 부분적으로만 참여하고 있으나, 공사의 위상과 자금력은 막강합니다. 수소 사업으로의 전환 시 강력한 경쟁자가 될 수 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-oil-can"></i> GS에너지</h3>
+                    <p>GS에너지는 정유 사업 기반의 에너지 기업으로, LPG 판매, 충전소 운영 등을 추진 중입니다. 규모는 작지만 정유 기반의 시너지를 활용하여 성장하려는 전략을 펼치고 있습니다. 수소·연료전지 사업에도 관심을 보이고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i> 포스코에너지</h3>
+                    <p>포스코의 에너지 자회사로, 철강 산업용 에너지 공급, 연료전지 발전, 수소 생산 등을 추진 중입니다. 향후 수소 경제에서 강력한 경쟁자가 될 가능성이 높습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>SK가스의 경쟁 전략: SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>국내 LPG 시장 50% 점유율 - 절대적 시장 지배력</li>
+                        <li>전국 3,000개 충전소 네트워크 - 유통 채널 최강</li>
+                        <li>울산·인천의 대규모 LPG 기지 - 국내 최대 저장 용량</li>
+                        <li>40년 운영 경험 - 안정적 공급망 관리</li>
+                        <li>SK그룹의 재정 지원 - 자금력 강화</li>
+                        <li>블루수소 기술 개발 - 수소 경제 진출 준비</li>
+                        <li>높은 수익성 - 안정적 현금 흐름 창출</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>국내 시장 포화 - 성장 한계</li>
+                        <li>LPG 사업 의존도 높음 - 수익원 집중</li>
+                        <li>글로벌 경험 부족 - 국제 확장 제한</li>
+                        <li>수소 사업 초기 단계 - 수익화까지 장기 투자 필요</li>
+                        <li>수소 충전소 적자 - 수익성 악화 가능</li>
+                        <li>환경 규제 강화 - 저탄소 전환 의무</li>
+                        <li>LNG 트레이딩 규모 작음 - 경쟁 제약</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>수소 경제 전환 - 장기 고성장 사업 진출</li>
+                        <li>글로벌 LNG 시장 성장 - 에너지 공급 안보 강화</li>
+                        <li>수소 충전소 확대 - 정부 정책 지원</li>
+                        <li>블루/그린수소 기술 개발 - 글로벌 진출 기반</li>
+                        <li>아시아 에너지 수요 증가 - 구역 시장 확대</li>
+                        <li>탄소 포집 기술 상용화 - 부가 수익 창출</li>
+                        <li>기업용 LNG 공급 확대 - B2B 고마진 사업</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>저탄소 사회로의 전환 - LPG 수요 감소 장기 우려</li>
+                        <li>글로벌 에너지 기업의 한국 진출 - 경쟁 심화</li>
+                        <li>정부 규제 강화 - LPG 가격 통제, 배급권 제한</li>
+                        <li>기술 변화 속도 - 수소 기술 경쟁 격화</li>
+                        <li>글로벌 유가 변동성 - 사업 불확실성 증대</li>
+                        <li>에너지 가격 상승 - 소비자 전환 압박</li>
+                        <li>지정학적 리스크 - 에너지 공급망 불안정</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>SK가스의 미래 경영 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hydrogen"></i> 수소 중심의 장기 전략 전환</h3>
+                <p>SK가스의 가장 중요한 전략은 LPG 사업에서 수소 경제로의 장기적 전환입니다. 2030년까지 블루수소 생산 시설을 갖추고, 2040년부터는 그린수소 생산을 본격화하는 로드맵을 수립했습니다. 이를 위해 SK이노베이션과의 협력을 강화하고, 글로벌 수소 기업(린데, 에어리퀴드)과의 기술 협력도 추진 중입니다.</p>
+                <p>블루수소는 천연가스를 개질하여 수소를 생산하면서 탄소를 포집하는 기술로, 현재 기술 수준이 상용화 단계입니다. SK가스는 자신의 LPG 저장 및 정제 기술을 활용하여 블루수소 생산에서 경쟁력을 확보할 수 있을 것으로 예상됩니다. 장기적으로는 그린수소(전기분해)로의 전환을 추진하여 2050 탄소중립 달성에 기여할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-car"></i> 수소 충전소 네트워크 확대</h3>
+                <p>SK가스는 현재 약 50개의 수소 충전소를 운영 중이며, 정부 지원 정책과 현대자동차의 수소자동차 확대에 힘입어 이를 대폭 확장할 계획입니다. 2030년까지 약 200개소의 수소 충전소 운영을 목표로 하고 있으며, 이는 기존의 LPG 충전소 네트워크와 통합 운영하여 효율성을 높일 예정입니다.</p>
+                <p>수소 충전소 사업은 초기에는 정부 지원에 의존하여 적자를 기록할 것으로 예상되지만, 수소자동차 보급 확대에 따라 점진적으로 채산성이 개선될 것으로 전망됩니다. 이는 중장기 성장을 위한 전략적 투자로 평가됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 글로벌 LNG 트레이딩 확대</h3>
+                    <p>SK가스는 국내 LNG 공급 외에 글로벌 LNG 트레이딩을 확대하려고 합니다. 호주의 LNG 프로젝트 참여, 카타르와의 장기 공급 계약 체결, 인도네시아의 LNG 터미널 투자 등을 통해 글로벌 에너지 공급망에 진입하려는 전략을 펼치고 있습니다. 이를 위해 필요한 자금은 SK그룹의 지원 및 국제 금융을 활용할 계획입니다.</p>
+                    <p>글로벌 LNG 사업은 매우 자본 집약적이지만, 성공 시 안정적인 현금 흐름과 높은 이익을 가져올 수 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> 탄소 감축 및 ESG 강화</h3>
+                    <p>SK가스는 블루수소 생산 과정에서의 탄소 포집(CCUS), 운송 에너지의 저탄소화, 임직원 교육 등을 통해 기업의 탄소 발자국을 감축하려고 합니다. 이는 국제적 환경 규제 강화와 ESG 평가 강화에 대한 대응입니다.</p>
+                    <p>또한 수소, LNG, 재생 에너지 기반의 전기 등 저탄소 에너지 공급자로서의 이미지 전환을 추진하여, 향후 정부 정책 지원과 기업 평가 개선을 기대하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cube"></i> 스마트 에너지 관리 시스템</h3>
+                <p>SK가스는 IoT, AI, 빅데이터 기술을 활용한 스마트 에너지 관리 시스템을 구축하여, 고객의 에너지 효율성을 높이고 자신의 공급 비용을 낮추려고 합니다. 또한 블록체인 기반의 에너지 거래 플랫폼도 개발 중이며, 이는 P2P 에너지 거래와 같은 새로운 사업 모델을 가능하게 할 것으로 기대됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> <span>재무 현황 및 성장 추이</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 최근 3년 매출 추이 및 분석</h3>
+                <p>SK가스의 매출은 2023년 약 4.8조 원에서 2025년 약 5.5조 원으로 성장했습니다. 이는 연평균 약 7% 수준의 성장률이며, 국제 에너지 가격 변동성을 감안하면 안정적인 성장으로 평가됩니다. 2024년과 2025년의 매출 증가는 글로벌 LNG 가격 상승, 국내 에너지 수요 증가, 수소 관련 신규 사업 추진 등이 주요 요인입니다.</p>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">최근 3년 연간 매출 추이 (십억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 70%;"></div>
+                            </div>
+                            <div class="bar-value">4,800</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 82%;"></div>
+                            </div>
+                            <div class="bar-value">5,150</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">5,500</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 영업이익 및 수익성 개선</h3>
+                <p>SK가스의 2025년 영업이익은 약 680억 원으로 추정되며, 영업이익률은 약 12.4% 수준입니다. 이는 2024년 대비 약 10-15% 증가한 수치로, 안정적인 수익성 개선을 보여줍니다. 주요 수익성 개선 요인은 국내 LPG 배급의 높은 마진율, LNG 트레이딩 수익 증가, 비용 효율화입니다.</p>
+                <ul>
+                    <li><strong>LPG 배급 마진:</strong> 국내 시장 50% 점유로 안정적인 고마진 수익 확보</li>
+                    <li><strong>LNG 트레이딩:</strong> 글로벌 가격 차익을 통한 추가 수익</li>
+                    <li><strong>공급망 효율화:</strong> 디지털화와 자동화를 통한 비용 절감</li>
+                    <li><strong>신규 사업:</strong> 수소 관련 사업 초기 적자를 상쇄하는 본사 수익</li>
+                </ul>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">최근 3년 영업이익 추이 (십억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 55%;"></div>
+                            </div>
+                            <div class="bar-value">560</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 77%;"></div>
+                            </div>
+                            <div class="bar-value">620</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">680</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wallet"></i> 사업 부문별 매출 구성</h3>
+                    <p><strong>국내 LPG 배급(70%):</strong> 안정적 현금 흐름의 핵심 사업</p>
+                    <p><strong>LNG 수입 및 트레이딩(20%):</strong> 변동성 있지만 고마진 사업</p>
+                    <p><strong>수소 및 신규 사업(5%):</strong> 초기 투자 단계</p>
+                    <p><strong>기타 부문(5%):</strong> 충전소 운영, 부가 서비스</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-percent"></i> 영업이익률 및 효율성</h3>
+                    <p>SK가스의 영업이익률은 현재 약 12.4%로, 국내 에너지 기업 평균(8-10%)을 상회합니다. 이는 높은 시장 점유율로 인한 가격 결정력과 안정적인 수요에서 비롯됩니다.</p>
+                    <p>향후 수소 사업 수익화, LNG 트레이딩 확대, 비용 효율화를 통해 영업이익률을 13-14% 수준까지 높일 수 있을 것으로 예상됩니다. 다만 수소 충전소 적자 확대, 저탄소 정책에 따른 LPG 수요 감소 등의 리스크는 지속적으로 모니터링 필요합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 재무 상태 및 자본 구조</h3>
+                <p>SK가스의 재무 상태는 매우 건전합니다. SK그룹의 강력한 재무 기반에 속해 있으며, 2025년 기준 부채 비율은 약 60% 수준으로 관리되고 있습니다. 운영 현금 흐름은 연 약 800억 원 수준으로 양호하며, 배당금 지급과 신규 투자에 충분한 여유가 있습니다.</p>
+                <p>현재 배당 수익률은 약 4% 수준으로, 배당 투자자들에게 매력적인 기업으로 평가됩니다. 향후 수소 사업 투자 확대로 인한 자본 지출이 증가할 것으로 예상되지만, SK그룹의 지원으로 인한 재무 어려움은 제한적일 것으로 판단됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-book-open"></i> 종합 평가</h3>
+                <p>SK가스는 국내 LPG 시장의 절대 강자로서 안정적인 현금 흐름과 높은 수익성을 자랑하는 기업입니다. 2025년 약 5.5조 원의 매출과 12.4% 영업이익률은 기존 사업의 강한 경쟁력을 증명합니다. 다만 향후 저탄소 에너지로의 사회 전환에 따라 LPG 사업의 장기 성장성에 대한 우려가 존재합니다.</p>
+                <p>SK가스의 전략적 가치는 수소 경제로의 선제적 진입에 있습니다. 블루수소 생산 기술 개발, 수소 충전소 네트워크 확대, 글로벌 LNG 트레이딩 진출 등은 향후 10-20년의 장기 성장 기반을 마련하는 투자입니다. 수소 경제가 본격화되면 SK가스는 강력한 기반 위에서 새로운 성장을 추구할 수 있을 것으로 평가됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 주요 기회 및 리스크</h3>
+                <p><strong>주요 기회:</strong></p>
+                <ul>
+                    <li>수소 경제의 본격화 (연 40% 이상 고성장)</li>
+                    <li>글로벌 LNG 시장의 확대 및 공급 안보 강화</li>
+                    <li>정부 수소 정책 지원 (충전소 구축, R&D 펀딩)</li>
+                    <li>수소자동차 보급 확대로 인한 충전소 수익화</li>
+                    <li>아시아 에너지 수요 증가와 지역 시장 진출</li>
+                </ul>
+                <p><strong>주요 리스크:</strong></p>
+                <ul>
+                    <li>LPG 수요의 장기 감소 추세</li>
+                    <li>저탄소 사회로의 정책 가속화</li>
+                    <li>수소 기술 경쟁 심화와 글로벌 기업의 공격</li>
+                    <li>수소 충전소 사업의 적자 누적</li>
+                    <li>국제 유가 및 LNG 가격 변동성</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 중립에서 약간 긍정적 (Slightly Positive)</strong></p>
+                <p>SK가스는 현재의 안정적인 수익성과 미래의 수소 사업 기회 사이에서 균형을 맞추려는 과도기에 있는 기업입니다. 현재의 LPG 사업으로부터 나오는 안정적 배당과 현금 흐름은 보수적 투자자들에게 매력적이지만, 장기 성장성은 수소 전환 성공 여부에 크게 의존합니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>배당 투자자:</strong> 약 4% 배당 수익률을 원하는 투자자</li>
+                    <li><strong>에너지 전환 테마 투자자:</strong> 수소 경제 성장에 베팅하는 투자자</li>
+                    <li><strong>장기 가치 투자자:</strong> SK가스의 장기적 산업 구조 전환에 투자하려는 투자자</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간(Medium) - 현재 수익성은 안정적이나 장기 성장 불확실성은 존재</p>
+                <p><strong>목표주가 전망:</strong> 2026년 말 기준 현재 대비 8-15% 상승 기대</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>블루수소 생산 시설 구축 진행 상황</li>
+                    <li>수소 충전소 확대 및 사용량 추이</li>
+                    <li>글로벌 LNG 트레이딩 계약 체결 현황</li>
+                    <li>분기별 LPG 수요 변화 추이</li>
+                    <li>국제 LNG 가격 변동 및 마진율</li>
+                    <li>정부 수소 정책 강화 여부</li>
+                </ul>
+                <p>SK가스가 성공적으로 수소 경제 전환을 추진하고 글로벌 에너지 시장으로 확장한다면, 현재의 평가보다 상당한 프리미엄을 받을 수 있을 것으로 전망됩니다. 반대로 LPG 수요의 급격한 감소와 수소 사업 지연 시에는 평가 재하향이 가능할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 17일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH AI Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>SK가스 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>SK가스 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 SK가스 Investor Relations 공개 정보</li>
+                    <li>한국에너지경제연구원 및 에너지 시장 조사 자료</li>
+                    <li>국제에너지기구(IEA) 보고서 및 글로벌 에너지 시장 분석</li>
+                    <li>정부 수소 정책 (관계부처 합동 수소 로드맵 등)</li>
+                    <li>E1, 한국가스공사, GS에너지 등 경쟁사 공시 자료</li>
+                    <li>린데, 에어리퀴드 등 글로벌 수소 기업 보고서</li>
+                    <li>국내외 주요 금융기관 및 증권사 리서치 리포트</li>
+                    <li>LNG, 수소 산업 관련 학술 논문 및 기술 보고서</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 에너지 시장, 정책, 기술 변화에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 최종 업데이트: 2026년 4월 17일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 17일 09:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

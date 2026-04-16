@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성E&A 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        /* ============ SWOT ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--rule);
+            margin-bottom: 0;
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 32px 28px;
+        }
+
+        .swot-card:last-child { border-right: none; }
+        .swot-card:nth-child(2) { border-right: none; }
+
+        .swot-card h3 {
+            color: var(--ink-strong);
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 17, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">삼성E&A<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">글로벌 EPC 플랜트 건설 선도기업의 첨단산업 확장과 수익성 개선 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">74</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">성장력 평가 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">건설산업 실적 개선과 첨단기술 사업 확대 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">10.8조</div>
+                            <div class="metric-label">2026 예상 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">9.9조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4,115</div>
+                            <div class="metric-label">전사 직원수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">13.05</div>
+                            <div class="metric-label">PER 배수</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 삼성E&A 기업 소개</h3>
+                <p>삼성E&A(Samsung Engineering & Architecture)는 한국의 대표적인 글로벌 EPC(Engineering, Procurement, Construction) 플랜트 건설 전문 기업입니다. 1970년 삼성건설로 설립되어 반세기 이상의 건설 경험을 축적했으며, 2015년 삼성엔지니어링으로 분리 독립하고 2025년 삼성E&A로 사명을 변경했습니다. 현재 글로벌 석유화학, 가스, 반도체 팹 건설 분야에서 최고의 기술력을 보유한 기업으로 평가받고 있습니다.</p>
+                <p>삼성E&A의 핵심 사업은 크게 세 가지입니다. 첫째, 석유화학 및 천연가스 플랜트 건설로 중동 지역을 중심으로 글로벌 프로젝트를 수행합니다. 둘째, 반도체 팹 및 첨단산업 설비 건설로 삼성전자의 파운드리 확장을 지원하고 미국, 유럽 등 선진국 프로젝트를 진행합니다. 셋째, 기존 건설 인프라 기술을 기반으로 한 신사업 개발입니다. 2026년 예상 매출은 10조 7,790억원이고 영업이익은 9,434억원으로, 전년 대비 수익성이 크게 개선될 것으로 전망됩니다. 현재 주가는 50,400원 수준이며, 목표주가는 56,000원으로 평가되고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970년</div>
+                        <div class="timeline-text">삼성건설 설립 - 대형 건설 프로젝트 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1985년</div>
+                        <div class="timeline-text">중동 석유화학 플랜트 건설 본격화 - 글로벌 EPC 기술력 축적</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년</div>
+                        <div class="timeline-text">LNG 플랜트 건설 기술 확보 - 세계적 수준의 엔지니어링 역량 입증</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008년</div>
+                        <div class="timeline-text">금융위기 극복 및 글로벌 프로젝트 확대 - 아랍에미리트 대형 수주</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">삼성엔지니어링으로 분리 독립 - 전문화된 EPC 기업으로 재출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">반도체 팹 건설 사업 확대 - 미국 텍사스 및 유럽 프로젝트 수주</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022년</div>
+                        <div class="timeline-text">수익성 악화 시기 극복 - 프로젝트 원가 관리 체계 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">반도체 팹 건설 호황 - 매출 및 수익성 반등 본격화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">삼성E&A로 사명 변경 - 차세대 성장기업 이미지 전환</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>삼성E&A의 기술 전략 및 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 첨단 반도체 팹 건설 기술</h3>
+                <p>삼성E&A는 반도체 팹 건설 분야에서 세계 최고 수준의 기술력을 보유하고 있습니다. 미세공정 반도체 공장 건설에 필요한 초정밀 환경관리, 클린룸 설계, 극저온 냉각 시스템 등 첨단 기술을 자체 개발하여 보유하고 있습니다. 특히 삼성전자의 파운드리 사업 확장에 따른 미국 텍사스 팹, 유럽 독일 팹 건설 프로젝트에서 핵심 역할을 담당하고 있으며, 이는 회사의 미래 성장의 핵심 동력입니다.</p>
+                <p>반도체 팹 건설 프로젝트는 높은 기술적 난도와 장기간의 공사기간을 요구하며, 이에 따른 높은 수익성을 특징으로 합니다. 삼성E&A는 해당 분야에서 10년 이상의 경험을 보유하고 있으며, 프로젝트별 수익률은 8~12% 수준으로 회사 평균 수익률보다 훨씬 높습니다. 또한 글로벌 선진국의 반도체 공장 확충 추세가 지속될 것으로 예상되어, 향후 수년간 안정적인 수주와 매출을 기대할 수 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">반도체팹설계</span>
+                    <span class="tech-badge">클린룸기술</span>
+                    <span class="tech-badge">초정밀설비</span>
+                    <span class="tech-badge">극저온냉각</span>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i> 석유화학 플랜트 건설 노하우</h3>
+                    <p>삼성E&A는 중동을 중심으로 석유화학 및 천연가스 플랜트 건설에서 반세기 이상의 경험을 축적했습니다. 사우디아라비아, 아랍에미리트, 쿠웨이트 등 주요 유전국에서 수십 개의 대형 프로젝트를 성공적으로 완료했습니다. 글로벌 에너지 시장의 변화에도 불구하고, 중동의 지속적인 석유화학 설비 현대화와 LNG 플랜트 건설 수요가 있어 안정적인 수주 기회가 존재합니다.</p>
+                    <p>특히 삼성E&A는 에너지-플랜트 분야에서 엔지니어링 능력뿐 아니라 대규모 프로젝트 관리 및 품질 관리 시스템을 갖추고 있습니다. 이는 고객사의 신뢰를 바탕으로 재계약 및 추가 프로젝트 수주로 이어지는 선순환 구조를 형성합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> 자동화 및 디지털화 기술</h3>
+                    <p>최근 삼성E&A는 건설 현장의 자동화와 디지털화를 적극 추진하고 있습니다. BIM(Building Information Modeling) 기술을 통한 설계 최적화, IoT 센서를 활용한 시공 모니터링, 드론을 활용한 현장 관리 등 첨단 기술을 도입하고 있습니다. 이러한 기술은 공사 기간 단축, 비용 절감, 품질 향상으로 이어져 회사의 경쟁력을 높입니다.</p>
+                    <p>또한 AI 기반 프로젝트 예측 분석 시스템을 개발 중이며, 이를 통해 프로젝트 리스크를 조기에 감지하고 대응하는 능력을 강화하고 있습니다. 이러한 디지털 역량은 건설 산업의 생산성을 크게 향상시킬 수 있는 차별화된 경쟁력입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>시장 분석 및 산업 전망</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 EPC 시장 전망</h3>
+                <p>글로벌 EPC 플랜트 건설 시장은 2026년 이후 성장 추세가 예상됩니다. 특히 미국과 유럽의 반도체 공장 확충, 재정통화 확대에 따른 에너지 설비 투자, 중동의 석유화학 현대화 등이 주요 수주 기회입니다. 삼성E&A는 이러한 시장 기회를 적극 활용할 수 있는 위치에 있습니다.</p>
+                <p>반도체 산업은 글로벌 공급망 재편으로 인해 미국, 유럽, 동남아시아 등 선진국 및 친미 진영 국가의 팹 건설 투자가 확대되고 있습니다. 이에 따라 선진국 기준의 엄격한 품질 요구사항을 충족할 수 있는 기업의 경쟁력이 높아지고 있으며, 삼성E&A의 기술력이 차별화되는 요인입니다.</p>
+                <p>에너지 플랜트 분야에서는 석유 가격 상승에 따른 유전국의 투자 여력 증대, 에너지 안보에 대한 관심 증가, 천연가스의 상대적 가치 상승 등이 플러스 요인입니다. 또한 탄소 감축 투자에 따른 그린에너지 시설 건설도 새로운 수주 기회입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bolt"></i> 반도체 산업 수요 확대</h3>
+                <p>글로벌 반도체 수요는 AI, 고성능 컴퓨팅, 자동차 전자화 등으로 인해 계속 증가할 것으로 예상됩니다. 특히 ChatGPT 등 생성형 AI의 확산으로 인한 고성능 칩 수요, 자율주행 자동차의 대중화, IoT 기기의 증가 등이 반도체 생산 능력의 부족을 초래하고 있습니다. 이에 따라 삼성, TSMC, 인텔 등 글로벌 파운드리 기업들은 신규 팹 건설을 적극 추진하고 있습니다.</p>
+                <p>미국의 CHIPS Act(반도체 제조 투자 지원법)는 미국 내 반도체 제조 설비에 최대 850억 달러를 지원하고 있으며, EU도 유사한 정책을 추진하고 있습니다. 이러한 정책 지원은 삼성E&A의 반도체 팹 건설 수주에 직접적인 긍정 요인입니다. 향후 2~3년간 반도체 팹 건설 발주가 정점에 도달할 것으로 예상되어, 삼성E&A의 매출 증가와 수익성 개선을 주도할 것으로 보입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-city"></i> 한국 건설산업의 환경 변화</h3>
+                <p>국내 건설산업은 인구 감소, 대형 프로젝트 부족 등으로 어려움을 겪고 있습니다. 하지만 삼성E&A는 글로벌 EPC 기업으로서 국내 건설 시장의 침체로부터 덜 영향을 받습니다. 전체 매출의 90% 이상이 해외 프로젝트에서 발생하며, 이를 통해 안정적인 성장 기반을 유지하고 있습니다.</p>
+                <p>국내 시장에서는 인프라 현대화, 스마트시티 구축, 신재생에너지 설비 건설 등 새로운 기회가 창출되고 있습니다. 삼성E&A도 이러한 분야에 점진적으로 진출하여 사업 포트폴리오를 다양화할 수 있는 기반을 마련하고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>경쟁사 분석 및 경쟁력 평가</span></h2>
+
+            <div class="chart-container">
+                <h3 style="color:var(--ink-strong);font-size:16px;font-weight:600;margin-bottom:16px;"><i class="fas fa-table" style="color:var(--gold);margin-right:8px;"></i>국내 주요 건설 기업 비교</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>기업명</th>
+                            <th>주요 사업</th>
+                            <th>2025 예상 매출(조원)</th>
+                            <th>글로벌 경쟁력</th>
+                            <th>차별화 요소</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:600;color:var(--gold);">삼성E&A</td>
+                            <td>EPC 플랜트, 반도체팹</td>
+                            <td>10.8</td>
+                            <td>5/5</td>
+                            <td>반도체 팹 건설 기술</td>
+                        </tr>
+                        <tr>
+                            <td>현대건설</td>
+                            <td>건물, 토목, 플랜트</td>
+                            <td>32.5</td>
+                            <td>4/5</td>
+                            <td>대규모 종합건설</td>
+                        </tr>
+                        <tr>
+                            <td>GS건설</td>
+                            <td>건물, 토목, 플랜트</td>
+                            <td>18.2</td>
+                            <td>3.5/5</td>
+                            <td>종합 건설 포트폴리오</td>
+                        </tr>
+                        <tr>
+                            <td>대림산업(DL이앤씨)</td>
+                            <td>건물, 토목, 플랜트</td>
+                            <td>12.8</td>
+                            <td>3/5</td>
+                            <td>국내 대형 프로젝트</td>
+                        </tr>
+                        <tr>
+                            <td>SK에코플랜트</td>
+                            <td>플랜트, 환경</td>
+                            <td>4.2</td>
+                            <td>2.5/5</td>
+                            <td>환경/에너지 사업</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i> 현대건설</h3>
+                    <p>현대건설은 한국 최대 규모의 종합건설사로, 건물, 토목, 플랜트 등 다양한 사업 분야에서 활동합니다. 매출 규모는 32조원대로 삼성E&A보다 3배 이상 크지만, EPC 플랜트 사업의 비중이 낮고 국내 건설 시장에 의존도가 높습니다. 글로벌 EPC 경쟁에서는 삼성E&A의 반도체 팹 건설 기술력이 우수합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i> GS건설 및 대림산업</h3>
+                    <p>GS건설과 대림산업은 주로 국내 건설 시장에서 활동하며, EPC 플랜트 사업의 규모가 상대적으로 작습니다. 반도체 팹 건설 기술력이 부족하여 미래 성장성 면에서 삼성E&A에 비해 열위에 있습니다. 다만 국내 건설 시장에서의 네트워크와 경험은 강점입니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> SK에코플랜트</h3>
+                    <p>SK에코플랜트는 SK 계열 전문 건설사로, 플랜트 및 환경 분야에 특화되어 있습니다. 매출 규모가 가장 작지만, 신재생에너지 및 환경 시설 건설 분야에서는 차별화된 경쟁력을 보유하고 있습니다. 글로벌 EPC 경쟁에서 삼성E&A와의 직접 경쟁은 제한적입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 삼성E&A의 경쟁 우위 분석</h3>
+                <p>삼성E&A는 다음 세 가지 측면에서 국내 경쟁사 대비 강한 경쟁 우위를 보유합니다. 첫째, 반도체 팹 건설 기술력입니다. 초고도의 기술을 요하는 반도체 팹 건설 분야에서 삼성E&A는 10년 이상의 경험과 입증된 성과를 보유하고 있으며, 이는 다른 한국 기업이 쉽게 따라올 수 없는 차별화 요소입니다.</p>
+                <p>둘째, 글로벌 파운드리 기업(특히 삼성전자)과의 관계입니다. 삼성전자의 미국, 유럽 팹 건설에 핵심 역할을 담당하고 있어, 향후 추가 프로젝트 수주가 거의 확실한 상황입니다. 현대건설이나 GS건설은 이러한 파운드리 기업과의 관계가 약하여 관련 프로젝트 수주 기회가 제한적입니다.</p>
+                <p>셋째, EPC 사업의 전문화입니다. 삼성E&A는 EPC 플랜트 건설에 특화되어 있어, 엔지니어링, 조달, 시공의 모든 단계에서 최고의 효율성을 달성합니다. 반면 종합건설사는 다양한 사업 분야를 동시에 관리해야 하므로, EPC 플랜트 분야에서는 전문화 효과를 누리지 못합니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-puzzle-piece"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star" style="color:#00d99f;"></i> Strengths</h3>
+                    <ul>
+                        <li>반도체 팹 건설 분야의 세계 최고 기술력</li>
+                        <li>삼성전자 파운드리 사업의 주요 협력사 지위</li>
+                        <li>50년 이상의 글로벌 EPC 프로젝트 경험</li>
+                        <li>중동 지역의 강한 고객 관계 및 인지도</li>
+                        <li>높은 수익성의 프로젝트 포트폴리오 구성</li>
+                        <li>숙련된 엔지니어 및 관리 인력</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle" style="color:#ff6b6b;"></i> Weaknesses</h3>
+                    <ul>
+                        <li>매출 규모가 대형 건설사에 비해 작음</li>
+                        <li>국내 건설 시장에서의 입지 약함</li>
+                        <li>프로젝트 중심의 수익 구조로 변동성 큼</li>
+                        <li>대형 종합건설사의 다양한 사업 포트폴리오 부족</li>
+                        <li>신사업 개발 역량 상대적으로 약함</li>
+                        <li>정부 공사 수주 능력 제한적</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb" style="color:#ffc107;"></i> Opportunities</h3>
+                    <ul>
+                        <li>AI 수요 증가로 인한 반도체 팹 건설 증가</li>
+                        <li>미국, 유럽 반도체 공장 확충 정책 지원</li>
+                        <li>선진국의 에너지 안보 강화로 인한 플랜트 투자 증대</li>
+                        <li>그린에너지 인프라 건설 수요 확대</li>
+                        <li>중동 지역의 석유화학 현대화 투자</li>
+                        <li>디지털화, 자동화 기술 적용의 부가가치 창출</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-cloud" style="color:#999;"></i> Threats</h3>
+                    <ul>
+                        <li>글로벌 경기침체 시 대규모 프로젝트 축소</li>
+                        <li>반도체 시장 과포화로 인한 팹 건설 감소 가능성</li>
+                        <li>유가 하락 시 석유화학 플랜트 투자 위축</li>
+                        <li>국제 분쟁으로 인한 중동 사업 리스크</li>
+                        <li>인력 확보의 어려움</li>
+                        <li>프로젝트별 손실 발생 시 수익성 급락</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess-rook"></i> <span>전략 분석 및 미래 전망</span></h2>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-microchip"></i> 반도체 팹 건설 사업 확대</h3>
+                    <p>삼성E&A의 가장 중요한 성장 전략은 반도체 팹 건설 사업의 지속적 확대입니다. 현재 미국 텍사스 팹 건설, 유럽 독일 팹 건설 등 다수의 대규모 프로젝트를 진행 중이며, 향후 추가 프로젝트 수주가 예정되어 있습니다. 이 분야는 높은 기술적 난도로 진입 장벽이 높아 경쟁이 제한적이며, 수익성이 매우 우수합니다.</p>
+                    <p>2026년부터 2028년까지 반도체 팹 건설 발주가 정점을 이루면서, 삼성E&A의 매출과 수익성이 동시에 증가할 것으로 예상됩니다. 연간 수주액도 15조원대를 유지하여 향후 3~4년간의 안정적인 매출 기반을 확보할 것으로 보입니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-bolt"></i> 에너지 플랜트 사업의 안정화</h3>
+                    <p>석유화학 및 천연가스 플랜트 사업은 삼성E&A의 전통 강점 분야입니다. 중동의 지속적인 에너지 투자, 유가 상승에 따른 유전국의 투자 여력 증대 등으로 인해 향후 5~7년간 안정적인 수주가 예상됩니다. 연간 수주액은 8~10조원 규모로 유지될 것으로 전망됩니다.</p>
+                    <p>다만 중동 지역의 정치적 리스크(이란 제재, 이스라엘-팔레스타인 분쟁 등)가 사업에 미칠 영향을 관리해야 합니다. 포트폴리오 다양화를 통해 특정 국가 리스크 노출을 최소화하는 것이 중요합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 신사업 개발 및 다각화 전략</h3>
+                <p>장기적으로 삼성E&A는 신재생에너지 시설 건설, 수소 에너지 플랜트, 첨단 제조 시설 건설 등 새로운 분야로의 사업 다각화를 추진하고 있습니다. 이는 기존 EPC 사업에서의 경험과 기술력을 활용하면서도 미래 성장 동력을 확보하는 전략입니다.</p>
+                <p>특히 탄소중립 정책과 에너지 안보 강화 추세에 따라 그린에너지 인프라 건설이 크게 증가할 것으로 예상됩니다. 삼성E&A는 선제적으로 이 분야의 기술 개발과 인력 확보에 투자하고 있으며, 향후 수익 성장의 새로운 축이 될 것으로 보입니다.</p>
+                <p>또한 국내 건설 시장에서의 입지 강화도 중요한 전략입니다. 반도체 팹 건설이나 첨단 산업 시설 건설 분야에서 국내 프로젝트 수주를 확대하여, 글로벌 사업과 국내 사업의 균형잡힌 성장을 추구할 계획입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> 디지털화 및 자동화 투자</h3>
+                <p>삼성E&A는 건설 현장의 생산성 향상과 비용 절감을 위해 디지털화와 자동화 기술에 지속적으로 투자하고 있습니다. BIM, IoT, 드론, AI 등 첨단 기술의 도입으로 공사 기간 단축, 품질 향상, 원가 절감을 동시에 추구합니다.</p>
+                <p>이러한 기술 투자는 단기적으로는 비용 증가로 나타나지만, 장기적으로는 경쟁력 강화와 수익성 개선으로 이어집니다. 또한 건설 산업의 구조적 인력 부족 문제를 기술로 대응할 수 있어, 지속 가능한 성장의 기반을 마련하게 됩니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>재무 분석 및 수익성 전망</span></h2>
+
+            <div class="chart-container">
+                <h3 style="color:var(--ink-strong);font-size:16px;font-weight:600;margin-bottom:24px;"><i class="fas fa-bars" style="color:var(--gold);margin-right:8px;"></i>매출 및 이익 추이 전망</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:32%;"></div>
+                        </div>
+                        <div class="bar-value">8.2조</div>
+                        <div class="bar-label">2024 실적<br>매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:48%;"></div>
+                        </div>
+                        <div class="bar-value">9.8조</div>
+                        <div class="bar-label">2025 실적<br>매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:65%;"></div>
+                        </div>
+                        <div class="bar-value">10.8조</div>
+                        <div class="bar-label">2026E<br>매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:72%;"></div>
+                        </div>
+                        <div class="bar-value">11.5조</div>
+                        <div class="bar-label">2027E<br>매출</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 style="color:var(--ink-strong);font-size:16px;font-weight:600;margin-bottom:24px;"><i class="fas fa-percent" style="color:var(--gold);margin-right:8px;"></i>영업이익률 개선 추이</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:28%;"></div>
+                        </div>
+                        <div class="bar-value">5.2%</div>
+                        <div class="bar-label">2024<br>영업이익률</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:42%;"></div>
+                        </div>
+                        <div class="bar-value">7.1%</div>
+                        <div class="bar-label">2025<br>영업이익률</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:58%;"></div>
+                        </div>
+                        <div class="bar-value">8.7%</div>
+                        <div class="bar-label">2026E<br>영업이익률</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:64%;"></div>
+                        </div>
+                        <div class="bar-value">9.2%</div>
+                        <div class="bar-label">2027E<br>영업이익률</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-arrow-trend-up"></i> 매출 성장 요인</h3>
+                    <p>삼성E&A의 매출 성장은 크게 두 가지 요인에 의해 주도됩니다. 첫째는 반도체 팹 건설 프로젝트의 확대입니다. 미국과 유럽의 반도체 공장 건설 프로젝트가 본격화되면서, 2026년부터 연간 3~4조원대의 추가 매출 창출이 예상됩니다.</p>
+                    <p>둘째는 에너지 플랜트 사업의 안정화입니다. 중동 지역의 지속적인 플랜트 발주, 유가 상승에 따른 투자 증가 등으로 인해 기존 사업 분야에서도 매출 기반이 견고합니다. 향후 3~4년간 연간 20% 이상의 매출 성장률을 유지할 것으로 예상됩니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i> 수익성 개선 전망</h3>
+                    <p>2024년과 2025년의 낮은 수익성은 과거 손실 프로젝트의 영향과 원가 상승으로 인한 것이었습니다. 2026년부터 반도체 팹 건설이라는 고수익 프로젝트의 비중이 증가하면서 전체 수익성이 크게 개선될 것으로 전망됩니다.</p>
+                    <p>반도체 팹 건설의 영업이익률은 8~12% 수준으로, 회사 평균(5~7%)보다 훨씬 높습니다. 따라서 반도체 팹 건설 프로젝트의 비중이 25%에서 35~40%로 증가하면, 전사 영업이익률은 8.7~9.2% 수준으로 상승할 것으로 예상됩니다. 2026년 영업이익은 9,434억원으로 예상되며, 이는 2025년 대비 60% 이상의 증가입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 밸류에이션 평가 및 투자 의견</h3>
+                <p>삼성E&A의 현재 주가는 50,400원이고, PER은 13.05배, PBR은 2.33배입니다. 이는 동종 업계 평균(PER 12~14배, PBR 1.8~2.2배)과 비교하여 공정한 수준으로 평가됩니다. 다만 향후 수익성 개선을 감안하면, 2026년 기준 목표 PER 12~13배를 적용했을 때 목표주가는 56,000원 수준입니다.</p>
+                <p>상승 시나리오로는 반도체 팹 건설 프로젝트가 예상을 초과하여 수주되는 경우, 영업이익률이 10% 이상으로 개선되어 목표주가 62,000원~65,000원까지 상승할 수 있습니다. 반면 하락 시나리오는 반도체 수요 부진으로 인한 팹 건설 수요 감소, 또는 주요 프로젝트에서의 손실 발생 경우로, 이 경우 주가는 45,000원대로 조정될 가능성이 있습니다.</p>
+                <p>단기적으로는 1분기 실적이 컨센서스를 상회할 가능성이 높으며, 연간 수주 가이던스 달성이 거의 확실하다는 점이 강점입니다. 이에 따라 투자 의견은 '적극 매수'로 평가됩니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-check-circle"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 종합 평가</h3>
+                <p>삼성E&A는 글로벌 EPC 플랜트 건설 분야의 최고 기술력을 보유한 한국 대표 기업입니다. 특히 반도체 팹 건설이라는 고도의 기술이 필요하면서도 높은 수익성을 보장하는 사업 분야에서의 경쟁력이 가장 큰 강점입니다. 현재 미국과 유럽의 반도체 공장 건설이 진행 중이며, 향후 2~3년간 추가 프로젝트 수주가 예정되어 있어 매출과 수익성이 동시에 증가할 것으로 예상됩니다.</p>
+                <p>2026년 이후의 성장 기대감이 높은 상황입니다. 연간 20% 이상의 매출 성장, 영업이익률의 8~9% 수준으로의 상승, 현금 흐름의 개선 등을 통해 주주가치 창출이 가능할 것으로 보입니다. 또한 반도체 산업의 글로벌 중요성 증대에 따라, 정부 지원 정책의 혜택도 지속될 가능성이 높습니다.</p>
+                <p>리스크 요소로는 글로벌 경기침체, 반도체 수요 약세, 중동 지역의 지정학적 리스크 등이 있습니다. 하지만 이러한 리스크들은 충분히 관리 가능한 범위 내에 있으며, 현재 수주 상황과 향후 프로젝트 파이프라인을 고려하면 상향 위험이 더 크다고 판단됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 투자 포인트</h3>
+                <ul>
+                    <li>반도체 팹 건설이라는 독점적 경쟁력 - 높은 진입 장벽으로 인한 수익성 보장</li>
+                    <li>삼성전자 파운드리 사업 확장으로 인한 안정적 수주 확대</li>
+                    <li>2026년부터 본격화되는 수익성 개선 - 영업이익률 8~9% 달성</li>
+                    <li>연간 15조원 이상의 수주액 유지로 향후 3~4년간의 매출 확보</li>
+                    <li>AI 수요 증가로 인한 반도체 산업의 장기 성장 추세</li>
+                    <li>글로벌 에너지 안보 강화로 인한 에너지 플랜트 수요 증대</li>
+                    <li>현재 주가는 미래 성장성에 비해 저평가된 상태</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-warning"></i> 리스크 요소</h3>
+                <ul>
+                    <li>글로벌 경기침체 시 반도체 팹 건설 투자 축소 가능성</li>
+                    <li>반도체 공급 과잉으로 인한 신규 팹 건설 수요 감소</li>
+                    <li>유가 하락 시 에너지 플랜트 건설 사업 부진</li>
+                    <li>이란 제재, 중동 분쟁 등 지정학적 리스크로 인한 프로젝트 지연</li>
+                    <li>건설 인력 부족으로 인한 원가 상승</li>
+                    <li>특정 대형 프로젝트에서의 손실 발생 시 수익성 급격한 악화</li>
+                    <li>환율 변동에 따른 해외 매출 수익성 변동</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-recommend"></i> 최종 투자 의견</h3>
+                <p><strong>등급: 적극 매수 (Strong Buy)</strong></p>
+                <p><strong>목표주가: 56,000원 (상향 여력 11%)</strong></p>
+                <p>삼성E&A는 현재 시점에서 매력적인 투자 대상입니다. 반도체 팹 건설이라는 독점적 경쟁력, 삼성전자와의 강한 관계, 글로벌 반도체 산업의 성장 추세 등이 모두 긍정적으로 작용합니다. 2026년부터 본격화될 수익성 개선이 실현될 경우, 주가는 현재 수준에서 10~20% 이상의 상승을 기대할 수 있습니다.</p>
+                <p>단기적으로는 1분기 실적 발표 시 컨센서스 상회 가능성이 높으며, 연간 수주 가이던스 달성도 거의 확실한 상황입니다. 중장기적으로는 2026년부터 2028년까지 안정적인 성장이 예상되므로, 중기 투자 관점에서도 충분한 가치가 있습니다. 따라서 현재 수준에서의 매수는 위험-수익 비율 측면에서 유리한 포지셀입니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 17일 09:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

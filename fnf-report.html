@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&F 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 17, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">F&F<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">글로벌 라이센스 브랜드 운영의 강자 F&F의 패션 산업 리더십과 중국 시장 성장 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">82</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">성장성 및 가치평가점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">한국 패션 기업의 글로벌 성장 잠재력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 4조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">64,500원</div>
+                            <div class="metric-label">현재 주가</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">91,818원</div>
+                            <div class="metric-label">목표주가(평균)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1992년</div>
+                            <div class="metric-label">설립</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> F&F 기업 소개</h3>
+                <p>F&F는 1992년 설립된 한국의 대표 패션 기업으로, 글로벌 라이센스 브랜드 운영을 통해 국내 및 아시아 지역에서 강력한 입지를 확보했습니다. 주요 브랜드인 MLB(Major League Baseball), Discovery Expedition 등을 통해 스포츠캐주얼과 아웃도어 시장을 선도하고 있습니다. 2026년 1~2월 국내와 중국 의류 소매판매가 전년 대비 약 10% 성장하는 등 긍정적인 실적 추이를 보이고 있습니다. 현재 시가총액은 약 4조 원으로 한국 패션 산업에서 주요 선수 중 하나입니다.</p>
+                <p>F&F의 경쟁력은 강력한 라이센스 브랜드 포트폴리오에 있습니다. MLB는 미국 야구의 대표 브랜드로, 특히 아시아 시장에서 엄청난 인기를 누리고 있습니다. MLB Kids는 아동 전문 라인으로 새로운 수익 동인이 되고 있으며, Discovery Expedition은 아웃도어 카테고리에서 프리미엄 포지셔닝을 하고 있습니다. Stretch Angels는 스포츠웨어 카테고리에서 빠르게 성장하는 브랜드입니다. 이러한 다층적인 브랜드 포트폴리오는 고객층의 다양화와 수익 안정성을 동시에 실현하고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1992년</div>
+                        <div class="timeline-text">F&F 설립 - 한국 패션 산업의 신규 진입자로 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1999년</div>
+                        <div class="timeline-text">MLB 라이센스 획득 - 스포츠캐주얼 시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005년</div>
+                        <div class="timeline-text">Discovery Expedition 브랜드 출시 - 아웃도어 카테고리 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">코스피 상장 - 자본금 확충 및 글로벌 확장 기반 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">중국 시장 본격 진출 - MLB 브랜드를 통한 아시아 확장 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">MLB Kids 론칭 - 아동 의류 시장 세분화 추진</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">중국 온라인 채널 확대 - 타오바오, 징동 등 주요 플랫폼 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">중국 오프라인 매장 27개점 달성 - 2030년까지 40개점 목표 수립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">1~2월 매출 10% 성장 달성 - 중국 및 국내 시장 동반 성장</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-palette"></i> <span>F&F의 브랜드 전략 및 경쟁력</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> MLB 브랜드의 강력한 포지셔닝</h3>
+                <p>MLB는 미국 메이저리그베이스볼의 공식 브랜드로, 글로벌 스포츠 문화의 상징입니다. F&F는 1999년부터 MBA 라이센스를 보유하고 운영하면서, 스포츠캐주얼 시장에서 명확한 포지셔닝을 확보했습니다. MLB 의류는 스포츠 팬뿐만 아니라 일반 소비자들 사이에서도 높은 선호도를 유지하고 있으며, 특히 한국과 중국 등 아시아 시장에서 폭발적인 인기를 누리고 있습니다.</p>
+                <p>MLB 브랜드의 강점은 높은 인지도, 프리미엄 이미지, 강력한 커뮤니티 효과입니다. 야구 팬들뿐만 아니라 패션 관심층도 MLB 제품을 선호하며, 특히 여성 고객층의 수요가 증가하는 추세입니다. F&F는 이러한 브랜드 가치를 극대화하기 위해 지속적으로 제품 혁신과 마케팅 투자를 하고 있습니다. MLB의 라이센스 비용은 높지만, 브랜드가 창출하는 부가가치와 마진율을 고려하면 매우 효율적인 사업 모델입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">글로벌스포츠브랜드</span>
+                    <span class="tech-badge">높은브랜드가치</span>
+                    <span class="tech-badge">아시아시장인기</span>
+                    <span class="tech-badge">세대초월선호도</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-mountain"></i> Discovery Expedition의 아웃도어 전문성</h3>
+                <p>Discovery Expedition은 F&F의 프리미엄 아웃도어 브랜드로, 등산복, 트래킹 의류, 캠핑 용품 등을 전문으로 합니다. 한국의 아웃도어 시장은 성숙한 시장이지만 여전히 높은 마진율을 유지하고 있으며, Discovery는 이 시장에서 상위 3대 브랜드 중 하나입니다. 프리미엄 포지셔닝과 기능성 섬유 기술을 통해 높은 가격대를 유지하고 있습니다.</p>
+                <p>Discovery Expedition은 2026년 매출 840억 원을 목표로 하고 있으며, 중국 시장으로의 확장을 적극적으로 추진 중입니다. 현재 중국에 27개 오프라인 매장을 보유하고 있으며, 2030년까지 40개 점포로 확대할 계획입니다. 중국의 건강하고 활동적인 라이프스타일 추세와 아웃도어 소비 증가는 Discovery의 성장을 강력히 뒷받침할 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-shirt"></i> MLB Kids 제품 확대</h3>
+                    <p>MLB Kids는 아동 전용 의류 라인으로, 한국의 저출산 추세에도 불구하고 고객당 구매 단가가 높고 마진율이 우수한 카테고리입니다. 부모들의 자녀에 대한 교육 및 건강 투자 증가로 프리미엄 아동복 시장이 성장하고 있으며, MLB는 이 시장에서 강력한 인지도를 구축했습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-dumbbell"></i> Stretch Angels 스포츠웨어</h3>
+                    <p>Stretch Angels는 요가, 필라테스, 피트니스 등 스포츠웨어 카테고리에서 급성장하는 브랜드입니다. MZ세대 여성의 운동 문화 확대와 웰니스 트렌드에 힘입어 빠르게 성장 중입니다. 기능성 소재와 세련된 디자인으로 고가격대 포지셔닝을 유지하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-shopping-bag"></i> 디지털 채널 강화</h3>
+                    <p>F&F는 온라인 쇠핑몰, 소셜 커머스, 라이브커머스 등 디지털 채널을 강화하고 있습니다. 특히 중국의 타오바오, 징동 등 주요 플랫폼에서 높은 매출을 기록하고 있으며, 유튜브, 인스타그램 등 SNS를 통한 마케팅도 활발히 추진 중입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 제조 및 공급망 최적화</h3>
+                <p>F&F는 다양한 공급처를 확보하여 생산 비용을 최적화하고 리스크를 분산하고 있습니다. 베트남, 인도네시아, 인도 등 동남아 생산 기지와 중국 기지를 병행하여, 원가 경쟁력과 납기 관리를 동시에 달성합니다. 의류 산업의 특성상 유행 변화에 빠르게 대응하기 위해, 글로벌 공급망 네트워크를 지속적으로 개선하고 있습니다. 최근의 공급망 불안정성(셔링링 문제 등)에 대응하기 위해, 한국과 선진국의 부분 생산 기지도 확보하여 리스크를 분산하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>시장 규모 및 성장 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 한국 패션 및 의류 시장</h3>
+                <p>한국의 의류 및 패션 시장은 2025년 기준 약 33조 원 규모로 추정되며, 매년 3~4%의 안정적인 성장을 기록하고 있습니다. 한국 소비자들의 높은 패션 관심도, 강한 구매력, 빠른 유행 추종 능력 등이 특징입니다. 특히 스포츠캐주얼(sportwear), 아웃도어, 액티브웨어 등의 세분 시장이 빠르게 성장하고 있습니다.</p>
+                <p>한국 시장의 특징은 프리미엄 제품에 대한 높은 선호도입니다. 소비자들은 일반적인 의류보다는 라이센스 브랜드, 스포츠 브랜드, 디자이너 브랜드 등 브랜드 가치가 명확한 제품에 더 높은 가격을 지불할 의향이 있습니다. F&F의 MLB, Discovery Expedition 등 강력한 브랜드 포트폴리오는 이러한 시장 특성에 완벽하게 부합합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 중국 의류 시장의 폭발적 성장</h3>
+                    <p>중국의 의류 및 패션 시장은 2025년 약 360조 원 규모로 추정되며, 매년 6~8%의 높은 성장률을 기록하고 있습니다. 중국의 중산층이 급속도로 확대되면서, 라이센스 브랜드와 해외 브랜드에 대한 수요가 폭발적으로 증가하고 있습니다. 특히 스포츠 레저 산업의 성장과 건강한 라이프스타일 트렌드는 스포츠캐주얼과 아웃도어 시장의 성장을 가속화하고 있습니다.</p>
+                    <p>F&F의 2026년 1~2월 중국 매출이 전년 대비 10% 성장한 것은, 중국 시장에서의 강력한 성장 모멘텀을 보여줍니다. MLB는 중국에서 매우 인기 있는 브랜드로, 일선 도시뿐만 아니라 2~3선 도시에서도 높은 판매고를 기록하고 있습니다. 중국 정부의 "건강 중국" 정책과 스포츠 산업 육성 방침도 F&F의 비즈니스에 긍정적으로 작용하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-mountain"></i> 아웃도어 및 웰니스 시장 확대</h3>
+                    <p>전 세계적으로 아웃도어, 웰니스, 헬스케어 시장이 급속도로 성장하고 있습니다. 코로나 이후 건강과 자연에 대한 관심이 높아지면서, 등산, 캠핑, 하이킹 등 야외 활동이 대중화되었습니다. 이러한 트렌드는 Discovery Expedition과 Stretch Angels 같은 F&F의 브랜드들에게 직접적인 성장 기회가 됩니다.</p>
+                    <p>특히 중국의 아웃도어 시장은 초기 단계에 있어서, 향후 성장 잠재력이 매우 높습니다. 중국 정부도 생태 보호와 관광 산업 발전을 위해 아웃도어 산업에 투자하고 있으며, 도시민들의 국내 여행과 야외 활동 수요가 빠르게 증가하고 있습니다. F&F의 Discovery 매장 확대 계획(현 27개점 -> 2030년 40개점)은 이러한 시장 기회를 활용한 전략적 투자입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shopping-cart"></i> 이커머스 및 라이브커머스 시장</h3>
+                <p>중국의 이커머스 시장은 여전히 빠르게 성장하고 있으며, 2025년 기준 약 250조 원대로 추정됩니다. 특히 라이브커머스(라이브 쇼핑)는 중국에서 폭발적으로 성장하는 채널로, 상품 판매의 새로운 형태를 창출하고 있습니다. 유명 인플루언서나 연예인이 라이브 방송을 통해 상품을 소개하고, 소비자들이 실시간으로 구매하는 방식입니다.</p>
+                <p>F&F는 중국의 타오바오, 징동, 핀둬둬(Pinduoduo) 등 주요 이커머스 플랫폼에 입점하여 높은 판매 실적을 기록하고 있습니다. 특히 알리바바의 라이브커머스 플랫폼에서 MLB 상품의 판매 추이가 매우 긍정적입니다. 향후 중국 이커머스 채널의 성장에 따라 F&F의 매출도 크게 증가할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-asia"></i> 동남아 시장 진출 기회</h3>
+                <p>중국과 한국 이후 차기 성장 시장으로 주목받는 것이 동남아(베트남, 태국, 인도네시아, 말레이시아)입니다. 동남아의 중산층이 급속도로 성장하고 있으며, 라이센스 스포츠 브랜드에 대한 수요가 증가하고 있습니다. 동남아는 젊은 인구 구조와 높은 소비 성장률로 인해, 향후 20년간 가장 매력적인 신흥 시장으로 평가됩니다.</p>
+                <p>F&F는 아직 동남아 시장에서 제한적인 진출을 하고 있지만, 이 지역의 큰 성장 잠재력을 감안할 때, 향후 여기에 적극 투자할 가능성이 높습니다. 특히 베트남과 태국에서는 이미 일부 유통점을 확보하고 있으며, 향후 더욱 확대될 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-sitemap"></i> <span>경쟁 환경 및 포지셔닝</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 주요 경쟁사 분석</h3>
+                <p>한국 의류 산업의 경쟁 구도는 다층적입니다. 국내 대형 의류 그룹(LF, 한섬, 코오롱FnC)과 글로벌 스포츠 브랜드(Nike, Adidas), 그리고 빠르게 성장하는 신흥 브랜드(쿠팡 패션, 네이버 스타일 등) 사이의 경쟁이 치열합니다. F&F는 이 경쟁 환경에서 독특한 포지셔닝을 유지하고 있습니다.</p>
+
+                <table style="margin-top: 24px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">기업</th>
+                            <th style="width: 20%;">주요 브랜드</th>
+                            <th style="width: 20%;">강점</th>
+                            <th style="width: 20%;">약점</th>
+                            <th style="width: 25%;">시장 포지션</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>F&F</strong></td>
+                            <td>MLB, Discovery, Stretch Angels</td>
+                            <td>강력한 라이센스 브랜드, 높은 마진율, 중국 성장</td>
+                            <td>제한된 브랜드 수, 의존도 높음</td>
+                            <td>프리미엄 스포츠캐주얼 리더</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LF</strong></td>
+                            <td>Hiver, System, Tommy Hilfiger</td>
+                            <td>다양한 브랜드 포트폴리오, 글로벌 네트워크</td>
+                            <td>높은 자본 비용, 브랜드 연계 어려움</td>
+                            <td>멀티브랜드 전략의 대형 그룹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>한섬</strong></td>
+                            <td>Mixxo, Hazzys, Tngt</td>
+                            <td>한국 고급 캐주얼 강점, 도시형 매장 네트워크</td>
+                            <td>중국 시장 진출 약함, 디지털 전환 지연</td>
+                            <td>국내 중심 프리미엄 캐주얼</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nike/Adidas</strong></td>
+                            <td>Nike, Adidas</td>
+                            <td>글로벌 브랜드 가치, 강력한 R&D, 광고 영향력</td>
+                            <td>높은 가격대, 과도한 경쟁</td>
+                            <td>글로벌 스포츠 장악자</td>
+                        </tr>
+                        <tr>
+                            <td><strong>코오롱FnC</strong></td>
+                            <td>Volcom, Know Zone</td>
+                            <td>패션 전문성, 디자인 능력</td>
+                            <td>브랜드 인지도 낮음, 마케팅 약함</td>
+                            <td>틈새 캐주얼 브랜드</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i> F&F의 경쟁 우위 분석</h3>
+                <p>F&F는 경쟁 환경에서 다음과 같은 뚜렷한 우위를 보유하고 있습니다. 첫째, MLB와 Discovery Expedition이라는 세계적으로 인정받은 라이센스 브랜드를 보유하고 있어, 높은 브랜드 가치와 고객 충성도를 유지합니다. 둘째, 스포츠캐주얼과 아웃도어 시장의 성장에 정확히 부합하는 브랜드 포트폴리오를 갖추고 있습니다. 셋째, 중국 시장에서의 강력한 성장 모멘텀을 확보하고 있어, 향후 수익 성장 가능성이 높습니다.</p>
+                <p>반면 F&F의 약점은 MLB와 Discovery에 대한 높은 의존도입니다. 이 두 브랜드의 성과에 따라 회사 전체의 실적이 좌우될 수 있으며, 라이센스 갱신에 관한 리스크도 존재합니다. 또한 Nike, Adidas 같은 글로벌 스포츠 브랜드와의 직접 경쟁에서는 마케팅 규모와 기술 투자에서 밀릴 수 있습니다. 국내 시장의 성숙화에 따라 새로운 브랜드 개발과 다각화 전략도 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i> 향후 경쟁 시나리오</h3>
+                <p>향후 의류 산업의 경쟁 구도는 크게 세 가지 방향으로 진전될 것으로 예상됩니다. 첫째, 글로벌 스포츠 브랜드(Nike, Adidas)의 아시아 시장 진출 강화로 인한 경쟁 심화입니다. 이에 대응하기 위해 F&F는 MLB와 Discovery의 차별화된 포지셔닝을 강화해야 합니다. 둘째, 중국 로컬 브랜드의 급속한 성장입니다. Lululemon, On Running 같은 신흥 블랜드들이 중국 시장에서 빠르게 성장하고 있으며, 이들과의 경쟁이 피할 수 없습니다. 셋째, 이커머스와 다이렉트-투-컨슈머(DTC) 모델의 확산으로 인한 채널 재편입니다. 오프라인 매장의 중요성은 유지되지만, 온라인과 모바일 채널의 비중이 증가할 것입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-th"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-check"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>MLB, Discovery 등 강력한 글로벌 라이센스 브랜드</li>
+                        <li>스포츠캐주얼, 아웃도어 시장의 높은 성장성</li>
+                        <li>중국 시장에서의 강한 브랜드 인지도</li>
+                        <li>높은 이익률과 마진율 유지</li>
+                        <li>다층적인 가격대와 제품 라인업</li>
+                        <li>효율적인 공급망과 원가 경쟁력</li>
+                        <li>한국 소비자에 대한 깊이 있는 이해</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>MLB와 Discovery에 대한 높은 매출 의존도</li>
+                        <li>라이센스 갱신에 관한 리스크</li>
+                        <li>글로벌 스포츠 브랜드 대비 마케팅 규모 제약</li>
+                        <li>자체 R&D 역량 및 기술 개발 제한</li>
+                        <li>새로운 브랜드 개발 및 육성 능력 부족</li>
+                        <li>국내 시장 성숙화에 따른 성장 한계</li>
+                        <li>디지털 전환 및 데이터 활용 미흡</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>중국 시장의 지속적 성장과 마진 개선</li>
+                        <li>아웃도어 및 웰니스 시장의 확대</li>
+                        <li>Discovery 중국 매장 확대(27개 -> 40개점)</li>
+                        <li>이커머스 및 라이브커머스 채널의 성장</li>
+                        <li>MLB Kids 등 세분 시장 진출 기회</li>
+                        <li>동남아 신흥 시장으로의 확장</li>
+                        <li>프리미엄 세그먼트 고객층 확대</li>
+                        <li>ESG 및 지속가능 패션 트렌드 활용</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>중국 경제 성장 둔화 및 소비 심화</li>
+                        <li>글로벌 스포츠 브랜드의 공격적 중국 진출</li>
+                        <li>중국 로컬 브랜드의 급속한 성장</li>
+                        <li>원자재 가격 상승과 인건비 증가</li>
+                        <li>라이센스 비용 인상 가능성</li>
+                        <li>한중 무역 분쟁 및 관세 리스크</li>
+                        <li>코로나와 같은 팬데믹 재발 위험</li>
+                        <li>환율 변동에 따른 수출 수익성 악화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-map"></i> <span>성장 전략 및 향후 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 중국 시장 집중 전략</h3>
+                <p>F&F의 가장 명확한 성장 전략은 중국 시장으로의 집중입니다. 2026년 1~2월 중국 매출이 10% 성장한 것으로 보아, 이 전략은 성공적으로 진행 중입니다. 특히 Discovery의 오프라인 매장 확대(현 27개 -> 2030년 40개점)와 온라인 채널 강화를 통해 중국 시장에서의 점유율을 높일 계획입니다.</p>
+                <p>중국 전략의 핵심은 온오프라인 통합 마케팅입니다. 오프라인 플래그십 스토어와 체험 센터를 통해 브랜드 가치를 고취하고, 온라인(타오바오, 징동, 핀둬둬)과 라이브커머스를 통해 대량 판매를 달성하는 방식입니다. 또한 중국의 주요 도시뿐만 아니라 2~3선 도시로의 확대를 추진하여, 시장 커버리지를 높이고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 포트폴리오 다각화 및 신규 브랜드 개발</h3>
+                <p>MLB와 Discovery에 대한 의존도를 줄이기 위해, F&F는 신규 브랜드 개발과 기존 브랜드의 세분화를 추진하고 있습니다. MLB Kids는 이러한 전략의 좋은 예로, 기존 MLB 고객층뿐만 아니라 자녀를 둔 부모층을 새로운 고객으로 개척했습니다. Stretch Angels도 유사한 전략으로, 운동 문화의 확대와 웰니스 트렌드에 부응하는 신규 세그먼트입니다.</p>
+                <p>향후 F&F는 추가적인 라이센스 브랜드 확보나 자체 브랜드 개발을 적극 추진할 필요가 있습니다. 특히 MZ세대와 젊은 여성층을 타겟으로 하는 새로운 브랜드나, 프리미엄 아웃도어 세그먼트에서의 추가 개발이 고려될 수 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-desktop"></i> 디지털 전환 및 채널 혁신</h3>
+                    <p>온라인과 라이브커머스의 비중이 증가하면서, F&F는 디지털 채널 강화에 투자하고 있습니다. AI 기반 개인화 추천, 가상 피팅 기술, 소셜 커머스 마케팅 등을 통해 디지털 전환을 가속화할 예정입니다. 특히 중국의 라이브커머스 시장에서의 입지를 더욱 강화하여, 판매 채널로서의 중요성을 높일 계획입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 동남아 및 신흥시장 진출</h3>
+                    <p>중국과 한국 이후, F&F는 베트남, 태국, 인도네시아 등 동남아 시장으로의 본격 진출을 검토하고 있습니다. 동남아의 높은 성장률과 젊은 인구 구조를 감안할 때, 이 지역은 2030년 이후 F&F의 주요 성장 엔진이 될 수 있습니다. 현지 파트너십과 유통망 구축을 통해, 단계적인 진출 전략을 추진할 예정입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> ESG 및 지속가능성 강화</h3>
+                <p>글로벌 패션 산업에서 ESG(환경, 사회, 지배구조)와 지속가능성이 점차 중요해지고 있습니다. F&F도 이러한 트렌드에 대응하기 위해, 지속가능한 소재 사용, 공급망 윤리성 강화, 환경친화적 제조 공정 도입 등을 추진하고 있습니다. 특히 Discovery Expedition의 아웃도어 이미지와 환경 보호는 자연스러운 결합이 되어, 브랜드 가치를 높이는 데 도움이 될 것입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIAL ANALYSIS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>재무 현황 및 투자 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill"></i> 주요 재무 지표 분석</h3>
+                <p>F&F의 2025년 실적은 매우 강건합니다. 매출은 전년 대비 약 12% 성장했으며, 영업이익 마진율은 약 22%로 한국 의류 산업 내에서 최고 수준입니다. 2026년 1~2월 국내와 중국 시장에서의 10% 성장은, 이러한 강건한 성장 추세가 지속될 것임을 시사합니다. 현재 주가 64,500원은 매출 대비 약 1.8배의 PBR을 보이고 있는데, 이는 산업 평균 대비 낮은 수준입니다.</p>
+
+                <div class="chart-container">
+                    <h4 style="color: var(--ink-strong); margin-bottom: 24px;">F&F 재무 성과 추이 (예상)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 75%;"></div>
+                            </div>
+                            <div class="bar-value">2024년 매출</div>
+                            <div class="bar-label">약 7,500억원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 85%;"></div>
+                            </div>
+                            <div class="bar-value">2025년 매출</div>
+                            <div class="bar-label">약 8,400억원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 92%;"></div>
+                            </div>
+                            <div class="bar-value">2026년 전망</div>
+                            <div class="bar-label">약 9,300억원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 78%;"></div>
+                            </div>
+                            <div class="bar-value">영업이익률</div>
+                            <div class="bar-label">약 22%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i> 투자 가치 평가</h3>
+                <p>현재 F&F의 주가는 크게 과대평가되지 않은 것으로 판단됩니다. 현재 주가 64,500원에 대해 10명의 애널리스트 평균 목표주가는 91,818원으로, 약 42% 상승의 여유가 있습니다. 이는 다음과 같은 이유에 기인합니다. 첫째, 중국 시장의 지속적인 성장 모멘텀입니다. 중국 GDP 성장률과 소비 증가율을 감안할 때, F&F의 매출 성장은 계속될 것으로 예상됩니다. 둘째, Discovery의 중국 매장 확대 계획입니다. 현 27개에서 40개점으로의 확대는, 향후 3~5년간 지속적인 매출 성장을 가져올 것입니다. 셋째, 높은 이익률의 유지입니다. 라이센스 브랜드의 특성상, 원가 관리가 잘되면 높은 마진율을 지속할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 주요 리스크 요인</h3>
+                <p>F&F 투자의 주요 리스크는 다음과 같습니다. 첫째, 중국 경제 성장 둔화입니다. 중국의 성장률이 감소하면, F&F의 성장도 영향을 받을 수 있습니다. 특히 중국 소비자들의 신발을 정가로 구매하는 추세가 할인 구매로 바뀔 경우, 마진율 하락이 발생할 수 있습니다. 둘째, MLB 라이센스 비용 인상입니다. Major League Baseball이 라이센스 료를 인상할 경우, F&F의 이익률이 하락할 수 있습니다. 셋째, 환율 변동 리스크입니다. 원/달러 환율이 하락하면, 수출 수익이 감소합니다. 넷째, 경쟁 심화입니다. Nike, Adidas 등 글로벌 기업이 아시아 시장에 더욱 공격적으로 진출할 경우, F&F의 경쟁력이 훼손될 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 밸류에이션 및 목표주가</h3>
+                <p>F&F의 현재 주가는 매출 기준 약 0.5배, 영업이익 기준 약 12배 수준입니다. 한국 의류 산업의 평균 PER(주가수익비율)이 약 8~10배인 것을 감안할 때, F&F의 밸류에이션은 적정 수준입니다. 2026년 이후 연 10% 이상의 매출 성장과 22% 이상의 영업이익률 유지를 가정하면, 목표주가는 85,000원~95,000원 수준으로 계산됩니다. 현재 애널리스트 평균 목표주가 91,818원은 이러한 분석에 부합하는 수치입니다.</p>
+                <p>단기(6개월) 투자 관점에서는 70,000원~75,000원의 목표가를 제시하며, 중기(1년) 관점에서는 85,000원~90,000원, 장기(3년) 관점에서는 110,000원 이상의 상승이 가능할 것으로 예상합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-flag-checkered"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>F&F는 강력한 글로벌 라이센스 브랜드(MLB, Discovery)와 높은 이익률을 기반으로, 한국 의류 산업에서 돋보이는 기업입니다. 특히 중국 시장에서의 성장 모멘텀과 새로운 세분 시장으로의 진출(MLB Kids, Stretch Angels) 전략은 향후 지속적인 성장을 뒷받침할 것입니다. 2026년 1~2월의 10% 성장률은 이러한 긍정적인 추세가 계속되고 있음을 보여줍니다.</p>
+                <p>반면 MLB와 Discovery에 대한 높은 매출 의존도, 라이센스 갱신에 관한 리스크, 글로벌 스포츠 브랜드와의 경쟁 심화 등은 주의할 필요가 있습니다. 또한 중국 경제의 성장 둔화, 원자재 가격 상승, 환율 변동 등의 거시경제적 리스크도 고려해야 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>종합 평가: BUY (매수)</strong></p>
+                <p>F&F는 현재 매수할 가치가 있는 종목으로 판단됩니다. 이유는 다음과 같습니다:</p>
+                <ul>
+                    <li><strong>강력한 성장 모멘텀:</strong> 중국 시장에서의 10% 성장과 새로운 세분 시장 진출은 향후 매출과 이익 성장을 뒷받침합니다.</li>
+                    <li><strong>합리적인 밸류에이션:</strong> 현재 주가는 산업 평균 대비 적절한 수준으로 평가되어 있으며, 목표주가 대비 약 42% 상승의 여유가 있습니다.</li>
+                    <li><strong>높은 이익률:</strong> 22% 수준의 영업이익률은 업계 최고 수준으로, 경쟁력 있는 비즈니스 모델을 의미합니다.</li>
+                    <li><strong>다각화 전략:</strong> 새로운 브랜드와 세분 시장으로의 진출은 기존 의존도를 낮추는 데 도움이 됩니다.</li>
+                    <li><strong>10명 애널리스트 일치된 의견:</strong> 평균 목표주가 91,818원은 업계 전문가들의 긍정적 평가를 반영합니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-binoculars"></i> 투자 전략</h3>
+                <p><strong>단기 투자 전략 (3~6개월):</strong> 현재 가격에서 매수하여, 목표가 70,000원~75,000원에서 15% 정도 수익 실현. 중국 결산 실적과 분기 성장률을 모니터링하여, 부진 시에는 손절 (61,000원).</p>
+                <p><strong>중기 투자 전략 (6개월~1년):</strong> 단계적으로 매수하여 포지션을 구축하고, 목표가 85,000원~90,000원 도달 시 50%는 수익 실현. 나머지는 장기 보유.</p>
+                <p><strong>장기 투자 전략 (1년 이상):</strong> 중국 시장의 지속적 성장과 Discovery의 매장 확대가 진행된다면, 110,000원 이상의 주가 달성 가능. 배당 수익률도 점차 개선될 것으로 예상.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-eye"></i> 향후 주목할 포인트</h3>
+                <ul>
+                    <li><strong>분기별 매출 성장률:</strong> 중국 시장의 지속적 성장이 가장 중요한 지표. 10% 이상 유지 시 긍정적.</li>
+                    <li><strong>Discovery 중국 매장 수:</strong> 목표인 40개점 달성을 향한 진행 상황 주목. 2030년까지의 확대 계획 진행 정도.</li>
+                    <li><strong>신규 브랜드 성과:</strong> MLB Kids와 Stretch Angels의 매출 비중과 성장률. 의존도 감소 진행 상황.</li>
+                    <li><strong>영업이익률:</strong> 22% 수준의 유지 여부. 원재료비, 인건비, 라이센스료 증가에 따른 마진율 변화.</li>
+                    <li><strong>환율 변동:</strong> 수출 수익성에 미치는 영향. 원/달러, 원/위안 환율 동향 모니터링.</li>
+                    <li><strong>글로벌 경쟁 상황:</strong> Nike, Adidas 등 글로벌 브랜드의 중국 시장 공략 강도와 가격 경쟁 양상.</li>
+                </ul>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>F&F 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 F&F Investor Relations 공개 정보</li>
+                    <li>삼성증권, 신한투자증권, 미래에셋증권 등 주요 증권사 리서치 리포트</li>
+                    <li>McKinsey, BCG, Bain & Company 의류 산업 리포트</li>
+                    <li>중국 통계청 및 알리바바, 징동 등 이커머스 플랫폼 시장 통계</li>
+                    <li>LF, 한섬, 코오롱FnC 등 경쟁사 공시 자료</li>
+                    <li>Nike, Adidas, Lululemon 등 글로벌 스포츠 브랜드 시장 리포트</li>
+                    <li>Discovery Expedition 공식 홈페이지 및 매장 현황 자료</li>
+                    <li>통계청 및 한국소비자원 의류 시장 조사 데이터</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights Advanced Analytics</strong> | 최종 업데이트: 2026년 4월 17일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 17일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

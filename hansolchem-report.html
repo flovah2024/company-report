@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한솔케미칼 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION DIVIDER ============ */
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 17, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">한솔케미칼<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">반도체·이차전지 소재 산업의 성장 수혜기, 한솔케미칼의 매출 1조 원 달성과 고성장 전망 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">85</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">높은 성장 기대</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">반도체 업사이클 및 2차전지 소재 부활 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">3.0조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">264,000원</div>
+                            <div class="metric-label">주가(4월)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.0조</div>
+                            <div class="metric-label">2026 예상 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">350,000원</div>
+                            <div class="metric-label">목표주가</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 한솔케미칼 기업 소개</h3>
+                <p>한솔케미칼은 한솔그룹의 계열사로, 1975년 설립 이후 반도체 및 이차전지 산업의 핵심 소재 공급업체로 성장했습니다. 한솔그룹은 과거 삼성그룹에서 분리된 계열사이며, 한솔케미칼은 이 그룹의 화학 소재 사업을 담당하고 있습니다. 회사의 핵심 사업은 과산화수소(반도체 세정용), 프리커서(반도체 증착용), 이차전지 소재로 구성되어 있습니다.</p>
+                <p>한솔케미칼은 2026년 매출 1조 원 돌파를 목표로 하고 있으며, 이는 회사 역사상 최대 규모의 실적입니다. 이러한 성장은 삼성전자 P4 신규 설비(월 6만장 용량)와 P5 인프라 투자로 인한 과산화수소 공급 확대, 그리고 2차전지 소재 시장의 부활이 주요 동인입니다. NH투자증권의 목표주가 350,000원(iM증권 기준)은 현재 주가 대비 33% 상승을 시사하고 있으며, 증권사 평균 목표가는 321,444원입니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1975년</div>
+                        <div class="timeline-text">한솔케미칼 설립 - 화학 소재 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995년</div>
+                        <div class="timeline-text">반도체 화학 소재 사업 진출 - 삼성전자 공급 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005년</div>
+                        <div class="timeline-text">과산화수소 생산 능력 확대 - 주요 반도체 공급업체 위상 확립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">이차전지 소재 사업 진출 - 다각화 전략 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">한국거래소 상장 - 공공 기업으로 발전</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">프리커서(전구체) 생산 기술 확보 - 반도체 소재 수직 통합 진행</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">이차전지 소재 사업 본격화 - 양극재 전구체 공급</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">삼성전자 P4 설비 가동 개시 - 매출 급성장 기대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">매출 1조 원 달성 목표 - 사상 최대 실적 추진</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>반도체·배터리 소재 기술력</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-vial"></i> 과산화수소(H2O2) 기술</h3>
+                <p>과산화수소는 반도체 제조 공정에서 필수적인 세정 및 식각(Etching) 소재입니다. 특히 고도의 미세공정(7nm 이하)에서는 초고순도의 과산화수소가 필요하며, 한솔케미칼은 이 분야에서 한국의 선도 기업입니다. 과산화수소의 순도, 불순물 제거, 안정성 등에서 글로벌 수준의 기술을 보유하고 있습니다.</p>
+                <p>한솔케미칼의 과산화수소는 삼성전자, SK하이닉스 등 국내 메모리반도체 업체들의 주요 공급처입니다. 최근 삼성전자의 P4 설비(3나노급 미세공정)가 본격 가동되면서, 고순도 과산화수소에 대한 수요가 급증하고 있습니다. 이는 한솔케미칼에게 수익성 높은 매출 성장을 제공하는 주요 동인입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">초고순도화학소재</span>
+                    <span class="tech-badge">반도체세정</span>
+                    <span class="tech-badge">식각기술</span>
+                    <span class="tech-badge">품질관리</span>
+                    <span class="tech-badge">3나노공정</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 프리커서(전구체) 기술</h3>
+                <p>프리커서는 반도체 증착 공정에서 사용되는 화학 물질로, 극도로 높은 순도와 안정성이 요구됩니다. 한솔케미칼은 자체 프리커서 생산 기술을 확보하여 반도체 공정에 필수적인 소재를 공급하고 있습니다. 이는 단순한 화학 소재 공급을 넘어 반도체 제조 공정의 핵심 부품 공급으로, 매우 높은 기술력을 필요로 합니다.</p>
+                <p>프리커서는 미세공정의 진행과 함께 더욱 높은 순도와 정밀성이 요구되는 분야입니다. 한솔케미칼은 이 분야에서 지속적으로 기술을 고도화하고 있으며, 삼성전자와의 기술 협력을 통해 공정별 맞춤형 제품을 개발하고 있습니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-full"></i> 이차전지 소재 기술</h3>
+                    <p>한솔케미칼은 이차전지 양극재 전구체(NMC 프리커서) 생산 기술을 확보했습니다. 이는 리튬이온 전지의 핵심 소재로, EV 및 에너지 저장 시장의 성장 동력입니다. 높은 에너지 밀도와 안정성이 요구되는 분야에서 품질 우위를 갖추고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i> 생산 능력 및 확대</h3>
+                    <p>한솔케미칼은 국내 화학 소재 기업 중 생산 설비가 현대적으로 갖춰진 기업입니다. 최근 반도체 및 배터리 산업의 성장에 대응하기 위해 생산 능력을 지속적으로 확대하고 있습니다. 이는 기술력과 자본력을 동시에 요구하는 사업으로, 한솔케미칼이 성공적으로 추진하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-microscope"></i> 연구개발 및 혁신</h3>
+                    <p>한솔케미칼은 매년 매출의 3-4%를 연구개발에 투자하고 있습니다. 반도체 미세공정의 진행, 배터리 기술의 발전 등에 대응하기 위해 지속적인 기술 혁신을 추진하고 있습니다. 대학, 출연 연구기관과의 협력도 적극적으로 이루어지고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 글로벌 경쟁력</h3>
+                <p>한솔케미칼의 반도체 화학 소재는 글로벌 경쟁력을 갖추고 있습니다. 특히 과산화수소와 프리커서 분야에서는 일본의 아사히 카세이(Asahi Kasei), 미국의 더우 케미칼(Dow Chemical) 등 글로벌 대형 화학 기업들과 경쟁하고 있으며, 가격 대비 품질 측면에서 우위를 유지하고 있습니다. 이는 한솔케미칼이 한국의 반도체 업체뿐 아니라 글로벌 시장에도 공급할 수 있는 역량을 갖추고 있음을 의미합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>반도체·배터리 소재 시장 성장</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 반도체 산업의 업사이클</h3>
+                <p>글로벌 반도체 산업은 2023-2024년 하향 사이클을 거친 후, 2025년부터 본격적인 업사이클에 진입했습니다. AI 서버 수요 급증, 스마트폰 판매 회복, 자동차 반도체 수요 증가 등이 주요 성장 동인입니다. 한국의 삼성전자와 SK하이닉스는 미국과 중국 기업들의 미세공정 경쟁에서 앞서기 위해 공격적으로 설비 투자를 확대하고 있습니다.</p>
+                <p>삼성전자는 P3 세대(5나노급)에 이어 P4 세대(3나노급) 설비를 2024년부터 본격 가동하고 있으며, P5 인프라도 2025년부터 구축 중입니다. 이는 한솔케미칼의 과산화수소, 프리커서 등 반도체 화학 소재에 대한 수요를 크게 증가시키고 있습니다. 글로벌 반도체 산업의 성장률이 연 10-15%인 반면, 미세공정 전환에 따른 화학 소재 수요는 연 20-30%의 고성장을 기록하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-battery-full"></i> 이차전지 산업의 부활</h3>
+                    <p>EV 보급률 증가와 에너지 저장 시스템(ESS) 확대로 인해 이차전지 산업이 급성장하고 있습니다. 글로벌 배터리 시장은 2025년 약 500억 달러에서 2030년 약 1,000억 달러 이상으로 성장할 것으로 전망되고 있습니다. 한국의 LG에너지솔루션, SK이노베이션 등 배터리 제조사들은 차세대 배터리 개발에 투자 중이며, 이에 따라 배터리 소재 수요가 급증하고 있습니다.</p>
+                    <p>특히 고에너지 밀도 배터리를 위한 양극재 전구체(NMC 프리커서)의 수요가 급증하고 있으며, 한솔케미칼이 이 분야의 주요 공급업체 중 하나입니다. 향후 고니켈(High Nickel) 배터리 시장의 성장이 가속화될 것으로 예상되며, 이는 한솔케미칼의 주요 성장 기회입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 화학 소재 시장 동향</h3>
+                    <p>반도체 및 배터리 화학 소재 시장은 첨단 산업의 핵심 부품으로서 높은 성장을 기록하고 있습니다. 과산화수소, 프리커서 등 극도로 높은 순도가 요구되는 소재의 시장은 연 15-20%의 성장률을 기록 중입니다. 이는 일반 화학 산업의 평균 성장률 3-5%를 크게 상회하는 수치입니다.</p>
+                    <p>또한 지정학적 리스크로 인해 반도체 소재의 국산화가 가속화되고 있습니다. 미국의 칩법(CHIPS Act) 영향으로 한국 반도체 업체들의 대미 수출 수요도 증가하고 있으며, 이에 따라 한솔케미칼 같은 국내 소재 기업의 중요성이 높아지고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-user-tie"></i> 주요 고객사와의 관계</h3>
+                <p>한솔케미칼의 매출의 약 80% 이상을 삼성전자와 SK하이닉스 등 국내 메모리반도체 업체가 차지하고 있습니다. 삼성전자는 한솔케미칼의 가장 중요한 고객으로, P4 설비 가동에 따른 수요 증가가 2026년 매출 1조 원 달성의 핵심 동인입니다. 또한 LG에너지솔루션 등 배터리 업체들로부터의 수요도 빠르게 증가하고 있습니다.</p>
+                <p>이러한 고객사 관계는 한솔케미칼에게 안정적인 매출 기반을 제공합니다. 다만 고객사의 설비 투자 변화에 민감하게 반응할 수 있다는 점은 경영 리스크입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 시장 진출 기회</h3>
+                <p>한솔케미칼은 국내 시장 중심으로 사업하고 있으나, 향후 글로벌 시장 진출의 기회가 크다고 평가됩니다. TSMC, 인텔, 삼성 파운드리 등 글로벌 반도체 파운드리의 설비 투자 확대는 한솔케미칼 같은 고순도 화학 소재 공급업체에게 새로운 수출 기회를 제공합니다. 특히 미국의 CHIPS Act 영향으로 미국 내 반도체 생산 확대가 예상되고 있으며, 이에 따른 소재 수요도 증가할 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> <span>주요 경쟁사 및 산업 구도</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i> 경쟁 환경 개요</h3>
+                <p>한솔케미칼은 국내 반도체·배터리 화학 소재 시장에서 솔브레인, 동진쎄미켐 등 국내 기업들과 경쟁하고 있습니다. 글로벌 시장에서는 일본의 아사히 카세이, 미국의 더우 케미칼, 독일의 메르크 등 글로벌 대형 화학 기업들과 경쟁합니다. 이러한 경쟁사들은 대체로 기술력과 자본력이 뛰어나지만, 한솔케미칼은 한국 반도체 업체들과의 근접성과 비용 경쟁력에서 우위를 갖고 있습니다.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>경쟁사</th>
+                        <th>주요 사업</th>
+                        <th>장점</th>
+                        <th>한솔케미칼 대비</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>솔브레인</strong></td>
+                        <td>반도체/LCD 소재</td>
+                        <td>강한 국내 입지, 다양한 소재 포트폴리오</td>
+                        <td>규모는 비슷하지만 기술 차별화 필요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>동진쎼미켐</strong></td>
+                        <td>특수 화학, 반도체 소재</td>
+                        <td>고순도 소재 기술, 해외 수출 역량</td>
+                        <td>규모 대비 기술력 경쟁</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SK머티리얼즈</strong></td>
+                        <td>반도체 소재, 디스플레이 소재</td>
+                        <td>SK그룹 계열사 우위, 자본력</td>
+                        <td>그룹 지원 수준은 높지만 경쟁 가능</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ENF테크놀로지</strong></td>
+                        <td>반도체 화학, 기타 소재</td>
+                        <td>특화된 기술력</td>
+                        <td>규모에서 한솔이 우위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>아사히 카세이(일본)</strong></td>
+                        <td>글로벌 화학 소재</td>
+                        <td>글로벌 기술력, 브랜드</td>
+                        <td>기술은 경쟁하지만 가격 경쟁력 한솔 우위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>더우 케미칼(미국)</strong></td>
+                        <td>글로벌 화학 기업</td>
+                        <td>규모, 기술력, 자본력</td>
+                        <td>국내 시장에서는 한솔 우위</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 경쟁 우위 분석</h3>
+                <p>한솔케미칼의 경쟁 우위는 다음 세 가지입니다. 첫째, 한국 반도체 업체들과의 높은 기술 호환성과 공급망 신뢰성입니다. 삼성전자, SK하이닉스 등과의 장기 관계는 신제품 개발에서 우위를 제공합니다. 둘째, 비용 경쟁력입니다. 일본, 미국의 글로벌 기업들 대비 생산 비용이 낮으면서도 품질은 경쟁 수준입니다. 셋째, 배터리 소재 등 다각화 전략을 통한 성장 기반 확충입니다.</p>
+                <p>다만 글로벌 기업들의 기술력과 자본력, 그리고 국내 경쟁사들의 추격이 경쟁 리스크입니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 솔브레인</h3>
+                    <p>솔브레인은 반도체, LCD 소재에 특화된 국내 기업입니다. 한솔케미칼과 유사한 사업 구조를 갖고 있으며, 경쟁 관계가 심합니다. 최근 유상증자 등을 통해 투자를 확대하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i> 동진쎼미켐</h3>
+                    <p>동진쎼미켐은 특수 화학 분야에서 강한 기술력을 갖고 있습니다. 그룹 지원과 해외 수출 네트워크가 강점입니다. 한솔과의 경쟁이 가속화되고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cube"></i> 글로벌 기업과의 경쟁</h3>
+                    <p>글로벌 화학 기업들은 기술력과 자본력에서 우위를 갖지만, 한국 시장에서는 국산 기업인 한솔케미칼이 공급망 신뢰성과 비용에서 우위를 유지하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>한솔케미칼의 경쟁력: SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>초고순도 화학 소재 기술: 과산화수소, 프리커서 등 핵심 소재</li>
+                        <li>삼성전자와의 강한 관계: 주요 고객사와 장기 공급 계약</li>
+                        <li>P4 설비 가동에 따른 수요 증가: 매출 성장의 주요 동인</li>
+                        <li>배터리 소재 사업 다각화: 2차전지 시장 성장 수혜</li>
+                        <li>경쟁사 대비 가격 경쟁력: 비용 효율성</li>
+                        <li>국내 위치한 공급 기지: 물류, 응답 속도 우위</li>
+                        <li>수익성 개선 추세: 매출 성장과 함께 이익률 향상</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>글로벌 기업 대비 기술력 격차: 선진국 기업의 R&D 투자 규모</li>
+                        <li>고객사 집중도 높음: 삼성, SK에 의존도 높음</li>
+                        <li>규모 대비 자본력 제약: 대형 투자 시 자금 조달 필요</li>
+                        <li>글로벌 시장 진출 부족: 수출 능력 개선 필요</li>
+                        <li>새로운 고객사 개발 어려움: 높은 진입 장벽</li>
+                        <li>원가 변동에 민감: 원유, 원자재 가격 변동 영향</li>
+                        <li>기술인 부족: 고급 화학 분야 우수 인력 확보 경쟁</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>반도체 업사이클: 2025-2027년 설비 투자 확대</li>
+                        <li>P5 공정 전환: 차세대 미세공정 수요 증가</li>
+                        <li>EV·배터리 시장 성장: 이차전지 소재 수요 급증</li>
+                        <li>해외 반도체 팹 건설: CHIPS Act에 따른 미국 내 생산 확대</li>
+                        <li>고니켈 배터리 성장: 고성능 배터리 소재 수요</li>
+                        <li>글로벌 고객사 개발: TSMC, 인텔 등 차용</li>
+                        <li>산업 통합: 유사 기업 간 인수합병 기회</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>반도체 산업 부침: 경기 순환에 따른 설비 투자 변동</li>
+                        <li>고객사 의존도 리스크: 삼성 설비 투자 감소 시 매출 영향</li>
+                        <li>글로벌 경쟁사 공략: 선진 기업의 기술 고도화</li>
+                        <li>원가 상승: 원자재, 에너지 비용 증가</li>
+                        <li>지정학적 리스크: 한미 관계, 중국 제재 영향</li>
+                        <li>환경 규제 강화: 화학 업종 규제 증가</li>
+                        <li>신규 기술 부상: 차세대 배터리, 반도체 기술 변화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>한솔케미칼의 성장 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i> 반도체 소재 시장 점유율 확대</h3>
+                <p>한솔케미칼의 가장 핵심적인 전략은 반도체 소재 시장에서의 점유율 확대입니다. 삼성전자의 P4, P5 설비 투자에 따른 과산화수소, 프리커서 수요 증가를 적극 활용하여 매출과 시장점유율을 확대하는 것입니다. 또한 SK하이닉스, 마이크론 등 다른 메모리반도체 업체들도 주요 고객사로 확보하려는 노력을 이어가고 있습니다.</p>
+                <p>향후 P5 공정(2나노급 이하)으로의 전환에 따라 더욱 고순도 소재에 대한 수요가 급증할 것으로 예상됩니다. 한솔케미칼이 이러한 기술적 요구를 충족시킨다면, 향후 수년간의 지속적인 성장이 가능할 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-battery-full"></i> 이차전지 소재 사업 고도화</h3>
+                <p>반도체 소재에 집중하던 한솔케미칼이 배터리 소재로 사업을 다각화하는 것은 중요한 전략입니다. EV 시장의 성장과 에너지 저장 시스템(ESS)의 확대로 인해 배터리 소재 시장이 빠르게 성장하고 있습니다. 한솔케미칼은 양극재 전구체(NMC 프리커서) 생산 능력을 지속적으로 확대하고 있으며, 향후 음극재 소재 등으로 포트폴리오를 확대할 계획입니다.</p>
+                <p>특히 고니켈 및 고에너지 밀도 배터리가 시장의 주류로 전환될 것으로 예상되며, 한솔케미칼은 이러한 신제품에 필요한 소재 개발을 적극 추진하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 글로벌 시장 진출</h3>
+                    <p>한솔케미칼은 국내 시장 중심에서 벗어나 글로벌 시장 진출을 추진하고 있습니다. TSMC, 인텔 등 글로벌 반도체 팹으로부터의 고객사 개발, 그리고 CHIPS Act 영향으로 증가하는 미국 내 반도체 생산 설비에 공급하는 것이 목표입니다. 이를 위해 해외 영업망 확충과 현지 기술 지원 체계 구축을 추진하고 있습니다.</p>
+                    <p>글로벌 시장 진출은 중기적으로 회사 성장을 견인할 주요 동력이 될 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cogs"></i> 기술 혁신 및 R&D 확대</h3>
+                    <p>반도체 공정이 지속적으로 미세화되고, 배터리 성능이 개선됨에 따라 화학 소재의 기술 요구 수준이 높아지고 있습니다. 한솔케미칼은 매년 매출의 3-4%를 R&D에 투자하면서 기술 혁신을 추진하고 있습니다. 특히 고순도 화학 소재 제조 기술, 환경 친화적 생산 공정, 차세대 배터리 소재 등에 집중 투자하고 있습니다.</p>
+                    <p>또한 대학, 정부 출연 연구기관과의 협력을 통해 선제적 기술 개발을 추진하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 생산 능력 확대 및 설비 투자</h3>
+                <p>매출 성장에 대응하기 위해 한솔케미칼은 생산 설비 확대에 투자하고 있습니다. 과산화수소, 프리커서, 배터리 소재 등 주요 제품의 생산 능력을 단계적으로 확대하여 고객사 수요에 적기에 대응하려고 합니다. 이는 자본 집약적 투자이지만, 매출 성장에 따른 이익 창출을 가능하게 합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> <span>재무 현황 및 성장 전망</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 매출 급성장 추이</h3>
+                <p>한솔케미칼의 매출은 2021년 약 5,100억 원에서 2025년 약 8,700억 원으로 증가했습니다. 4년간 연평균 성장률은 약 14.3%입니다. 2026년 매출은 1조 원을 돌파할 것으로 전망되고 있으며, 이는 회사 역사상 최대 규모입니다. 이러한 성장은 주로 삼성전자 P4 설비 가동과 배터리 소재 수요 증가에 따른 것입니다.</p>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">최근 5년 연간 매출 추이 (억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 52%;"></div>
+                            </div>
+                            <div class="bar-value">5,100</div>
+                            <div class="bar-label">2021년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 62%;"></div>
+                            </div>
+                            <div class="bar-value">6,150</div>
+                            <div class="bar-label">2022년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 71%;"></div>
+                            </div>
+                            <div class="bar-value">7,200</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 87%;"></div>
+                            </div>
+                            <div class="bar-value">8,700</div>
+                            <div class="bar-label">2025년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">10,000</div>
+                            <div class="bar-label">2026년(E)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 영업이익률 개선</h3>
+                <p>한솔케미칼의 영업이익은 2025년 약 1,300억 원으로 추정되며, 영업이익률은 약 15% 수준입니다. 이는 일반 화학 산업의 평균 영업이익률 5-8%를 크게 상회하는 수치로, 고순도 화학 소재의 높은 부가가치를 반영합니다. 향후 매출이 증가하고 공정이 자동화될수록 영업이익률은 더욱 개선될 것으로 예상됩니다.</p>
+                <div class="chart-container">
+                    <h4 style="color: var(--text-body); font-size: 14px; margin-bottom: 16px;">최근 3년 영업이익 추이 (억원)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 65%;"></div>
+                            </div>
+                            <div class="bar-value">850</div>
+                            <div class="bar-label">2023년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 82%;"></div>
+                            </div>
+                            <div class="bar-value">1,050</div>
+                            <div class="bar-label">2024년</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 100%;"></div>
+                            </div>
+                            <div class="bar-value">1,300</div>
+                            <div class="bar-label">2025년(E)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-wallet"></i> 사업 부문별 매출 구성</h3>
+                    <p><strong>반도체 소재(70%):</strong> 과산화수소, 프리커서 등</p>
+                    <p><strong>배터리 소재(20%):</strong> 양극재 전구체 등</p>
+                    <p><strong>기타 소재(10%):</strong> LCD, 기타 화학 소재</p>
+                    <p>향후 배터리 소재 비중이 30% 이상으로 확대될 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-pie"></i> 현금 흐름 및 배당</h3>
+                    <p>한솔케미칼의 영업 현금 흐름은 매년 800억 원 이상으로 양호합니다. 이를 바탕으로 설비 투자, 배당, 차입금 상환 등을 충당하고 있습니다. 2026년 배당 수익률은 연 2-3% 수준으로 예상되며, 이익 성장에 따라 배당금도 증가할 가능성이 높습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 재무 안정성</h3>
+                <p>한솔케미칼의 재무 상태는 건전합니다. 부채 비율(부채/자본)은 30% 수준으로 낮으며, 신용도도 A 수준으로 평가받고 있습니다. 매출 증가에 따른 설비 투자 자금이 필요하지만, 현금 흐름이 양호하여 자체 자금 조달이 가능합니다. 필요 시 채권 발행이나 차입을 통한 자금 조달도 가능할 정도의 신용 등급을 유지하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-book-open"></i> 종합 평가</h3>
+                <p>한솔케미칼은 반도체 및 배터리 산업의 성장 수혜를 직접 받는 기업으로, 중기적으로 높은 성장이 전망됩니다. 2026년 매출 1조 원 달성은 회사의 전략이 성과를 거두고 있음을 시사합니다. 반도체 업사이클과 배터리 시장의 부활이 동시에 진행되고 있는 상황에서, 한솔케미칼은 두 시장의 성장 혜택을 모두 누릴 수 있는 유리한 위치에 있습니다.</p>
+                <p>다만 투자자가 주목해야 할 점은 고객사 의존도의 높음과 삼성전자의 설비 투자 변동에 따른 실적 변동성입니다. 또한 글로벌 경쟁사들과의 기술 격차 해소가 향후 지속적인 과제입니다. 이러한 리스크를 감안하더라도, 향후 2-3년간의 성장 기회는 충분히 매력적이라고 판단됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 주요 기회 및 리스크</h3>
+                <p><strong>주요 기회:</strong></p>
+                <ul>
+                    <li>반도체 업사이클: 2025-2027년 설비 투자 확대로 매출 성장</li>
+                    <li>P4, P5 공정 전환: 고순도 소재 수요 급증</li>
+                    <li>배터리 시장 성장: 고니켈 배터리 등 신제품 소재 수요</li>
+                    <li>글로벌 진출: CHIPS Act에 따른 미국 시장 기회</li>
+                    <li>수익성 개선: 규모의 경제와 공정 효율화</li>
+                </ul>
+                <p><strong>주요 리스크:</strong></p>
+                <ul>
+                    <li>고객사 의존도: 삼성전자 매출 비중이 높음</li>
+                    <li>설비 투자 변동: 고객사 경기에 민감하게 반응</li>
+                    <li>기술 경쟁: 글로벌 기업과의 기술 격차</li>
+                    <li>원가 상승: 원자재, 에너지 비용 변동</li>
+                    <li>새로운 경쟁사: 글로벌 기업의 한국 시장 진출</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 긍정적 (Buy)</strong></p>
+                <p>한솔케미칼은 중기 성장이 충분히 전망되는 기업입니다. 반도체 업사이클이 진행 중이고, 배터리 시장도 가파르게 성장하고 있는 상황에서, 이러한 성장의 수혜를 직접 받는 기업입니다. 목표주가 350,000원은 현재 주가 대비 32% 상승을 의미하며, 증권사 평균 목표가 321,444원도 현재 주가 대비 22% 상승을 시사합니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>성장 투자자:</strong> 반도체·배터리 산업 성장에 베팅하는 투자자</li>
+                    <li><strong>산업 트렌드 투자자:</strong> AI 반도체, EV 배터리 부상 수혜 기대</li>
+                    <li><strong>중기 성장 투자자:</strong> 2-3년 중기 성장 기간 활용</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중상(Medium-High) - 고객사 의존도 높음, 고객사 경기 민감</p>
+                <p><strong>목표주가 전망:</strong> 2026년 말 기준 350,000원 (현재 주가 대비 32% 상승)</p>
+                <p><strong>투자 기간 제안:</strong> 중기(1-2년) - 반도체 업사이클 지속 및 배터리 소재 성장 활용</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 모니터링 항목:</strong></p>
+                <ul>
+                    <li>매출 1조 원 달성 및 초과 달성 여부</li>
+                    <li>영업이익률 개선 추이</li>
+                    <li>삼성전자 P4, P5 설비 투자 현황</li>
+                    <li>배터리 소재 사업 매출 성장률</li>
+                    <li>글로벌 고객사 개발 진행 상황</li>
+                    <li>원가 및 원자재 가격 변동 영향</li>
+                </ul>
+                <p>한솔케미칼이 성공적으로 2026년 매출 1조 원을 달성하고, 이익률을 15% 이상으로 유지할 수 있다면, 향후 2-3년간 한국 소재 기업 중 가장 높은 성장률을 기록할 수 있을 것으로 예상됩니다. 반도체 업사이클과 배터리 산업의 급속한 성장이라는 호재를 활용하여, 회사가 글로벌 공급업체로 성장할 수 있는 중요한 시기입니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 4월 17일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>한솔케미칼 공시 자료 및 시장 분석</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>한솔케미칼 공시 자료 및 투자설명서</li>
+                    <li>한국거래소(KRX) 및 한솔케미칼 Investor Relations</li>
+                    <li>NH투자증권, iM증권 등 증권사 리서치 리포트</li>
+                    <li>삼성전자, SK하이닉스 공시 자료</li>
+                    <li>LG에너지솔루션, SK이노베이션 공시 자료</li>
+                    <li>IEA 배터리 시장 리포트</li>
+                    <li>미국 CHIPS Act 및 관련 정부 정책</li>
+                    <li>경쟁사(솔브레인, 동진쎼미켐) 공시 자료</li>
+                    <li>글로벌 화학 소재 시장 보고서</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 반도체 경기 변동, 고객사 설비 투자 변화, 기술 발전 등에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 최종 업데이트: 2026년 04월 17일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <!-- LAST-UPDATE-BLOCK -->
+    <div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+            <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+            <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 17일 09:00 KST</strong></span>
+            <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+        </div>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

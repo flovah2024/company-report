@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGF리테일 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 17, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">BGF리테일<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">한국 편의점 시장의 절대강자 BGF리테일의 CU 브랜드 성장과 내실 있는 수익성 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">79</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">수익 안정성 및 성장점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">편의점 유통 선도 기업의 매출 안정성과 확장성 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 3-4조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">112,400원</div>
+                            <div class="metric-label">현재 주가</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">160,000원</div>
+                            <div class="metric-label">목표주가</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">17,000+</div>
+                            <div class="metric-label">CU 점포수</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> BGF리테일 기업 소개</h3>
+                <p>BGF리테일은 2012년 BGF그룹의 유통 부문으로 설립되어, 한국 편의점 시장의 절대강자로 성장했습니다. 패밀리마트에서 전환된 CU 브랜드는 현재 약 17,000개의 점포를 운영하며, 한국 내 가장 많은 편의점 네트워크를 자랑합니다. 시가총액 약 3~4조 원, 현재 주가 112,400원의 BGF리테일은, 안정적인 캐시플로우와 지속적인 수익성 개선으로 투자자들의 신뢰를 받고 있습니다. 상상인증권 등 주요 증권사의 목표주가는 160,000원으로 설정되어 있어, 약 42% 상승의 여유가 있는 상태입니다.</p>
+                <p>BGF리테일의 핵심 사업 영역은 CU 편의점 체인입니다. 신선식품, 간편식품, 가공식품, 음료 등 다양한 상품을 통해 일상 생활의 필수 플랫폼으로 자리 잡았습니다. CU는 아늑하고 깨끗한 매장 이미지, 합리적인 가격대, 우수한 점주 및 알바이트 관리 시스템 등으로 고객과 가맹점주 모두로부터 높은 만족도를 기록하고 있습니다. 또한 한국뿐만 아니라 몽골, 카자흐스탄 등 해외 시장으로도 확장하고 있어, 글로벌 성장의 기초를 다지고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1989년</div>
+                        <div class="timeline-text">패밀리마트 한국 진출 - 일본 편의점 체인의 국내 첫 기착지</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년대</div>
+                        <div class="timeline-text">패밀리마트 한국 시장 확대 - 5,000개점 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012년</div>
+                        <div class="timeline-text">BGF 편의점 부문 분리 및 BGF리테일 설립 - 패밀리마트에서 CU로 브랜드 전환</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014년</div>
+                        <div class="timeline-text">CU 브랜드 통합 완료 - 일관된 이미지와 서비스 표준화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016년</div>
+                        <div class="timeline-text">BGF리테일 코스피 상장 - 자본금 확충 및 투자자 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">CU 점포 10,000개 돌파 - 한국 편의점 업계 최다 점포 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">몽골 시장 진출 - 해외 전략적 확장의 첫 걸음</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">카자흐스탄 진출 및 해외 매장 확대 - 동유럽 시장 공략</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">CU 점포 17,000개 달성 - 편의점 시장의 절대강자 지위 공고</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-store"></i> <span>BGF리테일의 운영 효율성 및 경쟁력</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cube"></i> CU 브랜드와 편의점 네트워크</h3>
+                <p>CU는 "Convenience Union"의 약자로, 편의와 결합을 의미하는 브랜드입니다. 2012년 패밀리마트에서 전환된 이후 14년간, BGF리테일은 CU를 한국의 대표 편의점 브랜드로 성장시켰습니다. 현재 약 17,000개의 CU 점포는 한국의 모든 시도(특별시, 광역시, 도)에 골고루 분포하고 있으며, 학교, 직장, 주거지 등 생활의 모든 영역에서 고객들을 만나고 있습니다.</p>
+                <p>CU의 강점은 다음과 같습니다. 첫째, 광범위한 점포 네트워크입니다. 17,000개점은 인구 3,000만 명 기준으로 약 1,765명당 1개 점포라는 의미로, 매우 높은 접근성을 제공합니다. 둘째, 표준화된 운영 시스템입니다. 모든 CU 점포는 일관된 매뉴얼과 기술을 따르면서도, 지역 특성에 맞는 유연한 상품 구성을 유지합니다. 셋째, 우수한 점주 및 직원 관리입니다. 적정한 마진율 보장, 정기적인 교육 및 지원으로 가맹점주의 높은 만족도를 유지합니다. 넷째, 신선식품 및 간편식품의 강화입니다. 현재 CU의 신선식품 매출 비중은 전체 매출의 약 35% 수준으로, 편의점의 전형적인 상품 구성 대비 높은 수준입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">17000개점포</span>
+                    <span class="tech-badge">광역네트워크</span>
+                    <span class="tech-badge">신선식품강화</span>
+                    <span class="tech-badge">디지털통합</span>
+                    <span class="tech-badge">점주지원시스템</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-mobile-alt"></i> 디지털 전환 및 모바일 통합</h3>
+                <p>BGF리테일은 편의점 산업의 디지털 전환을 주도하고 있습니다. CU 모바일 앱은 월 활성 사용자 약 1,500만 명으로, 한국의 대표 유통 앱 중 하나입니다. 앱을 통한 선주문, 배송 서비스, 멤버십 관리, 이벤트 참여 등이 모두 통합되어 있으며, 결제도 앱 내에서 직접 가능합니다.</p>
+                <p>또한 CU는 무인 점포(자동판매기 형태), AI 기반의 재고 관리 시스템, 실시간 판매량 분석 등 최신 기술을 적극 도입하고 있습니다. 특히 신선식품의 재고 최적화를 위해 머신러닝 알고리즘을 활용하여, 폐기율을 낮추고 품절을 방지하는 시스템을 개발했습니다. 이러한 기술 투자는 운영 효율성 증대와 고객 만족도 개선으로 직결되고 있습니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-box"></i> PB(프라이빗 브랜드) 전략</h3>
+                    <p>CU는 자체 PB 상품 개발에 적극 투자하고 있습니다. CU브랜드 상품의 매출은 전체의 약 25% 수준으로, 높은 마진율을 확보합니다. 간편식품, 음료, 스낵 등 다양한 카테고리에서 고품질 PB 상품을 제공하여, 가격 민감층과 품질 추구층 모두를 만족시키고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-truck"></i> 물류 및 배송 시스템</h3>
+                    <p>BGF리테일은 세계적 수준의 물류 인프라를 보유했습니다. 17,000개점포에 매일 신선식품을 배송하기 위해, 전국 주요 거점에 냉장, 냉동 물류센터를 갖추고 있습니다. 또한 신선식품의 신속한 배송을 위해, 일부 지역에서는 당일 배송 서비스도 제공합니다. 이는 업계 최고 수준의 물류 기술력을 보여줍니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i> 해외 점포 운영</h3>
+                    <p>CU는 몽골, 카자흐스탄 등 신흥 시장으로의 확장을 추진 중입니다. 해외 시장의 특성에 맞춘 상품 구성과 가맹점주 지원으로, 각 지역에서 성공적인 점포 운영을 이루고 있습니다. 향후 동남아, 중앙아시아 지역으로의 추가 확장이 계획되어 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i> 가맹점주 지원 및 상생 전략</h3>
+                <p>BGF리테일의 경쟁력은 궁극적으로 가맹점주의 수익성에 있습니다. 이를 위해 회사는 다음과 같은 지원을 제공합니다. 첫째, 합리적인 가맹점 수수료 수준으로 점주의 순이익을 보장합니다. 둘째, 정기적인 교육과 마케팅 지원으로 점포 운영 능력을 향상시킵니다. 셋째, 상품 추천 알고리즘을 통해 점포별 최적화된 상품 구성을 제시합니다. 넷째, 금융 지원과 설비 투자 지원으로 점주의 초기 투자 부담을 경감합니다. 이러한 상생 전략이 높은 점포 만족도와 낮은 폐점율을 구현하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>편의점 시장 규모 및 성장</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map-marker-alt"></i> 한국 편의점 시장의 특징</h3>
+                <p>한국의 편의점 시장은 2025년 기준 약 17조 원 규모로 추정되며, 매년 4~5%의 안정적인 성장을 기록하고 있습니다. 편의점은 마트, 온라인 쇼핑과는 다른 차별화된 역할을 하고 있습니다. 접근성, 이용 편의성, 빠른 픽업/배송 등의 특성으로 일상 생활의 필수 인프라가 되었습니다. 특히 1인 가구 증가, 야근 문화, 배달 음식 활성화 등의 사회 변화가 편의점 수요를 지속적으로 증가시키고 있습니다.</p>
+                <p>한국 편의점 시장의 특징은 높은 경쟁도입니다. CU, GS25, 이마트24, 세븐일레븐 등 4대 편의점 체인이 시장의 대부분을 차지하고 있으며, 각 체인은 차별화된 전략으로 경쟁하고 있습니다. 또한 편의점은 판매 마진보다는 물량과 회전율이 중요한 비즈니스 특성을 보이고 있어, 대규모 네트워크를 갖춘 기업이 수익성에서 유리합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-food"></i> 신선식품 및 간편식품 시장의 성장</h3>
+                    <p>한국의 신선식품 및 간편식품 시장은 편의점 시장 내에서 가장 빠르게 성장하는 세그먼트입니다. 2025년 약 5조 원 규모의 편의점 신선식품 시장은, 매년 8~10%의 고성장을 보이고 있습니다. 이는 다음 요인들에 기인합니다. 첫째, 1인 가구 증가로 소량 구매 수요가 증가했습니다. 둘째, 건강과 영양에 대한 관심 증대로, 신선식품 비중이 증가했습니다. 셋째, 편의점 신선식품의 품질이 지속적으로 개선되면서 신뢰도가 높아졌습니다.</p>
+                    <p>BGF리테일의 신선식품 매출 비중이 약 35% 수준인 것은, 이 고성장 세그먼트에서의 강력한 입지를 보여줍니다. 향후 신선식품 시장의 성장에 따라, BGF리테일의 매출과 이익도 함께 성장할 것으로 예상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-shopping-cart"></i> O2O(온라인-투-오프라인) 통합</h3>
+                    <p>편의점은 O2O 비즈니스의 최전선입니다. 온라인에서 주문하고 근처 편의점에서 픽업하거나, 배송받는 서비스가 일상화되었습니다. CU는 이러한 O2O 트렌드에서 가장 적극적인 참여자 중 하나입니다. CU 앱을 통한 배송, 픽업, 반품 등의 통합 서비스는, 편의점을 단순한 소매점을 넘어 유통 플랫폼으로 변모시켜 주고 있습니다.</p>
+                    <p>특히 쿠팡, 마켓컬리 등 온라인 배송 서비스 기업들과의 협력을 통해, CU 점포는 배송 허브로 역할하고 있습니다. 이는 점포의 새로운 수익원이 되며, 동시에 고객 접점을 증대시킵니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-asia"></i> 해외 편의점 시장 진출</h3>
+                <p>몽골, 카자흐스탄 등 신흥 시장의 편의점 시장은 초기 성장 단계에 있어, 높은 성장 잠재력을 보유하고 있습니다. 몽골의 경우, 도시화가 급속도로 진행되면서 편의점에 대한 수요가 빠르게 증가하고 있습니다. 카자흐스탄도 중앙아시아의 경제 성장으로 인해, 편의점 문화가 확산되고 있는 중입니다.</p>
+                <p>BGF리테일이 이 지역에서 선점적으로 진출함으로써, 향후 이 시장들의 성장에 직접 수익을 얻을 수 있는 위치를 확보했습니다. 몽골에서의 CU 점포 수는 현재 약 200개점이지만, 향후 5년 내 1,000개점 이상으로 확대할 계획인 것으로 알려져 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-half"></i> 시간대별 고객층 다변화</h3>
+                <p>편의점은 더 이상 야간/심야 고객만을 대상으로 하지 않습니다. 아침 출근길 커피와 아침식사, 점심시간의 도시락, 저녁 간식, 야식 등 하루 24시간 모든 시간대에 고객을 만나고 있습니다. 이러한 변화는 편의점의 상품 구성을 다양화시키고, 수익 창출 기회를 확대했습니다. BGF리테일은 시간대별 맞춤형 상품 기획으로 이러한 추세에 대응하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-sitemap"></i> <span>경쟁 환경 및 포지셔닝</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 한국 편의점 시장의 4강 구도</h3>
+                <p>한국 편의점 시장은 CU, GS25, 이마트24, 세븐일레븐의 4대 체인이 거의 전체 시장을 차지하고 있는 과점 시장입니다. 이 중 BGF리테일의 CU는 약 50% 이상의 시장 점유율로 절대강자의 지위를 유지하고 있습니다. 각 체인의 특징과 경쟁 현황은 다음과 같습니다.</p>
+
+                <table style="margin-top: 24px;">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">기업</th>
+                            <th style="width: 20%;">점포수</th>
+                            <th style="width: 20%;">주요 강점</th>
+                            <th style="width: 20%;">주요 약점</th>
+                            <th style="width: 25%;">시장 포지션</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CU(BGF)</strong></td>
+                            <td>약 17,000개</td>
+                            <td>광역 네트워크, 신선식품 강화, 우수한 점주 관리</td>
+                            <td>높은 운영 비용, 경쟁 심화</td>
+                            <td>시장 절대강자</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GS25(GS)</strong></td>
+                            <td>약 8,000개</td>
+                            <td>GS그룹 후원, 프리미엄 상품 라인, 편의성</td>
+                            <td>점포 수 부족, 확장 제약</td>
+                            <td>2위 경쟁사</td>
+                        </tr>
+                        <tr>
+                            <td><strong>이마트24</strong></td>
+                            <td>약 3,000개</td>
+                            <td>신선식품 전문성, 신개념 매장</td>
+                            <td>점포 수 제한, 마진율 압박</td>
+                            <td>3위 도전자</td>
+                        </tr>
+                        <tr>
+                            <td><strong>세븐일레븐</strong></td>
+                            <td>약 8,500개</td>
+                            <td>프랜차이즈 모델, 상품 다양성</td>
+                            <td>한국 시장 중심 약화</td>
+                            <td>2위 도전자</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-crown"></i> BGF리테일의 경쟁 우위</h3>
+                <p>BGF리테일의 경쟁 우위는 다음과 같습니다. 첫째, 절대적 우위의 네트워크 규모입니다. 17,000개점은 2위 기업의 2배 이상으로, 고객 접근성에서 압도적입니다. 둘째, 신선식품에 대한 선제적 투자입니다. 신선식품의 높은 마진율과 고객 만족도를 활용하여, 경쟁 기업들보다 먼저 이 세그먼트를 강화했습니다. 셋째, 물류 인프라의 우수성입니다. 자체 냉장/냉동 물류망을 갖추고 있어, 신선식품의 품질 관리와 배송 속도에서 경쟁 우위를 유지합니다. 넷째, 점주 지원 체계의 우수성입니다. 체계적인 교육, 금융 지원, 마케팅 협력으로 가맹점주의 높은 만족도를 유지합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i> 경쟁 전략 및 대응</h3>
+                <p>BGF리테일은 현재 시장 리더의 지위를 유지하기 위해, 다음과 같은 전략을 추진하고 있습니다. 첫째, 추가 점포 확충을 통한 네트워크 강화입니다. 현재 17,000개점에서 매년 수백 개의 신규 점포를 추가하여, 경쟁 기업들의 추격을 원천 차단하고 있습니다. 둘째, 신선식품 비중의 더욱 높은 강화입니다. 현재 35% 수준의 신선식품 비중을 향후 40% 이상으로 확대할 계획입니다. 셋째, O2O 서비스의 확대입니다. 배송, 픽업, 반품 등의 통합 서비스를 더욱 확대하여, 고객 접점을 증대시킬 예정입니다. 넷째, 해외 시장 확장의 가속화입니다. 몽골, 카자흐스탄 외에 베트남, 태국 등 동남아 시장으로의 진출을 검토 중입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-th"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-check"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>절대적 우위의 편의점 네트워크(17,000개점)</li>
+                        <li>신선식품 분야의 강화와 높은 마진율</li>
+                        <li>자체 물류 인프라의 우수성</li>
+                        <li>우수한 점주 지원 및 만족도 유지</li>
+                        <li>O2O 통합 서비스의 선도</li>
+                        <li>안정적인 캐시플로우와 수익성</li>
+                        <li>디지털 전환의 앞선 추진</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>높은 운영 비용 및 점주 지원 비용</li>
+                        <li>점포 포화화에 따른 신규 확장 제약</li>
+                        <li>경쟁 심화로 인한 마진율 압박</li>
+                        <li>노동력 부족과 알바이트 임금 상승</li>
+                        <li>폐기 식품 관리 및 환경 문제</li>
+                        <li>온라인 쇼핑의 성장에 따른 침식</li>
+                        <li>해외 시장 경험 부족</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>신선식품 시장의 지속적 성장</li>
+                        <li>O2O 통합 서비스의 확대</li>
+                        <li>배송/라스트마일 배송 수요 증가</li>
+                        <li>해외 신흥 시장의 편의점 수요 확대</li>
+                        <li>프리미엄 편의점 시장의 성장</li>
+                        <li>스마트 편의점 기술의 발전</li>
+                        <li>식품 안전성에 대한 고객 관심 증가</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>온라인 배송 서비스의 성장(Amazon Go 등)</li>
+                        <li>점포 포화화로 인한 성장 한계</li>
+                        <li>GS25, 세븐일레븐 등 경쟁사의 공세</li>
+                        <li>최저임금 인상과 운영 비용 증가</li>
+                        <li>소비 심화 및 경기 둔화</li>
+                        <li>신선식품 가격 상승과 수급 불균형</li>
+                        <li>글로벌 공급망 불안정성</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-map"></i> <span>성장 전략 및 향후 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 신선식품 및 PB 상품 강화 전략</h3>
+                <p>BGF리테일의 최우선 전략은 신선식품 비중의 지속적인 확대입니다. 현재 35% 수준의 신선식품 매출 비중을 2027년까지 40% 이상으로 확대하는 것이 목표입니다. 이는 다음과 같은 이유에서입니다. 첫째, 신선식품의 마진율이 가공식품보다 2~3배 높습니다. 둘째, 신선식품은 고객 만족도와 재방문율이 높습니다. 셋째, 신선식품 중심의 포지셔닝이 경쟁 기업들과의 차별화가 됩니다.</p>
+                <p>또한 PB 상품의 개발과 마케팅도 강화할 예정입니다. CU 브랜드 상품의 현재 25% 매출 비중을 30% 이상으로 확대하여, 추가 수익원을 확보할 계획입니다. PB 상품은 높은 마진율뿐만 아니라, 브랜드 로열티도 구축하는 데 도움이 됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 해외 시장 확장 전략</h3>
+                <p>BGF리테일은 국내 시장의 포화화를 감안하여, 해외 시장 확장을 향후 주요 성장 엔진으로 삼고 있습니다. 몽골에서의 성공적인 진출 경험을 바탕으로, 카자흐스탄, 베트남, 태국 등 신흥 시장으로의 진출을 단계적으로 추진할 계획입니다. 각 지역의 특성에 맞춘 상품 구성과 점주 지원 체계를 구축함으로써, 국내에서의 성공 모델을 해외에 이식할 예정입니다.</p>
+                <p>해외 시장의 성장 잠재력은 매우 높습니다. 몽골의 경우 현재 약 200개점에서 향후 5년 내 1,000개점으로 확대할 계획이며, 이 과정에서 상당한 매출 증가를 기대할 수 있습니다. 카자흐스탄도 중앙아시아의 경제 성장에 따라, 편의점에 대한 수요가 빠르게 증가할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-mobile-alt"></i> O2O 및 디지털 플랫폼 강화</h3>
+                    <p>CU 모바일 앱과 온라인 플랫폼의 역할을 더욱 확대할 계획입니다. 배송, 픽업, 반품, 결제 등 모든 거래가 앱 내에서 이루어질 수 있도록 통합하여, 고객 편의성을 극대화합니다. 또한 AI 기반의 추천 상품 시스템을 고도화하여, 개인화된 쇼핑 경험을 제공할 예정입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i> 스마트 편의점 기술 도입</h3>
+                    <p>무인 계산대, AI 기반의 보안 감시, 자동 재고 관리 등 최신 기술을 점진적으로 도입할 계획입니다. 이를 통해 운영 비용을 절감하고, 고객 경험을 개선하며, 점주의 운영 부담을 경감할 수 있을 것으로 기대됩니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i> 점주와의 상생 강화</h3>
+                <p>점주 만족도 유지는 BGF리테일의 핵심 경쟁력입니다. 이를 위해 다음과 같은 조치를 추진할 예정입니다. 첫째, 적정 마진율 보장을 통한 수익성 유지입니다. 둘째, 교육 및 컨설팅 서비스의 확대입니다. 셋째, 금융 지원과 설비 투자 지원의 강화입니다. 넷째, 점주 커뮤니티의 활성화를 통한 정보 공유입니다. 이러한 상생 전략은 점포 폐점율을 낮추고, 신규 점주 모집을 용이하게 할 것으로 기대됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIAL ANALYSIS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>재무 현황 및 투자 기회</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill"></i> 주요 재무 지표</h3>
+                <p>BGF리테일의 재무 상황은 매우 건전합니다. 2025년 매출은 약 8,500억 원으로 전년 대비 약 8% 성장했으며, 영업이익은 약 1,800억 원으로 영업이익률 약 21%를 기록했습니다. 순이익도 약 1,400억 원으로, 좋은 수익성을 유지하고 있습니다. 현재 주가 112,400원에서 상상인증권의 목표주가 160,000원은, 약 42% 상승의 여유를 의미합니다.</p>
+                <p>BGF리테일의 현금흐름은 매우 우수합니다. 편의점 비즈니스의 특성상 카드 결제가 대부분이므로, 현금 수집 사이클이 매우 짧습니다. 이로 인해 운영 자본 필요성이 적고, 잉여 현금을 주주 환원이나 투자에 사용할 수 있습니다.</p>
+
+                <div class="chart-container">
+                    <h4 style="color: var(--ink-strong); margin-bottom: 24px;">BGF리테일 재무 성과 추이 (예상)</h4>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 78%;"></div>
+                            </div>
+                            <div class="bar-value">2024년 매출</div>
+                            <div class="bar-label">약 7,900억원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 85%;"></div>
+                            </div>
+                            <div class="bar-value">2025년 매출</div>
+                            <div class="bar-label">약 8,500억원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 92%;"></div>
+                            </div>
+                            <div class="bar-value">2026년 전망</div>
+                            <div class="bar-label">약 9,200억원</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height: 82%;"></div>
+                            </div>
+                            <div class="bar-value">영업이익률</div>
+                            <div class="bar-label">약 21%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i> 투자 가치 평가</h3>
+                <p>BGF리테일의 현재 주가는 합리적인 수준으로 평가되고 있습니다. 현재 주가 112,400원은 2025년 예상 EPS 기준 약 12배의 PER를 의미하며, 산업 평균 대비 적절한 수준입니다. 2026년 매출 약 9,200억 원과 영업이익율 21% 유지를 가정하면, 순이익은 약 1,550억 원 수준이 될 것으로 예상됩니다. 이를 기반으로 계산한 적정 주가는 약 140,000원~165,000원 수준입니다.</p>
+                <p>상상인증권의 목표주가 160,000원은 이러한 분석에 부합하는 합리적인 수치입니다. 단기(6개월) 투자 관점에서는 125,000원~130,000원의 목표가를 제시하며, 중기(1년) 관점에서는 145,000원~155,000원, 장기(3년) 관점에서는 185,000원 이상의 상승을 기대할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 주요 리스크 요인</h3>
+                <p>BGF리테일 투자의 주요 리스크는 다음과 같습니다. 첫째, 국내 편의점 시장의 포화화입니다. 현재 17,000개점은 이미 상당히 높은 수준이며, 추가 확장의 여지가 제한적입니다. 둘째, 온라인 배송 서비스의 성장입니다. 신선식품 배송 서비스의 확대로 인해, 편의점 방문객이 감소할 가능성이 있습니다. 셋째, 최저임금 상승 등 운영 비용의 증가입니다. 넷째, 경쟁 기업들의 공세 강화입니다. GS25와 세븐일레븐도 신선식품 강화, O2O 서비스 확대 등으로 경쟁을 치열하게 하고 있습니다. 다섯째, 경제 성장 둔화에 따른 소비 심화입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 배당금과 주주 환원</h3>
+                <p>BGF리테일은 우수한 현금창출력을 기반으로, 꾸준한 배당금을 지급하고 있습니다. 2025년 배당금은 주당 약 2,500원으로, 배당 수익률은 약 2.2% 수준입니다. 향후 이익이 증가함에 따라, 배당금도 함께 증가할 것으로 예상됩니다. 또한 자사주 매입 등 추가 주주 환원도 검토할 가능성이 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-flag-checkered"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>BGF리테일은 한국 편의점 시장의 절대강자로서, 안정적인 매출과 우수한 수익성을 바탕으로 지속적인 성장을 추구하고 있습니다. 17,000개의 CU 점포 네트워크, 신선식품 강화 전략, O2O 통합 서비스, 해외 시장 확장 등의 다각화된 전략으로 향후 성장을 기대할 수 있습니다. 특히 신선식품 시장의 지속적인 성장과 해외 시장 확대는, 매출과 이익의 새로운 성장 동인이 될 것으로 예상됩니다.</p>
+                <p>다만 국내 편의점 시장의 포화화, 온라인 배송 서비스의 성장, 운영 비용 증가 등의 리스크도 존재합니다. 이러한 리스크들을 어떻게 관리하고 대응하느냐가, 향후 BGF리테일의 수익성 유지에 중요한 영향을 미칠 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>종합 평가: BUY (매수)</strong></p>
+                <p>BGF리테일은 현재 매수할 가치가 있는 종목으로 판단됩니다. 이유는 다음과 같습니다:</p>
+                <ul>
+                    <li><strong>안정적인 수익성:</strong> 21% 수준의 영업이익률은 업계에서 가장 우수한 수준이며, 향후 유지될 것으로 예상됩니다.</li>
+                    <li><strong>다각화된 성장 전략:</strong> 신선식품 강화, O2O 서비스 확대, 해외 시장 진출 등으로 새로운 성장 동인을 확보했습니다.</li>
+                    <li><strong>합리적인 밸류에이션:</strong> 현재 주가는 산업 평균 대비 적절한 수준으로 평가되어 있으며, 목표주가 대비 약 42% 상승의 여유가 있습니다.</li>
+                    <li><strong>우수한 현금창출력:</strong> 편의점 비즈니스 특성상 높은 현금창출력을 기반으로, 배당금 증가와 추가 투자가 가능합니다.</li>
+                    <li><strong>시장 선도 기업:</strong> 17,000개점의 압도적인 네트워크로 시장 선도 지위를 확보했습니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-binoculars"></i> 투자 전략</h3>
+                <p><strong>단기 투자 전략 (3~6개월):</strong> 현재 가격에서 매수하여, 목표가 125,000원~130,000원에서 약 11~15% 수익 실현. 분기 실적 발표와 신선식품 매출 비중 변화를 모니터링하여, 부진 시에는 손절 (107,000원).</p>
+                <p><strong>중기 투자 전략 (6개월~1년):</strong> 단계적으로 매수하여 포지션을 구축하고, 목표가 145,000원~155,000원 도달 시 50%는 수익 실현. 나머지는 장기 보유.</p>
+                <p><strong>장기 투자 전략 (1년 이상):</strong> 신선식품 비중 확대, 해외 시장 진출 등이 성공적으로 진행된다면, 2026년 이후 185,000원 이상의 주가 달성 가능. 배당금 수익도 지속적으로 받을 수 있음.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-eye"></i> 향후 주목할 포인트</h3>
+                <ul>
+                    <li><strong>분기별 매출 성장률:</strong> 신선식품의 지속적인 성장과 O2O 서비스 확대에 따른 매출 증가 추세 확인.</li>
+                    <li><strong>신선식품 매출 비중:</strong> 목표인 40% 이상으로의 확대 진행 여부. 핵심 KPI.</li>
+                    <li><strong>영업이익률 유지:</strong> 21% 수준의 유지 여부. 운영 비용 증가에 따른 마진율 변화.</li>
+                    <li><strong>해외 시장 성과:</strong> 몽골, 카자흐스탄 점포 수의 증가와 매출 기여도.</li>
+                    <li><strong>배당금 증가:</strong> 이익 증가에 따른 배당금 인상 수준.</li>
+                    <li><strong>경쟁 기업의 움직임:</strong> GS25, 세븐일레븐의 신선식품 강화, O2O 서비스 확대 등 경쟁 강도.</li>
+                    <li><strong>온라인 배송 서비스의 성장:</strong> 신선식품 배송 플랫폼의 확대가 편의점 방문객에 미치는 영향.</li>
+                </ul>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>BGF리테일 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 BGF리테일 Investor Relations 공개 정보</li>
+                    <li>상상인증권, 삼성증권, 신한투자증권 등 주요 증권사 리서치 리포트</li>
+                    <li>편의점 시장 조사 기관 (Korea Convenience Store Association)</li>
+                    <li>통계청 및 소비자원의 유통 시장 조사 데이터</li>
+                    <li>GS리테일(GS25), 이마트24, 세븐일레븐 등 경쟁사 공시 자료</li>
+                    <li>글로벌 유통 기업(Amazon, Alibabar, Tesco) 관련 리포트</li>
+                    <li>온라인 배송 플랫폼(쿠팡, 마켓컬리) 시장 데이터</li>
+                    <li>편의점 신선식품 시장 조사 및 소비 트렌드 보고서</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Insights Advanced Analytics</strong> | 최종 업데이트: 2026년 4월 17일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 17일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

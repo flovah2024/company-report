@@ -1,0 +1,1130 @@
+<\!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강원랜드 기업 분석 보고서 - FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-hover: #1a1a22;
+            --gold: #c9a962;
+            --blue: #5c7d9e;
+            --green: #4ade80;
+            --red: #ef4444;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a3e;
+            --accent: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4b896;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(15, 16, 20, 0.95) 0%, rgba(9, 9, 11, 0.98) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text:hover {
+            text-shadow: 0 0 20px rgba(201, 169, 98, 0.5);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold), #d4b896);
+            color: var(--bg-deep);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(92, 125, 158, 0.1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Timeline */
+        .timeline {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .timeline h3 {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            font-family: 'Orbit', sans-serif;
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-left: 3px solid var(--gold);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background: var(--bg-hover);
+            transform: translateX(5px);
+        }
+
+        .timeline-year {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        section h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--blue);
+        }
+
+        section h4 {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem 0;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Card Layout */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .card:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.1);
+        }
+
+        .card h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .card i {
+            font-size: 1.3rem;
+            color: var(--blue);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(92, 125, 158, 0.1));
+            border-bottom: 2px solid var(--border);
+        }
+
+        th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            border-right: 1px solid var(--border);
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:hover {
+            background: var(--bg-hover);
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .swot-box {
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .swot-box.strength {
+            background: rgba(74, 222, 128, 0.1);
+            border-left-color: var(--green);
+        }
+
+        .swot-box.weakness {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: var(--red);
+        }
+
+        .swot-box.opportunity {
+            background: rgba(92, 125, 158, 0.1);
+            border-left-color: var(--blue);
+        }
+
+        .swot-box.threat {
+            background: rgba(139, 92, 246, 0.1);
+            border-left-color: var(--accent);
+        }
+
+        .swot-box h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .swot-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .swot-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .swot-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Charts */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            height: 400px;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 100%;
+            padding: 2rem 1rem;
+            gap: 1rem;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .bar-value {
+            background: linear-gradient(135deg, var(--gold), var(--blue));
+            border-radius: 4px 4px 0 0;
+            width: 100%;
+            min-width: 60px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bar-value:hover {
+            filter: brightness(1.2);
+        }
+
+        .bar-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .bar-amount {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* Last Update Block */
+        .last-update-block {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(92, 125, 158, 0.1));
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 4rem 0 2rem 0;
+            text-align: center;
+        }
+
+        .last-update-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .last-update-date {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-update-time {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #d4b896;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-right {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav {
+                display: none;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .hero {
+                padding: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-items {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .metric-value {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, footer, .last-update-block {
+                background: none;
+                border: none;
+            }
+
+            .card {
+                page-break-inside: avoid;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            a {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <\!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-text">
+                    <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="logo-img">
+                </a>
+                <a href="index.html" class="logo-text">FLOVAH Insights</a>
+            </div>
+            <div class="header-right">
+                <nav>
+                    <a href="#overview">기업개요</a>
+                    <a href="#technology">기술분석</a>
+                    <a href="#market">시장분석</a>
+                    <a href="#competitors">경쟁사분석</a>
+                </nav>
+                <div class="header-date">
+                    <i class="fas fa-calendar"></i>
+                    April 20, 2026
+                </div>
+                <div class="flovah-badge">
+                    <i class="fas fa-chart-line"></i>
+                    FLOVAH
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <\!-- Main Content -->
+    <main>
+        <\!-- Hero Section -->
+        <section class="hero" id="overview">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>강원랜드</h1>
+                    <p>국내 유일의 내국인 카지노 운영 회사로서 레저산업의 선두주자. 강원도 정선군 하이원리조트를 중심으로 카지노, 스키장, 골프장, 호텔 등 종합 레저서비스를 제공하고 있습니다. 폐광지역 경제 활성화를 위해 1998년 설립된 이후 안정적인 매출과 높은 배당수익률을 유지하고 있습니다.</p>
+                </div>
+            </div>
+
+            <\!-- Key Metrics -->
+            <div class="hero-meta">
+                <div class="metric">
+                    <div class="metric-value">KOSPI 035250</div>
+                    <div class="metric-label">상장코드</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">3.7조원</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">1조4,767억원</div>
+                    <div class="metric-label">2025 매출</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">3,165억원</div>
+                    <div class="metric-label">2025 순이익</div>
+                </div>
+            </div>
+
+            <\!-- Timeline -->
+            <div class="timeline">
+                <h3><i class="fas fa-history"></i> 주요 연혁</h3>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1998년</div>
+                        <div class="timeline-desc">회사 설립 - 폐광지역 경제 활성화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년</div>
+                        <div class="timeline-desc">강원랜드 카지노 개장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-desc">하이원리조트 브랜딩 통일</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-desc">역대 최대 순이익 4,554억원 달성</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <\!-- Section: 기술분석 -->
+        <section id="technology">
+            <h2><i class="fas fa-microchip"></i> 기술분석</h2>
+            
+            <h3>운영기술 및 시스템</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4><i class="fas fa-lock"></i> 카지노 운영 시스템</h4>
+                    <p>국제 기준의 카지노 게임시스템 도입으로 투명성 및 보안을 강화했습니다. 최신 모니터링 기술을 통해 공정성을 보장하고, 고객 정보 보호를 위한 다층적 보안체계를 운영하고 있습니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-mobile-alt"></i> 디지털 혁신</h4>
+                    <p>모바일 예약 플랫폼, 통합 멤버십 시스템 도입으로 고객 편의성을 향상시켰습니다. 데이터 기반 고객 관리시스템을 통해 맞춤형 서비스를 제공하고 있습니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-chart-line"></i> 데이터 분석</h4>
+                    <p>고급 분석 기술을 활용하여 고객 행동 패턴을 분석하고, 마케팅 효율성을 극대화합니다. 실시간 매출 모니터링 시스템을 통해 빠른 경영 의사결정을 지원합니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-tools"></i> 시설 관리</h4>
+                    <p>스키장, 골프장 등 복합 시설의 통합 관리 시스템을 운영합니다. 인공지능 기반 예측 유지보수로 운영 효율성을 극대화하고 있습니다.</p>
+                </div>
+            </div>
+
+            <h3>경쟁 우위 기술</h3>
+            <p>강원랜드는 국내 유일의 내국인 카지노 운영 회사로서 독점적 지위를 가지고 있습니다. 이러한 규제 진입장벽은 경쟁사 진입을 사실상 불가능하게 하여 장기적인 경쟁력을 보장합니다. 또한 하이원리조트의 종합 레저 인프라는 고객 체류시간 연장과 브랜드 가치 극대화를 가능하게 합니다.</p>
+        </section>
+
+        <\!-- Section: 시장분석 -->
+        <section id="market">
+            <h2><i class="fas fa-globe"></i> 시장분석</h2>
+            
+            <h3>시장 규모 및 동향</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4><i class="fas fa-chart-pie"></i> 국내 카지노 시장</h4>
+                    <p>국내 카지노 시장은 관광객 증감, 환율변동, 경기 사이클에 영향을 받습니다. 2024년 카지노 산업은 엔저의 영향으로 일본인 관광객 증가로 호황을 맞았으며, 2025년에도 지속적인 수요가 예상됩니다. 강원랜드는 국내 유일의 내국인 카지노로서 안정적인 고객층을 보유하고 있습니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-skiing"></i> 스키장 시장</h4>
+                    <p>스키 시즌의 계절성이 뚜렷하며, 고객 만족도에 따른 반복 방문율이 높습니다. 하이원스키장은 수도권 접근성과 국제적 시설 수준으로 국내 최고의 스키장 중 하나입니다. 겨울 시즌 수익 창출의 주요 원천입니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-umbrella-beach"></i> 레저산업 트렌드</h4>
+                    <p>복합 레저시설에 대한 수요가 증가하고 있으며, MZ세대를 중심으로 경험 소비 선호도가 높아지고 있습니다. 웰니스 트렌드와 문화시설 확충으로 연중 관광객 유입을 확대할 기회가 있습니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-users"></i> 고객층 다양화</h4>
+                    <p>과거 중국인 관광객 중심에서 일본, 동남아 관광객 증가로 다변화되고 있습니다. 내국인 VIP 고객층의 안정성과 함께 국제 관광객 확대로 지속적인 성장이 기대됩니다.</p>
+                </div>
+            </div>
+
+            <h3>2025년 시장 환경</h3>
+            <p>2025년 강원랜드는 다양한 시장 변화에 대응하고 있습니다. 글로벌 경제 불확실성에도 불구하고, 관광 산업의 회복세와 국내 소비심리 개선으로 긍정적인 영향을 받고 있습니다. 특히 환율 변동에 따른 외국인 관광객 유입 증감이 실적에 중요한 영향을 미치고 있으며, 이를 내국인 고객 확충으로 상쇄하려는 전략을 추진 중입니다.</p>
+        </section>
+
+        <\!-- Section: 경쟁사분석 -->
+        <section id="competitors">
+            <h2><i class="fas fa-sitemap"></i> 경쟁사분석</h2>
+            
+            <h3>국내 주요 경쟁사</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>강원랜드</th>
+                        <th>롯데호텔</th>
+                        <th>신라호텔</th>
+                        <th>파라다이스</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>카지노 운영</strong></td>
+                        <td>내국인 전용 (독점)</td>
+                        <td>외국인 전용</td>
+                        <td>외국인 전용</td>
+                        <td>외국인 전용</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주요 시설</strong></td>
+                        <td>카지노, 스키장, 골프, 호텔</td>
+                        <td>카지노, 호텔, 쇼핑</td>
+                        <td>카지노, 호텔, 스파</td>
+                        <td>카지노, 호텔</td>
+                    </tr>
+                    <tr>
+                        <td><strong>입지</strong></td>
+                        <td>강원도 정선 (산악지역)</td>
+                        <td>서울 중심</td>
+                        <td>서울 중심</td>
+                        <td>강원도, 제주</td>
+                    </tr>
+                    <tr>
+                        <td><strong>고객층</strong></td>
+                        <td>내국인 VIP, 일반 고객</td>
+                        <td>외국인 관광객</td>
+                        <td>외국인 관광객</td>
+                        <td>외국인 관광객</td>
+                    </tr>
+                    <tr>
+                        <td><strong>경쟁 우위</strong></td>
+                        <td>내국인 카지노 독점</td>
+                        <td>서울 도심 위치</td>
+                        <td>프리미엄 브랜드</td>
+                        <td>복수 운영 지점</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>경쟁 환경 분석</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4><i class="fas fa-star"></i> 강원랜드의 경쟁 강점</h4>
+                    <p><strong>1. 독점적 지위:</strong> 내국인 카지노 운영의 독점으로 인한 진입장벽으로 직접적인 경쟁이 없습니다. <strong>2. 안정적 고객층:</strong> 내국인 VIP 고객의 충성도가 높아 매출 안정성이 우수합니다. <strong>3. 종합 시설:</strong> 카지노와 리조트를 결합한 복합 시설로 고객 체류시간 및 소비액 극대화가 가능합니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> 경쟁 약점</h4>
+                    <p><strong>1. 지역 편중:</strong> 강원도 정선에 입지로 지역 제약이 있습니다. <strong>2. 외국인 시장 진입 불가:</strong> 내국인 전용 규제로 외국인 관광객 수요 활용 불가능합니다. <strong>3. 정책 리스크:</strong> 정부 규제 및 카지노 정책 변화에 민감합니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-lightbulb"></i> 경쟁 전망</h4>
+                    <p>장기적으로는 내국인 카지노 독점 지위가 강원랜드의 가장 큰 경쟁 우위입니다. 외국인 카지노와는 다른 고객층을 확보하고 있어 직접적인 경쟁이 제한적입니다. 향후 시장 개방 시 리스크가 존재하지만, 현재는 안정적인 수익 구조를 유지할 것으로 전망됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <\!-- Section: SWOT 분석 -->
+        <section id="swot">
+            <h2><i class="fas fa-th-large"></i> SWOT 분석</h2>
+            
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <h3><i class="fas fa-check-circle"></i> 강점 (Strength)</h3>
+                    <ul>
+                        <li>내국인 카지노 운영 독점으로 인한 경쟁 진입장벽</li>
+                        <li>종합 레저 리조트로 다양한 수익원 확보</li>
+                        <li>강원도 유일의 대규모 스키장 운영</li>
+                        <li>안정적인 VIP 고객층과 높은 재방문율</li>
+                        <li>무차입 경영으로 인한 재무 안정성</li>
+                        <li>높은 배당 성향 (배당수익률 3-4%)</li>
+                        <li>폐광지역 경제 활성화 국가 정책 지원</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box weakness">
+                    <h3><i class="fas fa-times-circle"></i> 약점 (Weakness)</h3>
+                    <ul>
+                        <li>강원도 정선에 편중된 입지로 지역 제약</li>
+                        <li>외국인 카지노 운영 불가능으로 글로벌 시장 활용 한계</li>
+                        <li>계절성에 따른 수익 변동성 (스키 시즌 의존)</li>
+                        <li>정부 정책 및 규제에 높은 의존도</li>
+                        <li>카지노 수입에 대한 과도한 의존</li>
+                        <li>환율 변동에 따른 관광객 입국 변동성</li>
+                        <li>제한된 신규 시설 투자 기회</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box opportunity">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunity)</h3>
+                    <ul>
+                        <li>관광객 회복으로 인한 내국인 VIP 고객 증가</li>
+                        <li>엔저로 인한 일본인 관광객 증가</li>
+                        <li>웰니스 트렌드에 부합하는 복합 레저 시설 고도화</li>
+                        <li>MZ세대 경험 소비 증대로 신규 고객 확보</li>
+                        <li>컨벤션 및 MICE 사업 확대 기회</li>
+                        <li>하이원 브랜드의 국제화 및 마케팅 강화</li>
+                        <li>강원도 관광 인프라 개선에 따른 접근성 향상</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box threat">
+                    <h3><i class="fas fa-exclamation-circle"></i> 위협 (Threat)</h3>
+                    <ul>
+                        <li>정부의 카지노 규제 강화 가능성</li>
+                        <li>내국인 카지노 독점 규제 완화 위험</li>
+                        <li>글로벌 경제 불황으로 인한 관광객 감소</li>
+                        <li>환율 급락으로 인한 외국인 관광객 감소</li>
+                        <li>COVID-19 유사 팬데믹 재발 위험</li>
+                        <li>카지노 중독 문제로 인한 사회적 규제 강화</li>
+                        <li>지역 경쟁 가능성 (메가시티, 신설 리조트)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <\!-- Section: 전략분석 -->
+        <section id="strategy">
+            <h2><i class="fas fa-chess"></i> 전략분석</h2>
+            
+            <h3>경영 전략</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4><i class="fas fa-target"></i> 매출 다변화 전략</h4>
+                    <p>카지노 의존도를 낮추기 위해 스키장, 골프, 호텔, 스파 등 다양한 수익원을 강화합니다. 계절별 맞춤형 마케팅으로 연중 고객 유입을 확대하고, 각 부문의 시너지를 극대화합니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-users"></i> 고객 포트폴리오 확대</h4>
+                    <p>기존 VIP 고객층의 안정성 유지와 함께, MZ세대, 가족 단위 관광객, 국제 관광객 등 신규 고객층 확보에 집중합니다. 멤버십 프로그램 고도화로 충성도를 높입니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-building"></i> 시설 고도화</h4>
+                    <p>하이원 리조트의 국제적 수준 유지 및 프리미엄화를 추진합니다. 호텔, 스파, 엔터테인먼트 시설 등을 현대화하여 브랜드 가치를 강화합니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-digital"></i> 디지털 혁신</h4>
+                    <p>모바일 플랫폼, 온라인 예약 시스템, 맞춤형 마케팅 강화로 고객 접점을 확대합니다. 데이터 기반 마케팅으로 마케팅 효율성을 극대화합니다.</p>
+                </div>
+            </div>
+
+            <h3>중장기 전략 방향</h3>
+            <p><strong>1. 브랜드 가치 극대화:</strong> 강원랜드에서 하이원으로의 브랜드 전환을 계속 진행하여 프리미엄 레저 리조트로서의 포지셔닝을 강화합니다.</p>
+            <p><strong>2. 수익성 개선:</strong> 원가 절감과 운영 효율화를 통해 마진율을 개선하고, 고부가가치 서비스 확대로 평균 객단가를 상향합니다.</p>
+            <p><strong>3. 정책 대응 강화:</strong> 정부 규제 변화에 능동적으로 대응할 수 있는 사업 다각화 및 위험 분산 전략을 추진합니다.</p>
+            <p><strong>4. 국제화 기반 마련:</strong> 아직은 제한적이지만, 관광 마케팅을 통해 국제 인지도를 높이고 글로벌 관광객 유입 기반을 조성합니다.</p>
+        </section>
+
+        <\!-- Section: 재무분석 -->
+        <section id="financial">
+            <h2><i class="fas fa-chart-bar"></i> 재무분석</h2>
+            
+            <h3>재무 현황 (매출)</h3>
+            <div class="chart-container">
+                <div class="bar-chart">
+                    <div class="bar">
+                        <div class="bar-value" style="height: 95%; background: linear-gradient(135deg, #c9a962, #5c7d9e);">
+                            <span class="bar-amount">1조4,269억</span>
+                        </div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-value" style="height: 100%; background: linear-gradient(135deg, #d4b896, #6b8fb0);">
+                            <span class="bar-amount">1조4,767억</span>
+                        </div>
+                        <div class="bar-label">2025년</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>재무 현황 (순이익)</h3>
+            <div class="chart-container">
+                <div class="bar-chart">
+                    <div class="bar">
+                        <div class="bar-value" style="height: 100%; background: linear-gradient(135deg, #4ade80, #22c55e);">
+                            <span class="bar-amount">4,554억</span>
+                        </div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-value" style="height: 70%; background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <span class="bar-amount">3,165억</span>
+                        </div>
+                        <div class="bar-label">2025년</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>주요 재무 지표</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>2024년</th>
+                        <th>2025년</th>
+                        <th>증감</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>매출액</strong></td>
+                        <td>1조4,269억원</td>
+                        <td>1조4,767억원</td>
+                        <td>+3.5% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>영업이익</strong></td>
+                        <td>2,833억원</td>
+                        <td>약 2,500억원</td>
+                        <td>-11.8% (추정)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>순이익</strong></td>
+                        <td>4,554억원 (역대최대)</td>
+                        <td>3,165억원</td>
+                        <td>-30.7% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>자산총계</strong></td>
+                        <td>약 4조8,560억원</td>
+                        <td>약 4조8,900억원</td>
+                        <td>안정적</td>
+                    </tr>
+                    <tr>
+                        <td><strong>자본총계</strong></td>
+                        <td>약 3조9,630억원</td>
+                        <td>약 3조9,800억원</td>
+                        <td>안정적</td>
+                    </tr>
+                    <tr>
+                        <td><strong>부채</strong></td>
+                        <td>무차입 경영</td>
+                        <td>무차입 경영</td>
+                        <td>매우 우수</td>
+                    </tr>
+                    <tr>
+                        <td><strong>배당수익률</strong></td>
+                        <td>약 3-4%</td>
+                        <td>약 3-4%</td>
+                        <td>높음</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>재무 분석 해석</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4><i class="fas fa-line-chart"></i> 매출 동향</h4>
+                    <p>2025년 매출은 전년 대비 +3.5% 증가하여 1조4,767억원을 기록했습니다. 절대값으로는 완만한 증가세이며, 이는 카지노 수입 증가와 레저 시설 이용객 회복을 반영합니다. 관광객 증가로 인한 긍정적인 추세를 보이고 있습니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-arrow-down"></i> 순이익 감소 원인</h4>
+                    <p>2024년 역대 최대 순이익 4,554억원에 비해 2025년 3,165억원으로 30.7% 감소했습니다. 주요 원인은 2024년에 특별 이익(보유 부동산 매각, 미수금 정리 등)이 있었던 반면, 2025년에는 정상 영업이익 수준으로 조정된 것으로 분석됩니다. 기본 영업 수익성은 안정적인 것으로 평가됩니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-shield"></i> 재무 안정성</h4>
+                    <p>자산 4조8,560억원, 자본 3조9,630억원으로 높은 자본 충분성을 보유하고 있습니다. 무차입 경영으로 금리 인상 리스크가 없으며, 재정 상황이 매우 안정적입니다. 부도 위험은 거의 없는 상태입니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-gift"></i> 배당 정책</h4>
+                    <p>배당수익률 약 3-4%로 높은 수준의 배당을 지속하고 있습니다. 이는 주식 시가총액 약 3.7조원 대비 매년 1,100억~1,480억원의 배당금을 지급한다는 의미로, 배당주 투자자에게 매력적인 수익원입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <\!-- Section: 결론 및 투자의견 -->
+        <section id="conclusion">
+            <h2><i class="fas fa-graduation-cap"></i> 결론 및 투자의견</h2>
+            
+            <h3>핵심 평가</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4><i class="fas fa-crown"></i> 독점적 지위의 가치</h4>
+                    <p>강원랜드의 가장 큰 가치는 국내 유일의 내국인 카지노 운영 회사라는 독점적 지위입니다. 이는 정부 규제로 보호되는 진입장벽이며, 직접적인 경쟁이 없다는 뜻입니다. 이러한 독점 지위가 지속되는 한, 회사는 안정적인 수익 창출이 가능합니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-coins"></i> 안정적인 현금흐름</h4>
+                    <p>무차입 경영, 높은 자본 충분성, 지속적인 배당 지급 등은 회사의 재무 건전성을 증명합니다. 2025년 순이익 감소에도 불구하고, 기본 영업 수익성은 안정적이며, 현금 창출 능력은 우수한 상태입니다.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-warning"></i> 주요 리스크</h4>
+                    <p>1) 정부 정책 리스크: 내국인 카지노 규제 강화나 독점 완화 2) 경기 사이클 리스크: 경제 불황 시 카지노 수입 감소 3) 환율 리스크: 외국인 관광객 의존도 증가 4) 지역 편중 리스크: 강원도 정선에 편중된 사업 구조</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-chart-pie"></i> 전망 평가</h4>
+                    <p>중기적으로는 관광 산업 회복과 내국인 VIP 고객층의 안정성으로 수익성 유지가 가능할 것으로 평가됩니다. 다만 장기적으로는 정부의 카지노 정책 변화에 따라 위험에 노출될 수 있으므로, 정책 모니터링과 수익 다변화 전략이 중요합니다.</p>
+                </div>
+            </div>
+
+            <h3>투자 의견</h3>
+            <div class="card" style="background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(92, 125, 158, 0.15)); border-left: 5px solid var(--gold);">
+                <h4 style="color: var(--gold);"><i class="fas fa-star"></i> 종합 평가: HOLD (보유)</h4>
+                <p style="margin: 1rem 0;"><strong>적정 주가:</strong> 약 25,000원 ~ 27,000원 (현재 시장 가치 기준)</p>
+                <p style="margin: 1rem 0;"><strong>배당 수익률:</strong> 약 3-4% (배당주 투자자에 매력적)</p>
+                
+                <h4 style="color: var(--blue); margin-top: 1.5rem;">추천 투자 성향</h4>
+                <p><strong>추천:</strong> 안정적인 배당 수익을 원하는 중장기 투자자, 높은 배당 수익률을 추구하는 소극적 투자자</p>
+                <p><strong>부추천:</strong> 고성장을 추구하는 공격적 투자자, 단기 수익을 노리는 투기자</p>
+                
+                <h4 style="color: var(--blue); margin-top: 1.5rem;">투자 기간별 전망</h4>
+                <p><strong>단기(3-6개월):</strong> 관광 시즌 변화와 환율에 따른 변동성 존재. 정책 뉴스 모니터링 필요.</p>
+                <p><strong>중기(6-12개월):</strong> 관광 산업 회복세 지속 시 수익성 개선 기대. 배당 수익 안정적 예상.</p>
+                <p><strong>장기(1년 이상):</strong> 독점 지위 유지 시 장기 배당주로서의 가치 인정. 정책 변화 리스크 모니터링 필수.</p>
+            </div>
+
+            <h3>최종 의견</h3>
+            <p>강원랜드는 국내 유일의 내국인 카지노 운영 회사로서 독점적 지위를 바탕으로 안정적인 수익을 창출하고 있습니다. 2024년의 역대 최대 순이익에서 2025년 30.7% 감소했으나, 이는 일시적인 특별 이익 조정으로 보여지며, 기본 영업 수익성은 양호한 상태입니다. 무차입 경영과 높은 배당수익률(3-4%)은 안정적인 배당주 투자처로서의 매력을 유지하고 있습니다.</p>
+            <p>다만 정부의 카지노 정책 변화, 경제 불황 시 수요 감소, 외국인 관광객 의존도 증가 등의 리스크가 존재합니다. 따라서 단순한 배당 수익 추구 목적이 아닌 이상, 투자 전 정책 리스크와 경기 사이클을 충분히 고려해야 합니다. 종합적으로 HOLD(보유) 의견을 제시하며, 추가 매수는 신중한 검토 후 진행하시기 바랍니다.</p>
+        </section>
+
+        <\!-- Last Update Block -->
+        <div class="last-update-block">
+            <div class="last-update-title">마지막 업데이트</div>
+            <div class="last-update-date">2026.04.20</div>
+            <div class="last-update-time">09:00</div>
+        </div>
+    </main>
+
+    <\!-- Footer -->
+    <footer>
+        <p>© 2026 FLOVAH Insights. 모든 분석과 의견은 정보 제공 목적이며, 투자 결정은 개인의 판단과 책임입니다.</p>
+        <p><a href="index.html">메인 페이지</a> | <a href="#">문의</a> | <a href="#">서비스 약관</a></p>
+        <p>강원랜드 기업분석 보고서 | 분석일자: 2026년 4월 20일</p>
+    </footer>
+</body>
+</html>

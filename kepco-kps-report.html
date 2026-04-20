@@ -1,0 +1,956 @@
+<\!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한전KPS 기업분석 보고서 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-dark: #1a1a1e;
+            --bg-card: #242429;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b8;
+            --gold: #c9a962;
+            --gold-light: #e8d5b7;
+            --accent-blue: #4a9eff;
+            --accent-green: #2dd4bf;
+            --border-color: #3a3a42;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a1e 0%, #242429 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .report-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .report-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item strong {
+            color: var(--gold);
+        }
+
+        .header-right {
+            text-align: right;
+            min-width: 200px;
+        }
+
+        .report-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .report-source {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        /* Sections */
+        .section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201, 169, 98, 0.1);
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: var(--gold);
+            color: var(--bg-deep);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Highlights */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box {
+            background-color: rgba(201, 169, 98, 0.05);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .highlight-label {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Lists */
+        .content-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .content-list li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .content-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .content-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .data-table th {
+            background-color: rgba(201, 169, 98, 0.1);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            border-radius: 6px 6px 0 0;
+        }
+
+        .data-table td {
+            border: 1px solid var(--border-color);
+            padding: 0.875rem 1rem;
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: rgba(201, 169, 98, 0.02);
+        }
+
+        .data-table .metric-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .data-table .positive {
+            color: var(--accent-green);
+        }
+
+        .data-table .negative {
+            color: #ff6b6b;
+        }
+
+        /* Two-column layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .column-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .column-content h4:first-child {
+            margin-top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .last-update {
+            display: inline-block;
+            background-color: rgba(201, 169, 98, 0.1);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .last-update strong {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .header-right {
+                text-align: left;
+            }
+
+            .report-title {
+                font-size: 1.8rem;
+            }
+
+            .report-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Accent elements */
+        .accent-gold {
+            color: var(--gold);
+        }
+
+        .accent-green {
+            color: var(--accent-green);
+        }
+
+        .accent-blue {
+            color: var(--accent-blue);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background-color: rgba(201, 169, 98, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        /* Paragraph styles */
+        p {
+            margin: 1rem 0;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <\!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">FLOVAH INSIGHTS</div>
+                <h1 class="report-title">한전KPS 기업분석</h1>
+                <p class="report-subtitle">한국 원전 산업의 핵심 수혜주 분석</p>
+                <div class="report-meta">
+                    <div class="meta-item"><strong>코드:</strong> KOSPI 051600</div>
+                    <div class="meta-item"><strong>섹터:</strong> 에너지·소재·화학</div>
+                    <div class="meta-item"><strong>시가총액:</strong> 약 2~3조원</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="report-date">April 20, 2026</div>
+                <div class="report-source">FLOVAH Insights</div>
+            </div>
+        </div>
+    </div>
+
+    <\!-- Main Content -->
+    <div class="container">
+        <\!-- Section 1: 기업 개요 -->
+        <div class="section">
+            <div class="section-number">1</div>
+            <h2 class="section-title">기업 개요 및 사업 구조</h2>
+            <div class="section-content">
+                <p>한전KPS(KEPCO KPS)는 <strong>한국전력공사의 자회사</strong>로서 1974년 설립된 발전설비 정비·운영 전문기업입니다. 국내 발전소의 안정적인 운영을 지원하는 핵심 에너지 인프라 기업으로, 화력·원자력·양수 발전설비 전반에 걸친 종합적인 정비 서비스를 제공합니다.</p>
+                
+                <div class="highlight-grid">
+                    <div class="highlight-box">
+                        <div class="highlight-label">설립년도</div>
+                        <div class="highlight-value">1974년</div>
+                        <div class="highlight-description">50년 이상의 운영 역사</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">모회사</div>
+                        <div class="highlight-value">한국전력</div>
+                        <div class="highlight-description">국가 에너지 인프라의 중추</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">주요 사업</div>
+                        <div class="highlight-value">발전설비 정비</div>
+                        <div class="highlight-description">화력·원전·양수 설비</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">시장지위</div>
+                        <div class="highlight-value">국내 최대</div>
+                        <div class="highlight-description">원전 정비 독보적 위치</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h4>사업 부문 구성</h4>
+                <ul class="content-list">
+                    <li><strong>원자력 발전설비 정비:</strong> 원전의 정기점검, 대형정비(Major Overhaul) 및 운영 지원</li>
+                    <li><strong>화력 발전설비 정비:</strong> LNG, 석탄, 유류 발전소의 종합 정비 및 유지보수</li>
+                    <li><strong>양수 발전설비 정비:</strong> 양수발전소의 안정적 운영 및 정기점검</li>
+                    <li><strong>해외 원전 정비:</strong> K-원전 수출 확대에 따른 국제 정비 시장 진출</li>
+                    <li><strong>원전 기술 혁신:</strong> 디지털화, AI 기반 예지보전 기술 개발</li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <h4>경영 철학 및 재무 건전성</h4>
+                <ul class="content-list">
+                    <li><strong>무차입 경영:</strong> 안정적인 재무 구조로 자본 효율성 극대화</li>
+                    <li><strong>배당정책:</strong> 배당성향 40% 이상으로 주주가치 강조</li>
+                    <li><strong>기술 혁신:</strong> 연속적인 R&D 투자로 경쟁력 강화</li>
+                    <li><strong>국가전략산업:</strong> 에너지 안보 및 기후변화 대응의 중추 역할</li>
+                </ul>
+            </div>
+        </div>
+
+        <\!-- Section 2: 재무 성과 -->
+        <div class="section">
+            <div class="section-number">2</div>
+            <h2 class="section-title">최근 재무 성과 및 성장 추이</h2>
+            <div class="section-content">
+                <p>한전KPS는 안정적인 성장세를 기록하고 있습니다. 2025년 3분기 실적은 전년도 동기 대비 매출과 이익 모두 두 자릿수 증가율을 달성하며 강한 실적 흐름을 보여주고 있습니다.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>2025년 3Q</th>
+                            <th>2024년 3Q</th>
+                            <th>YoY 성장률</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="metric-name">매출액</td>
+                            <td><strong>3,937억원</strong></td>
+                            <td>3,547억원</td>
+                            <td class="positive">+11.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">영업이익</td>
+                            <td><strong>474억원</strong></td>
+                            <td>419억원</td>
+                            <td class="positive">+13.1%</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">영업이익률</td>
+                            <td><strong>12.0%</strong></td>
+                            <td>11.8%</td>
+                            <td class="positive">+20bp</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">순이익</td>
+                            <td><strong>380억원</strong></td>
+                            <td>335억원</td>
+                            <td class="positive">+13.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="divider"></div>
+
+                <h4>2026년 전망 및 성장동력</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2026년 추정</th>
+                            <th>성장률</th>
+                            <th>주요 배경</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="metric-name">전체 매출액</td>
+                            <td><strong>1조 6,156억원</strong></td>
+                            <td class="positive">+2.0%</td>
+                            <td>정상 성장 + 해외사업 확대</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">영업이익</td>
+                            <td><strong>1,919억원</strong></td>
+                            <td class="positive">+8.0%</td>
+                            <td>이익률 개선 및 스케일 효과</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">원자력 부문 매출</td>
+                            <td><strong>6,648억원</strong></td>
+                            <td class="positive">+6.0%</td>
+                            <td>K-원전 정비 사업 확대</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">화력 부문 매출</td>
+                            <td><strong>5,200억원</strong></td>
+                            <td class="positive">+1.5%</td>
+                            <td>기저수요 유지</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-top: 1.5rem;"><span class="badge accent-gold">핵심포인트</span> 영업이익률의 지속적 개선과 원자력 부문의 고성장이 2026년의 주요 성장동력으로 작용할 것으로 예상됩니다.</p>
+            </div>
+        </div>
+
+        <\!-- Section 3: 해외 사업 확대 -->
+        <div class="section">
+            <div class="section-number">3</div>
+            <h2 class="section-title">해외 사업 확대 및 K-원전 수출 수혜</h2>
+            <div class="section-content">
+                <p>한전KPS는 <strong>K-원전 수출 호황</strong>에 따른 정비 사업의 주요 수혜주입니다. 국제 원자력 정비 시장의 확대와 한국형 경수로(APR1400) 수출 확대에 힘입어 해외 매출이 급속도로 증가하고 있습니다.</p>
+
+                <div class="highlight-grid">
+                    <div class="highlight-box">
+                        <div class="highlight-label">루마니아 체르나보다</div>
+                        <div class="highlight-value">약 4,850억원</div>
+                        <div class="highlight-description">원전 설비개선 사업 수주 완료</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">체코 두코바니</div>
+                        <div class="highlight-value">수주 가능성</div>
+                        <div class="highlight-description">2026년 대형 정비사업 기대</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">UAE 바라카</div>
+                        <div class="highlight-value">정기점검</div>
+                        <div class="highlight-description">APR1400 정비 사업 진행</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">향후 파이프라인</div>
+                        <div class="highlight-value">중동/유럽</div>
+                        <div class="highlight-description">신규 원전 수출 따른 정비 기회</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h4>주요 국제 사업 현황</h4>
+                <ul class="content-list">
+                    <li><strong>루마니아 체르나보다 원전:</strong> 약 4,850억원 규모의 설비개선 프로젝트 수주로 유럽 시장 진출 성공. 다년도 프로젝트로 안정적 수익 창출 예상</li>
+                    <li><strong>UAE 바라카 원전:</strong> 한국형 APR1400 기술의 정기점검 및 정비 서비스 제공. 지속적인 정비 계약 체결 가능성</li>
+                    <li><strong>체코 두코바니 원전:</strong> 2026년 대규모 정비 사업 수주 가능성 높음. 폴란드, 체코 등 중부유럽 지역의 원전 확대 정책과 연계</li>
+                    <li><strong>아르헨티나 아투차:</strong> 한국형 중소형 원전(SMART) 개발과 연계한 향후 정비 시장 기회</li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <h4>글로벌 원전 정비 시장의 성장 배경</h4>
+                <ul class="content-list">
+                    <li><strong>에너지 안보 재평가:</strong> 러시아-우크라이나 전쟁 이후 에너지 자립 필요성 증대로 유럽의 원전 수용도 상승</li>
+                    <li><strong>탄소중립 정책:</strong> EU의 Fit-for-55 정책과 독일의 재평가로 원전 정비 수요 급증</li>
+                    <li><strong>한국형 원전의 경쟁력:</strong> APR1400의 높은 신뢰성과 경제성으로 글로벌 수출 확대</li>
+                    <li><strong>기술 격차:</strong> 한전KPS의 원자력 정비 기술 수준은 세계 최고 수준으로 국제 경쟁에서 우위 확보</li>
+                    <li><strong>수주 파이프라인:</strong> 향후 5년간 매년 5,000억원 이상의 해외 수주 가능성 평가</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><span class="badge accent-green">성장기회</span> 글로벌 원전 정비 시장이 연 5% 이상 성장할 것으로 예상되며, 한전KPS의 해외 매출 비중이 현재 15%에서 2028년 25% 이상으로 확대될 전망입니다.</p>
+            </div>
+        </div>
+
+        <\!-- Section 4: 경쟁 우위 및 기술력 -->
+        <div class="section">
+            <div class="section-number">4</div>
+            <h2 class="section-title">경쟁 우위 및 기술적 강점</h2>
+            <div class="section-content">
+                <p>한전KPS는 국내 발전설비 정비 시장에서 독점적 지위를 누리고 있으며, 국제 시장에서도 기술 경쟁력을 바탕으로 빠르게 입지를 확대하고 있습니다.</p>
+
+                <div class="two-column">
+                    <div class="column-content">
+                        <h4>국내 시장 우위</h4>
+                        <ul class="content-list">
+                            <li><strong>시장 점유율:</strong> 국내 원전 정비 시장에서 약 80% 이상의 점유율 확보</li>
+                            <li><strong>설비 이해도:</strong> 한국형 원전 설계 기술 보유로 최적의 정비 솔루션 제공</li>
+                            <li><strong>안정성 기록:</strong> 50년 이상의 운영 역사로 신뢰도 입증</li>
+                            <li><strong>통합 솔루션:</strong> 화력·원자력·양수 등 모든 발전설비 정비 가능</li>
+                            <li><strong>인프라:</strong> 고급 정비 기술인력 및 분석·테스트 시설 완비</li>
+                        </ul>
+                    </div>
+                    <div class="column-content">
+                        <h4>국제 경쟁 강점</h4>
+                        <ul class="content-list">
+                            <li><strong>기술 우수성:</strong> 세계 수준의 원자력 정비 기술로 국제 규격 만족</li>
+                            <li><strong>비용 경쟁력:</strong> 선진국 대비 20~30% 저렴한 정비 비용</li>
+                            <li><strong>한국형 원전 연계:</strong> APR1400 정비에서 최고의 기술 지원 능력</li>
+                            <li><strong>신뢰 구축:</strong> 한국전력 자회사로서의 국가적 신뢰도</li>
+                            <li><strong>글로벌 네트워크:</strong> 중동·유럽·아시아 지역으로 확대되는 사업 네트워크</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h4>기술 혁신 및 디지털화</h4>
+                <ul class="content-list">
+                    <li><strong>예지보전(Predictive Maintenance):</strong> AI·빅데이터 기반 설비 이상 조기 감지 기술 개발</li>
+                    <li><strong>원격 진단 시스템:</strong> 위성통신을 활용한 해외 설비의 실시간 모니터링</li>
+                    <li><strong>드론·로봇 활용:</strong> 고방사능 지역의 무인 검사 기술로 안전성 극대화</li>
+                    <li><strong>3D 스캔 기술:</strong> 정밀한 설비 상태 파악으로 정비 효율 증대</li>
+                    <li><strong>디지털 트윈:</strong> 가상환경에서의 정비 시뮬레이션 및 최적화</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><span class="badge accent-blue">기술차별화</span> 한전KPS의 기술 혁신은 단순한 원가 절감을 넘어 정비 품질 향상과 운영 효율성 극대화를 동시에 달성합니다.</p>
+            </div>
+        </div>
+
+        <\!-- Section 5: 시장 환경 및 성장 요인 -->
+        <div class="section">
+            <div class="section-number">5</div>
+            <h2 class="section-title">시장 환경 및 장기 성장 요인</h2>
+            <div class="section-content">
+                <p>한전KPS의 성장을 뒷받침하는 거시적 요인들이 견고합니다. 에너지 패러다임의 변화와 국가 전략이 회사의 장기 성장을 견고히 지탱하고 있습니다.</p>
+
+                <h4>국내 성장 요인</h4>
+                <ul class="content-list">
+                    <li><strong>원전 정상화:</strong> 윤석열 정부의 탈원전 정책 폐기로 원전 증설 및 생명연장 정책 추진</li>
+                    <li><strong>노후 설비 관리:</strong> 운영 중인 국내 원전의 정기점검 및 대형정비 수요 증가</li>
+                    <li><strong>에너지 안보:</strong> 국가적 에너지 자립도 향상을 위한 원전 확대 정책</li>
+                    <li><strong>세제 지원:</strong> 원전 산업 육성을 위한 정부의 재정·세제 지원 확대</li>
+                    <li><strong>고용 창출:</strong> 원전 정비 산업의 기술인력 양성에 대한 투자 증가</li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <h4>국제 성장 요인</h4>
+                <ul class="content-list">
+                    <li><strong>에너지 위기 인식:</strong> 러우전쟁 이후 에너지 자립의 중요성 재인식으로 글로벌 원전 수요 급증</li>
+                    <li><strong>탄소중립 달성:</strong> 2050 탄소중립 목표 달성을 위한 원전의 필수성 대두</li>
+                    <li><strong>K-원전 수출 확대:</strong> APR1400의 글로벌 경쟁력으로 중동·동유럽 수출 가속</li>
+                    <li><strong>원전 수명 연장:</strong> 기존 원전의 수명 연장에 따른 지속적 정비 수요</li>
+                    <li><strong>신규 원전 건설:</strong> 폴란드, 체코, 루마니아 등에서의 신규 원전 건설 붐</li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <h4>산업 구조적 변화</h4>
+                <ul class="content-list">
+                    <li><strong>정부 에너지 정책 전환:</strong> 재생에너지 중심에서 원전을 포함한 다원화 에너지 정책으로 변화</li>
+                    <li><strong>글로벌 규제 강화:</strong> 원전 안전 기준 강화로 고급 정비 기술의 가치 상승</li>
+                    <li><strong>민간 자본 유입:</strong> 원전 산업의 성장성 인식으로 민간 투자 확대</li>
+                    <li><strong>산업 통합:</strong> 에너지 관련 산업의 통합·재편 과정에서의 전략적 지위 강화</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><span class="badge accent-gold">장기 전망</span> 글로벌 원전 재평가 추세와 K-원전의 경쟁력 강화로 한전KPS는 향후 10년간 고성장을 유지할 수 있는 견고한 성장 기반을 보유하고 있습니다.</p>
+            </div>
+        </div>
+
+        <\!-- Section 6: 재무 건전성 및 배당 정책 -->
+        <div class="section">
+            <div class="section-number">6</div>
+            <h2 class="section-title">재무 건전성 및 주주 수익 정책</h2>
+            <div class="section-content">
+                <p>한전KPS는 안정적인 재무 구조를 바탕으로 주주에게 지속적인 수익을 배분하는 보수적이고 건전한 경영을 펼치고 있습니다.</p>
+
+                <div class="highlight-grid">
+                    <div class="highlight-box">
+                        <div class="highlight-label">부채비율</div>
+                        <div class="highlight-value">0%</div>
+                        <div class="highlight-description">무차입 경영 달성</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">배당성향</div>
+                        <div class="highlight-value">40%+</div>
+                        <div class="highlight-description">안정적 현금배당</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">유동비율</div>
+                        <div class="highlight-value">200% 이상</div>
+                        <div class="highlight-description">양호한 유동성</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">현금 창출력</div>
+                        <div class="highlight-value">강건</div>
+                        <div class="highlight-description">영업현금흐름 우수</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h4>재무 지표 분석</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>지표</th>
+                            <th>특징</th>
+                            <th>평가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="metric-name">부채 구조</td>
+                            <td>무차입 경영으로 재무 위험 최소화</td>
+                            <td><span class="positive">매우 우수</span></td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">ROE</td>
+                            <td>자본 대비 높은 수익성 달성</td>
+                            <td><span class="positive">우수</span></td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">현금흐름</td>
+                            <td>영업활동 현금흐름이 순이익을 초과</td>
+                            <td><span class="positive">우수</span></td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">배당 안정성</td>
+                            <td>영업이익 성장에 따른 배당 증가</td>
+                            <td><span class="positive">우수</span></td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">자본구조</td>
+                            <td>자본금 대비 높은 이익 창출</td>
+                            <td><span class="positive">우수</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="divider"></div>
+
+                <h4>배당 정책 및 주주 수익</h4>
+                <ul class="content-list">
+                    <li><strong>배당성향:</strong> 연간 순이익의 40% 이상을 배당금으로 지급하는 주주친화적 정책</li>
+                    <li><strong>배당 성장성:</strong> 영업이익 증가에 따른 배당금 상향이 기대되는 구조</li>
+                    <li><strong>배당 안정성:</strong> 무차입 경영과 안정적 현금흐름으로 배당금 지급 능력 확보</li>
+                    <li><strong>배당 수익률:</strong> 역사적으로 3~4% 대의 배당수익률 제공</li>
+                    <li><strong>주가수익 구조:</strong> 배당 + 주가 상승으로 투자 수익 제공</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><span class="badge accent-green">투자관점</span> 안정적인 배당과 기업 실적 성장으로 배당 재투자 시 복리 효과를 기대할 수 있는 우수한 투자 대상입니다.</p>
+            </div>
+        </div>
+
+        <\!-- Section 7: 리스크 요인 및 관리 -->
+        <div class="section">
+            <div class="section-number">7</div>
+            <h2 class="section-title">리스크 요인 및 대응 전략</h2>
+            <div class="section-content">
+                <p>한전KPS의 성장 잠재력이 크지만, 고려해야 할 리스크 요인들도 존재합니다. 회사의 리스크 관리 능력과 함께 평가하는 것이 중요합니다.</p>
+
+                <h4>주요 리스크 요인</h4>
+                <div class="two-column">
+                    <div class="column-content">
+                        <h5 style="color: var(--text-primary); margin-bottom: 1rem;"><strong>시장 리스크</strong></h5>
+                        <ul class="content-list">
+                            <li><strong>정책 변화:</strong> 원전 정책의 정치적 영향에 따른 수요 변동 가능성</li>
+                            <li><strong>국제 정세:</strong> 지정학적 불확실성으로 해외 사업 차질 위험</li>
+                            <li><strong>환율 변동:</strong> 해외 사업 확대에 따른 환율 리스크 증가</li>
+                            <li><strong>경쟁 심화:</strong> 글로벌 정비 업체의 한국 시장 진입 가능성</li>
+                        </ul>
+                    </div>
+                    <div class="column-content">
+                        <h5 style="color: var(--text-primary); margin-bottom: 1rem;"><strong>운영 리스크</strong></h5>
+                        <ul class="content-list">
+                            <li><strong>안전 사고:</strong> 원전 정비 과정에서의 방사능 사고 위험</li>
+                            <li><strong>기술 격차:</strong> 글로벌 경쟁에서 기술 우위 유지의 어려움</li>
+                            <li><strong>인력 부족:</strong> 숙련된 기술인력 확보의 어려움</li>
+                            <li><strong>공급망:</strong> 부품 수급 차질에 따른 사업 지연 가능성</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h4>리스크 대응 전략</h4>
+                <ul class="content-list">
+                    <li><strong>사업 다각화:</strong> 원전·화력·양수 등 다양한 발전 방식 정비로 의존도 분산</li>
+                    <li><strong>지역 다각화:</strong> 국내 사업의 안정성과 해외 사업의 성장성을 동시에 확보</li>
+                    <li><strong>기술 투자:</strong> R&D 예산 지속 증가로 기술 경쟁력 강화</li>
+                    <li><strong>인력 양성:</strong> 대학과의 협력으로 우수 인재 확보 및 육성 체계 구축</li>
+                    <li><strong>안전 관리:</strong> 국제 안전 기준을 초과하는 안전 관리 체계 운영</li>
+                    <li><strong>계약 관리:</strong> 해외 사업의 환율·정치 리스크 헤징을 통한 수익 안정화</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><span class="badge accent-gold">평가</span> 한전KPS는 다양한 리스크 요인을 인식하고 있으며, 체계적인 대응 전략을 수립·실행하고 있습니다. 모회사인 한국전력의 지원으로 리스크 관리 능력이 우수합니다.</p>
+            </div>
+        </div>
+
+        <\!-- Section 8: 종합 평가 및 투자 결론 -->
+        <div class="section">
+            <div class="section-number">8</div>
+            <h2 class="section-title">종합 평가 및 투자 결론</h2>
+            <div class="section-content">
+                <p>한전KPS는 <strong>K-원전 수출 호황과 글로벌 원전 재평가</strong>라는 거시적 트렌드의 가장 직접적인 수혜주입니다. 안정적인 재무 구조와 확장성 높은 사업 모델로 장기 성장성이 우수합니다.</p>
+
+                <div class="highlight-grid">
+                    <div class="highlight-box">
+                        <div class="highlight-label">사업 모델</div>
+                        <div class="highlight-value">우수</div>
+                        <div class="highlight-description">높은 진입장벽과 수익성</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">성장 잠재력</div>
+                        <div class="highlight-value">높음</div>
+                        <div class="highlight-description">해외 매출 확대 여력 충분</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">재무 건전성</div>
+                        <div class="highlight-value">우수</div>
+                        <div class="highlight-description">무차입·안정배당</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-label">기술 경쟁력</div>
+                        <div class="highlight-value">우수</div>
+                        <div class="highlight-description">50년 축적 기술력</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h4>핵심 강점</h4>
+                <ul class="content-list">
+                    <li><span class="accent-gold">거시 환경:</span> 글로벌 원전 확대 추세와 K-원전 수출 호황이 최고의 성장 환경 제공</li>
+                    <li><span class="accent-gold">사업 특성:</span> 높은 진입장벽으로 경쟁 회피 가능, 안정적 수익 창출</li>
+                    <li><span class="accent-gold">기술력:</span> 50년 축적의 원자력 정비 기술로 국제 경쟁에서 우위 확보</li>
+                    <li><span class="accent-gold">재무력:</span> 무차입 경영과 높은 현금 창출력으로 안정적 배당 지속</li>
+                    <li><span class="accent-gold">성장성:</span> 해외 정비 사업의 매출 기여도가 현재 15%에서 25% 이상으로 확대 가능</li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <h4>주의 사항</h4>
+                <ul class="content-list">
+                    <li><span class="accent-gold">정책 의존성:</span> 원전 정책 변화에 영향을 받을 수 있으나, 중기적으로는 정상화 추세</li>
+                    <li><span class="accent-gold">국제 지정학:</span> 중동·유럽의 정치 리스크 모니터링 필요</li>
+                    <li><span class="accent-gold">프로젝트 위험:</span> 대형 해외 프로젝트의 일정/예산 관리가 중요</li>
+                    <li><span class="accent-gold">인력 확보:</span> 기술 인력 부족으로 성장 제약 가능성 주시 필요</li>
+                </ul>
+
+                <div class="divider"></div>
+
+                <h4>투자 관점별 평가</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>평가 항목</th>
+                            <th>평점</th>
+                            <th>의견</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="metric-name">장기 성장성</td>
+                            <td><span class="positive">★★★★★</span></td>
+                            <td>K-원전 수출과 글로벌 원전 확대로 5년간 10% 이상 성장 기대</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">배당 안정성</td>
+                            <td><span class="positive">★★★★★</span></td>
+                            <td>무차입 경영과 현금 창출력으로 배당 지속 가능성 높음</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">재무 안정성</td>
+                            <td><span class="positive">★★★★★</span></td>
+                            <td>부채 없는 건전한 재무 구조로 위험 최소화</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">기술 차별성</td>
+                            <td><span class="positive">★★★★☆</span></td>
+                            <td>원자력 정비 기술 우수하나, 디지털화에서 글로벌 기업과의 경쟁 심화</td>
+                        </tr>
+                        <tr>
+                            <td class="metric-name">밸류에이션</td>
+                            <td><span class="positive">★★★★☆</span></td>
+                            <td>성장성 대비 합리적 수준, 배당 수익률도 양호</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="divider"></div>
+
+                <h4>결론 및 제언</h4>
+                <p style="font-size: 1.05rem; color: var(--text-primary); line-height: 2;"><strong>한전KPS는 K-원전 수출 확대 시대의 가장 직접적인 수혜주로, 안정성과 성장성을 겸비한 우수한 투자 대상입니다.</strong></p>
+                
+                <ul class="content-list">
+                    <li><strong>장기 투자자:</strong> 높은 배당 수익과 기업 성장을 통한 복리 효과를 기대할 수 있습니다. 원전 정책의 중기 안정화 추세를 고려할 때, 5년 이상의 장기 투자 관점에서 매력적입니다.</li>
+                    <li><strong>성장 투자자:</strong> 해외 사업 확대로 인한 고성장(10% 이상)이 가능합니다. 루마니아 체르나보다 프로젝트와 체코 두코바니 수주 가능성 등 단기 성장 기회가 풍부합니다.</li>
+                    <li><strong>배당 투자자:</strong> 무차입 경영과 40% 이상의 배당성향으로 안정적인 현금 수익을 제공합니다. 장기 인플레이션 헤지 수단으로도 적합합니다.</li>
+                    <li><strong>리스크 관리:</strong> 원전 정책 변화와 국제 지정학 리스크를 모니터링하되, 중기적으로는 긍정적 정책 환경이 지속될 것으로 전망됩니다.</li>
+                </ul>
+
+                <p style="margin-top: 2rem; padding: 1.5rem; background-color: rgba(201, 169, 98, 0.05); border-left: 3px solid var(--gold); border-radius: 6px;"><strong style="color: var(--gold);">최종 평가:</strong> <strong>"강력한 매수(BUY)"</strong> – 거시 환경, 기업 펀더멘탈, 재무 구조 모두 우수하며, K-원전 수출 주기에서 주요 수혜주로 평가됩니다. 현재 수준에서의 매수는 장기 투자 수익을 기대할 수 있는 좋은 기회로 판단됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <\!-- Footer -->
+    <div class="footer">
+        <div class="last-update">
+            <strong>LAST UPDATE</strong> 2026.04.20 09:00
+        </div>
+        <div class="footer-text">
+            <p>본 보고서는 공개 정보와 업계 분석을 바탕으로 작성되었습니다.<br>
+            투자 결정 시 다양한 정보를 종합적으로 검토하시기 바랍니다.<br>
+            <strong style="color: var(--gold);">FLOVAH Insights</strong> – Data-Driven Business Analysis</p>
+        </div>
+    </div>
+</body>
+</html>

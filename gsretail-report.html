@@ -1,0 +1,991 @@
+<\!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GS리테일 기업 분석 보고서 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #34a853;
+            --accent-color: #fbbc04;
+            --danger-color: #ea4335;
+            --dark-bg: #0f1419;
+            --light-bg: #f8f9fa;
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --border-color: #dadce0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 36px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.95;
+            flex-wrap: wrap;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--light-bg);
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border-color);
+            sticky-top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .nav a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-bottom-color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .section-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-number {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Content Blocks */
+        .content-block {
+            background: var(--light-bg);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .content-block:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .content-block h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-block h3 i {
+            font-size: 20px;
+        }
+
+        .content-block p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Lists */
+        .highlight-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .highlight-list li {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary-color);
+            font-size: 14px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .highlight-list li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-change {
+            font-size: 14px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .metric-change.positive {
+            color: #34ff6e;
+        }
+
+        .metric-change.negative {
+            color: #ff6b6b;
+        }
+
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .data-table thead {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .data-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--light-bg);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert.info {
+            background: rgba(26, 115, 232, 0.1);
+            border-left: 4px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .alert.success {
+            background: rgba(52, 168, 83, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .alert.warning {
+            background: rgba(251, 188, 4, 0.1);
+            border-left: 4px solid var(--accent-color);
+            color: #f9ab00;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .last-update {
+            background: var(--light-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .last-update i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .footer p {
+            margin: 10px 0;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .nav a {
+                min-width: 100px;
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .data-table th, .data-table td {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .metric-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <\!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i> FLOVAH
+                </div>
+                <h1>GS리테일 기업 분석 보고서</h1>
+                <div class="header-meta">
+                    <span><i class="fas fa-building"></i> GS Retail Co., Ltd.</span>
+                    <span><i class="fas fa-code"></i> KOSPI 007070</span>
+                    <span><i class="fas fa-calendar"></i> 2026년 4월 20일</span>
+                </div>
+            </div>
+        </div>
+
+        <\!-- Navigation -->
+        <div class="nav">
+            <a href="#overview"><i class="fas fa-eye"></i> 개요</a>
+            <a href="#company-profile"><i class="fas fa-building"></i> 기업 정보</a>
+            <a href="#business-segments"><i class="fas fa-th"></i> 사업 부문</a>
+            <a href="#financial-performance"><i class="fas fa-chart-bar"></i> 재무 성과</a>
+            <a href="#competitive-landscape"><i class="fas fa-chess"></i> 경쟁 현황</a>
+            <a href="#strategic-initiatives"><i class="fas fa-rocket"></i> 전략 추진</a>
+            <a href="#risk-analysis"><i class="fas fa-exclamation-triangle"></i> 리스크</a>
+            <a href="#investment-outlook"><i class="fas fa-binoculars"></i> 투자 전망</a>
+        </div>
+
+        <\!-- Main Content -->
+        <div class="content">
+            <\!-- Section 1: Overview -->
+            <div class="section" id="overview">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-icon"><i class="fas fa-eye"></i></div>
+                    <h2 class="section-title">Executive Summary (경영 요약)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-star"></i> GS리테일 핵심 포인트</h3>
+                    <p>GS리테일은 GS그룹의 유통 계열사로서 국내 소매유통 시장의 최강자 중 하나입니다. 편의점 GS25, 할인점 GS더프레시, 홈쇼핑 GS샵 등 다채로운 소매 채널을 운영하며, 2025년 사상 최대 매출을 기록했습니다.</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">2025년 매출</div>
+                        <div class="metric-value">11.9조</div>
+                        <div class="metric-label">원</div>
+                        <div class="metric-change positive">+3.3% YoY</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">영업이익</div>
+                        <div class="metric-value">2,921억</div>
+                        <div class="metric-label">원</div>
+                        <div class="metric-change positive">+14.1% YoY</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">시가총액</div>
+                        <div class="metric-value">약 1.4조</div>
+                        <div class="metric-label">원</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">설립 연도</div>
+                        <div class="metric-value">1971년</div>
+                        <div class="metric-label">(구 LG유통)</div>
+                    </div>
+                </div>
+
+                <div class="alert info">
+                    <div class="alert-icon"><i class="fas fa-info-circle"></i></div>
+                    <div>
+                        <strong>주목할 점:</strong> GS리테일은 2025년 역대 최고 실적을 달성하며 강한 성장세를 보이고 있습니다. 특히 영업이익의 14.1% 증가는 효율성 개선과 사업 다각화의 성과를 입증합니다.
+                    </div>
+                </div>
+            </div>
+
+            <\!-- Section 2: Company Profile -->
+            <div class="section" id="company-profile">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-icon"><i class="fas fa-building"></i></div>
+                    <h2 class="section-title">Company Profile (기업 정보)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-address-card"></i> 기업 개요</h3>
+                    <p>GS리테일은 1971년 설립된 유통 전문 기업으로, GS그룹 계열의 핵심 소매 자회사입니다. 구 LG유통에서 출발한 회사로, 현재 편의점, 할인점, 홈쇼핑, 온라인 쇼핑 등 다양한 소매 채널을 통해 고객에게 서비스를 제공하고 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-chart-pie"></i> 사업 포트폴리오</h3>
+                    <ul class="highlight-list">
+                        <li><strong>편의점 GS25:</strong> 국내 최대 규모의 편의점 체인</li>
+                        <li><strong>GS더프레시:</strong> 할인형 슈퍼마켓 영업소</li>
+                        <li><strong>GS샵:</strong> 홈쇼핑 플랫폼 및 전자상거래</li>
+                        <li><strong>온라인/모바일:</strong> 디지털 소매 확장</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-sitemap"></i> 조직 구조</h3>
+                    <p>GS리테일은 크게 편의점 사업, 할인점 사업, 홈쇼핑 사업으로 나뉘며, 각 부문별로 독립적인 경영 체제를 갖추고 있습니다. GS그룹 내에서 유통 계열사로서의 위상을 유지하며, 그룹의 종합 소매 전략의 중심을 담당하고 있습니다.</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>내용</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>회사명</td>
+                            <td>GS리테일 주식회사</td>
+                            <td>GS Retail Co., Ltd.</td>
+                        </tr>
+                        <tr>
+                            <td>상장 시장</td>
+                            <td>한국거래소(KOSPI)</td>
+                            <td>코드: 007070</td>
+                        </tr>
+                        <tr>
+                            <td>설립일</td>
+                            <td>1971년</td>
+                            <td>구 LG유통</td>
+                        </tr>
+                        <tr>
+                            <td>사업 분야</td>
+                            <td>유통, 소매, 음식료 판매</td>
+                            <td>종합 소매 기업</td>
+                        </tr>
+                        <tr>
+                            <td>본사 위치</td>
+                            <td>서울특별시</td>
+                            <td>GS그룹 종합 본사</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <\!-- Section 3: Business Segments -->
+            <div class="section" id="business-segments">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-icon"><i class="fas fa-th"></i></div>
+                    <h2 class="section-title">Business Segments (사업 부문 분석)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-store"></i> 편의점 GS25 - 핵심 사업</h3>
+                    <p>GS25는 GS리테일의 가장 중요한 수익 원천입니다. CU와 함께 국내 편의점 시장의 양대 축을 이루고 있으며, 업계 평균의 3배에 달하는 매출 증가율을 기록하고 있습니다. 스크랩앤빌드(Scrap and Build) 전략을 통해 기존 점포의 경쟁력을 강화하고, 기존점 매출은 전년 대비 3.6% 증가했습니다.</p>
+                    <ul class="highlight-list">
+                        <li><strong>시장 지위:</strong> 국내 편의점 1·2위 경쟁</li>
+                        <li><strong>성장률:</strong> 업계 평균의 3배</li>
+                        <li><strong>기존점 매출:</strong> +3.6% YoY</li>
+                        <li><strong>전략:</strong> 스크랩앤빌드, 상품 고도화</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-shopping-basket"></i> GS더프레시 - 할인점 채널</h3>
+                    <p>GS더프레시는 585개의 점포를 운영하는 할인형 슈퍼마켓으로, 가성비를 추구하는 소비자층에게 강한 지지를 받고 있습니다. 특히 퀵커머스 서비스는 21.2%의 높은 성장률을 기록하며, 온라인 소매의 빠른 성장을 주도하고 있습니다.</p>
+                    <ul class="highlight-list">
+                        <li><strong>점포 수:</strong> 585개</li>
+                        <li><strong>포지셀링:</strong> 가성비 중심 할인 슈퍼마켓</li>
+                        <li><strong>퀵커머스 성장:</strong> +21.2%</li>
+                        <li><strong>전략:</strong> 신선 상품, 온라인 통합</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-tv"></i> GS샵 - 홈쇼핑 플랫폼</h3>
+                    <p>GS샵은 홈쇼핑 채널로서 전통적 TV 쇼핑과 온라인 이커머스를 통합한 멀티채널 전략을 전개하고 있습니다. 2025년 4분기 매출은 2,780억원으로 전년 대비 10.5% 증가했으며, 영업이익은 337억원으로 18.2% 성장하며 수익성 개선을 입증했습니다.</p>
+                    <ul class="highlight-list">
+                        <li><strong>4Q 2025 매출:</strong> 2,780억원 (+10.5%)</li>
+                        <li><strong>4Q 2025 영업이익:</strong> 337억원 (+18.2%)</li>
+                        <li><strong>채널:</strong> TV 홈쇼핑 + 온라인</li>
+                        <li><strong>전략:</strong> 통합 전자상거래, 프리미엄 상품</li>
+                    </ul>
+                </div>
+
+                <div class="alert success">
+                    <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <strong>사업 다각화의 성공:</strong> 세 가지 주요 사업 부문이 모두 안정적인 성장을 기록하고 있으며, 온라인 채널의 급격한 확대로 멀티채널 소매 기업으로의 전환이 성공적으로 진행 중입니다.
+                    </div>
+                </div>
+            </div>
+
+            <\!-- Section 4: Financial Performance -->
+            <div class="section" id="financial-performance">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h2 class="section-title">Financial Performance (재무 성과)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-coins"></i> 2025년 주요 재무 지표</h3>
+                    <p>GS리테일의 2025년 재무 실적은 사상 최대치를 기록했습니다. 이는 모든 사업 부문에서의 균형잡힌 성장과 비용 효율화 노력의 결과입니다.</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>재무 항목</th>
+                            <th>2025년</th>
+                            <th>전년 대비</th>
+                            <th>평가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>총 매출</td>
+                            <td>11조 9,574억원</td>
+                            <td>+3.3% YoY</td>
+                            <td><span style="color: var(--secondary-color); font-weight: 600;">사상최대</span></td>
+                        </tr>
+                        <tr>
+                            <td>영업이익</td>
+                            <td>2,921억원</td>
+                            <td>+14.1% YoY</td>
+                            <td><span style="color: var(--secondary-color); font-weight: 600;">강한 성장</span></td>
+                        </tr>
+                        <tr>
+                            <td>영업이익률</td>
+                            <td>약 2.4%</td>
+                            <td>상향</td>
+                            <td><span style="color: var(--primary-color); font-weight: 600;">개선</span></td>
+                        </tr>
+                        <tr>
+                            <td>GS25 기존점 매출</td>
+                            <td>+3.6% YoY</td>
+                            <td>업계 평균의 3배</td>
+                            <td><span style="color: var(--secondary-color); font-weight: 600;">우수</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-trending-up"></i> 성장 드라이버 분석</h3>
+                    <p><strong>매출 성장:</strong> 3.3%의 매출 증가는 안정적인 소비 회복과 신규점 오픈의 효과를 반영합니다. 특히 기존점 매출의 긍정적 성장은 소비자 수요의 탄탄함을 보여줍니다.</p>
+                    <p><strong>이익 성장:</strong> 14.1%의 영업이익 증가는 매출 성장을 초과하는 실적으로, 이는 원가 절감, 운영 효율화, 고마진 상품 확대 등의 노력이 성과를 거두었음을 의미합니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-chart-line"></i> 채널별 성과 분석</h3>
+                    <ul class="highlight-list">
+                        <li><strong>편의점:</strong> 기존점 매출 +3.6%, 업계 평균의 3배 성장</li>
+                        <li><strong>할인점:</strong> 퀵커머스 +21.2%, 온라인 기여도 확대</li>
+                        <li><strong>홈쇼핑:</strong> 4Q 영업이익 +18.2%, 수익성 개선</li>
+                    </ul>
+                </div>
+
+                <div class="alert info">
+                    <div class="alert-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div>
+                        <strong>재무 건전성:</strong> 영업이익의 14.1% 성장은 매출 성장률(3.3%)을 크게 상회하며, 회사의 수익성 개선과 비용 통제 능력이 탁월함을 보여줍니다.
+                    </div>
+                </div>
+            </div>
+
+            <\!-- Section 5: Competitive Landscape -->
+            <div class="section" id="competitive-landscape">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-icon"><i class="fas fa-chess"></i></div>
+                    <h2 class="section-title">Competitive Landscape (경쟁 현황)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-crown"></i> 시장 지위 분석</h3>
+                    <p>GS리테일은 국내 유통 시장에서 매우 강한 경쟁력을 보유한 기업입니다. 특히 편의점 부문에서 CU와 함께 1·2위를 경쟁하고 있으며, 시가총액 약 1.4조원 규모의 상장사로서 투자자들에게 높은 신뢰를 받고 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-users"></i> 주요 경쟁사 분석</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>경쟁사</th>
+                                <th>주요 채널</th>
+                                <th>경쟁 포지셀링</th>
+                                <th>GS리테일과의 차이점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>CU</strong></td>
+                                <td>편의점 중심</td>
+                                <td>편의점 1위</td>
+                                <td>편의점에 집중, 다각화 부족</td>
+                            </tr>
+                            <tr>
+                                <td><strong>이마트</strong></td>
+                                <td>대형마트 중심</td>
+                                <td>대형 유통</td>
+                                <td>GS25와의 채널 차이</td>
+                            </tr>
+                            <tr>
+                                <td><strong>롯데</strong></td>
+                                <td>백화점, 할인점</td>
+                                <td>고급 유통</td>
+                                <td>가성비 채널 약화</td>
+                            </tr>
+                            <tr>
+                                <td><strong>쿠팡</strong></td>
+                                <td>온라인 플랫폼</td>
+                                <td>온라인 최강</td>
+                                <td>오프라인 기반 약화</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-lightbulb"></i> GS리테일의 경쟁 우위</h3>
+                    <ul class="highlight-list">
+                        <li><strong>다각화 전략:</strong> 편의점, 할인점, 홈쇼핑의 균형잡힌 포트폴리오</li>
+                        <li><strong>기존점 성장:</strong> 매출 3.6% 증가로 매장 운영 효율성 우수</li>
+                        <li><strong>온라인 확대:</strong> 퀵커머스 21.2% 성장으로 디지털 전환 성공</li>
+                        <li><strong>GS그룹 시너지:</strong> 강력한 재무 지원과 브랜드 신뢰</li>
+                    </ul>
+                </div>
+
+                <div class="alert warning">
+                    <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div>
+                        <strong>경쟁 위협:</strong> CU는 편의점 부문에서 강하고, 쿠팡 등 온라인 신생 업체들의 성장으로 시장 재편이 진행 중입니다. GS리테일은 멀티채널 강점을 극대화해야 합니다.
+                    </div>
+                </div>
+            </div>
+
+            <\!-- Section 6: Strategic Initiatives -->
+            <div class="section" id="strategic-initiatives">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-icon"><i class="fas fa-rocket"></i></div>
+                    <h2 class="section-title">Strategic Initiatives (전략적 추진사항)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-hammer"></i> 스크랩앤빌드 전략</h3>
+                    <p>GS리테일의 가장 중요한 성장 전략은 '스크랩앤빌드(Scrap and Build)' 정책입니다. 이는 기존의 노후되거나 경쟁력이 낮은 점포를 폐쇄하고, 보다 입지가 좋은 위치에 새로운 점포를 개설하는 전략입니다. 이를 통해 GS25는 기존점 매출 +3.6%를 달성하면서도 전체 매출에서는 업계 평균의 3배 성장을 기록했습니다.</p>
+                    <ul class="highlight-list">
+                        <li><strong>노후점 폐쇄 및 신규점 개설</strong></li>
+                        <li><strong>최적 위치 선정으로 경쟁력 강화</strong></li>
+                        <li><strong>기존점 매출 성장 동시 달성</strong></li>
+                        <li><strong>수익성 개선 효과 확인</strong></li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-mobile-alt"></i> 디지털 전환 및 온라인 확대</h3>
+                    <p>GS리테일은 디지털 시대의 소비 트렌드에 빠르게 대응하고 있습니다. GS더프레시의 퀵커머스는 21.2%의 높은 성장률을 기록하며, 온라인과 오프라인을 통합한 옴니채널 전략을 추진 중입니다. GS샵의 온라인 비중 확대도 이러한 전략의 일환입니다.</p>
+                    <ul class="highlight-list">
+                        <li><strong>퀵커머스 강화:</strong> 신선식품 배송 서비스 확대</li>
+                        <li><strong>모바일 앱 개선:</strong> 사용자 경험 향상</li>
+                        <li><strong>온라인 마켓:</strong> GS더프레시 온라인 플랫폼 확대</li>
+                        <li><strong>상품 고도화:</strong> PB(자체상품) 개발 확대</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-gem"></i> 프리미엄 상품화 전략</h3>
+                    <p>소비자들의 라이프스타일 분화에 대응하기 위해 GS리테일은 각 채널에 맞는 프리미엄 상품 라인업을 강화하고 있습니다. 편의점에서는 신선 간편식, 할인점에서는 자체 브랜드 상품, 홈쇼핑에서는 고가 프리미엄 제품을 강조하고 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-leaf"></i> 지속가능성 및 ESG 추진</h3>
+                    <p>GS리테일은 GS그룹의 일원으로서 ESG 경영을 적극 추진하고 있습니다. 환경 친화적 점포 설계, 윤리적 상품 조달, 지역 사회 지원 등의 활동을 통해 지속 가능한 성장을 도모하고 있습니다.</p>
+                </div>
+
+                <div class="alert success">
+                    <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <strong>전략 추진의 성과:</strong> 스크랩앤빌드와 디지털 전환이 실제 성과(기존점 매출 성장, 퀵커머스 21.2% 성장)로 나타나고 있으며, 회사의 전략 실행력이 우수함을 보여줍니다.
+                    </div>
+                </div>
+            </div>
+
+            <\!-- Section 7: Risk Analysis -->
+            <div class="section" id="risk-analysis">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h2 class="section-title">Risk Analysis (리스크 분석)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-chart-line"></i> 시장 리스크</h3>
+                    <p><strong>인구 감소와 소비 심화:</strong> 국내 저출산·고령화로 인한 경제활동인구 감소는 소매 시장의 장기적 성장성을 제약할 수 있습니다. 또한 소비자들의 선택 기준이 점점 까다로워지고 있어 마진율 압박이 지속될 것으로 예상됩니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-building"></i> 경쟁 리스크</h3>
+                    <ul class="highlight-list">
+                        <li><strong>편의점 포화:</strong> CU와의 경쟁 심화, 신규점 개설 기회 제한</li>
+                        <li><strong>온라인 플랫폼:</strong> 쿠팡, 마켓컬리 등 신생 기업의 공격</li>
+                        <li><strong>할인점 경쟁:</strong> 대형마트와의 가격 경쟁 심화</li>
+                        <li><strong>글로벌 리테일:</strong> 아마존, 알리바바 등 해외 기업의 진출 가능성</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-coins"></i> 비용 리스크</h3>
+                    <p><strong>임금 상승과 인건비 증가:</strong> 최저임금 인상, 주 52시간 근무제 등으로 인한 인건비 부담 증가가 지속되고 있습니다. 소매 업계의 특성상 노동 비용의 감소 여지가 제한적입니다.</p>
+                    <p><strong>임차료 인상:</strong> 주요 입지의 임차료 상승으로 인한 점포 운영비 증가가 예상됩니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-globe"></i> 거시경제 리스크</h3>
+                    <ul class="highlight-list">
+                        <li><strong>금리 인상:</strong> 소비자의 구매력 감소로 인한 수요 부진</li>
+                        <li><strong>환율 변동:</strong> 수입 상품 원가 증가</li>
+                        <li><strong>경기 둔화:</strong> 소비 심화에 따른 매출 압박</li>
+                        <li><strong>공급망 위기:</strong> 글로벌 물류 차질로 인한 상품 수급 어려움</li>
+                    </ul>
+                </div>
+
+                <div class="alert warning">
+                    <div class="alert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <strong>리스크 대응:</strong> GS리테일은 GS그룹의 재무 지원, 다각화된 사업 포트폴리오, 그리고 지속적인 혁신을 통해 이러한 리스크에 대응하고 있습니다. 하지만 경쟁 심화와 소비 부진은 지속적인 모니터링이 필요합니다.
+                    </div>
+                </div>
+            </div>
+
+            <\!-- Section 8: Investment Outlook -->
+            <div class="section" id="investment-outlook">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <div class="section-icon"><i class="fas fa-binoculars"></i></div>
+                    <h2 class="section-title">Investment Outlook (투자 전망)</h2>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-star"></i> 투자 포인트</h3>
+                    <p>GS리테일은 안정적인 캐시플로우와 성장성을 갖춘 매력적인 투자 대상입니다. 2025년 사상 최대 실적과 14.1%의 영업이익 성장은 회사의 경영 능력과 수익성을 입증합니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-check"></i> 긍정적 요인</h3>
+                    <ul class="highlight-list">
+                        <li><strong>사상 최대 실적:</strong> 2025년 11.9조원 매출은 역사적 이정표</li>
+                        <li><strong>강한 이익 성장:</strong> 영업이익 14.1% 증가로 수익성 개선</li>
+                        <li><strong>기존점 매출 성장:</strong> 3.6% 증가로 안정적 수익 창출</li>
+                        <li><strong>온라인 성장:</strong> 퀵커머스 21.2% 성장으로 미래 성장성 확보</li>
+                        <li><strong>GS그룹 지원:</strong> 강력한 모회사의 재정·전략 지원</li>
+                        <li><strong>배당 정책:</strong> 안정적인 현금흐름으로 배당금 지급 가능</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-exclamation"></i> 부정적 요인</h3>
+                    <ul class="highlight-list">
+                        <li><strong>시장 포화:</strong> 편의점 시장의 성숙화로 신규 성장 기회 제한</li>
+                        <li><strong>경쟁 심화:</strong> CU, 쿠팡 등과의 경쟁이 계속 치열</li>
+                        <li><strong>마진 압박:</strong> 저가 경쟁으로 인한 이익률 악화 가능성</li>
+                        <li><strong>인건비 상승:</strong> 계속되는 최저임금 인상 부담</li>
+                        <li><strong>경기 민감도:</strong> 소비 심화에 따른 수요 감소 리스크</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-line-chart"></i> 향후 전망</h3>
+                    <p><strong>단기(2026년):</strong> 안정적인 실적 유지가 예상됩니다. 기존점 매출 성장세가 지속되고, 온라인 채널의 성장이 계속될 것으로 보입니다. 영업이익률의 지속적 개선이 주요 관전 포인트입니다.</p>
+                    <p><strong>중기(2027-2028년):</strong> 퀵커머스와 온라인 쇼핑의 비중 확대로 매출 성장이 가속될 것으로 예상됩니다. 다만 경쟁 심화로 인한 마진 압박이 지속될 수 있으므로, 원가 통제와 효율성 개선이 핵심 과제입니다.</p>
+                    <p><strong>장기(2029년 이후):</strong> 인구 감소와 소비 심화 추세 속에서, GS리테일은 프리미엄화와 온라인 확대를 통해 성장을 지속해야 합니다. GS그룹과의 시너지 확대도 중요한 전략이 될 것입니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-target"></i> 투자 등급 및 목표주가</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>평가</th>
+                                <th>근거</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>투자 관점</strong></td>
+                                <td><span style="color: var(--secondary-color); font-weight: 600;">긍정적</span></td>
+                                <td>안정적 실적 성장과 높은 이익 증가율</td>
+                            </tr>
+                            <tr>
+                                <td><strong>추천 투자자</strong></td>
+                                <td>가치 투자자, 배당 투자자</td>
+                                <td>안정적 캐시플로우와 배당 지급 가능성</td>
+                            </tr>
+                            <tr>
+                                <td><strong>주의사항</strong></td>
+                                <td>경기 변동 민감도 주의</td>
+                                <td>소매 산업의 경기 순환 특성</td>
+                            </tr>
+                            <tr>
+                                <td><strong>관전 지표</strong></td>
+                                <td>기존점 매출, 영업이익률, 온라인 비중</td>
+                                <td>지속적 모니터링 필요</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert info">
+                    <div class="alert-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div>
+                        <strong>결론:</strong> GS리테일은 2025년 사상 최대 실적과 강한 이익 성장을 기반으로 긍정적인 투자 전망을 제시합니다. 다만 시장 포화와 경쟁 심화는 지속적인 주의 대상입니다. 회사의 전략 실행력과 온라인 채널 성장을 주의 깊게 모니터링하면서 투자 판단을 해야 합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <\!-- Footer -->
+        <div class="footer">
+            <div class="last-update">
+                <i class="fas fa-clock"></i> LAST UPDATE: 2026.04.20 09:00
+            </div>
+            <p><strong>FLOVAH Insights</strong> - AI-Driven Investment Research & Analysis</p>
+            <p>본 보고서는 공개된 정보를 기반으로 작성되었으며, 투자 권유가 아닙니다. 투자 결정 시 전문가 상담을 권장합니다.</p>
+            <p>&copy; 2026 FLOVAH. All rights reserved. | flovah2024@gmail.com</p>
+        </div>
+    </div>
+</body>
+</html>

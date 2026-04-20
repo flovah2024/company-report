@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DL Holdings (DL) 기업 분석 보고서 | FLOVAH Insights</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>DL (대림) | FLOVAH Insights</title>
+    
+    <\!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    
+    <\!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #1a73e8;
-            --primary-light: #e8f0fe;
-            --primary-dark: #0d47a1;
-            --secondary: #ff6d00;
-            --secondary-light: #ffe0b2;
-            --success: #1db854;
-            --warning: #f57f17;
-            --danger: #d32f2f;
-            --neutral-dark: #202124;
-            --neutral-gray: #5f6368;
-            --neutral-light: #f8f9fa;
-            --border: #dadce0;
-            --text-primary: #202124;
-            --text-secondary: #5f6368;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
-            --radius: 8px;
-            --transition: 0.3s ease;
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
         }
 
         * {
@@ -37,21 +44,39 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #ffffff;
-            color: var(--text-primary);
-            line-height: 1.6;
+        html, body {
+            width: 100%;
+            height: 100%;
         }
 
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 20px 0;
-            box-shadow: var(--shadow-md);
+        body {
+            background: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.3px;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Header */
+        header {
             position: sticky;
             top: 0;
             z-index: 100;
+            background: rgba(9, 9, 11, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
         }
 
         .header-content {
@@ -60,1327 +85,406 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 30px;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 0.8rem;
         }
 
-        .logo-section a {
+        .flovah-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .header-title {
             font-family: 'Orbit', sans-serif;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
+            color: var(--ink-strong);
+            letter-spacing: 0.05em;
         }
 
-        .logo-section a:hover {
-            opacity: 0.8;
-        }
-
-        .nav {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            transition: var(--transition);
-            opacity: 0.9;
-        }
-
-        .nav a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        .date-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 12px;
-            border-radius: var(--radius);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 30px;
-        }
-
-        .section {
-            margin-bottom: 80px;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .header-nav {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 2rem;
         }
 
-        .section-title i {
-            font-size: 32px;
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
-        .section-subtitle {
-            font-size: 12px;
-            color: var(--secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
+        .nav-link:hover {
+            color: var(--gold);
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%);
-            border-radius: var(--radius);
-            padding: 60px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .company-name {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-        }
-
-        .company-code {
-            font-size: 18px;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .company-desc {
-            font-size: 16px;
+        .header-date {
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 30px;
-            line-height: 1.8;
-        }
-
-        .sector-badges {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: white;
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid var(--primary);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .metric-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 25px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .metric-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-
-        .metric-label {
-            font-size: 13px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .metric-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .metric-change {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--success);
-        }
-
-        .metric-change.negative {
-            color: var(--danger);
-        }
-
-        .timeline {
-            position: relative;
-            padding: 40px 0;
-        }
-
-        .timeline-item {
-            margin-bottom: 40px;
-            padding-left: 50px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 12px;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--primary);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 17px;
-            top: 30px;
-            width: 2px;
-            height: 40px;
-            background: var(--border);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-year {
-            font-size: 14px;
-            color: var(--secondary);
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .timeline-event {
-            font-size: 15px;
-            color: var(--text-primary);
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
         }
 
-        .tech-card {
-            background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);
+        /* Section Styling */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .section-number {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 60px;
+        }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+        }
+
+        .section-content {
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-            transition: var(--transition);
-        }
-
-        .tech-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-
-        .tech-icon {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .tech-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-
-        .tech-desc {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .market-stat {
-            background: white;
-            border-left: 4px solid var(--primary);
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .market-stat-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 15px;
-        }
-
-        .market-stat-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-sm);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .comparison-table thead {
-            background: var(--primary);
-            color: white;
-        }
-
-        .comparison-table th {
-            padding: 16px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .comparison-table td {
-            padding: 16px;
-            border-bottom: 1px solid var(--border);
-            font-size: 14px;
-        }
-
-        .comparison-table tbody tr:hover {
-            background: var(--primary-light);
-        }
-
-        .comparison-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .swot-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .swot-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .swot-box {
-            border-radius: var(--radius);
-            padding: 25px;
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .swot-box.strengths {
-            background: linear-gradient(135deg, var(--success) 0%, #0d7336 100%);
-        }
-
-        .swot-box.weaknesses {
-            background: linear-gradient(135deg, var(--danger) 0%, #b71c1c 100%);
-        }
-
-        .swot-box.opportunities {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .swot-box.threats {
-            background: linear-gradient(135deg, var(--warning) 0%, #d32f2f 100%);
-        }
-
-        .swot-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .swot-list {
-            list-style: none;
-            font-size: 14px;
+            border-radius: 8px;
+            padding: 2rem;
             line-height: 1.8;
+            color: var(--text-body);
         }
 
-        .swot-list li {
-            margin-bottom: 10px;
-            display: flex;
-            gap: 10px;
+        .section-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
         }
 
-        .swot-list li::before {
-            content: '•';
-            font-weight: 700;
-            flex-shrink: 0;
+        .section-content p:last-child {
+            margin-bottom: 0;
         }
 
-        .strategy-item {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(201, 169, 98, 0.08);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
         }
 
-        .strategy-item-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .highlight-box strong {
+            color: var(--gold);
         }
 
-        .strategy-item-content {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .chart-container {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .chart-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-        }
-
-        .bar-chart {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 300px;
-            gap: 15px;
-        }
-
-        .bar-item {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-
-        .bar {
-            width: 100%;
-            background: linear-gradient(to top, var(--primary), var(--primary-light));
-            border-radius: var(--radius) var(--radius) 0 0;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .bar:hover {
-            opacity: 0.8;
-            transform: scaleY(1.05);
-        }
-
-        .bar-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-
-        .bar-value {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .conclusion-box {
-            background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%);
-            border-left: 4px solid var(--primary);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .conclusion-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-        }
-
-        .conclusion-text {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .footer {
-            background: var(--neutral-light);
-            border-top: 1px solid var(--border);
-            padding: 40px 30px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
+        /* Last Update Block */
         .last-update-block {
-            background: white;
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
             text-align: center;
-            margin-bottom: 20px;
-            display: inline-block;
         }
 
-        .last-update-label {
-            font-size: 12px;
+        .update-label {
+            font-size: 0.9rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-            margin-bottom: 5px;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
         }
 
-        .last-update-time {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .footer-text {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 20px;
-        }
-
-        .footer-logo {
+        .update-time {
             font-family: 'Orbit', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .list-group {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .list-item {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
-            font-size: 14px;
-            color: var(--text-primary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .list-item:last-child {
-            border-bottom: none;
-        }
-
-        .list-item-label {
+            font-size: 1.5rem;
+            color: var(--gold);
             font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
-        .list-item-value {
-            color: var(--primary);
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-branding {
+            margin-bottom: 1.5rem;
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gold);
             font-weight: 600;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-                padding: 0 20px;
+            main {
+                padding: 2rem 1rem;
             }
 
-            .nav {
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
+            .header-nav {
+                gap: 1rem;
+                font-size: 0.85rem;
             }
 
-            .container {
-                padding: 40px 20px;
+            .section-title {
+                font-size: 1.4rem;
             }
 
-            .hero-section {
-                padding: 40px 20px;
+            .section-number {
+                font-size: 2rem;
             }
 
-            .company-name {
-                font-size: 32px;
-            }
-
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .bar-chart {
-                height: 250px;
+            .section-content {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <header>
         <div class="header-content">
             <div class="logo-section">
-                <a href="index.html">FLOVAH</a>
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="flovah-logo">
+                <span class="header-title">FLOVAH Insights</span>
             </div>
-            <nav class="nav">
-                <a href="index.html">홈</a>
-                <a href="#기업개요">기업개요</a>
-                <a href="#기술분석">기술분석</a>
-                <a href="#시장분석">시장분석</a>
-                <span class="date-badge">April 20, 2026</span>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link">홈</a>
+                <a href="#" class="nav-link">기업분석</a>
+                <span class="header-date">April 20, 2026</span>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <\!-- 섹션 1: 기업개요 -->
-        <section class="section" id="기업개요">
-            <div class="section-subtitle">Section 1</div>
-            <h2 class="section-title"><i class="fas fa-building"></i> 기업개요</h2>
-
-            <div class="hero-section">
-                <div class="company-name">DL Holdings</div>
-                <div class="company-code">KOSPI: 000210</div>
-                <p class="company-desc">
-                    1939년 설립된 대림산업은 한국 건설업의 역사를 함께하고 있습니다. 
-                    2021년 사명을 DL로 변경한 DL그룹은 건설, 조선, 석유화학, 발전 등 다양한 사업 포트폴리오를 
-                    보유한 복합 엔지니어링 및 건설 기업입니다.
-                </p>
-                <div class="sector-badges">
-                    <span class="badge">건설</span>
-                    <span class="badge">조선</span>
-                    <span class="badge">석유화학</span>
-                    <span class="badge">발전</span>
-                    <span class="badge">호텔·리조트</span>
-                </div>
+    <main>
+        <\!-- Section 1: 기업 소개 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">기업 소개</h2>
             </div>
+            <div class="section-content">
+                <p>대림(DL)은 1939년 설립된 한국의 대표적인 종합 건설·화학 기업으로, 현재 KOSPI 상장사(종목코드: 000210)이다. DL그룹은 건설, 석유화학, 발전 등 다양한 산업 영역에서 사업을 영위하고 있으며, 산업 다각화를 통해 안정적인 사업 기반을 구축하고 있다.</p>
 
-            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 25px; margin-top: 40px;">주요 재무지표 (2025년)</h3>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-label">DL이앤씨 매출</div>
-                    <div class="metric-value">7.4조</div>
-                    <div class="metric-change">전년대비 변화</div>
+                <div class="highlight-box">
+                    <strong>설립 연도:</strong> 1939년 | <strong>상장:</strong> KOSPI (000210) | <strong>산업:</strong> 건설·화학 복합기업
                 </div>
-                <div class="metric-card">
-                    <div class="metric-label">DL이앤씨 영업이익</div>
-                    <div class="metric-value">3,870억</div>
-                    <div class="metric-change">YoY +42.8%</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">영업이익률</div>
-                    <div class="metric-value">5.2%</div>
-                    <div class="metric-change">개선추세</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">2026 목표 매출</div>
-                    <div class="metric-value">7.2조</div>
-                    <div class="metric-change">수주 12.5조</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">설립년도</div>
-                    <div class="metric-value">1939</div>
-                    <div class="metric-change">87년 역사</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">주요 자회사</div>
-                    <div class="metric-value">5</div>
-                    <div class="metric-change">다각화 포트폴리오</div>
-                </div>
-            </div>
 
-            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 25px; margin-top: 40px;">기업 연혁</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">1939년</div>
-                    <div class="timeline-event">대림산업 설립 - 한국 건설업의 역사 시작</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">1970년대~1990년대</div>
-                    <div class="timeline-event">대규모 토목, 건축 프로젝트 수행 및 국내 건설 선도</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2000년대</div>
-                    <div class="timeline-event">해외 건설 및 조선 사업 진출, 포트폴리오 다각화</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2021년</div>
-                    <div class="timeline-event">사명을 대림에서 DL로 변경, DL그룹 지주회사 체제 전환</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2025년</div>
-                    <div class="timeline-event">DL이앤씨 영업이익 42.8% 성장, SMR 사업 진출 기대</div>
-                </div>
-            </div>
+                <p>DL그룹의 주요 계열사는 DL이앤씨(건설 사업), DL케미칼(석유화학 사업), DL에너지(발전 사업), 글래드호텔(호텔 운영) 등으로 구성되어 있다. 특히 DL이앤씨는 국내 건설업계의 주요 플레이어로서 주택, 상업시설, 인프라 프로젝트에 참여하고 있으며, DL케미칼은 석유화학 제품의 생산 및 판매를 통해 안정적인 수익을 창출하고 있다.</p>
 
-            <h3 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 25px; margin-top: 40px;">주요 자회사</h3>
-            <div class="list-group">
-                <div class="list-item">
-                    <span class="list-item-label">DL이앤씨</span>
-                    <span class="list-item-value">건설 사업 핵심</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">DL케미칼</span>
-                    <span class="list-item-value">석유화학 및 소재</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">DL에너지</span>
-                    <span class="list-item-value">발전사업</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">글래드호텔앤리조트</span>
-                    <span class="list-item-value">관광·숙박</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">DL건설</span>
-                    <span class="list-item-value">건설 전문</span>
-                </div>
+                <p>DL에너지는 화력발전소 운영을 통해 전력을 생산하고 있으며, 최근 소형모듈원자로(Small Modular Reactor, SMR) 사업에 진출하여 신재생에너지 시대에 대비하고 있다. 또한 글래드호텔은 프리미엄 호텔 브랜드로서 국내외 고객 만족도를 높이고 있다.</p>
+
+                <p>DL그룹은 수십 년간 축적된 기술력과 경험을 바탕으로 지속 가능한 경영 전략을 추진하고 있으며, 글로벌 시장에서의 입지를 강화하기 위해 다양한 전략적 투자를 진행 중이다. 특히 에너지 분야의 다각화와 건설 기술의 고도화를 통해 향후 사업 성장을 기대하고 있다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 2: 기술분석 -->
-        <section class="section" id="기술분석">
-            <div class="section-subtitle">Section 2</div>
-            <h2 class="section-title"><i class="fas fa-tools"></i> 기술분석</h2>
+        <\!-- Section 2: 사업 영역 및 구조 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">사업 영역 및 구조</h2>
+            </div>
+            <div class="section-content">
+                <p>DL그룹은 크게 네 가지 주요 사업 영역으로 나뉘어 운영되고 있다. 첫째, DL이앤씨는 건설 사업을 담당하며 주택 건설, 상업시설 개발, 토목 사업, 건축 엔지니어링 등 포괄적인 서비스를 제공한다. 둘째, DL케미칼은 석유화학 사업을 영위하며 화학 제품의 생산, 정제, 판매를 통해 수익을 창출한다.</p>
 
-            <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                DL그룹은 건설, 조선, 석유화학 등 첨단 기술이 요구되는 산업에서 경쟁력 있는 기술 역량을 보유하고 있습니다. 
-                특히 스마트 건설, 친환경 소재 개발, 소형모듈원전(SMR) 사업 진출을 통해 미래 성장 동력을 확보하고 있습니다.
-            </p>
+                <div class="highlight-box">
+                    <strong>주요 계열사:</strong> DL이앤씨(건설), DL케미칼(석유화학), DL에너지(발전), 글래드호텔(호텔)
+                </div>
 
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-icon"><i class="fas fa-hammer"></i></div>
-                    <div class="tech-name">스마트 건설 기술</div>
-                    <div class="tech-desc">
-                        BIM(Building Information Modeling) 기술, 자동화 장비, 
-                        드론 활용을 통한 공사 관리 효율화 및 안전성 강화
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon"><i class="fas fa-flask"></i></div>
-                    <div class="tech-name">특화 석유화학</div>
-                    <div class="tech-desc">
-                        DL케미칼의 스페셜티 제품 중심 기술력으로 고부가가치 석유화학 
-                        제품 및 바이오 원료·소재 개발
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon"><i class="fas fa-recycle"></i></div>
-                    <div class="tech-name">재활용 플라스틱 소재</div>
-                    <div class="tech-desc">
-                        친환경 재활용 플라스틱 소재 개발로 순환경제 실현 및 
-                        환경 규제 대응 기술력 확보
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon"><i class="fas fa-atom"></i></div>
-                    <div class="tech-name">소형모듈원전(SMR)</div>
-                    <div class="tech-desc">
-                        차세대 에너지 기술인 SMR 사업 진출로 연간 2,000억원 이상의 
-                        영업이익 창출 기대
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon"><i class="fas fa-ship"></i></div>
-                    <div class="tech-name">해양·조선 기술</div>
-                    <div class="tech-desc">
-                        고도화된 조선 기술과 해양 프로젝트 경험으로 
-                        대형 해양 구조물 건설 능력 보유
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon"><i class="fas fa-bolt"></i></div>
-                    <div class="tech-name">발전 기술</div>
-                    <div class="tech-desc">
-                        DL에너지의 미국 LNG 발전사업 경험으로 
-                        안정적 에너지 공급 기술력 확보
-                    </div>
-                </div>
-            </div>
+                <p>셋째, DL에너지는 전력 생산 사업을 담당하며 화력발전소 운영과 최근 주목받고 있는 소형모듈원자로(SMR) 사업 진출을 추진하고 있다. SMR은 기존 대형 원자로에 비해 안전성이 높고 소규모 지역의 전력 수요를 충족할 수 있어, 전 세계적으로 차세대 에너지 솔루션으로 인정받고 있다. DL에너지의 SMR 사업 진출은 신에너지 시대에 선제적으로 대응하는 전략이다.</p>
 
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; margin-top: 40px;">핵심 경쟁력</h3>
-            <div class="market-stat">
-                <div class="market-stat-title">차별화된 포트폴리오</div>
-                <div class="market-stat-value">다각화</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">87년 기술 축적</div>
-                <div class="market-stat-value">1939~</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">글로벌 프로젝트 경험</div>
-                <div class="market-stat-value">풍부</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">미래 성장 동력</div>
-                <div class="market-stat-value">SMR, 친환경</div>
+                <p>넷째, 글래드호텔은 호텔 및 숙박 사업을 운영하며 프리미엄 서비스를 제공함으로써 관광 및 비즈니스 고객 만족도를 높이고 있다. 이러한 다각화된 사업 구조는 DL그룹이 다양한 산업 변화에 대응하고 장기적 성장성을 확보하는 데 기여하고 있다.</p>
+
+                <p>DL그룹의 각 계열사는 독립적인 경영 구조를 유지하면서도 모그룹의 전략 방향에 따라 협력하고 있다. 특히 에너지, 건설, 화학 사업 간의 시너지를 창출하기 위해 공동 프로젝트 추진, 기술 공유, 인력 교류 등 다양한 협력 활동을 진행 중이다. 이러한 그룹 차원의 통합 전략은 DL그룹의 경쟁력을 강화하고 장기적 가치 창출을 도모하고 있다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 3: 시장분석 -->
-        <section class="section" id="시장분석">
-            <div class="section-subtitle">Section 3</div>
-            <h2 class="section-title"><i class="fas fa-chart-pie"></i> 시장분석</h2>
+        <\!-- Section 3: 재무 성과 및 2025년 실적 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">재무 성과 및 2025년 실적</h2>
+            </div>
+            <div class="section-content">
+                <p>DL이앤씨는 2025년도에 역대급 경영 성과를 기록했다. 매출액은 7조 4,000억 원으로 전년 대비 지속적인 성장을 이루었으며, 특히 영업이익은 3,870억 원으로 전년 대비 42.8% 증가하여 뛰어난 수익성 개선을 보여주었다. 이러한 성과는 주택 건설, 상업시설 개발, 토목 프로젝트 등 다양한 사업 분야에서의 균형잡힌 수익 창출의 결과이다.</p>
 
-            <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                한국 건설 시장은 안정적 성장세를 유지하고 있으며, 인프라 투자, 재개발·재건축 수요, 
-                그리고 해외 건설 프로젝트 기회가 지속적으로 창출되고 있습니다. 
-                석유화학 시장은 고부가가치 제품 중심으로 전환되고 있으며, 에너지 전환 시대에 
-                LNG 발전 및 SMR은 새로운 성장 기회를 제공합니다.
-            </p>
+                <div class="highlight-box">
+                    <strong>2025년 DL이앤씨 실적:</strong> 매출 7.4조 원, 영업이익 3,870억 원 (+42.8%)
+                </div>
 
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">시장 규모 및 성장률</h3>
-            <div class="market-stat">
-                <div class="market-stat-title">한국 건설시장 규모</div>
-                <div class="market-stat-value">~140조원</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">연평균 성장률(CAGR)</div>
-                <div class="market-stat-value">3~5%</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">석유화학 시장 성장</div>
-                <div class="market-stat-value">고부가 중심</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">LNG 발전 수요</div>
-                <div class="market-stat-value">증가추세</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">글로벌 건설시장</div>
-                <div class="market-stat-value">~2,500조원</div>
-            </div>
-            <div class="market-stat">
-                <div class="market-stat-title">SMR 시장 전망</div>
-                <div class="market-stat-value">고성장 기대</div>
-            </div>
+                <p>2025년의 우수한 실적은 국내 건설 시장의 호황, 주택 공급 증가, 대형 인프라 프로젝트 진행 등 여러 긍정적 요인이 복합적으로 작용한 결과이다. 특히 영업이익 증가율 42.8%는 업계 평균보다 훨씬 높은 수치로, DL이앤씨의 효율적인 원가 관리와 사업 운영 능력을 입증한다.</p>
 
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; margin-top: 40px;">시장 기회 요인</h3>
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 20px;">
-                <h4 style="font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">국내 건설시장</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>도시재생 및 재개발·재건축 프로젝트 지속</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>인프라 및 교통 프로젝트 투자 확대</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>에너지 전환에 따른 신규 건설 수요 증가</li>
-                    <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>스마트시티 및 친환경 건축 수요 증가</li>
-                </ul>
-            </div>
+                <p>영업이익 마진 개선은 시공 효율성 증대, 건설 자재 비용 절감, 대형 프로젝트의 높은 마진율 달성 등으로 인해 이루어졌다. 이러한 재무적 건강성은 DL이앤씨의 경영진과 직원들의 헌신적인 노력과 혁신적인 경영 전략의 성과로 평가된다.</p>
 
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 20px;">
-                <h4 style="font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">해외 건설시장</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>동남아, 중동, 아프리카 인프라 투자 기회</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>글로벌 LNG 발전소 건설·운영 수요</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>원전, 태양광 등 재생에너지 프로젝트</li>
-                    <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>한국 건설 기업의 글로벌 경쟁력 강화</li>
-                </ul>
-            </div>
-
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px;">
-                <h4 style="font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">신산업 시장</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>소형모듈원전(SMR) 시장의 급성장 전망</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>재활용 플라스틱 소재 시장 확대</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>바이오 원료 및 지속가능한 화학 제품 수요</li>
-                    <li><i class="fas fa-check" style="color: var(--success); margin-right: 8px;"></i>관광산업 회복 및 호텔·리조트 수요 증가</li>
-                </ul>
+                <p>2025년의 강력한 실적 기반 위에서, DL이앤씨는 향후 지속적인 성장을 도모하고 있다. 특히 신규 프로젝트 수주 확대, 해외 시장 진출 강화, 건설 기술 고도화 등을 통해 매출과 수익성을 더욱 높일 계획이다. 2026년의 기대되는 성과는 이러한 전략적 노력의 초기 결과를 보여줄 것으로 예상된다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 4: 경쟁사분석 -->
-        <section class="section" id="경쟁사분석">
-            <div class="section-subtitle">Section 4</div>
-            <h2 class="section-title"><i class="fas fa-sitemap"></i> 경쟁사분석</h2>
-
-            <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                한국 건설업 시장에서 DL(구 대림)은 주요 대형 건설사 중 하나로 자리 잡고 있습니다. 
-                현대건설, 삼성건설, SK건설 등과 경쟁하면서도 차별화된 사업 포트폴리오와 
-                안정적인 수익성으로 시장 지위를 강화하고 있습니다.
-            </p>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>회사명</th>
-                        <th>매출(2025)</th>
-                        <th>영업이익</th>
-                        <th>영업이익률</th>
-                        <th>주요 사업</th>
-                        <th>경쟁력</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>DL (000210)</strong></td>
-                        <td>7.4조원</td>
-                        <td>3,870억원</td>
-                        <td>5.2%</td>
-                        <td>건설, 조선, 석유화학, 발전</td>
-                        <td>다각화 포트폴리오, SMR 진출</td>
-                    </tr>
-                    <tr>
-                        <td><strong>현대건설</strong></td>
-                        <td>~30조원</td>
-                        <td>~3,000억원</td>
-                        <td>~1.0%</td>
-                        <td>건설, 플랜트</td>
-                        <td>대규모 프로젝트, 글로벌 경험</td>
-                    </tr>
-                    <tr>
-                        <td><strong>삼성건설</strong></td>
-                        <td>~20조원</td>
-                        <td>~2,500억원</td>
-                        <td>~1.3%</td>
-                        <td>건설, 조선</td>
-                        <td>기술력, 해양·플랜트</td>
-                    </tr>
-                    <tr>
-                        <td><strong>SK건설</strong></td>
-                        <td>~15조원</td>
-                        <td>~1,500억원</td>
-                        <td>~1.0%</td>
-                        <td>건설, 주택</td>
-                        <td>도시개발, 주거건축</td>
-                    </tr>
-                    <tr>
-                        <td><strong>포스코건설</strong></td>
-                        <td>~12조원</td>
-                        <td>~1,200억원</td>
-                        <td>~1.0%</td>
-                        <td>건설, 플랜트</td>
-                        <td>철강 연계, 플랜트 기술</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; margin-top: 40px;">DL의 경쟁 우위</h3>
-            <div style="background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 25px; margin-bottom: 20px;">
-                <h4 style="font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 12px;">강점</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-primary); line-height: 1.8;">
-                    <li style="margin-bottom: 8px;"><i class="fas fa-star" style="color: var(--secondary); margin-right: 8px;"></i>높은 영업이익률(5.2%) - 업계 평균보다 4~5배 우수</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-star" style="color: var(--secondary); margin-right: 8px;"></i>다각화된 사업 포트폴리오로 위험 분산</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-star" style="color: var(--secondary); margin-right: 8px;"></i>87년 기술 축적 및 브랜드 신뢰도</li>
-                    <li><i class="fas fa-star" style="color: var(--secondary); margin-right: 8px;"></i>SMR 진출로 미래 성장 동력 확보</li>
-                </ul>
+        <\!-- Section 4: 2026년 경영 목표 및 수주 전망 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">2026년 경영 목표 및 수주 전망</h2>
             </div>
+            <div class="section-content">
+                <p>DL이앤씨는 2026년도에 매출 7조 2,000억 원, 수주액 12조 5,000억 원의 목표를 설정했다. 2025년의 7조 4,000억 원 매출에서 소폭 조정된 목표이지만, 이는 보수적이면서도 현실적인 시장 전망을 반영한 것으로 평가된다. 특히 수주액 목표인 12조 5,000억 원은 매출 목표의 1.7배 이상으로, 향후 2-3년의 사업 파이프라인을 확보하려는 의도를 보여준다.</p>
 
-            <div style="background: linear-gradient(135deg, var(--secondary-light) 0%, #fff3e0 100%); border-left: 4px solid var(--secondary); border-radius: var(--radius); padding: 25px;">
-                <h4 style="font-size: 14px; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">약점</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-primary); line-height: 1.8;">
-                    <li style="margin-bottom: 8px;"><i class="fas fa-exclamation-triangle" style="color: var(--warning); margin-right: 8px;"></i>현대건설, 삼성건설 등에 비해 규모 소</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-exclamation-triangle" style="color: var(--warning); margin-right: 8px;"></i>글로벌 프로젝트 수주 경쟁력 상대적 약화</li>
-                    <li style="margin-bottom: 8px;"><i class="fas fa-exclamation-triangle" style="color: var(--warning); margin-right: 8px;"></i>대형 인프라 프로젝트 수주 제약</li>
-                    <li><i class="fas fa-exclamation-triangle" style="color: var(--warning); margin-right: 8px;"></i>단일 사업 집중도 낮음</li>
-                </ul>
+                <div class="highlight-box">
+                    <strong>2026년 목표:</strong> 매출 7.2조 원, 수주액 12.5조 원
+                </div>
+
+                <p>수주액 목표의 적극성은 국내 건설 시장의 회복력 및 장기적 성장 가능성에 대한 DL이앤씨의 자신감을 반영한다. 특히 정부의 인프라 투자 확대, 도시 재생 사업, 주택 공급 정책 등이 건설 업계의 수요를 지속적으로 창출할 것으로 예상하고 있다. 또한 해외 시장에서의 수주 기회도 지속적으로 확보할 계획이다.</p>
+
+                <p>2026년 목표 달성을 위해 DL이앤씨는 몇 가지 전략을 추진하고 있다. 첫째, 대형 프로젝트 수주를 통한 매출 기반 확대이다. 현재 진행 중인 주택 프로젝트, 상업시설 개발, 토목 공사 등에서 추가 수주를 확보할 예정이다. 둘째, 사업 효율성 개선을 통한 수익성 강화이다. 건설 자재 구매 최적화, 시공 프로세스 자동화, 인력 효율성 증진 등을 통해 원가를 절감하고 마진율을 높일 계획이다.</p>
+
+                <p>셋째, 신사업 분야 진출을 통한 포트폴리오 다각화이다. 녹색 건설, 스마트 건설 기술, 환경 친화적 프로젝트 등 미래 지향적인 사업 분야로의 확장을 추진 중이다. 넷째, 해외 시장 진출 강화이다. 아시아, 중동, 아프리카 등 신흥 시장에서의 프로젝트 수주를 위해 국제 경쟁력을 높이고 있다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 5: SWOT 분석 -->
-        <section class="section" id="SWOT분석">
-            <div class="section-subtitle">Section 5</div>
-            <h2 class="section-title"><i class="fas fa-cube"></i> SWOT 분석</h2>
-
-            <div class="swot-grid">
-                <div class="swot-box strengths">
-                    <div class="swot-title">
-                        <i class="fas fa-shield-alt"></i> 강점 (Strengths)
-                    </div>
-                    <ul class="swot-list">
-                        <li>업계 평균보다 4~5배 높은 영업이익률</li>
-                        <li>건설, 조선, 석유화학, 발전 등 다각화</li>
-                        <li>87년 축적된 기술력과 경험</li>
-                        <li>안정적인 수익 창출 능력</li>
-                        <li>해외 프로젝트 경험</li>
-                    </ul>
-                </div>
-
-                <div class="swot-box weaknesses">
-                    <div class="swot-title">
-                        <i class="fas fa-bolt"></i> 약점 (Weaknesses)
-                    </div>
-                    <ul class="swot-list">
-                        <li>현대건설 등 대형사에 비해 규모 소</li>
-                        <li>글로벌 경쟁력 상대적 약화</li>
-                        <li>대형 국책사업 수주 경쟁 심화</li>
-                        <li>단일 사업 의존도 제한</li>
-                        <li>브랜드 인지도 상대적 낮음</li>
-                    </ul>
-                </div>
-
-                <div class="swot-box opportunities">
-                    <div class="swot-title">
-                        <i class="fas fa-rocket"></i> 기회 (Opportunities)
-                    </div>
-                    <ul class="swot-list">
-                        <li>SMR 사업 진출로 연간 2,000억원 이익 기대</li>
-                        <li>친환경 소재 시장 급성장</li>
-                        <li>동남아·중동 인프라 투자 기회</li>
-                        <li>LNG 발전 수요 증가</li>
-                        <li>관광산업 회복에 따른 호텔 수요</li>
-                    </ul>
-                </div>
-
-                <div class="swot-box threats">
-                    <div class="swot-title">
-                        <i class="fas fa-warning"></i> 위협 (Threats)
-                    </div>
-                    <ul class="swot-list">
-                        <li>건설 시장 포화 및 수익성 악화</li>
-                        <li>금리 인상에 따른 프로젝트 축소</li>
-                        <li>글로벌 경제 불확실성 심화</li>
-                        <li>원유·원자재 가격 변동성</li>
-                        <li>환경규제 강화로 인한 비용 증가</li>
-                    </ul>
-                </div>
+        <\!-- Section 5: SMR 사업 진출 및 미래 전략 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">SMR 사업 진출 및 미래 전략</h2>
             </div>
+            <div class="section-content">
+                <p>DL에너지가 추진 중인 소형모듈원자로(Small Modular Reactor, SMR) 사업은 DL그룹의 미래 성장 전략의 핵심이다. SMR은 기존의 대형 원자로(1,000MW 이상)와 달리 100-300MW 규모의 소형 원자로로, 건설 비용이 낮고 안전성이 높으며 소규모 지역의 전력 수요를 효율적으로 충족할 수 있다는 장점이 있다.</p>
 
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-top: 30px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">SWOT 종합평가</h3>
-                <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    DL은 견고한 기초 위에 미래 성장을 추구하는 기업입니다. 높은 영업이익률과 다각화된 포트폴리오가 강점이며, 
-                    SMR 사업 진출과 친환경 소재 개발은 새로운 성장 동력이 될 것으로 기대됩니다. 다만, 규모 측면에서 대형 
-                    건설사와의 경쟁이 도전 과제이며, 글로벌 경제 변동성에 대한 대응력 강화가 필요합니다. 
-                    전략적으로는 높은 수익성을 유지하면서 신사업 진출을 통해 미래 경쟁력을 확보하는 데 집중해야 할 것으로 판단됩니다.
-                </p>
+                <div class="highlight-box">
+                    <strong>SMR의 주요 장점:</strong> 소규모 지역 적용 가능, 높은 안전성, 낮은 건설 비용, 기술 융복합 가능
+                </div>
+
+                <p>전 세계적으로 기후 변화 대응과 에너지 전환의 필요성이 높아지면서, SMR은 중요한 저탄소 에너지 솔루션으로 인식되고 있다. 특히 미국, 캐나다, 유럽 등 선진국에서 SMR 개발과 상용화에 적극 투자하고 있으며, 국내에서도 정부가 SMR 기술 개발과 산업화를 지원하고 있다.</p>
+
+                <p>DL에너지는 이러한 시장 기회를 포착하여 SMR 사업 진출을 준비하고 있다. SMR 건설, 운영, 유지보수 등 전 과정에서 DL이앤씨의 건설 기술과 DL케미칼의 화학 관련 기술을 활용할 수 있어, 그룹 차원의 시너지 창출이 가능하다. 또한 SMR은 산업용 열, 수소 생산, 담수화 등 다양한 용도로 활용 가능하여, 향후 수익 창출의 새로운 기회가 될 수 있다.</p>
+
+                <p>DL에너지의 SMR 사업 진출 일정은 다음과 같다. 1단계는 기술 확보 및 파트너십 구축으로, 해외 SMR 기업과의 협력을 통해 기술을 습득하고 국내 진출을 준비한다. 2단계는 시범 프로젝트 추진으로, 정부 지원 프로젝트나 민간 프로젝트를 통해 SMR을 건설하고 운영하는 경험을 축적한다. 3단계는 상용화 및 확대로, 국내외 고객을 대상으로 SMR 시설을 공급하고 운영 서비스를 제공한다.</p>
+
+                <p>SMR 사업의 성공은 DL그룹의 장기적 성장 동력이 될 것으로 기대된다. 특히 에너지 시장의 구조적 변화, 글로벌 저탄소 에너지 수요 증가, 신기술에 대한 투자 확대 등이 SMR 사업의 가능성을 높이고 있다. DL에너지는 이러한 기회를 적극 활용하여 차세대 에너지 리더로서의 입지를 다질 계획이다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 6: 전략분석 -->
-        <section class="section" id="전략분석">
-            <div class="section-subtitle">Section 6</div>
-            <h2 class="section-title"><i class="fas fa-chess"></i> 전략분석</h2>
-
-            <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                DL의 2026년 경영 전략은 기존 사업의 안정성 확보와 함께 미래 성장 동력 확충에 초점을 맞추고 있습니다. 
-                높은 수익성을 유지하면서도 새로운 기술과 시장에 과감하게 진출하는 공격적인 전략을 펴고 있습니다.
-            </p>
-
-            <div class="strategy-item">
-                <div class="strategy-item-title"><i class="fas fa-cube" style="margin-right: 10px;"></i>1. 핵심 사업 고도화</div>
-                <div class="strategy-item-content">
-                    DL이앤씨 중심으로 건설 사업의 수익성을 극대화합니다. 2026년 매출 목표 7.2조원, 
-                    수주 목표 12.5조원을 달성하기 위해 대형 프로젝트 수주에 집중할 계획입니다. 
-                    스마트 건설 기술 도입으로 공사 효율성을 높이고 안전성을 강화합니다.
-                </div>
+        <\!-- Section 6: 경쟁 우위 및 내부 역량 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">경쟁 우위 및 내부 역량</h2>
             </div>
+            <div class="section-content">
+                <p>DL그룹은 80년 이상의 오랜 역사 속에서 축적된 건설 기술, 화학 지식, 에너지 운영 노하우를 보유하고 있다. 이러한 역량은 국내외 경쟁사와 비교할 때 DL그룹의 중요한 경쟁 우위이다. 특히 대형 인프라 프로젝트 실행 능력, 복잡한 기술 문제 해결 능력, 장기 프로젝트 관리 경험 등이 DL그룹의 핵심 경쟁 강점이다.</p>
 
-            <div class="strategy-item">
-                <div class="strategy-item-title"><i class="fas fa-leaf" style="margin-right: 10px;"></i>2. 친환경 소재 사업 확대</div>
-                <div class="strategy-item-content">
-                    DL케미칼의 재활용 플라스틱, 바이오 원료 등 친환경 제품 개발을 가속화합니다. 
-                    글로벌 환경규제 강화에 선제적으로 대응하면서 고부가가치 시장을 확보할 전략입니다. 
-                    지속가능한 화학 제품으로 차별화된 경쟁력을 확보합니다.
+                <div class="highlight-box">
+                    <strong>핵심 경쟁 우위:</strong> 오랜 기업 역사, 축적된 기술, 통합 사업 모델, 안정적 재무 상태
                 </div>
-            </div>
 
-            <div class="strategy-item">
-                <div class="strategy-item-title"><i class="fas fa-atom" style="margin-right: 10px;"></i>3. SMR(소형모듈원전) 신사업 진출</div>
-                <div class="strategy-item-content">
-                    DL이앤씨의 SMR 사업 진출이 가장 주목할 전략입니다. 연간 2,000억원 이상의 영업이익을 
-                    창출할 것으로 기대되며, 에너지 전환 시대의 새로운 성장 동력이 될 것입니다. 
-                    국내외 SMR 프로젝트 수주를 통해 시장 지위를 강화합니다.
-                </div>
-            </div>
+                <p>DL이앤씨는 국내 건설업계에서 주요 플레이어로서 높은 신뢰성과 평판을 갖추고 있다. 주택, 상업시설, 토목 공사 등 다양한 프로젝트 유형에서의 성공 사례가 축적되어 있으며, 이는 신규 프로젝트 수주에 긍정적 영향을 미친다. 또한 안정적인 자금 조달 능력과 우수한 인적 자원 보유로 대형 프로젝트 실행이 가능하다.</p>
 
-            <div class="strategy-item">
-                <div class="strategy-item-title"><i class="fas fa-globe" style="margin-right: 10px;"></i>4. 글로벌 사업 확대</div>
-                <div class="strategy-item-content">
-                    DL에너지의 미국 LNG 발전사업 경험을 바탕으로 동남아, 중동, 아프리카 등에서의 
-                    인프라 프로젝트 수주를 확대합니다. 한국 건설 기업의 기술력과 신뢰도를 바탕으로 
-                    글로벌 시장 점유율을 높여나갑니다.
-                </div>
-            </div>
+                <p>DL케미칼의 석유화학 사업은 정유업체 및 화학 산업의 주요 고객과 장기 거래 관계를 구축하고 있으며, 안정적인 공급망과 품질 관리 체계를 갖추고 있다. 이는 수익의 안정성과 지속성을 보장하는 중요한 요소이다.</p>
 
-            <div class="strategy-item">
-                <div class="strategy-item-title"><i class="fas fa-hotel" style="margin-right: 10px;"></i>5. 관광·서비스 사업 성장</div>
-                <div class="strategy-item-content">
-                    글래드호텔앤리조트는 팬데믹 이후 관광수요 회복에 따른 분기기준 역대최대 영업이익 달성을 
-                    바탕으로 추가 성장을 모색합니다. 프리미엄 호텔·리조트 브랜드 강화로 고수익 
-                    사업으로 육성해나갑니다.
-                </div>
-            </div>
+                <p>DL에너지의 화력발전소 운영 노하우와 신규 SMR 사업 진출의 결합은 DL그룹의 에너지 사업을 더욱 강화할 것으로 예상된다. 에너지 산업의 구조적 변화 속에서 기존 에너지 사업과 신재생 에너지 사업의 균형 있는 포트폴리오 운영이 가능하다.</p>
 
-            <div class="strategy-item">
-                <div class="strategy-item-title"><i class="fas fa-chart-line" style="margin-right: 10px;"></i>6. 수익성 중심의 포트폴리오 관리</div>
-                <div class="strategy-item-content">
-                    기존의 높은 영업이익률(5.2%)을 유지하면서도 신사업 진출로 성장성을 확보합니다. 
-                    각 자회사별 특화 전략으로 경쟁 우위를 강화하고, 저수익 사업은 선별적으로 
-                    정리하여 포트폴리오 최적화를 추진합니다.
-                </div>
+                <p>글래드호텔은 프리미엄 호텔 브랜드로서 일정한 고객층을 확보하고 있으며, 관광 및 비즈니스 고객 만족도를 지속적으로 높이고 있다. 이는 DL그룹의 서비스 사업 역량을 보여주는 사례이다. 이러한 다양한 사업 영역에서의 경쟁 우위는 DL그룹의 장기적 성장을 뒷받침하는 기반이 된다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 7: 재무분석 -->
-        <section class="section" id="재무분석">
-            <div class="section-subtitle">Section 7</div>
-            <h2 class="section-title"><i class="fas fa-chart-bar"></i> 재무분석</h2>
-
-            <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 30px; line-height: 1.8;">
-                DL(구 대림)의 재무 성과는 건설 시장의 평균적 수익성을 크게 상회합니다. 
-                특히 2025년 DL이앤씨의 영업이익 42.8% 성장은 사업 다각화와 효율성 개선의 결과입니다. 
-                2026년도 매출 및 수주 목표 달성을 위한 기반이 견고하게 형성되었습니다.
-            </p>
-
-            <div class="chart-container">
-                <div class="chart-title">DL이앤씨 연도별 재무 성과 (2023~2026E)</div>
-                <div class="bar-chart">
-                    <div class="bar-item">
-                        <div class="bar" style="height: 70%;"></div>
-                        <div class="bar-label">2023</div>
-                        <div class="bar-value">6.2조</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar" style="height: 85%;"></div>
-                        <div class="bar-label">2024</div>
-                        <div class="bar-value">7.0조</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar" style="height: 100%;"></div>
-                        <div class="bar-label">2025</div>
-                        <div class="bar-value">7.4조</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar" style="height: 98%;"></div>
-                        <div class="bar-label">2026E</div>
-                        <div class="bar-value">7.2조</div>
-                    </div>
-                </div>
+        <\!-- Section 7: 시장 환경 및 위험 요소 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">시장 환경 및 위험 요소</h2>
             </div>
+            <div class="section-content">
+                <p>DL그룹의 사업 환경은 복합적인 시장 요인에 의해 영향을 받고 있다. 국내 건설 시장은 주택 공급 정책, 금리 변화, 경제 성장률 등 거시경제 요인에 민감하게 반응한다. 2026년 건설 시장의 전망은 정부의 인프라 투자 확대와 부동산 시장 안정화 정책에 따라 결정될 것으로 예상된다.</p>
 
-            <div class="chart-container">
-                <div class="chart-title">영업이익률 비교 (%)  </div>
-                <div class="bar-chart">
-                    <div class="bar-item">
-                        <div class="bar" style="height: 100%; background: linear-gradient(to top, var(--success), var(--primary-light));"></div>
-                        <div class="bar-label">DL</div>
-                        <div class="bar-value">5.2%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar" style="height: 20%; background: linear-gradient(to top, var(--warning), var(--secondary-light));"></div>
-                        <div class="bar-label">현대건설</div>
-                        <div class="bar-value">1.0%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar" style="height: 25%; background: linear-gradient(to top, var(--warning), var(--secondary-light));"></div>
-                        <div class="bar-label">삼성건설</div>
-                        <div class="bar-value">1.3%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar" style="height: 20%; background: linear-gradient(to top, var(--warning), var(--secondary-light));"></div>
-                        <div class="bar-label">SK건설</div>
-                        <div class="bar-value">1.0%</div>
-                    </div>
+                <div class="highlight-box">
+                    <strong>주요 위험 요소:</strong> 거시경제 변동, 원재료 가격 변화, 기술 규제, 에너지 정책 변화
                 </div>
-            </div>
 
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; margin-top: 40px;">주요 재무지표</h3>
+                <p>석유화학 산업은 유가 변동에 매우 민감하다. 국제 유가가 상승하면 원재료 비용이 증가하여 수익성이 하락할 수 있으며, 반대로 유가가 하락하면 수익성이 개선될 수 있다. DL케미칼은 이러한 유가 변동 위험을 최소화하기 위해 선도 계약, 헤징 전략 등을 활용하고 있다.</p>
 
-            <div class="list-group">
-                <div class="list-item">
-                    <span class="list-item-label">2025년 매출</span>
-                    <span class="list-item-value">7.4조원</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">2025년 영업이익</span>
-                    <span class="list-item-value">3,870억원</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">영업이익률</span>
-                    <span class="list-item-value">5.2%</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">YoY 영업이익 성장률</span>
-                    <span class="list-item-value">+42.8%</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">2026년 매출 목표</span>
-                    <span class="list-item-value">7.2조원</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">2026년 수주 목표</span>
-                    <span class="list-item-value">12.5조원</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">DL에너지 (LNG)</span>
-                    <span class="list-item-value">안정적 수익</span>
-                </div>
-                <div class="list-item">
-                    <span class="list-item-label">글래드호텔 분기 영업이익</span>
-                    <span class="list-item-value">역대최대</span>
-                </div>
-            </div>
+                <p>에너지 산업의 경우 정부 정책의 영향이 매우 크다. 탄소 중립 정책, 원자력 정책, 재정 지원 정책 등이 DL에너지의 사업 환경을 좌우한다. 특히 SMR 사업의 성공은 정부의 기술 개발 지원, 규제 개선, 수익 인정 제도 등에 따라 달라질 수 있다. 따라서 DL에너지는 정부와의 협력을 강화하고 정책 변화에 신속하게 대응할 필요가 있다.</p>
 
-            <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; margin-top: 40px;">재무 건전성 평가</h3>
+                <p>건설 산업의 또 다른 위험은 인건비 상승이다. 건설 일용직의 임금 상승, 사회 보험료 증가 등이 건설 원가를 상승시키고 있다. DL이앤씨는 자동화 기술 도입, 효율적인 인력 관리, 생산성 혁신 등을 통해 인건비 상승의 영향을 최소화하고 있다.</p>
 
-            <div style="background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%); border-radius: var(--radius); padding: 25px;">
-                <h4 style="font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">긍정 평가 요소</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-primary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i>업계 평균 대비 5배 높은 영업이익률</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i>연속적인 매출 및 수익성 성장</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i>2026년 높은 수주 목표(12.5조원) 설정</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i>다각화된 수익원으로 리스크 분산</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 8px;"></i>신사업 진출로 미래 수익성 확대 기대</li>
-                </ul>
-            </div>
-
-            <div style="background: linear-gradient(135deg, var(--secondary-light) 0%, #fff3e0 100%); border-radius: var(--radius); padding: 25px; margin-top: 15px;">
-                <h4 style="font-size: 15px; font-weight: 700; color: var(--secondary); margin-bottom: 15px;">주의 요소</h4>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-primary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-exclamation-circle" style="color: var(--warning); margin-right: 8px;"></i>건설 시장 성숙화로 인한 수익성 압박 가능성</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-exclamation-circle" style="color: var(--warning); margin-right: 8px;"></i>금리 인상에 따른 프로젝트 축소 리스크</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-exclamation-circle" style="color: var(--warning); margin-right: 8px;"></i>원자재 가격 변동성에 따른 원가 상승</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-exclamation-circle" style="color: var(--warning); margin-right: 8px;"></i>SMR 사업 진출 성공 여부 불확실성</li>
-                    <li><i class="fas fa-exclamation-circle" style="color: var(--warning); margin-right: 8px;"></i>글로벌 경제 불확실성 증가</li>
-                </ul>
+                <p>또한 글로벌 공급망 불안정, 환율 변동, 정치적 리스크 등도 DL그룹의 해외 사업에 영향을 미칠 수 있다. 이러한 다양한 위험 요소에 대응하기 위해 DL그룹은 포트폴리오 다각화, 리스크 관리 강화, 정책 대응 능력 구축 등을 진행하고 있다.</p>
             </div>
         </section>
 
-        <\!-- 섹션 8: 결론 -->
-        <section class="section" id="결론">
-            <div class="section-subtitle">Section 8</div>
-            <h2 class="section-title"><i class="fas fa-lightbulb"></i> 결론</h2>
+        <\!-- Section 8: 결론 및 투자 전망 -->
+        <section>
+            <div class="section-header">
+                <span class="section-number">8</span>
+                <h2 class="section-title">결론 및 투자 전망</h2>
+            </div>
+            <div class="section-content">
+                <p>DL(대림)은 1939년부터 축적된 기술력과 경영 역량을 바탕으로 국내 건설·화학·에너지 산업의 주요 기업으로 자리매김하고 있다. 2025년 DL이앤씨의 우수한 실적(매출 7.4조 원, 영업이익 3,870억 원)은 안정적인 경영 기반과 강한 집행력을 보여준다. 특히 영업이익 42.8%의 높은 증가율은 DL그룹의 경영 효율성과 시장 적응력을 입증한다.</p>
 
-            <div class="conclusion-box">
-                <div class="conclusion-title">종합평가</div>
-                <div class="conclusion-text">
-                    DL(구 대림)은 87년의 역사 속에서 건설, 조선, 석유화학, 발전 등 다양한 산업에서 
-                    강력한 경쟁력을 구축한 복합 엔지니어링 기업입니다. 2025년 영업이익 42.8% 성장과 
-                    5.2%의 높은 영업이익률은 사업 효율성과 수익성이 우수함을 보여줍니다. 
-                    특히 업계 평균 1~1.3%의 영업이익률과 비교하면 DL은 현저히 높은 수익성을 유지하고 있습니다.
+                <div class="highlight-box">
+                    <strong>투자 포인트:</strong> 안정적 실적, 높은 수익성, 미래 성장 동력, 산업 다각화
                 </div>
-            </div>
 
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">핵심 강점</h3>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">업계 최고 수준의 영업이익률:</strong> 5.2%는 경쟁사 대비 4~5배 높은 수준으로, 경영 효율성이 우수함을 입증</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">다각화된 사업 포트폴리오:</strong> 건설, 조선, 석유화학, 발전, 호텔·리조트 등으로 위험을 분산하고 안정적 수익 창출</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">높은 기술 수준:</strong> 스마트 건설, 특화 석유화학, 재활용 소재, SMR 등에서 선진 기술 역량 보유</li>
-                    <li><strong style="color: var(--text-primary);">글로벌 경험:</strong> 해외 프로젝트 경험과 미국 LNG 발전사업 성과로 국제 경쟁력 입증</li>
-                </ul>
-            </div>
+                <p>2026년 매출 7.2조 원, 수주액 12.5조 원의 목표는 건설 시장에 대한 긍정적 전망과 경영진의 자신감을 반영한다. 특히 수주액 목표가 매출 목표의 1.7배 이상인 것은 향후 2-3년의 사업 파이프라인을 안정적으로 확보했음을 의미한다. 이는 중기적 수익성 유지에 긍정적이다.</p>
 
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: var(--secondary); margin-bottom: 15px;">미래 성장 동력</h3>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">SMR(소형모듈원전) 진출:</strong> 차세대 에너지 시장에서 연간 2,000억원 이상의 영업이익 창출 기대</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">친환경 소재 사업 확대:</strong> 재활용 플라스틱, 바이오 원료 등 고성장 시장 진출로 미래 수익성 확보</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">글로벌 인프라 기회:</strong> 동남아, 중동, 아프리카 등에서의 대규모 인프라 프로젝트 수주 기회 증가</li>
-                    <li><strong style="color: var(--text-primary);">관광산업 회복:</strong> 글래드호텔의 분기기준 역대최대 영업이익 달성으로 관광 사업 성장 가능성 확인</li>
-                </ul>
-            </div>
+                <p>SMR 사업 진출은 DL그룹의 장기적 성장 동력이 될 것으로 예상된다. 글로벌 에너지 전환의 가속화, 저탄소 에너지에 대한 수요 증가, 정부의 정책 지원 등이 SMR 사업의 성공 가능성을 높이고 있다. 건설 기술, 화학 기술, 에너지 운영 노하우 등 그룹의 다양한 역량을 활용한 통합적 SMR 사업 추진이 가능하다.</p>
 
-            <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: var(--warning); margin-bottom: 15px;">위험 요소 및 대응</h3>
-                <ul style="list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">시장 포화 리스크:</strong> 건설 시장의 성숙화에 따른 수익성 악화 가능성 → 신사업 진출과 사업 효율화로 대응</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">경기 변동성:</strong> 금리 인상과 글로벌 경제 불확실성 → 포트폴리오 다각화로 리스크 분산</li>
-                    <li style="margin-bottom: 10px;"><strong style="color: var(--text-primary);">규모 경쟁력:</strong> 현대건설, 삼성건설 등 대형사와의 경쟁 → 높은 수익성과 특화 사업으로 차별화</li>
-                    <li><strong style="color: var(--text-primary);">신사업 불확실성:</strong> SMR 시장의 성장 여부 불확실 → 정부 정책 지원과 국제 협력으로 리스크 감소</li>
-                </ul>
-            </div>
+                <p>다만 거시경제 변동, 원재료 가격 변화, 정책 리스크 등 외부 불확실성이 존재한다. 건설 시장의 경기 변동성, 석유화학 산업의 유가 의존도, 에너지 정책 변화 등이 단기적 수익성에 영향을 미칠 수 있다. 따라서 DL그룹은 지속적인 리스크 관리와 포트폴리오 다각화를 통해 경기 변동에 대응할 필요가 있다.</p>
 
-            <div class="conclusion-box">
-                <div class="conclusion-title">투자 관점 평가</div>
-                <div class="conclusion-text">
-                    DL은 견고한 기초 위에서 미래를 준비하는 기업으로 평가됩니다. 높은 영업이익률과 
-                    안정적인 수익 창출 능력은 장기 투자자에게 매력적입니다. SMR, 친환경 소재, 글로벌 인프라 사업 등 
-                    신성장 동력은 중기적 수익성 개선을 기대하게 합니다. 다만, 신사업 성공 여부와 글로벌 경제 변동성에 
-                    주목할 필요가 있습니다. 2026년 수주 목표 12.5조원 달성 여부와 SMR 사업 진출 진행 상황을 면밀히 
-                    모니터링하면서 투자 판단을 진행할 것을 권장합니다. 현재의 높은 영업이익률을 유지하면서도 신성장 
-                    동력을 확보한다면, DL은 향후 5년간 지속적인 성장을 이룰 수 있을 것으로 판단됩니다.
-                </div>
-            </div>
-
-            <div style="background: linear-gradient(135deg, var(--primary-light) 0%, #f0f7ff 100%); border-radius: var(--radius); padding: 25px; margin-top: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 15px;">최종 평가 등급</h3>
-                <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 10px;">
-                    <i class="fas fa-star" style="color: var(--secondary); margin-right: 5px;"></i>
-                    <i class="fas fa-star" style="color: var(--secondary); margin-right: 5px;"></i>
-                    <i class="fas fa-star" style="color: var(--secondary); margin-right: 5px;"></i>
-                    <i class="fas fa-star" style="color: var(--secondary); margin-right: 5px;"></i>
-                    <i class="fas fa-star-half-alt" style="color: var(--secondary);"></i>
-                </div>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 10px;">
-                    <strong>4.5/5.0 - 중기 성장 가능성이 높은 우수 기업</strong><br>
-                    강점: 높은 영업이익률, 다각화된 포트폴리오<br>
-                    기회: SMR, 친환경 소재, 글로벌 확장<br>
-                    주의: 신사업 성공 여부, 경제 변동성
-                </p>
+                <p>종합 평가 결과, DL(대림)은 안정적인 현재 실적, 명확한 중기 목표, 미래 성장 동력 확보 등을 갖춘 매력적인 투자처로 판단된다. 특히 산업 다각화를 통한 수익의 안정성, SMR 사업으로 대표되는 신사업 진출, 지속적인 원가 효율화 등이 향후 수익성 개선을 가능하게 할 것으로 기대된다. 투자자들은 DL그룹의 중장기 성장 가능성과 배당 수익성을 종합적으로 평가하여 투자 결정을 내릴 필요가 있다.</p>
             </div>
         </section>
-    </div>
 
-    <footer class="footer">
+        <\!-- Last Update Block -->
         <div class="last-update-block">
-            <div class="last-update-label">Last Update</div>
-            <div class="last-update-time">2026.04.20 09:00</div>
+            <div class="update-label">마지막 업데이트</div>
+            <div class="update-time">2026.04.20 09:00</div>
         </div>
-        <div class="footer-logo">FLOVAH Insights</div>
-        <div class="footer-text">
-            본 분석 보고서는 DL Holdings의 공개 정보를 바탕으로 작성되었습니다.<br>
-            투자 결정은 본 자료 외 추가 조사와 검토를 통해 신중하게 진행하시기 바랍니다.
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">FLOVAH Insights</div>
+            <p>기업 분석 및 시장 인사이트 제공 플랫폼</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">© 2026 FLOVAH. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+<\!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026.04.20 09:00</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<\!-- /LAST-UPDATE-BLOCK -->
+
 </body>
 </html>

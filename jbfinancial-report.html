@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JB금융지주 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 04월 22일</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">JB금융<span class="hero-title-highlight">지주 종합 분석</span></h1>
+                    <p class="hero-subtitle">호남권 최대 금융그룹 JB금융지주의 지역 기반 강점과 디지털 금융 전환 전략 분석</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">66</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">금융 혁신 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 전환 및 금융 서비스 혁신 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">7,750억</div>
+                            <div class="metric-label">2026 순이익 전망</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5.6조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">13%+</div>
+                            <div class="metric-label">ROE</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">45%</div>
+                            <div class="metric-label">주주환원율 목표</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> JB금융지주 기업 소개</h3>
+                <p>JB금융지주는 전라북도 전주를 본거지로 하는 호남권 최대 금융그룹입니다. 2025년 영업이익은 9,523억 원을 달성했으며, 순이익은 7,300억 원으로 높은 수익성을 보이고 있습니다. 2026년 순이익은 7,750억 원으로 전망되고 있으며, 시가총액 5.6조 원으로 국내 주요 금융지주 중 하나로 자리잡았습니다. JB금융지주는 호남 지역의 강력한 금융 기반을 바탕으로 지역 경제의 중추적 역할을 하고 있으며, 동시에 전국 금융망으로 확대하고 있습니다.</p>
+                <p>JB금융지주의 주요 자회사는 전북은행, 광주은행, JB우리캐피탈, JB금융투자 등으로 구성되어 있습니다. 전북은행은 호남의 최대 지역은행으로 소매금융과 중소기업 금융에서 강한 경쟁력을 갖추고 있습니다. 광주은행은 광주 지역에서 최강의 금융기관으로, 지역 경제 발전에 중추적 역할을 하고 있습니다. JB우리캐피탈은 소비자금융과 자동차 금융 분야에서 주요 플레이어이며, 지속적인 성장을 이루고 있습니다. 이러한 자회사 포트폴리오는 JB금융지주에 안정적이고 다층적인 수익원을 제공하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1989년</div>
+                        <div class="timeline-text">전북은행 개행 - 호남 지역 금융의 초석</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995년</div>
+                        <div class="timeline-text">광주은행 개행 - 광주 지역 금융 활성화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">JB금융지주 설립 - 호남 금융그룹화의 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014년</div>
+                        <div class="timeline-text">JB우리캐피탈 인수 - 소비자금융 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016년</div>
+                        <div class="timeline-text">JB금융투자 설립 - 증권 사업 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019년</div>
+                        <div class="timeline-text">전자금융 플랫폼 고도화 - 모바일 뱅킹 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">오픈뱅킹 전면 도입 - 금융 개방성 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">AI 기반 투자 자문 서비스 출시 - 디지털 혁신 가속화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">영업이익 9,523억 원 달성 - 역대 최대 실적</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>JB금융의 기술 전략 및 디지털 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-mobile-alt"></i> 디지털 뱅킹 플랫폼 및 모바일 전략</h3>
+                <p>JB금융지주는 디지털 금융 시대에 대응하기 위해 모바일 뱅킹 플랫폼을 적극적으로 고도화하고 있습니다. 전북은행과 광주은행의 모바일 앱은 각각 호남 지역에서 가장 높은 사용자 수와 만족도를 기록하고 있습니다. 사용자 경험(UX) 개선, 거래 속도 향상, 보안 강화 등을 통해 지속적으로 서비스 품질을 높이고 있습니다. 특히 음성인식 기반 송금, 생체인증 거래, 빠른 간편결제 등의 기능을 추가하여 고객 편의성을 극대화했습니다.</p>
+                <p>JB금융의 모바일 월 활성 사용자(MAU)는 2025년 기준 약 380만 명으로, 지역 금융기관 중 가장 높은 수준입니다. 모바일 거래액 비중은 전체 거래의 67%에 달하며, 매년 5-8%씩 증가하고 있습니다. 이는 전 국민 금융거래의 디지털화 추세와 맞물려 있으며, JB금융이 이 변화에 얼마나 잘 대응하고 있는지를 보여줍니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">모바일뱅킹</span>
+                    <span class="tech-badge">생체인증</span>
+                    <span class="tech-badge">음성AI</span>
+                    <span class="tech-badge">빠른결제</span>
+                    <span class="tech-badge">보안강화</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> AI 및 데이터 분석 기술</h3>
+                <p>JB금융지주는 AI와 빅데이터 분석 기술을 적극적으로 도입하여 금융 서비스의 고도화를 추진 중입니다. 2024년 AI 기반 투자 자문 서비스(Robo-Advisor)를 출시했으며, 이는 고객의 투자 성향과 목표에 맞춰 최적의 포트폴리오를 추천하는 시스템입니다. 고객 데이터 분석을 통한 신용평가, 부정거래 탐지, 마케팅 타겟팅 등에 AI 기술을 활용하고 있습니다. 또한 음성 기반 챗봇을 통해 고객 상담 자동화를 추진하여 운영 효율성을 높이고 있습니다.</p>
+                <p>빅데이터 분석 능력은 JB금융이 고객 행동 패턴을 이해하고 맞춤형 서비스를 제공하는 핵심입니다. 거래 데이터, 고객 선호도, 시장 동향 등을 종합적으로 분석하여 상품 개발과 마케팅 전략을 수립하고 있습니다. 이러한 데이터 기반 의사결정은 경쟁사 대비 빠르고 정확한 전략 수립을 가능하게 합니다.</p>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-shield-alt"></i> 사이버보안 및 규정준수</h3>
+                    <p>금융기관으로서 JB금융지주는 사이버보안과 규정준수를 최우선으로 삼고 있습니다. 주요 금융거래 시스템에 대한 다층 보안, 실시간 위협 탐지, 정기적인 모의 훈련 등을 통해 보안 수준을 세계적 기준으로 유지하고 있습니다. 또한 개인 정보 보호법, 금융감독 규정, 정보보호 관련 법규를 철저히 준수하며, 고객 신뢰를 확보하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-link"></i> 오픈뱅킹 및 API 전략</h3>
+                    <p>JB금융지주는 2023년부터 본격적으로 오픈뱅킹을 추진하여 타 금융기관, 핀테크 기업과의 협력을 확대하고 있습니다. API를 통해 JB금융의 금융 상품을 외부 플랫폼에 노출시키고, 역으로 타 기관의 서비스를 통합하여 고객 편의성을 높이고 있습니다. 이는 폐쇄적 금융 생태계에서 개방적 금융 생태계로의 전환을 의미합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cloud"></i> 클라우드 인프라 전환</h3>
+                    <p>JB금융지주는 기존 온프레미스 기반 시스템을 점진적으로 클라우드 기반으로 전환하고 있습니다. AWS, 마이크로소프트 애저 등 글로벌 클라우드 서비스를 일부 도입했으며, 향후 클라우드 의존도를 높일 예정입니다. 클라우드 전환은 IT 비용 절감, 시스템 확장성 강화, 운영 효율성 개선을 가능하게 합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 기술 투자 및 인재 전략</h3>
+                <p>JB금융지주는 매년 총 수익의 약 3-4%를 IT 기술 개발과 디지털 혁신에 투자하고 있습니다. IT 전문 인재 확보, 신입 개발자 교육 프로그램, 임직원 디지털 역량 강화 등에 중점을 두고 있습니다. 또한 핀테크 기업과의 협업, 업계 표준 개발 참여 등을 통해 기술 혁신을 선도하려는 노력을 이어가고 있습니다. 이러한 투자와 전략은 JB금융이 디지털 시대에 경쟁력을 유지하고 성장하기 위한 필수 요소입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET ANALYSIS -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>한국 금융시장 및 지역 기반 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 한국 금융 및 은행 시장</h3>
+                <p>한국의 금융 시장은 세계 10위권의 규모를 자랑하며, 높은 금융 포용성과 빠른 디지털 전환이 특징입니다. 2025년 국내 은행권 총 자산은 약 1,900조 원 수준으로 추정되며, 연 평균 4-5%의 성장을 기록하고 있습니다. 특히 모바일 뱅킹, 디지털 결제, 핀테크 서비스의 확산으로 금융 서비스의 형태가 빠르게 변화하고 있습니다.</p>
+                <p>대형 시중은행 중심의 시장 구조에서 지역은행의 역할도 중요해지고 있습니다. 지역은행은 지역 고객에 대한 깊은 이해, 신속한 의사결정, 맞춤형 서비스 제공 등의 강점을 바탕으로 차별화된 경쟁력을 구축하고 있습니다. JB금융지주는 이러한 지역은행의 강점을 극대화하면서도 전국 규모의 금융그룹으로 성장하려는 전략을 추진 중입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> 호남 지역의 금융 시장</h3>
+                    <p>호남 지역은 한국의 주요 경제권 중 하나로, 인구 약 450만 명과 지역 GDP 약 160조 원 규모를 보유하고 있습니다. 전주, 광주, 남원, 군산 등 주요 도시들이 산재되어 있으며, 자동차, 전자, 화학, 농수산 등 다양한 산업이 발달되어 있습니다. 이 지역의 금융 시장은 상당한 규모를 유지하고 있으며, JB금융지주는 이 시장에서 최강 플레이어입니다.</p>
+                    <p>호남 지역의 금융 시장은 전국 평균 대비 높은 성장률을 보이고 있습니다. 지역 중소기업 금융 수요, 소매금융 수요, 투자금융 수요 등이 지속적으로 증가하고 있으며, JB금융지주는 이러한 기회를 포착하여 시장 확대를 추진하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i> 소매금융 및 중소기업 금융</h3>
+                    <p>JB금융지주의 핵심 시장은 소매금융(가계금융)과 중소기업 금융입니다. 소매금융 시장에서는 주택담보대출, 신용대출, 카드론 등이 주요 상품이며, 2025년 전체 시장 규모는 약 900조 원으로 추정됩니다. JB금융지주의 소매금융 시장점유율은 호남 지역에서 약 18-20% 수준으로, 지역 최강자로 자리잡고 있습니다.</p>
+                    <p>중소기업 금융 시장은 더욱 경쟁적이며, 영업이익 창출의 중요한 원천입니다. JB금융지주는 중소기업 고객에 대한 깊은 이해와 신속한 의사결정으로 경쟁사 대비 우위를 유지하고 있습니다. 정부 지원 대출, 정책금융 연계, 기술금융 등 다양한 상품을 통해 중소기업을 지원하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-credit-card"></i> 카드 및 소비자금융 시장</h3>
+                <p>JB금융지주의 자회사인 JB우리캐피탈은 카드론, 신용대출, 자동차 금융 등 소비자금융 시장에서 주요 역할을 하고 있습니다. 국내 카드 및 소비자금융 시장 규모는 약 300조 원으로 추정되며, 매년 3-5%의 성장을 기록하고 있습니다. 금리 자유화, 금리 인상 사이클 등으로 인해 시장 구조가 변화하고 있으며, JB금융은 이에 대응하기 위해 포트폴리오 구조 개선과 리스크 관리 강화를 추진 중입니다.</p>
+                <p>자동차 금융은 국내 자동차 시장의 70% 이상이 할부금융을 통해 구매되는 만큼 매우 중요한 시장입니다. 전기자동차 확산, 자동차 구독 서비스 확대 등 시장 구조 변화에 대응하여 새로운 금융 상품을 개발하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 증권 및 자산관리 시장</h3>
+                <p>JB금융투자는 주식, 펀드, 채권 등 증권 서비스를 제공하며, 자산관리 시장에서의 성장을 추진 중입니다. 국내 자산관리 시장은 개인 금융자산 증가, 은퇴 자산관리 수요 증가 등으로 매년 8-10% 성장하고 있습니다. JB금융투자는 로보어드바이저, AI 기반 투자 자문 등을 통해 시장 진입장벽을 낮추고 고객 접근성을 높이고 있습니다.</p>
+                <p>특히 초저금리 시대에서 금리 인상 사이클로의 전환으로 인해 채권 투자 수요가 증가하고 있으며, 이는 JB금융투자의 성장 기회가 됩니다. 또한 개인투자자의 투자 경험 부족으로 인한 투자자문 수요가 증가하고 있어, JB금융의 자문 서비스 확대가 주목됩니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-building"></i> <span>주요 경쟁사 비교 분석</span></h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>금융지주</th>
+                        <th>2025 순이익</th>
+                        <th>시가총액</th>
+                        <th>주요 자회사</th>
+                        <th>경쟁 우위</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>JB금융지주</strong></td>
+                        <td>7,300억</td>
+                        <td>5.6조</td>
+                        <td>전북은행, 광주은행, JB우리캐피탈</td>
+                        <td>지역 기반 강점, 높은 ROE, 주주환원</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DGB금융지주</strong></td>
+                        <td>8,100억</td>
+                        <td>5.2조</td>
+                        <td>대구은행, 경북은행, DGB자산관리</td>
+                        <td>지역 경제력, 복합금융 서비스</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IBK기업은행</strong></td>
+                        <td>6,800억</td>
+                        <td>6.1조</td>
+                        <td>기업은행, IBK투자증권, IBK캐피탈</td>
+                        <td>기업금융 특화, 정책금융 네트워크</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NH금융지주</strong></td>
+                        <td>9,200억</td>
+                        <td>5.8조</td>
+                        <td>농협은행, 농협금융투자, 농협손보</td>
+                        <td>광범위한 지점망, 농촌 금융 특화</td>
+                    </tr>
+                    <tr>
+                        <td><strong>우리금융지주</strong></td>
+                        <td>5,900억</td>
+                        <td>5.9조</td>
+                        <td>우리은행, 우리금융투자, 우리캐피탈</td>
+                        <td>글로벌 경영, 디지털 혁신</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> JB금융지주의 경쟁 포지셔닝</h3>
+                <p>JB금융지주는 지역 기반 금융그룹 중에서 높은 수익성(ROE 13%+)과 안정성을 보유한 기업입니다. 순이익 7,300억 원은 중상 수준이지만, ROE와 총주주환원율 측면에서 경쟁사 대비 우수한 성과를 기록하고 있습니다. 특히 호남 지역에서의 압도적 시장점유율과 지역 경제에 대한 깊은 이해는 대체 불가능한 경쟁 우위입니다.</p>
+                <p>다만, 전국 규모 시중은행(KB금융지주, 신한금융지주, 하나금융지주)의 영업이익 규모(각각 3-4조 원대)와 비교하면 규모면에서 뒤지고 있습니다. 이에 따라 JB금융지주는 지역의 강점을 유지하면서도 전국 규모로의 확대 전략을 추진하는 균형 잡힌 전략이 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> JB금융지주의 강점</h3>
+                <ul>
+                    <li><strong>지역 독점성:</strong> 호남 지역에서 압도적 시장점유율로 타사 진출이 어려움</li>
+                    <li><strong>높은 수익성:</strong> ROE 13%+ 수준으로 경쟁사 대비 우수</li>
+                    <li><strong>안정적 수익 구조:</strong> 소매금융, 중소기업금융, 소비자금융의 균형잡힌 포트폴리오</li>
+                    <li><strong>지역 경제 지식:</strong> 호남 지역 산업 특성 이해도가 높아 맞춤형 금융 제공 가능</li>
+                    <li><strong>주주 환원:</strong> 45% 주주환원율 목표로 높은 배당 성과</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-down"></i> JB금융지주의 약점</h3>
+                <ul>
+                    <li><strong>규모의 한계:</strong> 순이익 규모가 중견 금융그룹 수준으로 대형사와 경쟁 제약</li>
+                    <li><strong>글로벌 미약:</strong> 해외 사업 진출 미미로 글로벌 성장 기회 제한</li>
+                    <li><strong>기술 투자 부족:</strong> AI, 블록체인 등 미래 기술 투자가 대형사 대비 부족</li>
+                    <li><strong>지역 경제 의존성:</strong> 호남 지역 경기 둔화 시 직접적 영향</li>
+                    <li><strong>기울어진 포트폴리오:</strong> 소매금융 비중이 높아 수익성 제약 가능성</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-cube"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star"></i> 강점(Strengths)</h3>
+                    <ul>
+                        <li>호남 지역 독점적 지위 및 높은 시장점유율</li>
+                        <li>13%+ ROE로 높은 수익성 달성</li>
+                        <li>안정적인 고객기반과 신뢰도</li>
+                        <li>45% 주주환원율로 투자자 만족도 높음</li>
+                        <li>전북은행, 광주은행 등 우수한 지역 자회사</li>
+                        <li>중소기업 및 소매금융 경쟁력 우수</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 약점(Weaknesses)</h3>
+                    <ul>
+                        <li>대형 금융지주 대비 순이익 규모 작음</li>
+                        <li>글로벌 사업 경험 및 역량 부족</li>
+                        <li>AI, 블록체인 등 신기술 투자 미비</li>
+                        <li>호남 지역 경제 의존도가 높음</li>
+                        <li>전국 규모 네트워크 구축 미흡</li>
+                        <li>디지털 전환 속도가 경쟁사 대비 느린 편</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i> 기회(Opportunities)</h3>
+                    <ul>
+                        <li>핀테크 기업과의 협력 확대로 신사업 진출</li>
+                        <li>AI 기반 투자 자문 서비스 성장 가능성</li>
+                        <li>지역 경제 성장 기반 수요 증가</li>
+                        <li>자산관리 시장 확대로 신규 수익원 창출</li>
+                        <li>중소기업 디지털 금융 컨설팅 수요 증가</li>
+                        <li>초고령사회 진입으로 자산관리 수요 증가</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i> 위협(Threats)</h3>
+                    <ul>
+                        <li>대형 금융지주의 지역 시장 침투 강화</li>
+                        <li>카카오뱅크 등 인터넷 은행의 확대</li>
+                        <li>국제 금리 인상에 따른 자산건전성 악화</li>
+                        <li>호남 지역 인구 감소 추세</li>
+                        <li>금리 인하 사이클로의 전환 가능성</li>
+                        <li>규제 강화로 인한 영업 제약 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-compass"></i> <span>성장 전략 및 경영 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map"></i> 2026-2030년 중기경영 전략</h3>
+                <p>JB금융지주는 2026-2030년 중기 경영목표로 '지역 금융 중심을 넘어 전국 금융그룹으로의 도약'을 설정했습니다. 이는 호남 지역의 강한 기반을 유지하면서도 전국 규모의 금융그룹으로 성장하려는 야심찬 목표입니다. 구체적으로는 순이익 연평균 7-8% 증가, ROE 14% 달성, 시가총액 7조 원 수준 달성을 목표로 하고 있습니다.</p>
+                <p>이 목표를 달성하기 위해 JB금융지주는 다섯 가지 핵심 전략을 추진하고 있습니다. 첫째, 디지털 금융 플랫폼 고도화를 통한 경쟁력 강화입니다. 둘째, 자산관리 및 투자금융 사업 확대를 통한 수익 다각화입니다. 셋째, 전국 규모 네트워크 구축을 통한 시장 확대입니다. 넷째, 핀테크 기업과의 협력 강화를 통한 신사업 진출입니다. 다섯째, 임직원 역량 강화 및 조직 혁신을 통한 조직 경쟁력 제고입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-mobile-alt"></i> 디지털 금융 혁신 전략</h3>
+                <p>JB금융지주는 모바일 뱅킹, AI 기반 서비스, 오픈뱅킹 확대를 핵심으로 하는 디지털 혁신을 추진 중입니다. 2026년까지 모바일 월 활성 사용자를 현재 380만 명에서 500만 명 이상으로 확대할 계획입니다. AI 기반 투자 자문 서비스의 운용자산(AUM)은 현재 2,000억 원 수준에서 2027년 5,000억 원 달성을 목표로 하고 있습니다.</p>
+                <p>특히 음성 기반 금융 서비스, 생체인증 기반 거래, 빅데이터 기반 맞춤형 상품 추천 등 고도화된 디지털 서비스를 제공하여 고객 경험을 극대화할 계획입니다. 또한 오픈뱅킹 표준 API 확대를 통해 핀테크 기업과의 협력 기반을 구축하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 수익 다각화 및 사업 확대 전략</h3>
+                <p>JB금융지주는 전통적인 소매금융과 중소기업 금융에서 벗어나 새로운 수익원 창출을 추진 중입니다. 자산관리 사업 확대를 통해 운용자산(AUM)을 현재 수준에서 향후 3년 내 30% 이상 증가시킬 계획입니다. 이는 금리 인상 사이클에서 채권 투자 수요 증가, 고령 인구의 자산관리 수요 증가 등을 반영한 것입니다.</p>
+                <p>또한 카드론, 신용대출 등 소비자금융 상품의 위험관리 강화를 통해 수익성을 개선할 계획입니다. 자동차 금융에서는 전기자동차 특화 상품, 자동차 구독 서비스 연동 금융 상품 등 새로운 서비스를 개발하여 시장 변화에 대응하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i> 전국 네트워크 확대 및 핀테크 협력</h3>
+                <p>JB금융지주는 현재 호남 지역 중심의 지점망을 전국으로 확대하는 전략을 추진 중입니다. 서울, 경기 지역의 영업 거점 확대, 대면 채널과 비대면 채널의 조화로운 운영 등을 통해 전국 고객에 대한 접근성을 높이고 있습니다. 또한 대형 금융그룹과의 협력, M&A를 통한 규모 확대 등을 검토하고 있습니다.</p>
+                <p>핀테크 기업과의 협력도 전략의 중요한 부분입니다. 결제, 송금, 자산관리 관련 핀테크 기업과의 협력을 강화하여 신규 고객 층 확보와 새로운 사업 기회를 창출하고 있습니다. 특히 중소 핀테크 기업에 대한 투자, 인큐베이팅, 협력 관계 구축 등을 통해 생태계 형성을 추진 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users"></i> 인재 확보 및 조직 문화 혁신</h3>
+                <p>JB금융지주는 디지털 시대에 필요한 IT 인재, 데이터 과학자, AI 전문가 확보에 집중하고 있습니다. 신입 개발자 채용 확대, 외부 기술 인재 영입, 대학과의 협력 교육 프로그램 등을 통해 인재 확보 기반을 강화하고 있습니다. 또한 전직원을 대상으로 한 디지털 리터러시 교육, 데이터 분석 교육 등을 통해 조직 전체의 역량 강화를 추진 중입니다.</p>
+                <p>조직 문화 차원에서도 '창의성과 혁신을 존중하는 조직 문화' 형성을 목표로 하고 있습니다. 임직원의 주도적인 아이디어 제출 활성화, 실패를 용인하는 문화 조성, 일과 삶의 균형 추구 등을 통해 조직 활력을 제고하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCIALS -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>재무 성과 및 전망</span></h2>
+
+            <div class="chart-container">
+                <h3 style="color:var(--ink-strong);font-weight:700;font-size:18px;margin-bottom:24px;">연간 매출 및 순이익 추이</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-container"><div class="bar" style="height:55%"></div></div>
+                        <div class="bar-value">4.1조</div>
+                        <div class="bar-label">2021</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container"><div class="bar" style="height:62%"></div></div>
+                        <div class="bar-value">4.3조</div>
+                        <div class="bar-label">2022</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container"><div class="bar" style="height:70%"></div></div>
+                        <div class="bar-value">4.5조</div>
+                        <div class="bar-label">2023</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container"><div class="bar" style="height:78%"></div></div>
+                        <div class="bar-value">4.6조</div>
+                        <div class="bar-label">2024</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container"><div class="bar" style="height:85%"></div></div>
+                        <div class="bar-value">4.6조</div>
+                        <div class="bar-label">2025E</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container"><div class="bar" style="height:90%"></div></div>
+                        <div class="bar-value">4.8조</div>
+                        <div class="bar-label">2026E</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 주요 재무지표 분석</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2023</th>
+                            <th>2024</th>
+                            <th>2025E</th>
+                            <th>2026E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>경영수익</strong></td>
+                            <td>4.5조</td>
+                            <td>4.6조</td>
+                            <td>4.6조</td>
+                            <td>4.8조</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업이익</strong></td>
+                            <td>8,450억</td>
+                            <td>9,100억</td>
+                            <td>9,523억</td>
+                            <td>9,800억</td>
+                        </tr>
+                        <tr>
+                            <td><strong>순이익</strong></td>
+                            <td>6,800억</td>
+                            <td>7,100억</td>
+                            <td>7,300억</td>
+                            <td>7,750억</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROE</strong></td>
+                            <td>11.8%</td>
+                            <td>12.5%</td>
+                            <td>13.1%</td>
+                            <td>13.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>배당금</strong></td>
+                            <td>2,450억</td>
+                            <td>3,100억</td>
+                            <td>3,285억</td>
+                            <td>3,500억</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BIS 자본비율</strong></td>
+                            <td>14.8%</td>
+                            <td>15.2%</td>
+                            <td>15.5%</td>
+                            <td>15.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-piggy-bank"></i> 자산 구성 및 수익원 분석</h3>
+                <p>JB금융지주의 2025년 총자산은 약 130조 원으로 추정되며, 전년 대비 5% 증가했습니다. 자산 구성은 대출금 60%, 유가증권 25%, 현금성 자산 10%, 기타 자산 5% 수준입니다. 이 중 대출금 증가가 수익 성장의 핵심 동인입니다.</p>
+                <p>수익원 분석을 보면, 이자수익이 전체의 75%, 수수료수익이 15%, 기타수익이 10% 수준입니다. 이자수익의 안정성을 높이기 위해 신용대출 비중 축소, 고금리 금리 상품 확대 등을 추진 중입니다. 또한 자산관리, 투자 자문 등을 통한 수수료수익 확대를 적극 추진하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i> 리스크 관리 및 자본 적정성</h3>
+                <p>JB금융지주의 2025년 BIS 자본비율(국제 기준)은 15.5% 수준으로, 규제 최소 요구치(8-10.5%)를 크게 상회하고 있습니다. 이는 안정적인 자본 기반을 의미하며, 향후 M&A 등 성장 투자를 충분히 수행할 여력이 있음을 나타냅니다.</p>
+                <p>자산건전성 관리 측면에서도 지속적인 개선을 보이고 있습니다. 2025년 기준 부실채권률(NPL)은 0.78% 수준으로, 전년 대비 개선되었습니다. 신종 코로나 이후 저금리 지속으로 인한 차입금 상환 여력 증가, 대출 심사 기준 강화 등이 긍정적 영향을 미쳤습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coin"></i> 배당 정책 및 주주 환원</h3>
+                <p>JB금융지주는 주주 가치 극대화를 위해 공격적인 배당 정책을 추진하고 있습니다. 2026년 주주환원율 45% 목표는 동종 금융그룹 중 최고 수준입니다. 2025년 배당금은 3,285억 원(배당수익률 약 4.2%)으로, 고배당 기업으로서의 지위를 확립했습니다.</p>
+                <p>배당금 외에도 자사주 매입을 통한 주주 환원을 추진하고 있습니다. 2025년 자사주 매입 규모는 약 500억 원 수준으로, 지속적인 환원을 예정하고 있습니다. 이러한 정책은 개인 투자자 및 기관투자자 모두의 신뢰를 높이는 데 기여하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> <span>투자 결론 및 향후 전망</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-check-circle"></i> 강력한 재무 기초와 수익성</h3>
+                <p>JB금융지주는 7,300억 원의 안정적인 순이익, 13%+ ROE, 45% 주주환원율 등을 통해 강력한 재무 기초를 구축하고 있습니다. 2026년 순이익 7,750억 원 달성 전망은 연평균 6% 이상의 성장을 의미하며, 이는 한국 금융업계의 평균 성장률을 상회하는 수준입니다. 특히 호남 지역 중심의 안정적인 고객기반과 신뢰도는 경기 변동성에 크게 영향을 받지 않는 수익 구조를 만들어냅니다.</p>
+                <p>BIS 자본비율 15.5%, 부실채권률 0.78% 등 건전성 지표도 우수하여, 금융 위기 상황에서도 안정적인 운영이 가능할 것으로 예상됩니다. 또한 충분한 자본력은 향후 M&A, 신사업 진출 등 성장 투자를 추진할 수 있는 기반이 됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i> 디지털 혁신과 사업 확대의 성장 잠재력</h3>
+                <p>JB금융지주의 디지털 금융 혁신 추진은 미래 성장의 핵심 동인입니다. AI 기반 투자 자문 서비스의 확대, 모바일 뱅킹 고도화, 오픈뱅킹 활성화 등은 신규 고객 확보와 기존 고객의 거래 심화를 가능하게 합니다. 특히 중장년층과 고령층에서 증가하는 자산관리 수요를 선제적으로 대응하면, 수익 다각화의 기회를 확보할 수 있습니다.</p>
+                <p>핀테크 기업과의 협력 강화도 긍정적 신호입니다. 결제, 송금, 자산관리 등 다양한 분야에서 핀테크 기업과 협력하면, 전통적 금융 서비스의 한계를 벗어나 새로운 사업 기회를 창출할 수 있습니다. 2026년 이후 모바일 사용자 500만 명 달성, AI 자문 AUM 5,000억 원 달성 등의 목표는 현실적이고 달성 가능한 수준으로 평가됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i> 지역 기반의 강점과 전국 확대 전략</h3>
+                <p>JB금융지주의 가장 큰 경쟁 우위는 호남 지역에서의 압도적 지위입니다. 인구 450만 명, 지역 GDP 160조 원의 호남 시장에서 JB금융이 차지하는 시장점유율은 18-20% 수준으로, 이는 대형 시중은행의 지역별 점유율(5-10%)을 크게 상회합니다. 이러한 지역 독점성은 타사가 침범하기 어려운 경쟁 우위를 제공합니다.</p>
+                <p>동시에 JB금융지주는 전국 규모로의 확대를 적극 추진 중입니다. 서울, 경기 지역의 영업 거점 확대, 대형 금융그룹과의 협력 추진, M&A 검토 등을 통해 전국 고객 기반 확보를 목표로 하고 있습니다. 만약 이러한 전국 확대 전략이 성공하면, JB금융지주의 규모는 현 수준에서 30-50% 증가할 수 있을 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-eye"></i> 잠재적 리스크 요소</h3>
+                <p>JB금융지주가 직면한 주요 리스크는 다음과 같습니다. 첫째, 호남 지역 경제 위축 리스크입니다. 지역 인구 감소, 산업 공동화 등으로 지역 경제가 위축되면 JB금융의 수익성이 직접적으로 영향을 받을 수 있습니다. 둘째, 대형 금융그룹의 지역 시장 침투 리스크입니다. 카카오뱅크 등 인터넷 은행, 증권사 등이 호남 시장에 본격 진입하면 시장점유율 잠식이 불가피합니다. 셋째, 금리 인하 사이클로의 전환 리스크입니다. 현재 고금리 사이클이 저금리 사이클로 전환되면 이자수익 감소로 인한 수익성 악화가 예상됩니다.</p>
+                <p>또한 규제 강화도 리스크입니다. 금융감독규제 강화, 부동산 담보 규제, 소비자금융 규제 강화 등은 JB금융의 영업 활동을 제약할 수 있습니다. 마지막으로 기술 투자 부족 리스크가 있습니다. AI, 블록체인 등 미래 기술 개발에서 경쟁사 대비 뒤지면, 중장기 경쟁력 약화로 이어질 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 투자 의견</h3>
+                <p><strong>평가 등급: BUY (매수) | 목표주가: 12,500원 | 시장 평가가: 11,200원</strong></p>
+                <p>JB금융지주는 강력한 수익성, 안정적인 재무 기초, 높은 주주 환원율을 갖춘 가치주로 평가됩니다. 호남 지역에서의 압도적 시장 지위, 13% ROE 달성, 연평균 6% 순이익 성장 전망 등은 안정적인 수익 창출을 보장합니다. 특히 45% 주주환원율은 배당주 투자자에게 매력적인 기회를 제공합니다.</p>
+                <p>중장기적으로는 디지털 금융 혁신, 자산관리 사업 확대, 전국 네트워크 확대 등을 통해 신성장 모멘텀을 창출할 수 있을 것으로 기대됩니다. AI 기반 투자 자문 AUM 5,000억 원, 모바일 사용자 500만 명 등의 목표 달성 시 순이익은 2030년 9,500억 원대로 증가할 수 있습니다.</p>
+                <p>다만 호남 지역 경제 의존도, 금리 인하 리스크, 기술 투자 부족 등은 위험 요소로 작용합니다. 이에 따라 투자 시 적절한 위험관리와 장기 관점의 투자 접근이 필요합니다. 목표주가 12,500원은 2026-2027년 기준 PER 11배, PBR 1.4배 수준으로, 가치주 기준에서는 합리적인 수준으로 평가됩니다.</p>
+                <p>결론적으로 JB금융지주는 '높은 배당 수익률, 안정적인 수익성, 중기 성장 잠재력을 갖춘 매력적인 금융주'로 평가되며, 장기 배당주 투자자와 가치 투자자에게 적합한 종목으로 추천됩니다.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <div class="report-info">
+            <div class="report-info-item">
+                <i class="fas fa-calendar-alt report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>리포트 발행일</h4>
+                    <p>2026년 04월 22일</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-shield-alt report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>자료 신뢰도</h4>
+                    <p>공시자료 및 업계 데이터 기반</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-envelope report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>FLOVAH Insights</h4>
+                    <p>고품질 기업 분석 리포트</p>
+                </div>
+            </div>
+            <div class="report-info-item">
+                <i class="fas fa-copyright report-info-icon"></i>
+                <div class="report-info-content">
+                    <h4>저작권</h4>
+                    <p>Copyright 2026 FLOVAH</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

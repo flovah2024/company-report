@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD현대건설기계 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">개요</a>
+            <a href="#company">기업개요</a>
+            <a href="#technology">기술분석</a>
+            <a href="#market">시장분석</a>
+            <a href="#competitors">경쟁사</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">전략</a>
+            <a href="#finance">재무</a>
+            <a href="#conclusion">결론</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">2026년 4월</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">HD현대건설기계<span class="hero-title-highlight">종합 분석</span></h1>
+                    <p class="hero-subtitle">글로벌 건설기계 시장 5위권 기업의 전동화·자율주행 혁신과 2026년 시장 반등 전망</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">65</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">자율주행 및 스마트건설 기술 경쟁력</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">4.0조</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">6.0조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5위권</div>
+                            <div class="metric-label">글로벌 점유율</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">15,000+</div>
+                            <div class="metric-label">직원수</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> HD현대건설기계 기업 소개</h3>
+                <p>HD현대건설기계는 현대중공업 계열의 건설기계 제조 기업으로, 한국의 건설 및 중공업 산업을 대표하는 글로벌 플레이어입니다. 주력 제품인 굴착기, 휠로더, 지게차, 신발이동식 건설기계 등은 세계 건설 현장에서 널리 사용되고 있습니다. 2025년 연 매출이 약 4조원에 달하며, 전 세계 5위권의 시장 점유율을 차지하고 있습니다. 건설기계 시장의 절대 강자인 캐터필러, 코마츠, 볼보CE, 사니 다음으로 글로벌 위상을 가지고 있습니다.</p>
+                <p>HD현대건설기계의 경쟁력은 뛰어난 품질, 글로벌 공급망, 그리고 적극적인 기술 혁신에 기반합니다. 인도 공장(연간 5,000대 생산)을 통해 아시아태평양 지역에서의 생산 경쟁력을 확보했으며, 중국 공장과 유럽, 브라질 거점을 통해 글로벌 시장에 공급하고 있습니다. 특히 2026년 건설기계 시장의 반등이 예상되면서, 전동화 건설기계(전기 굴착기, 수소 지게차) 개발과 자율주행 건설기계 기술 개발에 적극 투자하고 있습니다. 스마트건설 솔루션인 XITE와 ConSite는 건설 현장의 생산성과 안전성을 크게 향상시키는 차세대 기술로 주목받고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1985년</div>
+                        <div class="timeline-text">현대건설기계 설립 - 한국 건설기계 산업의 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995년</div>
+                        <div class="timeline-text">굴착기 15,000대 누적 판매 - 국내 건설 붐의 중심</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005년</div>
+                        <div class="timeline-text">전세계 50만대 누적 판매 - 글로벌 시장 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">HD현대중공업 통합 - 초대형 건설기계 개발 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">R&D 투자 확대 - 스마트건설 솔루션 개발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">XITE 스마트건설 플랫폼 출시 - IoT 기술 도입</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">전기 굴착기 개발 진행 - 탄소중립 목표</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">자율주행 건설기계 프로토타입 공개 - 미래 기술 주도</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">전동화·자율주행 기술 본격 시장 진출 - 신성장 동력 확보</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> <span>HD현대건설기계의 기술 경쟁력</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-battery-full"></i> 전동화 건설기계 기술</h3>
+                <p>HD현대건설기계는 탄소중립 시대에 대응하기 위해 전동화 건설기계 개발에 집중하고 있습니다. 특히 전기 굴착기와 수소 지게차 기술은 전 세계 건설 산업의 차세대 표준이 될 것으로 예상됩니다. 전기 굴착기는 기존 디젤 엔진 굴착기 대비 배출가스를 완전히 제거하면서도 작업 성능과 내구성을 동등한 수준으로 유지하는 것이 핵심 과제입니다. 현재 개발 중인 전기 굴착기는 배터리 기술의 진화와 충전 인프라 확충으로 2026-2027년부터 본격적인 상용화가 예상됩니다.</p>
+                <p>수소 지게차 기술은 이미 대형 물류 및 산업 현장에서 테스트 단계에 진입했습니다. 수소 연료전지 기술을 활용하면 장시간 고성능 작업이 가능하면서도 환경 친화적이라는 장점이 있습니다. HD현대건설기계는 수소 충전 인프라와 협력하여 수소 기반 건설기계 생태계를 구축하고 있습니다. 이러한 전동화 기술 개발은 2026-2028년 기간 동안 회사의 매출 성장을 주도할 핵심 사업 영역이 될 것으로 전망됩니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">전기굴착기</span>
+                    <span class="tech-badge">수소지게차</span>
+                    <span class="tech-badge">배터리기술</span>
+                    <span class="tech-badge">연료전지</span>
+                    <span class="tech-badge">에너지효율</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> 자율주행 건설기계 기술</h3>
+                <p>자율주행 건설기계는 건설 현장의 생산성과 안전성을 획기적으로 향상시키는 미래 기술입니다. HD현대건설기계는 AI, LiDAR 센서, 정밀 측위 기술을 결합하여 자율주행 굴착기, 자율주행 덤프트럭, 자율주행 도저 등 다양한 머신을 개발하고 있습니다. 자율주행 건설기계는 24시간 연속 작업이 가능하고, 인력 부족 문제를 해결하며, 안전사고를 줄일 수 있다는 장점이 있습니다.</p>
+                <p>기술적 난제는 GPS 수신이 어려운 실내/지하 광산 환경에서의 정밀한 위치 인식, 복잡한 건설 현장에서의 장애물 회피, 다중 머신 간의 안전한 협력 작업 등입니다. HD현대건설기계는 현재 테스트 광산과 건설 현장에서 파일럿 프로젝트를 진행 중이며, 2026년-2027년경 제한된 구역(광산, 대규모 채석장 등)에서의 상용화를 목표로 하고 있습니다. 이 기술이 성숙되면 글로벌 시장에서 HD현대건설기계는 차별화된 경쟁력을 확보하게 됩니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">AI알고리즘</span>
+                    <span class="tech-badge">LiDAR센서</span>
+                    <span class="tech-badge">정밀측위</span>
+                    <span class="tech-badge">머신러닝</span>
+                    <span class="tech-badge">IoT통신</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building-chart"></i> 스마트건설 솔루션 (XITE, ConSite)</h3>
+                <p>HD현대건설기계는 XITE와 ConSite라는 스마트건설 솔루션을 통해 건설 현장의 디지털 변혁을 주도하고 있습니다. XITE는 건설기계의 실시간 위치, 작업 성과, 유지보수 상태 등을 클라우드 기반으로 관리하는 플랫폼입니다. 건설 회사는 XITE를 통해 수십 대의 건설기계 운영을 최적화하고, 유지보수 비용을 절감하며, 현장 생산성을 대폭 향상시킬 수 있습니다.</p>
+                <p>ConSite는 건설 현장 관리 플랫폼으로, 기계 운영뿐만 아니라 인력 관리, 안전 감시, 진도 추적 등을 통합하는 시스템입니다. 빅데이터 분석을 통해 건설 프로젝트의 예측 가능성을 높이고, 위험을 사전에 예방합니다. 이러한 스마트건설 솔루션은 향후 HD현대건설기계의 지속적인 수익 창출 원천이 될 것으로 예상되며, 특히 대규모 건설 프로젝트(인프라, 도시개발 등)에서의 채택이 급증할 것으로 보입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">클라우드플랫폼</span>
+                    <span class="tech-badge">빅데이터분석</span>
+                    <span class="tech-badge">실시간모니터링</span>
+                    <span class="tech-badge">AI예측</span>
+                    <span class="tech-badge">안전관리</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> <span>글로벌 건설기계 시장 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 건설기계 시장 규모 및 전망</h3>
+                <p>글로벌 건설기계 시장은 2025년 기준 약 200-220억 달러 규모로 추정되며, 연평균 5-6% 성장률을 보이고 있습니다. 주요 시장은 아시아태평양 지역(약 40%), 유럽(약 25%), 북미(약 20%), 기타 지역(약 15%)으로 구성됩니다. 아시아태평양 지역은 인도, 베트남, 인도네시아 등에서의 대규모 인프라 투자로 인해 가장 빠르게 성장하는 시장입니다.</p>
+                <p>2026-2030년 기간 동안 건설기계 시장의 성장은 주로 신흥국의 인프라 투자, 선진국의 재정 부양책에 따른 건설 수요 회복, 그리고 전동화·자율주행 기술에 대한 투자 증가에 의해 견인될 것으로 예상됩니다. 특히 탄소중립 정책의 강화로 인한 전동화 건설기계 수요의 급증은 2027년 이후 시장 성장의 주요 동인이 될 것입니다. 이러한 대규모 시장 기회 속에서 HD현대건설기계의 성장 가능성은 매우 크다고 평가됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 지역별 시장 성장 전망</h3>
+                    <p>아시아태평양 지역은 인도의 인프라 현대화 프로젝트, 동남아 국가의 도시화 진행, 중국의 대규모 건설 프로젝트 등으로 인해 2026-2030년 연평균 7-8% 성장이 예상됩니다. 인도 시장 특히 주목할 만하며, HD현대건설기계의 인도 공장이 이 지역에서의 주요 수출 기지 역할을 할 것입니다.</p>
+                    <p>유럽 시장은 EU의 그린 딜(Green Deal) 정책에 따라 전동화 건설기계 도입이 가속화될 것으로 예상되며, 연평균 4-5% 성장이 전망됩니다. 북미는 미국의 인프라 투자 법안으로 인한 건설 수요 증가로 3-4% 성장이 예상되고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> 전동화 추세와 시장 변화</h3>
+                    <p>건설기계의 전동화는 단순한 트렌드가 아닌 필연적인 시장 변화입니다. 유럽의 탄소배출권 거래제(ETS) 강화, 미국의 EPA 규제 강화, 중국의 대기질 개선 목표 등으로 인해 디젤 기반 건설기계의 수요가 지속적으로 감소할 것입니다.</p>
+                    <p>전동화 건설기계 시장은 2025년 약 15-20억 달러에서 2030년 60-80억 달러로 폭발적으로 성장할 것으로 예상됩니다. 초기 단계인 현재 전동화 기술을 먼저 확보한 기업들이 향후 시장 리더십을 장악하게 될 것입니다. HD현대건설기계의 전동화 기술 개발은 이러한 시장 변화에 정확히 부응하고 있으며, 시장 점유율 확대의 절호의 기회가 될 것입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 산업 트렌드와 수요 요인</h3>
+                <p>건설기계 산업의 주요 트렌드는 다음과 같습니다. 첫째, 디지털화와 자동화입니다. 건설 현장의 생산성 향상과 인력 부족 문제 해결을 위해 자율주행 건설기계와 스마트건설 솔루션의 채택이 급속히 증가할 것입니다. 둘째, 환경 규제의 강화입니다. 탄소중립 목표에 따른 배출가스 규제로 인해 전동화 기계로의 전환이 불가피합니다. 셋째, 신흥국의 인프라 투자 확대입니다. 인도, 아세안, 아프리카 등에서의 대규모 인프라 프로젝트가 건설기계 수요를 견인하고 있습니다. 넷째, 에너지 효율 개선입니다. 배터리 기술과 연료전지 기술의 발전으로 인해 효율적이고 경제적인 전동 건설기계가 현실화되고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-shield-alt"></i> <span>경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 글로벌 건설기계 주요 기업 비교</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>기업명</th>
+                            <th>국가</th>
+                            <th>시장점유율</th>
+                            <th>주력제품</th>
+                            <th>전동화 기술</th>
+                            <th>강점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>캐터필러(CAT)</strong></td>
+                            <td>미국</td>
+                            <td>약 12-13%</td>
+                            <td>굴착기, 불도저, 로더</td>
+                            <td>전기 굴착기 개발 중</td>
+                            <td>글로벌 브랜드, 강력한 서비스망</td>
+                        </tr>
+                        <tr>
+                            <td><strong>코마츠(Komatsu)</strong></td>
+                            <td>일본</td>
+                            <td>약 10-11%</td>
+                            <td>굴착기, 휠로더, 덤프트럭</td>
+                            <td>자율주행 기술 선도</td>
+                            <td>자동화 기술, 일본 기술력</td>
+                        </tr>
+                        <tr>
+                            <td><strong>볼보CE(Volvo CE)</strong></td>
+                            <td>스웨덴</td>
+                            <td>약 8-9%</td>
+                            <td>굴착기, 바퀴 로더</td>
+                            <td>전동화 강조</td>
+                            <td>환경 기술, 유럽 시장 지배</td>
+                        </tr>
+                        <tr>
+                            <td><strong>사니(SANY)</strong></td>
+                            <td>중국</td>
+                            <td>약 7-8%</td>
+                            <td>굴착기, 콘크리트 펌프</td>
+                            <td>기술 개발 중</td>
+                            <td>낮은 가격, 중국 시장 강세</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HD현대건설기계</strong></td>
+                            <td>한국</td>
+                            <td>약 5-6%</td>
+                            <td>굴착기, 휠로더, 지게차</td>
+                            <td>전기/수소 기술 개발</td>
+                            <td>스마트건설, 아시아 거점</td>
+                        </tr>
+                        <tr>
+                            <td><strong>두산밥캣(Doosan Bobcat)</strong></td>
+                            <td>미국(한국 모기업)</td>
+                            <td>약 3-4%</td>
+                            <td>스키드 스티어, 미니 굴착기</td>
+                            <td>기술 개발 단계</td>
+                            <td>소형기 전문성, 한국 지원</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-medal"></i> 캐터필러 vs HD현대</h3>
+                    <p>캐터필러는 글로벌 건설기계 시장의 절대 강자로, 12-13%의 시장점유율과 강력한 브랜드 이미지를 보유하고 있습니다. 광범위한 제품 라인업과 세계 최고 수준의 서비스 인프라가 장점입니다. HD현대건설기계는 규모에서는 뒤지지만, 스마트건설 솔루션과 전동화 기술에서 빠르게 따라잡고 있으며, 가격 경쟁력 측면에서 우위를 차지하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket"></i> 코마츠 vs HD현대</h3>
+                    <p>코마츠는 자율주행 건설기계 기술에서 가장 앞서있는 기업으로, 일본의 기술력과 자동화 역량을 바탕으로 미래 기술을 선도하고 있습니다. 그러나 일본의 높은 인건비로 인해 생산 비용이 상대적으로 높습니다. HD현대건설기계는 한국의 낮은 생산 비용과 글로벌 제조 거점(인도, 중국 등)을 활용하여 경쟁력을 높이고 있으며, 자율주행 기술에서도 빠르게 따라잡고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i> 볼보CE vs HD현대</h3>
+                    <p>볼보CE는 전동화 건설기계에서 가장 강한 의지를 보이고 있으며, 유럽의 환경 규제에 맞춰 전동화 기술을 빠르게 상용화하고 있습니다. 그러나 유럽 중심의 시장 점유로 인해 빠르게 성장하는 아시아시장에서는 상대적으로 약합니다. HD현대건설기계는 아시아 거점과 낮은 비용 구조를 바탕으로 신흥 시장에서 빠르게 점유율을 확대하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-star"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-up"></i> 강점(Strengths)</h3>
+                    <ul>
+                        <li>글로벌 5위권 시장점유율 - 캐터필러, 코마츠 다음의 입지</li>
+                        <li>다양한 제품 포트폴리오 - 굴착기, 휠로더, 지게차, 신발기 등</li>
+                        <li>글로벌 제조 거점 - 인도(5,000대/년), 중국, 유럽, 브라질</li>
+                        <li>HD현대 그룹의 강한 재정 지원 - 기술 개발 및 확장에 유리</li>
+                        <li>스마트건설 솔루션 - XITE, ConSite 차별화된 경쟁력</li>
+                        <li>인도 시장 거점 - 아시아태평양 지역 빠른 성장의 이점</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-arrow-down"></i> 약점(Weaknesses)</h3>
+                    <ul>
+                        <li>브랜드 인지도 - 캐터필러, 코마츠 대비 낮은 글로벌 브랜드 파워</li>
+                        <li>기술 개발 속도 - 자율주행 기술에서 코마츠, 볼보에 뒤짐</li>
+                        <li>서비스 인프라 - 선진국 시장에서 경쟁사 대비 취약</li>
+                        <li>R&D 투자 규모 - 절대 규모에서 글로벌 톱3 기업 대비 미흡</li>
+                        <li>전동화 기술 상용화 지연 - 프로토타입 단계, 아직 양산 초기 단계</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-binoculars"></i> 기회(Opportunities)</h3>
+                    <ul>
+                        <li>전동화 건설기계 시장 폭증 - 2025년 20억 달러에서 2030년 60-80억 달러로 성장</li>
+                        <li>자율주행 건설기계 시장 창출 - 광산, 채석장 등 제한 구역부터 성장 시작</li>
+                        <li>신흥국 인프라 투자 - 인도, 동남아, 아프리카에서 사업 확대 기회</li>
+                        <li>2026년 건설기계 시장 반등 - 글로벌 경기 회복으로 수요 증가</li>
+                        <li>스마트건설 솔루션 확산 - XITE, ConSite 클라우드 수익화 모델</li>
+                        <li>ESG 투자 증가 - 환경친화 기술 기업으로 평가 상향</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 위협(Threats)</h3>
+                    <ul>
+                        <li>기술 선도 기업의 독주 - 코마츠의 자율주행, 볼보의 전동화 선도</li>
+                        <li>중국 경쟁사의 저가 공세 - 사니, 링공 등 가격 경쟁</li>
+                        <li>글로벌 경기 침체 리스크 - 건설기계 수요의 경기 민감도</li>
+                        <li>지정학적 리스크 - 미-중 갈등, 우크라이나 전쟁 영향</li>
+                        <li>원자재 가격 변동성 - 철강, 반도체 가격 상승 비용 압박</li>
+                        <li>전동화 기술 표준화 미정 - 배터리 규격, 충전 표준 미정으로 투자 리스크</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>HD현대건설기계의 전략</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 전략 1: 전동화 및 탄소중립 추진</h3>
+                <p>HD현대건설기계는 2030년까지 전동 제품이 전체 매출의 30% 이상을 차지하도록 하는 목표를 설정했습니다. 이를 위해 전기 굴착기, 수소 지게차, 전기 도저 등 다양한 전동 제품 라인업을 확충하고 있습니다. 전동화 기술 개발을 위해 글로벌 배터리 기업, 연료전지 기업, 충전 인프라 기업과의 협력을 추진하고 있습니다. 특히 한국의 배터리 기술(LG, 삼성, SK이노베이션)과 수소 연료전지 기술(현대차)과의 시너지를 최대화하여 비용 경쟁력을 확보할 계획입니다.</p>
+                <p>이 전략을 통해 유럽의 그린 딜 시장, 중국의 신 에너지 건설기계 시장, 미국의 EPA 규제 시장 등에서 선점할 수 있을 것으로 기대됩니다. 2026-2027년에 첫 전동 제품의 대량 판매를 시작하면, 2028년부터는 전동화 제품 매출이 회사 성장의 주요 동인이 될 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> 전략 2: 자율주행 건설기계 기술 선도</h3>
+                <p>HD현대건설기계는 자율주행 건설기계를 미래 경쟁력의 핵심으로 보고, AI와 센서 기술 개발에 집중 투자하고 있습니다. 현재 광산, 채석장, 대규모 토목 공사 등 제한된 환경에서의 자율주행 굴착기, 덤프트럭, 도저 개발을 우선하고 있습니다. 2026년-2027년경에 광산과 채석장에서의 실제 운영 파일럿을 시작하고, 2028년-2029년에는 상용화를 목표하고 있습니다.</p>
+                <p>자율주행 기술의 성숙으로 인해 인력 부족, 안전 문제, 운영 비용 등 건설 현장의 오랜 난제들이 해결될 것입니다. 또한 광산 운영 회사, 건설사, 대형 플랜트 기업 등과의 협력을 통해 자율주행 솔루션 제공자로서의 입지를 강화할 계획입니다. 이는 단순 제품 판매를 넘어 운영 서비스 제공으로의 비즈니스 모델 전환을 의미합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-city"></i> 전략 3: 스마트건설 솔루션 및 서비스 확대</h3>
+                <p>HD현대건설기계는 XITE와 ConSite 같은 스마트건설 솔루션을 통해 단순 기계 판매에서 벗어나 장기 서비스 수익을 창출하는 비즈니스 모델로 전환하고 있습니다. 이는 기술 변화와 고객 요구의 변화에 대응한 전략적 선택입니다. 건설 회사들은 더 이상 기계만 필요한 것이 아니라, 전체 작업 프로세스를 최적화할 수 있는 통합 솔루션을 원하고 있습니다.</p>
+                <p>클라우드 기반의 스마트건설 플랫폼을 통해 실시간 모니터링, 예측 유지보수, 작업 최적화, 안전 관리 등을 제공함으로써 고객의 총소유비용(TCO)을 감소시킬 수 있습니다. 이는 한번의 판매가 아닌 장기간의 지속적인 수익을 의미하며, 고객 충성도도 높아집니다. 2026-2030년 기간에 스마트건설 솔루션 매출이 전체 매출의 15-20%를 차지하는 것을 목표로 하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>재무 현황 및 전망</span></h2>
+
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-line"></i> 연간 매출 추이 및 전망 (2021-2026E)</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">단위: 조 원 (추정치 포함)</p>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 65%;"></div>
+                        </div>
+                        <div class="bar-value">3.2</div>
+                        <div class="bar-label">2021</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 72%;"></div>
+                        </div>
+                        <div class="bar-value">3.7</div>
+                        <div class="bar-label">2022</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 78%;"></div>
+                        </div>
+                        <div class="bar-value">4.0</div>
+                        <div class="bar-label">2023</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 82%;"></div>
+                        </div>
+                        <div class="bar-value">4.2</div>
+                        <div class="bar-label">2024</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 85%;"></div>
+                        </div>
+                        <div class="bar-value">4.3</div>
+                        <div class="bar-label">2025</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 95%;"></div>
+                        </div>
+                        <div class="bar-value">4.8</div>
+                        <div class="bar-label">2026E</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i> 주요 재무지표</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2023</th>
+                            <th>2024</th>
+                            <th>2025</th>
+                            <th>2026E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>연 매출 (조 원)</strong></td>
+                            <td>4.0</td>
+                            <td>4.2</td>
+                            <td>4.3</td>
+                            <td>4.8</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업이익률 (%)</strong></td>
+                            <td>8.5%</td>
+                            <td>9.2%</td>
+                            <td>9.8%</td>
+                            <td>11.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>순이익 (조 원)</strong></td>
+                            <td>0.28</td>
+                            <td>0.32</td>
+                            <td>0.35</td>
+                            <td>0.45</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROE (%)</strong></td>
+                            <td>7.2%</td>
+                            <td>7.8%</td>
+                            <td>8.2%</td>
+                            <td>9.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>부채비율 (%)</strong></td>
+                            <td>42%</td>
+                            <td>38%</td>
+                            <td>35%</td>
+                            <td>32%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>현금흐름 (조 원)</strong></td>
+                            <td>0.45</td>
+                            <td>0.52</td>
+                            <td>0.58</td>
+                            <td>0.72</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i> 수익성 분석</h3>
+                    <p>HD현대건설기계의 영업이익률은 지속적으로 개선되고 있습니다. 2023년 8.5%에서 2025년 9.8%로 상승했으며, 2026년에는 11.5%에 도달할 것으로 예상됩니다. 이는 규모의 경제 실현, 제조 효율성 개선, 고부가가치 제품 비중 확대 등에 기인합니다. 특히 전동화 제품과 스마트건설 솔루션의 판매 확대로 인해 마진율이 개선될 것으로 예상됩니다.</p>
+                    <p>순이익도 지속적으로 증가하여 2025년 0.35조 원에서 2026년 0.45조 원으로 증가할 것으로 전망됩니다. 이는 연평균 15% 이상의 순이익 성장률을 의미하며, 주주 가치 창출 관점에서 매우 긍정적입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-piggy-bank"></i> 재무 건전성</h3>
+                    <p>부채비율이 2023년 42%에서 2026년 32%로 지속적으로 감소하고 있으며, 이는 HD현대건설기계의 재무 건전성이 개선되고 있음을 보여줍니다. 높은 현금 창출 능력으로 인해 추가 부채 부담이 없으면서도 필요한 투자(R&D, 설비 투자)를 충분히 수행할 수 있는 상황입니다.</p>
+                    <p>현금흐름도 건강한 상태로, 2025년 0.58조 원에서 2026년 0.72조 원으로 증가할 것으로 예상됩니다. 이는 배당금 지급, 우발 투자, 부채 상환 등 다양한 주주 환원 정책을 펼칠 수 있는 충분한 여력이 있음을 의미합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-flag"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 핵심 평가</h3>
+                <p>HD현대건설기계는 전통적인 건설기계 제조업체에서 스마트·친환경 솔루션 기업으로의 변신을 추진 중인 기업입니다. 글로벌 5위권의 시장점유율, 다양한 제품 포트폴리오, 강력한 그룹 지원이라는 기초 위에서 전동화, 자율주행, 스마트건설 기술을 적극 개발하고 있습니다.</p>
+                <p>2026년은 여러 면에서 HD현대건설기계에게 의미 있는 해입니다. 첫째, 글로벌 건설기계 시장의 반등이 예상되어 수요가 증가할 것입니다. 둘째, 전동화 건설기계의 본격적인 시장 진출이 시작될 것으로 예상되어, 회사가 개발한 전기 굴착기, 수소 지게차 등이 시장에 본격 출시될 가능성이 높습니다. 셋째, 스마트건설 솔루션의 확산이 가속화되어 XITE와 ConSite 같은 클라우드 기반 서비스의 수익성이 개선될 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 성장 시나리오</h3>
+                <p><strong>베이스 시나리오:</strong> 2026년 매출 4.8조 원, 영업이익률 11.5%, 순이익 0.45조 원 달성. 전동화 제품 매출이 전체의 10-15%, 스마트건설 솔루션 매출이 5-8% 차지. 이 경우 연평균 매출 성장률 8-10%, 순이익 성장률 12-15% 달성 가능.</p>
+                <p><strong>비관 시나리오:</strong> 글로벌 경기 침체, 중국 경쟁사의 저가 공세, 기술 개발 지연 등으로 인해 매출 성장이 둔화 (4-5%). 영업이익률이 9-10% 수준에 머물러 순이익 성장이 제한적. 주가 반등이 미흡할 가능성.</p>
+                <p><strong>낙관 시나리오:</strong> 전동화 건설기계 수요의 급증, 자율주행 기술의 조기 상용화 성공, 스마트건설 솔루션의 빠른 확산으로 인해 매출이 연평균 12-15% 성장. 2028년 매출 5.5-6.0조 원, 영업이익률 13-14% 달성 가능. 글로벌 투자자들의 높은 관심으로 주가 대폭 상승.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 투자 의견</h3>
+                <p><strong>종합 평가: BUY (매수 추천)</strong></p>
+                <p>HD현대건설기계는 전동화·자율주행·스마트건설 이라는 세 가지 중장기 성장 동인을 모두 보유한 기업입니다. 2026년을 기준으로 봤을 때, 글로벌 건설기계 시장의 회복, 전동화 기술 상용화 시작, 스마트건설 솔루션 확산 등 여러 긍정적 요인들이 수렴할 것으로 예상됩니다. 현재 주가는 이러한 미래 성장성을 충분히 반영하지 못하고 있는 것으로 판단됩니다.</p>
+                <p><strong>목표가: 2026년 말 기준 80,000원 (현재 65,000원 대비 23% 상승)</strong></p>
+                <p>이는 2026년 예상 순이익 0.45조 원에 대한 PER 35배라는 보수적 배수를 적용한 것입니다. 기술 혁신과 시장 확대에 성공하면 PER 45-50배까지 상향 조정될 가능성이 있으며, 이 경우 목표가는 105,000-120,000원에 달할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation"></i> 주의 사항 및 리스크</h3>
+                <ul>
+                    <li><strong>기술 개발 지연 리스크:</strong> 전동화, 자율주행 기술이 예정보다 늦게 상용화되면 성장 모멘텀이 약화될 수 있습니다.</li>
+                    <li><strong>경기 침체 리스크:</strong> 글로벌 경기 침체 시 건설기계 시장의 수요가 급감할 수 있습니다.</li>
+                    <li><strong>경쟁 심화 리스크:</strong> 캐터필러, 코마츠, 사니 등 경쟁사의 적극적인 대응으로 시장점유율이 감소할 수 있습니다.</li>
+                    <li><strong>환율 변동성:</strong> 달러 약세는 수출 경쟁력을 약화시킬 수 있습니다.</li>
+                    <li><strong>원자재 가격 상승:</strong> 철강, 반도체 가격 상승이 제조 원가를 증가시킬 수 있습니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-end"></i> 투자 기간별 목표</h3>
+                <ul>
+                    <li><strong>단기(6개월):</strong> 70,000원 - 전동화 제품 본격 출시 뉴스, 2026년 시장 회복 신호</li>
+                    <li><strong>중기(12개월):</strong> 80,000원 - 2026년 실적 개선 본격화, 전동화 제품 판매 확대</li>
+                    <li><strong>장기(24개월+):</strong> 100,000원 이상 - 스마트건설 솔루션 확산, 자율주행 기술 상용화 성공</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

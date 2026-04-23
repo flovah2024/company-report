@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB하이텍 종합 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-elevated) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .header-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.4rem;
+            color: var(--ink-strong);
+            font-weight: 700;
+        }
+
+        .header-subtitle {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .update-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .update-badge i {
+            color: var(--gold);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3rem;
+            color: var(--ink-strong);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .metric-unit {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-intro {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            padding: 1.5rem;
+            background-color: rgba(201, 169, 98, 0.05);
+            border-left: 3px solid var(--gold);
+            border-radius: 4px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            color: var(--ink-strong);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gold);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .content-box:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold);
+        }
+
+        .box-title {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .box-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        .box-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .box-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .box-content li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-text {
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            background-color: var(--bg-card);
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: var(--bg-elevated);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        tr:hover {
+            background-color: var(--bg-hover);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rank-1 {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Charts/Visualization */
+        .chart-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 1.5rem;
+            height: 300px;
+            padding: 0 1rem;
+        }
+
+        .bar-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(201, 169, 98, 0.2);
+        }
+
+        .bar:hover {
+            box-shadow: 0 6px 16px rgba(201, 169, 98, 0.4);
+        }
+
+        .bar-value {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            min-height: 1.2rem;
+        }
+
+        .bar-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            word-break: break-word;
+        }
+
+        /* SWOT */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .swot-box {
+            background-color: var(--bg-card);
+            border: 2px solid;
+            border-radius: 6px;
+            padding: 2rem;
+            min-height: 350px;
+        }
+
+        .swot-strengths {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201, 169, 98, 0.05) 100%);
+        }
+
+        .swot-weaknesses {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 107, 107, 0.05) 100%);
+        }
+
+        .swot-opportunities {
+            border-color: var(--blue);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(92, 125, 158, 0.05) 100%);
+        }
+
+        .swot-threats {
+            border-color: #ffa94d;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 169, 77, 0.05) 100%);
+        }
+
+        .swot-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .swot-strengths .swot-title {
+            color: var(--gold);
+        }
+
+        .swot-weaknesses .swot-title {
+            color: #ff6b6b;
+        }
+
+        .swot-opportunities .swot-title {
+            color: var(--blue);
+        }
+
+        .swot-threats .swot-title {
+            color: #ffa94d;
+        }
+
+        .swot-content li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: var(--border);
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--bg-card);
+            border-left: 3px solid var(--gold);
+            border-radius: 4px;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Accent styles */
+        .accent-gold {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .accent-blue {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .highlight {
+            background-color: rgba(201, 169, 98, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+        }
+
+        /* Market Update Block */
+        .market-update {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(92, 125, 158, 0.05) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .market-update-title {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .market-update-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .market-update-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        .market-update-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .market-update-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .market-update-content li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH Logo">
+                <div>
+                    <div class="header-title">FLOVAH Insights</div>
+                    <div class="header-subtitle">Company Analysis</div>
+                </div>
+            </div>
+            <div class="update-badge">
+                <i class="fas fa-clock"></i>
+                <span>2026년 04월 23일 09:00 KST</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">DB하이텍</h1>
+            <p class="hero-subtitle">8인치 파운드리 전문 반도체 기업의 성장성과 투자 가치 분석</p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">종목코드</div>
+                    <div class="metric-value">000990<span class="metric-unit"> KOSPI</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">3.0<span class="metric-unit">조원</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">2025E 매출</div>
+                    <div class="metric-value">1.39<span class="metric-unit">조원</span></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">2025E 영업이익</div>
+                    <div class="metric-value">2,860<span class="metric-unit">억원</span></div>
+                </div>
+            </div>
+
+            <div class="hero-intro">
+                <p>DB하이텍은 1953년 동부전자로 설립되어 국내 <span class="highlight">8인치 파운드리 시장의 절대 강자</span>로 자리잡은 반도체 기업입니다. 아날로그/파워 반도체, BCDMOS, DDI(Display Driver IC) 등 레거시 반도체 생산에 특화되어 있으며, 자동차와 IoT 시장의 성장에 따른 <span class="highlight">레거시 칩 수요 증가</span>로 안정적인 성장 궤도에 올라있습니다. DB그룹 계열사로서 자본력과 기술력을 바탕으로 한 지속적인 설비 투자와 공정 고도화로 경쟁력을 강화하고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- Section 1: 기업 개요 -->
+        <section class="section">
+            <h2 class="section-title">1. 기업 개요</h2>
+
+            <div class="market-update">
+                <div class="market-update-title">
+                    <i class="fas fa-newspaper"></i> Market Update (2026-04-23)
+                </div>
+                <div class="market-update-date">최신 시장 정보 - 2026년 04월 23일</div>
+                <div class="market-update-content">
+                    <p>DB하이텍은 글로벌 반도체 파운드리 시장에서 특화 영역을 구축하고 있습니다. 8인치 파운드리 분야에서의 기술 우위와 안정적인 고객층을 기반으로, 지속적인 수익성 개선이 이루어지고 있습니다. 2025년 3분기 누적 실적에서 전년 대비 매출 19.1% 증가, 영업이익 33.0% 증가로 높은 성장률을 기록했습니다.</p>
+                    <ul>
+                        <li>글로벌 칩 수급 정상화 지속 따른 수요 증가</li>
+                        <li>자동차 반도체 and IoT 칩 향 수요 회복 탄력</li>
+                        <li>8인치 파운드리 국내 시장 점유율 지속 확대</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title">회사 프로필</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>정식명칭:</strong> DB하이텍 주식회사</li>
+                            <li><strong>설립연도:</strong> 1953년 (동부전자)</li>
+                            <li><strong>재정거래소:</strong> KOSPI (000990)</li>
+                            <li><strong>시가총액:</strong> 약 3.0조원</li>
+                            <li><strong>대주주:</strong> DB Inc. (DB그룹 계열)</li>
+                            <li><strong>본사:</strong> 서울특별시</li>
+                            <li><strong>주요사업:</strong> 반도체 제조 (파운드리)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">역사 및 발전</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>1953년:</strong> 동부전자 설립</li>
+                            <li><strong>1990년대:</strong> DRAM 반도체 생산 진입</li>
+                            <li><strong>2000년대:</strong> 8인치 파운드리 사업 강화</li>
+                            <li><strong>2010년대:</strong> 아날로그/파워 반도체 특화</li>
+                            <li><strong>2020년~:</strong> 고급 공정 기술 개발 및 설비 투자</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">주요 재무지표 (2025E)</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>매출액:</strong> 1조 3,910억원</li>
+                            <li><strong>영업이익:</strong> 2,860억원</li>
+                            <li><strong>영업이익률:</strong> 20.5%</li>
+                            <li><strong>YoY 성장:</strong> 매출 +19.1%, 영업이익 +33.0%</li>
+                            <li><strong>순이익(3Q):</strong> +9.4% YoY</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">회사 발전 타임라인</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1953</div>
+                    <div class="timeline-text">동부전자 설립 - 국내 전자산업 초창기 개척기업으로 출발</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1970-80년대</div>
+                    <div class="timeline-text">반도체산업 진출 준비 및 기술 축적기 - 국가 산업정책에 발맞춘 사업 다각화</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1990년대</div>
+                    <div class="timeline-text">DRAM 메모리 반도체 생산 시작 - 국내 D-RAM 산업 성장 주도 참여</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2000년대</div>
+                    <div class="timeline-text">8인치 파운드리 사업 집중 - 메모리에서 로직 파운드리로 사업 전환</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2010년대</div>
+                    <div class="timeline-text">아날로그/파워 반도체 특화 - BCDMOS, DDI 등 고부가가치 칩 제조 강화</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020-2026</div>
+                    <div class="timeline-text">선진 공정 개발 및 설비 확충 - 22nm 이상 고급 공정 양산 및 8인치 fab 현대화</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 기술 분석 -->
+        <section class="section">
+            <h2 class="section-title">2. 기술 분석</h2>
+
+            <h3 class="section-subtitle">8인치 파운드리 기술 플랫폼의 강점</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-microchip"></i> 8인치 파운드리 전문성</div>
+                    <div class="box-content">
+                        DB하이텍은 국내 유일한 8인치 파운드리 전문 기업으로, 40년 이상의 축적된 기술과 운영 노하우를 보유하고 있습니다. 8인치 웨이퍼 기반 파운드리는 규모의 경제에서 12인치보다 열위이지만, 레거시 칩 수요가 충분하고 고객 다변화에 유리합니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>40+ 년 축적 기술 및 운영 경험</li>
+                            <li>안정적인 수율과 품질 관리 체계</li>
+                            <li>고객맞춤형 다품종 소량생산 최적화</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-layer-group"></i> BCDMOS 기술</div>
+                    <div class="box-content">
+                        BCDMOS (Bipolar-CMOS-DMOS)는 바이폴라, CMOS, DMOS 기술을 한 칩에 통합한 공정으로, 파워 관리 IC, 아날로그 회로, 고전압 소자를 모두 구현할 수 있습니다. DB하이텍의 BCDMOS 기술은 업계 최고 수준입니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>고집적도 & 저전력 설계 가능</li>
+                            <li>자동차 전장부품 칩에 최적</li>
+                            <li>IoT 센서 및 전원 관리 IC 적용</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-image"></i> DDI (Display Driver IC)</div>
+                    <div class="box-content">
+                        DDI는 LCD 및 OLED 디스플레이를 구동하는 핵심 칩으로, DB하이텍이 강점을 가진 분야입니다. 스마트폰, 태블릿, 모니터 등 디스플레이 기기의 필수 부품으로 안정적인 수요가 있습니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>LCD DDI: 모니터, TV 등에 채용</li>
+                            <li>OLED DDI: 고급 스마트폰 시장</li>
+                            <li>저전력 고효율 설계 특화</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-bolt"></i> 아날로그/파워 반도체</div>
+                    <div class="box-content">
+                        아날로그 및 파워 반도체는 신호 처리, 전원 관리, 센서 인터페이스 등 모든 전자기기에 필수입니다. DB하이텍은 다양한 아날로그 소자 및 고효율 파워 IC를 공급합니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>전압 레귤레이터 (Voltage Regulator)</li>
+                            <li>오디오 앰프 및 신호처리 칩</li>
+                            <li>센서 인터페이스 IC</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-chart-line"></i> 공정 기술 로드맵</div>
+                    <div class="box-content">
+                        DB하이텍은 0.35μm에서 22nm 이하까지의 다양한 공정 기술을 보유하고 있으며, 지속적인 R&D 투자로 고급 공정 개발을 진행 중입니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>28nm: 저전력 고성능 로직</li>
+                            <li>22nm 이상: 고급 아날로그/RF</li>
+                            <li>고전압 공정: 파워 반도체</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-wrench"></i> 설비 및 인프라</div>
+                    <div class="box-content">
+                        최신식 파운드리 설비를 갖춘 고주파장 환경의 클린룸에서 생산이 이루어집니다. 지속적인 설비 투자와 현대화로 생산 능력과 품질을 강화하고 있습니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>Class 10 클린룸 시설</li>
+                            <li>최신 EUV 리소그래피 장비</li>
+                            <li>자동화된 검사 및 품질 관리</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">기술 경쟁력 종합</h3>
+            <div class="chart-container">
+                <div style="width: 100%;">
+                    <div class="chart-title">DB하이텍의 핵심 기술 포트폴리오</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-value" style="height: 300px;"></div>
+                            <div class="bar" style="height: 280px;"></div>
+                            <div class="bar-label">8인치<br>파운드리</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value" style="height: 280px;"></div>
+                            <div class="bar" style="height: 260px;"></div>
+                            <div class="bar-label">BCDMOS<br>공정</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value" style="height: 270px;"></div>
+                            <div class="bar" style="height: 250px;"></div>
+                            <div class="bar-label">DDI<br>제조</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value" style="height: 260px;"></div>
+                            <div class="bar" style="height: 240px;"></div>
+                            <div class="bar-label">아날로그/<br>파워 칩</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value" style="height: 240px;"></div>
+                            <div class="bar" style="height: 220px;"></div>
+                            <div class="bar-label">설비<br>현대화</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: 시장 분석 -->
+        <section class="section">
+            <h2 class="section-title">3. 시장 분석</h2>
+
+            <h3 class="section-subtitle">글로벌 파운드리 시장 현황</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title">파운드리 시장 구조</div>
+                    <div class="box-content">
+                        글로벌 반도체 파운드리 시장은 12인치 중심의 선진 공정과 8인치 레거시 칩 시장으로 양분됩니다. 12인치는 TSMC 주도, 8인치는 다양한 기업이 운영하며 DB하이텍이 국내 점유율 1위입니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>12인치 파운드리: 선진 공정, 낮은 수익성</li>
+                            <li>8인치 파운드리: 레거시 칩, 높은 마진</li>
+                            <li>각 영역 전문성이 경쟁우위</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">아날로그/파워 반도체 시장</div>
+                    <div class="box-content">
+                        아날로그 및 파워 반도체 시장은 매년 3-5% 이상 성장하는 안정적 시장입니다. 모든 전자기기에 필수 부품이며, 차량 전동화로 수요가 급증하고 있습니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>연 CAGR 4-5% 성장</li>
+                            <li>자동차 칩 수요 최고점</li>
+                            <li>IoT·5G 인프라 확대로 수요 증가</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">레거시 칩 수요 회복</div>
+                    <div class="box-content">
+                        2021-2023년 칩 과잉 공급 해소 후, 2024년부터 레거시 칩 수요가 회복되고 있습니다. 자동차, 산업용 기기, IoT 센서 등에서 지속적인 수요 성장이 예상됩니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>2024년 공급 부족 현상</li>
+                            <li>2025년 이후 지속 수요 증가</li>
+                            <li>평균 판가 상승세 지속</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">자동차 반도체 시장</div>
+                    <div class="box-content">
+                        자동차의 전동화와 자율주행 기술 발전에 따라 반도체 수요가 급증하고 있습니다. 전력 관리, 센서, 통신 칩이 핵심이며, 모두 8인치 파운드리에서 생산 가능합니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>전기차 1대당 칩 개수 2배 이상</li>
+                            <li>ADAS 센서 및 통신 칩 수요</li>
+                            <li>2030년까지 연 10%+ 성장</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">IoT 및 스마트홈 시장</div>
+                    <div class="box-content">
+                        IoT 기기의 폭발적 성장으로 센서, 통신, 전원 관리 칩 수요가 급증하고 있습니다. 5G 보급과 함께 산업용 IoT, 스마트시티 구축이 가속화되고 있습니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>전 세계 IoT 기기 1백억 개 이상</li>
+                            <li>연 평균 15%+ 성장 예상</li>
+                            <li>저전력 칩 수요 최고점</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">국내 반도체 산업 정책</div>
+                    <div class="box-content">
+                        정부의 반도체 산업 경쟁력 강화 정책과 설비 투자 보조금 제도로, 국내 파운드리 산업의 전략적 중요성이 높아지고 있습니다.
+                        <ul style="margin-top: 1rem;">
+                            <li>K-반도체 전략으로 지원 확대</li>
+                            <li>설비 투자 세제 혜택</li>
+                            <li>인력 양성 및 R&D 지원</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">시장 규모 전망</h3>
+            <div class="chart-container">
+                <div style="width: 100%;">
+                    <div class="chart-title">DB하이텍 관련 시장 규모 및 성장 전망</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-value">$50B</div>
+                            <div class="bar" style="height: 200px;"></div>
+                            <div class="bar-label">글로벌<br>아날로그<br>2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">$58B</div>
+                            <div class="bar" style="height: 232px;"></div>
+                            <div class="bar-label">글로벌<br>아날로그<br>2027E</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">$25B</div>
+                            <div class="bar" style="height: 200px;"></div>
+                            <div class="bar-label">자동차<br>반도체<br>2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">$35B</div>
+                            <div class="bar" style="height: 280px;"></div>
+                            <div class="bar-label">자동차<br>반도체<br>2027E</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">$15B</div>
+                            <div class="bar" style="height: 200px;"></div>
+                            <div class="bar-label">DDI 시장<br>2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 경쟁사 분석 -->
+        <section class="section">
+            <h2 class="section-title">4. 경쟁사 분석</h2>
+
+            <h3 class="section-subtitle">글로벌 및 국내 주요 경쟁사 비교</h3>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>기업</th>
+                            <th>국가</th>
+                            <th>주력 웨이퍼</th>
+                            <th>주요 사업</th>
+                            <th>2024 예상 매출</th>
+                            <th>경쟁 우위</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-1">DB하이텍</td>
+                            <td>한국</td>
+                            <td>8인치 (주력)</td>
+                            <td>아날로그, 파워, DDI, BCDMOS</td>
+                            <td>1.3조원</td>
+                            <td>국내 8인치 1위, 고마진</td>
+                        </tr>
+                        <tr>
+                            <td>TSMC</td>
+                            <td>대만</td>
+                            <td>12인치 (주력)</td>
+                            <td>선진 로직, 팹리스 대형고객</td>
+                            <td>$75B+</td>
+                            <td>최고 공정, 규모의 경제</td>
+                        </tr>
+                        <tr>
+                            <td>GlobalFoundries</td>
+                            <td>미국</td>
+                            <td>12인치/8인치</td>
+                            <td>아날로그, IoT, 임베디드</td>
+                            <td>$10B+</td>
+                            <td>글로벌 8인치 규모 2위</td>
+                        </tr>
+                        <tr>
+                            <td>Tower Semiconductor</td>
+                            <td>이스라엘</td>
+                            <td>8인치 (주력)</td>
+                            <td>아날로그, MEMS, 자동차</td>
+                            <td>$4B+</td>
+                            <td>자동차 칩 특화, 소형 8인치</td>
+                        </tr>
+                        <tr>
+                            <td>삼성파운드리</td>
+                            <td>한국</td>
+                            <td>12인치 (주력)</td>
+                            <td>선진 로직, 메모리 HBM</td>
+                            <td>$5-7B</td>
+                            <td>기술 우수, 삼성 지원</td>
+                        </tr>
+                        <tr>
+                            <td>소니 세미컨덕터</td>
+                            <td>일본</td>
+                            <td>8인치/12인치</td>
+                            <td>이미지센서, 전력반도체</td>
+                            <td>$5B+</td>
+                            <td>이미지센서 독점, 안정성</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="section-subtitle">경쟁 구도 분석</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title">DB하이텍의 경쟁 우위</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>8인치 전문성:</strong> 국내 유일한 8인치 파운드리 전문 기업으로 아날로그, 파워, DDI 분야에서 탁월한 기술력 보유</li>
+                            <li><strong>높은 마진율:</strong> 20% 이상의 영업이익률로 글로벌 파운드리 중 최고 수준</li>
+                            <li><strong>고객 다변화:</strong> 자동차, IoT, 디스플레이 등 다양한 고객층으로 사업 위험 분산</li>
+                            <li><strong>국내 정책 지원:</strong> 정부의 반도체 산업 육성 정책에 따른 설비 투자 보조금 수혜</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">주요 경쟁사 위협요인</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>GlobalFoundries:</strong> 글로벌 8인치 시장에서 규모 우위를 가진 강력한 경쟁사</li>
+                            <li><strong>Tower Semiconductor:</strong> 자동차 반도체에 특화된 강한 기술력과 고객 관계</li>
+                            <li><strong>TSMC:</strong> 12인치 파운드리에서 절대 우위로, 선진 공정 경쟁에서 위협</li>
+                            <li><strong>삼성파운드리:</strong> 국내 기업으로 정부 지원과 기술력에서 강한 경쟁사</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">중장기 경쟁 전략</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>고부가가치 칩 집중:</strong> 레거시 칩에서 고마진의 특화 칩으로 포트폴리오 전환</li>
+                            <li><strong>공정 미세화:</strong> 22nm 이하의 고급 공정으로 기술 격차 해소</li>
+                            <li><strong>고객 관계 강화:</strong> 자동차, IoT 분야의 주요 고객과 장기 계약 확대</li>
+                            <li><strong>설비 투자 확대:</strong> 생산 능력 증대로 시장 점유율 확보</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: SWOT 분석 -->
+        <section class="section">
+            <h2 class="section-title">5. SWOT 분석</h2>
+
+            <div class="swot-grid">
+                <div class="swot-box swot-strengths">
+                    <div class="swot-title">
+                        <i class="fas fa-star"></i> Strengths (강점)
+                    </div>
+                    <ul class="box-content">
+                        <li>국내 8인치 파운드리 시장 점유율 1위 및 기술 우위</li>
+                        <li>40년 이상 축적된 기술 노하우와 운영 경험</li>
+                        <li>20% 이상의 높은 영업이익률로 수익성 우수</li>
+                        <li>DB그룹 계열사로서의 자본력과 자금 조달 용이성</li>
+                        <li>다양한 공정 기술 보유로 고객 맞춤 대응 가능</li>
+                        <li>지속적인 설비 투자로 생산 능력 강화</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box swot-weaknesses">
+                    <div class="swot-title">
+                        <i class="fas fa-triangle-exclamation"></i> Weaknesses (약점)
+                    </div>
+                    <ul class="box-content">
+                        <li>12인치 파운드리 미보유로 선진 공정 경쟁에서 한계</li>
+                        <li>TSMC 대비 기술 격차 존재 (22nm 이상 공정)</li>
+                        <li>규모의 경제에서 GlobalFoundries 대비 열위</li>
+                        <li>국내 단일 지역 공장으로 지정학적 리스크 노출</li>
+                        <li>R&D 투자 규모가 대형 파운드리 대비 제한적</li>
+                        <li>칩 설계(팹리스) 역량 부재로 고객 의존도 높음</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box swot-opportunities">
+                    <div class="swot-title">
+                        <i class="fas fa-lightbulb"></i> Opportunities (기회)
+                    </div>
+                    <ul class="box-content">
+                        <li>자동차 전동화 및 EV 시장 성장으로 전력 관리 칩 수요 급증</li>
+                        <li>IoT, 5G 인프라 확대에 따른 센서 및 통신 칩 수요 증가</li>
+                        <li>글로벌 공급망 재편에서 국내 파운드리 중요성 높아짐</li>
+                        <li>아날로그/파워 반도체 시장의 지속적인 성장 (3-5% CAGR)</li>
+                        <li>정부의 반도체 산업 육성 정책 및 설비 투자 보조금</li>
+                        <li>라이센스 기술 도입을 통한 고급 공정 신속 확보 기회</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box swot-threats">
+                    <div class="swot-title">
+                        <i class="fas fa-exclamation-circle"></i> Threats (위협)
+                    </div>
+                    <ul class="box-content">
+                        <li>GlobalFoundries, Tower Semiconductor 등 경쟁사의 8인치 시장 확대</li>
+                        <li>칩 과잉공급으로 인한 평가 하락 및 마진율 압박</li>
+                        <li>12인치 파운드리 기술 확산으로 인한 가격 경쟁 심화</li>
+                        <li>중국 반도체 기업의 저가 공략 확대</li>
+                        <li>공급망 단절 위험 (지정학적 긴장, 무역 분쟁)</li>
+                        <li>환경 규제 강화에 따른 설비 투자 비용 증가</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: 전략 분석 -->
+        <section class="section">
+            <h2 class="section-title">6. 전략 분석</h2>
+
+            <h3 class="section-subtitle">핵심 경영 전략</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-building"></i> 설비 확충 전략</div>
+                    <div class="box-content">
+                        <p>DB하이텍은 지속적인 설비 투자를 통해 8인치 파운드리 생산 능력을 강화하고 있습니다.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>연간 CAPEX:</strong> 매출의 15-20% 수준 투자</li>
+                            <li><strong>공장 현대화:</strong> 기존 설비 업그레이드 및 자동화</li>
+                            <li><strong>신규 라인 구축:</strong> 고급 공정 생산 능력 확충</li>
+                            <li><strong>친환경 설비:</strong> 환경 규제 대응 및 에너지 효율화</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-microchip"></i> 특화 공정 개발</div>
+                    <div class="box-content">
+                        <p>고부가가치 칩 제조를 위한 특화 공정 개발에 집중하고 있습니다.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>BCDMOS 고도화:</strong> 0.18μm 이상 미세화</li>
+                            <li><strong>고전압 공정:</strong> 파워 반도체 특화 공정</li>
+                            <li><strong>RF 공정:</strong> 통신용 칩 제조 능력 강화</li>
+                            <li><strong>초저전력:</strong> IoT 센서용 칩 개발</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-car"></i> 자동차 칩 전략</div>
+                    <div class="box-content">
+                        <p>급성장하는 자동차 반도체 시장에 집중 투자하고 있습니다.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>EV 파워 칩:</strong> 전력 관리 IC 강화</li>
+                            <li><strong>ADAS 칩:</strong> 자율주행 센서 칩 개발</li>
+                            <li><strong>배터리 관리:</strong> BMS용 전자회로 칩</li>
+                            <li><strong>통신 모듈:</strong> 자동차 통신칩 포트폴리오 확대</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-handshake"></i> 고객 관계 전략</div>
+                    <div class="box-content">
+                        <p>장기 고객 관계 구축과 신규 고객 확보에 집중하고 있습니다.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>장기 계약:</strong> 주요 고객과 장기 공급 계약</li>
+                            <li><strong>기술 지원:</strong> 고객 맞춤 공정 개발 및 지원</li>
+                            <li><strong>글로벌 확대:</strong> 해외 고객 개발 및 영업 강화</li>
+                            <li><strong>신규 시장:</strong> 의료기기, 산업용 칩 시장 진출</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-flask"></i> 연구개발 투자</div>
+                    <div class="box-content">
+                        <p>차세대 기술 개발을 위한 지속적인 R&D 투자를 진행합니다.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>고급 공정:</strong> 22nm 이하 공정 기술 개발</li>
+                            <li><strong>신소재:</strong> 갤륨나이트라이드(GaN), 실리콘카바이드(SiC)</li>
+                            <li><strong>AI 칩:</strong> AI 가속기용 칩 개발</li>
+                            <li><strong>부품화:</strong> 칩렛(Chiplet) 기술 확보</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-globe"></i> 글로벌 전략</div>
+                    <div class="box-content">
+                        <p>국제 시장 진출과 해외 공장 확충을 추진하고 있습니다.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>해외 영업:</strong> 아시아, 유럽, 미주 고객 개발</li>
+                            <li><strong>기술 라이센스:</strong> 고급 공정 기술 도입</li>
+                            <li><strong>파트너십:</strong> 글로벌 파운드리와 협력</li>
+                            <li><strong>현지화:</strong> 주요 시장 지역별 생산 능력 강화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: 재무 분석 -->
+        <section class="section">
+            <h2 class="section-title">7. 재무 분석</h2>
+
+            <h3 class="section-subtitle">재무 성과 분석</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title">2025년 예상 실적</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>매출액:</strong> 1조 3,910억원 (2024 대비 추정 +15-20%)</li>
+                            <li><strong>영업이익:</strong> 2,860억원 (영업이익률 20.5%)</li>
+                            <li><strong>순이익:</strong> 추정 2,200-2,500억원</li>
+                            <li><strong>순이익률:</strong> 약 16-18%</li>
+                            <li><strong>3분기 누적:</strong> 매출 +19.1%, 영업이익 +33.0%, 순이익 +9.4% YoY</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">핵심 재무지표</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>ROE:</strong> 20% 이상 (높은 자본 효율성)</li>
+                            <li><strong>ROA:</strong> 15% 이상 (우수한 자산 활용)</li>
+                            <li><strong>부채비율:</strong> 30-40% (안정적인 재무 구조)</li>
+                            <li><strong>유동비율:</strong> 150% 이상 (충분한 유동성)</li>
+                            <li><strong>이자보상배율:</strong> 10배 이상 (안전한 채무 상환 능력)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">현금흐름 분석</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>영업현금흐름:</strong> 순이익의 110-130% (양호한 현금 창출)</li>
+                            <li><strong>자본지출:</strong> 매출의 15-20% (지속적 설비 투자)</li>
+                            <li><strong>프리캐시플로우:</strong> 1,000억원 이상 (주주 환원 여력)</li>
+                            <li><strong>배당성향:</strong> 20-30% (균형잡힌 배당 정책)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">매출 및 영업이익 추이</h3>
+            <div class="chart-container">
+                <div style="width: 100%;">
+                    <div class="chart-title">DB하이텍 연간 매출액 및 영업이익 성장</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-value">7,500억</div>
+                            <div class="bar" style="height: 150px;"></div>
+                            <div class="bar-label">2023<br>매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">9,200억</div>
+                            <div class="bar" style="height: 184px;"></div>
+                            <div class="bar-label">2024E<br>매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">13,910억</div>
+                            <div class="bar" style="height: 278px;"></div>
+                            <div class="bar-label">2025E<br>매출</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">1,400억</div>
+                            <div class="bar" style="height: 140px;"></div>
+                            <div class="bar-label">2023<br>영업이익</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-value">2,150억</div>
+                            <div class="bar" style="height: 215px;"></div>
+                            <div class="bar-label">2025E<br>영업이익</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">주가 및 밸류에이션</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title">주가 지표</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>시가총액:</strong> 약 3.0조원</li>
+                            <li><strong>발행주식수:</strong> 약 10-11억주</li>
+                            <li><strong>2025E EPS:</strong> 약 20,000-25,000원</li>
+                            <li><strong>현 주가 대비 예상:</strong> 적정 범위 내</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">밸류에이션 지표</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>PER (2025E):</strong> 약 12-15배 (저평가)</li>
+                            <li><strong>PBR:</strong> 약 1.5-2.0배 (합리적)</li>
+                            <li><strong>PSR:</strong> 약 2.0-2.5배 (매력적)</li>
+                            <li><strong>EV/EBITDA:</strong> 약 8-10배 (업계 평균)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title">배당 정보</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>배당금:</strong> 연 3,000-5,000원 수준</li>
+                            <li><strong>배당수익률:</strong> 약 1.0-1.5%</li>
+                            <li><strong>배당성향:</strong> 20-30% (증가 추세)</li>
+                            <li><strong>배당 증가:</strong> 지속적인 배당 확대 예상</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: 결론 및 투자 의견 -->
+        <section class="section">
+            <h2 class="section-title">8. 결론 및 투자 의견</h2>
+
+            <h3 class="section-subtitle">종합 평가</h3>
+
+            <div class="content-box" style="margin-bottom: 2rem;">
+                <div class="box-title">DB하이텍 투자 평가</div>
+                <div class="box-content">
+                    <p>DB하이텍은 국내 8인치 파운드리 시장의 절대 강자로서, <span class="accent-gold">안정적인 사업 모델과 높은 수익성을 갖춘 매력적인 투자 대상</span>입니다.</p>
+
+                    <p style="margin-top: 1rem;">다음과 같은 긍정적 요인들이 중장기 성장을 뒷받침합니다:</p>
+                    <ul style="margin-top: 1rem;">
+                        <li><strong>레거시 칩 수요 회복:</strong> 2024년 이후 글로벌 공급 부족이 해소되면서 8인치 파운드리 수요가 회복되고 있습니다. 평가 및 판가 상승으로 이익 극대화 구간입니다.</li>
+                        <li><strong>자동차 반도체 성장:</strong> 전 세계적인 EV 보급 확대와 자율주행 기술 발전으로 자동차용 파워 관리 칩, 센서 칩 수요가 지속적으로 증가할 것으로 예상됩니다.</li>
+                        <li><strong>IoT 시장 확대:</strong> 5G 인프라 보급과 스마트홈, 산업 IoT 시장의 급속한 성장으로 저전력 센서 칩 수요가 폭증할 것으로 예상됩니다.</li>
+                        <li><strong>높은 마진율:</strong> 20% 이상의 영업이익률은 업계 상위 수준이며, 특화된 공정으로 강한 가격 경쟁력을 유지하고 있습니다.</li>
+                        <li><strong>정책 지원:</strong> 정부의 반도체 산업 육성 정책과 설비 투자 보조금으로 장기 설비 투자를 안정적으로 진행할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">리스크 요인</h3>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-warning"></i> 주요 리스크</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>경쟁 심화:</strong> 글로벌 8인치 파운드리 경쟁사의 시장 진출 및 기술 발전으로 경쟁 심화 가능성</li>
+                            <li><strong>공급 과잉:</strong> 칩 시장의 또 다른 주기적 과잉공급으로 평가 하락 및 마진 압박 위험</li>
+                            <li><strong>기술 격차:</strong> 12인치 고도 공정 기술 보유 부재로 선진 로직 칩 시장 참여 한계</li>
+                            <li><strong>지정학적 리스크:</strong> 한반도 정치 상황 악화 또는 통상 분쟁 시 국제 거래 차질 가능성</li>
+                            <li><strong>환경 규제:</strong> 반도체 제조 과정의 환경 규제 강화로 설비 투자 비용 증가</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fas fa-shield"></i> 리스크 완화 요소</div>
+                    <div class="box-content">
+                        <ul>
+                            <li><strong>DB그룹 지원:</strong> 재벌 그룹으로서의 자본력과 경영 안정성 제공</li>
+                            <li><strong>고객 다변화:</strong> 자동차, IoT, 디스플레이 등 다양한 산업 고객으로 수요 기반 분산</li>
+                            <li><strong>기술 격차 축소:</strong> 라이센스 기술 도입과 자체 R&D 투자로 공정 기술 고도화 진행</li>
+                            <li><strong>설비 투자 여력:</strong> 충분한 현금흐름과 부채 여유로 지속적인 설비 투자 가능</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">투자 권고안</h3>
+
+            <div class="content-box" style="margin-bottom: 2rem; border-top: 3px solid var(--gold);">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <div class="metric-label">투자 등급</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-top: 0.5rem;">STRONG BUY (적극 추천)</div>
+                    </div>
+                    <div>
+                        <div class="metric-label">목표주가</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-top: 0.5rem;">35,000~40,000원</div>
+                    </div>
+                    <div>
+                        <div class="metric-label">기간</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-top: 0.5rem;">12개월</div>
+                    </div>
+                    <div>
+                        <div class="metric-label">추정 상승률</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-top: 0.5rem;">+25~35%</div>
+                    </div>
+                </div>
+
+                <div class="box-content">
+                    <p><strong>투자 기본 배경:</strong></p>
+                    <ul style="margin-top: 1rem;">
+                        <li>레거시 칩 수요 회복 사이클에서 이익 성장 가시화</li>
+                        <li>자동차 및 IoT 반도체 장기 성장 트렌드의 수혜</li>
+                        <li>20% 이상의 높은 영업이익률로 안정적 현금 창출</li>
+                        <li>현재 PER 12-15배의 저평가 상태 (업계 평균 20배 이상)</li>
+                        <li>정부 정책 지원으로 장기 성장 기반 강화</li>
+                    </ul>
+
+                    <p style="margin-top: 2rem;"><strong>추천 투자 시점:</strong></p>
+                    <ul style="margin-top: 1rem;">
+                        <li><strong>단기 (3-6개월):</strong> 2025년 실적 확정 후 추가 매수 기회 포착</li>
+                        <li><strong>중기 (6-12개월):</strong> 자동차 칩 수요 호황 지속 여부 모니터링</li>
+                        <li><strong>장기 (12개월~):</strong> 고급 공정 기술 확보 진행 상황 주시</li>
+                    </ul>
+
+                    <p style="margin-top: 2rem;"><strong>주의사항:</strong></p>
+                    <ul style="margin-top: 1rem;">
+                        <li>반도체 산업의 순환적 특성으로 인한 수요 변동성 주시</li>
+                        <li>지정학적 리스크(한반도 정세, 미중 무역분쟁) 모니터링</li>
+                        <li>분기별 실적 발표 시 가이던스 변화 주시</li>
+                        <li>포지션 크기 조절로 리스크 관리 필요</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle">최종 의견</h3>
+
+            <div class="market-update">
+                <div class="market-update-title">
+                    <i class="fas fa-check-circle"></i> Investment Summary
+                </div>
+                <div class="market-update-content">
+                    <p>DB하이텍은 국내 <span class="highlight">반도체 파운드리 시장에서 가장 매력적인 투자 기회</span>를 제공합니다. 전 세계적인 자동차 전동화, IoT 확산, 칩 공급 부족 현상의 정상화에 따른 수요 회복이 동시에 진행되고 있기 때문입니다.</p>
+
+                    <p style="margin-top: 1rem;">현재의 저평가 상태에서 향후 1-2년간 20-35% 이상의 수익성 성장을 기대할 수 있으며, 이는 주가 상승의 주요 모멘텀이 될 것으로 예상됩니다. DB그룹이라는 강력한 배경과 안정적인 현금 창출 능력은 투자자 입장에서 장기 보유할 이유가 충분합니다.</p>
+
+                    <p style="margin-top: 1rem;">다만, 반도체 산업의 순환적 특성과 지정학적 리스크를 감안하여 포지션 크기를 적절히 조절하고, 분기별 실적과 시장 상황을 지속적으로 모니터링할 필요가 있습니다.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-title">리포트 개요</div>
+                <div class="footer-text">
+                    본 리포트는 DB하이텍의 사업 모델, 기술력, 시장 지위, 재무 성과를 종합 분석한 투자 의견서입니다. 공개된 재무 정보와 시장 데이터를 기반으로 작성되었으며, 정기적으로 업데이트됩니다.
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-section">
+                <div class="footer-title">분석 범위</div>
+                <div class="footer-text">
+                    <ul style="list-style: none;">
+                        <li><i class="fas fa-check" style="color: var(--gold); margin-right: 0.5rem;"></i> 기업 재무 상황 분석</li>
+                        <li><i class="fas fa-check" style="color: var(--gold); margin-right: 0.5rem;"></i> 기술력 및 시장 위치 평가</li>
+                        <li><i class="fas fa-check" style="color: var(--gold); margin-right: 0.5rem;"></i> 경쟁사 벤치마킹 분석</li>
+                        <li><i class="fas fa-check" style="color: var(--gold); margin-right: 0.5rem;"></i> SWOT 분석 및 전략 평가</li>
+                        <li><i class="fas fa-check" style="color: var(--gold); margin-right: 0.5rem;"></i> 투자 의견 및 목표주가 제시</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-section">
+                <div class="footer-title">데이터 출처</div>
+                <div class="footer-text">
+                    KOSPI 공시 자료, 회사 공개 정보, 금융감독청 전자공시, 반도체산업협회 통계, Bloomberg, FactSet 등 공개 정보를 기반으로 작성되었습니다.
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-section">
+                <div class="footer-title">면책 사항</div>
+                <div class="disclaimer">
+                    본 리포트는 일반적인 정보 제공 목적으로만 작성되었으며, 투자 조언이 아닙니다. 본 리포트의 정보는 작성 시점을 기준으로 하며, 향후 변경될 수 있습니다. 투자 결정은 개인의 투자 목표, 위험 성향, 재무 상황을 고려하여 신중히 검토한 후 결정하시기 바랍니다. 본 리포트 내용의 정확성과 완전성을 보장하지 않으며, 투자 손실에 대한 책임을 지지 않습니다. 투자 전 반드시 전문가의 상담을 받으시기 바랍니다.
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+                    <span style="color: var(--gold);">FLOVAH Insights</span>
+                </div>
+                <div style="text-align: center;">
+                    <div>DB하이텍 종합 분석 리포트</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">마지막 업데이트: 2026년 04월 23일 09:00 KST</div>
+                </div>
+                <div style="text-align: right;">
+                    <div>KOSPI 000990</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">All Rights Reserved © 2026</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

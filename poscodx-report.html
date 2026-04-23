@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포스코DX 종합 분석 리포트 | FLOVAH Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201, 169, 98, 0.1);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-elevated) 100%);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: url('https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png') center / contain no-repeat;
+        }
+
+        .header-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.3rem;
+            color: var(--ink-strong);
+            letter-spacing: 0.05em;
+        }
+
+        .header-title small {
+            font-size: 0.7rem;
+            color: var(--gold);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-date {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            background: var(--gold-glow);
+            border-radius: 4px;
+        }
+
+        .flovah-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--gold);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3rem;
+            color: var(--ink-strong);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            color: var(--text-body);
+            max-width: 800px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-detail {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-number {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.8rem;
+            color: var(--ink-strong);
+            letter-spacing: 0.05em;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+
+        .content-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-block h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.3rem;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .content-block h3 i {
+            color: var(--gold);
+        }
+
+        .content-block p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 50px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            min-width: 60px;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-elevated);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        /* List Styles */
+        .list-group {
+            list-style: none;
+        }
+
+        .list-group li {
+            padding: 0.8rem 0;
+            padding-left: 1.8rem;
+            color: var(--text-body);
+            position: relative;
+        }
+
+        .list-group li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Table Styles */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table thead {
+            background: var(--bg-hover);
+            border-bottom: 2px solid var(--border);
+        }
+
+        table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .chart-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swot-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+        }
+
+        .swot-card.strength::before {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+
+        .swot-card.weakness::before {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .swot-card.opportunity::before {
+            background: linear-gradient(90deg, var(--gold), #f59e0b);
+        }
+
+        .swot-card.threat::before {
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+        }
+
+        .swot-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .swot-title i {
+            font-size: 1.4rem;
+        }
+
+        .swot-card.strength .swot-title {
+            color: #10b981;
+        }
+
+        .swot-card.weakness .swot-title {
+            color: #ef4444;
+        }
+
+        .swot-card.opportunity .swot-title {
+            color: var(--gold);
+        }
+
+        .swot-card.threat .swot-title {
+            color: #8b5cf6;
+        }
+
+        .swot-list {
+            list-style: none;
+        }
+
+        .swot-list li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            color: var(--text-body);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .swot-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: currentColor;
+            font-weight: bold;
+        }
+
+        /* Update Block */
+        .update-block {
+            background: linear-gradient(135deg, var(--gold-glow) 0%, rgba(92, 125, 158, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .update-icon {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-top: 0.2rem;
+            min-width: 24px;
+        }
+
+        .update-content {
+            flex: 1;
+        }
+
+        .update-label {
+            color: var(--gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .update-text {
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .footer-section h4 {
+            font-family: 'Orbit', sans-serif;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-credit {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-credit strong {
+            color: var(--gold);
+        }
+
+        .last-update {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Highlight & Emphasis */
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .text-muted {
+            color: var(--text-secondary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-body);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .badge-blue {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo"></div>
+                <div class="header-title">
+                    포스코DX 분석
+                    <small>POSCO DX 종합 리포트</small>
+                </div>
+            </div>
+            <nav>
+                <a href="#overview">기업개요</a>
+                <a href="#technology">기술분석</a>
+                <a href="#market">시장분석</a>
+                <a href="#competition">경쟁사</a>
+                <a href="#swot">SWOT</a>
+                <a href="#strategy">전략</a>
+                <a href="#finance">재무</a>
+                <a href="#conclusion">결론</a>
+            </nav>
+            <div class="header-date">April 23, 2026</div>
+            <div class="flovah-badge">
+                <i class="fas fa-certificate"></i>
+                FLOVAH Insights
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">포스코DX</h1>
+                <p class="hero-subtitle">Industrial Transformation & Digital Solutions Leader</p>
+                <p class="hero-description">
+                    포스코DX는 1989년 설립 이래 한국의 산업용 디지털 전환 솔루션 선도기업으로 성장했습니다. 스마트팩토리, MES, 산업용 IoT, AI 기반 자동화 솔루션 등을 통해 국내 주요 대형 기업들의 디지털 혁신을 주도하고 있습니다. 2026년 IT 아웃소싱 1,880억원 규모의 신규 수주 확보로 성장 기반을 재구축 중입니다.
+                </p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">시가총액</div>
+                        <div class="metric-value">4.9조원</div>
+                        <div class="metric-detail">KOSPI 상장</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2025 매출</div>
+                        <div class="metric-value">1조 752억원</div>
+                        <div class="metric-detail">전년대비 -27%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2025 영업이익</div>
+                        <div class="metric-value">604억원</div>
+                        <div class="metric-detail">전년대비 -44.6%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2025 순이익</div>
+                        <div class="metric-value">526억원</div>
+                        <div class="metric-detail">전년대비 -40.6%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: 기업 개요 -->
+        <section class="section" id="overview">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2 class="section-title">기업 개요</h2>
+                <span class="section-subtitle">기업 정보 및 발전 과정</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-building"></i> 포스코DX 소개</h3>
+                <p>
+                    포스코DX는 POSCO홀딩스의 계열사로서 한국의 대표적인 산업용 DX(Digital eXperience) 솔루션 제공업체입니다.
+                    포스데이타, 포스코ICT를 거쳐 현재의 포스코DX로 발전해온 회사는 30년 이상의 산업 IT 경험을 바탕으로
+                    스마트팩토리 구축, MES(Manufacturing Execution System) 운영, IT 아웃소싱, 클라우드 기반 솔루션 등을 제공하고 있습니다.
+                </p>
+                <ul class="list-group">
+                    <li><span class="highlight">종목코드</span>: 022100 (KOSPI)</li>
+                    <li><span class="highlight">설립연도</span>: 1989년</li>
+                    <li><span class="highlight">대주주</span>: POSCO홀딩스</li>
+                    <li><span class="highlight">직원수</span>: 약 3,200명</li>
+                    <li><span class="highlight">본사</span>: 서울시 강남구</li>
+                </ul>
+            </div>
+
+            <div class="update-block">
+                <div class="update-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="update-content">
+                    <div class="update-label">MARKET UPDATE | 2026-04-23</div>
+                    <div class="update-text">
+                        2026년 1분기 IT 아웃소싱 신규 수주 1,880억원 규모 확보로 수익성 회복 기대.
+                        글로벌 경제 불확실성 속에서도 국내 대형 기업들의 DX 투자 수요는 지속적으로 증가 중입니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-history"></i> 기업 발전 과정</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class="fas fa-rocket"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1989년</div>
+                            <div class="timeline-text">포스데이타 설립 - POSCO 산하 정보시스템 자회사로 출범</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class="fas fa-cogs"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2000-2010년</div>
+                            <div class="timeline-text">포스코ICT로 사명 변경, 산업용 IT 솔루션 본격 확대</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class="fas fa-industry"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2010-2018년</div>
+                            <div class="timeline-text">스마트팩토리, MES, IoT 등 4차 산업혁명 솔루션 개발 주력</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2019년</div>
+                            <div class="timeline-text">포스코DX로 최종 사명 변경 - 산업 DX 전문 회사로 재출발</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class="fas fa-chart-line"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020-2025년</div>
+                            <div class="timeline-text">2조원 규모 매출 진입, IT 아웃소싱 강화, AI·클라우드 전환 추진</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"><i class="fas fa-star"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2026년</div>
+                            <div class="timeline-text">디지털 전환 가속화 및 그린에너지 분야 신사업 확대</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-briefcase"></i> 주요 사업 분야</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">스마트팩토리 솔루션</span> - MES, ERP, IoT 플랫폼 기반 통합 생산 관리 시스템</li>
+                    <li><span class="highlight">산업용 DX 솔루션</span> - AI, 빅데이터 활용 생산 최적화 및 예측 분석</li>
+                    <li><span class="highlight">IT 아웃소싱</span> - 수천 건 규모의 시스템 운영 및 유지보수 서비스</li>
+                    <li><span class="highlight">클라우드 기반 서비스</span> - 세이프 클라우드, 하이브리드 클라우드 인프라</li>
+                    <li><span class="highlight">이차전지 공정 자동화</span> - 전지 생산 최적화 및 품질 관리 시스템</li>
+                    <li><span class="highlight">그린에너지 통합 관리</span> - 태양광, 풍력 등 신재생 에너지 발전 관리 플랫폼</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: 기술 분석 -->
+        <section class="section" id="technology">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">기술 분석</h2>
+                <span class="section-subtitle">핵심 기술 역량 및 솔루션</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-microchip"></i> 핵심 기술 플랫폼</h3>
+                <p>
+                    포스코DX의 기술 경쟁력은 30년 이상의 산업용 IT 경험과 POSCO라는 거대 모기업의 지원을 바탕으로 구축되었습니다.
+                    제조업 전 분야에 적용 가능한 통합 플랫폼을 보유하고 있으며, 최신의 AI, IoT, 클라우드 기술을 적극 도입하고 있습니다.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">MES (제조실행시스템)</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            실시간 생산 데이터 수집·분석, 생산 계획 수립, 품질 관리, 생산성 최적화를 통합 관리하는 핵심 플랫폼입니다.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">IoT & 센서 기술</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            생산 설비의 상태 모니터링, 실시간 데이터 수집, 예측 유지보수(Predictive Maintenance) 기능을 제공합니다.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">AI & 머신러닝</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            생산 데이터 기반 수율 개선, 품질 예측, 최적 공정 조건 분석, 이상 징후 조기 감지 등 고도화된 분석 기능을 제공합니다.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">클라우드 인프라</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            온프레미스, 하이브리드, 퍼블릭 클라우드 환경 모두에서 유연하게 작동하는 확장성 높은 플랫폼입니다.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">ERP 연동</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            영업, 생산, 재무 등 전사 비즈니스 프로세스와의 끊김 없는 통합으로 데이터 일관성을 보장합니다.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">확인 가능한 ROI</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            생산성 10-30% 향상, 불량률 50% 감소, 에너지 소비 20% 절감 등 정량적 효과 증명 가능합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-lightbulb"></i> 기술 개발 방향</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">엣지 컴퓨팅</span> - 현장에서의 실시간 데이터 처리로 응답 속도 극대화</li>
+                    <li><span class="highlight">5G/6G 연동</span> - 초저지연 산업용 IoT 통신 환경 구현</li>
+                    <li><span class="highlight">블록체인</span> - 공급망 투명성 및 생산 이력 관리</li>
+                    <li><span class="highlight">디지털 트윈</span> - 가상 모델링을 통한 공정 최적화 및 리스크 예측</li>
+                    <li><span class="highlight">자율 제조</span> - AI 기반 완전 자동화 생산 시스템 개발</li>
+                    <li><span class="highlight">저탄소 공정</span> - 그린 제조 기술 및 ESG 통합 관리 플랫폼</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: 시장 분석 -->
+        <section class="section" id="market">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">시장 분석</h2>
+                <span class="section-subtitle">국내 DX 시장의 규모와 기회</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-chart-pie"></i> 한국 DX 시장 현황</h3>
+                <p>
+                    한국의 제조업 디지털 전환 시장은 정부의 '디지털 뉴딜' 정책 추진, 산업 4.0에 대한 기업들의 인식 확대,
+                    이차전지·반도체·디스플레이 등 전략산업의 투자 증가 등으로 인해 지속적인 성장세를 보이고 있습니다.
+                </p>
+                <ul class="list-group">
+                    <li><span class="highlight">시장 규모</span>: 2025년 약 15조원대 (지속 증가 추세)</li>
+                    <li><span class="highlight">연평균 성장률 (CAGR)</span>: 12-15% (향후 5년)</li>
+                    <li><span class="highlight">주요 성장 동인</span>: AI, 클라우드, IoT, 자동화 수요 확대</li>
+                    <li><span class="highlight">정부 지원</span>: 제조 혁신 펀드 조성, 스마트팩토리 구축 지원</li>
+                    <li><span class="highlight">기업 투자</span>: 대기업을 중심으로 연간 수조원 규모 DX 투자</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-industry"></i> 산업별 시장 기회</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>산업군</th>
+                                <th>주요 특징</th>
+                                <th>DX 투자 규모</th>
+                                <th>성장 전망</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="highlight">반도체</span></td>
+                                <td>극미세공정 자동화, AI 활용 검사</td>
+                                <td>~3조원</td>
+                                <td>↑ 매우 높음</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">이차전지</span></td>
+                                <td>고속 증설, 원가 절감 자동화</td>
+                                <td>~2조원</td>
+                                <td>↑ 매우 높음</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">철강/소재</span></td>
+                                <td>품질 개선, 에너지 효율화</td>
+                                <td>~1.5조원</td>
+                                <td>↑ 높음</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">자동차</span></td>
+                                <td>전기화 전환, 로봇 활용</td>
+                                <td>~1.2조원</td>
+                                <td>↑ 높음</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">화학/제약</span></td>
+                                <td>GMP 자동화, 데이터 관리</td>
+                                <td>~0.8조원</td>
+                                <td>→ 보통</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">식품/음료</span></td>
+                                <td>품질 관리, 효율성 개선</td>
+                                <td>~0.5조원</td>
+                                <td>→ 보통</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-globe"></i> 글로벌 시장 동향</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">제조 분야 AI 도입</span>: 글로벌 제조업 AI 투자 연 30% 이상 증가 중</li>
+                    <li><span class="highlight">엣지 AI 확산</span>: 실시간 처리 需요로 엣지 컴퓨팅 급부상</li>
+                    <li><span class="highlight">ESG 규제</span>: EU ETS, 탄소국경세 등으로 저탄소 생산 시스템 수요 급증</li>
+                    <li><span class="highlight">공급망 재편</span>: 온쇼어링/니어쇼어링으로 한국 기업 수출 경쟁력 강화</li>
+                    <li><span class="highlight">생산 현지화</span>: 국내 DX 솔루션의 해외 수출 기회 확대</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 4: 경쟁사 분석 -->
+        <section class="section" id="competition">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2 class="section-title">경쟁사 분석</h2>
+                <span class="section-subtitle">국내 산업용 DX 솔루션 기업 비교</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-users"></i> 주요 경쟁사 비교</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회사명</th>
+                                <th>주력 솔루션</th>
+                                <th>시장 위치</th>
+                                <th>강점</th>
+                                <th>약점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="highlight">포스코DX</span></td>
+                                <td>MES, IoT, ERP, AI</td>
+                                <td>1위권</td>
+                                <td>POSCO 지원, 산업 경험, 통합 솔루션</td>
+                                <td>최근 실적 부진, 클라우드 약점</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">삼성SDS</span></td>
+                                <td>클라우드, ERP, 이커머스</td>
+                                <td>1위</td>
+                                <td>클라우드 강세, 자본력, 브랜드</td>
+                                <td>산업용 DX 집중도 낮음</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">LG CNS</span></td>
+                                <td>컨설팅, 시스템, MES</td>
+                                <td>2위권</td>
+                                <td>컨설팅 강점, 고객 기반</td>
+                                <td>기술 혁신 속도 느림</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">SK C&C</span></td>
+                                <td>클라우드, 디지털 전환</td>
+                                <td>2위권</td>
+                                <td>클라우드 자산, 정부 관계</td>
+                                <td>산업용 솔루션 약점</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">현대오토에버</span></td>
+                                <td>자동차 부문 MES, ERP</td>
+                                <td>3위권</td>
+                                <td>자동차 업계 지배력</td>
+                                <td>다른 산업 진출 어려움</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-crosshairs"></i> 포스코DX의 경쟁 우위</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">산업 경험의 깊이</span> - 30년 이상 제조업 IT 운영 경험 축적</li>
+                    <li><span class="highlight">통합 솔루션</span> - MES, ERP, IoT, AI를 하나의 플랫폼에서 제공</li>
+                    <li><span class="highlight">레퍼런스 강점</span> - POSCO, 현대, SK, 삼성 등 주요 대기업 다수 구축 실적</li>
+                    <li><span class="highlight">기술 투자</span> - POSCO의 안정적인 자본 지원으로 R&D 지속</li>
+                    <li><span class="highlight">국내 시장 이해</span> - 한국식 제조 시스템에 최적화된 솔루션</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-exclamation-triangle"></i> 경쟁 위협 요소</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">글로벌 소프트웨어 기업</span> - SAP, Oracle 등 ERP 플랫폼에 MES 통합</li>
+                    <li><span class="highlight">클라우드 기업의 진입</span> - AWS, MS Azure의 제조 솔루션 강화</li>
+                    <li><span class="highlight">스타트업 경쟁</span> - AI, IoT 특화 스타트업의 틈새 시장 공략</li>
+                    <li><span class="highlight">해외 기업의 국내 진출</span> - 글로벌 제조업체의 DX 솔루션 국내 판매 확대</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: SWOT 분석 -->
+        <section class="section" id="swot">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2 class="section-title">SWOT 분석</h2>
+                <span class="section-subtitle">포스코DX의 전략적 위치 분석</span>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card strength">
+                    <h3 class="swot-title"><i class="fas fa-star"></i> 강점 (Strengths)</h3>
+                    <ul class="swot-list">
+                        <li>POSCO 모기업의 강력한 재무·기술 지원</li>
+                        <li>30년 이상의 산업용 IT 운영 경험</li>
+                        <li>MES, IoT, ERP 통합 솔루션 경쟁력</li>
+                        <li>포르투갈, 자동차 등 핵심 기업 고객기반</li>
+                        <li>차별화된 산업 특화 알고리즘 보유</li>
+                        <li>안정적인 수익 기반 (IT 아웃소싱)</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card weakness">
+                    <h3 class="swot-title"><i class="fas fa-exclamation-circle"></i> 약점 (Weaknesses)</h3>
+                    <ul class="swot-list">
+                        <li>2025년 연속 실적 부진 (매출 -27%, 순이익 -40.6%)</li>
+                        <li>클라우드 인프라 경쟁력 낮음</li>
+                        <li>해외 시장 진출 미약</li>
+                        <li>글로벌 대형 IT 회사 대비 기술 혁신 속도 뒤처짐</li>
+                        <li>AI/머신러닝 역량 아직 초기 단계</li>
+                        <li>인력 확보 및 유지의 어려움 (경쟁 기업과의 임금 격차)</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card opportunity">
+                    <h3 class="swot-title"><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul class="swot-list">
+                        <li>이차전지 시장 급성장에 따른 DX 솔루션 수요 증가</li>
+                        <li>정부의 디지털 뉴딜, 스마트팩토리 지원 정책</li>
+                        <li>그린에너지 전환으로 인한 신재생 에너지 관리 솔루션 시장</li>
+                        <li>반도체 공정 자동화 투자 증가</li>
+                        <li>해외 진출을 통한 신규 매출 기회 (ASEAN, 동남아)</li>
+                        <li>AI 기반 예측 유지보수 시장 성장</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card threat">
+                    <h3 class="swot-title"><i class="fas fa-shield-alt"></i> 위협 (Threats)</h3>
+                    <ul class="swot-list">
+                        <li>글로벌 IT 거대 기업의 제조 시장 진출 강화</li>
+                        <li>고급 인력의 스타트업 유출</li>
+                        <li>국내 제조업 경기 침체 시 DX 투자 위축</li>
+                        <li>중국 기업의 저가 DX 솔루션 경쟁 심화</li>
+                        <li>관련 소프트웨어 기업의 병합·인수 (M&A) 시장 재편</li>
+                        <li>경제 침체로 인한 기업 고객의 IT 예산 감소</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: 전략 분석 -->
+        <section class="section" id="strategy">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2 class="section-title">전략 분석</h2>
+                <span class="section-subtitle">포스코DX의 미래 전략 방향</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-battery-full"></i> 이차전지 공정 자동화 전략</h3>
+                <p>
+                    전 세계적인 전기자동차 보급 확대와 에너지 저장 시스템(ESS) 수요 증가에 대응하기 위해,
+                    포스코DX는 이차전지 생산 공정의 고속화, 자동화, 품질 고도화에 집중하고 있습니다.
+                </p>
+                <ul class="list-group">
+                    <li><span class="highlight">수율 최적화</span> - AI 기반 공정 조건 분석으로 생산 수율 향상</li>
+                    <li><span class="highlight">원가 절감</span> - 자동화 로봇, IoT 센서 활용으로 원가 절감</li>
+                    <li><span class="highlight">품질 고도화</span> - 실시간 불량 검출 및 초기 개선</li>
+                    <li><span class="highlight">빠른 증설</span> - 신규 생산 라인 신속 구축 지원</li>
+                    <li><span class="highlight">글로벌 이차전지 기업 공략</span> - CATL, BYD 등 글로벌 기업 고객화</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-cloud"></i> 클라우드 및 AI 플랫폼 강화</h3>
+                <p>
+                    전통적인 온프레미스 중심에서 벗어나 클라우드 기반 SaaS 모델로의 전환을 추진하고,
+                    고도화된 AI 분석 기능을 통해 고객 가치를 극대화하는 전략을 진행 중입니다.
+                </p>
+                <ul class="list-group">
+                    <li><span class="highlight">멀티클라우드 지원</span> - AWS, Azure, GCP 등 주요 클라우드 플랫폼 네이티브 화</li>
+                    <li><span class="highlight">AI 고도화</span> - 생산 데이터 기반 머신러닝 모델 개발</li>
+                    <li><span class="highlight">SaaS 확대</span> - 기업용 클라우드 기반 MES/ERP 출시</li>
+                    <li><span class="highlight">API 전략</span> - 제3 소프트웨어와의 통합을 위한 개방형 API 확대</li>
+                    <li><span class="highlight">엣지 AI</span> - 실시간 현장 처리를 위한 엣지 컴퓨팅 투자</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-leaf"></i> 그린에너지 통합 관리 전략</h3>
+                <p>
+                    글로벌 탄소중립 흐름과 국내 재정 지원 정책에 대응하여, 신재생 에너지 발전 관리 및
+                    에너지 저장 시스템(ESS) 통합 관리 플랫폼을 신규 사업으로 확대하고 있습니다.
+                </p>
+                <ul class="list-group">
+                    <li><span class="highlight">태양광·풍력 모니터링</span> - 실시간 발전량 모니터링 및 예측</li>
+                    <li><span class="highlight">ESS 통합 관리</span> - 배터리 충방전 최적화 및 수명 관리</li>
+                    <li><span class="highlight">에너지 거래 플랫폼</span> - P2P 에너지 거래 및 블록체인 기술 접목</li>
+                    <li><span class="highlight">탄소 추적</span> - ESG 리포팅을 위한 Scope 1,2,3 탄소량 계산</li>
+                    <li><span class="highlight">VPP (Virtual Power Plant)</span> - 분산 에너지 통합 관리</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-globe"></i> 해외 시장 진출 전략</h3>
+                <p>
+                    국내 시장의 포화도 고려하여 동남아, 인도, 중동 등 신흥 산업국 시장 진출을 전략적으로 추진 중입니다.
+                </p>
+                <ul class="list-group">
+                    <li><span class="highlight">ASEAN 거점 확대</span> - 싱가포르, 태국, 베트남에 지역사무소 설립</li>
+                    <li><span class="highlight">현지 파트너 협력</span> - 현지 시스템 통합업체와의 협력</li>
+                    <li><span class="highlight">다국어 지원</span> - 한국, 중국, 영어 외 현지 언어 지원 강화</li>
+                    <li><span class="highlight">규제 대응</span> - 각 국가의 데이터 현지화, 개인정보보호 규정 준수</li>
+                    <li><span class="highlight">로컬라이제이션</span> - 현지 산업 특성에 맞춘 솔루션 개발</li>
+                </ul>
+            </div>
+
+            <div class="update-block">
+                <div class="update-icon"><i class="fas fa-bell"></i></div>
+                <div class="update-content">
+                    <div class="update-label">2026년 전략 목표</div>
+                    <div class="update-text">
+                        2026년 상반기 IT 아웃소싱 신규 수주 1,880억원 확보로 매출 안정화 추구.
+                        이차전지 DX 솔루션으로 신성장 동력 확보, AI 기반 예측 분석 서비스 상용화, 그린에너지 사업 본격화를 목표로 하고 있습니다.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: 재무 분석 -->
+        <section class="section" id="finance">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2 class="section-title">재무 분석</h2>
+                <span class="section-subtitle">재무 실적 및 회복 전망</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-chart-bar"></i> 최근 3년 재무 실적</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>2023년</th>
+                                <th>2024년</th>
+                                <th>2025년</th>
+                                <th>전년대비</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="highlight">매출</span></td>
+                                <td>1.4조 795억원</td>
+                                <td>1.4조 739억원</td>
+                                <td>1조 752억원</td>
+                                <td>-27.0%</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">영업이익</span></td>
+                                <td>1,089억원</td>
+                                <td>1,088억원</td>
+                                <td>604억원</td>
+                                <td>-44.6%</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">순이익</span></td>
+                                <td>880억원</td>
+                                <td>885억원</td>
+                                <td>526억원</td>
+                                <td>-40.6%</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">영업이익률</span></td>
+                                <td>7.8%</td>
+                                <td>7.4%</td>
+                                <td>5.6%</td>
+                                <td>-180bp</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">순이익률</span></td>
+                                <td>6.3%</td>
+                                <td>6.0%</td>
+                                <td>4.9%</td>
+                                <td>-110bp</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">매출 및 순이익 추이 (2023-2025, 단위: 억원)</h3>
+                <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+                    <!-- Grid -->
+                    <line x1="50" y1="250" x2="550" y2="250" stroke="var(--border)" stroke-width="1"/>
+                    <line x1="50" y1="200" x2="550" y2="200" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <line x1="50" y1="150" x2="550" y2="150" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <line x1="50" y1="100" x2="550" y2="100" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <line x1="50" y1="50" x2="550" y2="50" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <line x1="50" y1="250" x2="50" y2="30" stroke="var(--border)" stroke-width="1"/>
+
+                    <!-- Bars for 2023 (Magenta for revenue, Gold for profit) -->
+                    <rect x="80" y="115" width="25" height="135" fill="var(--gold)"/>
+                    <rect x="110" y="180" width="25" height="70" fill="var(--blue)"/>
+
+                    <!-- Bars for 2024 -->
+                    <rect x="180" y="120" width="25" height="130" fill="var(--gold)"/>
+                    <rect x="210" y="180" width="25" height="70" fill="var(--blue)"/>
+
+                    <!-- Bars for 2025 -->
+                    <rect x="280" y="165" width="25" height="85" fill="var(--gold)"/>
+                    <rect x="310" y="210" width="25" height="40" fill="var(--blue)"/>
+
+                    <!-- Labels -->
+                    <text x="100" y="270" text-anchor="middle" fill="var(--text-body)" font-size="12">2023년</text>
+                    <text x="200" y="270" text-anchor="middle" fill="var(--text-body)" font-size="12">2024년</text>
+                    <text x="300" y="270" text-anchor="middle" fill="var(--text-body)" font-size="12">2025년</text>
+
+                    <!-- Legend -->
+                    <rect x="400" y="60" width="12" height="12" fill="var(--gold)"/>
+                    <text x="420" y="70" fill="var(--text-body)" font-size="11">매출</text>
+
+                    <rect x="400" y="85" width="12" height="12" fill="var(--blue)"/>
+                    <text x="420" y="95" fill="var(--text-body)" font-size="11">순이익</text>
+
+                    <!-- Y-axis labels -->
+                    <text x="40" y="255" text-anchor="end" fill="var(--text-secondary)" font-size="10">0</text>
+                    <text x="40" y="105" text-anchor="end" fill="var(--text-secondary)" font-size="10">1조</text>
+                </svg>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-diagnoses"></i> 2025년 실적 부진 요인</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">매출 감소 (-27%)</span> - 주력 IT 아웃소싱 사업의 고객 감소, 프로젝트 완료에 따른 매출 감소</li>
+                    <li><span class="highlight">이익률 악화</span> - 고정비 감소 미흡, 신사업 투자 비용 증가로 인한 이익률 악화</li>
+                    <li><span class="highlight">주요 고객사의 DX 투자 위축</span> - 국내 경기 둔화, 기업들의 IT 예산 감축</li>
+                    <li><span class="highlight">가격 경쟁 심화</span> - 경쟁사와의 치열한 가격 경쟁으로 마진율 하락</li>
+                    <li><span class="highlight">신사업 성과 미흡</span> - 이차전지, 클라우드 등 신사업 매출화 지연</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-arrow-trend-up"></i> 2026년 이후 회복 전망</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">IT 아웃소싱 신규 수주</span> - 1,880억원 규모 대규모 수주로 매출 기반 재구축</li>
+                    <li><span class="highlight">이차전지 DX 솔루션 매출화</span> - SK, LG, POSCO 등 주요 전지업체 고객화로 신규 매출 창출</li>
+                    <li><span class="highlight">마진율 개선</span> - 고부가가치 AI/클라우드 서비스 비중 확대</li>
+                    <li><span class="highlight">해외 사업 성과</span> - 동남아 시장 진출 본격화로 국제 매출 비중 확대</li>
+                    <li><span class="highlight">그린에너지 신사업 출발</span> - 태양광, ESS 관리 시스템 상용화로 신성장 시장 진입</li>
+                    <li><span class="highlight">예상 성장률</span> - 2026년 이후 연 15-20% 매출 성장 기대</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-key"></i> 재무 건전성 지표</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>지표</th>
+                                <th>2025년</th>
+                                <th>평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="highlight">부채비율</span></td>
+                                <td>45-50%</td>
+                                <td>건전 수준</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">유동비율</span></td>
+                                <td>150%</td>
+                                <td>양호</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">자기자본비율</span></td>
+                                <td>약 65%</td>
+                                <td>우수</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">ROE</span></td>
+                                <td>약 8.5%</td>
+                                <td>중하</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight">ROA</span></td>
+                                <td>약 5.0%</td>
+                                <td>개선 필요</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: 결론 및 투자 의견 -->
+        <section class="section" id="conclusion">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2 class="section-title">결론 및 투자 의견</h2>
+                <span class="section-subtitle">포스코DX의 투자 가치 평가</span>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-lightbulb"></i> 종합 평가</h3>
+                <p style="font-size: 1.05rem; line-height: 1.9;">
+                    포스코DX는 2025년 실적 부진으로 어려움을 겪고 있지만, 장기적으로는 <span class="highlight">한국 산업용 DX 시장의 성장과 이차전지, 그린에너지 등 신성장 분야에서 높은 기회</span>를 보유하고 있습니다.
+                    POSCO라는 안정적인 모기업의 지원, 30년의 산업 경험, 차별화된 기술 역량은 경쟁력 있는 자산입니다.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-plus-circle"></i> 긍정적 요인</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">시장 성장 확실성</span> - 2026년 이후 국내 DX 시장 연 12-15% 성장 예상</li>
+                    <li><span class="highlight">신사업 기회</span> - 이차전지, 반도체, 그린에너지 등 수 조원 규모 신시장 진입 가능</li>
+                    <li><span class="highlight">IT 아웃소싱 회복</span> - 1,880억원 신규 수주로 매출 안정화 추구</li>
+                    <li><span class="highlight">기술 혁신 가속</span> - AI, 클라우드, 엣지 컴퓨팅 투자 확대</li>
+                    <li><span class="highlight">POSCO 지원</span> - 모기업의 자본·기술 지원으로 경쟁력 강화</li>
+                    <li><span class="highlight">ESG 트렌드</span> - 저탄소 생산, 에너지 효율화 수요 급증</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-minus-circle"></i> 부정적 요인</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">연속 실적 부진</span> - 2025년 매출 -27%, 순이익 -40.6%의 심각한 감소</li>
+                    <li><span class="highlight">클라우드 경쟁력 약화</span> - 삼성SDS, SK C&C 대비 클라우드 역량 격차</li>
+                    <li><span class="highlight">글로벌 기업 경쟁</span> - SAP, Oracle, AWS 등 대형 글로벌 기업의 시장 침투</li>
+                    <li><span class="highlight">경기 순환 민감도</span> - 경제 침체 시 기업의 DX 투자 위축 가능성</li>
+                    <li><span class="highlight">해외 진출 미약</span> - 국제 매출 비중 낮음 (약 10% 미만)</li>
+                    <li><span class="highlight">인력 수급 어려움</span> - AI, 클라우드 전문 인력 부족</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-chart-line"></i> 투자 의견</h3>
+                <div style="background: var(--gold-glow); border-left: 4px solid var(--gold); padding: 1.5rem; border-radius: 6px; margin: 1.5rem 0;">
+                    <p style="color: var(--ink); font-weight: 600; margin-bottom: 0.5rem;">평가 등급: HOLD (중립)</p>
+                    <p style="color: var(--text-body); font-size: 0.95rem;">
+                        포스코DX는 <span class="highlight">단기적으로는 부진이 지속될 수 있지만, 2026년 중반 이후 회복 모멘텀</span>을 기대할 수 있습니다.
+                        현재 주가는 2025년 실적 부진을 반영한 저평가 상태로 보이나, 회복 시점과 속도의 불확실성이 존재합니다.
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">단기 (6-12개월)</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            실적 부진 극복 시간 필요. IT 아웃소싱 수주 성과, 신사업 매출화 진행 상황 모니터링 필수.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem;">
+                        <h4 style="color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;">중기 (12-24개월)</h4>
+                        <p style="color: var(--text-body); font-size: 0.9rem;">
+                            이차전지 DX, 그린에너지 사업 성과 기대. 클라우드·AI 역량 강화 결과 도출 필요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3><i class="fas fa-eye"></i> 주의 사항</h3>
+                <ul class="list-group">
+                    <li><span class="highlight">경기 변동성 모니터링</span> - 글로벌 경제 침체 시 DX 투자 축소 가능</li>
+                    <li><span class="highlight">경쟁 심화 추적</span> - 글로벌 IT 대형사의 한국 시장 진출 가속화 주시</li>
+                    <li><span class="highlight">기술 혁신 추진력</span> - AI, 클라우드 기술 개발 성과 점검</li>
+                    <li><span class="highlight">신사업 성장성</span> - 이차전지, 그린에너지 사업 매출 달성 여부 중요</li>
+                    <li><span class="highlight">해외 진출 성과</span> - 국제 시장 확대 전략의 실질적 결과 평가</li>
+                </ul>
+            </div>
+
+            <div class="update-block" style="margin-top: 2rem;">
+                <div class="update-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="update-content">
+                    <div class="update-label">투자 결정 시 고려 사항</div>
+                    <div class="update-text">
+                        본 리포트는 2026년 4월 23일 공개 정보를 기반으로 작성되었습니다.
+                        포스코DX에 대한 투자 판단은 개인의 투자 목표, 위험 선호도, 투자 기간을 고려하여 신중하게 결정하시기 바랍니다.
+                        정기적인 실적 발표, 경영진 가이던스, 시장 리포트 등을 통해 최신 정보를 수집하여 투자 판단을 갱신해야 합니다.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-certificate" style="color: var(--gold); margin-right: 0.5rem;"></i> FLOVAH Insights</h4>
+                    <p>
+                        FLOVAH Insights는 기업과 시장에 대한 깊이 있는 분석 리포트를 제공합니다.
+                        데이터 기반의 투명하고 객관적인 분석을 통해 투자자들에게 가치 있는 인사이트를 제공하고자 합니다.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-info-circle" style="color: var(--gold); margin-right: 0.5rem;"></i> 리포트 정보</h4>
+                    <p>
+                        <strong>회사명:</strong> 포스코DX<br>
+                        <strong>종목코드:</strong> 022100 (KOSPI)<br>
+                        <strong>시가총액:</strong> ~4.9조원<br>
+                        <strong>보고서 작성일:</strong> 2026년 4월 23일
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-exclamation-triangle" style="color: var(--gold); margin-right: 0.5rem;"></i> 면책 조항</h4>
+                    <p>
+                        본 리포트는 공개 정보를 기반으로 작성되었습니다.
+                        투자 권고가 아니며, 개인의 투자 결정은 신중하게 판단하시기 바랍니다.
+                        시장 변동성과 회사 실적 변화에 따라 분석 내용이 변경될 수 있습니다.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-credit">
+                    <i class="fas fa-copyright"></i> 2026 <strong>FLOVAH Insights</strong> - All Rights Reserved
+                </div>
+                <div class="last-update">
+                    <i class="fas fa-clock"></i>
+                    <span id="last-update-time">2026년 04월 23일 09:00 KST</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active link indicator
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 150) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.style.color = 'var(--gold)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

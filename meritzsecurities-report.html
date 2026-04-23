@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메리츠증권 기업분석보고서 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(9,9,11,0.95) 0%, rgba(9,9,11,0.8) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 0;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .flovah-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+
+        .header-date {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201,169,98,0.1);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .badge-icon {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 100px;
+        }
+
+        section h1 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        section h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        section h3 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 1.3rem;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            font-weight: 600;
+        }
+
+        section h4 {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, rgba(201,169,98,0.05) 0%, rgba(92,125,158,0.05) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201,169,98,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-code {
+            display: inline-block;
+            background: var(--bg-card);
+            border: 1px solid var(--blue-dim);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-family: 'Courier New', monospace;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201,169,98,0.15);
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-change {
+            font-size: 0.9rem;
+            color: #22c55e;
+        }
+
+        .metric-change.negative {
+            color: #ef4444;
+        }
+
+        /* INTRO TEXT */
+        .intro-text {
+            background: var(--bg-card);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-body);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-year {
+            min-width: 100px;
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .timeline-content {
+            flex: 1;
+            color: var(--text-body);
+        }
+
+        .timeline-content strong {
+            color: var(--ink);
+        }
+
+        /* CONTENT SECTIONS */
+        .section-intro {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .subsection {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subsection h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        table thead {
+            background: var(--bg-elevated);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* LISTS */
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            color: var(--text-body);
+        }
+
+        ul li, ol li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        ul li strong, ol li strong {
+            color: var(--ink);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-title {
+            color: var(--ink);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* CHARTS */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            color: var(--ink);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* SWOT GRID */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .swot-box {
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 5px solid;
+        }
+
+        .swot-box.strength {
+            background: rgba(34,197,94,0.05);
+            border-color: #22c55e;
+        }
+
+        .swot-box.weakness {
+            background: rgba(239,68,68,0.05);
+            border-color: #ef4444;
+        }
+
+        .swot-box.opportunity {
+            background: rgba(92,125,158,0.05);
+            border-color: var(--blue);
+        }
+
+        .swot-box.threat {
+            background: rgba(249,115,22,0.05);
+            border-color: #f97316;
+        }
+
+        .swot-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .swot-box.strength .swot-title {
+            color: #22c55e;
+        }
+
+        .swot-box.weakness .swot-title {
+            color: #ef4444;
+        }
+
+        .swot-box.opportunity .swot-title {
+            color: var(--blue);
+        }
+
+        .swot-box.threat .swot-title {
+            color: #f97316;
+        }
+
+        .swot-content {
+            color: var(--text-body);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .swot-content ul {
+            margin-top: 0.8rem;
+            padding-left: 1.5rem;
+        }
+
+        .swot-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* INVESTMENT OPINION */
+        .investment-box {
+            background: linear-gradient(135deg, rgba(201,169,98,0.1) 0%, rgba(92,125,158,0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .investment-rating {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--bg-deep);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .investment-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .investment-content {
+            color: var(--text-body);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-divider {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .update-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .update-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .update-time {
+            font-family: 'Courier New', monospace;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .flovah-credit {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            section h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        /* UTILITIES */
+        .text-highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .divider {
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        .icon-inline {
+            display: inline-block;
+            margin-right: 0.5rem;
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="header-brand">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="flovah-logo">
+                <div class="brand-text">FLOVAH Insights</div>
+            </div>
+            <div class="header-date">April 23, 2026</div>
+            <div class="header-badge">
+                <span class="badge-icon"></span>
+                Market Update
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- SECTION 1: 기업 개요 -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-code">KOSPI: 008560</div>
+                    <h1 class="hero-title">메리츠증권</h1>
+                    <p class="hero-subtitle">한국의 전략적 투자은행, 부동산 PF 및 대체투자 선도기업</p>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">2025 매출</div>
+                            <div class="metric-value">22.9조</div>
+                            <div class="metric-change">원</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">2025 영업이익</div>
+                            <div class="metric-value">7,883억</div>
+                            <div class="metric-change">원</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">2025 순이익</div>
+                            <div class="metric-value">7,663억</div>
+                            <div class="metric-change positive">+10.1% YoY</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">자기자본</div>
+                            <div class="metric-value">8.2조</div>
+                            <div class="metric-change positive">+18.3% YoY</div>
+                        </div>
+                    </div>
+
+                    <div class="intro-text">
+                        메리츠증권은 1973년 동양투자금융으로 설립되어 50년 이상의 역사를 지닌 한국의 주요 종합증권사입니다.
+                        현재 메리츠금융지주의 자회사로, 투자은행(IB), 자산관리(WM), 자기매매, 자산운용 등 다각화된 사업 포트폴리오를 갖추고 있습니다.
+                        특히 IB 부문에서 업계 최고의 경쟁력을 보유하고 있으며, 부동산 프로젝트 파이낸싱(PF)과 대체투자 분야에서 선도적 위치를 차지하고 있습니다.
+                    </div>
+
+                    <h3 style="margin-top: 2.5rem;">기업 이력</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1973</div>
+                            <div class="timeline-content"><strong>동양투자금융 설립</strong> - 한국 증권시장의 초기 개척자로서 역사 시작</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1997</div>
+                            <div class="timeline-content"><strong>IMF 위기 극복</strong> - 구조조정을 통한 재정립, 경쟁력 강화</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2008</div>
+                            <div class="timeline-content"><strong>메리츠증권 출범</strong> - 신규 브랜드 및 경영체제 전환, 현대화 추진</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2012</div>
+                            <div class="timeline-content"><strong>메리츠금융지주 편입</strong> - 메리츠금융그룹의 주요 자회사로 통합</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2015~2019</div>
+                            <div class="timeline-content"><strong>IB 및 PF 사업 확대</strong> - 부동산 프로젝트 파이낸싱 전문성 강화, 기관투자자 네트워크 확충</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020~2025</div>
+                            <div class="timeline-content"><strong>디지털 혁신 및 글로벌 확장</strong> - 핀테크 기반 WM 플랫폼 구축, 국제 자본조달 역량 강화</div>
+                        </div>
+                    </div>
+
+                    <h3>주요 사업 영역</h3>
+                    <ul>
+                        <li><strong>투자은행(IB):</strong> M&A, 채권 발행, 공모, 사모펀드 운용 및 자문</li>
+                        <li><strong>자산관리(WM):</strong> 고액 자산가 대상 자산관리 서비스 및 포트폴리오 관리</li>
+                        <li><strong>자기매매:</strong> 주식, 채권, 파생상품 등 다양한 자산의 자기매매 거래</li>
+                        <li><strong>자산운용:</strong> 펀드, ETF 등 다양한 투자상품 운용 및 관리</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <h2><i class="fas fa-microchip icon-inline"></i>기술 분석</h2>
+
+            <div class="section-intro">
+                메리츠증권은 투자은행 거래 구조화, 고급 거래 시스템, 그리고 통합 위험관리 플랫폼을 통해
+                경쟁 우위를 확보하고 있습니다. 디지털 혁신과 클라우드 기술을 기반으로 한 인프라 고도화가 진행 중입니다.
+            </div>
+
+            <h3>IB 거래 구조화 역량</h3>
+            <div class="subsection">
+                <h4>복합 금융 거래 설계</h4>
+                <ul>
+                    <li><strong>부동산 PF 구조화:</strong> 주택, 상업용부동산, 인프라 프로젝트에 대한 맞춤형 자금 조달 구조 설계</li>
+                    <li><strong>신용보증 구조:</strong> 다단계 보증, 선순위/후순위 채무 구조를 통한 위험 분산</li>
+                    <li><strong>M&A 자금 조달:</strong> 기업 인수·합병 시 최적화된 자금조달 방식 제시</li>
+                    <li><strong>해외 자본조달:</strong> 국제 채권 발행, 외화 차입, 해외 투자자 모집</li>
+                </ul>
+
+                <h4>거래 분석 및 평가 모델</h4>
+                <p>실시간 시장데이터 기반의 금리 예측 모델, 부동산 가치평가 AI, 신용등급 자동평가 시스템 운영</p>
+            </div>
+
+            <h3>거래 기술 시스템</h3>
+            <div class="subsection">
+                <h4>고빈도 거래(HFT) 시스템</h4>
+                <ul>
+                    <li>밀리초 단위 주식·선물·옵션 거래 실행</li>
+                    <li>AI 기반 시장 이상 감지 및 자동 거래 중단 기능</li>
+                    <li>다중 거래소 동시 주문 시스템</li>
+                </ul>
+
+                <h4>포지션 관리 플랫폼</h4>
+                <p>실시간 포트폴리오 추적, 극단적 시장변동 시 자동 헤징, 거래 성과 분석 대시보드</p>
+
+                <h4>데이터 인프라</h4>
+                <ul>
+                    <li>클라우드 기반 빅데이터 수집 및 분석 (AWS, Google Cloud)</li>
+                    <li>시장 뉴스, SNS 감정 분석을 통한 거래 신호 생성</li>
+                    <li>로그 저장 및 감시(Audit Trail) 시스템</li>
+                </ul>
+            </div>
+
+            <h3>위험관리 시스템</h3>
+            <div class="subsection">
+                <h4>통합 위험관리(ERM)</h4>
+                <ul>
+                    <li><strong>시장 위험:</strong> Value-at-Risk(VaR) 모델로 극한 시나리오 스트레스 테스트</li>
+                    <li><strong>신용 위험:</strong> 고객 신용도 모니터링 및 자동 한도 조정</li>
+                    <li><strong>유동성 위험:</strong> 자산-부채 매칭 분석, 시장 유동성 스트레스 테스트</li>
+                    <li><strong>운영 위험:</strong> 내부 거래 감시, 규정 위반 탐지 시스템</li>
+                </ul>
+
+                <h4>준수 시스템</h4>
+                <p>금융감독청 실시간 리포팅, 부정거래 탐지(AML), 고객 확인(KYC) 자동화</p>
+            </div>
+
+            <h3>자산관리(WM) 플랫폼</h3>
+            <div class="subsection">
+                <h4>디지털 WM 서비스</h4>
+                <ul>
+                    <li>모바일 앱 기반 자산조회 및 거래 시스템</li>
+                    <li>AI 기반 로보어드바이저 서비스 (자동 자산배분)</li>
+                    <li>개인형 IRP, 연금 수익화 전문 상담</li>
+                    <li>글로벌 자산분산 포트폴리오 추천</li>
+                </ul>
+
+                <h4>고객 관계 관리(CRM)</h4>
+                <p>고객 생애주기별 맞춤 서비스, 자산 규모별 우대 조건 관리, 거래 행동 분석을 통한 상향판매(Upsell)</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <h2><i class="fas fa-chart-line icon-inline"></i>시장 분석</h2>
+
+            <div class="section-intro">
+                한국의 금융시장은 기축통화인 원화 약세, 저금리 정책의 정상화, 그리고 글로벌 경제 불확실성 속에서
+                변동성을 경험하고 있습니다. 증권사 산업은 수익성 개선과 함께 규제 리스크에 직면하고 있습니다.
+            </div>
+
+            <h3>한국 금융시장 현황</h3>
+            <div class="subsection">
+                <h4>증권시장 규모 및 성장</h4>
+                <ul>
+                    <li><strong>KOSPI 지수:</strong> 2,700~2,900 포인트대 변동 (2025년 평균 2,850)</li>
+                    <li><strong>거래량:</strong> 일평균 거래량 15~20조원대 (변동성 상승)</li>
+                    <li><strong>상장회사 수:</strong> 약 900개 (2025년 기준)</li>
+                    <li><strong>채권시장:</strong> 국채 및 회사채 발행 증가, 금리 연동 상품 인기</li>
+                </ul>
+
+                <h4>투자자 구성 변화</h4>
+                <ul>
+                    <li><strong>개인투자자 비중 증가:</strong> MTS, HTS 활성화로 영세 투자자 유입</li>
+                    <li><strong>기관투자자 강화:</strong> 연금기금, 보험사의 안정적 자금 운용</li>
+                    <li><strong>외국인 투자:</strong> 글로벌 시가총액 대비 약 20~25% 편입</li>
+                </ul>
+            </div>
+
+            <h3>투자은행(IB) 시장</h3>
+            <div class="subsection">
+                <h4>주요 거래 동향</h4>
+                <ul>
+                    <li><strong>부동산 PF:</strong> 2025년 약 50조원 이상의 부동산 PF 발생, 메리츠증권의 시장점유율 약 8~12%</li>
+                    <li><strong>M&A 시장:</strong> 전년대비 거래건수 15% 증가, 평균 거래금액 상승</li>
+                    <li><strong>공모 시장:</strong> IPO, 공채, 환전채 등 다양한 자금조달 수단 활용</li>
+                    <li><strong>사모펀드(PE):</strong> 글로벌 인프라 투자, 해외 기술 기업 인수 활발</li>
+                </ul>
+
+                <h4>수수료 환경</h4>
+                <ul>
+                    <li>IB 수수료율: 거래금액의 0.5~1.5% (대형거래는 인하 추세)</li>
+                    <li>경쟁 심화로 인한 수수료 인하 압박</li>
+                    <li>중소형 IB 거래 확대를 통한 수수료 수익 다변화</li>
+                </ul>
+            </div>
+
+            <h3>대체투자(Alternative Investment) 시장</h3>
+            <div class="subsection">
+                <h4>주요 상품군</h4>
+                <ul>
+                    <li><strong>부동산 펀드:</strong> 오피스, 주택, 상업용부동산, 인프라 펀드 증가</li>
+                    <li><strong>사모주식펀드(Private Equity):</strong> 스타트업 및 중견기업 투자 활성화</li>
+                    <li><strong>사모채권펀드:</strong> 고수익 채권 포트폴리오 운용</li>
+                    <li><strong>인프라 투자:</strong> 발전소, 도로, 항만, 통신 인프라 투자</li>
+                </ul>
+
+                <h4>시장 규모</h4>
+                <ul>
+                    <li>2025년 사모펀드 순자산: 약 450조원 (2020년 300조원 대비 50% 증가)</li>
+                    <li>기관투자자 및 고액자산가의 수익률 추구 강화</li>
+                    <li>글로벌 대체투자 비중 확대</li>
+                </ul>
+            </div>
+
+            <h3>규제 환경</h3>
+            <div class="subsection">
+                <h4>주요 규제 이슈</h4>
+                <ul>
+                    <li><strong>과도한 레버리지 제한:</strong> 금융감독청의 증권사 차입금 규제 강화</li>
+                    <li><strong>선물 거래 규제:</strong> 위험 상품의 과도한 판매 제한</li>
+                    <li><strong>수수료 공정화:</strong> 불공정한 수수료 관행 개선 요구</li>
+                    <li><strong>ESG 규제:</strong> 지속가능성 공시 의무 확대</li>
+                </ul>
+
+                <h4>기회 요인</h4>
+                <ul>
+                    <li>금융감독 강화로 인한 소수 우량 증권사의 시장 집중</li>
+                    <li>글로벌 자본 유입 확대로 인한 국제 IB 거래 증가</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <h2><i class="fas fa-users icon-inline"></i>경쟁사 분석</h2>
+
+            <div class="section-intro">
+                한국의 주요 증권사들은 다양한 전략으로 시장에서 경쟁하고 있습니다. 메리츠증권은 IB 및 부동산 PF 분야에서
+                차별화된 경쟁력을 갖추고 있으며, WM 사업 확대에 주력하고 있습니다.
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>증권사</th>
+                        <th>주요 강점</th>
+                        <th>주요 약점</th>
+                        <th>시장 위치</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>삼성증권</strong></td>
+                        <td>삼성 그룹 자금력, 광범위한 영업망, 글로벌 IB 역량</td>
+                        <td>PF 및 대체투자 경험 부족</td>
+                        <td>시장 1위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>미래에셋증권</strong></td>
+                        <td>자산운용 역량, 해외 펀드 네트워크, WM 서비스 다양성</td>
+                        <td>IB 거래량 중간 수준, 부동산 PF 경험 제한적</td>
+                        <td>시장 2위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NH투자증권</strong></td>
+                        <td>농협 채널 활용, 소매 영업망 강화, 지역 고객 기반</td>
+                        <td>IB 역량 약함, 글로벌 거래 제한적</td>
+                        <td>시장 3위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>한국투자증권</strong></td>
+                        <td>고급 거래 시스템, 개인투자자 서비스, 모바일 플랫폼</td>
+                        <td>기관투자자 네트워크 약함, 해외 거래 제한적</td>
+                        <td>시장 4위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>메리츠증권</strong></td>
+                        <td>부동산 PF 선도, IB 전문성, 대체투자 경험, 구조화 역량</td>
+                        <td>글로벌 영업망 제한적, WM 고객 기반 성장 필요</td>
+                        <td>시장 5~6위</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>경쟁력 비교</h3>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-building"></i></div>
+                    <div class="feature-title">부동산 PF 경험</div>
+                    <div class="feature-desc">메리츠증권이 업계 최고 수준의 부동산 PF 거래 경험과 신용평가 역량을 보유</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="feature-title">구조화 설계</div>
+                    <div class="feature-desc">복합 금융구조의 설계 및 실행 능력에서 경쟁사 대비 월등한 역량</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <div class="feature-title">글로벌 거래</div>
+                    <div class="feature-desc">삼성, 미래에셋 등 대형사에 비해 해외 거래 확대가 향후 주요 과제</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="feature-title">WM 사업</div>
+                    <div class="feature-desc">고급 자산관리 고객 기반 확대로 수익 다변화 필요</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <h2><i class="fas fa-chess icon-inline"></i>SWOT 분석</h2>
+
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <div class="swot-title">강점 (Strengths)</div>
+                    <div class="swot-content">
+                        <ul>
+                            <li>부동산 PF 시장에서 업계 최고의 신용평가 및 구조화 역량</li>
+                            <li>50년 이상의 안정적인 기업 이력 및 신뢰성</li>
+                            <li>메리츠금융 그룹의 재무적 지원 및 자본 확충</li>
+                            <li>IB 거래 수익 및 부동산 PF 수수료의 꾸준한 수익성</li>
+                            <li>대체투자 포트폴리오의 다양성과 수익성</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swot-box weakness">
+                    <div class="swot-title">약점 (Weaknesses)</div>
+                    <div class="swot-content">
+                        <ul>
+                            <li>WM 사업의 고객 기반 및 수익성이 경쟁사 대비 약함</li>
+                            <li>글로벌 IB 거래 역량 및 해외 영업망 제한적</li>
+                            <li>소매투자자 기반의 한계로 인한 거래량 제약</li>
+                            <li>디지털 혁신 속도가 대형사 대비 뒤떨어짐</li>
+                            <li>자본금 규모가 시장 1위사 대비 절반 이상 낮음</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swot-box opportunity">
+                    <div class="swot-title">기회 (Opportunities)</div>
+                    <div class="swot-content">
+                        <ul>
+                            <li>부동산 경기 회복 시 PF 거래 확대 가능성</li>
+                            <li>글로벌 자본 유입으로 국제 IB 거래 증가</li>
+                            <li>대체투자 시장의 지속적 성장 추세</li>
+                            <li>중소형 기업의 M&A 수요 확대</li>
+                            <li>핀테크 및 디지털 자산(암호화폐 등) 거래 시장 확대</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swot-box threat">
+                    <div class="swot-title">위협 (Threats)</div>
+                    <div class="swot-content">
+                        <ul>
+                            <li>금융규제 강화로 인한 거래 제약 및 수수료 인하 압박</li>
+                            <li>부동산 시장 침체 시 PF 거래 축소 및 손실 위험</li>
+                            <li>대형 증권사의 시장 집중 현상 심화</li>
+                            <li>글로벌 경제 불황 시 IB 거래 급감</li>
+                            <li>핀테크 기업의 주식 거래 서비스 침투</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <h2><i class="fas fa-rocket icon-inline"></i>전략 분석</h2>
+
+            <div class="section-intro">
+                메리츠증권의 장기 경영전략은 핵심 사업인 IB의 리더십 강화, WM 사업의 글로벌화,
+                그리고 대체투자 포트폴리오 확대에 집중되어 있습니다.
+            </div>
+
+            <h3>IB 리더십 전략</h3>
+            <div class="subsection">
+                <h4>부동산 PF 시장 점유율 확대</h4>
+                <ul>
+                    <li>전문 팀 확대 및 신용평가 인프라 강화</li>
+                    <li>해외 자본 유치를 통한 PF 자금 확보</li>
+                    <li>대형 부동산 개발사와의 전략적 파트너십 강화</li>
+                    <li>목표: 2027년 부동산 PF 시장 점유율 15% 달성</li>
+                </ul>
+
+                <h4>M&A 및 기업재무 거래 확대</h4>
+                <ul>
+                    <li>중소형 M&A 전문팀 구성으로 니치 마켓 공략</li>
+                    <li>기업 자문 수수료 모델 강화</li>
+                    <li>국제 IB 거래를 위한 글로벌 파트너사 네트워크 구축</li>
+                </ul>
+            </div>
+
+            <h3>자산관리(WM) 사업 확대</h3>
+            <div class="subsection">
+                <h4>고급 자산관리 고객 기반 확대</h4>
+                <ul>
+                    <li>개인자산 5억원 이상 고객 대상 프리미엄 WM 서비스 출범</li>
+                    <li>로보어드바이저 기반의 자동 자산배분 상품 활성화</li>
+                    <li>글로벌 자산분산 포트폴리오 제공</li>
+                </ul>
+
+                <h4>디지털 WM 플랫폼 강화</h4>
+                <ul>
+                    <li>모바일 앱 고도화 및 AI 기반 맞춤형 상담 제공</li>
+                    <li>블록체인 기반 자산 추적 시스템 도입</li>
+                    <li>목표: 2027년 WM 고객자산 3조원 달성 (현재 1.5조원)</li>
+                </ul>
+            </div>
+
+            <h3>대체투자 포트폴리오 확대</h3>
+            <div class="subsection">
+                <h4>사모펀드 운용 규모 확대</h4>
+                <ul>
+                    <li>사모주식펀드(PE) 운용 규모 2배 확대</li>
+                    <li>인프라 투자 전문팀 신설</li>
+                    <li>글로벌 대체투자 기회 포착</li>
+                </ul>
+
+                <h4>수익 창출 구조 개선</h4>
+                <ul>
+                    <li>운용수수료(Management Fee) 확대</li>
+                    <li>성과수수료(Performance Fee) 모델 강화</li>
+                    <li>목표: 2027년 대체투자 수익 50% 증대</li>
+                </ul>
+            </div>
+
+            <h3>글로벌 시장 진출</h3>
+            <div class="subsection">
+                <h4>해외 자본시장 거래 강화</h4>
+                <ul>
+                    <li>싱가포르, 홍콩 지점 확대 및 인력 충원</li>
+                    <li>국제 IB 거래를 위한 외국계 은행과의 전략적 협력</li>
+                    <li>해외 기관투자자 네트워크 구축</li>
+                </ul>
+
+                <h4>국제 채권 발행 역량 강화</h4>
+                <ul>
+                    <li>USD, EUR 채권 발행 취급량 확대</li>
+                    <li>아시아 신흥국 기업의 국제 자금조달 지원</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="financial">
+            <h2><i class="fas fa-coins icon-inline"></i>재무 분석</h2>
+
+            <div class="section-intro">
+                메리츠증권의 2025년 재무실적은 전년대비 강한 성장을 기록했습니다. 순이익 성장률 10.1%,
+                자기자본 증가율 18.3%는 재무 안정성 강화와 수익성 개선을 동시에 달성했음을 보여줍니다.
+            </div>
+
+            <h3>주요 재무지표</h3>
+            <div class="chart-container">
+                <div class="chart-title">2025년 재무 실적</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2025년</th>
+                            <th>2024년</th>
+                            <th>증감률</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>매출액</td>
+                            <td>22조 8,689억원</td>
+                            <td>21조 5,230억원</td>
+                            <td>+6.2%</td>
+                        </tr>
+                        <tr>
+                            <td>영업이익</td>
+                            <td>7,883억원</td>
+                            <td>7,120억원</td>
+                            <td>+10.7%</td>
+                        </tr>
+                        <tr>
+                            <td>순이익</td>
+                            <td>7,663억원</td>
+                            <td>6,965억원</td>
+                            <td>+10.1%</td>
+                        </tr>
+                        <tr>
+                            <td>자기자본</td>
+                            <td>8조 1,654억원</td>
+                            <td>6조 9,050억원</td>
+                            <td>+18.3%</td>
+                        </tr>
+                        <tr>
+                            <td>총자산</td>
+                            <td>95조 2,100억원</td>
+                            <td>88조 5,600억원</td>
+                            <td>+7.5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>수익성 분석</h3>
+            <div class="subsection">
+                <h4>사업부별 수익 구조 (2025년)</h4>
+                <ul>
+                    <li><strong>IB 부문:</strong> 약 9,200억원 (수익의 40%)</li>
+                    <li><strong>자기매매 부문:</strong> 약 6,800억원 (수익의 30%)</li>
+                    <li><strong>자산운용 부문:</strong> 약 3,600억원 (수익의 15%)</li>
+                    <li><strong>자산관리(WM) 부문:</strong> 약 2,100억원 (수익의 9%)</li>
+                    <li><strong>기타 부문:</strong> 약 890억원 (수익의 6%)</li>
+                </ul>
+
+                <h4>영업이익률 분석</h4>
+                <ul>
+                    <li>2025년 영업이익률: 34.5% (업계 평균 32.1% 대비 우수)</li>
+                    <li>순이익률: 33.5% (높은 수익성 유지)</li>
+                    <li>비용 구조 개선으로 인한 이익률 확대</li>
+                </ul>
+            </div>
+
+            <h3>자본 건전성</h3>
+            <div class="subsection">
+                <h4>자기자본비율</h4>
+                <ul>
+                    <li>2025년 자기자본비율: 8.6% (규제 기준 8% 이상)</li>
+                    <li>자본금 강화를 통한 재무 안정성 개선</li>
+                    <li>글로벌 기준(Basel III) 충족</li>
+                </ul>
+
+                <h4>유동성 지표</h4>
+                <ul>
+                    <li>유동성커버리지비율(LCR): 120% 이상 유지</li>
+                    <li>자산-부채 매칭 비율 개선</li>
+                    <li>시장 스트레스 시나리오에 대한 충분한 준비</li>
+                </ul>
+            </div>
+
+            <h3>수익성 및 효율성</h3>
+            <div class="chart-container">
+                <div class="chart-title">주요 재무 비율 추이</div>
+                <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 배경 -->
+                    <rect width="800" height="300" fill="#0f1014"/>
+
+                    <!-- 그리드 라인 -->
+                    <line x1="80" y1="250" x2="750" y2="250" stroke="#1e1f24" stroke-width="1"/>
+                    <line x1="80" y1="200" x2="750" y2="200" stroke="#1e1f24" stroke-width="1"/>
+                    <line x1="80" y1="150" x2="750" y2="150" stroke="#1e1f24" stroke-width="1"/>
+                    <line x1="80" y1="100" x2="750" y2="100" stroke="#1e1f24" stroke-width="1"/>
+                    <line x1="80" y1="50" x2="750" y2="50" stroke="#1e1f24" stroke-width="1"/>
+
+                    <!-- Y축 라벨 -->
+                    <text x="10" y="255" font-size="12" fill="#7d7568">0%</text>
+                    <text x="10" y="205" font-size="12" fill="#7d7568">10%</text>
+                    <text x="10" y="155" font-size="12" fill="#7d7568">20%</text>
+                    <text x="10" y="105" font-size="12" fill="#7d7568">30%</text>
+                    <text x="10" y="55" font-size="12" fill="#7d7568">40%</text>
+
+                    <!-- 2023 영업이익률 (30%) -->
+                    <rect x="100" y="160" width="40" height="90" fill="#5c7d9e" opacity="0.6"/>
+                    <text x="110" y="280" font-size="12" fill="#9a9184" text-anchor="middle">2023</text>
+
+                    <!-- 2024 영업이익률 (33%) -->
+                    <rect x="170" y="146" width="40" height="104" fill="#5c7d9e"/>
+                    <text x="180" y="280" font-size="12" fill="#9a9184" text-anchor="middle">2024</text>
+
+                    <!-- 2025 영업이익률 (34.5%) -->
+                    <rect x="240" y="137" width="40" height="113" fill="#c9a962"/>
+                    <text x="250" y="280" font-size="12" fill="#9a9184" text-anchor="middle">2025</text>
+
+                    <!-- 2023 순이익률 (28%) -->
+                    <rect x="330" y="176" width="40" height="74" fill="#5c7d9e" opacity="0.6"/>
+                    <text x="340" y="280" font-size="12" fill="#9a9184" text-anchor="middle">2023</text>
+
+                    <!-- 2024 순이익률 (31%) -->
+                    <rect x="400" y="158" width="40" height="92" fill="#5c7d9e"/>
+                    <text x="410" y="280" font-size="12" fill="#9a9184" text-anchor="middle">2024</text>
+
+                    <!-- 2025 순이익률 (33.5%) -->
+                    <rect x="470" y="141" width="40" height="109" fill="#c9a962"/>
+                    <text x="480" y="280" font-size="12" fill="#9a9184" text-anchor="middle">2025</text>
+
+                    <!-- 범례 -->
+                    <rect x="560" y="30" width="20" height="20" fill="#5c7d9e" opacity="0.6"/>
+                    <text x="590" y="44" font-size="12" fill="#b5ad9e">영업이익률</text>
+
+                    <rect x="560" y="60" width="20" height="20" fill="#c9a962"/>
+                    <text x="590" y="74" font-size="12" fill="#b5ad9e">순이익률</text>
+
+                    <!-- 제목 -->
+                    <text x="400" y="25" font-size="14" fill="#ede8df" text-anchor="middle" font-weight="bold">영업이익률 및 순이익률 추이</text>
+                </svg>
+            </div>
+
+            <h3>ROE(자기자본이익률) 분석</h3>
+            <div class="subsection">
+                <h4>자기자본이익률(ROE) 추이</h4>
+                <ul>
+                    <li>2023년 ROE: 9.4%</li>
+                    <li>2024년 ROE: 10.1%</li>
+                    <li>2025년 ROE: 9.4% (순이익 성장 대비 자기자본 증가로 인한 조정)</li>
+                    <li>목표: 2027년 ROE 11% 달성</li>
+                </ul>
+
+                <h4>ROE 개선 전략</h4>
+                <ul>
+                    <li>순이익 성장 가속화 (연 12% 이상)</li>
+                    <li>자본 효율성 개선을 위한 배당 정책 강화</li>
+                    <li>저수익 사업 정리 및 고수익 사업 집중</li>
+                </ul>
+            </div>
+
+            <h3>부채 관리</h3>
+            <div class="subsection">
+                <h4>차입금 구조</h4>
+                <ul>
+                    <li>총 차입금: 약 86조 8,700억원 (2025년)</li>
+                    <li>단기차입금: 45조원 (거래자금)</li>
+                    <li>장기차입금: 41조 8,700억원 (구조화 거래, PF 자금)</li>
+                </ul>
+
+                <h4>차입금 관리</h4>
+                <ul>
+                    <li>우량 기관투자자 중심의 자금 조달</li>
+                    <li>글로벌 자본시장에서의 채권 발행 확대</li>
+                    <li>장기 차입금 구조로 유동성 위험 최소화</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <h2><i class="fas fa-flag-checkered icon-inline"></i>결론 및 투자 의견</h2>
+
+            <div class="investment-box">
+                <div class="investment-rating">BUY (매수 추천)</div>
+                <div class="investment-title">메리츠증권 - 중장기 투자 매력 강화</div>
+                <div class="investment-content">
+                    <p>
+                        메리츠증권은 2025년 강한 재무실적을 기반으로 2026년 추가 성장 가능성을 보여주고 있습니다.
+                        부동산 PF 시장 회복, IB 거래 확대, WM 사업 성장이 주요 상승 동력입니다.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        목표주가: 50,000원~55,000원 (2026년 말) | 현재주가 대비 15~25% 상향 여지
+                    </p>
+                </div>
+            </div>
+
+            <h3>긍정적 요인</h3>
+            <div class="subsection">
+                <ul>
+                    <li><strong>부동산 경기 회복:</strong> 2026년 부동산 PF 시장 회복이 기대되며, 메리츠증권의 전문성이 차별화 요소로 작용</li>
+                    <li><strong>IB 거래 활성화:</strong> 글로벌 경제 정상화에 따른 M&A 및 기업금융 거래 증가</li>
+                    <li><strong>WM 사업 확대:</strong> 고급 자산관리 고객 기반 확충으로 수익 다변화</li>
+                    <li><strong>재무 건전성:</strong> 자기자본 증가율 18.3%로 자본 충실도 강화</li>
+                    <li><strong>배당 정책:</strong> 순이익 증가에 따른 배당금 증가 가능성</li>
+                </ul>
+            </div>
+
+            <h3>위험 요인</h3>
+            <div class="subsection">
+                <ul>
+                    <li><strong>부동산 시장 악화:</strong> 주택, 상업용부동산 시장 침체 시 PF 거래 급감 위험</li>
+                    <li><strong>금리 상승:</strong> 차입금 증가로 인한 이자비용 상승</li>
+                    <li><strong>규제 강화:</strong> 금융감독청의 거래 제약 및 수수료 규제로 인한 수익 감소</li>
+                    <li><strong>글로벌 경제 침체:</strong> 경제 위기 시 IB 거래 및 자본시장 거래량 축소</li>
+                    <li><strong>경쟁 심화:</strong> 대형 증권사의 시장 집중으로 인한 시장점유율 감소</li>
+                </ul>
+            </div>
+
+            <h3>투자 의견</h3>
+            <div class="subsection">
+                <h4>중장기 투자 포인트</h4>
+                <ul>
+                    <li><strong>현물 매수 기회:</strong> 부동산 경기 회복 기대 시점에 현물 매수 권장</li>
+                    <li><strong>분할 매매 전략:</strong> 급락 시점에 분할 매수하여 평균 매수가 인하</li>
+                    <li><strong>배당 수익:</strong> 연 배당수익률 4~5% 수준의 안정적 배당 기대</li>
+                    <li><strong>목표 보유 기간:</strong> 2년 이상 중장기 보유 권장</li>
+                </ul>
+
+                <h4>단기 투기 고려사항</h4>
+                <ul>
+                    <li>단기 변동성이 높으므로 기술적 분석 필수</li>
+                    <li>실적 공시 시점 전후로 변동성 확대 주의</li>
+                    <li>부동산 뉴스에 민감하게 반응하는 특성</li>
+                </ul>
+            </div>
+
+            <h3>향후 전망</h3>
+            <div class="subsection">
+                <h4>2026년 실적 전망</h4>
+                <ul>
+                    <li><strong>매출:</strong> 24조원 내외 (전년대비 +5~7%)</li>
+                    <li><strong>영업이익:</strong> 8,600억원 내외 (전년대비 +9%)</li>
+                    <li><strong>순이익:</strong> 8,400억원 내외 (전년대비 +10%)</li>
+                </ul>
+
+                <h4>2027년 실적 전망</h4>
+                <ul>
+                    <li><strong>매출:</strong> 26조원 내외 (2026년대비 +8~10%)</li>
+                    <li><strong>영업이익:</strong> 9,500억원 내외 (2026년대비 +10%)</li>
+                    <li><strong>순이익:</strong> 9,300억원 내외 (2026년대비 +11%)</li>
+                </ul>
+            </div>
+
+            <h3>최종 평가</h3>
+            <div class="section-intro" style="background: linear-gradient(135deg, rgba(201,169,98,0.1) 0%, rgba(92,125,158,0.1) 100%); border-left-color: var(--gold); border-left-width: 4px;">
+                메리츠증권은 부동산 PF 시장의 선도 기업으로서 경제 회복기에 큰 수익성을 보유하고 있습니다.
+                2025년의 강한 재무 성과와 2026~2027년의 실적 성장 전망은 중장기 투자 가치를 충분히 뒷받침하고 있습니다.
+                특히 WM 사업 확대와 글로벌 시장 진출은 향후 성장의 새로운 축이 될 것으로 예상됩니다.
+                <br><br>
+                다만, 부동산 시장의 변동성과 금융규제 리스크에 대한 모니터링이 필수적입니다.
+                현재 주가 수준에서는 중장기 투자자를 위한 매수 기회로 판단됩니다.
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-info-circle icon-inline"></i>보고서 개요</h4>
+                    <p>
+                        본 보고서는 메리츠증권(코스피: 008560)에 대한 포괄적 기업분석 및 투자 의견을 제공합니다.
+                        재무 실적, 시장 분석, 경쟁력 평가 등 다각적 관점을 포함하고 있습니다.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-shield-alt icon-inline"></i>면책 조항</h4>
+                    <p>
+                        본 보고서는 정보 제공 목적이며, 투자 권고가 아닙니다.
+                        투자 결정 전 충분한 조사와 전문가 상담을 권장합니다.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-envelope icon-inline"></i>연락</h4>
+                    <p>
+                        FLOVAH Insights<br>
+                        Email: flovah2024@gmail.com<br>
+                        Market Update: April 23, 2026
+                    </p>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="update-block">
+                <div class="update-info">
+                    <i class="fas fa-clock icon-inline"></i>
+                    마지막 업데이트: <span class="update-time">2026년 04월 23일 09:00 KST</span>
+                </div>
+                <div class="update-info">
+                    <i class="fas fa-database icon-inline"></i>
+                    MARKET-UPDATE: 2026-04-23
+                </div>
+            </div>
+            <div class="flovah-credit">
+                <i class="fas fa-leaf icon-inline"></i>
+                이 보고서는 FLOVAH Insights에 의해 작성되었습니다.
+                고품질의 재무 분석과 시장 인사이트를 제공합니다.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

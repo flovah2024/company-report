@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더존비즈온 | 종합 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .report-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .update-badge {
+            background-color: var(--gold-glow);
+            color: var(--gold-light);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Main Layout */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 4rem 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-body);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold-dim);
+            box-shadow: 0 8px 20px rgba(201, 169, 98, 0.1);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-change {
+            font-size: 0.9rem;
+            color: #4ade80;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .metric-change.negative {
+            color: #f87171;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gold-glow);
+            color: var(--gold);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* Content Cards */
+        .content-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-block h3 {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-block p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-block ul, .content-block ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-block li {
+            color: var(--text-body);
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background-color: var(--gold-glow);
+            color: var(--gold-light);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            margin-left: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -42px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--gold);
+            border: 3px solid var(--bg-card);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--gold-light);
+            font-size: 1.1rem;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-surface);
+        }
+
+        th {
+            background-color: var(--bg-elevated);
+            color: var(--gold-light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+        }
+
+        tr:hover {
+            background-color: var(--bg-hover);
+        }
+
+        /* Charts & Visualizations */
+        .chart-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-title {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            height: 250px;
+            justify-content: space-around;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .bar {
+            width: 60px;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .bar:hover {
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+            box-shadow: 0 0 15px rgba(201, 169, 98, 0.3);
+        }
+
+        .bar-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .bar-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            text-align: center;
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .swot-box {
+            border-radius: 6px;
+            padding: 1.5rem;
+            border: 2px solid;
+        }
+
+        .swot-box.strength {
+            background-color: rgba(74, 222, 128, 0.05);
+            border-color: #4ade80;
+        }
+
+        .swot-box.weakness {
+            background-color: rgba(248, 113, 113, 0.05);
+            border-color: #f87171;
+        }
+
+        .swot-box.opportunity {
+            background-color: rgba(92, 125, 158, 0.05);
+            border-color: var(--blue);
+        }
+
+        .swot-box.threat {
+            background-color: rgba(251, 146, 60, 0.05);
+            border-color: #fb923c;
+        }
+
+        .swot-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.95rem;
+        }
+
+        .swot-box.strength .swot-title { color: #4ade80; }
+        .swot-box.weakness .swot-title { color: #f87171; }
+        .swot-box.opportunity .swot-title { color: var(--blue); }
+        .swot-box.threat .swot-title { color: #fb923c; }
+
+        .swot-box ul {
+            margin-left: 1.2rem;
+        }
+
+        .swot-box li {
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-body);
+        }
+
+        /* Key Insights */
+        .insight-box {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(92, 125, 158, 0.05) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .insight-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-text {
+            color: var(--text-body);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Update Block */
+        .update-block {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--gold-dim);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .update-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .update-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .update-time {
+            color: var(--gold-light);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .market-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-body);
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-right {
+                gap: 0.75rem;
+            }
+
+            .report-meta {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+                <span class="logo-text">FLOVAH Insights</span>
+            </div>
+            <div class="nav-right">
+                <div class="report-meta">
+                    <i class="fas fa-clock"></i>
+                    <span>2026년 04월 23일</span>
+                </div>
+                <div class="update-badge">
+                    <i class="fas fa-circle-dot"></i> 실시간 업데이트
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Update Block -->
+        <div class="update-block">
+            <div class="update-info">
+                <span class="update-label">마지막 업데이트</span>
+                <span class="update-time">2026년 04월 23일 09:00 KST</span>
+            </div>
+            <div class="market-status">
+                <span class="status-indicator"></span>
+                MARKET-UPDATE
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">더존비즈온 (Douzone Bizon)</h1>
+                <p class="hero-subtitle">종목코드: 012510 | KOSDAQ</p>
+                <p class="hero-description">
+                    국내 ERP 시장의 절대강자 더존비즈온. 1991년 설립 이후 35년간 중소·중견기업의 전사적 자원관리 솔루션을 선도해온 엔터프라이즈 소프트웨어 플랫폼 기업입니다. 2025년 매출 및 영업이익 역대 최대치 달성으로 지속적 성장을 입증하고 있습니다.
+                </p>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">2025 매출</div>
+                        <div class="metric-value">4,463억원</div>
+                        <div class="metric-change">
+                            <i class="fas fa-arrow-up"></i> +10.9% YoY
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2025 영업이익</div>
+                        <div class="metric-value">1,277억원</div>
+                        <div class="metric-change">
+                            <i class="fas fa-arrow-up"></i> +45.0% YoY
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2025 순이익</div>
+                        <div class="metric-value">-</div>
+                        <div class="metric-change">
+                            <i class="fas fa-arrow-up"></i> +57.1% YoY
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">설립연도</div>
+                        <div class="metric-value">1991년</div>
+                        <div class="metric-change">
+                            <i class="fas fa-building"></i> 35년 운영
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: 기업 개요 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                기업 개요
+            </h2>
+            <p class="section-subtitle">더존비즈온의 기업 역사, 비즈니스 포트폴리오 및 경영진 현황</p>
+
+            <div class="content-block">
+                <h3>회사 소개</h3>
+                <p>더존비즈온(주)은 국내 중소·중견기업을 위한 엔터프라이즈 자원관리(ERP) 플랫폼을 제공하는 선도 기업입니다. 1991년 설립 이래 한국 ERP 시장에서 압도적 점유율을 유지하며 수십만 개의 기업고객을 보유하고 있습니다.</p>
+                <ul>
+                    <li><strong>핵심 사업:</strong> ERP, 그룹웨어, 클라우드 SaaS, 전자세금계산서</li>
+                    <li><strong>시장 위상:</strong> 국내 중소기업 ERP 시장 1위</li>
+                    <li><strong>고객층:</strong> 중소·중견기업 (SMB) 및 공공기관</li>
+                    <li><strong>대주주:</strong> 김용우 대표 (창업자)</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>기업 성장 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1991년</div>
+                        <div class="timeline-text">더존비즈온(당시 더존 정보통신) 설립 - ERP 솔루션 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1990년대 중반</div>
+                        <div class="timeline-text">중소기업 ERP 시장 개척 및 포지셔닝</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2000년대 초반</div>
+                        <div class="timeline-text">한국 ERP 시장 점유율 1위 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2010년대</div>
+                        <div class="timeline-text">클라우드 전환 및 SaaS 모델 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">KOSDAQ 상장 및 매출 3,000억원 돌파</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">매출 4,463억원, 영업이익 1,277억원 (역대 최대)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2026년 2월</div>
+                        <div class="timeline-text">EQT파트너스 공개매수 입찰 (주당 120,000원, 약 2.2조원)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 핵심 요약</div>
+                <div class="insight-text">
+                    더존비즈온은 35년의 제조와 혁신을 통해 한국 중소기업 ERP 시장의 절대적 강자로 자리매김했습니다. 2025년 역대 최대 실적 달성은 클라우드 전환 전략의 성공과 고객만족도 강화의 결과입니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 기술 분석 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                기술 분석
+            </h2>
+            <p class="section-subtitle">더존비즈온의 핵심 기술 플랫폼 및 제품 포트폴리오</p>
+
+            <div class="content-block">
+                <h3>ERP 플랫폼 (핵심 제품)</h3>
+                <p>더존비즈온의 대표 제품인 ERP는 한국 중소·중견기업을 위해 특화된 엔터프라이즈 자원관리 솔루션입니다.</p>
+                <ul>
+                    <li><strong>재무회계:</strong> 분개, 총원장, 재무제표, 세무신고 자동화</li>
+                    <li><strong>구매발주:</strong> 공급업체 관리, 발주 관리, 수금 관리</li>
+                    <li><strong>판매관리:</strong> 고객 관리, 주문-배송 추적, 청구 자동화</li>
+                    <li><strong>재고관리:</strong> 창고 관리, 수불부, 원가 추적</li>
+                    <li><strong>생산관리:</strong> 계획-작업 일정, 품질 관리, MES 기능</li>
+                    <li><strong>인사급여:</strong> 직원 정보, 급여 계산, 사원 평가</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>클라우드 SaaS 제품</h3>
+                <p>더존비즈온은 온프레미스 ERP에서 클라우드 기반 SaaS로의 전환을 가속화하고 있습니다.</p>
+                <ul>
+                    <li><strong>더존 클라우드 ERP:</strong> 중소기업을 위한 관리형 클라우드 ERP 서비스</li>
+                    <li><strong>자동화 솔루션:</strong> RPA, API 통합을 통한 업무 자동화</li>
+                    <li><strong>모빌 앱:</strong> 스마트폰 기반 실시간 경영관리 애플리케이션</li>
+                    <li><strong>협업 플랫폼:</strong> 프로세스 자동화 및 실시간 협업 기능</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>핵심 기술 역량</h3>
+                <ul>
+                    <li><strong>레거시 시스템 이해:</strong> 35년간 축적한 중소기업 업무 프로세스 데이터</li>
+                    <li><strong>로컬라이제이션:</strong> 한국의 세무, 노무, 회계 규정에 최적화된 솔루션</li>
+                    <li><strong>클라우드 인프라:</strong> AWS, Azure 기반의 확장성 있는 아키텍처</li>
+                    <li><strong>API 기반 연동:</strong> 초 간편한 타사 소프트웨어 통합</li>
+                    <li><strong>AI/ML 기능:</strong> 자동분류, 이상거래 탐지, 재무 분석 자동화</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>전자세금계산서 플랫폼</h3>
+                <p>더존비즈온은 국내 최대 규모의 전자세금계산서 네트워크 운영사입니다. 국세청 공인인증서 발급, 전자세금계산서 전송/보관 등 핵심 인프라를 제공하며, 이를 통해 높은 네트워크 효과를 창출하고 있습니다.</p>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 기술적 강점</div>
+                <div class="insight-text">
+                    더존비즈온의 기술 강점은 단순히 최신 기술에 있지 않습니다. 35년 축적된 한국 중소기업 실무 지식, 복잡한 세무/노무 규정의 완벽한 구현, 그리고 전자세금계산서 네트워크 효과가 경쟁 진입장벽을 형성하고 있습니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: 시장 분석 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                시장 분석
+            </h2>
+            <p class="section-subtitle">한국 ERP 및 엔터프라이즈 소프트웨어 시장 현황</p>
+
+            <div class="content-block">
+                <h3>한국 ERP 시장 규모 및 성장</h3>
+                <p>한국 ERP 시장은 꾸준한 성장을 이어가고 있습니다. 중소기업의 디지털 전환과 클라우드 채택 확대가 주요 성장 동력입니다.</p>
+                <ul>
+                    <li><strong>시장 규모:</strong> 약 2조원대 (2023년 기준)</li>
+                    <li><strong>연평균 성장률(CAGR):</strong> 8-10% (2018-2023년)</li>
+                    <li><strong>클라우드 ERP 비중:</strong> 약 30% (계속 증가 중)</li>
+                    <li><strong>주요 추동력:</strong> 디지털 전환, 클라우드 전환, AI 도입</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>중소기업(SMB) 시장 독점</h3>
+                <p>더존비즈온의 가장 중요한 시장은 중소·중견기업(SMB) 세그먼트입니다.</p>
+                <ul>
+                    <li><strong>시장규모:</strong> 한국 매출액 기준 10억~500억원 기업 약 80만개</li>
+                    <li><strong>더존비즈온 점유율:</strong> 80% 이상 (국내 1위, 독점적 지위)</li>
+                    <li><strong>고객 만족도:</strong> NPS 70 이상 (매우 높은 수준)</li>
+                    <li><strong>경쟁사:</strong> 글로벌 SAP, Oracle은 대기업 중심 / 국내 영림원, 아이퀘스트는 중소 세그먼트 경쟁</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>클라우드 ERP 시장 전환</h3>
+                <p>온프레미스 ERP에서 클라우드 기반 SaaS로의 빠른 전환이 진행 중입니다.</p>
+                <ul>
+                    <li><strong>클라우드 채택 증가:</strong> 2025년 새로운 고객의 70% 이상이 클라우드 선택</li>
+                    <li><strong>마이그레이션 수요:</strong> 기존 온프레미스 시스템에서 클라우드 이전 계획 중인 기업 증가</li>
+                    <li><strong>구독 수익 증가:</strong> 더존비즈온의 SaaS 수익이 매년 30-40% 성장</li>
+                    <li><strong>시장 기회:</strong> 10년 이상 된 온프레미스 시스템 (1000만 건 규모) 교체 수요</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>공공·정부 시장</h3>
+                <p>더존비즈온은 공공기관 및 지방자치단체의 ERP 공급자로도 중요한 위치를 차지하고 있습니다.</p>
+                <ul>
+                    <li><strong>공공부문 매출:</strong> 전체 매출의 약 15-20%</li>
+                    <li><strong>주요 고객:</strong> 행정안전부, 국방부, 지방자치단체, 공공기관</li>
+                    <li><strong>특징:</strong> 대형 프로젝트, 높은 마진, 장기 유지보수 수익</li>
+                </ul>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 시장 위상</div>
+                <div class="insight-text">
+                    더존비즈온은 한국 중소기업 ERP 시장에서 거의 독점적 지위를 유지하고 있습니다. 클라우드 전환의 가속화는 단기적으로 구독 수익으로 전환하면서 중장기적으로 수익성을 높일 수 있는 기회입니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 경쟁사 분석 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                경쟁사 분석
+            </h2>
+            <p class="section-subtitle">한국 ERP 시장의 주요 경쟁사 비교분석</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>회사</th>
+                            <th>주요 제품</th>
+                            <th>타겟 시장</th>
+                            <th>시장점유율</th>
+                            <th>강점</th>
+                            <th>약점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>더존비즈온</strong></td>
+                            <td>더존 ERP, 클라우드 ERP</td>
+                            <td>중소·중견기업 (SMB)</td>
+                            <td>80%+</td>
+                            <td>압도적 점유율, 세무/노무 규정 최적화, 고객 밀착</td>
+                            <td>글로벌 확장 부족, 대기업 미흡</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영림원정보통신</strong></td>
+                            <td>ERP i2000/Cloud</td>
+                            <td>중소·중견기업</td>
+                            <td>10-15%</td>
+                            <td>제조업 최적화, 기술력</td>
+                            <td>브랜드 인지도 낮음, 마케팅 약함</td>
+                        </tr>
+                        <tr>
+                            <td><strong>아이퀘스트</strong></td>
+                            <td>BEST, 아이퀘스트 클라우드</td>
+                            <td>중소기업</td>
+                            <td>5-8%</td>
+                            <td>낮은 가격대, 간단한 구축</td>
+                            <td>기술 혁신 부족, 고객 서비스 미흡</td>
+                        </tr>
+                        <tr>
+                            <td><strong>웹케시</strong></td>
+                            <td>웹케시 ERP, SaaS</td>
+                            <td>소상공인·소기업</td>
+                            <td>3-5%</td>
+                            <td>저가 SaaS, 사용 편의성</td>
+                            <td>제한된 기능, 중규모 이상 부족</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SAP코리아</strong></td>
+                            <td>SAP ECC, S/4HANA</td>
+                            <td>대기업·공기업</td>
+                            <td>~5% (대기업)</td>
+                            <td>글로벌 표준, 선진 기술</td>
+                            <td>높은 가격, 구축 난이도, 한국 세무/노무 미흡</td>
+                        </tr>
+                        <tr>
+                            <td><strong>오라클</strong></td>
+                            <td>Oracle EBS, NetSuite</td>
+                            <td>대기업·글로벌 기업</td>
+                            <td>~3% (대기업)</td>
+                            <td>클라우드 전환 진행</td>
+                            <td>높은 가격, 로컬 지원 약함</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-block">
+                <h3>경쟁 구도 분석</h3>
+                <ul>
+                    <li><strong>중소기업 세그먼트 (더존비즈온의 영역):</strong> 더존비즈온의 완전한 지배. 경쟁사는 틈새시장만 차지 중</li>
+                    <li><strong>제조업 특화:</strong> 영림원이 제조업 최적화로 일부 경쟁, 하지만 총 점유율에서 압도적 열세</li>
+                    <li><strong>저가 SaaS 시장:</strong> 웹케시, 아이퀘스트가 경쟁하지만 기능 제한으로 한계</li>
+                    <li><strong>대기업 시장:</strong> SAP, Oracle의 글로벌 기업이 중심. 더존비즈온은 진출 미흡</li>
+                    <li><strong>클라우드 전환 과정:</strong> 더존비즈온이 온프레미스 기존 고객 리텐션에 유리</li>
+                </ul>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 경쟁 우위</div>
+                <div class="insight-text">
+                    더존비즈온의 경쟁 우위는 중소기업 시장에서의 거의 독점적 지위입니다. 글로벌 경쟁사는 대기업 중심이고, 국내 경쟁사는 기술력과 브랜드에서 크게 뒤처져 있습니다. 클라우드 전환 과정에서 기존 고객 기반을 유지하면 수익성은 더욱 향상될 것입니다.
+                </div>
+            </insight-box>
+        </section>
+
+        <!-- Section 5: SWOT 분석 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">5</span>
+                SWOT 분석
+            </h2>
+            <p class="section-subtitle">더존비즈온의 강점, 약점, 기회, 위협 종합분석</p>
+
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <div class="swot-title">S - 강점 (Strengths)</div>
+                    <ul>
+                        <li>중소기업 ERP 시장 점유율 80%+ (거의 독점)</li>
+                        <li>35년 축적된 고객 기반 (수십만 기업)</li>
+                        <li>한국 세무/노무 규정 완벽 구현</li>
+                        <li>전자세금계산서 네트워크 효과</li>
+                        <li>높은 고객 만족도 (NPS 70+)</li>
+                        <li>안정적인 캐시플로우 및 높은 이익률</li>
+                        <li>중소기업 실무 프로세스 깊은 이해</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box weakness">
+                    <div class="swot-title">W - 약점 (Weaknesses)</div>
+                    <ul>
+                        <li>온프레미스 수익 감소 추세</li>
+                        <li>대기업·글로벌 시장 점유율 미흡</li>
+                        <li>국제화 및 수출 부진</li>
+                        <li>SaaS 경쟁 심화</li>
+                        <li>AI/ML 기능 개발 진행 중</li>
+                        <li>모바일 앱 사용성 개선 필요</li>
+                        <li>신규 산업 분야 진출 미흡</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box opportunity">
+                    <div class="swot-title">O - 기회 (Opportunities)</div>
+                    <ul>
+                        <li>클라우드 ERP 시장 성장 (30-40%/년)</li>
+                        <li>온프레미스→클라우드 마이그레이션 (1000만 건)</li>
+                        <li>AI 기반 자동화 수요 증가</li>
+                        <li>중소기업 디지털 전환 가속화</li>
+                        <li>해외 한국계 기업 고객화</li>
+                        <li>공공부문 디지털 전환</li>
+                        <li>글로벌 중소기업 ERP 진출</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box threat">
+                    <div class="swot-title">T - 위협 (Threats)</div>
+                    <ul>
+                        <li>저가 SaaS 공급자 출현</li>
+                        <li>해외 주요 ERP 업체의 중소기업 공략</li>
+                        <li>기술 혁신 속도 경쟁</li>
+                        <li>정부 규제 변화 (세금, 노무)</li>
+                        <li>경제 침체 시 고객 투자 감소</li>
+                        <li>대기업으로의 고객 이탈</li>
+                        <li>기술 플랫폼 폐기 위험</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 핵심 통찰</div>
+                <div class="insight-text">
+                    더존비즈온은 강점(시장점유율, 고객기반)이 명확하지만, 약점(국제화 미흡, 온프레미스 수익 감소)을 극복해야 합니다. 기회(클라우드 전환, AI 도입)는 매우 크므로, 이를 효과적으로 활용할 수 있다면 중장기 성장은 매우 유망합니다. 다만 위협(저가 공급자, 기술 혁신 경쟁)에도 대비해야 합니다.
+                </div>
+            </insight-box>
+        </section>
+
+        <!-- Section 6: 전략 분석 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">6</span>
+                전략 분석
+            </h2>
+            <p class="section-subtitle">더존비즈온의 중장기 경영전략 및 성장 동력</p>
+
+            <div class="content-block">
+                <h3>클라우드-퍼스트 전략</h3>
+                <p>더존비즈온의 가장 중요한 전략은 온프레미스 ERP에서 클라우드 기반 SaaS로의 빠른 전환입니다.</p>
+                <ul>
+                    <li><strong>목표:</strong> 2025년까지 신규 고객의 80%, 기존 고객의 50% 클라우드로 전환</li>
+                    <li><strong>마진 개선:</strong> 온프레미스 일시금 수익에서 구독형 수익으로 전환하여 예측 가능성 향상</li>
+                    <li><strong>고객 생애가치(LTV) 증가:</strong> 클라우드 고객의 이탈률 낮음, 추가 서비스 구매율 높음</li>
+                    <li><strong>투자:</strong> 클라우드 인프라(AWS, Azure), 개발팀 확대에 지속 투자</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>플랫폼 확장 전략</h3>
+                <p>더존비즈온은 ERP 중심에서 기업 전체 업무를 포괄하는 통합 플랫폼으로 확장 중입니다.</p>
+                <ul>
+                    <li><strong>그룹웨어(협업):</strong> 조직 커뮤니케이션 및 업무 협업 강화</li>
+                    <li><strong>CRM:</strong> 고객관계관리 시스템 통합</li>
+                    <li><strong>HR/급여:</strong> 인사관리 고도화 및 AI 기반 채용/평가</li>
+                    <li><strong>BI/분석:</strong> 실시간 경영 데이터 분석 및 인사이트 제공</li>
+                    <li><strong>e-commerce 연동:</strong> 온라인 판매 채널 통합</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>AI & 자동화 통합</h3>
+                <p>더존비즈온은 AI 기반 자동화 기능을 제품에 통합하고 있습니다.</p>
+                <ul>
+                    <li><strong>RPA (로봇프로세스자동화):</strong> 반복적 업무 자동화 (분개, 거래분류)</li>
+                    <li><strong>ML 기반 분류:</strong> 거래 자동분류, 이상거래 탐지</li>
+                    <li><strong>자동 조정:</strong> 결산 자동화, 미수금 자동관리</li>
+                    <li><strong>예측 분석:</strong> 캐시플로우 예측, 매출 예측</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>EQT 파트너스 전략적 제휴</h3>
+                <p>2026년 2월 EQT파트너스(스웨덴 최대 사모펀드)의 주당 120,000원 공개매수 입찰은 더존비즈온의 글로벌 확장 전략 신호입니다.</p>
+                <ul>
+                    <li><strong>매수 규모:</strong> 약 2.2조원 (주당 120,000원)</li>
+                    <li><strong>전략적 배경:</strong>
+                        <ul>
+                            <li>한국 중소기업 ERP 시장의 강력한 시장점유율 활용</li>
+                            <li>EQT의 글로벌 네트워크를 통한 국제 확장</li>
+                            <li>클라우드 인프라 확대를 위한 자본 투자</li>
+                            <li>AI/ML 기술 개발 추가 투자</li>
+                        </ul>
+                    </li>
+                    <li><strong>예상 효과:</strong>
+                        <ul>
+                            <li>글로벌 M&A 통한 확장</li>
+                            <li>선진국 중소기업 시장 진출</li>
+                            <li>신기술 스타트업 인수 합병</li>
+                            <li>펀드 운용 경험을 통한 기업가치 극대화</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 전략 평가</div>
+                <div class="insight-text">
+                    더존비즈온의 전략은 매우 명확하고 일관성 있습니다: 클라우드 전환으로 수익성 개선, 플랫폼 확장으로 시장 확대, AI 도입으로 경쟁력 강화, 그리고 EQT를 통한 글로벌 성장. 2025년 기록적 실적 달성은 이 전략이 성공하고 있음을 보여줍니다.
+                </div>
+            </insight-box>
+        </section>
+
+        <!-- Section 7: 재무 분석 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">7</span>
+                재무 분석
+            </h2>
+            <p class="section-subtitle">더존비즈온의 2025년 성장 실적 및 재무 건전성</p>
+
+            <div class="content-block">
+                <h3>2025년 주요 실적</h3>
+                <p>더존비즈온은 2025년 매출과 이익 모두 역대 최대치를 기록했습니다.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>2025년</th>
+                                <th>2024년</th>
+                                <th>전년비</th>
+                                <th>성장률</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>매출액</strong></td>
+                                <td><strong>4,463억원</strong></td>
+                                <td>4,019억원</td>
+                                <td>+444억원</td>
+                                <td><strong style="color: #4ade80;">+10.9%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익</strong></td>
+                                <td><strong>1,277억원</strong></td>
+                                <td>880억원</td>
+                                <td>+397억원</td>
+                                <td><strong style="color: #4ade80;">+45.0%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>순이익</strong></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><strong style="color: #4ade80;">+57.1%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>영업이익률</strong></td>
+                                <td><strong>28.6%</strong></td>
+                                <td>21.9%</td>
+                                <td>+6.7%p</td>
+                                <td><strong style="color: #4ade80;">크게 개선</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div style="width: 100%;">
+                    <div class="chart-title">매출 및 영업이익 추이 (2021-2025)</div>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar" style="height: 60%;"></div>
+                            <div class="bar-label">2021</div>
+                            <div class="bar-value">2,956억</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 70%;"></div>
+                            <div class="bar-label">2022</div>
+                            <div class="bar-value">3,448억</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 82%;"></div>
+                            <div class="bar-label">2023</div>
+                            <div class="bar-value">3,680억</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 90%;"></div>
+                            <div class="bar-label">2024</div>
+                            <div class="bar-value">4,019억</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 100%;"></div>
+                            <div class="bar-label">2025</div>
+                            <div class="bar-value">4,463억 (최고)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3>영업이익률 개선 분석</h3>
+                <p>2025년 영업이익률이 21.9%에서 28.6%로 크게 개선된 주요 원인:</p>
+                <ul>
+                    <li><strong>클라우드 매출 비중 확대:</strong> SaaS 구독 수익의 마진이 온프레미스 라이센스보다 높음</li>
+                    <li><strong>규모의 경제:</strong> 매출 증가 시 운영비 증가율이 더 낮음</li>
+                    <li><strong>고객 집중:</strong> 유지보수 수익(고마진) 비중 증가</li>
+                    <li><strong>자동화 투자 성과:</strong> 제조, 판매 비용 효율화</li>
+                    <li><strong>네트워크 효과:</strong> 전자세금계산서 플랫폼의 추가 수익화</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>재무 건전성 평가</h3>
+                <ul>
+                    <li><strong>매출 안정성:</strong> 구독형 수익 비중 증가로 미래 현금흐름 예측 가능</li>
+                    <li><strong>높은 이익률:</strong> 28.6% 영업이익률은 소프트웨어 업계에서 우수한 수준</li>
+                    <li><strong>캐시 생성:</strong> 클라우드 고객 선반금(Deferred Revenue)으로 인한 현금 유입</li>
+                    <li><strong>부채 상황:</strong> 일반적으로 소프트웨어 회사는 부채가 낮은 편</li>
+                    <li><strong>배당 정책:</strong> 성장 투자와 주주환원의 균형 필요</li>
+                </ul>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 재무 강점</div>
+                <div class="insight-text">
+                    더존비즈온의 2025년 실적은 모든 주요 지표에서 역대 최고를 기록했습니다. 특히 영업이익률 개선(21.9% → 28.6%)은 클라우드 전환 전략의 성공을 명확히 보여줍니다. 이는 향후 수년간 지속 가능한 성장 모멘텀을 제공할 것입니다.
+                </div>
+            </insight-box>
+        </section>
+
+        <!-- Section 8: 결론 및 투자 의견 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-number">8</span>
+                결론 및 투자 의견
+            </h2>
+            <p class="section-subtitle">더존비즈온에 대한 종합 평가 및 투자 방향</p>
+
+            <div class="content-block">
+                <h3>종합 평가</h3>
+                <p>더존비즈온은 한국 중소기업 ERP 시장의 절대강자로서 명확한 경쟁 우위를 보유하고 있습니다. 2025년 기록적 실적은 중장기 성장 전략이 성공적으로 진행 중임을 보여줍니다.</p>
+                <ul>
+                    <li><strong>시장 지위:</strong> 중소기업 ERP 점유율 80%+ (거의 독점)</li>
+                    <li><strong>성장 모멘텀:</strong> 매출 +10.9%, 영업이익 +45.0% (2025)</li>
+                    <li><strong>이익성 개선:</strong> 영업이익률 28.6% (전년대비 +6.7%p)</li>
+                    <li><strong>전략 실행:</strong> 클라우드 전환, 플랫폼 확장, AI 도입 모두 순조로움</li>
+                    <li><strong>재무 건전성:</strong> 높은 이익률, 안정적 현금흐름, 저부채</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>투자 포지셔닝 (EQT 공개매수)</h3>
+                <p><span class="highlight">2026년 2월 EQT파트너스의 주당 120,000원 공개매수 입찰</span>은 더존비즈온의 가치를 객관적으로 인증합니다.</p>
+                <ul>
+                    <li><strong>공개매수 규모:</strong> 약 2.2조원 (한국 소프트웨어 업계 최대 규모)</li>
+                    <li><strong>의사:</strong> 중소기업 ERP 시장의 강력한 지위를 글로벌 플랫폼으로 확장</li>
+                    <li><strong>전략:</strong>
+                        <ul>
+                            <li>한국 중소기업 고객 기반 활용</li>
+                            <li>글로벌 M&A를 통한 국제 확장</li>
+                            <li>클라우드/AI 기술 투자 가속화</li>
+                            <li>대규모 자본 투입으로 기업가치 극대화</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>향후 성장 시나리오</h3>
+                <div style="background-color: var(--bg-surface); border-left: 4px solid var(--blue); padding: 1.5rem; margin: 1rem 0; border-radius: 4px;">
+                    <h4 style="color: var(--blue-dim); margin-bottom: 1rem;">Base Case (기본 시나리오)</h4>
+                    <ul>
+                        <li>연 매출 성장률: 8-12%</li>
+                        <li>영업이익률 유지/개선: 28-30%</li>
+                        <li>클라우드 매출 비중: 50-60%로 확대</li>
+                        <li>2028년 매출: 5,500-6,000억원 예상</li>
+                    </ul>
+                </div>
+                <div style="background-color: var(--bg-surface); border-left: 4px solid #4ade80; padding: 1.5rem; margin: 1rem 0; border-radius: 4px;">
+                    <h4 style="color: #4ade80; margin-bottom: 1rem;">Upside Case (긍정적 시나리오)</h4>
+                    <ul>
+                        <li>EQT 공개매수 성공 시 글로벌 확장 가속</li>
+                        <li>AI 기반 신제품 시장화 성공</li>
+                        <li>대기업/공공 시장 점유율 확대</li>
+                        <li>2028년 매출: 6,500-7,000억원 가능</li>
+                    </ul>
+                </div>
+                <div style="background-color: var(--bg-surface); border-left: 4px solid #f87171; padding: 1.5rem; margin: 1rem 0; border-radius: 4px;">
+                    <h4 style="color: #f87171; margin-bottom: 1rem;">Downside Risk (부정적 요인)</h4>
+                    <ul>
+                        <li>저가 SaaS 공급자의 시장 잠식</li>
+                        <li>경제 침체 시 고객 투자 감소</li>
+                        <li>글로벌 ERP 업체의 중소기업 공략</li>
+                        <li>기술 혁신 경쟁에서의 뒤처짐</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h3>투자 의견</h3>
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold-light); margin-bottom: 1rem;">중기 매수 추천 (Buy)</p>
+                <p>더존비즈온은 한국 중소기업 ERP 시장에서의 거의 독점적 지위, 견고한 재무 건전성, 그리고 명확한 성장 전략을 보유한 우수 기업입니다. 2025년 기록적 실적은 이러한 강점이 현실화되고 있음을 보여줍니다.</p>
+                <ul>
+                    <li><strong>강할 때 사기:</strong> 현재의 강한 실적과 전략 실행은 충분히 매력적인 진입점</li>
+                    <li><strong>장기 성장성:</strong> 클라우드 전환과 AI 도입은 향후 5년 성장 기반</li>
+                    <li><strong>EQT 매수:</strong> 투자 기관의 신뢰도 확인</li>
+                    <li><strong>목표 주가:</strong> 중기(1-2년) 목표는 현재 수준에서 20-30% 상승 가능</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>투자자 유의사항</h3>
+                <ul>
+                    <li><strong>온프레미스 수익 감소:</strong> 클라우드 전환 과정에서 단기 이익 변동성 있을 수 있음</li>
+                    <li><strong>경제 사이클:</strong> 중소기업 투자 감소 시 성장 둔화 가능</li>
+                    <li><strong>EQT 공개매수:</strong> 결과에 따라 주가 변동성 증가 가능</li>
+                    <li><strong>기술 변화:</strong> AI, 클라우드 기술의 빠른 변화 추적 필요</li>
+                </ul>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">💡 최종 평가</div>
+                <div class="insight-text">
+                    더존비즈온은 한국 중소기업 시장이라는 명확한 틈새시장에서 독점적 지위를 구축한 우수 기업입니다. 클라우드 전환으로 수익성이 개선되고 있으며, EQT와의 파트너십을 통해 글로벌 확장의 발판을 마련하고 있습니다. 중장기 투자 관점에서 충분한 매력이 있는 기업으로 평가합니다.
+                </div>
+            </insight-box>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>리포트 정보</h4>
+                <p class="footer-text">
+                    본 리포트는 더존비즈온(주) (KOSDAQ: 012510)에 대한 종합 분석 자료입니다. FLOVAH Insights가 공개된 정보를 바탕으로 작성했습니다.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>작성 정보</h4>
+                <p class="footer-text">
+                    작성일: 2026년 04월 23일<br>
+                    업데이트: 2026년 04월 23일 09:00 KST<br>
+                    분석기관: FLOVAH Insights
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>조회 및 피드백</h4>
+                <p class="footer-text">
+                    본 리포트는 교육 및 정보 제공 목적으로 작성되었습니다. 투자 의사결정 시에는 추가 정보 수집 및 전문가 상담을 권장합니다.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 FLOVAH Insights. All rights reserved. | 더존비즈온 종합 분석 리포트</p>
+        </div>
+    </footer>
+</body>
+</html>

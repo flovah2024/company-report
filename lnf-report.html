@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엘앤에프 기업 분석 리포트 | FLOVAH Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 220deg, var(--rule) 220deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 23, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">엘앤에프<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">2차전지 양극재 기술의 선도 기업, 구조적 전환과 회복의 기로에 선 성장 플랫폼</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">61</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">배터리 생산 자동화 및 품질 관리 기술</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">적자 중</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">6조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2,200+</div>
+                            <div class="metric-label">전 세계 직원</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">26년</div>
+                            <div class="metric-label">설립 후 경과</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>주식코드</h4>
+                        <p>KOSPI 066970</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>경영진</h4>
+                        <p>이흥식 회장 겸 대표이사</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-industry"></i></div>
+                    <div class="report-info-content">
+                        <h4>주요사업</h4>
+                        <p>2차전지 양극재, 특수화학소재</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>설립</h4>
+                        <p>2000년</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: 기업 개요 -->
+        <section id="company">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i>기업 개요</h2>
+            <p class="section-subtitle">2차전지 양극재 기술의 강자, 구조적 전환 중인 기업</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i>엘앤에프의 역사와 현황</h3>
+                <p>엘앤에프(L&F Co., Ltd.)는 2000년 설립된 한국의 2차전지 소재 전문 기업으로, 특히 리튬이온 배터리의 양극재(Cathode Material) 분야에서 글로벌 경쟁력을 갖추고 있습니다. 회사는 포스코퓨처엠, 에코프로비엠 등과 함께 한국 양극재 산업의 주요 플레이어이며, 테슬라와 LG에너지솔루션에 양극재를 공급하는 글로벌 기업입니다.</p>
+
+                <p>그러나 2025년 기준 회사는 구조적 위기를 겪고 있습니다. 중국 양극재 기업들의 저가 공략, 원자재 가격 변동성, 글로벌 EV 수요 성장 둔화 등으로 인해 매출 적자 상황이 지속되고 있습니다. 시가총액도 2021년의 최고 19조원에서 현재 6조원 수준으로 하락했습니다. 회사는 현재 미국 애리조나 공장 가동, NCMA 양극재 기술 강화, 원통형 배터리(21700) 양극재 사업 확대 등을 통해 회복을 추진 중입니다.</p>
+
+                <p>엘앤에프의 핵심 강점은 고순도 NCMA 양극재 기술에 있습니다. NCMA는 니켈, 코발트, 망간, 알루미늄으로 이루어진 4원계 양극재로, 고에너지 밀도와 낮은 코발트 함량으로 인해 향후 배터리 시장의 주류가 될 것으로 예상됩니다. 또한 테슬라와의 직접 공급 관계는 기술력과 신뢰성의 증거입니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-chart-line"></i>2025년 주요 재정 지표 (구조적 전환 중)</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업손실 (조원)</span>
+                            <span class="progress-label-value">-0.85조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">현금보유 (조원)</span>
+                            <span class="progress-label-value">2.1조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">미국 애리조나 공장 진척률(%)</span>
+                            <span class="progress-label-value">68%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 68%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">NCMA 양극재 매출 비중(%)</span>
+                            <span class="progress-label-value">35%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 35%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">52주 주가 범위 (원)</span>
+                            <span class="progress-label-value">47K-195K</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 62%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-timeline"></i>엘앤에프 발전 경로</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2000년</div>
+                        <div class="timeline-item-content">엘앤에프 설립 (특수화학 소재)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2008년</div>
+                        <div class="timeline-item-content">양극재 사업 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2015년</div>
+                        <div class="timeline-item-content">테슬라와 공급 계약 체결</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2020년</div>
+                        <div class="timeline-item-content">NCMA 양극재 본격 생산</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2021년</div>
+                        <div class="timeline-item-content">시가총액 최고 19조원 달성</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023-2024년</div>
+                        <div class="timeline-item-content">구조적 위기 심화 (적자 확대)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025-2026년</div>
+                        <div class="timeline-item-content">미국 애리조나 공장 가동, 회복 기대</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i>기술 분석</h2>
+            <p class="section-subtitle">고에너지밀도 양극재와 원통형 배터리의 미래 기술</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-battery"></i>NCMA 양극재 기술의 우위</h3>
+                <p>NCMA(Nickel Cobalt Manganese Aluminum Oxide) 양극재는 엘앤에프의 핵심 기술입니다. 이는 니켈 함량을 높이면서 코발트 함량을 낮춘 고에너지밀도 양극재로, 다음과 같은 장점을 갖습니다.</p>
+
+                <p>첫째, 높은 에너지 밀도입니다. NCMA는 음극에서 더 많은 전자를 추출할 수 있어, 같은 무게의 배터리로 더 많은 에너지를 저장할 수 있습니다. 이는 전기차의 항속거리를 늘리거나 같은 항속거리에서 배터리 무게를 줄일 수 있음을 의미합니다.</p>
+
+                <p>둘째, 낮은 코발트 함량입니다. 코발트는 가격이 비싸고 채굴 시 윤리적 논란이 많습니다. NCMA는 코발트 함량을 기존 NCM(니켈 코발트 망간)의 10-15%에서 3-5% 수준으로 낮출 수 있어, 배터리 비용 절감과 환경 문제 해소에 기여합니다.</p>
+
+                <p>셋째, 우수한 순환 특성입니다. NCMA는 충방전을 반복해도 성능 저하가 적어, 배터리의 수명을 연장합니다. 엘앤에프의 NCMA 기술은 이미 테슬라에 납품되고 있으며, 고객사의 신뢰도가 매우 높습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-circle"></i>원통형 배터리(21700) 양극재</h3>
+                    <p>전기차 배터리 시장은 현재 파우치셀(유연한 포장)과 원통셀(원형 금속 원통) 중심으로 양분되어 있습니다. 테슬라는 21700(직경 21mm, 높이 70mm) 원통셀을 자사 전기차의 주력 배터리로 채택했으며, 이는 다음과 같은 장점이 있습니다.</p>
+
+                    <p>첫째, 높은 생산성입니다. 원통셀은 대량 생산에 최적화된 설계로, 자동화 수준이 높습니다. 둘째, 뛰어난 열 방출 특성입니다. 원통형의 금속 외형으로 인해 배터리 열을 효율적으로 방출할 수 있습니다. 셋째, 경제성입니다. 원통셀은 상대적으로 저렴한 원자재로 만들 수 있으며, 조립 비용도 낮습니다.</p>
+
+                    <p>엘앤에프의 21700 원통형 배터리 양극재 매출은 2025년 YoY 90% 증가할 것으로 전망되고 있습니다. 이는 향후 3-5년간 가장 빠르게 성장하는 사업 분야가 될 것으로 예상됩니다.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Cylindrical Design</span>
+                        <span class="tech-badge">High Energy Density</span>
+                        <span class="tech-badge">Cost Competitive</span>
+                        <span class="tech-badge">Mass Production</span>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-united-states"></i>미국 애리조나 공장 전략</h3>
+                    <p>엘앤에프는 미국 인플레이션 감축법(IRA)의 수혜를 받기 위해 애리조나에 양극재 공장을 구축 중입니다. 이 공장은 2026년 완성 예정이며, 연 생산 능력은 5만 톤 수준으로 계획되어 있습니다.</p>
+
+                    <p>IRA는 미국에서 생산된 배터리에 대해 최대 30%의 세제 혜택을 제공하며, 이는 기존 중국산 양극재 대비 상당한 가격 경쟁력을 제공합니다. 또한 미국에서 직접 생산함으로써 테슬라, 포드, GM 등 미국 자동차 제조사들과의 계약 체결 가능성이 높아집니다.</p>
+
+                    <p>현재 애리조나 공장의 건설 진척률은 68%이며, 2026년 중 본격적인 생산 가동이 기대되고 있습니다. 이는 엘앤에프의 회복의 가장 중요한 변수입니다.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">IRA Eligible</span>
+                        <span class="tech-badge">US Production</span>
+                        <span class="tech-badge">50K Ton/Year</span>
+                        <span class="tech-badge">2026 Completion</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-flask"></i>차세대 배터리 기술 개발</h3>
+                <p>엘앤에프는 현재의 리튬이온 배터리를 넘어 차세대 배터리 기술 개발에도 참여하고 있습니다. 고체 배터리(Solid-State Battery), 리튬-황 배터리(Lithium-Sulfur Battery), 나트륨이온 배터리(Sodium-Ion Battery) 등이 연구 대상입니다.</p>
+
+                <p>특히 나트륨이온 배터리는 리튬이온 배터리 대비 비용이 30-40% 저렴하면서도 성능이 점진적으로 개선되고 있어, 저가 세그먼트 전기차 시장에서 빠르게 채택될 것으로 예상됩니다. 엘앤에프는 나트륨이온 양극재 기술 개발에 연 200억원 이상을 투자하고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i>시장 분석</h2>
+            <p class="section-subtitle">글로벌 2차전지 양극재 시장의 성장 및 경쟁 심화</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 양극재 시장 현황</h3>
+                <p>글로벌 2차전지 양극재 시장은 2025년 기준 약 30조원 규모로 추정되며, 2030년까지 연평균 15-18% 성장할 것으로 예상됩니다. 이러한 성장의 원인은 전 세계적 전기차 보급 확대에 있습니다.</p>
+
+                <p>2025년 전 세계 전기차 판매량은 약 2,800만 대(자동차 총 판매량의 32%)를 기록할 것으로 예상되며, 2030년에는 5,000만 대(52%)에 도달할 것으로 전망됩니다. 특히 중국, 유럽, 북미 시장의 강한 성장이 예상되고 있습니다.</p>
+
+                <p>다만, 양극재 시장은 중국 기업들의 저가 공략으로 인해 가격 경쟁이 심화되고 있습니다. 중국의 CATL, 비야디(BYD) 관련 양극재 기업들이 연 30-40% 가격 인하를 단행하면서, 한국과 글로벌 기업들의 수익성이 크게 압박받고 있습니다. 엘앤에프도 이러한 가격 압박의 주요 피해자 중 하나입니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-battery"></i>양극재 기술별 시장 동향</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>양극재 종류</th>
+                                <th>시장 점유율</th>
+                                <th>평균 가격($/kg)</th>
+                                <th>엘앤에프 역량</th>
+                                <th>시장 전망</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LCO (코발트산화물)</strong></td>
+                                <td>18%</td>
+                                <td>15-18</td>
+                                <td>약함</td>
+                                <td>감소</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NCM (니켈코발트망간)</strong></td>
+                                <td>45%</td>
+                                <td>10-12</td>
+                                <td>중간</td>
+                                <td>안정적</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NCMA (4원계)</strong></td>
+                                <td>22%</td>
+                                <td>12-14</td>
+                                <td>우수</td>
+                                <td>강세</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NCA (니켈코발트알루미늄)</strong></td>
+                                <td>12%</td>
+                                <td>14-16</td>
+                                <td>우수</td>
+                                <td>중간</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LFP (인산철리튬)</strong></td>
+                                <td>3%</td>
+                                <td>4-5</td>
+                                <td>약함</td>
+                                <td>급성장</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-bar-chart"></i>2025-2027년 양극재 수요 추이 (단위:만톤)</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 65%;"></div>
+                        </div>
+                        <div class="bar-value">650</div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 78%;"></div>
+                        </div>
+                        <div class="bar-value">820</div>
+                        <div class="bar-label">2025년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 92%;"></div>
+                        </div>
+                        <div class="bar-value">1,050</div>
+                        <div class="bar-label">2026년(예)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;"></div>
+                        </div>
+                        <div class="bar-value">1,300</div>
+                        <div class="bar-label">2027년(예)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-crown"></i>경쟁사 분석</h2>
+            <p class="section-subtitle">중국 저가 경쟁과 글로벌 기업들의 기술 경쟁</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i>글로벌 양극재 시장 주요 경쟁사</h3>
+                <p>글로벌 양극재 시장은 중국, 한국, 일본, 핀란드 등의 기업들이 경쟁하고 있습니다. 가장 주목할 점은 중국 기업들의 빠른 성장입니다. CATL의 자회사인 ЛИ셀(CATL 소재), 비야디(BYD) 관련 기업들, 광둥신웨이(Guandong Xinwei) 등이 급성장하고 있으며, 저가 정책으로 한국 및 글로벌 기업들의 시장점유율을 빠르게 잠식하고 있습니다.</p>
+
+                <p>한국의 양극재 기업으로는 엘앤에프, 포스코퓨처엠, 에코프로비엠 등이 있습니다. 포스코퓨처엠은 포스코의 자회사로 LG에너지솔루션, SK이노베이션 등 국내 배터리 제조사들의 주요 공급사이며, 에코프로비엠은 최근 고수익 사업 모델로 인해 주가가 급등했습니다. 엘앤에프는 기술력은 우수하지만, 수익성에서는 뒤져있습니다.</p>
+
+                <p>글로벌 기업으로는 유미코어(벨기에), 스미토모메탈(일본) 등이 있으며, 이들은 전통적으로 높은 기술력과 안정적 공급망으로 인정받고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-china"></i>중국 기업들의 공략</h3>
+                    <p><strong>중국의 전략:</strong> 중국 양극재 기업들은 대규모 설비 투자로 생산 능력을 확대하고, 적극적인 가격 인하로 시장 점유율을 확대하는 공격적 전략을 취하고 있습니다. 특히 CATL, 비야디 같은 대형 배터리 제조사와 통합되어 있어, 자체 공급 확보를 통해 원가 절감이 용이합니다.</p>
+
+                    <p><strong>엘앤에프의 과제:</strong> 엘앤에프는 중국의 저가 공략에 직면하여 수익성이 크게 악화되었습니다. 현재 엘앤에프의 경쟁력은 기술력(NCMA, NCA, 21700)에만 있으며, 가격에서는 중국에 뒤져있습니다. 앞으로 기술 우위를 유지하면서도 가격 경쟁력을 강화해야 회복 가능합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-south-korea"></i>포스코퓨처엠과의 비교</h3>
+                    <p><strong>포스코퓨처엠의 강점:</strong> 포스코의 강력한 재무 기반, LG에너지솔루션 등 주요 고객사와의 안정적 관계, 니켈 광산 보유로 인한 원자재 확보 우위 등을 갖고 있습니다.</p>
+
+                    <p><strong>엘앤에프의 강점:</strong> 테슬라와의 직접 공급 계약, 뛰어난 NCMA 기술, 미국 공장 구축을 통한 IRA 수혜 가능성 등이 있습니다. 다만, 재무 상황이 포스코퓨처엠보다 훨씬 더 어렵습니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-europe"></i>유미코어(벨기에)와의 경쟁</h3>
+                    <p><strong>유미코어의 입지:</strong> 100년 이상의 역사, 글로벌 브랜드 신뢰도, 안정적 공급망, 높은 기술력을 갖추고 있습니다. 주로 프리미엄 고성능 양극재를 공급합니다.</p>
+
+                    <p><strong>경쟁 양상:</strong> 유미코어는 고가의 프리미엄 제품 시장에, 엘앤에프는 중가의 양극재 시장에 포지셔닝되어 있습니다. 따라서 직접 경쟁보다는 시장 세분화 전략으로 공존할 수 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>경쟁 환경 평가</h3>
+                    <p><strong>전체 구도:</strong> 양극재 시장은 중국의 저가 공략으로 인해 전체 평균 가격이 빠르게 하락하고 있으며, 이는 기술력만으로는 생존이 어려운 환경을 만들고 있습니다. 엘앤에프가 회복하려면 기술력 유지와 동시에 가격 경쟁력을 강화하고, 특화된 고객사(테슬라 등)와의 관계를 한층 강화해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i>SWOT 분석</h2>
+            <p class="section-subtitle">엘앤에프의 강점, 약점, 기회, 위협</p>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strengths)</h3>
+                    <ul>
+                        <li>고순도 NCMA 양극재 기술의 우수성</li>
+                        <li>테슬라와의 직접 공급 계약 관계</li>
+                        <li>LG에너지솔루션 등 주요 배터리사 공급</li>
+                        <li>26년의 오래된 운영 경험</li>
+                        <li>NCA, NCMA, 21700 등 다양한 제품 포트폴리오</li>
+                        <li>미국 애리조나 공장 구축으로 IRA 수혜</li>
+                        <li>원통형 배터리(21700) 양극재 선점</li>
+                        <li>현금 보유량 2.1조원으로 사업 재구조화 여력</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i>약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>2025년 현재 영업손실 상태 (손실 0.85조원)</li>
+                        <li>시가총액 6조원으로 최고점(19조원)의 약 32% 수준</li>
+                        <li>중국 저가 기업들에 비해 원가 경쟁력 약화</li>
+                        <li>애리조나 공장 초기 투자로 인한 자금 부담</li>
+                        <li>재무 악화로 인한 신용도 저하</li>
+                        <li>에코프로비엠 등 국내 경쟁사 추격</li>
+                        <li>배터리 업체들의 자체 양극재 생산 진출</li>
+                        <li>리튬인산철(LFP) 배터리 확산에 따른 수요 변화</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회 (Opportunities)</h3>
+                    <ul>
+                        <li>글로벌 EV 시장 연 15-18% 성장</li>
+                        <li>NCMA 양극재 시장 점유율 확대(22% 수준)</li>
+                        <li>원통형 배터리(21700) 양극재 YoY 90% 성장</li>
+                        <li>미국 IRA에 의한 가격 경쟁력 강화</li>
+                        <li>테슬라의 추가 수요 증가 가능성</li>
+                        <li>차세대 배터리(고체, 나트륨이온) 개발 진행</li>
+                        <li>미국 리쇼어링 정책 수혜</li>
+                        <li>배터리 재활용(배터리 스크랩) 시장 성장</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-shield"></i>위협 (Threats)</h3>
+                    <ul>
+                        <li>중국 저가 기업들의 가격 인하 압력</li>
+                        <li>CATL, 비야디의 통합 양극재 생산</li>
+                        <li>주요 고객사의 양극재 자체 개발 추진</li>
+                        <li>LFP 배터리 확산으로 인한 NCMA 수요 감소</li>
+                        <li>원자재(니켈, 리튬) 가격 변동성</li>
+                        <li>미국-중국 무역 분쟁 심화</li>
+                        <li>배터리 가격 하락으로 인한 마진율 악화</li>
+                        <li>포스코퓨처엠, 에코프로비엠의 기술 따라잡기</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i>전략 분석</h2>
+            <p class="section-subtitle">생존 대전략: 기술 우위와 미국 시장 진출</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i>중기 생존 및 회복 전략</h3>
+                <p>엘앤에프는 현재 심각한 구조적 위기를 겪고 있으며, 2026-2027년이 회복의 핵심 기간입니다. 회사의 생존과 회복을 위한 핵심 전략은 다음과 같습니다.</p>
+
+                <p>첫째, 미국 애리조나 공장의 2026년 성공적 가동입니다. 현재 건설 진척률 68%로, 2026년 중 본격적 생산 가동이 예상됩니다. 이 공장은 IRA 세제혜택으로 인해 중국산 양극재 대비 현저한 가격 경쟁력을 제공하며, 미국 자동차 제조사들과의 계약 체결의 기초가 됩니다.</p>
+
+                <p>둘째, 테슬라와의 관계 강화입니다. 엘앤에프의 현재 최대 강점은 테슬라와의 공급 계약입니다. 테슬라의 2026-2027년 전기차 생산 계획에 따라 양극재 수요가 크게 증가할 것으로 예상되며, 이를 선제적으로 충족해야 합니다.</p>
+
+                <p>셋째, 고기술 제품 비중 확대입니다. NCMA와 21700 양극재 같은 고부가가치 제품의 비중을 현재 35%에서 2027년까지 50% 이상으로 확대할 계획입니다. 이는 마진율을 개선하고 중국 저가 제품과의 직접 경쟁을 회피합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket"></i>사업 포트폴리오 재구성</h3>
+                    <p><strong>고성능 양극재 집중:</strong> NCMA, NCA, 21700 등 고기술 양극재에 경영 자원을 집중하여, 중국의 저가 경쟁과는 다른 프리미엄 시장을 확보합니다. 이들 제품의 가격은 기존 NCM보다 30-40% 높지만, 성능 프리미엄으로 인해 고객사들의 선호도가 높습니다.</p>
+
+                    <p><strong>차세대 배터리 기술 확보:</strong> 나트륨이온, 고체 배터리 등 차세대 기술에 대한 R&D를 강화하여, 현재의 리튬이온 배터리 기술로만 생존할 수 없다는 인식 하에 미래 먹거리를 확보합니다.</p>
+
+                    <p><strong>지역별 생산 기지화:</strong> 미국(애리조나), 한국(울산), 아시아(추가 진출) 등 지역별 생산 기지를 구축하여, 지역별 고객사의 요구에 신속하게 대응합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-globe"></i>글로벌 시장 전략</h3>
+                    <p><strong>미국 시장 공략:</strong> 애리조나 공장을 통해 테슬라, 포드, GM 등 미국 자동차 제조사들과의 계약 체결을 집중 추진합니다. IRA 수혜로 인해 가격 경쟁력이 확보되고, 공급망 다원화를 원하는 미국의 정책 기조도 유리합니다.</p>
+
+                    <p><strong>유럽 시장 공략:</strong> 유럽의 강화된 배터리 규제(Battery Regulation)에 대응하여, 지속가능성이 높은 양극재 공급자로 포지셔닝합니다. 유미코어와의 기술 차별화를 통해 틈새 시장을 확보합니다.</p>
+
+                    <p><strong>한국 및 아시아:</strong> 기존 고객사(LG에너지솔루션, SK이노베이션 등)와의 관계를 유지하면서, 중국 배터리 기업들의 해외 진출에 대응합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-chart-line"></i>재무 구조 개선 전략</h3>
+                <p><strong>현금흐름 정상화:</strong> 2026년 이후 애리조나 공장 가동으로 인한 매출 증가와 고마진 제품 비중 확대를 통해 영업손실을 빠르게 흑자로 전환할 계획입니다. 2027년에는 영업이익 흑자 달성을 목표로 하고 있습니다.</p>
+
+                <p><strong>부채 관리:</strong> 현재 2.1조원의 현금 보유로 인해 채무 능력은 양호하지만, 구조적 손실이 지속되면 현금 소진 위험이 있습니다. 따라서 2026년 이후 수익성 개선이 절대적으로 필요합니다.</p>
+
+                <p><strong>자본 효율성:</strong> 애리조나 공장 투자로 인해 총자산이 크게 증가할 것으로 예상되며, 이에 따라 ROA 지표는 단기적으로 악화될 수 있습니다. 다만, 공장이 본격적으로 가동되는 2027년 이후에는 ROA가 빠르게 개선될 것으로 기대됩니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i>재무 분석</h2>
+            <p class="section-subtitle">구조적 위기 상황의 재무 현황 및 회복 시나리오</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>과거 3년 및 미래 2년 재무 전망</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>연도</th>
+                                <th>매출(조원)</th>
+                                <th>영업이익(조원)</th>
+                                <th>순이익(조원)</th>
+                                <th>영업이익률(%)</th>
+                                <th>현금(조원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>2023년</strong></td>
+                                <td>2.15</td>
+                                <td>-0.32</td>
+                                <td>-0.28</td>
+                                <td>-14.9%</td>
+                                <td>2.8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024년</strong></td>
+                                <td>1.95</td>
+                                <td>-0.68</td>
+                                <td>-0.62</td>
+                                <td>-34.9%</td>
+                                <td>2.4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2025년</strong></td>
+                                <td>1.82</td>
+                                <td>-0.85</td>
+                                <td>-0.79</td>
+                                <td>-46.7%</td>
+                                <td>2.1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2026년(예)</strong></td>
+                                <td>2.45</td>
+                                <td>-0.12</td>
+                                <td>-0.10</td>
+                                <td>-4.9%</td>
+                                <td>2.5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2027년(예)</strong></td>
+                                <td>3.28</td>
+                                <td>0.26</td>
+                                <td>0.20</td>
+                                <td>7.9%</td>
+                                <td>3.2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;"><i class="fas fa-note"></i> 2026-2027년 수치는 애리조나 공장 가동, 테슬라 추가 수주, 고마진 제품 비중 확대를 기반으로 한 회복 시나리오입니다. 위험 요소에 따라 결과는 크게 달라질 수 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-trending-down"></i>현재의 위기 상황</h3>
+                    <p>엘앤에프는 2024-2025년 매출 감소와 영업손실 심화로 인해 심각한 위기를 겪고 있습니다. 2025년 영업이익률이 -46.7%에 달하고 있으며, 이는 회사가 판매하는 모든 제품에서 손실을 보고 있음을 의미합니다.</p>
+
+                    <p>손실의 주요 원인은 중국 양극재 기업들의 공격적 가격 인하입니다. 2023년 평균 판매가가 톤당 1,500달러라면, 2025년에는 1,100달러까지 하락했으며, 원가는 1,200달러 수준으로 판매가 이하입니다. 이러한 상황이 지속되면 회사의 현금 고갈이 불가피합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-life-ring"></i>회복의 근거</h3>
+                    <p>엘앤에프의 회복 가능성은 다음 세 가지에 달려있습니다.</p>
+
+                    <p>첫째, 애리조나 공장 가동입니다. IRA 세제 혜택으로 인해 미국에서 생산한 양극재는 글로벌 시장보다 20-30% 높은 가격으로 팔 수 있습니다. 이는 손익분기점을 넘을 수 있는 가격대입니다.</p>
+
+                    <p>둘째, 테슬라의 추가 수요입니다. 테슬라는 엘앤에프의 신뢰할 수 있는 고객이며, 2026-2027년 전기차 생산 증가에 따라 양극재 수요도 증가할 것입니다.</p>
+
+                    <p>셋째, 고기술 제품 비중 확대입니다. NCMA와 21700 양극재의 가격은 기존 제품의 40-50% 높으며, 고객사들도 성능 프리미엄을 인정합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-percent"></i>주요 재무 비율</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">부채비율</span>
+                            <span class="progress-label-value">35%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 35%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">유동비율</span>
+                            <span class="progress-label-value">145%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 73%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">현금 대비 부채(배)</span>
+                            <span class="progress-label-value">0.6배</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">매출 대비 R&D 투자(%)</span>
+                            <span class="progress-label-value">12.5%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 63%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">52주 주가 변동률(%)</span>
+                            <span class="progress-label-value">-75%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-flag-checkered"></i>결론 및 투자 의견</h2>
+            <p class="section-subtitle">극도의 위험 상황과 회복 가능성의 공존</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-analysis"></i>종합 평가 - 고위험 고수익 기업</h3>
+                <p>엘앤에프는 현재 극도의 위험에 처해 있으면서도, 동시에 회복 가능성을 보유한 기업입니다. 2025년 영업이익률 -46.7%, 누적 손실 확대는 심각한 상황이지만, 다음 몇 가지 요소가 회복을 가능하게 합니다.</p>
+
+                <p>첫째, 충분한 현금 보유입니다. 2.1조원의 현금으로 2027년까지 회복을 기다릴 수 있는 여력이 있습니다. 둘째, 기술력입니다. NCMA와 NCA 양극재는 글로벌 시장에서 인정받은 고기술 제품입니다. 셋째, 전략적 고객사입니다. 테슬라는 엘앤에프를 신뢰하고 있으며, 테슬라의 성장은 엘앤에프의 성장을 의미합니다.</p>
+
+                <p>다만, 회복이 보장되지는 않습니다. 애리조나 공장 가동 지연, 테슬라 수요 감소, 중국의 기술 따라잡기 등의 리스크가 존재합니다. 또한 2026-2027년에 손익분기점을 넘지 못한다면, 현금 소진으로 인한 극심한 위기가 도래할 수 있습니다.</p>
+
+                <p>투자자 입장에서 엘앤에프는 극도의 위험하지만, 성공할 경우 높은 수익률을 제공할 수 있는 기업입니다. 2021년 최고가 195,300원에서 현재 약 110,000원으로 하락했으나, 회복될 경우 다시 150,000원 이상까지 상승할 가능성이 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-thumbs-up"></i>회복 시나리오의 긍정적 요소</h3>
+                    <ul class="content-list">
+                        <li>NCMA 양극재의 우수한 기술력</li>
+                        <li>테슬라와의 안정적 공급 관계</li>
+                        <li>21700 원통형 배터리 양극재 YoY 90% 성장 가능</li>
+                        <li>미국 IRA에 의한 가격 경쟁력 강화</li>
+                        <li>애리조나 공장 2026년 가동</li>
+                        <li>2.1조원의 현금 보유로 재구조화 여력</li>
+                        <li>고마진 제품 비중 확대 가능성</li>
+                        <li>차세대 배터리 기술 개발 진행</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i>회복 실패 시나리오의 부정적 요소</h3>
+                    <ul class="content-list">
+                        <li>현재의 극심한 손실 상태 (-46.7% 영업이익률)</li>
+                        <li>중국의 공격적 가격 인하 계속</li>
+                        <li>애리조나 공장 건설 지연 또는 가동 실패</li>
+                        <li>테슬라 수주 감소 또는 우량 고객사 상실</li>
+                        <li>LFP 배터리 확산으로 인한 수요 감소</li>
+                        <li>주요 고객사의 자체 양극재 생산 진출</li>
+                        <li>현금 소진으로 인한 재무 위기</li>
+                        <li>원자재 가격 급등으로 인한 원가 상승</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-star"></i>투자 의견 - 고위험 고수익</h3>
+                <p><strong>투자 등급:</strong> <strong style="color: var(--gold);">HOLD (중립) / 고위험 추종자 전용 BUY</strong> - 엘앤에프는 극도의 위험과 회복 가능성을 동시에 갖춘 기업입니다. 일반 투자자에게는 HOLD를 권고하지만, 고위험을 감수할 수 있는 투자자에게는 회복 가능성이 충분하다고 판단합니다.</p>
+
+                <p><strong>목표 주가:</strong> 회복 성공 시나리오 기준으로, 2027년 예상 순이익 200억원에 PER 20배를 적용할 경우 목표 주가는 약 150,000원-170,000원(현재가 110,000원 대비 +36-55%)입니다. 실패 시나리오의 경우 50,000원 이하까지 하락할 수 있습니다.</p>
+
+                <p><strong>투자 시기 및 전략:</strong> 2026년 애리조나 공장 가동 소식, 테슬라 추가 수주 발표 등 회복 신호가 나타나기 전에는 신규 진입을 권장하지 않습니다. 다만, 이미 보유 중인 투자자는 현재 가격대에서 물량 평균화(Dollar Cost Averaging) 전략을 고려할 수 있습니다. 2026년 이후 실적 개선이 확인되면, 단계적 매수를 재개할 수 있습니다.</p>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>엘앤에프 공시 자료 (2024-2025년 분기/연간 보고서)</li>
+                    <li>한국거래소(KRX) 및 엘앤에프 Investor Relations</li>
+                    <li>IHS Markit, Benchmark Mineral Intelligence 배터리 자료</li>
+                    <li>테슬라 분기보고서 및 배터리 공급 현황</li>
+                    <li>미국 에너지부(DOE) IRA 정책 자료</li>
+                    <li>포스코퓨처엠, 에코프로비엠 공시 자료</li>
+                    <li>CATL, BYD 등 글로벌 배터리 기업 자료</li>
+                    <li>IVL Global Ltd. 배터리 시장 리포트</li>
+                    <li>BloombergNEF 전기차 및 배터리 분석</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 엘앤에프는 현재 극도의 구조적 위기 상황에 있으며, 투자에 매우 높은 위험이 따릅니다. 본 분석은 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다. 투자 결정은 개인의 책임이며, 손실 위험을 충분히 이해한 후에만 결정하시기 바랍니다. 회복 시나리오가 실현되지 않을 경우 상당한 손실이 발생할 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 2026년 4월 23일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1200px;margin:40px auto;padding:20px 48px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--rule);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 23일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

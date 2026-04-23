@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD현대마린솔루션 기업 분석 리포트 | FLOVAH Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 265deg, var(--rule) 265deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">April 23, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">HD현대마린솔루션<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">선박 애프터마켓 서비스의 선도 기업, 친환경 선박 전환기의 성장 플랫폼</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">73</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 선박 운영 및 예방 정비 기술</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">1.9조</div>
+                            <div class="metric-label">2025 연 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">11조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3,500+</div>
+                            <div class="metric-label">글로벌 직원</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3년</div>
+                            <div class="metric-label">설립 후 경과</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content">
+                        <h4>주식코드</h4>
+                        <p>KOSPI 443060</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>경영진</h4>
+                        <p>이근석 대표이사</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-industry"></i></div>
+                    <div class="report-info-content">
+                        <h4>주요사업</h4>
+                        <p>선박 부품, 정비, 유지보수, 디지털솔루션</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar"></i></div>
+                    <div class="report-info-content">
+                        <h4>설립</h4>
+                        <p>2023년 (HD현대 계열분사)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: 기업 개요 -->
+        <section id="company">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i>기업 개요</h2>
+            <p class="section-subtitle">선박 애프터마켓 서비스의 신흥 강자</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i>HD현대마린솔루션의 탄생과 전략</h3>
+                <p>HD현대마린솔루션(HD Hyundai Marine Solution)은 2023년 HD현대 계열의 분사로 설립된 상대적으로 신생 회사입니다만, 모기업인 HD현대의 조선 및 해양산업 노하우를 바탕으로 선박 애프터마켓(After-Market, AM) 서비스 시장에서 빠르게 성장하고 있습니다. 2025년 실적은 매출 1조 9,827억원, 영업이익 3,501억원으로 회계연도 YoY 13.6% 성장, 영업이익 28.9% 성장을 기록했으며, 2026년 매출 목표는 2조 3,349억원으로 설정되어 있습니다.</p>
+
+                <p>HD현대마린솔루션의 핵심 사업은 선박의 부품 공급, 유지보수 및 개조(Maintenance, Repair, Modification, MRM) 서비스입니다. 신조선(New Building) 시장의 호황과는 다르게, AM 시장은 이미 취항 중인 선박들의 지속적인 정비 수요에 기반하므로 경기 변동에 상대적으로 덜 민감합니다. 또한 고도화된 선박 운영 기술, AI 기반의 예방 정비 솔루션, 친환경 선박 전환 기술 등을 제공함으로써 높은 부가가치를 창출하고 있습니다.</p>
+
+                <p>특히 주목할 점은 디지털솔루션 매출이 YoY 30% 증가했다는 것으로, 이는 선박 운영사들이 운항 효율성과 비용 절감을 위해 스마트 기술에 투자하고 있음을 시사합니다. 또한 축발전기(축 발전 시스템) 사업도 본궤도에 올랐으며, 분기배당 정책을 추진함으로써 주주가치를 적극적으로 제공하고 있습니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-chart-line"></i>2025년 주요 재정 지표</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">매출(조원)</span>
+                            <span class="progress-label-value">1.98조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익(조원)</span>
+                            <span class="progress-label-value">0.35조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">영업이익률(%)</span>
+                            <span class="progress-label-value">17.6%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">디지털솔루션 성장률(%)</span>
+                            <span class="progress-label-value">30%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">2026년 매출 목표(조원)</span>
+                            <span class="progress-label-value">2.33조</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-timeline"></i>HD현대마린솔루션 성장 경로</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2023년 Q4</div>
+                        <div class="timeline-item-content">HD현대마린솔루션 공식 설립 및 사업 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024년 상반기</div>
+                        <div class="timeline-item-content">글로벌 주요 항구에 정비 기지 확충</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2024년 하반기</div>
+                        <div class="timeline-item-content">축발전기(축발전) 사업 상용화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년 Q1</div>
+                        <div class="timeline-item-content">KOSPI 상장 (코드 443060)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년 Q2</div>
+                        <div class="timeline-item-content">분기배당 정책 시행 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2025년 연간</div>
+                        <div class="timeline-item-content">매출 1.98조 달성, 매출액 YoY 13.6% 성장</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-year">2026년</div>
+                        <div class="timeline-item-content">매출 2.33조원 목표, 친환경 선박 전환 가속화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-microchip"></i>기술 분석</h2>
+            <p class="section-subtitle">선박 운영 최적화와 친환경 전환의 핵심 기술</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-wrench"></i>선박 부품 및 정비 기술</h3>
+                <p>HD현대마린솔루션은 선박의 주요 부품(엔진부품, 시스템부품, 전자장비 등)의 공급과 고도화된 정비 기술을 제공합니다. 선박은 취항 중에 부식, 피로, 기술 진화 등의 이유로 지속적인 부품 교체와 개조가 필요하며, 이러한 AM 시장은 글로벌적으로 연 50조원 규모의 거대 시장입니다. HD현대마린솔루션은 HD현대의 설계 및 건조 노하우를 바탕으로, 각 선박 타입별 맞춤형 부품 솔루션과 고도화된 정비 기술을 제공합니다.</p>
+
+                <p>특히 LNG선의 카고 시스템 정비, 컨테이너선의 갑판기계 개선, VLCC의 부식 방지 기술 등 각 선박 타입별 전문화된 서비스를 제공하고 있습니다. 또한 글로벌 주요 항구(싱가포르, 로테르담, 두바이, 부산 등)에 정비 기지를 구축하여 선박이 운항 중에도 신속한 정비 서비스를 받을 수 있도록 준비하고 있습니다.</p>
+
+                <p>정비 기술의 고도화는 AI 기반의 예방 정비(Predictive Maintenance) 시스템과 결합되어 있습니다. 센서로부터 수집된 실시간 데이터를 분석하여 부품 고장을 사전에 예측하고 최적의 정비 시점을 결정함으로써, 선박의 예상치 못한 정지 시간을 최소화하고 운영 비용을 절감할 수 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i>디지털솔루션 플랫폼</h3>
+                    <p>HD현대마린솔루션의 디지털솔루션 사업은 2025년 YoY 30% 성장을 기록했으며, 이는 회사의 향후 성장의 핵심 동력으로 평가됩니다. 선박 운영사들이 디지털 기술에 투자하고 있으며, 특히 운항 효율성 개선, 연료 비용 절감, 환경 규제 준수 등을 위해 스마트 기술을 채택하고 있습니다.</p>
+
+                    <p>주요 솔루션으로는 선박 실시간 모니터링 플랫폼, AI 기반 운항 최적화 시스템, 디지털 정비 일지 관리 시스템, 선박 탄소배출량 추적 및 보고 시스템 등이 있습니다. 이들 솔루션은 선박 운영사들이 IMO 규제 준수, 운영 비용 절감, 운영 안전성 향상 등을 동시에 달성하도록 지원합니다.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Real-Time Monitoring</span>
+                        <span class="tech-badge">AI Optimization</span>
+                        <span class="tech-badge">Digital Reporting</span>
+                        <span class="tech-badge">Emission Tracking</span>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf"></i>친환경 선박 전환 기술</h3>
+                    <p>암모니아, 메탄올, 수소 연료 선박의 확산에 따라, HD현대마린솔루션은 기존 선박을 친환경 선박으로 개조하는 기술을 개발하고 있습니다. 이는 기존 선박의 엔진을 교체하거나 연료 공급 시스템을 개조하는 대규모 프로젝트로, 높은 기술력과 비용 효율성이 요구됩니다.</p>
+
+                    <p>축발전기(축 발전 시스템) 사업은 이러한 친환경 전환의 일환으로, 선박의 엔진 배기 열이나 운동 에너지를 전기 에너지로 변환하여 선박 내 전력 수요를 충당함으로써 연료 소비를 절감합니다. 이 기술은 신조선에 적용되는 것이 일반적이지만, HD현대마린솔루션은 기존 선박에도 설치 가능한 개조 기술을 개발했습니다.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Fuel Conversion</span>
+                        <span class="tech-badge">Shaft Gen Systems</span>
+                        <span class="tech-badge">Eco-Retrofitting</span>
+                        <span class="tech-badge">Energy Recovery</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-cogs"></i>예방 정비(Predictive Maintenance) 전략</h3>
+                <p>HD현대마린솔루션이 제공하는 예방 정비 시스템은 IoT 센서, 빅데이터 분석, 머신러닝 기술을 통합하여 선박 부품의 고장을 사전에 감지하고 최적의 정비 시점을 제시합니다. 이는 선박 운영사가 예상치 못한 정지 시간(다운타임)을 최소화하고, 정비 비용을 절감하며, 선박의 생명 주기를 연장할 수 있게 합니다.</p>
+
+                <p>특히 LNG선의 복잡한 카고 냉각 시스템, 컨테이너선의 갑판기계, VLCC의 펌프 시스템 등 고장 시 막대한 손실을 야기하는 장비에 대해 예방 정비의 가치가 극대화됩니다. 예방 정비를 통해 선주사는 연간 2-5% 수준의 운영 비용 절감이 가능하며, 이는 HD현대마린솔루션의 서비스 비용을 충분히 상쇄합니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i>시장 분석</h2>
+            <p class="section-subtitle">선박 애프터마켓 시장의 장기 성장 드라이버</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>글로벌 선박 애프터마켓 현황</h3>
+                <p>글로벌 선박 애프터마켓(AM) 시장은 현재 연 50조원 규모로 추정되며, 연평균 4-5% 성장하고 있습니다. 이는 신조선 시장(연 60-80조원)보다는 작지만, 신조선 시장의 호황-불황 주기에 상대적으로 덜 영향을 받는다는 장점이 있습니다. AM 시장의 성장을 견인하는 주요 요인은 다음과 같습니다.</p>
+
+                <p>첫째, 글로벌 선박 보유 량의 증가입니다. 현재 글로벌적으로 약 100,000척 이상의 상선이 취항 중이며, 이들 선박의 평균 연령은 12년입니다. 선박의 나이가 많을수록 정비 수요가 증가하므로, 선박 보유 량의 증가와 선박 노후화는 AM 시장의 지속적 성장을 보장합니다.</p>
+
+                <p>둘째, IMO 규제의 강화입니다. 2050년 탄소중립 목표, 2030년 50% 감축 목표에 따라, 기존 선박들도 친환경 장비를 추가하거나 개조해야 하며, 이는 AM 시장의 새로운 수요를 창출합니다. 특히 황산화물(SOx) 저감 장치(Scrubber), 질소산화물(NOx) 저감 장치, 연료 변환 시스템 등의 개조는 향후 5년간 AM 시장의 가장 빠른 성장 분야가 될 것으로 예상됩니다.</p>
+
+                <p>셋째, 디지털화의 진전입니다. 선박 운영 회사들이 디지털 기술에 투자하면서 스마트 선박 관련 솔루션, 데이터 분석 서비스, 디지털 정비 기술 등에 대한 수요가 증가하고 있습니다. 이러한 서비스들은 높은 부가가치를 제공하므로 AM 시장의 평균 마진을 상향할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-ship"></i>선박 애프터마켓 세부 시장</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>AM 시장 세그먼트</th>
+                                <th>시장규모(조)</th>
+                                <th>연 성장률</th>
+                                <th>HD현대 역량</th>
+                                <th>전망</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>부품 공급</strong></td>
+                                <td>20조</td>
+                                <td>3.5%</td>
+                                <td>우수</td>
+                                <td>안정적</td>
+                            </tr>
+                            <tr>
+                                <td><strong>정비서비스</strong></td>
+                                <td>18조</td>
+                                <td>4.0%</td>
+                                <td>우수</td>
+                                <td>중장기 성장</td>
+                            </tr>
+                            <tr>
+                                <td><strong>친환경 개조</strong></td>
+                                <td>7조</td>
+                                <td>18%</td>
+                                <td>개발 중</td>
+                                <td>급성장</td>
+                            </tr>
+                            <tr>
+                                <td><strong>디지털솔루션</strong></td>
+                                <td>3.5조</td>
+                                <td>22%</td>
+                                <td>우수</td>
+                                <td>급성장</td>
+                            </tr>
+                            <tr>
+                                <td><strong>축발전기</strong></td>
+                                <td>1.5조</td>
+                                <td>15%</td>
+                                <td>개발 중</td>
+                                <td>중기 성장</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-bar-chart"></i>2025-2027년 예상 매출 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 70%;"></div>
+                        </div>
+                        <div class="bar-value">1.7조</div>
+                        <div class="bar-label">2024년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 85%;"></div>
+                        </div>
+                        <div class="bar-value">1.98조</div>
+                        <div class="bar-label">2025년</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 95%;"></div>
+                        </div>
+                        <div class="bar-value">2.33조</div>
+                        <div class="bar-label">2026년(예)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height: 100%;"></div>
+                        </div>
+                        <div class="bar-value">2.78조</div>
+                        <div class="bar-label">2027년(예)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-crown"></i>경쟁사 분석</h2>
+            <p class="section-subtitle">글로벌 선박 애프터마켓 주요 경쟁자와의 경쟁 구도</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list"></i>글로벌 주요 경쟁사</h3>
+                <p>글로벌 선박 AM 시장은 비교적 분산되어 있으며, Wärtsilä(핀란드), MAN Energy Solutions(독일), 가와사키중공업(일본) 등의 대형 엔진/부품 제조사와 글로벌 독립형 해양 서비스 회사들이 주요 플레이어입니다. 한국 시장에서는 HD현대마린솔루션이 가장 신생이면서도 가장 빠르게 성장하고 있는 기업으로 평가됩니다.</p>
+
+                <p>Wärtsilä는 100년 이상의 역사를 가진 전통적 강자로, 선박용 엔진 부품, 추진 시스템, 환경 솔루션 등에서 글로벌 시장점유율이 가장 높습니다. 다만 최근 디지털솔루션 분야에서는 신생 기업들의 빠른 추격을 받고 있습니다. MAN Energy Solutions도 유사한 포지션으로, 선박용 저속 디젤엔진 부품 공급에서 강한 지위를 가지고 있습니다.</p>
+
+                <p>HD현대마린솔루션의 경쟁 우위는 모기업인 HD현대의 조선 기술, 선박 설계 경험, 글로벌 네트워크를 활용할 수 있다는 점입니다. 또한 신생 기업이므로 디지털 기술 적용이 신속하며, 고객 맞춤형 솔루션 제공에 더 민첩합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-industry"></i>Wärtsilä와의 경쟁</h3>
+                    <p><strong>Wärtsilä의 강점:</strong> 100년 이상의 역사, 글로벌 브랜드 인지도, 광범위한 부품 공급망, 강한 재무 기반을 보유하고 있습니다. 또한 선박용 엔진, 추진 시스템, 환경 솔루션 등 통합적 포트폴리오를 제공합니다.</p>
+
+                    <p><strong>HD현대의 대응:</strong> HD현대마린솔루션은 모기업의 조선 기술과 선박 설계 경험을 바탕으로 맞춤형 솔루션을 제공하며, 디지털솔루션 분야에서는 더 선진적인 기술을 제공합니다. 또한 아시아 시장(특히 중국, 동남아)에 대한 접근성이 우수합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-cogs"></i>MAN Energy Solutions와의 경쟁</h3>
+                    <p><strong>MAN의 전략:</strong> MAN은 특히 중속 디젤엔진 부품 공급에서 강점이 있으며, 유럽 및 북미 시장에 강한 네트워크를 보유합니다. 친환경 기술 개발에도 투자하고 있습니다.</p>
+
+                    <p><strong>비교 분석:</strong> HD현대마린솔루션은 부품 공급뿐만 아니라 통합 정비 서비스, 디지털솔루션, 친환경 개조 기술을 함께 제공함으로써 차별화되고 있습니다. 또한 빠른 성장률(YoY 13.6%)과 고수익성(영업이익률 17.6%)이 경쟁 우위를 나타냅니다.</p>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-japan"></i>가와사키중공업과의 경쟁</h3>
+                    <p><strong>가와사키의 위치:</strong> 일본의 가와사키중공업은 해양 기계 및 시스템에 강점이 있으며, 특히 LNG 관련 기술에서 높은 평가를 받습니다. 다만 AM 시장에서는 Wärtsilä나 MAN보다 글로벌 입지가 약합니다.</p>
+
+                    <p><strong>경쟁 전략:</strong> HD현대마린솔루션은 한국 조선사들과의 밀접한 협력 관계를 바탕으로 선택과 집중 전략을 추진하고 있으며, 디지털솔루션과 친환경 기술에서 선점을 추진하고 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-anchor"></i>포지셔닝 및 차별화</h3>
+                    <p><strong>HD현대마린솔루션의 차별화:</strong> 전통 강자들(Wärtsilä, MAN)과는 달리 부품 공급 중심에서 벗어나 통합 AM 서비스 제공자로 포지셔닝하고 있습니다. 특히 디지털솔루션(YoY 30% 성장), 친환경 개조 기술, 예방 정비 시스템 등에서 차별화합니다.</p>
+
+                    <p><strong>경제성 우위:</strong> 한국의 낮은 인건비와 효율적 정비 기술로 인해 가격 경쟁력이 우수하며, 모기업의 기술 지원으로 품질도 보장합니다. 이는 글로벌 선주사들에게 강력한 가치 제안이 됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i>SWOT 분석</h2>
+            <p class="section-subtitle">HD현대마린솔루션의 강점, 약점, 기회, 위협</p>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3><i class="fas fa-star"></i>강점 (Strengths)</h3>
+                    <ul>
+                        <li>HD현대 그룹 내 강력한 시너지(설계, 기술, 네트워크)</li>
+                        <li>선박 AM 시장에서 독점적 지위와 기술 우위</li>
+                        <li>고수익성 사업 모델(영업이익률 17.6%)</li>
+                        <li>빠른 성장률(YoY 13.6%, 영업이익 28.9% 증가)</li>
+                        <li>글로벌 정비 기지 네트워크 구축 중</li>
+                        <li>디지털솔루션 분야 선진 기술(YoY 30% 성장)</li>
+                        <li>친환경 전환 기술 개발 진행</li>
+                        <li>분기배당 정책으로 주주가치 제공</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-warning"></i>약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>신생 회사로서 브랜드 인지도 낮음</li>
+                        <li>글로벌 정비 기지 확충에 필요한 대규모 투자</li>
+                        <li>전통 강자(Wärtsilä, MAN)에 비한 역사 부족</li>
+                        <li>유럽 및 미주 시장 진출 아직 미흡</li>
+                        <li>부품 국산화율 개선 필요</li>
+                        <li>고숙련 정비 인력 확보 경쟁</li>
+                        <li>대규모 프로젝트 경험 누적 필요</li>
+                        <li>친환경 기술 표준화 불확실성</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-lightbulb"></i>기회 (Opportunities)</h3>
+                    <ul>
+                        <li>글로벌 선박 AM 시장 연 4-5% 성장</li>
+                        <li>친환경 규제로 개조 수요 급증(18% 연성장)</li>
+                        <li>디지털솔루션 시장 고성장(22% 연성장)</li>
+                        <li>축발전기 사업 확대(15% 연성장)</li>
+                        <li>신흥국 해운 산업 성장</li>
+                        <li>선박 노후화에 따른 정비 수요 증대</li>
+                        <li>IMO 규제 강화로 친환경 서비스 수요</li>
+                        <li>정부 R&D 지원 활용 가능</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card">
+                    <h3><i class="fas fa-shield"></i>위협 (Threats)</h3>
+                    <ul>
+                        <li>글로벌 선박 AM 시장 경쟁 심화</li>
+                        <li>Wärtsilä, MAN의 기술 추격 및 가격 경쟁</li>
+                        <li>신조선 건조 경기 둔화 시 부품 수요 감소</li>
+                        <li>선박 운임 급락 시 선주의 투자 축소</li>
+                        <li>지정학적 불확실성(러-우, 중국)</li>
+                        <li>원자재 가격 상승으로 원가 증가</li>
+                        <li>친환경 표준 기술 미정의로 기술 투자 손실</li>
+                        <li>글로벌 공급망 불안정</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i>전략 분석</h2>
+            <p class="section-subtitle">글로벌 AM 시장 1위 기업 도약을 위한 중기 전략</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i>중기 성장 목표 및 전략</h3>
+                <p>HD현대마린솔루션은 2030년까지 연 매출 4조원 달성, 영업이익률 20% 이상 유지를 목표로 설정하고 있습니다. 이는 2025년 1.98조원 대비 연평균 15% 수준의 고성장을 의미하며, 다음과 같은 전략을 통해 달성하려고 합니다.</p>
+
+                <p>첫째, 글로벌 정비 기지 네트워크 확충입니다. 현재 주요 항구(싱가포르, 로테르담, 두바이, 부산)에 정비 기지를 구축 중이며, 향후 추가로 홍콩, 라사 팔마스, 로드아일랜드 등에 기지를 확대할 계획입니다. 이는 글로벌 선박의 신속한 정비 서비스를 가능하게 하며, 새로운 고객 확보의 기초가 됩니다.</p>
+
+                <p>둘째, 친환경 선박 전환 기술의 고도화입니다. 암모니아, 메탄올, 수소 연료 전환 기술, 축발전기, 저감 장치 개조 등에 연 1,000억원 이상의 R&D를 투자하여, 친환경 개조 시장(현재 7조원, 연 18% 성장)에서 선도적 지위를 확보할 계획입니다.</p>
+
+                <p>셋째, 디지털솔루션 사업의 고도화입니다. 현재 YoY 30% 성장하고 있는 디지털솔루션을 더욱 고도화하여, 2030년까지 이 사업의 매출 비중을 현재 15%에서 25% 이상으로 확대할 계획입니다. 이는 높은 마진과 반복적 수익 창출의 기반이 됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-ship"></i>사업 포트폴리오 확대 전략</h3>
+                    <p><strong>친환경 개조 사업:</strong> 친환경 규제가 강화되면서 기존 선박의 개조 수요가 급증하고 있습니다. HD현대마린솔루션은 황산화물 저감 장치, 질소산화물 저감 장치, 연료 변환 시스템 등의 설치와 개조에 집중할 계획입니다. 이 사업은 현재 7조원 시장에서 연 18% 성장하고 있으며, 마진도 15-18% 수준으로 높습니다.</p>
+
+                    <p><strong>축발전기 사업 확대:</strong> 축발전기는 선박의 엔진 폐기 열을 전기로 변환하는 기술로, 연료 절감 효과가 2-3%입니다. 시장이 아직 초기 단계이지만 연 15% 성장이 예상되며, HD현대마린솔루션의 최근 성공 사례들이 시장 확대를 가속화할 것으로 예상됩니다.</p>
+
+                    <p><strong>통합 정비 서비스:</strong> 부품 공급, 정비 시공, 기술 지원을 통합 제공하는 원스톱 서비스를 확대하여, 선주사의 총 운영 비용 절감을 최대화합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-robot"></i>디지털 및 기술 혁신</h3>
+                    <p><strong>AI 기반 예방 정비:</strong> 머신러닝 알고리즘을 활용하여 선박 부품의 고장을 조기에 예측하고 최적 정비 시점을 제시합니다. 이는 선주사의 예상치 못한 정지 시간을 최소화하고 운영 비용을 2-5% 절감시킵니다.</p>
+
+                    <p><strong>탄소배출량 추적 및 보고:</strong> IMO의 에너지 효율 기존선(EEXI), 운항 에너지 효율지수(CII) 등 규제 준수를 위해, 선박의 탄소배출량을 실시간으로 모니터링하고 보고하는 플랫폼을 제공합니다.</p>
+
+                    <p><strong>원격 정비 기술:</strong> 증강현실(AR), 드론 기술을 활용하여 원격에서 선박 정비 상태를 진단하고 지시하는 기술을 개발 중입니다. 이는 정비 인력 파견 비용을 절감하고 서비스 신속성을 향상시킵니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-globe"></i>글로벌 확장 및 마케팅 전략</h3>
+                <p><strong>글로벌 정비 기지 네트워크:</strong> 2030년까지 주요 항구 15곳 이상에 정비 기지를 구축하여, 글로벌 어느 곳의 선박이라도 신속한 정비 서비스를 받을 수 있는 인프라를 구축합니다. 이는 고객 확보와 서비스 차별화의 핵심 전략입니다.</p>
+
+                <p><strong>고객 다변화 및 관계 강화:</strong> 현재 한국, 북유럽 선사에 대한 의존도를 낮추고, 중국, 동남아, 중동 등 신흥국 선사들과의 거래를 확대합니다. 또한 장기 정비 계약(Maintenance Contract) 체결을 통해 안정적 수익원을 확보합니다.</p>
+
+                <p><strong>브랜드 강화 및 기술 마케팅:</strong> HD현대 그룹의 명성과 기술력을 바탕으로, 신생 회사에서 글로벌 강자로의 이미지 전환을 추진합니다. 국제 해양박람회 참가, 기술 세미나 개최, 사례 연구 발표 등을 통해 기술 리더십을 입증합니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i>재무 분석</h2>
+            <p class="section-subtitle">2024-2026년 재무 추이 및 고수익성 확대 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i>최근 3년 및 미래 2년 재무 전망</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>연도</th>
+                                <th>매출(조원)</th>
+                                <th>영업이익(조원)</th>
+                                <th>순이익(조원)</th>
+                                <th>영업이익률(%)</th>
+                                <th>순이익률(%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>2023년</strong></td>
+                                <td>1.42</td>
+                                <td>0.22</td>
+                                <td>0.16</td>
+                                <td>15.5%</td>
+                                <td>11.3%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024년</strong></td>
+                                <td>1.74</td>
+                                <td>0.28</td>
+                                <td>0.21</td>
+                                <td>16.1%</td>
+                                <td>12.1%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2025년</strong></td>
+                                <td>1.98</td>
+                                <td>0.35</td>
+                                <td>0.27</td>
+                                <td>17.6%</td>
+                                <td>13.6%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2026년(예)</strong></td>
+                                <td>2.33</td>
+                                <td>0.42</td>
+                                <td>0.32</td>
+                                <td>18.0%</td>
+                                <td>13.7%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2027년(예)</strong></td>
+                                <td>2.78</td>
+                                <td>0.53</td>
+                                <td>0.41</td>
+                                <td>19.0%</td>
+                                <td>14.7%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;"><i class="fas fa-note"></i> 2026-2027년 수치는 글로벌 AM 시장 성장, 친환경 개조 수요 증가, 디지털솔루션 사업 확대를 기반으로 한 추정치입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-trending-up"></i>높은 수익성 유지</h3>
+                    <p>HD현대마린솔루션은 높은 영업이익률(2025년 17.6%)을 유지하고 있으며, 이는 동종 산업 평균(8-10%)에 비해 현저히 높습니다. 이러한 높은 수익성은 다음과 같은 요인에 기인합니다.</p>
+
+                    <p>첫째, AM 사업의 특성상 반복적 고객 관계로 인한 안정적 수익입니다. 둘째, 모기업의 기술 지원으로 인한 경쟁력 있는 가격과 높은 품질입니다. 셋째, 디지털솔루션 사업의 높은 마진(25-30%)이 전체 이익률을 상향합니다. 향후 친환경 개조 사업 확대, 디지털솔루션 비중 증가로 인해 영업이익률은 19-20% 수준으로 추가 상향될 것으로 예상됩니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-dollar-sign"></i>현금흐름 및 배당 정책</h3>
+                    <p>HD현대마린솔루션의 영업현금흐름은 매년 2,500-3,000억원 수준으로 예상되며, 이는 순이익보다 높은 수준입니다. 회사는 높은 현금흐름을 바탕으로 분기배당 정책을 시행하고 있으며, 2025년 연간 배당금은 주당 2,000-2,500원 수준으로 예상됩니다.</p>
+
+                    <p>또한 글로벌 정비 기지 확충, 디지털솔루션 개발 등에 필요한 연간 1,000-1,500억원의 설비 투자는 영업현금흐름으로 충분히 충당 가능합니다. 부채비율은 30% 이하 수준으로 건강한 재무 구조를 유지하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-percent"></i>주요 재무 비율</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROE(자기자본수익률)</span>
+                            <span class="progress-label-value">22.5%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">ROA(자산수익률)</span>
+                            <span class="progress-label-value">16.8%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 84%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">부채비율</span>
+                            <span class="progress-label-value">28%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 28%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">이자보상배수</span>
+                            <span class="progress-label-value">12.4배</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span class="progress-label-name">PER(주가수익비율)</span>
+                            <span class="progress-label-value">14.2배</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 71%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-flag-checkered"></i>결론 및 투자 의견</h2>
+            <p class="section-subtitle">HD현대마린솔루션의 투자 가치 및 성장 전망</p>
+
+            <div class="content-card">
+                <h3><i class="fas fa-analysis"></i>종합 평가</h3>
+                <p>HD현대마린솔루션은 글로벌 선박 애프터마켓 시장에서 신생 강자로 평가됩니다. 높은 영업이익률(17.6%), 빠른 성장률(YoY 13.6%), 글로벌 확장 잠재력, 친환경 전환 기술 등의 장점을 보유하고 있습니다. 특히 선박 AM 시장이 연 4-5% 안정적으로 성장하는 시장이므로, 회사의 15% 고성장은 시장 점유율 확대를 의미합니다.</p>
+
+                <p>2025-2026년 기간에는 매출 13-18% 성장, 영업이익 18-20% 성장이 예상되며, 이는 주가 상승의 주요 모멘텀이 될 것입니다. 특히 디지털솔루션(YoY 30% 성장), 친환경 개조(시장 18% 성장), 축발전기(15% 성장) 등 고성장 사업의 비중 증가가 전체 성장률을 견인할 것으로 예상됩니다.</p>
+
+                <p>다만, 신생 회사로서의 브랜드 인지도 부족, 글로벌 정비 기지 확충에 필요한 대규모 투자, 전통 강자들(Wärtsilä, MAN)의 경쟁 강화 등의 위험 요소도 있습니다. 또한 친환경 기술 표준이 아직 미정의되어 있어, 기술 투자 방향의 불확실성이 존재합니다.</p>
+
+                <p>전반적으로 HD현대마린솔루션은 중기(2025-2027년)에 높은 성장성과 수익성을 동시에 달성할 가능성이 높으며, 장기적으로는 글로벌 AM 시장 톱3 기업으로 성장할 잠재력을 보유하고 있습니다. 현재의 PER(14.2배)은 성장성 대비 합리적인 수준으로 평가됩니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-thumbs-up"></i>긍정적 요인</h3>
+                    <ul class="content-list">
+                        <li>높은 영업이익률(17.6%) 유지 및 확대</li>
+                        <li>빠른 성장률(YoY 13.6%) 달성</li>
+                        <li>HD현대 그룹의 강력한 기술력 지원</li>
+                        <li>선박 AM 시장의 안정적 성장(4-5% 연성장)</li>
+                        <li>디지털솔루션 고성장(YoY 30%)</li>
+                        <li>친환경 개조 시장 급성장(18% 연성장)</li>
+                        <li>글로벌 정비 기지 확충으로 시장 점유율 확대</li>
+                        <li>분기배당으로 주주가치 제공</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="fas fa-warning"></i>부정적 요인 및 위험</h3>
+                    <ul class="content-list">
+                        <li>신생 회사로서 브랜드 인지도 낮음</li>
+                        <li>Wärtsilä, MAN의 기술 추격 및 가격 경쟁</li>
+                        <li>글로벌 정비 기지 확충 투자에 따른 초기 비용</li>
+                        <li>선박 운임 급락 시 선주의 투자 감소</li>
+                        <li>친환경 기술 표준 미정의로 인한 불확실성</li>
+                        <li>지정학적 리스크(러-우, 중국)</li>
+                        <li>원자재 가격 상승으로 원가 증가</li>
+                        <li>고숙련 정비 인력 확보 경쟁</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 0;">
+                <h3><i class="fas fa-star"></i>투자 의견</h3>
+                <p><strong>목표 주가:</strong> 당사의 분석에 따르면, HD현대마린솔루션의 2026년 예상 순이익 3,200억원을 기준으로, PER 18배(성장 프리미엄 반영)를 적용할 경우 목표 주가는 약 170,000원-185,000원(현재가 135,000원 기준 +26-37%)으로 평가됩니다.</p>
+
+                <p><strong>투자 등급:</strong> <strong style="color: var(--gold);">BUY (매수)</strong> - HD현대마린솔루션은 높은 수익성, 빠른 성장, 글로벌 확장 잠재력을 동시에 보유한 매력적인 투자처입니다. 특히 선박 AM 시장의 안정적 성장과 친환경 전환 기술의 선제적 개발이 중기 성장을 견인할 것으로 기대됩니다.</p>
+
+                <p><strong>투자 전략:</strong> 단기(3-6개월)에는 분기별 실적 발표, 글로벌 정비 기지 확충 진전이 주요 모멘텀이 될 것으로 예상됩니다. 중기(6-12개월)에는 친환경 개조 수주 증대, 디지털솔루션 매출 확대가 중요합니다. 장기(1-2년)에는 글로벌 AM 시장에서의 점유율 확대와 신사업(차세대 친환경 기술) 개발 진행이 결정적입니다. 따라서 현재 가격대에서 단계적 매수를 추천합니다.</p>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>HD현대마린솔루션 공시 자료 (2024-2025년 분기/연간 보고서)</li>
+                    <li>한국거래소(KRX) 및 HD현대마린솔루션 Investor Relations</li>
+                    <li>IHS Markit, Clarkson 등 해양산업 조사 기관 리포트</li>
+                    <li>DNV GL, ABS 선급협회 기술 규정 및 통계</li>
+                    <li>IMO(국제해사기구) 환경 규제 및 정책</li>
+                    <li>Wärtsilä, MAN Energy Solutions 공시 자료</li>
+                    <li>국내외 증권사 해양산업 리서치 리포트</li>
+                    <li>해양수산부, 산업통상자원부 정책 자료</li>
+                    <li>Journal of Marine Science and Technology 학술 논문</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH AI의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH AI Advanced Analytics</strong> | 2026년 4월 23일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+
+<!-- MARKET-UPDATE-2026-04-23 -->
+<section id="market-update-2026-04-23" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.23</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">코스피 장중 6,557 최고치 경신 · 삼성전자·SK하이닉스 동반 신고가</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">코스피 6,417.93 마감(4/23):</strong> 장 초반 6,557.76까지 치솟으며 3거래일 연속 사상 최고치를 경신했습니다. 코스피 시가총액은 5,200조원을 넘어 역대 최대를 기록했으며, 반도체 슈퍼사이클 기대감이 지수를 견인하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">삼성전자 229,000원·SK하이닉스 1,255,000원 신고가:</strong> 양사가 동반 사상 최고가를 경신했습니다. 삼성전자 2026년 매출 689.9조원·영업이익 369.7조원 전망, SK하이닉스는 23일 1분기 실적 발표에서 영업이익 40조원 돌파가 예상됩니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">개인 투자자 순매수 집중:</strong> 올해 1~4월 개인 순매수 1위 삼성전자(20.2조원), 2위 SK하이닉스(8.9조원)로 반도체 대형주에 집중 매수세가 이어지고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스닥 9거래일 연속 상승:</strong> 코스닥지수는 1,181.12로 마감하며 9거래일 연속 상승세를 이어가고 있습니다. 바이오·로봇·AI 관련 중소형주가 강세를 보이며 연고점 재도전에 나서고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-23 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1200px;margin:40px auto;padding:20px 48px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--rule);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 23일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

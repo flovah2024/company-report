@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신세계 기업 분석 리포트 | FLOVAH Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        html, body {
+            background: var(--bg-deep);
+            color: var(--ink);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(9,9,11,0.95) 0%, rgba(9,9,11,0.85) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .report-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .flovah-badge {
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 0;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(9,9,11,1) 0%, rgba(20,22,25,0.3) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(201,169,98,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Orbit', serif;
+            font-size: 4rem;
+            color: var(--ink-strong);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--text-body);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-ticker {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .ticker-item {
+            text-align: center;
+        }
+
+        .ticker-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .ticker-value {
+            font-family: 'Orbit', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(201,169,98,0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--gold);
+            background: var(--bg-elevated);
+        }
+
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .metric-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .metric-value {
+            font-family: 'Orbit', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .metric-change {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .metric-change.positive {
+            color: #a8d08d;
+        }
+
+        .metric-change.negative {
+            color: #f4cccc;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+            margin: 4rem 0;
+        }
+
+        /* Heading Styles */
+        h2 {
+            font-family: 'Orbit', serif;
+            font-size: 3rem;
+            color: var(--ink-strong);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            color: var(--text-body);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Content Blocks */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .content-block h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-block p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* List Styles */
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-body);
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .comparison-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 0.9rem;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--bg-elevated);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .company-name {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .swot-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swot-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .swot-box.opportunities::before {
+            background: #a8d08d;
+        }
+
+        .swot-box.threats::before {
+            background: #f4cccc;
+        }
+
+        .swot-box.weaknesses::before {
+            background: #ffc000;
+        }
+
+        .swot-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .swot-content ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .swot-content li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-body);
+        }
+
+        .swot-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .chart-title {
+            color: var(--ink);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 300px;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .bar-column {
+            width: 100%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px 4px 0 0;
+            min-height: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bar-column:hover {
+            background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%);
+            filter: drop-shadow(0 0 10px rgba(201,169,98,0.3));
+        }
+
+        .bar-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .bar-value {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--border) 0%, transparent 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 52%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border: 3px solid var(--bg-deep);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .timeline-year {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-description {
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        /* Report Info */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .report-info-title {
+            color: var(--ink);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .report-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        .report-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+        }
+
+        .report-info-value {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        /* Update Block */
+        .last-update-block {
+            background: linear-gradient(135deg, var(--gold-glow), rgba(92,125,158,0.05));
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .update-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-time {
+            color: var(--gold);
+            font-family: 'Orbit', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-ticker {
+                gap: 1.5rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                padding-left: 2rem !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: -6px;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            </div>
+            <ul class="nav">
+                <li><a href="#overview">개요</a></li>
+                <li><a href="#technology">기술</a></li>
+                <li><a href="#market">시장</a></li>
+                <li><a href="#competitors">경쟁사</a></li>
+                <li><a href="#swot">SWOT</a></li>
+                <li><a href="#strategy">전략</a></li>
+                <li><a href="#financial">재무</a></li>
+            </ul>
+        </div>
+        <div class="header-right">
+            <div class="report-date">2026년 04월 27일</div>
+            <div class="flovah-badge">FLOVAH Insights</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="overview">
+            <div class="hero-content">
+                <h1>신세계</h1>
+                <div class="hero-subtitle">대한민국 프리미엄 유통의 선도자</div>
+                <p class="hero-description">
+                    1955년 설립된 신세계는 백화점, 면세점, 온라인 플랫폼을 통해 프리미엄 소비 문화를 주도하고 있습니다.
+                    럭셔리 백화점 운영과 글로벌 면세사업을 핵심 사업으로 하며, 지속적인 디지털 혁신을 통해 차세대 유통 리더로 자리매김하고 있습니다.
+                </p>
+                <div class="hero-ticker">
+                    <div class="ticker-item">
+                        <div class="ticker-label">KOSPI</div>
+                        <div class="ticker-value">004170</div>
+                    </div>
+                    <div class="ticker-item">
+                        <div class="ticker-label">시가총액</div>
+                        <div class="ticker-value">3.8조</div>
+                    </div>
+                    <div class="ticker-item">
+                        <div class="ticker-label">2026E 매출</div>
+                        <div class="ticker-value">12.4조</div>
+                    </div>
+                    <div class="ticker-item">
+                        <div class="ticker-label">직원수</div>
+                        <div class="ticker-value">25,000+</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <section id="metrics">
+            <div class="container">
+                <h2>핵심 지표</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-card-content">
+                            <div class="metric-label">2026E 연결 매출</div>
+                            <div class="metric-value">12.4조</div>
+                            <div class="metric-change positive">▲ 3.3% YoY</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-content">
+                            <div class="metric-label">2026E 영업이익</div>
+                            <div class="metric-value">5,969억</div>
+                            <div class="metric-change positive">▲ 24.4% YoY</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-content">
+                            <div class="metric-label">2026E 1Q 매출</div>
+                            <div class="metric-value">3.0조</div>
+                            <div class="metric-change positive">▲ 4.6% QoQ</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card-content">
+                            <div class="metric-label">2월 매출</div>
+                            <div class="metric-value">1,885억</div>
+                            <div class="metric-change positive">▲ 30.86% YoY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Company Overview Section -->
+        <section id="company-overview">
+            <div class="container">
+                <h2>기업 소개</h2>
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-building"></i> 회사 개요</h4>
+                        <p>신세계는 1955년 설립되어 대한민국 유통업계의 시장 리더로서의 위치를 지켜오고 있습니다. 2011년 이마트 분리 이후 백화점·면세점 중심의 프리미엄 유통 사업에 집중하고 있으며, 강남점과 본점을 중심으로 럭셔리 백화점으로서의 입지를 강화하고 있습니다. 글로벌 면세사업과 온라인 플랫폼 '신세계V'를 통해 포트폴리오를 다각화하고 있으며, 약 25,000명의 임직원을 보유하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-chart-line"></i> 사업 구조</h4>
+                        <p>신세계의 사업은 크게 세 가지 축으로 구성됩니다. 첫째, 신세계백화점은 강남점, 본점, 강릉점 등을 통해 국내 럭셔리 백화점 시장을 주도하고 있습니다. 둘째, 신세계면세점은 인천공항, 김포공항, 주요 도시 내 면세점을 운영하며 국내외 고객을 대상으로 면세 판매를 진행합니다. 셋째, '신세계V'는 온라인 럭셔리 플랫폼으로서 프리미엄 고객층을 대상으로 성장하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-globe"></i> 주요 자회사</h4>
+                        <p>신세계는 신세계백화점, 신세계면세점, 신세계인터내셔날 등 주요 자회사를 통해 사업을 영위하고 있습니다. 각 자회사는 독립적인 경영 체계를 유지하면서도 신세계 그룹의 총괄 감독 아래 시너지를 창출하고 있습니다. 자회사별 전문성을 통해 시장 경쟁력을 강화하고 있으며, 그룹 차원의 통합된 전략을 추진하고 있습니다.</p>
+                    </div>
+                </div>
+
+                <h3>역사적 발전</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1955년</div>
+                            <div class="timeline-description">신세계 백화점 설립 - 서울 종로에서 개점</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1993년</div>
+                            <div class="timeline-description">강남점 개점 - 프리미엄 백화점의 새로운 기준 확립</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2011년</div>
+                            <div class="timeline-description">이마트 분리 - 백화점·면세점 중심의 전략적 재편성</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2018년</div>
+                            <div class="timeline-description">신세계V 런칭 - 온라인 럭셔리 플랫폼 진출</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024년</div>
+                            <div class="timeline-description">디지털 혁신 가속화 - AI 기반 고객 경험 개선</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2026년</div>
+                            <div class="timeline-description">프리미엄 경험 플랫폼으로서의 지위 강화</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Technology & Digital Transformation -->
+        <section id="technology">
+            <div class="container">
+                <h2>기술 및 디지털 전환</h2>
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-laptop"></i> 온라인 플랫폼 '신세계V'</h4>
+                        <p>'신세계V'는 신세계의 온라인 럭셔리 플랫폼으로서, 프리미엄 고객층을 타겟으로 한 통합 쇼핑 경험을 제공합니다. 브랜드 큐레이션, 개인화된 추천 시스템, VIP 고객 관리 등 고급화된 온라인 서비스를 통해 오프라인 백화점과의 시너지를 창출하고 있습니다. 2026년 상반기 성장률은 매우 긍정적이며, 특히 해외 고객의 관심이 증가하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-mobile-alt"></i> 모바일 앱 및 서비스</h4>
+                        <p>신세계는 모바일-퍼스트 전략을 추진하고 있으며, 모바일 앱을 통한 개인화된 쇼핑 경험을 강화하고 있습니다. 실시간 재고 확인, 온라인-오프라인 통합 결제 시스템, 위치 기반 서비스 등을 통해 고객의 편의성을 극대화하고 있습니다. AR을 활용한 상품 시연, 가상 피팅룸 등 최신 기술을 도입하여 차별화된 경험을 제공하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-robot"></i> AI 및 데이터 분석</h4>
+                        <p>신세계는 고객 데이터 분석과 AI 기반 추천 알고리즘에 투자하고 있습니다. 고객의 구매 패턴, 선호도, 계절성 등을 분석하여 맞춤형 상품 추천과 마케팅을 실행하고 있습니다. 머신러닝을 통한 재고 관리 최적화, 수요 예측 개선 등으로 운영 효율성을 높이고 있으며, 이러한 투자는 장기적인 경쟁력 강화에 기여하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-credit-card"></i> 결제 및 핀테크</h4>
+                        <p>신세계는 다양한 결제 수단을 지원하는 통합 결제 플랫폼을 운영하고 있습니다. 신용카드, 디지털 지갑, 암호화폐 등 다양한 결제 옵션을 제공하며, 해외 고객을 위한 글로벌 결제 시스템을 강화하고 있습니다. 포인트 적립 및 사용 시스템의 현대화로 고객 로열티 프로그램을 개선하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-warehouse"></i> 스마트 물류 & 배송</h4>
+                        <p>신세계는 자동화된 물류 센터와 스마트 배송 시스템에 투자하고 있습니다. IoT 센서를 통한 실시간 재고 추적, 로봇을 활용한 자동화 포장, AI 기반 배송 최적화 알고리즘 등을 도입하여 배송 속도와 정확도를 높이고 있습니다. 이는 고객 만족도 향상과 운영 비용 절감으로 이어지고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-shield-alt"></i> 사이버 보안</h4>
+                        <p>신세계는 고객 정보 보호와 거래 보안을 최우선으로 하고 있습니다. 최신 암호화 기술, 다층 인증 시스템, 정기적인 보안 감사 등을 통해 사이버 위협으로부터 고객 데이터를 보호하고 있습니다. 국제 보안 표준 준수 및 개인정보보호법 준수를 통해 신뢰도를 유지하고 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Market Analysis -->
+        <section id="market">
+            <div class="container">
+                <h2>시장 분석</h2>
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-chart-pie"></i> 국내 백화점 시장</h4>
+                        <p>2026년 국내 백화점 시장은 3.5% 성장할 것으로 예상됩니다. 신세계는 강남점과 본점을 중심으로 럭셔리 고객층을 타겟하며 시장 내 위상을 강화하고 있습니다. 코로나 이후 회복된 해외 관광객 유입과 국내 고급 소비 증가가 긍정적 요인으로 작용하고 있습니다. 특히 강남점의 외국인 매출 증가는 글로벌 플랫폼으로서의 신세계의 포지셔닝을 강화하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-plane"></i> 면세점 시장</h4>
+                        <p>글로벌 관광 회복에 따른 면세점 시장 성장이 지속되고 있습니다. 2026년 예상 성장률은 5.2%이며, 신세계면세점은 인천공항, 김포공항 등 주요 거점에서 시장 점유율을 확대하고 있습니다. 다만, 과거 DF2 철수 결정으로 비용 구조를 개선했으며, 현재는 수익성 중심의 운영 전략을 추진하고 있습니다. 2026년 2월 면세점 매출의 강한 성장(약 30%)은 시장 회복의 신호입니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-shopping-cart"></i> 온라인 럭셔리 시장</h4>
+                        <p>온라인 럭셔리 시장은 연 7~8% 성장하고 있으며, '신세계V'는 이 시장에서 빠르게 성장하는 플레이어입니다. 특히 MZ 세대의 온라인 고급 브랜드 구매 증가와 해외 고객의 관심 증대가 긍정적 요인입니다. 온라인-오프라인 통합 경험(O2O)을 제공함으로써 신세계는 경쟁사 대비 차별화된 가치를 제공하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-globe-asia"></i> 해외 관광객 시장</h4>
+                        <p>코로나 이후 한국 방문 외국인이 크게 증가했으며, 2026년에도 이 추세가 지속될 것으로 예상됩니다. 신세계는 강남점을 중심으로 해외 관광객 대상 럭셔리 쇼핑 경험을 강화하고 있습니다. 다국어 고객 서비스, 글로벌 결제 수단 지원, 면세 혜택 등을 통해 외국인 고객의 만족도를 높이고 있으며, 이는 2월 매출의 30% 이상 성장으로 확인되고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-users"></i> 소비자 트렌드</h4>
+                        <p>현대 소비자는 경험 중심의 쇼핑을 선호하며, 개인화된 서비스, 프리미엄 가치, 지속 가능성을 중시합니다. 신세계는 VIP 고객 대상 전용 서비스, 브랜드 체험 공간, 친환경 제품 강화 등으로 이러한 트렌드에 대응하고 있습니다. 또한 소셜 미디어 기반 마케팅과 인플루언서 협력을 통해 MZ 세대 고객 확보에 집중하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-exclamation-triangle"></i> 시장 리스크</h4>
+                        <p>경기 둔화, 고금리 지속, 구매력 저하 등의 거시경제적 리스크가 존재합니다. 또한 온라인 채널의 성장으로 오프라인 백화점의 입지가 약화되고 있으며, 중국 럭셔리 시장 둔화에 따른 면세점 수입 감소도 우려 사항입니다. 그러나 신세계의 브랜드 강점과 프리미엄 포지셔닝은 이러한 리스크를 일부 완화할 것으로 예상됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Competitor Analysis -->
+        <section id="competitors">
+            <div class="container">
+                <h2>경쟁사 분석</h2>
+                <p style="margin-bottom: 2rem;">국내 백화점 시장에서 신세계는 주요 플레이어들과 경쟁하고 있습니다. 각 사의 강점, 약점, 시장 포지셔닝을 비교 분석합니다.</p>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>주요 강점</th>
+                                <th>시장 포지셔닝</th>
+                                <th>2025 매출</th>
+                                <th>경쟁력 평가</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="company-name">신세계</span></td>
+                                <td>럭셔리 브랜드, 강남점 랜드마크 지위, 글로벌 면세, 온라인 플랫폼</td>
+                                <td>프리미엄 럭셔리 리더</td>
+                                <td>~11.9조</td>
+                                <td>★★★★★</td>
+                            </tr>
+                            <tr>
+                                <td><span class="company-name">롯데쇼핑</span></td>
+                                <td>다양한 백화점, 면세점 네트워크, 호텔·식음료 시너지</td>
+                                <td>종합 유통 플레이어</td>
+                                <td>~14.2조</td>
+                                <td>★★★★☆</td>
+                            </tr>
+                            <tr>
+                                <td><span class="company-name">현대백화점</span></td>
+                                <td>명동점 입지, 프리미엄 포지셔닝, 강력한 자체 브랜드</td>
+                                <td>럭셔리 경쟁사</td>
+                                <td>~7.8조</td>
+                                <td>★★★★☆</td>
+                            </tr>
+                            <tr>
+                                <td><span class="company-name">갤러리아</span></td>
+                                <td>압구정 명품거리, 고급화 전략, 초고가 고객층</td>
+                                <td>초럭셔리 틈새 포지셔닝</td>
+                                <td>~2.5조</td>
+                                <td>★★★★</td>
+                            </tr>
+                            <tr>
+                                <td><span class="company-name">AK플라자</span></td>
+                                <td>명품 집중, 온라인 확장, 젊은 고객층</td>
+                                <td>명품 중심 백화점</td>
+                                <td>~3.2조</td>
+                                <td>★★★☆</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-crown"></i> 신세계의 경쟁 우위</h4>
+                        <p>신세계는 강남점과 본점이라는 두 개의 럭셔리 백화점 랜드마크를 보유하고 있으며, 이는 업계 내에서 독보적인 입지입니다. 또한 글로벌 면세점 네트워크, 온라인 플랫폼 '신세계V', 약 25,000명의 우수 인력 등이 차별화된 경쟁력입니다. 특히 해외 관광객 유입 확대와 온라인 럭셔리 시장 성장 추세는 신세계에 유리하게 작용하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-exclamation"></i> 경쟁상 약점</h4>
+                        <p>신세계는 롯데쇼핑 대비 점포 수가 적으며, 매출 규모도 다소 뒤처져 있습니다. 또한 온라인 플랫폼의 성장세는 긍정적이지만, 갈수록 강화되는 온라인 경쟁사들(쿠팡, 네이버 등)의 위협이 존재합니다. 면세점 경영의 수익성 개선도 여전히 과제로 남아 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-lightbulb"></i> 전략적 대응</h4>
+                        <p>신세계는 프리미엄 포지셔닝을 강화하고 수익성 중심 경영으로 전환하고 있습니다. O2O 경험 강화, 디지털 전환 가속화, 해외 관광객 타겟팅, 개인화 서비스 강화 등이 주요 전략입니다. 또한 자체 온라인 플랫폼 '신세계V'의 성장을 지속적으로 추진하며, 이를 통해 온라인 채널에서의 영향력을 확대하고 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SWOT Analysis -->
+        <section id="swot">
+            <div class="container">
+                <h2>SWOT 분석</h2>
+                <div class="swot-grid">
+                    <div class="swot-box strengths">
+                        <div class="swot-title"><i class="fas fa-bolt"></i> 강점 (Strengths)</div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>강남점·본점의 럭셔리 랜드마크 지위</li>
+                                <li>글로벌 면세점 네트워크 보유</li>
+                                <li>온라인 플랫폼 '신세계V'의 성장성</li>
+                                <li>우수한 브랜드 포트폴리오</li>
+                                <li>높은 고객 충성도 및 브랜드 이미지</li>
+                                <li>디지털 기술 기반 구축 완료</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swot-box weaknesses">
+                        <div class="swot-title"><i class="fas fa-chain-broken"></i> 약점 (Weaknesses)</div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>경쟁사 대비 낮은 매출 규모</li>
+                                <li>제한된 점포 수</li>
+                                <li>면세점 수익성 여전히 개선 필요</li>
+                                <li>온라인 채널 의존도 아직 낮음</li>
+                                <li>고정비 구조의 경직성</li>
+                                <li>신규 사업 개발 역량 부족</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swot-box opportunities">
+                        <div class="swot-title"><i class="fas fa-rocket"></i> 기회 (Opportunities)</div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>해외 관광객 증가로 인한 면세 매출 성장</li>
+                                <li>온라인 럭셔리 시장의 빠른 성장</li>
+                                <li>MZ 세대의 프리미엄 소비 증가</li>
+                                <li>중국 관광객 회복에 따른 면세점 수요</li>
+                                <li>디지털 결제 및 핀테크 확대</li>
+                                <li>신규 점포 개발 기회</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swot-box threats">
+                        <div class="swot-title"><i class="fas fa-warning"></i> 위협 (Threats)</div>
+                        <div class="swot-content">
+                            <ul>
+                                <li>경기 둔화 및 고금리 지속</li>
+                                <li>온라인 채널 경쟁 심화</li>
+                                <li>오프라인 백화점 입지 약화</li>
+                                <li>중국 럭셔리 수입 둔화</li>
+                                <li>소비자 구매력 저하</li>
+                                <li>글로벌 경제 불확실성</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Strategy Analysis -->
+        <section id="strategy">
+            <div class="container">
+                <h2>전략 분석</h2>
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-crown"></i> 프리미엄 포지셔닝 강화</h4>
+                        <p>신세계는 명확한 럭셔리 백화점 전략으로 프리미엄 고객층을 집중 공략하고 있습니다. 강남점과 본점을 중심으로 초고가 브랜드 입점, VIP 고객 서비스 확대, 프리미엄 쇼핑 경험 제공 등을 통해 경쟁사와의 차별화를 추구하고 있습니다. 이는 매출 규모보다 수익성을 우선시하는 전략으로, 높은 마진율 유지에 유리합니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-globe"></i> 글로벌 전략 강화</h4>
+                        <p>신세계는 해외 관광객 유입 증대, 면세점 네트워크 확대, 온라인 글로벌 확장 등을 통해 국제 경쟁력을 강화하고 있습니다. 강남점에서의 외국인 매출 확대, 다국어 고객 서비스, 글로벌 결제 수단 지원 등이 이를 입증합니다. 면세점 사업에서 DF2 철수 이후 수익성 중심으로 재구성하여 체질을 개선하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-laptop"></i> 디지털 혁신 추진</h4>
+                        <p>신세계는 온라인 플랫폼 '신세계V'를 중심으로 디지털 전환을 가속화하고 있습니다. 모바일 앱, AI 기반 추천, AR 시연, 개인화 마케팅 등을 통해 오프라인과 온라인의 원활한 통합(O2O)을 추진하고 있습니다. 또한 빅데이터 분석을 활용한 고객 관계 관리(CRM)와 인벤토리 최적화로 운영 효율성을 높이고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-chart-bar"></i> 수익성 중심 경영</h4>
+                        <p>신세계는 매출 성장보다 수익성 개선에 중점을 두고 있습니다. 저수익 사업(DF2) 철수, 고마진 상품 중심 구성, 고정비 절감, 운영 효율화 등을 통해 영업이익률을 높이고 있습니다. 2026년 예상 영업이익 24.4% 증가는 이러한 전략의 성과를 반영합니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-users-cog"></i> 고객 경험 최적화</h4>
+                        <p>신세계는 VIP 고객 중심의 차별화된 서비스를 강화하고 있습니다. 전용 라운지, 개인 스타일리스트, 멤버십 혜택 확대, 이벤트 및 런칭 행사 개최 등을 통해 고객 만족도를 높이고 있습니다. 또한 소셜 미디어 활용, 인플루언서 협력, 커뮤니티 형성 등을 통해 감정적 브랜드 충성도를 강화하고 있습니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-leaf"></i> 지속 가능성 경영</h4>
+                        <p>신세계는 환경 친화적 상품 개발, 사회 책임 활동, 윤리 경영을 강화하고 있습니다. 친환경 패키징, 탄소 중립 물류, 공정 거래 상품 확대 등을 추진하여 프리미엄 브랜드의 가치를 한층 높이고 있습니다. 이는 높은 구매력의 신세계 고객층의 사회 의식과 부합하여 브랜드 이미지를 강화합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Financial Analysis -->
+        <section id="financial">
+            <div class="container">
+                <h2>재무 분석</h2>
+                
+                <div class="chart-container">
+                    <div class="chart-title">연도별 매출 추이 (조원)</div>
+                    <div class="bar-chart">
+                        <div class="bar">
+                            <div class="bar-column" style="height: 75%;"></div>
+                            <div class="bar-label">2022</div>
+                            <div class="bar-value">10.2</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 82%;"></div>
+                            <div class="bar-label">2023</div>
+                            <div class="bar-value">11.0</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 92%;"></div>
+                            <div class="bar-label">2024</div>
+                            <div class="bar-value">12.0</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 95%;"></div>
+                            <div class="bar-label">2025</div>
+                            <div class="bar-value">11.9</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 100%;"></div>
+                            <div class="bar-label">2026E</div>
+                            <div class="bar-value">12.4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">영업이익 추이 (억원)</div>
+                    <div class="bar-chart">
+                        <div class="bar">
+                            <div class="bar-column" style="height: 60%;"></div>
+                            <div class="bar-label">2022</div>
+                            <div class="bar-value">3,200</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 68%;"></div>
+                            <div class="bar-label">2023</div>
+                            <div class="bar-value">3,850</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 75%;"></div>
+                            <div class="bar-label">2024</div>
+                            <div class="bar-value">4,300</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 82%;"></div>
+                            <div class="bar-label">2025</div>
+                            <div class="bar-value">4,800</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-column" style="height: 100%;"></div>
+                            <div class="bar-label">2026E</div>
+                            <div class="bar-value">5,969</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-dollar-sign"></i> 매출 분석</h4>
+                        <p>신세계의 2026년 예상 매출은 12.4조원으로, 전년 대비 3.3% 성장할 것으로 예상됩니다. 이는 해외 관광객 증가, 온라인 플랫폼 성장, 프리미엄 상품 판매 확대 등에 기인합니다. 특히 1분기 매출 3.0조원(+4.6%)과 2월 매출 1,885억원(+30.86%)의 강세는 시장 회복 신호를 나타냅니다. 장기적으로 안정적인 성장이 예상됩니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-chart-line"></i> 영업이익 분석</h4>
+                        <p>2026년 영업이익은 5,969억원으로, 전년 대비 24.4%의 높은 성장이 예상됩니다. 이는 수익성 중심 경영 전략의 성과를 반영합니다. DF2 철수로 인한 고정비 절감, 고마진 상품 판매 확대, 운영 효율화 등이 주요 요인입니다. 특히 1분기 영업이익 1,502억원(+13.5%)은 분기 기준으로도 양호한 성장을 나타냅니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-percentage"></i> 수익성 지표</h4>
+                        <p>신세계의 영업이익률은 지속 개선되고 있습니다. 2026년 예상 영업이익률은 약 4.8%로, 과거 3.8~4.0% 수준에서 상승할 것으로 예상됩니다. 이는 효율적인 경영과 고마진 사업 중심 포트폴리오 개편의 결과입니다. ROE와 ROA도 개선 추세를 보이고 있으며, 주주 가치 창출에 긍정적입니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-balance-scale"></i> 재무 건전성</h4>
+                        <p>신세계는 건전한 재무 구조를 유지하고 있습니다. 부채비율은 산업 평균 이하 수준이며, 영업 현금흐름은 지속적으로 양호합니다. 배당 정책도 안정적이어서 주주 환원이 꾸준히 이루어지고 있습니다. 다만 장기적으로는 디지털 전환, 신규 시설 개발 등에 대한 투자가 필요하므로, 자본 효율성 강화가 과제입니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-bullseye"></i> 목표 달성도</h4>
+                        <p>신세계는 2026년 목표 달성 가능성이 높습니다. 매출 목표 12.4조원, 영업이익 목표 5,969억원은 현재의 사업 모멘텀과 시장 조건을 감안할 때 현실적입니다. 특히 온라인 성장 가속화, 해외 관광객 회복, 면세점 수익성 개선 등이 목표 달성의 주요 동력입니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-exclamation-circle"></i> 리스크 요인</h4>
+                        <p>경기 둔화, 고금리 지속, 글로벌 경제 불확실성 등이 매출과 이익 달성에 부정적 영향을 미칠 수 있습니다. 또한 온라인 경쟁 심화, 해외 관광객 감소, 중국 경제 악화 등도 주시할 필요가 있습니다. 그러나 신세계의 프리미엄 포지셔닝은 이러한 리스크를 일부 완화할 것으로 예상됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <div class="container">
+                <h2>결론</h2>
+                <div class="content-grid">
+                    <div class="content-block">
+                        <h4><i class="fas fa-check-circle"></i> 투자 관점</h4>
+                        <p>신세계는 프리미엄 럭셔리 유통 시장에서 명확한 차별화된 위치를 차지하고 있습니다. 2026년 3.3% 매출 성장, 24.4% 영업이익 성장은 견고한 사업 모멘텀을 반영합니다. 온라인 플랫폼 성장, 해외 관광객 증가, 수익성 중심 경영 등이 긍정적 요인으로 작용하고 있습니다. 안정적인 배당과 주주 환원 정책도 주목할 만합니다. 다만, 경기 변동성과 온라인 경쟁 심화에 대한 모니터링이 필요합니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-lightbulb"></i> 핵심 전망</h4>
+                        <p>신세계의 향후 3년(2026~2028)은 디지털 전환의 가속화와 프리미엄 포지셔닝 강화가 핵심입니다. '신세계V'의 성장, 오프라인-온라인 통합 경험(O2O) 극대화, 해외 고객 기반 확대가 중요한 성장 축입니다. 또한 신규 점포 개발, AI 기술 투자, 지속 가능성 경영을 통해 브랜드 가치를 높일 것으로 예상됩니다. 글로벌 경제 회복에 따른 면세 사업의 추가 성장도 기대됩니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-star"></i> 강점 요약</h4>
+                        <p>신세계의 주요 강점은 세 가지입니다. 첫째, 강남점·본점의 럭셔리 랜드마크 지위는 경쟁사가 모방하기 어려운 자산입니다. 둘째, 글로벌 면세점 네트워크와 온라인 플랫폼은 다각화된 사업 포트폴리오를 제공합니다. 셋째, 프리미엄 고객 기반과 우수한 브랜드 이미지는 높은 마진율과 고객 충성도를 보장합니다. 이 세 가지 강점이 상호 보강되어 신세계의 경쟁력을 형성합니다.</p>
+                    </div>
+                    <div class="content-block">
+                        <h4><i class="fas fa-crosshairs"></i> 과제 및 전략</h4>
+                        <p>신세계가 극복해야 할 과제는 네 가지입니다. 첫째, 온라인 채널의 경쟁력 강화로 '신세계V'의 성장을 가속화해야 합니다. 둘째, 면세점 사업의 수익성을 더욱 개선하여 이익 창출 기여도를 높여야 합니다. 셋째, 디지털 전환에 지속적으로 투자하여 차세대 고객 경험을 제공해야 합니다. 넷째, 신규 사업 기회를 적극 발굴하여 성장 동력을 확보해야 합니다. 이를 위해 기술 인력 확충, 마케팅 강화, 전략적 협력 확대가 필요합니다.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3>최종 평가</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--text-body);">
+                        신세계는 프리미엄 럭셔리 유통 시장에서 독보적인 리더로서의 입지를 강화하고 있습니다. 2026년 예상되는 3.3% 매출 성장과 24.4% 영업이익 성장은 수익성 중심 경영 전략의 성과를 명확히 보여줍니다. 온라인 플랫폼 성장, 해외 관광객 증가, 프리미엘 포지셔닝 강화 등이 중기적 성장을 견인할 것으로 예상됩니다. 다만, 경제 불확실성, 온라인 경쟁 심화, 해외 경기 변동성 등에 대한 지속적인 모니터링이 필요합니다. 전반적으로 신세계는 안정적인 사업 기반과 명확한 성장 전략을 보유한 견고한 기업입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Report Info -->
+        <section style="padding: 4rem 2rem;">
+            <div class="container">
+                <div class="report-info">
+                    <div class="report-info-title"><i class="fas fa-file-alt"></i> 리포트 정보</div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">기업명</span>
+                        <span class="report-info-value">신세계 (Shinsegae)</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">티커</span>
+                        <span class="report-info-value">KOSPI 004170</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">업종</span>
+                        <span class="report-info-value">유통 / 백화점·면세점</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">시가총액</span>
+                        <span class="report-info-value">약 3.8조원</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">직원수</span>
+                        <span class="report-info-value">약 25,000명</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">설립일</span>
+                        <span class="report-info-value">1955년</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">보고 대상 기간</span>
+                        <span class="report-info-value">2026년 상반기</span>
+                    </div>
+                    <div class="report-info-item">
+                        <span class="report-info-label">리포트 섹션</span>
+                        <span class="report-info-value">8개 섹션 (기업 개요, 기술, 시장, 경쟁사, SWOT, 전략, 재무, 결론)</span>
+                    </div>
+                </div>
+
+                <div class="last-update-block">
+                    <div class="update-label"><i class="fas fa-clock"></i> 마지막 업데이트</div>
+                    <div class="update-time">2026년 04월 27일 09:00 KST</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.metric-card, .content-block, .bar').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

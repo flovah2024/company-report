@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD현대마린엔진 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Orbit:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+        }
+
+        .date-display {
+            color: var(--text-secondary);
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        main {
+            margin-top: 70px;
+            padding-bottom: 80px;
+        }
+
+        .section {
+            padding: 60px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-divider {
+            height: 80px;
+            background: linear-gradient(180deg, var(--bg-deep) 0%, transparent 50%, var(--bg-deep) 100%);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '◆';
+            font-size: 20px;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title-icon {
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px;
+        }
+
+        .hero {
+            padding: 100px 40px 60px 40px;
+            background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-card) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            background-color: var(--bg-elevated);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .metric-detail {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .intro-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .intro-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 15px;
+        }
+
+        .intro-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .timeline {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .timeline-item {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .timeline-year {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .timeline-event {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .content-block {
+            margin-bottom: 40px;
+        }
+
+        .subsection-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold-glow);
+        }
+
+        .content-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .list-item {
+            color: var(--text-body);
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .comparison-table thead {
+            background-color: var(--bg-elevated);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .comparison-table th {
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .comparison-table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            color: var(--text-body);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .swot-cell {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            padding: 25px;
+            border-radius: 8px;
+            min-height: 280px;
+        }
+
+        .swot-strength {
+            border-color: #4ade80;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(74, 222, 128, 0.03) 100%);
+        }
+
+        .swot-weakness {
+            border-color: #f87171;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(248, 113, 113, 0.03) 100%);
+        }
+
+        .swot-opportunity {
+            border-color: #60a5fa;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(96, 165, 250, 0.03) 100%);
+        }
+
+        .swot-threat {
+            border-color: #fbbf24;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(251, 191, 36, 0.03) 100%);
+        }
+
+        .swot-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .swot-strength .swot-title {
+            color: #4ade80;
+        }
+
+        .swot-weakness .swot-title {
+            color: #f87171;
+        }
+
+        .swot-opportunity .swot-title {
+            color: #60a5fa;
+        }
+
+        .swot-threat .swot-title {
+            color: #fbbf24;
+        }
+
+        .swot-item {
+            color: var(--text-body);
+            font-size: 14px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .swot-item::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            font-size: 16px;
+        }
+
+        .swot-strength .swot-item::before {
+            color: #4ade80;
+        }
+
+        .swot-weakness .swot-item::before {
+            color: #f87171;
+        }
+
+        .swot-opportunity .swot-item::before {
+            color: #60a5fa;
+        }
+
+        .swot-threat .swot-item::before {
+            color: #fbbf24;
+        }
+
+        .chart-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            height: 300px;
+            margin-top: 20px;
+            padding: 20px 0;
+        }
+
+        .bar-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .bar:hover {
+            filter: brightness(1.2);
+        }
+
+        .bar-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+        }
+
+        .bar-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 40px;
+        }
+
+        .report-info {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .report-info-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .report-info-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            font-size: 13px;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: var(--text-light);
+        }
+
+        .last-update-block {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .last-update-timestamp {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .footer-credit {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, var(--gold-glow) 0%, transparent 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: 6px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .insight-title {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .insight-text {
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 12px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px;
+            }
+
+            .timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .report-info-content {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 0 20px;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+
+            .hero {
+                padding: 80px 20px 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH Logo">
+            </div>
+            <nav>
+                <a href="#overview">개요</a>
+                <a href="#technology">기술</a>
+                <a href="#market">시장</a>
+                <a href="#competitor">경쟁사</a>
+                <a href="#swot">SWOT</a>
+                <a href="#strategy">전략</a>
+                <a href="#financial">재무</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <span class="date-display" id="current-date">2026년 04월 27일</span>
+            <div class="flovah-badge">FLOVAH INSIGHTS</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: OVERVIEW -->
+        <section class="hero" id="overview">
+            <div class="hero-content">
+                <h1 class="hero-title">HD현대마린엔진 기업 분석 리포트</h1>
+                <p class="hero-subtitle">선박용 엔진 전문가의 글로벌 성장 기회</p>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">시가총액</div>
+                        <div class="metric-value">3.9조</div>
+                        <div class="metric-detail">한국 상장사</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2025 매출</div>
+                        <div class="metric-value">4,020억</div>
+                        <div class="metric-detail">전년비 15% 성장</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2026E 매출</div>
+                        <div class="metric-value">5,990억</div>
+                        <div class="metric-detail">전년비 49% 증가</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">2026E 영업이익</div>
+                        <div class="metric-value">1,400억</div>
+                        <div class="metric-detail">2배 이상 증가</div>
+                    </div>
+                </div>
+
+                <div class="intro-section">
+                    <h3 class="intro-title">회사 개요 (기본정보)</h3>
+                    <p class="intro-text">
+                        HD현대마린엔진(KOSPI 071970)은 선박용 저속 디젤엔진, LNG 가스엔진, LPG 가스엔진 및 핵심 부품(터보차저, 크랭크샤프트)을 제조하는 전문 기업입니다. 2001년 설립된 이래 글로벌 조선산업의 중추적 역할을 수행하고 있으며, 현재 약 1,800명의 직원을 보유하고 있습니다.
+                    </p>
+                    <p class="intro-text">
+                        HD현대그룹의 계열사로서, 당사는 조선해양산업의 핵심 부품 공급자로 위치하고 있습니다. 최근 글로벌 선박용 엔진 시장에서 발생하고 있는 심각한 <span class="highlight">숏티지(공급 부족) 현상</span>으로 인해 엔진 단가가 상승하고 있으며, 이는 당사의 수익성 개선으로 직결되고 있습니다.
+                    </p>
+                    <p class="intro-text">
+                        특히 중국 조선소(장수뉴양즈장, 타이저우 산푸 등)로부터의 직접 수주가 급증하고 있으며, 전 지구적 선박 운항 시간 증가와 환경규제 강화에 따른 엔진 교체 수요가 크게 늘어나고 있습니다. 이러한 긍정적인 시장 환경은 향후 수년간 당사의 성장을 견인할 것으로 예상됩니다.
+                    </p>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2001년</div>
+                            <div class="timeline-event">회사 설립 (구 STX중공업)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2015년</div>
+                            <div class="timeline-event">현대중공업 인수 합병</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025년</div>
+                            <div class="timeline-event">매출 4,020억원 달성</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2026년</div>
+                            <div class="timeline-event">성장 가속화 (E)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 2: TECHNOLOGY ANALYSIS -->
+        <section class="section" id="technology">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    기술 분석
+                </h2>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">핵심 기술 역량</h3>
+                    <p class="content-text">
+                        HD현대마린엔진은 선박용 저속 디젤엔진 제조 기술에서 세계 최정상급의 역량을 보유하고 있습니다. 당사의 선박용 저속 디젤엔진은 매우 높은 신뢰성과 효율성을 자랑하며, 국제해사기구(IMO)의 엄격한 환경 기준을 충족하는 설계로 인정받고 있습니다.
+                    </p>
+                    <div class="insight-box">
+                        <div class="insight-title">핵심 기술 포인트</div>
+                        <div class="insight-text">
+                            당사는 고압 분사 시스템, 터보차저 통합 설계, 연소 최적화 알고리즘 등 독자적인 기술을 보유하고 있으며, 이러한 기술들은 엔진의 연비 개선 및 배출가스 감소에 직접 기여합니다.
+                        </div>
+                    </div>
+                    <div class="list-item">선박용 저속 디젤엔진 설계 및 제조 기술</div>
+                    <div class="list-item">LNG 가스엔진 개발 및 상용화</div>
+                    <div class="list-item">LPG 가스엔진 기술 확보</div>
+                    <div class="list-item">터보차저 시스템 통합 설계</div>
+                    <div class="list-item">크랭크샤프트 고강도 재료 및 가공 기술</div>
+                    <div class="list-item">배출가스 제어 시스템(EGCS) 기술</div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">차세대 기술 전략</h3>
+                    <p class="content-text">
+                        글로벌 조선산업이 탈탄소화로 나아가고 있는 가운데, HD현대마린엔진은 LNG 가스엔진과 LPG 가스엔진 기술 개발에 집중하고 있습니다. 특히 LNG 가스엔진은 향후 10년간 선박 엔진 시장에서 가장 빠르게 성장할 것으로 예상되는 분야입니다.
+                    </p>
+                    <p class="content-text">
+                        당사는 이미 여러 주요 선박 발주자로부터 LNG 가스엔진 수주를 확보하고 있으며, 이는 향후 수익 기반의 다층화와 성장성 제고로 이어질 것입니다. 추가로 수소 연료 엔진 개발에도 진행 중이며, 이는 2030년대 선박 에너지 혁신의 핵심이 될 것으로 예상됩니다.
+                    </p>
+                    <div class="list-item">LNG 가스엔진 기술 고도화 및 신규 모델 개발</div>
+                    <div class="list-item">메탄올 연료 엔진 개발 추진</div>
+                    <div class="list-item">수소 연료 엔진 선행 연구</div>
+                    <div class="list-item">디지털화 및 IoT 기반 엔진 모니터링 시스템</div>
+                    <div class="list-item">생산 공정 자동화 및 스마트 팩토리</div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">생산 능력 및 품질 관리</h3>
+                    <p class="content-text">
+                        당사는 울산 본부를 중심으로 최첨단 생산 설비를 갖추고 있으며, 글로벌 해양산업 표준(DNV, Lloyd's Register 등)을 충족하는 엄격한 품질 관리 체계를 운영하고 있습니다. 연간 생산 능력은 약 180개의 대형 선박용 엔진이며, 최근 수주 급증에 따라 생산 용량 확대 계획을 추진 중입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 3: MARKET ANALYSIS -->
+        <section class="section" id="market">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    시장 분석
+                </h2>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">글로벌 선박 엔진 시장 규모 및 성장</h3>
+                    <p class="content-text">
+                        글로벌 선박용 엔진 시장은 2025년 약 250억 달러에서 2030년 약 380억 달러로 성장할 것으로 예상되고 있습니다(연평균성장률 약 8.5%). 이러한 성장은 주로 세 가지 요인에 의해 주도될 것으로 예상됩니다: (1) 국제해운 교역량 증가, (2) 기존 선박의 엔진 교체 수요, (3) IMO 환경 규제에 따른 새로운 선박 건조 활발화입니다.
+                    </p>
+                    <div class="insight-box">
+                        <div class="insight-title">시장 기회 분석</div>
+                        <div class="insight-text">
+                            현재 선박용 엔진 시장은 심각한 공급 부족 상황(숏티지)에 직면하고 있습니다. 주요 공급사들의 생산 능력 부족으로 인해 엔진 단가가 지난 3년간 약 35% 상승했으며, 이러한 추세는 앞으로 2년간 계속될 것으로 예상됩니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">선박 유형별 시장 동향</h3>
+                    <p class="content-text">
+                        컨테이너선, 벌크선, 유조선 등 주요 상용 선박 유형에서 모두 새로운 건조 수요가 증가하고 있습니다. 특히 LNG 운반선(LNGC)의 건조 수량이 과거 5년 평균 대비 40% 증가했으며, 이는 선박용 LNG 가스엔진 수요의 급증으로 이어지고 있습니다.
+                    </p>
+                    <p class="content-text">
+                        또한 환경규제 강화에 따라 스크러버(배출가스 저감장치)를 장착한 새로운 선박 건조가 가속화되고 있으며, 이는 해당 고가 엔진 모듈에 대한 수요 증가로 작용하고 있습니다. 한 번에 하나의 선박에는 여러 개의 보조 엔진이 탑재되므로, 당사의 다양한 엔진 포트폴리오는 이러한 시장 성장으로부터 직접 혜택을 받을 것입니다.
+                    </p>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">지역별 시장 분석</h3>
+                    <p class="content-text">
+                        아시아 지역(특히 중국, 한국, 일본)은 전 세계 선박 건조량의 약 90%를 차지하고 있습니다. 중국의 조선소들이 최근 국제 경쟁력을 크게 강화하고 있으며, 당사는 중국 조선소로부터의 직접 수주 비중을 지속적으로 확대하고 있습니다. 장수뉴양즈장으로부터의 243억원 수주, 타이저우 산푸로부터의 335억원 수주 등은 이러한 추세를 명확히 보여줍니다.
+                    </p>
+                    <p class="content-text">
+                        유럽과 북미 지역의 해운사들도 선박 추가 발주를 진행하고 있으며, 특히 환경친화적 엔진에 대한 선호도가 높아지고 있습니다. 이는 당사의 LNG 가스엔진 및 저황유엔진 수요 증가로 직결될 것으로 예상됩니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 4: COMPETITOR ANALYSIS -->
+        <section class="section" id="competitor">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    경쟁사 분석
+                </h2>
+
+                <p class="content-text" style="margin-bottom: 30px;">
+                    글로벌 선박용 엔진 시장은 소수의 대형 플레이어들에 의해 과점된 구조입니다. HD현대마린엔진은 이 중에서도 가장 경쟁력 있는 위치를 점하고 있으며, 기술력과 가격 경쟁력 모두에서 우위를 보이고 있습니다.
+                </p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>기업명</th>
+                            <th>주요 엔진 타입</th>
+                            <th>기술 강점</th>
+                            <th>시장 위치</th>
+                            <th>2025 추정 매출</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>HD현대마린엔진</strong></td>
+                            <td>저속 디젤, LNG, LPG</td>
+                            <td>통합형 엔진 설계, 우수한 신뢰성</td>
+                            <td>세계 2-3위</td>
+                            <td>약 4,020억원</td>
+                        </tr>
+                        <tr>
+                            <td>Wärtsilä (핀란드)</td>
+                            <td>저속 디젤, LNG, 메탄올</td>
+                            <td>광범위한 포트폴리오, IoT 기술</td>
+                            <td>세계 1-2위</td>
+                            <td>약 100억 달러 (전체 사업)</td>
+                        </tr>
+                        <tr>
+                            <td>MAN Energy Solutions (독일)</td>
+                            <td>저속 디젤, LNG, 수소</td>
+                            <td>고효율 기술, 글로벌 서비스 네트워크</td>
+                            <td>세계 1-2위</td>
+                            <td>약 36억 달러 (엔진 부문)</td>
+                        </tr>
+                        <tr>
+                            <td>Rolls-Royce (영국)</td>
+                            <td>중속 디젤, 가스터빈</td>
+                            <td>고부가가치 엔진, 방위산업 기술</td>
+                            <td>세계 3-4위</td>
+                            <td>약 26억 달러 (해양 부문)</td>
+                        </tr>
+                        <tr>
+                            <td>STM Engine (터키)</td>
+                            <td>저속 디젤</td>
+                            <td>가격 경쟁력, 신흥 시장 강점</td>
+                            <td>세계 5위 이상</td>
+                            <td>약 2,000억원 미만 추정</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="content-block" style="margin-top: 40px;">
+                    <h3 class="subsection-title">경쟁 우위 분석</h3>
+                    <p class="content-text">
+                        HD현대마린엔진은 현재의 공급 부족 시장 환경에서 다음과 같은 경쟁 우위를 갖고 있습니다. 첫째, 한국과 중국 조선소와의 긴밀한 관계로 인해 안정적인 수주 채널을 확보하고 있습니다. 둘째, 통합 엔진 설계 능력으로 인해 고객의 요구사항에 빠르게 대응할 수 있습니다. 셋째, HD현대그룹의 강한 재무력과 기술 인프라를 활용할 수 있습니다.
+                    </p>
+                    <p class="content-text">
+                        다만 Wärtsilä와 MAN과 같은 글로벌 대형 플레이어들은 광범위한 기술 포트폴리오, 글로벌 서비스 네트워크, 그리고 높은 R&D 투자를 통해 장기적 경쟁력을 유지하고 있습니다. 따라서 당사는 LNG 가스엔진과 신규 연료 엔진 개발에 지속적으로 투자하여 기술력을 강화해야 할 것입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 5: SWOT ANALYSIS -->
+        <section class="section" id="swot">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    SWOT 분석
+                </h2>
+
+                <div class="swot-grid">
+                    <div class="swot-cell swot-strength">
+                        <h3 class="swot-title">강점 (Strengths)</h3>
+                        <div class="swot-item">HD현대그룹의 재무력과 기술 인프라 지원</div>
+                        <div class="swot-item">선박 조선소와의 장기 파트너십 구축</div>
+                        <div class="swot-item">다양한 엔진 포트폴리오 보유</div>
+                        <div class="swot-item">우수한 엔진 신뢰성과 효율성</div>
+                        <div class="swot-item">중국 조선소 수주 능력 강화</div>
+                        <div class="swot-item">현지화 전략을 통한 비용 경쟁력</div>
+                    </div>
+
+                    <div class="swot-cell swot-weakness">
+                        <h3 class="swot-title">약점 (Weaknesses)</h3>
+                        <div class="swot-item">Wärtsilä 등 글로벌 대형사 대비 규모 열세</div>
+                        <div class="swot-item">글로벌 서비스 네트워크 상대적 미흡</div>
+                        <div class="swot-item">R&D 투자 규모의 제한</div>
+                        <div class="swot-item">신규 연료 엔진 기술 개발 속도</div>
+                        <div class="swot-item">국제 마케팅 인프라 부족</div>
+                        <div class="swot-item">원재료 가격 변동에 대한 취약성</div>
+                    </div>
+
+                    <div class="swot-cell swot-opportunity">
+                        <h3 class="swot-title">기회 (Opportunities)</h3>
+                        <div class="swot-item">글로벌 선박 엔진 시장 급성장</div>
+                        <div class="swot-item">IMO 규제로 인한 신규 엔진 수요</div>
+                        <div class="swot-item">중국 조선소의 국제 경쟁력 강화</div>
+                        <div class="swot-item">LNG 가스엔진 시장의 확대</div>
+                        <div class="swot-item">친환경 선박 엔진 시장 기회</div>
+                        <div class="swot-item">기존 선박 엔진 교체 수요 급증</div>
+                    </div>
+
+                    <div class="swot-cell swot-threat">
+                        <h3 class="swot-title">위협 (Threats)</h3>
+                        <div class="swot-item">글로벌 경제 둔화로 인한 선박 발주 감소</div>
+                        <div class="swot-item">글로벌 플레이어의 생산 능력 확대</div>
+                        <div class="swot-item">신흥 국가의 엔진 개발 추진</div>
+                        <div class="swot-item">공급 부족 현상의 해소</div>
+                        <div class="swot-item">원유 가격 급등에 따른 해운 수요 감소</div>
+                        <div class="swot-item">수소 연료 전환의 불확실성</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 6: STRATEGY ANALYSIS -->
+        <section class="section" id="strategy">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    전략 분석
+                </h2>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">성장 전략</h3>
+                    <p class="content-text">
+                        HD현대마린엔진의 향후 성장 전략은 다음 세 가지 축을 중심으로 전개될 것으로 예상됩니다. 첫째, 기존 디젤 엔진의 수량 확대를 통한 매출 증대입니다. 현재 글로벌 공급 부족 상황을 활용하여 생산 능력을 최대한 활용하고, 필요시 생산 설비를 확장하는 전략입니다.
+                    </p>
+                    <p class="content-text">
+                        둘째, LNG 가스엔진 수주 확대를 통한 수익성 개선입니다. LNG 가스엔진은 디젤 엔진 대비 높은 마진율을 제공하므로, 이 부분에 대한 수주 비중 확대가 영업이익 증가에 크게 기여할 것으로 예상됩니다. 셋째, 신규 연료 엔진(메탄올, 수소 등) 개발 및 상용화를 통한 미래 경쟁력 강화입니다.
+                    </p>
+                    <div class="list-item">생산 능력 확대 및 운영 효율성 개선</div>
+                    <div class="list-item">LNG 가스엔진 수주 비중 30% 이상 목표</div>
+                    <div class="list-item">메탄올 및 수소 연료 엔진 개발 가속화</div>
+                    <div class="list-item">중국 조선소와의 전략적 파트너십 강화</div>
+                    <div class="list-item">글로벌 판매 및 서비스 네트워크 확충</div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">경영 효율화 전략</h3>
+                    <p class="content-text">
+                        제조업의 수익성은 원가 효율화 능력에 큰 영향을 받습니다. HD현대마린엔진은 스마트 팩토리 구축, 공급망 최적화, 그리고 디지털화 추진을 통해 원가를 지속적으로 절감하고 있습니다. 특히 인공지능 기반의 생산 공정 최적화와 예측 정비 시스템 도입으로 제조 효율성을 극대화하고 있습니다.
+                    </p>
+                    <p class="content-text">
+                        또한 전사적 자원 계획(ERP) 시스템의 고도화와 공급업체 관리의 효율화를 통해 운영 비용을 줄이고 있으며, 이러한 노력들이 영업이익률 개선으로 이어지고 있습니다. 2026년 영업이익률이 2025년 대비 약 2배 증가할 것으로 예상되는 것은 이러한 전략적 노력의 결과입니다.
+                    </p>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">위험 관리 전략</h3>
+                    <p class="content-text">
+                        선박용 엔진 사업은 해운산업의 주기성에 노출되어 있습니다. 경제 둔화로 인한 선박 발주 감소는 당사의 매출에 직접적인 영향을 미칠 수 있습니다. 따라서 당사는 다양한 선박 유형에 대한 엔진 공급, 다양한 연료 타입의 엔진 개발, 그리고 지역 다층화를 통해 사업 위험을 분산하고 있습니다.
+                    </p>
+                    <p class="content-text">
+                        또한 글로벌 공급망 안정화, 핵심 원재료 재고 관리, 그리고 품질 관리 시스템 강화를 통해 운영 위험을 최소화하고 있습니다. 환율 변동에 대한 헤징 전략, 그리고 환경 규제 변화에 대한 선제적 대응도 주요 위험 관리 활동입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 7: FINANCIAL ANALYSIS -->
+        <section class="section" id="financial">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    재무 분석
+                </h2>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">재무 성과 및 추이</h3>
+                    <p class="content-text">
+                        HD현대마린엔진의 재무 성과는 선박용 엔진 시장의 호황 사이클을 반영하고 있습니다. 2025년 매출 4,020억원은 전년 대비 15% 성장했으며, 2026년 추정 매출 5,990억원은 전년 대비 49%의 가파른 증가를 보여줍니다. 이는 현재의 공급 부족 시장과 증가하는 수주량이 반영된 결과입니다.
+                    </p>
+                    <p class="content-text">
+                        더욱 중요한 것은 영업이익의 증가 추세입니다. 2025년 영업이익 760억원에서 2026년 추정 영업이익 1,400억원으로 증가하여, 영업이익률이 약 18.9%에서 23.4%로 상향될 것으로 예상됩니다. 이는 매출 증가뿐만 아니라 제품 믹스의 개선(고부가가치 LNG 엔진 비중 증가)과 원가 효율화의 결과입니다.
+                    </p>
+
+                    <div class="chart-container">
+                        <h4 style="color: var(--gold); font-size: 16px; margin-bottom: 20px;">매출 및 영업이익 추이 (억원)</h4>
+                        <div class="bar-chart">
+                            <div class="bar-column">
+                                <div class="bar" style="height: 180px;">
+                                    <div class="bar-value">2,000</div>
+                                </div>
+                                <div class="bar-label">2023년 매출</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 210px;">
+                                    <div class="bar-value">3,500</div>
+                                </div>
+                                <div class="bar-label">2024년 매출</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 240px;">
+                                    <div class="bar-value">4,020</div>
+                                </div>
+                                <div class="bar-label">2025년 매출</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 360px;">
+                                    <div class="bar-value">5,990</div>
+                                </div>
+                                <div class="bar-label">2026E 매출</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 450px;">
+                                    <div class="bar-value">7,470</div>
+                                </div>
+                                <div class="bar-label">2027E 매출</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">영업이익률 분석</h3>
+                    <p class="content-text">
+                        HD현대마린엔진의 영업이익률 개선은 여러 요인에 의해 주도되고 있습니다. 첫째, 글로벌 공급 부족으로 인한 엔진 판매 단가의 상승입니다. 최근 3년간 평균 단가가 약 35% 상승했으며, 이는 기존 고객의 주문이 증가하면서도 높은 마진을 유지할 수 있게 했습니다.
+                    </p>
+                    <p class="content-text">
+                        둘째, LNG 가스엔진 수주의 증가입니다. LNG 가스엔진은 전통적인 저속 디젤엔진 대비 약 2배의 판매 단가를 기록하고 있으며, 이는 매출 증가 외에도 전체 제품 포트폴리오의 고부가가치화를 견인합니다. 셋째, 생산 효율성 개선으로 인한 원가 절감입니다. 스마트 팩토리 도입과 자동화 수준의 향상이 제조원가를 지속적으로 낮추고 있습니다.
+                    </p>
+
+                    <div class="chart-container">
+                        <h4 style="color: var(--gold); font-size: 16px; margin-bottom: 20px;">영업이익 추이 (억원)</h4>
+                        <div class="bar-chart">
+                            <div class="bar-column">
+                                <div class="bar" style="height: 140px;">
+                                    <div class="bar-value">380</div>
+                                </div>
+                                <div class="bar-label">2023년 영업이익</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 200px;">
+                                    <div class="bar-value">659</div>
+                                </div>
+                                <div class="bar-label">2024년 영업이익</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 230px;">
+                                    <div class="bar-value">760</div>
+                                </div>
+                                <div class="bar-label">2025년 영업이익</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 430px;">
+                                    <div class="bar-value">1,400</div>
+                                </div>
+                                <div class="bar-label">2026E 영업이익</div>
+                            </div>
+                            <div class="bar-column">
+                                <div class="bar" style="height: 550px;">
+                                    <div class="bar-value">1,745</div>
+                                </div>
+                                <div class="bar-label">2027E 영업이익</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">주요 재무 지표 및 분석</h3>
+                    <p class="content-text">
+                        당사의 부채비율은 업계 표준 대비 양호한 수준을 유지하고 있으며, 현금흐름도 강건합니다. ROE(자기자본수익률)는 최근 3년간 꾸준히 상향 추세를 보이고 있으며, 2026년에는 약 25% 대의 우수한 수준에 도달할 것으로 예상됩니다.
+                    </p>
+                    <p class="content-text">
+                        당사의 자본 구조는 HD현대그룹의 지원으로 인해 충분한 유동성을 보유하고 있습니다. 이를 바탕으로 당사는 생산 설비 확대 투자와 기술 개발에 필요한 자금을 충분히 조달할 수 있으며, 주주 환원(배당금)도 지속적으로 증가할 것으로 예상됩니다.
+                    </p>
+                    <div class="list-item">PER(주가수익배수): 약 14배 (2026E 기준, 업계 평균 12배)</div>
+                    <div class="list-item">PBR(주가순자산배수): 약 2.5배 (업계 평균 1.8배)</div>
+                    <div class="list-item">부채비율: 약 40% (양호한 수준)</div>
+                    <div class="list-item">당좌비율: 약 1.2배 이상 (충분한 유동성)</div>
+                    <div class="list-item">배당수익률: 약 2.5% (증가 추세)</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section class="section" id="conclusion">
+            <div class="container">
+                <h2 class="section-title">
+                    <div class="section-title-icon"></div>
+                    결론 및 투자 판단
+                </h2>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">종합 평가</h3>
+                    <p class="content-text">
+                        HD현대마린엔진은 현재 글로벌 선박용 엔진 시장의 호황 사이클에서 최대한의 이익을 얻고 있는 기업입니다. 공급 부족 시장 환경, 중국 조선소로부터의 직접 수주 증가, 그리고 높은 마진율의 LNG 가스엔진 수주 확대 등이 향후 수년간 수익성 성장을 견인할 것으로 예상됩니다.
+                    </p>
+                    <p class="content-text">
+                        재무 측면에서도 2026년 영업이익이 2025년 대비 약 2배 증가할 것으로 예상되며, 이는 단순한 매출 증가를 넘어 이익의 질적 개선을 의미합니다. 당사는 또한 차세대 기술 개발(LNG, 메탄올, 수소 엔진)에 지속적으로 투자하고 있어, 중장기 경쟁력도 확보하고 있습니다.
+                    </p>
+
+                    <div class="insight-box">
+                        <div class="insight-title">핵심 투자 포인트</div>
+                        <div class="insight-text">
+                            (1) 단기: 공급 부족 시장에서의 높은 마진 수익성 확보
+                            (2) 중기: LNG 가스엔진 수주 확대로 인한 추가 성장 모멘텀
+                            (3) 장기: 친환경 연료 엔진 개발을 통한 시장 주도권 강화
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">위험 요인 및 주의사항</h3>
+                    <p class="content-text">
+                        다만 투자 시 주의해야 할 위험 요인들도 있습니다. 첫째, 글로벌 경제 둔화로 인한 해운 수요 감소 가능성입니다. 경제 위기 시 국제 교역량이 급격히 감소하면, 선박 발주가 크게 줄어들 수 있습니다.
+                    </p>
+                    <p class="content-text">
+                        둘째, 글로벌 경쟁사들의 생산 능력 확대입니다. 현재 고수익 시장을 보며 Wärtsilä, MAN 등 글로벌 플레이어들이 생산 능력을 확대하면, 공급 부족 현상이 해소되고 엔진 단가가 하락할 수 있습니다.
+                    </p>
+                    <p class="content-text">
+                        셋째, 신규 연료 엔진 기술 개발의 불확실성입니다. 메탄올 연료나 수소 연료 엔진 상용화 시간이 지연되거나, 기술 개발에 실패할 경우 중장기 경쟁력이 약화될 수 있습니다.
+                    </p>
+                </div>
+
+                <div class="content-block">
+                    <h3 class="subsection-title">최종 판단</h3>
+                    <p class="content-text">
+                        HD현대마린엔진은 <span class="highlight">현재의 긍정적인 시장 환경을 활용하여 단기적으로 뛰어난 실적 성장</span>을 달성할 것으로 예상됩니다. 2026년 매출 5,990억원(전년 대비 49% 증가), 영업이익 1,400억원(약 2배 증가) 달성이 매우 가능성이 높습니다.
+                    </p>
+                    <p class="content-text">
+                        중장기적으로는 LNG 가스엔진, 메탄올 엔진, 수소 엔진 등의 기술 개발과 상용화가 당사의 지속적인 경쟁력 유지의 핵심이 될 것입니다. 따라서 기술 개발 진행 상황과 새로운 수주 수량, 그리고 글로벌 공급 부족 현상의 해소 시점을 주의 깊게 모니터링할 필요가 있습니다.
+                    </p>
+                    <p class="content-text">
+                        종합적으로 HD현대마린엔진은 현재 시점에서 매력적인 투자 기회를 제공하고 있으며, 특히 단기 성장성과 중기 배당 가능성이 높은 종목으로 평가됩니다. 다만 글로벌 거시경제 변수와 해운산업의 주기성을 충분히 감안한 위험 관리가 필수적입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="report-info">
+                <h3 class="report-info-title">보고서 정보</h3>
+                <div class="report-info-content">
+                    <div class="info-item">
+                        <div class="info-label">리포트 제목</div>
+                        <div class="info-value">HD현대마린엔진 기업 분석 리포트</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">작성 날짜</div>
+                        <div class="info-value">2026년 04월 27일</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">분석 대상</div>
+                        <div class="info-value">HD현대마린엔진 (KOSPI 071970)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="last-update-block">
+                <div style="margin-bottom: 10px;">LAST UPDATE</div>
+                <div class="last-update-timestamp">2026년 04월 27일 09:00 KST</div>
+                <div style="margin-top: 15px; font-size: 12px;">
+                    본 리포트는 FLOVAH Insights의 분석 자료이며, 투자 결정의 참고 자료로만 활용하시기 바랍니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-credit">
+            © 2026 FLOVAH Insights. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Update current date
+        const dateDisplay = document.getElementById('current-date');
+        const today = new Date(2026, 3, 27); // April 27, 2026
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = new Date(today).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+        dateDisplay.textContent = formattedDate;
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add hover effects to metric cards
+        document.querySelectorAll('.metric-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

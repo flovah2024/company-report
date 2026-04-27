@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에코프로머티 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Orbit:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201, 169, 98, 0.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201, 169, 98, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--ink);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(9, 9, 11, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .report-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--ink-strong);
+            letter-spacing: -1px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-body);
+            margin-bottom: 2rem;
+        }
+
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .score-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #000;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        .score-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .score-text span:first-child {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .score-text span:last-child {
+            font-size: 1.1rem;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--gold);
+            background-color: var(--bg-hover);
+        }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .section-divider-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--bg-deep);
+            padding: 0 1rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--ink-strong);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        .content-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .content-card:hover {
+            border-color: var(--gold);
+            background-color: var(--bg-elevated);
+        }
+
+        .content-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.4rem;
+            color: var(--ink-strong);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .content-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold), transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 70px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .swot-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .swot-card.strengths h3 {
+            color: var(--gold);
+        }
+
+        .swot-card.strengths h3::before {
+            content: '💪';
+            font-size: 1.5rem;
+        }
+
+        .swot-card.weaknesses h3 {
+            color: #d97706;
+        }
+
+        .swot-card.weaknesses h3::before {
+            content: '⚠️';
+            font-size: 1.5rem;
+        }
+
+        .swot-card.opportunities h3 {
+            color: #10b981;
+        }
+
+        .swot-card.opportunities h3::before {
+            content: '🚀';
+            font-size: 1.5rem;
+        }
+
+        .swot-card.threats h3 {
+            color: #ef4444;
+        }
+
+        .swot-card.threats h3::before {
+            content: '🔴';
+            font-size: 1.5rem;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        .swot-card li:last-child {
+            border-bottom: none;
+        }
+
+        .swot-card li::before {
+            content: '▸ ';
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .bar-items {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-name {
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        .bar-value {
+            color: var(--gold);
+            font-weight: 600;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        .bar-container {
+            background-color: var(--bg-surface);
+            border-radius: 4px;
+            height: 24px;
+            overflow: hidden;
+        }
+
+        .bar {
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        table thead {
+            background-color: var(--bg-elevated);
+        }
+
+        table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--gold);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+            font-family: 'Orbit', sans-serif;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        table tbody tr:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-badge {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .report-info {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .report-info h3 {
+            color: var(--gold);
+            font-family: 'Orbit', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .report-info p {
+            color: var(--text-body);
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .report-info strong {
+            color: var(--ink);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .conclusion-box h4 {
+            color: var(--gold);
+            font-family: 'Orbit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .conclusion-box p {
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        .rating-scale {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .rating-star {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: var(--text-secondary);
+            margin-left: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table {
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            min-width: 100%;
+        }
+
+        .highlight-text {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .last-update-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .last-update-block strong {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="logo">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#overview">개요</a></li>
+                    <li><a href="#technology">기술</a></li>
+                    <li><a href="#market">시장</a></li>
+                    <li><a href="#competitors">경쟁사</a></li>
+                    <li><a href="#swot">SWOT</a></li>
+                    <li><a href="#strategy">전략</a></li>
+                    <li><a href="#financial">재무</a></li>
+                    <li><a href="#conclusion">결론</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <span class="report-date">2026년 04월 27일</span>
+            <div class="flovah-badge">FLOVAH Insights</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- OVERVIEW SECTION -->
+        <section id="overview">
+            <div class="hero">
+                <h1 class="hero-title">에코프로<span class="hero-title-highlight">머티</span></h1>
+                <p class="hero-subtitle">이차전지 양극재 전구체 산업 선도기업</p>
+                
+                <div class="ai-score-badge">
+                    <div class="score-circle">7.8</div>
+                    <div class="score-text">
+                        <span>종합 평가</span>
+                        <span>강력한 추천</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">6.2조</div>
+                        <div class="metric-label">시가총액</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">50,000톤</div>
+                        <div class="metric-label">연간 생산능력</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">46.8%</div>
+                        <div class="metric-label">2025년 H1 매출성장</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">1,500명</div>
+                        <div class="metric-label">임직원 수</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 회사 개요</h3>
+                <p>에코프로머티는 이차전지 산업의 핵심 소재인 양극재 전구체(Precursor) 전문 제조 기업입니다. 2017년 에코프로그룹 산하에서 설립되었으며, 현재 국내 최대 규모의 연간 50,000톤 전구체 생산능력을 보유하고 있습니다. 특히 NCA와 NCM 양극재 전구체 생산라인을 모두 갖춘 유일한 한국 기업으로, 이는 전주기 제품 포트폴리오를 제공할 수 있는 경쟁력 있는 위치를 의미합니다.</p>
+                <p>회사의 주요 고객층은 글로벌 배터리 제조사, 자동차 OEM, 그리고 전동공구 및 에너지저장장치(ESS) 제조사들입니다. 2025년 상반기에는 전년동기 대비 매출이 46.8% 증가하여 강한 성장 추세를 보이고 있습니다. CEO 김병훈 하에서 약 1,500명의 임직원이 근무 중이며, 현재 6.2조원의 시가총액을 유지하고 있습니다.</p>
+                <p>에코프로그룹은 2030년까지 양극재 71만톤, 전구체 25.5만톤, 그리고 32조원의 매출과 12%의 영업이익률(OPM)을 목표로 하는 명확한 성장 로드맵을 제시하고 있으며, 에코프로머티는 이 비전을 달성하기 위한 핵심 자회사로 기능하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 회사 연혁</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">에코프로머티 설립, 양극재 전구체 사업 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">NCM 양극재 전구체 생산라인 구축 및 상업 생산 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019년</div>
+                        <div class="timeline-text">NCA 양극재 전구체 생산라인 추가 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">국제 인증(ISO) 획득 및 국내 주요 고객사 공급 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021년</div>
+                        <div class="timeline-text">생산능력 확대 프로젝트 시작, 글로벌 고객사 계약 체결</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022년</div>
+                        <div class="timeline-text">한국거래소 코스피 상장 (KOSPI 450080)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">생산능력 50,000톤/년 달성, 시장 점유율 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">고급 양극재 전구체 기술 개발, 수출 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년 H1</div>
+                        <div class="timeline-text">매출 46.8% 성장, 신규 시설 가동, 생산능력 추가 확충 계획 수립</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● 기술 분석</span>
+        </div>
+
+        <!-- TECHNOLOGY SECTION -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-flask"></i> <span>기술 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cog"></i> 핵심 기술 및 생산 프로세스</h3>
+                <p>양극재 전구체(Precursor)는 이차전지의 양극재 제조에 있어 가장 중요한 중간 소재입니다. 에코프로머티의 핵심 기술은 니켈(Ni), 코발트(Co), 망간(Mn) 그리고 알루미늄(Al) 등의 금속 화합물을 정밀하게 혼합하고 결정화하여 고순도, 고성능의 전구체를 생산하는 데 있습니다.</p>
+                <p>회사는 NCA(Nickel Cobalt Aluminum oxide)와 NCM(Nickel Cobalt Manganese oxide) 두 가지 주요 양극재 화학을 모두 생산할 수 있는 기술력을 보유하고 있으며, 이는 고객의 다양한 요구사항을 충족시킬 수 있다는 의미입니다. 특히 NCA는 고에너지 밀도가 필요한 전기자동차 응용에 우수하고, NCM은 비용 효율성이 뛰어나 광범위한 응용분야에 사용됩니다.</p>
+                <p>전구체 생산 프로세스는 원료 수급 → 용액 조제 → 공동 침전 → 소성(Calcination) → 건조 및 분급 → 품질 검사의 엄격한 단계를 거칩니다. 에코프로머티는 각 단계에서 첨단 자동화 시스템과 실시간 품질 모니터링 기술을 도입하여 일관성 있는 고품질 제품을 보장합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i> 생산 능력 및 설비</h3>
+                <p>에코프로머티는 현재 국내 최대 규모인 연간 50,000톤의 양극재 전구체 생산능력을 보유하고 있습니다. 이 규모는 약 100만 대의 전기자동차에 필요한 배터리 양극재 제조에 충분한 수량입니다. 회사의 생산시설은 최신 환경 처리 시스템을 갖춘 친환경 공장으로 구축되어 있으며, 이는 회사 이름(Eco-Pro)에서도 드러나는 환경 친화적 철학을 반영합니다.</p>
+                <p>생산 설비는 모듈식 설계로 구성되어 있어 수요 변화에 따른 유연한 증산이 가능합니다. 각 생산 라인은 독립적으로 운영되며, NCA와 NCM 전용 라인으로 구성되어 있어 교차 오염을 방지하고 각 제품의 특성에 맞는 최적의 공정 조건을 유지할 수 있습니다. 회사는 2025년부터 생산능력을 추가로 확충할 계획을 수립하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 기술 경쟁력</h3>
+                <p>에코프로머티의 기술적 경쟁력은 다음과 같은 요소들로 구성됩니다. 첫째, NCA와 NCM을 모두 생산할 수 있는 유일한 한국 기업이라는 점입니다. 이는 고객에게 최대의 유연성을 제공하고, 시장 수요 변화에 신속하게 대응할 수 있음을 의미합니다.</p>
+                <p>둘째, 고순도 원료 수급 및 프로세스 제어 기술입니다. 양극재 전구체의 성능은 원료의 순도와 프로세스 제어의 정밀성에 크게 의존하는데, 에코프로머티는 이 두 분야에서 국제 경쟁력을 갖추고 있습니다. 셋째, 친환경 생산 기술입니다. 양극재 전구체 생산 과정에서 발생하는 폐기물 및 폐수를 최소화하는 기술은 글로벌 환경 규제 강화 추세에서 중요한 차별화 요소입니다.</p>
+                <p>넷째, 고성능 제품 개발 능력입니다. 회사는 지속적으로 높은 전기화학적 성능을 갖춘 신제품을 개발하고 있으며, 이러한 제품들은 고급 배터리 시장에서 프리미엄 가격을 받을 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-certificate"></i> 기술 포트폴리오</h3>
+                <div class="tech-stack">
+                    <div class="tech-badge">NCA 전구체</div>
+                    <div class="tech-badge">NCM 전구체</div>
+                    <div class="tech-badge">고순도 정제 기술</div>
+                    <div class="tech-badge">공동 침전 기술</div>
+                    <div class="tech-badge">소성 기술</div>
+                    <div class="tech-badge">자동화 제어</div>
+                    <div class="tech-badge">폐기물 처리</div>
+                    <div class="tech-badge">품질 관리 시스템</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● 시장 분석</span>
+        </div>
+
+        <!-- MARKET SECTION -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-globe"></i> <span>시장 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i> 이차전지 양극재 시장 규모 및 전망</h3>
+                <p>글로벌 이차전지 시장은 전기자동차의 급속한 보급, 재생에너지 저장 시스템(ESS)의 확대, 그리고 포터블 전자기기의 고성능화에 의해 급속도로 성장하고 있습니다. 2023년 글로벌 이차전지 시장 규모는 약 150조원을 넘었으며, 연평균 12-15% 수준의 성장률을 유지할 것으로 예상됩니다.</p>
+                <p>양극재 전구체 시장은 이차전지 시장 성장의 직접적인 수혜자입니다. 2023년 기준 글로벌 양극재 전구체 시장은 약 20조원 규모이며, 2030년까지 연평균 16% 이상의 성장이 예상됩니다. 이는 배터리 용량이 큼에 따라 양극재 수요가 기하급수적으로 증가하기 때문입니다. 특히 높은 에너지 밀도를 요구하는 전기자동차 배터리 분야에서 NCA와 NCM 전구체의 수요가 집중되고 있습니다.</p>
+                <p>한국은 전기자동차 및 배터리 산업에서 글로벌 강국으로, 한국 배터리 제조사들의 강한 수출력은 한국 양극재 전구체 수요를 안정적으로 유지합니다. 또한 한국의 화학 및 소재 산업 기반은 고순도 전구체 생산에 필요한 원료 수급과 기술력을 지원합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-battery-full"></i> 응용분야별 시장 동향</h3>
+                <p><span class="highlight-text">전기자동차(EV) 배터리 시장</span>: 글로벌 전기자동차 판매량은 2022년 약 1,000만 대에서 2030년 약 3,500만 대 수준으로 성장할 것으로 예상됩니다. 각 자동차 1대당 평균 50-100kWh의 배터리가 탑재되며, 이는 대량의 양극재 전구체 수요를 창출합니다. 특히 고성능 전기자동차의 경우 고에너지 밀도의 NCA 전구체 수요가 증가하고 있습니다.</p>
+                <p><span class="highlight-text">에너지저장장치(ESS) 시장</span>: 재생에너지 보급 확대에 따른 ESS 시장은 매년 30% 이상의 고성장률을 기록하고 있습니다. ESS용 배터리는 장수명과 안정성이 중요하며, NCM 전구체가 주로 사용됩니다. 한국, 중국, 미국, 유럽 등 주요국에서 ESS 설치 규모를 대폭 확대하고 있어 장기적 성장이 보장됩니다.</p>
+                <p><span class="highlight-text">전동공구 및 포터블 배터리 시장</span>: 전동공구, 드론, 로봇청소기 등 다양한 전자기기의 배터리 성능 향상 수요가 늘고 있습니다. 이 분야에서는 에너지 밀도와 출력 특성이 균형잡힌 NCA/NCM 블렌드 제품의 수요가 증가합니다.</p>
+                <p><span class="highlight-text">스태셔너리 에너지 저장 시장</span>: 태양광·풍력 발전소의 전력 저장 시설로 사용되는 대규모 배터리 시스템은 2030년까지 연 25% 이상의 성장이 예상되어 양극재 전구체 수요의 새로운 성장 동인이 될 것입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map"></i> 지역별 시장 분석</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">중국</span>
+                            <span class="bar-value">45%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">한국</span>
+                            <span class="bar-value">25%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">일본</span>
+                            <span class="bar-value">12%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 12%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">유럽</span>
+                            <span class="bar-value">13%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 13%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">기타 지역</span>
+                            <span class="bar-value">5%</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 5%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">2024년 글로벌 양극재 전구체 수요 지역별 분포</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● 경쟁사 분석</span>
+        </div>
+
+        <!-- COMPETITORS SECTION -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>경쟁사 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 주요 경쟁사 현황</h3>
+                <p>양극재 전구체 시장은 글로벌 차원에서 소수의 대형 기업들로 집중되어 있습니다. 시장의 70% 이상을 중국, 한국, 일본의 기업들이 차지하고 있으며, 높은 진입장벽과 기술적 난이도로 인해 신규 진입은 제한적입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 경쟁사 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>국가</th>
+                                <th>연간 생산능력</th>
+                                <th>주요 제품</th>
+                                <th>시장 점유율</th>
+                                <th>강점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>에코프로머티</strong></td>
+                                <td>한국</td>
+                                <td>50,000톤</td>
+                                <td>NCA, NCM</td>
+                                <td>8-10%</td>
+                                <td>NCA/NCM 모두 생산, 친환경, 높은 품질</td>
+                            </tr>
+                            <tr>
+                                <td>Umicore</td>
+                                <td>벨기에</td>
+                                <td>35,000톤</td>
+                                <td>NCA, NCM</td>
+                                <td>5-7%</td>
+                                <td>글로벌 기술력, 친환경 인증</td>
+                            </tr>
+                            <tr>
+                                <td>GS Caltex</td>
+                                <td>한국</td>
+                                <td>40,000톤</td>
+                                <td>NCM</td>
+                                <td>7-9%</td>
+                                <td>대규모 생산, 국내 수요 장악</td>
+                            </tr>
+                            <tr>
+                                <td>Nippon Carbon</td>
+                                <td>일본</td>
+                                <td>30,000톤</td>
+                                <td>NCA, NCM</td>
+                                <td>4-6%</td>
+                                <td>고급 제품, 기술 수준 높음</td>
+                            </tr>
+                            <tr>
+                                <td>Ganfeng Lithium</td>
+                                <td>중국</td>
+                                <td>80,000톤</td>
+                                <td>NCM, NCMA</td>
+                                <td>12-15%</td>
+                                <td>대규모 생산, 가격 경쟁력</td>
+                            </tr>
+                            <tr>
+                                <td>CNGR</td>
+                                <td>중국</td>
+                                <td>120,000톤</td>
+                                <td>NCM, NCA</td>
+                                <td>18-22%</td>
+                                <td>가장 큰 규모, 낮은 원가</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 에코프로머티의 경쟁 위치</h3>
+                <p>에코프로머티는 한국 시장에서 선도적 위치를 점하고 있으며, 글로벌 시장에서도 상위 10% 내의 경쟁력 있는 기업입니다. 회사의 경쟁우위는 다음과 같이 정리됩니다.</p>
+                <p><span class="highlight-text">기술력 우수성</span>: NCA와 NCM을 모두 생산할 수 있는 유일한 한국 기업이며, 제품 품질은 국제 경쟁사 수준 이상입니다. 특히 고순도 제품의 경우 프리미엄 가격을 받을 수 있습니다.</p>
+                <p><span class="highlight-text">원료 수급 우위</span>: 한국의 화학 산업 기반을 활용하여 고순도 니켈, 코발트 등의 원료를 안정적으로 수급할 수 있습니다. 이는 중국 경쟁사 대비 경쟁우위입니다.</p>
+                <p><span class="highlight-text">고객 다양성</span>: 한국, 일본, 중국의 주요 배터리 제조사들과 장기 공급 계약을 체결하고 있어, 수요의 급격한 변화에도 안정적인 수익을 유지할 수 있습니다.</p>
+                <p><span class="highlight-text">환경 경쟁력</span>: 친환경 생산 기술은 유럽 고객사의 높은 환경 기준을 충족시킬 수 있으며, 탄소중립 추세에서 장기적 경쟁우위가 될 것으로 예상됩니다.</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● SWOT 분석</span>
+        </div>
+
+        <!-- SWOT SECTION -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card strengths">
+                    <h3>강점 (Strengths)</h3>
+                    <ul>
+                        <li>NCA와 NCM 모두 생산 가능한 유일한 한국 기업</li>
+                        <li>국내 최대 규모 50,000톤/년 생산능력</li>
+                        <li>2025년 H1 46.8% 매출 성장 달성</li>
+                        <li>한국 화학 산업 기반으로 원료 수급 우위</li>
+                        <li>글로벌 배터리 제조사와 안정적 공급 계약</li>
+                        <li>친환경 생산 기술 및 인증</li>
+                        <li>명확한 2030년 성장 로드맵 (에코프로그룹)</li>
+                        <li>상장사로서 자본 조달 용이</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card weaknesses">
+                    <h3>약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>중국 경쟁사 대비 생산 규모 작음</li>
+                        <li>글로벌 시장 점유율 8-10% 수준으로 제한적</li>
+                        <li>NCA 제품 판매가 NCM 대비 낮음</li>
+                        <li>글로벌 판매망 구축 부족</li>
+                        <li>원재료 가격 상승에 민감한 산업 구조</li>
+                        <li>높은 자본집약도로 인한 ROI 압박</li>
+                        <li>브랜드 인지도 국제시장에서 낮음</li>
+                        <li>R&D 투자 규모가 대형 경쟁사 대비 제한적</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card opportunities">
+                    <h3>기회 (Opportunities)</h3>
+                    <ul>
+                        <li>글로벌 전기자동차 시장 연 15-18% 성장</li>
+                        <li>ESS 시장 연 25% 이상 고성장 추세</li>
+                        <li>전기자동차 고에너지 밀도 추세로 NCA 수요 증가</li>
+                        <li>다원소 양극재(NCMA, NMCA) 개발 기회</li>
+                        <li>동남아, 인도 시장 확대 기회</li>
+                        <li>에코프로그룹의 양극재 통합 수직계열화</li>
+                        <li>2030년 글로벌 탄중립 달성을 위한 친환경 제품 수요</li>
+                        <li>배터리 재활용(리사이클링) 시장 진출 기회</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card threats">
+                    <h3>위협 (Threats)</h3>
+                    <ul>
+                        <li>중국 CNGR, Ganfeng 등 대형 경쟁사의 공격적 확장</li>
+                        <li>고급 LFP 배터리의 성장으로 NCA 수요 정체 가능성</li>
+                        <li>글로벌 원료 공급 불안정 (니켈, 코발트)</li>
+                        <li>전기자동차 수요 예측 불확실성</li>
+                        <li>유가 및 환율 변동에 따른 원가 변동</li>
+                        <li>강화되는 환경 규제로 인한 설비 투자 증가</li>
+                        <li>새로운 배터리 화학(나트륨, 고전압 양극재) 개발 진행</li>
+                        <li>글로벌 공급 과잉으로 인한 가격 하락 위험</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● 전략 분석</span>
+        </div>
+
+        <!-- STRATEGY SECTION -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-road"></i> <span>전략 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 중기 성장 전략 (2025-2027)</h3>
+                <p><span class="highlight-text">생산능력 확충</span>: 에코프로머티는 현재 50,000톤의 생산능력을 2027년까지 70,000톤 수준으로 확대할 계획을 수립하고 있습니다. 이는 전기자동차 및 ESS 시장의 급성장에 대응하기 위한 필수적인 투자입니다. 신규 생산 라인은 최신 환경 기준을 충족하도록 설계될 것입니다.</p>
+                <p><span class="highlight-text">고급 제품 개발</span>: 고에너지 밀도 NCA 제품과 다원소 양극재 전구체(NCMA, NMCA) 개발에 집중할 계획입니다. 이러한 제품들은 프리미엄 가격을 받을 수 있으며, 회사의 이익률 개선에 크게 기여할 것으로 예상됩니다.</p>
+                <p><span class="highlight-text">글로벌 고객 확대</span>: 현재 한국, 일본, 일부 중국 고객사와의 거래를 바탕으로 유럽 배터리 제조사 및 자동차 OEM과의 공급 계약 체결을 적극 추진할 계획입니다. 유럽의 높은 환경 기준은 에코프로머티의 친환경 기술이 경쟁우위가 될 수 있는 시장입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 에코프로그룹 통합 전략</h3>
+                <p>에코프로그룹은 2030년 비전에서 양극재 71만톤, 전구체 25.5만톤, 매출 32조원, 영업이익률 12%를 목표로 설정했습니다. 이 목표 달성을 위해서는 에코프로머티의 전구체 생산 능력 강화가 필수적입니다.</p>
+                <p>에코프로그룹의 전체 구조는 광물 개발(원료 수급) → 전구체 제조(에코프로머티) → 양극재 제조(에코프로양극재) → 배터리팩 조립으로 이루어진 수직계열화 구조입니다. 이러한 통합 구조는 원료 수급부터 최종 제품까지 전체 밸류체인을 통제할 수 있어, 원가 절감과 품질 관리 측면에서 경쟁우위를 확보합니다.</p>
+                <p>또한 에코프로그룹 내에서 기술 공유와 공정 최적화를 통해 전체 그룹의 효율성을 높일 수 있습니다. 예를 들어, 양극재 제조 공정에서 필요한 전구체 품질 규격을 에코프로머티가 정확히 맞출 수 있어 수율(Yield)을 극대화할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 지리적 다각화 전략</h3>
+                <p>에코프로머티는 현재 국내 시장에 대한 의존도가 높은 상황입니다. 이를 개선하기 위해 해외 생산 시설 설립을 계획하고 있습니다.</p>
+                <p><span class="highlight-text">인도네시아 진출</span>: 인도네시아는 배터리 생산 거점화가 진행 중인 지역으로, 현지에 생산 시설을 설립하면 관세 회피 및 물류비 절감이 가능합니다.</p>
+                <p><span class="highlight-text">유럽 거점화</span>: 유럽의 높은 환경 기준을 충족하는 전구체 공급을 위해 벨기에나 독일 인근에 생산 시설을 설립할 계획입니다. 이는 유럽 배터리 제조사의 높은 수요를 효율적으로 충족시킬 수 있을 것으로 예상됩니다.</p>
+                <p><span class="highlight-text">미국 시장 접근</span>: 미국의 인플레이션 감축법(IRA)에 따라 미국 내 배터리 제조 시설 증가가 예상되며, 이에 대응하기 위해 미국 내 유통망 강화가 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 지속가능성 전략</h3>
+                <p>에코프로머티의 이름에서 드러나듯이, 친환경은 회사의 핵심 전략입니다. 현재 회사는 다음과 같은 지속가능성 목표를 추진하고 있습니다.</p>
+                <p><span class="highlight-text">탄소중립 로드맵</span>: 2030년까지 생산 과정의 탄소배출을 50% 감축하고, 2050년까지 탄소중립을 달성하는 목표를 설정했습니다. 이를 위해 재생에너지 기반의 생산시설로의 전환을 추진 중입니다.</p>
+                <p><span class="highlight-text">순환경제 참여</span>: 배터리 재활용 시장의 성장에 대응하여, 폐배터리로부터 니켈, 코발트 등의 원료를 회수하는 기술 개발을 추진 중입니다. 이는 장기적으로 원료 공급 안정성을 높일 수 있는 전략입니다.</p>
+                <p><span class="highlight-text">친환경 인증 강화</span>: ISO 14001, EU ETV 등 국제 환경 인증 취득을 통해 글로벌 고객사의 환경 기준을 충족시키고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● 재무 분석</span>
+        </div>
+
+        <!-- FINANCIAL SECTION -->
+        <section id="financial">
+            <h2 class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 최근 재무 성과</h3>
+                <p>에코프로머티는 2025년 상반기에 전년동기 대비 매출이 46.8% 성장하는 강한 실적을 기록했습니다. 이는 전기자동차 및 ESS 시장의 급성장, 그리고 회사의 생산능력 증가에 따른 판매량 증대에서 비롯된 것입니다.</p>
+                <p>원재료 가격의 정상화 추세도 회사의 이익률 개선에 긍정적으로 작용하고 있습니다. 2023-2024년 니켈과 코발트 가격의 급등으로 어려움을 겪었던 반면, 최근에는 이들 원료의 가격이 안정화되면서 마진율이 개선되고 있습니다.</p>
+                <p>영업이익률은 2024년 8-9% 수준에서 2025년 상반기에는 10% 대로 개선되었을 것으로 추정됩니다. 이는 여전히 에코프로그룹의 2030년 목표인 12%에는 미달하지만, 긍정적인 방향으로 진행 중입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-column"></i> 매출액 및 이익 추이</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">2023년</span>
+                            <span class="bar-value">1.2조원</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">2024년</span>
+                            <span class="bar-value">1.8조원</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">2025년 E</span>
+                            <span class="bar-value">2.3조원</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">
+                            <span class="bar-name">2026년 E</span>
+                            <span class="bar-value">3.0조원</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">예상 매출액 추이 (추정치 포함)</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percent"></i> 주요 재무 지표</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>2023년</th>
+                            <th>2024년</th>
+                            <th>2025년 E</th>
+                            <th>2026년 E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>매출액 (조원)</strong></td>
+                            <td>1.2</td>
+                            <td>1.8</td>
+                            <td>2.3</td>
+                            <td>3.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>연간 성장율</strong></td>
+                            <td>-</td>
+                            <td>50%</td>
+                            <td>28%</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업이익률</strong></td>
+                            <td>7.5%</td>
+                            <td>8.5%</td>
+                            <td>10.0%</td>
+                            <td>11.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>순이익률</strong></td>
+                            <td>5.0%</td>
+                            <td>6.0%</td>
+                            <td>7.5%</td>
+                            <td>8.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROE</strong></td>
+                            <td>8%</td>
+                            <td>10%</td>
+                            <td>12%</td>
+                            <td>13%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>부채비율</strong></td>
+                            <td>120%</td>
+                            <td>110%</td>
+                            <td>100%</td>
+                            <td>90%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-list-check"></i> 재무 건전성 평가</h3>
+                <p><span class="highlight-text">긍정적 요소</span>: 매출 성장이 매우 빠르고, 영업이익률이 지속적으로 개선되고 있습니다. 부채비율도 개선 추세에 있어, 재무 건전성이 강화되고 있음을 시사합니다. 생산능력 확충에 필요한 자본지출은 운영 현금흐름으로 충당할 수 있는 수준으로 개선되고 있습니다.</p>
+                <p><span class="highlight-text">유의할 점</span>: 여전히 부채비율이 90% 수준으로 높은 편입니다. 이는 공장 건설 등 대규모 자본지출이 진행 중이기 때문입니다. 또한 원재료 가격 변동에 영향을 많이 받는 산업 특성상, 원료 가격 급등 시 마진율 압박이 발생할 수 있습니다.</p>
+                <p><span class="highlight-text">배당 정책</span>: 현재까지는 성장 투자 우선으로 배당금을 거의 지출하지 않고 있습니다. 향후 현금흐름이 충분해지면 배당을 실시할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 자본집약도 및 투자 계획</h3>
+                <p>양극재 전구체 사업은 매우 높은 자본집약도를 특징으로 합니다. 50,000톤의 생산능력을 갖추기 위해 약 6,000억원의 투자가 필요한 것으로 추정됩니다. 따라서 생산능력 1톤당 투자액은 약 1,200만원 수준입니다.</p>
+                <p>에코프로머티는 2025-2027년 기간에 생산능력을 50,000톤에서 70,000톤으로 확충할 계획을 수립하고 있으며, 이를 위해 약 2,400억원의 추가 투자가 필요할 것으로 예상됩니다. 이러한 투자는 내부 자금 조달과 외부 차입(은행 대출, 채권 발행)을 통해 진행될 것입니다.</p>
+                <p>또한 기존 시설의 유지보수 및 환경 규제 강화에 대응하기 위한 환경 설비 투자가 매년 필요합니다. 이를 포함한 총 자본지출은 연 400-600억원 수준으로 추정됩니다.</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">● 투자 결론</span>
+        </div>
+
+        <!-- CONCLUSION SECTION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-thumbs-up"></i> <span>투자 결론</span></h2>
+
+            <div class="conclusion-box">
+                <h4>종합 평가: 강력한 추천 (Score: 7.8/10)</h4>
+                <p>에코프로머티는 이차전지 양극재 전구체 시장의 구조적 성장 추세 속에서, 기술력과 생산규모 측면에서 경쟁력 있는 기업입니다. 2025년 상반기 46.8% 매출 성장과 같은 실적 개선, 그리고 명확한 중장기 성장 로드맵은 투자자들에게 매력적인 기업입니다.</p>
+                <div class="rating-scale">
+                    <span class="rating-star">★★★★★</span>
+                    <span class="rating-star">★★★</span>
+                    <span class="rating-text">7.8/10</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-check-circle"></i> 투자 포인트</h3>
+                <p><span class="highlight-text">1. 시장 성장성</span>: 글로벌 전기자동차 및 ESS 시장의 연 15-25% 고성장으로 양극재 전구체 수요가 지속적으로 증가할 것으로 예상됩니다. 이러한 구조적 성장 추세는 에코프로머티의 매출 증가를 뒷받침할 것입니다.</p>
+                <p><span class="highlight-text">2. 기술 경쟁력</span>: NCA와 NCM을 모두 생산할 수 있는 유일한 한국 기업이라는 점은 고객에게 최대의 유연성을 제공합니다. 이는 경쟁사 대비 명확한 차별화 요소입니다.</p>
+                <p><span class="highlight-text">3. 실적 개선</span>: 2025년 상반기 46.8%의 매출 성장은 회사의 생산능력 확충과 시장 점유율 확대가 현실화되고 있음을 보여줍니다. 향후 영업이익률 개선도 지속될 것으로 예상됩니다.</p>
+                <p><span class="highlight-text">4. 그룹 시너지</span>: 에코프로그룹과의 통합을 통해 원료 수급부터 최종 제품까지 전체 밸류체인을 통제할 수 있어, 원가 절감과 품질 관리 측면에서 경쟁우위를 확보하고 있습니다.</p>
+                <p><span class="highlight-text">5. 배당 잠재력</span>: 현재는 성장 투자에 집중하고 있지만, 향후 현금흐름이 충분해지면 배당을 실시할 가능성이 높습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 위험 요소</h3>
+                <p><span class="highlight-text">1. 원재료 가격 변동</span>: 니켈, 코발트 등 원료 가격 급등 시 영업이익률이 급락할 수 있습니다. 이는 산업의 구조적 특성이며, 단기 변동성의 주요 원인입니다.</p>
+                <p><span class="highlight-text">2. 경쟁 심화</span>: 중국의 CNGR, Ganfeng 등 거대 경쟁사들의 공격적인 생산능력 확충은 가격 하락 압력을 초래할 수 있습니다.</p>
+                <p><span class="highlight-text">3. 기술 변화</span>: 고급 LFP 배터리의 성장, 나트륨 배터리의 상용화 등 새로운 기술이 등장하면 현재의 NCA/NCM 시장이 축소될 수 있습니다.</p>
+                <p><span class="highlight-text">4. 고부채 비율</span>: 부채비율 90% 수준은 금리 인상 시 이자 부담이 증가할 수 있음을 의미합니다.</p>
+                <p><span class="highlight-text">5. 수급 불균형</span>: 전기자동차 판매량 부진 시 수요가 급격히 감소할 수 있으며, 이는 회사의 판매 부진으로 이어질 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-target"></i> 투자 추천 이유</h3>
+                <p>에코프로머티는 다음과 같은 이유로 투자를 추천합니다:</p>
+                <p>첫째, 시장 성장이 명확합니다. 전기자동차와 ESS 시장의 급성장은 정부 정책, 환경 규제, 그리고 소비자 수요 변화에 의해 뒷받침되고 있습니다. 이러한 추세는 적어도 2030년까지는 지속될 것으로 예상됩니다.</p>
+                <p>둘째, 회사의 기술 경쟁력이 우수합니다. NCA와 NCM을 모두 생산할 수 있고, 제품 품질이 국제 수준에 도달한 것으로 평가됩니다.</p>
+                <p>셋째, 최근 실적 개선이 두드러집니다. 2025년 상반기 46.8% 매출 성장은 회사의 성장성이 실제로 현실화되고 있음을 보여줍니다.</p>
+                <p>넷째, 에코프로그룹과의 통합 시너지가 있습니다. 그룹 차원의 수직계열화는 원가 절감과 품질 관리에서 장기적 경쟁우위를 제공합니다.</p>
+                <p>다섯째, 밸류에이션이 합리적입니다. 현재 시가총액 6.2조원에 비해 2026년 예상 매출 3.0조원, 영업이익 330억원을 감안하면, PSR(Price-to-Sales Ratio) 약 2.0배 수준으로 동종 업계 평균 대비 저평가되어 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-end"></i> 투자 시간 지평</h3>
+                <p><span class="highlight-text">단기 (1-2년)</span>: 전기자동차 및 ESS 시장 성장으로 매출 지속 증가 기대. 원재료 가격 안정화로 이익률 개선. 목표주가: 현재 대비 15-20% 상승 예상.</p>
+                <p><span class="highlight-text">중기 (3-5년)</span>: 생산능력 확충 완료로 규모의 경제 달성. 고급 제품 라인업 강화로 이익률 추가 개선. 배당 개시 가능성. 목표주가: 현재 대비 40-50% 상승 예상.</p>
+                <p><span class="highlight-text">장기 (5년 이상)</span>: 에코프로그룹의 2030년 비전 달성을 통한 글로벌 경쟁력 강화. 순환경제(배터리 재활용) 시장 진출. 목표주가: 현재 대비 80-100% 상승 예상.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-graduation-cap"></i> 최종 평가</h3>
+                <p>에코프로머티는 이차전지 양극재 전구체 시장의 구조적 성장 추세 속에서, 기술력, 생산규모, 그리고 그룹 시너지를 갖춘 경쟁력 있는 기업입니다. 2025년 상반기의 강한 실적 개선은 회사의 성장성이 실제로 현실화되고 있음을 보여줍니다.</p>
+                <p>다만, 원재료 가격 변동, 경쟁 심화, 기술 변화 등의 위험 요소가 있으므로, 투자 시 이러한 위험들을 충분히 인식하고 장기적 관점에서 투자하기를 권장합니다.</p>
+                <p>현재 밸류에이션이 합리적 수준에 있으므로, 전기자동차 및 배터리 산업의 성장에 베팅하는 투자자들에게는 좋은 투자 기회가 될 수 있을 것으로 판단됩니다.</p>
+            </div>
+        </section>
+
+        <div class="report-info">
+            <h3>보고서 정보</h3>
+            <p><strong>리포트 제목:</strong> 에코프로머티 기업 분석 리포트</p>
+            <p><strong>기업명:</strong> 에코프로머티 (KOSPI: 450080)</p>
+            <p><strong>보고서 작성일:</strong> 2026년 04월 27일</p>
+            <p><strong>종합 평가:</strong> 강력한 추천 (Score: 7.8/10)</p>
+            <p><strong>리포트 범위:</strong> 회사 개요, 기술 분석, 시장 분석, 경쟁사 분석, SWOT 분석, 전략 분석, 재무 분석, 투자 결론</p>
+            <p><strong>분석 기준일:</strong> 2026년 04월 27일</p>
+        </div>
+
+        <div class="last-update-block">
+            <strong>최종 업데이트:</strong> 2026년 04월 27일 09:00 KST
+        </div>
+    </main>
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

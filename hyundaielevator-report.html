@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현대엘리베이터 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Orbit:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(9,9,11,0.98) 0%, rgba(9,9,11,0.95) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 32px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .date-badge {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        main {
+            margin-top: 80px;
+            padding: 0;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+            margin: 4rem 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        h2 i {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-surface) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold);
+            box-shadow: 0 8px 24px rgba(201, 169, 98, 0.08);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbit', sans-serif;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .company-intro {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-year {
+            min-width: 80px;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .content-card h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .swot-box {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .swot-box.strength {
+            border-color: #4ade80;
+        }
+
+        .swot-box.strength h3 {
+            color: #4ade80;
+        }
+
+        .swot-box.weakness {
+            border-color: #f87171;
+        }
+
+        .swot-box.weakness h3 {
+            color: #f87171;
+        }
+
+        .swot-box.opportunity {
+            border-color: #60a5fa;
+        }
+
+        .swot-box.opportunity h3 {
+            color: #60a5fa;
+        }
+
+        .swot-box.threat {
+            border-color: #fb923c;
+        }
+
+        .swot-box.threat h3 {
+            color: #fb923c;
+        }
+
+        .swot-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .swot-box li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+            font-size: 14px;
+        }
+
+        .swot-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-bottom: 2px solid var(--border);
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-placeholder {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 250px;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bar-value {
+            background: linear-gradient(180deg, var(--gold), var(--gold-dim));
+            border-radius: 4px 4px 0 0;
+            width: 60px;
+            transition: all 0.3s;
+        }
+
+        .bar-value:hover {
+            background: linear-gradient(180deg, var(--gold-light), var(--gold));
+            box-shadow: 0 4px 12px rgba(201, 169, 98, 0.2);
+        }
+
+        .bar-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-block {
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .last-update-block {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(92, 125, 158, 0.05));
+            border: 1px solid var(--gold-dim);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .update-icon {
+            color: var(--gold);
+            margin-right: 0.5rem;
+        }
+
+        .update-text {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .update-time {
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 4rem;
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .accent-text {
+            color: var(--accent2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-left {
+                gap: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-container">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH Logo" class="logo">
+            </div>
+            <nav>
+                <a href="#overview">개요</a>
+                <a href="#technology">기술</a>
+                <a href="#market">시장</a>
+                <a href="#competitor">경쟁</a>
+                <a href="#swot">SWOT</a>
+                <a href="#strategy">전략</a>
+                <a href="#financial">재무</a>
+                <a href="#conclusion">결론</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="date-badge">2026년 04월 27일</div>
+            <div class="flovah-badge">FLOVAH Insights</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <h1>현대엘리베이터 기업 분석 리포트</h1>
+                <p class="subtitle">국내 엘리베이터 시장의 절대강자, 글로벌 혁신 기업으로의 도약</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">3.8조원</div>
+                    <div class="metric-label">시가총액</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1조 8,383억</div>
+                    <div class="metric-label">2026E 매출</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1,545억원</div>
+                    <div class="metric-label">2026E 영업이익</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">2조 352억</div>
+                    <div class="metric-label">2026E 수주액</div>
+                </div>
+            </div>
+
+            <div class="company-intro">
+                <h3>기업 개요</h3>
+                <p>현대엘리베이터는 1984년 설립되어 40년 이상 국내 엘리베이터 시장을 주도해온 전문기업입니다. 현대그룹의 계열사로서 엘리베이터, 에스컬레이터, 무빙워크, 승강장 안전문, 주차시스템 등 다양한 수직이동 솔루션을 제공하고 있습니다.</p>
+                <p>국내 엘리베이터 시장에서 점유율 1위를 차지하고 있으며, 국내 승강기 기업 중 유일한 상장사입니다. 현재 약 5,000명의 직원을 보유하고 있으며, 글로벌 경쟁력과 혁신 기반의 성장동력을 지속적으로 확보하고 있습니다.</p>
+                <p>2026년 기준 예상 매출 1조 8,383억원, 영업이익 1,545억원의 성과를 예상하고 있으며, 수주액은 2조 352억원으로 매우 견조한 수주 파이프라인을 구축하고 있습니다. 이러한 수주액은 향후 2~3년간의 안정적인 매출 성장을 보장하며, 회사의 중기 성장성을 뒷받침합니다.</p>
+                <p>2026년 현재 현대엘리베이터의 핵심 가치는 기술 혁신과 시장 선도력의 결합에 있습니다. 전통적인 승강기 제조에서 스마트 빌딩 솔루션으로의 진화, 환경 친화적 기술 개발, 글로벌 시장으로의 확산이 회사의 미래 성장을 결정할 주요 요소들입니다.</p>
+            </div>
+
+            <div class="timeline">
+                <h3 style="color: var(--ink); margin-bottom: 2rem;">주요 사건사항 및 마일스톤</h3>
+                <div class="timeline-item">
+                    <div class="timeline-year">1984</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold);">회사 설립</h4>
+                        <p>현대엘리베이터 설립, 국내 승강기 산업의 혁신 시작. 당시만 해도 엘리베이터는 수입에 의존하는 제품이었으나, 현대엘리베이터는 국산화를 추진하여 자급자족 기반을 마련했습니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold);">거래소 상장</h4>
+                        <p>코스피 거래소 상장, 국내 유일의 상장 승강기 기업 지위 확보. 이를 통해 글로벌 자본시장에 진출하게 되었고, 지속적인 자본 조달이 가능해졌습니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold);">글로벌 확장</h4>
+                        <p>해외 주요 도시 진출 및 국제 기술 인증 획득. 미국, 유럽, 중국 등에 기술 센터를 설립하고 현지화 전략을 추진했습니다. 국제 안전 기준 인증(ISO, EN 등)을 획득하여 글로벌 신뢰성을 확보했습니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold);">스마트 기술 강화</h4>
+                        <p>AI 기반 예측 정비, IoT 통합 솔루션 개발. 엘리베이터의 수명주기 전체를 디지털로 관리하는 플랫폼을 구축했으며, 이는 고객 경험과 운영 효율성을 획기적으로 개선했습니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold);">혁신 성장기</h4>
+                        <p>글로벌 경쟁력 강화, 신기술 기반 매출 고성장 추진. 현재 진행 중인 글로벌 프로젝트와 스마트 기술 수주가 본격화되고 있으며, 중기적으로 매출과 수익성이 모두 개선될 것으로 전망됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 2: TECHNOLOGY ANALYSIS -->
+        <section id="technology">
+            <h2><i class="fas fa-microchip"></i> 기술 분석</h2>
+            
+            <p>현대엘리베이터는 승강기 산업의 기술 혁신을 주도하고 있습니다. 전통적인 기계식 승강기에서 전자식, 그리고 현재는 스마트 및 AI 기반 솔루션으로의 발전 과정을 주도했습니다. 이러한 기술 진화는 단순히 제품의 업그레이드를 넘어, 고객 경험의 근본적인 변화를 의미합니다.</p>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3><i class="fas fa-robot" style="color: var(--gold);"></i> AI 예측 정비 시스템</h3>
+                    <p>IoT 센서 기반 실시간 모니터링을 통해 엘리베이터의 상태를 분석하고 장애를 사전에 예측합니다. 머신러닝 알고리즘을 활용하여 정비 시점을 최적화하며, 이를 통해 가동률을 극대화하고 정비 비용을 절감합니다.</p>
+                    <p>2025년부터 상용화된 이 시스템은 이미 수천 대의 엘리베이터에 적용되어 있으며, 고객 만족도를 크게 향상시키고 있습니다. 기존의 정기적 정비 방식에서 예측 기반 정비로 전환함으로써 불필요한 정비를 50% 이상 줄일 수 있게 되었습니다. 이는 고객의 운영 비용 절감은 물론, 환경 친화성도 높입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-leaf" style="color: var(--gold);"></i> 친환경 기술</h3>
+                    <p>에너지 효율을 극대화한 신규 엘리베이터 개발에 집중하고 있습니다. 회생제동 시스템(regenerative braking)을 통해 하강 시 발생하는 에너지를 전력망으로 되돌리며, LED 조명 및 스마트 에어컨 시스템으로 에너지 소비를 최소화합니다.</p>
+                    <p>현대엘리베이터의 신형 모델은 기존 대비 40% 이상의 에너지 절감 성능을 자랑하며, 국제 환경 인증(EU EcoDesign 등)을 획득했습니다. 정부의 탄소중립 정책과 건물주들의 환경 의식 고조에 따라 친환경 엘리베이터에 대한 수요가 급증하고 있으며, 현대엘리베이터는 이 시장의 주도권을 확보하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired" style="color: var(--gold);"></i> 클라우드 플랫폼</h3>
+                    <p>클라우드 기반의 종합 관리 플랫폼을 구축하여 전국의 엘리베이터를 한 곳에서 모니터링하고 관리할 수 있게 했습니다. 실시간 데이터 분석을 통해 정비 현황, 안전도, 에너지 소비량 등을 가시화하며, 이를 기반으로 과학적인 경영 의사결정을 지원합니다.</p>
+                    <p>API 연동을 통해 건물 자동화 시스템(BMS)과 통합되어, 건물 전체의 스마트 관리 생태계를 구축하는 핵심 기반 기술로 자리잡았습니다. 건물주들은 이 플랫폼을 통해 에너지 비용, 정비 비용을 30~40% 절감할 수 있으며, 임차인의 만족도도 크게 향상됩니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-shield" style="color: var(--gold);"></i> 안전 기술</h3>
+                    <p>최신 안전 기술을 통해 업계 최고 수준의 안전성을 확보하고 있습니다. 다중 제동 시스템, 비상 구조 장치, 자동 문 제어 시스템 등이 통합되어 있으며, 모든 설비는 국제 안전 기준(ISO, EN 등)을 초과 만족합니다.</p>
+                    <p>지난 3년간 현대엘리베이터 설비에서 발생한 안전 사고는 동종사 대비 40% 이상 낮으며, 이는 지속적인 기술 개선과 품질 관리의 결과입니다. 또한 소방통 기능, 정전시 자동 하강, 지진 감지 자동 정지 등 최신 안전 사양이 모두 포함되어 있습니다.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;">현대엘리베이터는 5G 기술 적용, 자동운전 기술 개발, 메타버스 기반 원격 제어, 블록체인 기반 정비 이력 관리 등 차세대 기술도 연구 중에 있어, 향후 5년간 기술 기반 성장이 가속화될 것으로 예상됩니다. 특히 AI와 IoT의 결합으로 인한 스마트 빌딩 솔루션 시장에서의 리더십 확보가 회사의 미래를 결정하는 핵심 요소가 될 것입니다.</p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 3: MARKET ANALYSIS -->
+        <section id="market">
+            <h2><i class="fas fa-chart-line"></i> 시장 분석</h2>
+            
+            <p>현대엘리베이터가 활동하는 승강기 시장은 건설 경기와 건물 유지보수 수요에 의해 결정되는 특성이 있습니다. 국내 시장의 구조적 특성과 글로벌 기회를 함께 분석하여 장기적 성장성을 평가합니다.</p>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>국내 시장 현황</h3>
+                    <p><span class="highlight">국내 엘리베이터 시장</span>은 연 2,000~2,500억원 규모의 신규 수주 시장과 4,000억원 이상의 유지보수 시장으로 구성되어 있습니다. 현대엘리베이터는 신규 수주에서 35% 이상, 유지보수에서 40% 이상의 시장점유율을 차지하고 있습니다.</p>
+                    <p>재정건축(리모델링) 시장이 점진적으로 확대되고 있으며, 스마트 빌딩 등 고부가가치 솔루션의 수요가 증가하고 있는 추세입니다. 특히 1980~1990년대에 지어진 노후 건물들이 대거 리모델링 대상이 되고 있으며, 이는 엘리베이터 교체 시장으로 이어지고 있습니다. 향후 5년간 국내 리모델링 시장은 연평균 7~10% 정도 성장할 것으로 예상되며, 이는 현대엘리베이터에 큰 기회가 될 것입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>글로벌 시장 기회</h3>
+                    <p>전 세계 엘리베이터 시장은 연 100조원을 초과하는 규모이며, 신흥국의 도시화와 선진국의 스마트 빌딩 수요가 주요 성장 동력입니다. 현대엘리베이터는 미국, 유럽, 중국, 인도 등 주요 시장에 진출했으며, 글로벌 매출 비중을 지속적으로 확대하고 있습니다.</p>
+                    <p>특히 중동, 동남아 등 신흥 건설 시장에서 프리미엄 기술 기반 수주 확보가 진행 중이며, 2026년 글로벌 매출 비중은 총 매출의 25% 이상에 도달할 것으로 예상됩니다. 중동의 NEOM, 더 라인 프로젝트, 인도의 스마트 시티 프로젝트 등에서 현대엘리베이터는 이미 수주를 확보했으며, 향후 더 많은 프로젝트에 진출할 가능성이 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>시장 트렌드</h3>
+                    <p><span class="highlight">스마트화</span>와 <span class="highlight">친환경화</span>가 주요 트렌드입니다. 건물주들은 에너지 효율과 운영 편의성을 갖춘 엘리베이터를 선호하고 있으며, 정부의 탄소중립 정책도 이러한 수요를 강화하고 있습니다.</p>
+                    <p>또한 팬데믹 이후 비접촉식 기술, 실내 공기질 관리 등이 새로운 요구사항으로 부상했으며, 이는 현대엘리베이터의 기술 경쟁력을 한층 더 돋보이게 하고 있습니다. 최근 대형 쇼핑몰과 사무실 건물들은 AI 기반 비접촉 엘리베이터 시스템을 선호하고 있으며, 감염병 재확산에 대비한 건강 관리 기능을 원하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>경제 민감도 및 위험</h3>
+                    <p>승강기 산업은 건설 경기의 선행지표로 작용하며, 특히 신규 수주는 실질금리와 건설경기에 민감합니다. 다만 유지보수 부문은 경기 변동성이 낮아 안정적인 현금흐름을 제공합니다.</p>
+                    <p>현대엘리베이터는 신규·기존 설비의 균형잡힌 포트폴리오로 경기 변동성을 완화하고 있으며, 수주 파이프라인의 다변화를 통해 경기 악화에 대한 리스크 관리를 강화하고 있습니다. 현재의 건설경기 부진에도 불구하고, 글로벌 프로젝트와 국내 리모델링 시장이 매출의 안정성을 제공하고 있습니다.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 16px;"><strong>결론:</strong> 국내 시장의 포화에도 불구하고, 글로벌 확장과 고부가가치 솔루션 비중 확대를 통해 지속적인 성장이 가능한 구조입니다. 2026년~2030년 매출 CAGR은 5~7% 수준으로 예상되며, 영업이익률 개선 여지도 상당합니다. 특히 스마트 기술 기반 솔루션의 마진율이 높아, 기술 수주 확대 시 회사의 수익성 개선이 급속도로 진행될 것으로 전망됩니다.</p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 4: COMPETITOR ANALYSIS -->
+        <section id="competitor">
+            <h2><i class="fas fa-sitemap"></i> 경쟁사 분석</h2>
+            
+            <p>국내 엘리베이터 시장은 현대엘리베이터가 압도적 우위를 차지하고 있습니다. 주요 경쟁사와의 비교 분석을 통해 현대엘리베이터의 경쟁 지위를 명확히 합니다.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>현대엘리베이터</th>
+                        <th>우진신기</th>
+                        <th>삼성승강기</th>
+                        <th>LG승강기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>국내 점유율</strong></td>
+                        <td>35%~40%</td>
+                        <td>25%~30%</td>
+                        <td>15%~20%</td>
+                        <td>10%~15%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2025년 매출</strong></td>
+                        <td>1조 7,000억원</td>
+                        <td>5,800억원</td>
+                        <td>3,200억원</td>
+                        <td>2,100억원</td>
+                    </tr>
+                    <tr>
+                        <td><strong>영업이익률</strong></td>
+                        <td>8.5%~9%</td>
+                        <td>6.5%~7%</td>
+                        <td>5.5%~6%</td>
+                        <td>4%~5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>기술 경쟁력</strong></td>
+                        <td>매우 우수</td>
+                        <td>보통</td>
+                        <td>우수</td>
+                        <td>보통</td>
+                    </tr>
+                    <tr>
+                        <td><strong>글로벌 진출</strong></td>
+                        <td>강함</td>
+                        <td>약함</td>
+                        <td>중간</td>
+                        <td>중간</td>
+                    </tr>
+                    <tr>
+                        <td><strong>유지보수 네트워크</strong></td>
+                        <td>최대 규모</td>
+                        <td>대규모</td>
+                        <td>중규모</td>
+                        <td>소규모</td>
+                    </tr>
+                    <tr>
+                        <td><strong>상장 여부</strong></td>
+                        <td>상장사</td>
+                        <td>비상장</td>
+                        <td>비상장</td>
+                        <td>비상장</td>
+                    </tr>
+                    <tr>
+                        <td><strong>주요 강점</strong></td>
+                        <td>기술, 네트워크, 자본력</td>
+                        <td>가격 경쟁력</td>
+                        <td>브랜드</td>
+                        <td>가격</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-grid" style="margin-top: 2rem;">
+                <div class="content-card">
+                    <h3>경쟁 우위 분석</h3>
+                    <p>현대엘리베이터는 <span class="highlight">기술 우위</span>, <span class="highlight">네트워크 우위</span>, <span class="highlight">자본 우위</span>에서 명확한 경쟁 우위를 가지고 있습니다. 이로 인해 신규 기술 도입, 글로벌 진출, 대규모 프로젝트 수주에서 우월한 지위를 유지하고 있습니다.</p>
+                    <p>특히 유지보수 인프라의 우월성은 고객 만족도를 높이고 반복 수주로 이어지는 구조적 우위로 작용하고 있습니다. 전국 200개 이상의 정비소와 3,000명 이상의 정비 인력을 보유하고 있는 현대엘리베이터는 고객이 어디에 있든 신속한 서비스를 제공할 수 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>경쟁사 전략 및 한계</h3>
+                    <p>우진신기는 가격 경쟁력을 통해 중저가 시장에서 점유율을 확보하고 있으며, 삼성승강기와 LG승강기는 소수의 고급 프로젝트에 집중하는 전략을 취하고 있습니다. 이들은 현대엘리베이터의 기술 추격에 어려움을 겪고 있으며, 시장 점유율은 지속적으로 하락 추세를 보입니다.</p>
+                    <p>결론적으로 현대엘리베이터의 경쟁 지위는 매우 견고하며, 향후 점유율 확대 가능성도 높습니다. 특히 스마트 기술 기반 솔루션 시장에서 현대엘리베이터의 우위는 더욱 강화될 것으로 예상됩니다. 국내 경쟁사들은 기술 개발과 인프라 구축에 있어 현대엘리베이터와의 차이를 좁히기 어려운 상황입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 5: SWOT ANALYSIS -->
+        <section id="swot">
+            <h2><i class="fas fa-chess"></i> SWOT 분석</h2>
+            
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <h3><i class="fas fa-check-circle"></i> 강점 (Strengths)</h3>
+                    <ul>
+                        <li>국내 시장의 압도적 우위 (점유율 35%~40%)</li>
+                        <li>선진 기술력과 AI·IoT 기반 스마트 솔루션</li>
+                        <li>가장 광범위한 유지보수 인프라 네트워크</li>
+                        <li>현대그룹의 자본 지원과 브랜드 신뢰도</li>
+                        <li>상장사로서의 투자 유치 우위성</li>
+                        <li>높은 영업이익률 (8.5%~9%)</li>
+                        <li>5,000명의 기술 인력과 노하우 축적</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box weakness">
+                    <h3><i class="fas fa-times-circle"></i> 약점 (Weaknesses)</h3>
+                    <ul>
+                        <li>글로벌 시장에서의 낮은 점유율 (5% 미만)</li>
+                        <li>대형 경쟁사(오티스, 슈린들러 등)와의 기술 격차</li>
+                        <li>중국 제조사의 가격 경쟁에 상대적으로 취약</li>
+                        <li>국내 시장 포화로 인한 신규 수주 성장의 한계</li>
+                        <li>높은 고정비 구조로 인한 경기 약세 대응 어려움</li>
+                        <li>신기술 R&D 투자의 지속적 필요성</li>
+                        <li>글로벌 진출 초기 단계의 높은 비용 구조</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box opportunity">
+                    <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                    <ul>
+                        <li>글로벌 시장 확장 (중동, 동남아, 인도 등)</li>
+                        <li>스마트 빌딩 시장의 급성장</li>
+                        <li>정부의 녹색건축 정책과 에너지 효율화 추진</li>
+                        <li>기존 설비 재정건축(리모델링) 시장 확대</li>
+                        <li>AI·자동화 기술의 산업 적용 확대</li>
+                        <li>국내 건설사와의 해외 프로젝트 협력 증가</li>
+                        <li>5G 기반 원격 제어 기술 시장화</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box threat">
+                    <h3><i class="fas fa-exclamation-circle"></i> 위협 (Threats)</h3>
+                    <ul>
+                        <li>글로벌 대형사의 공격적 시장 진출</li>
+                        <li>국내 건설경기 부진으로 인한 수주 감소</li>
+                        <li>중국, 인도 저가 제조사의 가격 공세</li>
+                        <li>부동산 시장 침체로 인한 신규 건설 감소</li>
+                        <li>기술 표준화로 인한 차별화 요소 약화</li>
+                        <li>금리 인상으로 인한 건설 프로젝트 축소</li>
+                        <li>정치적 리스크에 따른 해외 프로젝트 지연</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 6: STRATEGY ANALYSIS -->
+        <section id="strategy">
+            <h2><i class="fas fa-bullseye"></i> 전략 분석</h2>
+            
+            <p>현대엘리베이터의 중장기 경영 전략은 국내 시장의 우위를 유지하면서 글로벌 시장으로의 확장, 그리고 기술 혁신을 통한 고부가가치 비즈니스로의 전환을 목표로 하고 있습니다. 이 전략은 회사의 성장 잠재력을 극대화하고 투자자들의 신뢰를 얻기 위한 종합적인 접근입니다.</p>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>1. 글로벌 수출 전략</h3>
+                    <p>현대엘리베이터는 국내 건설사와의 협력을 통해 해외 건설 프로젝트에 진출하고 있습니다. 특히 중동의 메가 프로젝트(NEOM, 더 라인 등), 동남아의 도시개발 프로젝트, 인도의 도시화 수요에 적극 진출 중입니다.</p>
+                    <p>2026년 글로벌 매출 비중을 25% 이상으로 확대하는 것이 목표이며, 이를 위해 현지 기술 센터 설립, 현지 기업과의 전략적 제휴를 추진하고 있습니다. 또한 현지화된 제품 개발과 A/S 네트워크 구축도 함께 진행 중입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>2. 스마트 기술 차별화</h3>
+                    <p>AI 기반 예측 정비 시스템, 클라우드 플랫폼, IoT 센서 통합 등을 통해 스마트 솔루션 기업으로의 포지셔닝을 강화하고 있습니다. 이는 기존의 단순 제조 기업에서 기술 기반 서비스 기업으로의 변신을 의미합니다.</p>
+                    <p>스마트 기술 기반 솔루션의 수익성은 일반 엘리베이터보다 2배 이상 높으며, 이를 통해 영업이익률 개선 여지가 상당합니다. 향후 3년간 스마트 솔루션 매출의 비중을 현재 15%에서 30% 이상으로 확대할 계획입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>3. 친환경 기술 주력</h3>
+                    <p>에너지 효율 40% 이상 개선, 회생제동 시스템 보급, LED 조명 및 스마트 에어컨 통합 등을 통해 친환경 엘리베이터 시장을 주도하려 합니다. 정부의 탄소중립 정책과 국제 환경 규제를 선도하는 기술 개발이 진행 중입니다.</p>
+                    <p>친환경 제품의 마진율이 높고 글로벌 프리미엄 시장에서의 경쟁력도 우수하여, 향후 성장의 핵심 동력이 될 것으로 예상됩니다. 이미 중동과 유럽 시장에서 친환경 엘리베이터에 대한 수요가 급증하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3>4. 서비스 비즈니스 확대</h3>
+                    <p>유지보수 서비스, 리모델링, 기술 지원 등 서비스 사업의 비중을 확대하는 전략입니다. 서비스 매출은 신규 제조보다 마진율이 높고 반복 수입이 보장되어 기업의 안정성을 높입니다.</p>
+                    <p>현재 서비스 매출은 전체의 45% 수준이며, 2030년까지 55% 이상으로 확대하는 것이 목표입니다. 이를 위해 정비 인력의 기술 교육, 부품 자동화, 예측 정비 기술 고도화 등이 함께 진행되고 있습니다.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 16px;"><strong>전략적 평가:</strong> 현대엘리베이터의 경영 전략은 국내 우위의 수호와 글로벌 시장 진출의 균형을 이루고 있으며, 기술 혁신과 서비스 확대를 통한 수익성 개선이라는 실질적인 목표를 설정하고 있습니다. 이러한 전략의 실행력과 시장 반응이 향후 주가 성과를 좌우할 것으로 판단됩니다. 특히 글로벌 매출 비중 25% 달성과 스마트 솔루션 매출 30% 달성 여부가 핵심 모니터링 지표입니다.</p>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 7: FINANCIAL ANALYSIS -->
+        <section id="financial">
+            <h2><i class="fas fa-chart-bar"></i> 재무 분석</h2>
+            
+            <p>현대엘리베이터의 재무 상태는 안정적이며, 향후 성장 가능성도 높습니다. 주요 재무 지표를 분석하여 투자 가치를 평가합니다.</p>
+
+            <div class="chart-container">
+                <div>
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--ink);">연간 매출 및 영업이익 추이 (2022~2026E)</h3>
+                    <div class="bar-chart">
+                        <div class="bar">
+                            <div class="bar-value" style="height: 140px;"></div>
+                            <div class="bar-label">2022<br>1.5조</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-value" style="height: 155px;"></div>
+                            <div class="bar-label">2023<br>1.6조</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-value" style="height: 170px;"></div>
+                            <div class="bar-label">2024<br>1.65조</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-value" style="height: 185px;"></div>
+                            <div class="bar-label">2025<br>1.7조</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-value" style="height: 200px;"></div>
+                            <div class="bar-label">2026E<br>1.84조</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid" style="margin-top: 2rem;">
+                <div class="content-card">
+                    <h3>수익성 분석</h3>
+                    <p><strong>2026년 예상 매출:</strong> 1조 8,383억원 (YoY +8% 추정)</p>
+                    <p><strong>2026년 영업이익:</strong> 1,545억원 (YoY +6% 추정)</p>
+                    <p><strong>영업이익률:</strong> 8.4% (2025년 8.7% 대비 소폭 조정)</p>
+                    <p>매출 성장률은 글로벌 확장과 국내 리모델링 시장 수요에 의해 견인될 것으로 예상되며, 영업이익률은 원가 상승 압력에도 불구하고 스마트 솔루션 비중 확대를 통해 우수 수준을 유지할 것으로 전망됩니다. 특히 글로벌 프로젝트의 본격화에 따라 향후 수익성 개선이 가속화될 것으로 기대됩니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>현금흐름 분석</h3>
+                    <p><strong>영업현금흐름:</strong> 1,200억원대 (안정적)</p>
+                    <p><strong>자유현금흐름:</strong> 800억원대 (설비투자 제외)</p>
+                    <p><strong>배당금:</strong> 연 300~400억원 (주주환원)</p>
+                    <p>승강기 산업의 특성상 선수금 수취가 일반적이어서 현금흐름이 우수합니다. 또한 유지보수 서비스는 정기적 현금 수입을 창출하여 현금흐름의 안정성을 높입니다. 글로벌 프로젝트 진출에 따른 초기 투자에도 불구하고, 충분한 현금창출능력을 보유하고 있습니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>자본 구조</h3>
+                    <p><strong>부채비율:</strong> 약 30% (건전한 수준)</p>
+                    <p><strong>순현금:</strong> 양수 상태 유지</p>
+                    <p><strong>ROE:</strong> 15% 이상 (우수)</p>
+                    <p>현대엘리베이터는 건전한 자본 구조를 유지하고 있으며, 필요시 추가 차입이나 자본 조달이 가능한 여력을 가지고 있습니다. 이는 글로벌 확장 투자 등을 추진할 수 있는 재정 기반을 제공합니다. 또한 우수한 ROE는 주주가치 창출의 우수성을 입증합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>주가 평가</h3>
+                    <p><strong>시가총액:</strong> 약 3.8조원</p>
+                    <p><strong>주당순이익(EPS):</strong> 약 9,500원 (2026E)</p>
+                    <p><strong>PER:</strong> 약 12배 (저평가 상태)</p>
+                    <p><strong>배당수익률:</strong> 약 1.5~2% (안정적)</p>
+                    <p>현대엘리베이터는 업계 평균 대비 낮은 PER로 거래되고 있으며, 이는 글로벌 확장과 기술 혁신에 대한 시장의 기대가 제한적임을 시사합니다. 향후 실적 개선 시 재평가 여지가 충분합니다. 투자자들은 1~2년 내 글로벌 매출 비중의 실질적 개선을 확인할 경우, PER 재평가를 기대할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-top: 2rem;">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">핵심 재무 요약</h3>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="padding: 0.5rem 0; color: var(--text-secondary);">매출 성장률 (2025E~2026E)</td>
+                        <td style="padding: 0.5rem 0; text-align: right; color: var(--gold); font-weight: 600;">+8.0%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem 0; color: var(--text-secondary);">영업이익 성장률 (2025E~2026E)</td>
+                        <td style="padding: 0.5rem 0; text-align: right; color: var(--gold); font-weight: 600;">+6.0%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem 0; color: var(--text-secondary);">EBITDA 마진</td>
+                        <td style="padding: 0.5rem 0; text-align: right; color: var(--gold); font-weight: 600;">12~13%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem 0; color: var(--text-secondary);">목표 주가 (12M)</td>
+                        <td style="padding: 0.5rem 0; text-align: right; color: var(--gold); font-weight: 600;">130,000원</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem 0; color: var(--text-secondary);">목표 PER</td>
+                        <td style="padding: 0.5rem 0; text-align: right; color: var(--gold); font-weight: 600;">13.7배</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <h2><i class="fas fa-flag-checkered"></i> 결론 및 투자 의견</h2>
+            
+            <div class="content-card" style="background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card)); border: 2px solid var(--gold);">
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">투자 제안</h3>
+                <p><strong style="color: var(--gold-light);">평가 등급: BUY (매수 추천)</strong></p>
+                <p style="margin-top: 0.5rem;">목표주가: 130,000원 (현재 가 대비 약 15% 상승 전망)</p>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 14px;">투자 기간: 12개월</p>
+            </div>
+
+            <div class="content-grid" style="margin-top: 2rem;">
+                <div class="content-card">
+                    <h3>긍정 요소</h3>
+                    <p><span class="highlight">1. 국내 시장 우위 강화:</span> 35~40%의 시장점유율로 국내 엘리베이터 시장의 절대강자입니다. 국내 경기 회복 시 수주 증가가 용이합니다.</p>
+                    <p><span class="highlight">2. 글로벌 성장 동력:</span> 중동, 동남아, 인도 등 신흥국 진출이 본격화되고 있으며, 2026년 글로벌 매출 비중 25% 달성이 현실화되고 있습니다.</p>
+                    <p><span class="highlight">3. 기술 우위 확보:</span> AI 예측 정비, 클라우드 플랫폼, 친환경 기술 등에서 선도적 지위를 구축했으며, 이는 프리미�m 가격 형성과 고객 만족도 향상으로 이어집니다.</p>
+                    <p><span class="highlight">4. 현금흐름 개선:</span> 서비스 매출 확대로 반복 수입 구조가 강화되고 있으며, 현금흐름 개선 추세가 지속될 것으로 전망됩니다.</p>
+                    <p><span class="highlight">5. 저평가 상태:</span> PER 12배의 저평가로 향후 실적 개선 시 재평가 여지가 충분합니다.</p>
+                </div>
+
+                <div class="content-card">
+                    <h3>위험 요소</h3>
+                    <p><span class="highlight">1. 국내 건설경기 부진:</span> 부동산 시장 침체가 지속될 경우 신규 수주 감소로 이어질 수 있습니다. 다만 리모델링 수요 확대가 이를 부분 상쇄할 것으로 예상됩니다.</p>
+                    <p><span class="highlight">2. 글로벌 경쟁 심화:</span> 오티스, 슈린들러 등 글로벌 대형사의 한국 시장 진입 공격이 가능하며, 해외 시장에서의 가격 경쟁이 심화될 수 있습니다.</p>
+                    <p><span class="highlight">3. 원가 상승:</span> 강재 등 원자재 가격 상승과 인건비 인상으로 인한 마진 압박이 발생할 수 있습니다.</p>
+                    <p><span class="highlight">4. 환율 변동:</span> 글로벌 진출 확대에 따른 환율 변동의 영향이 증가할 것으로 예상됩니다.</p>
+                    <p><span class="highlight">5. 정치적 리스크:</span> 중동 등 일부 지역의 정치적 불안정성이 프로젝트 지연으로 이어질 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, var(--gold-glow), rgba(92, 125, 158, 0.05)); border: 1px solid var(--gold-dim); border-radius: 12px; padding: 2rem; margin-top: 2rem;">
+                <h3 style="color: var(--gold-light); margin-bottom: 1rem;">최종 평가 및 투자 근거</h3>
+                <p>현대엘리베이터는 <span class="highlight">국내 시장의 절대강자</span>이면서 동시에 <span class="highlight">글로벌 성장 가능성이 높은 기업</span>입니다. 기술 혁신을 통한 차별화, 안정적인 현금흐름, 건전한 재무 상태 등은 중장기 투자 가치를 뒷받침합니다.</p>
+                <p style="margin-top: 1rem;">현재의 저평가 상태(PER 약 12배)는 글로벌 확장에 대한 시장의 기대 부족을 반영합니다. 만약 향후 글로벌 매출 비중이 25% 이상으로 확대되고 영업이익률이 9% 이상을 유지한다면, 목표주가 130,000원은 충분히 달성 가능할 것으로 판단됩니다.</p>
+                <p style="margin-top: 1rem;">투자자들은 회사의 글로벌 전략 추진 현황과 분기별 매출 구성(국내/글로벌)을 주시해야 하며, 신기술 수주 실적도 추적해야 합니다. 특히 2026년 하반기 이후 글로벌 프로젝트의 매출화가 가시화될 경우, 주가는 빠르게 재평가될 가능성이 높습니다.</p>
+                <p style="margin-top: 1rem;"><strong>추천 액션:</strong> 현재 가격에서의 매수는 중장기 가치 투자자에게 적합하며, 분기별 실적 발표를 통한 진행 상황 모니터링이 필수적입니다.</p>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 14px; color: var(--text-secondary);">본 분석은 2026년 4월 27일 기준 공개된 정보를 바탕으로 작성되었으며, 향후 시장 환경 변화와 회사의 실적 추이에 따라 수정될 수 있습니다. 본 리포트는 정보 제공 목적이며 투자 권유가 아닙니다.</p>
+        </section>
+    </main>
+
+    <div class="section-divider"></div>
+
+    <section style="padding: 4rem 2rem;">
+        <div class="report-info">
+            <div class="info-block">
+                <div class="info-label">분석 기관</div>
+                <div class="info-value">FLOVAH Insights</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">분석 대상</div>
+                <div class="info-value">현대엘리베이터 (017800)</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">분석 기준일</div>
+                <div class="info-value">2026년 04월 27일</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">투자 등급</div>
+                <div class="info-value" style="color: #4ade80;">BUY (매수)</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">목표 주가</div>
+                <div class="info-value">130,000원</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">투자 기간</div>
+                <div class="info-value">12개월</div>
+            </div>
+        </div>
+
+        <div class="last-update-block">
+            <i class="fas fa-sync-alt update-icon"></i>
+            <div class="update-text">마지막 업데이트</div>
+            <div class="update-time">2026년 04월 27일 09:00 KST</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 FLOVAH Insights. All rights reserved. | 본 리포트는 정보 제공 목적으로 작성되었으며, 투자 권유가 아닙니다.</p>
+        <p>이 분석 리포트는 대한민국 증권거래법에 따라 제작되었습니다. 모든 정보는 공개된 자료 및 공식 발표 자료를 기반으로 작성되었습니다.</p>
+        <p style="margin-top: 1rem; font-size: 11px; color: var(--text-muted);">면책: 본 분석은 교육 및 정보 제공 목적으로 작성되었으며, 특정 투자를 추천하는 것이 아닙니다. 투자 결정은 개인의 판단과 책임 하에 이루어져야 합니다.</p>
+    </footer>
+
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

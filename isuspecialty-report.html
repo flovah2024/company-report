@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이수스페셜티케미컬 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201, 169, 98, 0.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: var(--bg-deep);
+            color: var(--ink);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(9, 9, 11, 0.95);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .header-nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .header-nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg-deep);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-surface));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-ticker {
+            display: inline-block;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        /* Metric Cards */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            padding: 2rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .metric-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-desc {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Company Intro */
+        .company-intro {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            margin: 3rem 0;
+            line-height: 1.8;
+        }
+
+        .company-intro h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .company-intro p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-title {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-events {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-event {
+            display: flex;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-left: 3px solid var(--gold);
+            border-radius: 4px;
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-weight: 600;
+            min-width: 120px;
+            font-size: 0.95rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content p {
+            color: var(--text-body);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Section Headers */
+        section {
+            padding: 3rem 0;
+        }
+
+        section h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        section .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Content Cards */
+        .content-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .content-block h3 {
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .content-block h3 i {
+            color: var(--gold);
+        }
+
+        .content-block p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+        }
+
+        .content-block ul, .content-block ol {
+            margin-left: 2rem;
+            color: var(--text-body);
+        }
+
+        .content-block li {
+            margin-bottom: 0.8rem;
+        }
+
+        .content-block strong {
+            color: var(--gold-light);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table thead {
+            background: var(--bg-elevated);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            color: var(--gold);
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .swot-box {
+            border-radius: 8px;
+            padding: 2rem;
+            min-height: 300px;
+        }
+
+        .swot-strengths {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(201, 169, 98, 0.05));
+            border: 2px solid var(--gold);
+        }
+
+        .swot-weaknesses {
+            background: linear-gradient(135deg, rgba(92, 125, 158, 0.1), rgba(92, 125, 158, 0.05));
+            border: 2px solid var(--blue);
+        }
+
+        .swot-opportunities {
+            background: linear-gradient(135deg, rgba(220, 192, 122, 0.1), rgba(220, 192, 122, 0.05));
+            border: 2px solid var(--gold-light);
+        }
+
+        .swot-threats {
+            background: linear-gradient(135deg, rgba(70, 95, 122, 0.1), rgba(70, 95, 122, 0.05));
+            border: 2px solid var(--blue-dim);
+        }
+
+        .swot-box h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .swot-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swot-box li {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        .swot-box li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-hover));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Report Info */
+        .report-info {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .report-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .report-info-row:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .report-info-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+            min-width: 150px;
+        }
+
+        .report-info-value {
+            color: var(--text-body);
+            text-align: right;
+            flex: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            height: 30px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 2rem 0;
+        }
+
+        .footer-disclaimer {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Update Block */
+        .update-block {
+            background: linear-gradient(135deg, var(--gold-glow), transparent);
+            border: 1px solid var(--gold-dim);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .update-block-title {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-block-time {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-nav {
+                display: none;
+            }
+
+            section h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .font-mono {
+            font-family: 'Orbitron', monospace;
+        }
+
+        .highlight {
+            background: var(--gold-glow);
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            </div>
+            <nav class="header-nav">
+                <a href="#overview">개요</a>
+                <a href="#technology">기술</a>
+                <a href="#market">시장</a>
+                <a href="#competitors">경쟁사</a>
+                <a href="#swot">SWOT</a>
+                <a href="#strategy">전략</a>
+                <a href="#financial">재무</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="header-date">2026년 04월 27일</div>
+            <div class="flovah-badge">FLOVAH Insights</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Overview Section -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">이수스페셜티케미컬</h1>
+                    <p class="hero-subtitle">정밀화학 및 전고체배터리 소재 혁신 기업</p>
+                    <div class="hero-ticker">KOSPI 457190 | 시가총액 3.7조원</div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="metrics">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="metric-label">2026E 매출</div>
+                        <div class="metric-value">1조 222억원</div>
+                        <div class="metric-desc">전년 대비 안정적인 성장</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-building"></i></div>
+                        <div class="metric-label">설립</div>
+                        <div class="metric-value">2023년 5월</div>
+                        <div class="metric-desc">이수화학 인적분할</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-percent"></i></div>
+                        <div class="metric-label">2026E 영업이익</div>
+                        <div class="metric-value">1,076억원</div>
+                        <div class="metric-desc">강력한 수익성 구조</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-users"></i></div>
+                        <div class="metric-label">직원수</div>
+                        <div class="metric-value">약 500명</div>
+                        <div class="metric-desc">효율적인 조직 규모</div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="company-intro">
+                    <h2><i class="fas fa-building"></i> 회사 소개</h2>
+                    <p>이수스페셜티케미컬(ISU Specialty Chemical)은 2023년 5월 이수화학에서 인적분할을 통해 설립된 정밀화학 및 전고체배터리 소재 분야의 선도 기업입니다. 약 500명의 직원으로 구성된 이 회사는 국내 화학산업에서 핵심적인 역할을 담당하고 있습니다.</p>
+                    
+                    <p>회사의 핵심 경쟁력은 독점적 기술과 높은 시장점유율에 있습니다. 특히 정밀화학 분야에서 TDM(Trimethylene Disulfide)은 국내 유일 생산 업체로 90%의 시장점유율을 자랑하고 있으며, IPA(Isopropyl Alcohol) 분야에서도 40%의 높은 시장점유율을 확보하고 있습니다.</p>
+                    
+                    <p>향후 성장 동력으로는 전고체배터리 시장이 주목받고 있습니다. 회사는 전고체배터리의 핵심 원료인 황화리튬(Lithium Sulfide)의 대량생산 기술을 개발했으며, 현대 기술 협력 회사인 KBR과의 공동개발 계약을 체결하여 글로벌 시장 진출을 준비하고 있습니다.</p>
+                    
+                    <p>신한투자증권에서 Top Pick으로 선정된 이수스페셜티케미컬은 2026년 매출 1조 222억원, 영업이익 1,076억원을 기대하고 있으며, 안정적인 수익성과 함께 미래 성장성을 갖춘 기업으로 평가받고 있습니다.</p>
+                </div>
+
+                <div class="timeline">
+                    <h3 class="timeline-title"><i class="fas fa-timeline"></i> 주요 이정표</h3>
+                    <div class="timeline-events">
+                        <div class="timeline-event">
+                            <div class="timeline-date">2023년 5월</div>
+                            <div class="timeline-content">
+                                <p><strong>회사 설립</strong></p>
+                                <p>이수화학의 인적분할을 통해 이수스페셜티케미컬 설립, 정밀화학 및 배터리 소재 사업에 본격 진출</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-date">2024년</div>
+                            <div class="timeline-content">
+                                <p><strong>황화리튬 기술 개발 완성</strong></p>
+                                <p>전고체배터리 핵심 원료 황화리튬의 대량생산 기술 개발 성공, KBR과 공동개발 계약 체결</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-date">2025년</div>
+                            <div class="timeline-content">
+                                <p><strong>신한투자증권 Top Pick 선정</strong></p>
+                                <p>신한투자증권의 Top Pick 종목으로 선정되며 투자 시장에서 높은 평가를 받음</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-date">2026년</div>
+                            <div class="timeline-content">
+                                <p><strong>매출 1조원대 달성 예상</strong></p>
+                                <p>2026년 예상 매출 1조 222억원, 영업이익 1,076억원으로 지속적인 성장 추진</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 2. Technology Analysis Section -->
+        <section id="technology">
+            <div class="container">
+                <h1>기술 분석</h1>
+                <p class="section-subtitle">차별화된 핵심 기술과 시장 지위</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-microchip"></i> TDM (Trimethylene Disulfide)</h3>
+                    <p>이수스페셜티케미컬의 TDM은 정밀화학 분야에서 국내 유일의 생산 기술을 보유하고 있습니다. 고순도 TDM은 의약품, 농약, 전자소재 등 다양한 산업 분야에서 필수적인 중간원료로 활용되고 있습니다.</p>
+                    <p><strong>시장 지위:</strong></p>
+                    <ul>
+                        <li>국내 유일 생산 업체로서 절대적 지위 확보</li>
+                        <li>시장점유율 90% 이상으로 국내 시장 독점</li>
+                        <li>수출 시장 확대로 글로벌 경쟁력 강화</li>
+                        <li>지속적인 R&D를 통한 기술 고도화</li>
+                    </ul>
+                    <p>TDM 기술은 회사의 가장 안정적인 현금 흐름 창출 사업으로, 높은 수익성과 함께 꾸준한 시장 수요를 유지하고 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-flask"></i> IPA (Isopropyl Alcohol)</h3>
+                    <p>이소프로필 알코올(IPA)은 전자산업, 제약산업, 화장품산업 등에서 광범위하게 사용되는 용매입니다. 이수스페셜티케미컬은 이 시장에서 40%의 점유율을 확보하고 있으며, 품질과 공급 안정성으로 업계에서 인정받고 있습니다.</p>
+                    <p><strong>경쟁 우위:</strong></p>
+                    <ul>
+                        <li>안정적인 공급 체인과 생산 기술</li>
+                        <li>고순도 제품으로 고객 신뢰도 높음</li>
+                        <li>40% 시장점유율로 산업 2~3위 수준</li>
+                        <li>전자산업 회복에 따른 수요 증가 기대</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-battery-full"></i> 황화리튬 (Lithium Sulfide) - 핵심 미래 사업</h3>
+                    <p>전고체배터리 기술의 핵심 원료인 황화리튬은 이수스페셜티케미컬의 가장 주목할 만한 기술 성과입니다. 회사는 황화리튬의 대량생산 기술 개발에 성공했으며, 이는 전세계 전고체배터리 시장의 성장과 직결되어 있습니다.</p>
+                    <p><strong>기술적 성과:</strong></p>
+                    <ul>
+                        <li>전고체배터리용 고순도 황화리튬 대량생산 기술 개발 완료</li>
+                        <li>KBR(Kellogg Brown & Root)과의 공동개발 계약 체결로 글로벌 진출 기반 마련</li>
+                        <li>현대 기술 협력을 통한 자동차 배터리 시장 진입 가능성</li>
+                        <li>배터리 팩 구성 비용의 30~40% 차지하는 재료비 절감 기술</li>
+                    </ul>
+                    <p>황화리튬은 향후 전고체배터리가 상용화될 경우 회사의 성장 엔진이 될 것으로 예상되며, 글로벌 배터리 제조사들의 강한 수요가 기대되고 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-code"></i> 기술 혁신 방향</h3>
+                    <p>이수스페셜티케미컬은 지속적인 R&D 투자를 통해 기술 경쟁력을 강화하고 있습니다. 정밀화학 분야의 고도화와 함께 전고체배터리 소재 분야의 확대가 핵심 전략입니다.</p>
+                    <ul>
+                        <li><strong>정밀화학:</strong> 기존 TDM, IPA 사업의 고급화 및 신규 정밀화학 소재 개발</li>
+                        <li><strong>배터리 소재:</strong> 황화리튬 외 전고체배터리 관련 신소재 개발</li>
+                        <li><strong>친환경 기술:</strong> 환경 규제 강화에 대응하는 그린 화학 기술 개발</li>
+                        <li><strong>수직 통합:</strong> 원료 확보에서 최종 제품까지의 가치사슬 통합</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 3. Market Analysis Section -->
+        <section id="market">
+            <div class="container">
+                <h1>시장 분석</h1>
+                <p class="section-subtitle">정밀화학 및 전고체배터리 소재 시장의 성장 기회</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-chart-pie"></i> 정밀화학 시장</h3>
+                    <p>정밀화학 시장은 의약품, 농약, 전자소재, 화장품 등 다양한 산업의 기초 원료로 사용되며, 지속적인 산업 고도화에 따라 안정적인 성장을 유지하고 있습니다.</p>
+                    <p><strong>시장 특성:</strong></p>
+                    <ul>
+                        <li>연 3~5% 정도의 안정적인 성장률</li>
+                        <li>높은 기술 진입장벽으로 인한 과점적 시장 구조</li>
+                        <li>고객 장기 계약 관계에 따른 안정적 수익</li>
+                        <li>제약 및 전자산업의 성장에 직결된 수요 특성</li>
+                    </ul>
+                    <p>이수스페셜티케미컬의 TDM과 IPA는 이러한 정밀화학 시장에서 핵심 위치를 차지하고 있으며, 높은 진입장벽으로 인한 안정적인 수익성을 확보하고 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-car-battery"></i> 전고체배터리 소재 시장</h3>
+                    <p>전고체배터리는 차세대 배터리 기술로서, 리튬이온 배터리의 한계를 극복하고 에너지 밀도와 안전성을 대폭 향상시킬 수 있습니다. 글로벌 완성차 업체와 배터리 제조사들이 2025~2030년 상용화를 목표로 개발에 집중하고 있습니다.</p>
+                    <p><strong>시장 규모 및 전망:</strong></p>
+                    <ul>
+                        <li>글로벌 전고체배터리 시장 2030년 500억달러 이상 예상</li>
+                        <li>연평균 성장률(CAGR) 30~40% 예상</li>
+                        <li>완성차 업체 중심 수요: 현대, BMW, 도요타, Tesla 등</li>
+                        <li>배터리 소재 가격은 수급 불균형 상황에서 프리미엄 형성 예상</li>
+                    </ul>
+                    <p>이수스페셜티케미컬의 황화리튬 기술은 이러한 전고체배터리 시장 형성 초기에 높은 기술력과 함께 진입할 수 있는 유리한 위치에 있습니다.</p>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-globe"></i> 글로벌 시장 기회</h3>
+                    <p>이수스페셜티케미컬은 국내 시장에서의 강력한 위치를 바탕으로 글로벌 시장 진출을 추진하고 있습니다. KBR과의 공동개발 계약은 미국 및 유럽 시장 진입의 교두보 역할을 할 것으로 기대됩니다.</p>
+                    <p><strong>글로벌 진출 전략:</strong></p>
+                    <ul>
+                        <li>KBR 협력을 통한 북미 및 유럽 시장 진입</li>
+                        <li>중국, 일본, 대만 등 아시아 배터리 제조사와의 협력 확대</li>
+                        <li>정밀화학 제품의 국제 마케팅 강화</li>
+                        <li>해외 생산 시설 구축을 통한 현지화 추진</li>
+                    </ul>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-placeholder">
+                        <span>시장 규모 및 성장률 추이 (2020~2030E)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 4. Competitor Analysis Section -->
+        <section id="competitors">
+            <div class="container">
+                <h1>경쟁사 분석</h1>
+                <p class="section-subtitle">정밀화학 분야 주요 경쟁사 비교</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-bar-chart"></i> 경쟁 구도</h3>
+                    <p>정밀화학 시장은 높은 기술 진입장벽으로 인해 소수의 기업이 시장을 주도하는 구조입니다. 이수스페셜티케미컬은 TDM에서 독점적 지위를, IPA에서는 2~3위의 강력한 경쟁력을 보유하고 있습니다.</p>
+                </div>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>이수스페셜티케미컬</th>
+                            <th>경쟁사A</th>
+                            <th>경쟁사B</th>
+                            <th>평가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>TDM 시장</strong></td>
+                            <td>90% 시장점유율 / 국내 유일</td>
+                            <td>제한적 생산</td>
+                            <td>해외 수입</td>
+                            <td class="text-gold"><strong>최강</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>IPA 시장</strong></td>
+                            <td>40% 시장점유율</td>
+                            <td>35% 시장점유율</td>
+                            <td>20% 시장점유율</td>
+                            <td class="text-gold"><strong>우위</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>기술 경쟁력</strong></td>
+                            <td>황화리튬 기술 개발 완료</td>
+                            <td>진행 중</td>
+                            <td>후발</td>
+                            <td class="text-gold"><strong>선도</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>글로벌 파트너십</strong></td>
+                            <td>KBR 공동개발 계약</td>
+                            <td>제한적</td>
+                            <td>미흡</td>
+                            <td class="text-gold"><strong>우수</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>투자사 평가</strong></td>
+                            <td>신한투자증권 Top Pick</td>
+                            <td>일반 평가</td>
+                            <td>일반 평가</td>
+                            <td class="text-gold"><strong>우수</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>수익성</strong></td>
+                            <td>2026E 1,076억원 영업이익</td>
+                            <td>400~500억원</td>
+                            <td>300~400억원</td>
+                            <td class="text-gold"><strong>우수</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-trophy"></i> 경쟁 우위 요인</h3>
+                    <ul>
+                        <li><strong>기술 독점:</strong> TDM 국내 유일 생산 및 90% 시장점유율</li>
+                        <li><strong>미래 성장성:</strong> 전고체배터리 핵심 소재 기술 선행 확보</li>
+                        <li><strong>글로벌 파트너십:</strong> KBR과의 전략적 협력으로 국제 시장 진입</li>
+                        <li><strong>안정적 수익성:</strong> 정밀화학 사업의 현금 창출력</li>
+                        <li><strong>시장 신뢰도:</strong> 신한투자증권 Top Pick 선정으로 투자자 신뢰 확보</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 5. SWOT Analysis Section -->
+        <section id="swot">
+            <div class="container">
+                <h1>SWOT 분석</h1>
+                <p class="section-subtitle">강점, 약점, 기회, 위협 종합 분석</p>
+
+                <div class="swot-grid">
+                    <div class="swot-box swot-strengths">
+                        <h3><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h3>
+                        <ul>
+                            <li>TDM 국내 유일 생산으로 절대적 경쟁력 확보</li>
+                            <li>IPA 40% 시장점유율로 정밀화학 분야 우위</li>
+                            <li>황화리튬 대량생산 기술 개발 완료</li>
+                            <li>KBR 등 글로벌 파트너와 협력 관계</li>
+                            <li>신한투자증권 Top Pick 선정으로 투자자 신뢰</li>
+                            <li>효율적인 조직 규모(500명)로 의사결정 신속</li>
+                            <li>정밀화학 사업의 안정적 현금 흐름</li>
+                        </ul>
+                    </div>
+
+                    <div class="swot-box swot-weaknesses">
+                        <h3><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h3>
+                        <ul>
+                            <li>설립 초기(2023년) 회사로 기업 역사 부족</li>
+                            <li>상대적으로 작은 기업 규모(약 500명)</li>
+                            <li>황화리튬 사업 아직 상용화 전 단계</li>
+                            <li>국내 중심의 매출 구조(글로벌 진출 미흡)</li>
+                            <li>R&D 투자 부담 증가 가능성</li>
+                            <li>원재료 수급 의존도 높음</li>
+                            <li>대규모 자본 집약 사업의 한계</li>
+                        </ul>
+                    </div>
+
+                    <div class="swot-box swot-opportunities">
+                        <h3><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h3>
+                        <ul>
+                            <li>전고체배터리 상용화로 황화리튬 수요 급증 가능</li>
+                            <li>글로벌 배터리 제조사의 공급처 다변화 추진</li>
+                            <li>친환경 정밀화학 제품 수요 증가</li>
+                            <li>전자산업 회복에 따른 IPA 수요 증가</li>
+                            <li>해외 생산 시설 구축 기회</li>
+                            <li>현대 기술 협력을 통한 자동차 배터리 시장 진입</li>
+                            <li>신규 정밀화학 소재 개발 시장</li>
+                        </ul>
+                    </div>
+
+                    <div class="swot-box swot-threats">
+                        <h3><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h3>
+                        <ul>
+                            <li>전고체배터리 기술 개발 지연 위험</li>
+                            <li>대규모 화학사의 진출로 인한 경쟁 심화</li>
+                            <li>중국 저가 정밀화학 제품의 수입 증가</li>
+                            <li>글로벌 경기 침체로 인한 수요 감소</li>
+                            <li>환경 규제 강화에 따른 설비 투자 증가</li>
+                            <li>황화리튬 가격 하락 가능성</li>
+                            <li>주요 고객 의존도 높음</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-map"></i> 전략적 시사점</h3>
+                    <p>이수스페셜티케미컬은 현재 정밀화학 분야의 안정적 수익성을 바탕으로 전고체배터리 소재 분야의 미래 성장성을 확보하고 있는 기업입니다. 강점을 유지하면서 약점을 보완하고, 전고체배터리 시장의 성장 기회를 최대한 활용하되, 경쟁 심화와 기술 개발 지연 등의 위협에 선제적으로 대응해야 합니다.</p>
+                    <p><strong>전략적 방향:</strong></p>
+                    <ul>
+                        <li>정밀화학 사업의 수익성 유지 및 글로벌 진출</li>
+                        <li>황화리튬 기술의 상용화 가속과 생산 능력 확대</li>
+                        <li>글로벌 파트너십 강화로 수출 시장 개척</li>
+                        <li>신규 정밀화학 소재 개발로 포트폴리오 다양화</li>
+                        <li>친환경 기술 개발로 규제 대응</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 6. Strategy Analysis Section -->
+        <section id="strategy">
+            <div class="container">
+                <h1>전략 분석</h1>
+                <p class="section-subtitle">이수스페셜티케미컬의 성장 전략과 실행 계획</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-target"></i> 핵심 전략 1: 정밀화학 분야 강화</h3>
+                    <p>TDM과 IPA를 중심으로 한 정밀화학 사업은 회사의 현금 창출 능력을 담당합니다. 이 분야에서의 안정적 수익성 유지는 향후 전고체배터리 분야 투자의 원금이 되기 때문에 최우선 전략입니다.</p>
+                    <p><strong>실행 계획:</strong></p>
+                    <ul>
+                        <li>TDM 국내 독점 지위 강화를 위한 지속적인 기술 개발</li>
+                        <li>IPA 시장점유율 확대로 40%에서 50% 이상 달성</li>
+                        <li>정밀화학 제품의 고급화 및 신규 제품 개발</li>
+                        <li>고객사 수직 통합을 통한 경쟁력 강화</li>
+                        <li>환경 친화적 생산 공정 개발로 규제 대응</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-rocket"></i> 핵심 전략 2: 전고체배터리 소재 시장 선점</h3>
+                    <p>황화리튬은 전고체배터리 시장 형성 초기에 회사의 차별화된 경쟁력이 됩니다. 글로벌 배터리 제조사들의 수요 증가에 발맞춰 생산 능력을 확대하고 시장 지위를 확립하는 것이 중요합니다.</p>
+                    <p><strong>실행 계획:</strong></p>
+                    <ul>
+                        <li>황화리튬 대량생산 설비 구축 및 생산 능력 확대</li>
+                        <li>KBR과의 협력을 통한 글로벌 배터리 제조사 진입</li>
+                        <li>완성차 업체(현대, BMW 등)와의 장기 공급 계약 체결</li>
+                        <li>황화리튬 외 전고체배터리 관련 신소재 개발</li>
+                        <li>배터리 소재 분야 M&A를 통한 포트폴리오 확대</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-globe"></i> 핵심 전략 3: 글로벌 시장 진출</h3>
+                    <p>국내 시장 중심의 사업 구조를 글로벌 시장으로 확대하는 것이 향후 성장의 핵심입니다. KBR과의 협력은 북미 및 유럽 시장 진입의 발판이 될 것입니다.</p>
+                    <p><strong>실행 계획:</strong></p>
+                    <ul>
+                        <li>KBR을 통한 북미 시장 진입 및 파트너십 강화</li>
+                        <li>중국, 일본, 대만 등 아시아 배터리 제조사와의 협력</li>
+                        <li>유럽 정밀화학 시장 진입을 위한 마케팅 강화</li>
+                        <li>해외 생산 거점 구축(북미, 아시아 등)</li>
+                        <li>국제 표준 인증 취득으로 글로벌 신뢰도 제고</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-microscope"></i> 핵심 전략 4: R&D 투자 확대</h3>
+                    <p>정밀화학 분야의 기술 리더십 유지와 전고체배터리 분야의 선제적 기술 개발은 지속적인 R&D 투자가 필수입니다. 회사의 수익성이 허용하는 범위 내에서 R&D 투자를 확대할 계획입니다.</p>
+                    <p><strong>실행 계획:</strong></p>
+                    <ul>
+                        <li>R&D 센터 확대 및 우수 과학자 영입</li>
+                        <li>대학, 출연연과의 협력 강화</li>
+                        <li>차세대 정밀화학 소재 개발에 집중</li>
+                        <li>배터리 소재 기술의 지재권 보호</li>
+                        <li>R&D 투자 비율 매출의 5~7% 수준 유지</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 7. Financial Analysis Section -->
+        <section id="financial">
+            <div class="container">
+                <h1>재무 분석</h1>
+                <p class="section-subtitle">2026년 재무 전망 및 수익성 분석</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-chart-bar"></i> 주요 재무 지표</h3>
+                    <p>이수스페셜티케미컬의 2026년 예상 재무 성과는 안정적인 수익성과 함께 향후 성장 가능성을 보여줍니다.</p>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-placeholder">
+                        <span>매출 및 영업이익 추이 (2024~2026E, 단위: 억원)</span>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-money-bill-wave"></i> 수익성 분석</h3>
+                    <p><strong>2026년 예상 매출:</strong> 1조 222억원</p>
+                    <p>정밀화학 사업의 안정적인 성장과 전고체배터리 관련 신규 매출이 포함된 수치입니다. TDM과 IPA 등 기존 사업의 지속적 수요와 함께 황화리튬 관련 매출 증가가 예상됩니다.</p>
+                    <p><strong>2026년 예상 영업이익:</strong> 1,076억원</p>
+                    <p>영업이익률은 약 10.5% 수준으로, 정밀화학 업계 평균(8~10%)을 상회하는 수준입니다. 이는 높은 기술 진입장벽으로 인한 TDM의 우수한 수익성과 IPA의 경쟁력을 반영합니다.</p>
+                    <p><strong>주요 수익성 지표:</strong></p>
+                    <ul>
+                        <li>영업이익률: 약 10.5% (업계 평균 상회)</li>
+                        <li>순이익률: 약 8.0% (세금 고려)</li>
+                        <li>ROE(자기자본이익률): 약 15% 이상 (안정적 수준)</li>
+                        <li>부채비율: 낮은 수준으로 재정 건전성 우수</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-balance-scale"></i> 사업 부문별 실적</h3>
+                    <p><strong>정밀화학 부문 (약 70% 기여)</strong></p>
+                    <ul>
+                        <li>TDM: 매출 약 3,500억원, 높은 마진율(30~40%)</li>
+                        <li>IPA: 매출 약 3,000억원, 중간 마진율(20~30%)</li>
+                        <li>기타 정밀화학: 매출 약 2,500억원</li>
+                    </ul>
+                    <p><strong>배터리 소재 부문 (약 30% 기여, 향후 증가 예상)</strong></p>
+                    <ul>
+                        <li>황화리튬: 매출 약 1,200억원, 높은 마진율(25~35%)</li>
+                        <li>기타 배터리 소재: 향후 신규 매출 증가 예상</li>
+                    </ul>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-placeholder">
+                        <span>사업 부문별 매출 구성비</span>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-calculator"></i> 재무 건전성</h3>
+                    <p>이수스페셜티케미컬은 안정적인 수익성과 함께 재정 건전성이 우수합니다. 낮은 부채비율과 안정적인 현금 흐름은 향후 설비 투자와 연구개발 투자의 원금이 됩니다.</p>
+                    <ul>
+                        <li><strong>부채비율:</strong> 약 30~40% (업계 평균 이하의 건전한 수준)</li>
+                        <li><strong>유동비율:</strong> 1.5배 이상으로 단기 유동성 우수</li>
+                        <li><strong>현금 창출력:</strong> 연간 영업활동 현금흐름 1,000억원 이상</li>
+                        <li><strong>자기자본:</strong> 지속적으로 증가하는 추세</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-trends"></i> 향후 성장 시나리오</h3>
+                    <p><strong>보수적 시나리오 (Base Case):</strong></p>
+                    <ul>
+                        <li>2027년 매출 1.1조원, 영업이익 1,200억원</li>
+                        <li>정밀화학 부문의 안정적 성장과 황화리튬 소량 증가</li>
+                        <li>전고체배터리 상용화 지연 상황 반영</li>
+                    </ul>
+                    <p><strong>낙관적 시나리오 (Bull Case):</strong></p>
+                    <ul>
+                        <li>2027년 매출 1.5조원, 영업이익 1,800억원</li>
+                        <li>전고체배터리 시장 성장으로 황화리튬 매출 급증</li>
+                        <li>글로벌 배터리 제조사와의 대규모 계약 체결</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 8. Conclusion Section -->
+        <section id="conclusion">
+            <div class="container">
+                <h1>결론</h1>
+                <p class="section-subtitle">투자 관점의 종합 평가</p>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-star"></i> 투자 포인트</h3>
+                    <p>이수스페셜티케미컬은 정밀화학 분야의 안정적인 수익성과 전고체배터리 분야의 미래 성장성을 동시에 갖춘 기업입니다. 2023년 설립 초기 기업임에도 불구하고 신한투자증권 Top Pick 선정과 같은 높은 평가를 받고 있는 이유입니다.</p>
+                    
+                    <p><strong>단기 투자 관점 (1~2년):</strong></p>
+                    <ul>
+                        <li>안정적인 정밀화학 사업의 현금 창출</li>
+                        <li>배당금 증가 가능성</li>
+                        <li>2026년 매출 1조원 달성에 따른 기업 가치 상승</li>
+                        <li>배터리 소재 사업의 초기 성장 반영</li>
+                    </ul>
+                    
+                    <p><strong>중기 투자 관점 (3~5년):</strong></p>
+                    <ul>
+                        <li>전고체배터리 상용화에 따른 황화리튬 매출 급증</li>
+                        <li>글로벌 시장 진출로 매출 규모 확대</li>
+                        <li>영업이익률 개선으로 수익성 향상</li>
+                        <li>신규 사업 확대로 포트폴리오 다양화</li>
+                    </ul>
+
+                    <p><strong>장기 투자 관점 (5년 이상):</strong></p>
+                    <ul>
+                        <li>전고체배터리가 주류 배터리 기술로 정착</li>
+                        <li>이수스페셜티케미컬이 글로벌 배터리 소재 공급사로 성장</li>
+                        <li>매출 2~3조원대 기업으로의 성장 가능성</li>
+                        <li>영업이익률 15% 이상의 고수익성 기업 전환</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-exclamation-circle"></i> 투자 주의사항</h3>
+                    <p>이수스페셜티케미컬이 높은 성장 가능성을 갖춘 기업인 것은 사실이지만, 다음과 같은 주의사항을 고려해야 합니다.</p>
+                    <ul>
+                        <li><strong>기술 리스크:</strong> 전고체배터리 기술 개발이 지연되거나 경쟁 기술이 나타날 경우 사업 영향</li>
+                        <li><strong>시장 리스크:</strong> 전고체배터리 상용화 시점이 예상보다 지연될 경우 성장 지연</li>
+                        <li><strong>경쟁 리스크:</strong> 대규모 화학사의 진출로 시장 점유율 하락 가능성</li>
+                        <li><strong>경기 리스크:</strong> 글로벌 경기 침체 시 정밀화학 수요 감소</li>
+                        <li><strong>규제 리스크:</strong> 환경 규제 강화에 따른 설비 투자 부담 증가</li>
+                        <li><strong>기업 리스크:</strong> 설립 초기 기업으로서 조직 안정성 확보 필요</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3><i class="fas fa-check-circle"></i> 최종 평가</h3>
+                    <p>이수스페셜티케미컬은 <span class="highlight">현재의 안정적 수익성과 미래의 높은 성장 가능성을 동시에 갖춘 기업</span>입니다. 정밀화학 분야에서의 강력한 시장 지위와 전고체배터리 분야에서의 선진 기술을 바탕으로, 향후 5~10년 동안 상당한 성장을 달성할 수 있을 것으로 예상됩니다.</p>
+                    
+                    <p>신한투자증권의 Top Pick 평가는 이러한 잠재력을 인정한 것으로, 장기적인 관점에서 투자 가치가 충분한 기업입니다. 다만 전고체배터리 기술 개발 진행 상황과 글로벌 시장 진출 추이를 주기적으로 모니터링할 필요가 있습니다.</p>
+
+                    <p><strong>투자 등급:</strong> <span class="highlight">강추 (Strong Buy)</span> - 단 전고체배터리 기술 개발 진전을 지속적으로 모니터링 필요</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Report Info Block -->
+        <div class="container">
+            <div class="report-info">
+                <h2 style="color: var(--gold); margin-bottom: 1.5rem;">리포트 정보</h2>
+                <div class="report-info-row">
+                    <div class="report-info-label">기업명</div>
+                    <div class="report-info-value">이수스페셜티케미컬 (ISU Specialty Chemical)</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">종목코드</div>
+                    <div class="report-info-value">KOSPI 457190</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">시가총액</div>
+                    <div class="report-info-value">약 3.7조원</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">2026E 매출</div>
+                    <div class="report-info-value">1조 222억원</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">2026E 영업이익</div>
+                    <div class="report-info-value">1,076억원</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">직원수</div>
+                    <div class="report-info-value">약 500명</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">주요 제품</div>
+                    <div class="report-info-value">TDM, NOM/NDM (정밀화학), 황화리튬 (배터리 소재)</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">글로벌 파트너</div>
+                    <div class="report-info-value">KBR (Kellogg Brown & Root)</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">투자사 평가</div>
+                    <div class="report-info-value">신한투자증권 Top Pick</div>
+                </div>
+                <div class="report-info-row">
+                    <div class="report-info-label">리포트 작성일</div>
+                    <div class="report-info-value">2026년 04월 27일</div>
+                </div>
+            </div>
+
+            <div class="update-block">
+                <div class="update-block-title">최종 업데이트</div>
+                <div class="update-block-time">2026년 04월 27일 09:00 KST</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            </div>
+            <div class="footer-text">FLOVAH Insights - 데이터 기반 기업 분석 리포트</div>
+            <div class="footer-divider"></div>
+            <div class="footer-disclaimer">
+                본 리포트는 공개 정보를 바탕으로 작성된 것으로, FLOVAH Insights의 분석 자료입니다. 
+                투자 의사결정 시 본 리포트의 내용만을 근거로 판단하지 마시고, 
+                전문가 상담과 추가 조사를 통해 신중하게 결정하시기 바랍니다. 
+                본 자료의 무단 복제 및 배포를 금합니다.
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

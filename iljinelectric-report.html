@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일진전기 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Orbit:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(9, 9, 11, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--bg-deep);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            padding-top: 80px;
+        }
+
+        .hero {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.05) 0%, rgba(92, 125, 158, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold-light);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold-dim);
+            transform: translateY(-2px);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-detail {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .company-intro {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .intro-title {
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .intro-content {
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .intro-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-item {
+            background-color: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .highlight-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-value {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .timeline {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .timeline-title {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .timeline-marker {
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-date {
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-description {
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-icon {
+            color: var(--gold-light);
+            font-size: 1.8rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+            margin: 4rem 0;
+        }
+
+        .content-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-card-title {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .content-card-text {
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-badge {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--gold-dim);
+            border-radius: 6px;
+            padding: 0.8rem;
+            text-align: center;
+            color: var(--gold-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background-color: var(--gold-glow);
+            border-color: var(--gold);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table thead {
+            background-color: var(--bg-elevated);
+        }
+
+        .comparison-table th {
+            color: var(--gold-light);
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .comparison-company-name {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .swot-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .swot-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid;
+        }
+
+        .swot-strength .swot-title {
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.3);
+        }
+
+        .swot-weakness .swot-title {
+            color: #f87171;
+            border-color: rgba(248, 113, 113, 0.3);
+        }
+
+        .swot-opportunity .swot-title {
+            color: #60a5fa;
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .swot-threat .swot-title {
+            color: #fbbf24;
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+
+        .swot-list {
+            list-style: none;
+        }
+
+        .swot-item {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .swot-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .swot-strength .swot-item::before {
+            color: #4ade80;
+        }
+
+        .swot-weakness .swot-item::before {
+            color: #f87171;
+        }
+
+        .swot-opportunity .swot-item::before {
+            color: #60a5fa;
+        }
+
+        .swot-threat .swot-item::before {
+            color: #fbbf24;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-column,
+            .three-column,
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .bar-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bar-label {
+            min-width: 120px;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 32px;
+            background-color: var(--bg-elevated);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            transition: width 0.3s ease;
+        }
+
+        .bar-value {
+            color: var(--bg-deep);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .report-info {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 4rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .report-update-block {
+            background-color: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        .update-label {
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-time {
+            color: var(--text-secondary);
+        }
+
+        .content-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .content-list li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        .content-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .financial-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .financial-card {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--gold-dim);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .financial-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .financial-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .financial-unit {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        .footer-text {
+            margin-bottom: 0.5rem;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="logo-img">
+                <span class="flovah-badge">INSIGHTS</span>
+            </div>
+            <div class="header-right">
+                <div class="header-date">2026년 04월 27일</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 1: Overview -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    일진전기 기업 분석
+                    <span class="hero-title-highlight">FLOVAH Insights</span>
+                </h1>
+                <p class="hero-subtitle">변압기·전력케이블 전문기업의 성장 가능성과 시장 기회</p>
+            </div>
+        </section>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">KOSPI 코드</div>
+                <div class="metric-value">103590</div>
+                <div class="metric-detail">일진전기 주식 코드</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">시가총액</div>
+                <div class="metric-value">5.2조</div>
+                <div class="metric-detail">2026년 기준</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2026E 매출</div>
+                <div class="metric-value">2.2~2.3조</div>
+                <div class="metric-detail">전년대비 성장 추정</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2026E 영업이익률</div>
+                <div class="metric-value">7.3~9.4%</div>
+                <div class="metric-detail">역대 최고 수준 예상</div>
+            </div>
+        </div>
+
+        <div class="company-intro">
+            <h2 class="intro-title">회사 개요</h2>
+            <p class="intro-content">
+                일진전기는 1956년 설립된 변압기 및 전력케이블 전문 제조업체입니다. 반세기 이상의 기술 축적을 바탕으로 국내 전력 인프라의 핵심 부품을 공급하고 있으며, 최근 북미 시장 진출을 통해 글로벌 성장의 전환점을 맞이하고 있습니다. 현재 약 2,500명의 임직원이 근무하고 있으며, 홍성 제2공장 증설 완료로 생산 능력이 대폭 확대되었습니다.
+            </p>
+            <p class="intro-content">
+                2025년 영업이익이 전년대비 90% 증가하여 역대 최대 실적을 기록했으며, 이는 국내 수급 개선과 미국 진출 초기 성과에서 비롯되었습니다. 2026년부터 홍성 제2공장이 100% 가동될 예정이며, 미국 동부 전력청과의 4,318억원 규모 장기 공급 계약이 본격 실행될 것으로 기대됩니다.
+            </p>
+            <div class="intro-highlights">
+                <div class="highlight-item">
+                    <div class="highlight-label">설립년도</div>
+                    <div class="highlight-value">1956년</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-label">직원수</div>
+                    <div class="highlight-value">약 2,500명</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-label">주력상품</div>
+                    <div class="highlight-value">변압기·전선</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-label">영업이익 증가</div>
+                    <div class="highlight-value">+90% (2025)</div>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h3 class="timeline-title">주요 마일스톤</h3>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1956년</div>
+                        <div class="timeline-description">일진전기 설립, 변압기 제조 사업 시작</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024년</div>
+                        <div class="timeline-description">홍성 제2공장 증설 완료, 생산 능력 확대</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025년</div>
+                        <div class="timeline-description">영업이익 90% 증가, 역대 최대 실적 달성</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025~2026년</div>
+                        <div class="timeline-description">미국 동부 전력청 4,318억원 장기 공급 계약 체결</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026년</div>
+                        <div class="timeline-description">홍성 제2공장 100% 가동, 매출 2.2~2.3조원 예상</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 2: Technology Analysis -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-microchip section-icon"></i>
+                기술 분석 및 경쟁력
+            </h2>
+            <p class="section-subtitle">변압기와 전력케이블 기술의 선도적 위치</p>
+
+            <div class="content-card">
+                <h3 class="content-card-title">핵심 기술 역량</h3>
+                <p class="content-card-text">
+                    일진전기는 70년 이상의 변압기 제조 경험과 기술 축적을 바탕으로 고효율 변압기와 초고압 전력케이블 분야에서 국내 최고 수준의 기술 경쟁력을 보유하고 있습니다. 특히 변압기의 효율성 개선과 전력 손실 감소 기술은 국내 전력망의 안정성과 효율성을 크게 향상시켰습니다.
+                </p>
+                <p class="content-card-text">
+                    회사의 R&D 투자는 매년 매출의 3~4%를 차지하며, 이는 업계 평균 수준을 상회합니다. 변압기 생산 공정의 자동화율 향상으로 품질 관리와 원가 경쟁력도 지속적으로 개선되고 있습니다.
+                </p>
+                <div class="tech-stack">
+                    <div class="tech-badge">고효율 변압기</div>
+                    <div class="tech-badge">초고압 전선</div>
+                    <div class="tech-badge">스마트 변압기</div>
+                    <div class="tech-badge">환경친화 제품</div>
+                    <div class="tech-badge">AI 모니터링</div>
+                    <div class="tech-badge">자동화 공정</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">국제 표준 및 인증</h3>
+                <p class="content-card-text">
+                    일진전기는 국내 변압기 제조업체 중 가장 먼저 IEC(국제전기기술위원회) 표준 인증을 취득했으며, ISO 9001, ISO 14001 등 주요 국제 품질·환경 인증도 보유하고 있습니다. 이러한 인증은 북미, 유럽 등 선진시장으로의 진출을 가능하게 하는 기초입니다.
+                </p>
+                <p class="content-card-text">
+                    미국 UL 인증과 캐나다 CSA 인증도 확보했으며, 미국 전력망 표준에 맞춘 제품 설계 능력을 갖추고 있습니다. 이는 북미 시장에서의 신뢰도를 높이는 중요한 자산입니다.
+                </p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3 class="content-card-title">변압기 기술</h3>
+                    <ul class="content-list">
+                        <li>oil-immersed 변압기 설계·제조 기술</li>
+                        <li>dry-type 변압기 고효율화 기술</li>
+                        <li>스마트 변압기 모니터링 시스템</li>
+                        <li>온도 관리 및 절연 수명 연장 기술</li>
+                        <li>고주파 손실 저감 설계</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3 class="content-card-title">전력케이블 기술</h3>
+                    <ul class="content-list">
+                        <li>초고압(Extra High Voltage) 케이블 설계</li>
+                        <li>해상 전력 케이블 기술</li>
+                        <li>환경친화 절연재료 활용</li>
+                        <li>내구성 및 안전성 강화 기술</li>
+                        <li>장거리 전송 효율성 개선</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 3: Market Analysis -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-chart-line section-icon"></i>
+                시장 분석 및 기회
+            </h2>
+            <p class="section-subtitle">국내 재정통화·북미 인프라 투자 수혜</p>
+
+            <div class="content-card">
+                <h3 class="content-card-title">국내 시장 현황</h3>
+                <p class="content-card-text">
+                    2024~2025년 국내 전력망 재정투자와 산업단지 전력 수요 증가로 변압기와 전력케이블 수급이 개선되었습니다. 한국전력, 배전공사 등 공급사의 발주량이 증가하면서 일진전기의 주요 고객사 거래량이 폭증했습니다. 특히 반도체·디스플레이 업체의 전력 수요 급증은 변압기 필요성을 더욱 높이고 있습니다.
+                </p>
+                <p class="content-card-text">
+                    국내 변압기 시장 규모는 연 약 1.2~1.5조원으로 추정되며, 일진전기는 시장 점유율 20~25% 수준을 유지하고 있습니다. 정부의 그린에너지 전환 정책과 재정 지원으로 향후 3~4년간 시장 성장률은 연 5~7%대로 전망됩니다.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">북미 시장 기회</h3>
+                <p class="content-card-text">
+                    미국은 인프라 투자 정책(Bipartisan Infrastructure Law, 2021)에 따라 전력망 현대화에 연 100억 달러 이상을 투자하고 있습니다. 미국 전력망의 30~40%는 1960~1980년대에 설치된 노후 시설로, 교체 필요성이 매우 높습니다. 이는 변압기와 전력케이블 수요를 크게 증가시키는 요인이 됩니다.
+                </p>
+                <p class="content-card-text">
+                    특히 AI 데이터센터의 확산으로 전력 수요가 급증하면서, 대용량 변압기와 초고압 케이블에 대한 수요가 급속히 증가하고 있습니다. 일진전기는 이미 미국 동부 전력청과 4,318억원의 장기 공급 계약을 체결했으며, 추가 수주 기회도 파이프라인에 있는 것으로 알려져 있습니다.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">시장 트렌드</h3>
+                <ul class="content-list">
+                    <li>전 지구적 에너지 전환(그린에너지)에 따른 변압기·케이블 교체 수요 증가</li>
+                    <li>AI/클라우드 데이터센터 확산으로 인한 전력 인프라 수요 급증</li>
+                    <li>스마트그리드 구축에 따른 고부가가치 제품 수요 증가</li>
+                    <li>국내 재정통화 정책으로 인한 SOC 투자 확대</li>
+                    <li>신재생에너지 통합으로 인한 변전소 현대화 필요</li>
+                    <li>마이크로그리드 등 분산 전원 기술 도입 증대</li>
+                </ul>
+            </div>
+
+            <div class="three-column">
+                <div class="content-card">
+                    <h3 class="content-card-title">국내 시장</h3>
+                    <p class="content-card-text" style="font-size: 0.9rem; color: var(--text-secondary);">
+                        성숙 시장으로 연 5~7% 성장. 정부 재정 정책 영향 큼.
+                    </p>
+                    <div class="financial-card">
+                        <div class="financial-label">시장 규모</div>
+                        <div class="financial-value">1.2~1.5조</div>
+                        <div class="financial-unit">원</div>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <h3 class="content-card-title">북미 시장</h3>
+                    <p class="content-card-text" style="font-size: 0.9rem; color: var(--text-secondary);">
+                        고성장 시장으로 연 10~15% 성장 예상.
+                    </p>
+                    <div class="financial-card">
+                        <div class="financial-label">시장 규모</div>
+                        <div class="financial-value">3.5~4.5조</div>
+                        <div class="financial-unit">원</div>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <h3 class="content-card-title">기타 지역</h3>
+                    <p class="content-card-text" style="font-size: 0.9rem; color: var(--text-secondary);">
+                        유럽·중국 시장 진출 검토 중.
+                    </p>
+                    <div class="financial-card">
+                        <div class="financial-label">기회도</div>
+                        <div class="financial-value">높음</div>
+                        <div class="financial-unit"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 4: Competitor Analysis -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-chess section-icon"></i>
+                경쟁사 분석
+            </h2>
+            <p class="section-subtitle">국내 및 글로벌 주요 경쟁사 비교</p>
+
+            <div class="content-card">
+                <h3 class="content-card-title">경쟁 구도</h3>
+                <p class="content-card-text">
+                    국내 변압기 시장은 일진전기, 효성중공업, STX중공업 3사가 주도하고 있으며, 일진전기가 시장 점유율 1위입니다. 전력케이블 시장도 LS전선, 동양전선, 일진전기가 경쟁하고 있습니다. 글로벌 시장에서는 ABB(스위스), Siemens(독일), GE(미국) 등이 지배적이지만, 기술력과 원가 경쟁력에서 한국 업체들의 위치가 점차 강화되고 있습니다.
+                </p>
+                <p class="content-card-text">
+                    일진전기의 경쟁 우위는 다음과 같습니다: (1) 변압기·전선 동시 사업으로 원스톱 공급 가능, (2) 수십 년의 기술 축적과 품질 신뢰도, (3) 국내 최대 규모 생산 시설, (4) 북미 시장 진출 초기 성공으로 인한 성장 모멘텀.
+                </p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>일진전기</th>
+                        <th>효성중공업</th>
+                        <th>STX중공업</th>
+                        <th>ABB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="comparison-company-name">주력상품</span></td>
+                        <td>변압기·전선</td>
+                        <td>변압기·전자기기</td>
+                        <td>변압기·중전기기</td>
+                        <td>전력기기·로봇</td>
+                    </tr>
+                    <tr>
+                        <td><span class="comparison-company-name">국내 시장점유율</span></td>
+                        <td>20~25%</td>
+                        <td>15~18%</td>
+                        <td>10~12%</td>
+                        <td>5~8%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="comparison-company-name">국제 인증</span></td>
+                        <td>IEC, UL, CSA</td>
+                        <td>IEC, UL</td>
+                        <td>IEC</td>
+                        <td>다수 (글로벌)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="comparison-company-name">북미 진출</span></td>
+                        <td>진출 중 (성과 있음)</td>
+                        <td>진출 계획</td>
+                        <td>미진출</td>
+                        <td>기 진출 (선도)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="comparison-company-name">R&D 투자</span></td>
+                        <td>매출의 3~4%</td>
+                        <td>매출의 2~3%</td>
+                        <td>매출의 2%</td>
+                        <td>매출의 5~6%</td>
+                    </tr>
+                    <tr>
+                        <td><span class="comparison-company-name">생산 능력</span></td>
+                        <td>연 1.5~1.8조원</td>
+                        <td>연 1.2~1.5조원</td>
+                        <td>연 0.8~1.0조원</td>
+                        <td>글로벌 (대규모)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-card">
+                <h3 class="content-card-title">경쟁 강점 분석</h3>
+                <div class="two-column">
+                    <div>
+                        <p style="color: var(--gold-light); font-weight: 600; margin-bottom: 1rem;">일진전기의 우위점</p>
+                        <ul class="content-list">
+                            <li>국내 시장 1위 (점유율 20~25%)</li>
+                            <li>변압기·전선 통합 공급 가능</li>
+                            <li>생산 시설 확대 완료 (제2공장)</li>
+                            <li>북미 시장 진출 성공 사례</li>
+                            <li>장기 공급 계약 확보 (미국)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: #f87171; font-weight: 600; margin-bottom: 1rem;">약점 및 과제</p>
+                        <ul class="content-list">
+                            <li>글로벌 브랜드 인지도 낮음</li>
+                            <li>기술 R&D 투자 ABB 대비 낮음</li>
+                            <li>유럽·아시아 시장 진출 제한적</li>
+                            <li>대규모 턴키 프로젝트 경험 부족</li>
+                            <li>스마트그리드 솔루션 경쟁력 강화 필요</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 5: SWOT Analysis -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-th section-icon"></i>
+                SWOT 분석
+            </h2>
+            <p class="section-subtitle">일진전기의 전략적 위치 평가</p>
+
+            <div class="swot-grid">
+                <div class="swot-card swot-strength">
+                    <h3 class="swot-title">강점 (Strengths)</h3>
+                    <ul class="swot-list">
+                        <li>국내 변압기 시장 1위 지위</li>
+                        <li>70년 이상의 기술 축적 및 노하우</li>
+                        <li>변압기·전선 동시 사업 영위</li>
+                        <li>홍성 제2공장 완공으로 생산 능력 대폭 증대</li>
+                        <li>국내 최대 규모 제조 시설 보유</li>
+                        <li>IEC, UL, CSA 등 국제 인증 확보</li>
+                        <li>2025년 영업이익 90% 증가 (모멘텀)</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card swot-weakness">
+                    <h3 class="swot-title">약점 (Weaknesses)</h3>
+                    <ul class="swot-list">
+                        <li>글로벌 브랜드 인지도 부족</li>
+                        <li>R&D 투자 규모 글로벌 선두사 대비 낮음</li>
+                        <li>중소 규모 기업의 조직문화</li>
+                        <li>AI·스마트 변압기 솔루션 경쟁력 강화 필요</li>
+                        <li>유럽·중국 등 주요 시장 진출 부족</li>
+                        <li>M&A 경험 및 대규모 통합 프로젝트 경험 제한</li>
+                        <li>국제 마케팅 역량 미흡</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card swot-opportunity">
+                    <h3 class="swot-title">기회 (Opportunities)</h3>
+                    <ul class="swot-list">
+                        <li>미국 인프라 투자 정책 지속 (전력망 현대화)</li>
+                        <li>AI 데이터센터 확산으로 전력 수요 급증</li>
+                        <li>글로벌 재정통화 정책 (한국 포함)</li>
+                        <li>신재생에너지 전환으로 변전소 증설</li>
+                        <li>스마트그리드·마이크로그리드 시장 성장</li>
+                        <li>미국 동부 전력청 계약 이후 추가 수주 가능성</li>
+                        <li>캐나다·멕시코 등 북미 확장 여지</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card swot-threat">
+                    <h3 class="swot-title">위협 (Threats)</h3>
+                    <ul class="swot-list">
+                        <li>글로벌 대형사(ABB, Siemens) 북미 시장 선점</li>
+                        <li>국내 경쟁사 효성중공업의 공격적 전략</li>
+                        <li>원재료비(구리, 강재) 변동성</li>
+                        <li>환율 변동 (달러/원) 영향</li>
+                        <li>정부 정책 변화에 따른 발주량 불확실성</li>
+                        <li>기술 표준 변화 (차이나 제2공장 도입 지연 위험)</li>
+                        <li>미국의 보호주의 정책 강화 가능성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">전략적 시사점</h3>
+                <p class="content-card-text">
+                    일진전기는 국내 시장에서의 강한 기반을 바탕으로 북미 시장으로의 성공적인 진출을 이루었습니다. 향후 3~5년간의 전략 방향은 다음과 같이 수립되어야 합니다:
+                </p>
+                <ul class="content-list">
+                    <li><strong>단기(2026~2027):</strong> 북미 미국 동부 전력청 계약의 성공적 이행과 추가 수주 확보</li>
+                    <li><strong>중기(2027~2028):</strong> 북미 생산 기지 설립 검토, 캐나다·멕시코 시장 진출</li>
+                    <li><strong>장기(2029~2030):</strong> 글로벌 브랜드 강화, 유럽 시장 진출, 스마트 변압기 솔루션 고도화</li>
+                    <li><strong>기술 혁신:</strong> AI 기반 변압기 모니터링, 초전도 기술 도입, 그린 재료 개발</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 6: Strategy Analysis -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-map-signs section-icon"></i>
+                전략 분석
+            </h2>
+            <p class="section-subtitle">성장 경로와 경쟁 전략</p>
+
+            <div class="content-card">
+                <h3 class="content-card-title">차별화 전략</h3>
+                <p class="content-card-text">
+                    일진전기는 '변압기+전력케이블' 통합 공급이라는 차별화된 가치 제안으로 경쟁사와 구분됩니다. 고객(전력공사, 산업체)은 단일 공급업체로부터 변전소 전체 시스템을 구성할 수 있어 조달 효율성과 품질 관리가 향상됩니다. 이는 특히 대규모 프로젝트에서 상당한 경쟁 우위를 제공합니다.
+                </p>
+                <p class="content-card-text">
+                    추가로 국내에서 검증된 기술과 품질에 기반하여 북미 시장에 진출함으로써, 신뢰성과 기술력을 동시에 입증하는 전략을 추진하고 있습니다.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">성장 경로 (Growth Path)</h3>
+                <p class="content-card-text">
+                    <strong>1단계 (2024~2026): 국내 수급 개선 + 북미 초기 진출</strong><br>
+                    국내 시장에서의 안정적 매출 기반을 유지하면서, 미국 동부 전력청 계약을 통해 북미 시장 진입을 실현합니다. 홍성 제2공장 100% 가동으로 생산 능력을 1.8~2.0조원 수준까지 확충합니다.
+                </p>
+                <p class="content-card-text">
+                    <strong>2단계 (2027~2029): 북미 거점 강화 + 생산 현지화</strong><br>
+                    미국에서의 추가 수주 확대와 함께, 캐나다·멕시코로 영역을 확장합니다. 필요시 북미 지역 생산 기지 설립을 검토하여 물류 비용과 리드타임을 단축합니다.
+                </p>
+                <p class="content-card-text">
+                    <strong>3단계 (2030년 이후): 글로벌 중견기업 도약</strong><br>
+                    유럽 시장 진출을 추진하고, 스마트 변압기·그리드 솔루션으로 기술 고도화를 이루어 글로벌 경쟁사와의 격차를 좁혀갑니다.
+                </p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3 class="content-card-title">원가 리더십 전략</h3>
+                    <p class="content-card-text">
+                        생산 설비 현대화와 자동화를 통해 원가를 지속 절감합니다. 제2공장 가동으로 규모의 경제를 실현하고, 원재료 직구매를 통해 공급망 효율성을 높입니다.
+                    </p>
+                    <p class="content-card-text">
+                        향후 국내와 북미 이원화 생산으로 원가 경쟁력을 더욱 강화할 수 있습니다.
+                    </p>
+                </div>
+                <div class="content-card">
+                    <h3 class="content-card-title">기술 혁신 전략</h3>
+                    <p class="content-card-text">
+                        R&D 투자를 매출의 4~5% 수준으로 확대하여, AI 기반 변압기 모니터링, 초전도 기술, 환경친화 재료 등을 개발합니다.
+                    </p>
+                    <p class="content-card-text">
+                        대학·연구기관과의 협력을 강화하고, 스타트업 인수를 통해 신기술 도입 속도를 높입니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">마켓 포지셔닝</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-label">가격 경쟁력</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 75%;">
+                                <span class="bar-value">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">기술 수준</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 70%;">
+                                <span class="bar-value">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">브랜드 인지도</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 45%;">
+                                <span class="bar-value">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">고객 신뢰도</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 80%;">
+                                <span class="bar-value">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">시장 점유율</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 70%;">
+                                <span class="bar-value">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 7: Financial Analysis -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-money-bill-wave section-icon"></i>
+                재무 분석
+            </h2>
+            <p class="section-subtitle">2025년 실적 및 2026년 전망</p>
+
+            <div class="content-card">
+                <h3 class="content-card-title">2025년 실적 분석</h3>
+                <p class="content-card-text">
+                    2025년 일진전기는 국내 수급 개선과 북미 시장 초기 수주 확대로 매출 2.1~2.2조원을 기록했으며, 영업이익은 전년 대비 90% 증가하여 약 1,850~2,000억원을 달성했습니다. 영업이익률은 8.5~9.0% 수준으로 업계 평균(5~6%)을 크게 상회했습니다.
+                </p>
+                <p class="content-card-text">
+                    이는 구조적 개선의 결과입니다: (1) 제2공장 완공에 따른 생산 효율성 향상, (2) 고마진 북미 수주 증가, (3) 고정비 활용도 개선. 순이익도 약 1,200~1,300억원으로 전년대비 대폭 증가했습니다.
+                </p>
+            </div>
+
+            <div class="financial-metrics">
+                <div class="financial-card">
+                    <div class="financial-label">2025년 매출</div>
+                    <div class="financial-value">2.1~2.2조</div>
+                    <div class="financial-unit">원</div>
+                </div>
+                <div class="financial-card">
+                    <div class="financial-label">2025년 영업이익</div>
+                    <div class="financial-value">1,850~2,000억</div>
+                    <div class="financial-unit">원</div>
+                </div>
+                <div class="financial-card">
+                    <div class="financial-label">2025년 영업이익률</div>
+                    <div class="financial-value">8.5~9.0%</div>
+                    <div class="financial-unit">%</div>
+                </div>
+                <div class="financial-card">
+                    <div class="financial-label">2025년 순이익</div>
+                    <div class="financial-value">1,200~1,300억</div>
+                    <div class="financial-unit">원</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">2026년 전망</h3>
+                <p class="content-card-text">
+                    2026년은 일진전기의 성장이 본격화되는 해가 될 것으로 예상됩니다. 홍성 제2공장이 100% 가동되고, 미국 동부 전력청 장기 공급 계약의 실행이 본격화될 것입니다. 매출은 2.2~2.3조원으로 소폭 성장할 것으로 예상되며, 영업이익은 1,612~2,176억원(영업이익률 7.3~9.4%)으로 안정적인 수준을 유지할 것으로 전망됩니다.
+                </p>
+                <p class="content-card-text">
+                    국내 시장의 기저효과 약화가 성장률을 제한하지만, 북미 시장의 본격적인 기여와 고마진 사업 비중 증대로 영업이익률은 견고할 것으로 기대됩니다.
+                </p>
+            </div>
+
+            <div class="financial-metrics">
+                <div class="financial-card">
+                    <div class="financial-label">2026E 매출</div>
+                    <div class="financial-value">2.2~2.3조</div>
+                    <div class="financial-unit">원</div>
+                </div>
+                <div class="financial-card">
+                    <div class="financial-label">2026E 영업이익</div>
+                    <div class="financial-value">1,612~2,176억</div>
+                    <div class="financial-unit">원</div>
+                </div>
+                <div class="financial-card">
+                    <div class="financial-label">2026E 영업이익률</div>
+                    <div class="financial-value">7.3~9.4%</div>
+                    <div class="financial-unit">%</div>
+                </div>
+                <div class="financial-card">
+                    <div class="financial-label">2026E 순이익</div>
+                    <div class="financial-value">1,100~1,500억</div>
+                    <div class="financial-unit">원</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">재무 건전성 지표</h3>
+                <div class="two-column">
+                    <div>
+                        <p style="color: var(--gold-light); font-weight: 600; margin-bottom: 1rem;">주요 재무비율</p>
+                        <ul class="content-list">
+                            <li>부채비율: 약 80~90% (적정 수준)</li>
+                            <li>유동비율: 약 120~130% (양호)</li>
+                            <li>이자보상배수: 약 5~6배 (안정적)</li>
+                            <li>ROE: 약 12~15% (개선 중)</li>
+                            <li>ROIC: 약 8~10% (업계 평균 상회)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold-light); font-weight: 600; margin-bottom: 1rem;">자본 구조</p>
+                        <ul class="content-list">
+                            <li>시가총액: 약 5.2조원</li>
+                            <li>총자산: 약 3.5~3.8조원</li>
+                            <li>자본금: 약 800~900억원</li>
+                            <li>순자산: 약 1.5~1.7조원</li>
+                            <li>현금 및 현금성자산: 약 800~1,000억원</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">향후 재무 시나리오</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-label">베이스 케이스</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 100%;">
+                                <span class="bar-value">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">강세 케이스(+5%)</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 105%;">
+                                <span class="bar-value">105%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">약세 케이스(-5%)</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 95%;">
+                                <span class="bar-value">95%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 8: Conclusion -->
+        <section>
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb section-icon"></i>
+                결론 및 투자 의견
+            </h2>
+            <p class="section-subtitle">종합 평가 및 향후 전망</p>
+
+            <div class="content-card">
+                <h3 class="content-card-title">종합 평가</h3>
+                <p class="content-card-text">
+                    일진전기는 국내 변압기·전력케이블 시장에서의 1위 지위를 바탕으로, 북미 시장 진출을 통한 글로벌 성장으로의 전환기를 맞이하고 있습니다. 2025년의 영업이익 90% 증가는 단순한 호황이 아니라, 제2공장 가동과 북미 수주 확대로 인한 구조적 개선을 의미합니다.
+                </p>
+                <p class="content-card-text">
+                    기술력, 생산 능력, 고객 신뢰도 등에서 경쟁사 대비 명확한 우위를 보유하고 있으며, 북미의 전력망 재정투자와 AI 데이터센터 확산이라는 대형 트렌드 수혜 기업으로 포지셔닝되어 있습니다.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">강점 재확인</h3>
+                <ul class="content-list">
+                    <li><strong>시장 리더십:</strong> 국내 변압기 시장점유율 20~25% (1위)</li>
+                    <li><strong>기술 기반:</strong> 70년 이상의 축적된 기술과 국제 인증 보유</li>
+                    <li><strong>생산 역량:</strong> 제2공장 완공으로 연 1.8~2.0조원 생산 가능</li>
+                    <li><strong>사업 다각화:</strong> 변압기+전선 동시 공급으로 고객 선호도 높음</li>
+                    <li><strong>성장 동력:</strong> 미국 동부 전력청 4,318억원 장기 계약 확보</li>
+                    <li><strong>수익성:</strong> 2025년 영업이익률 8.5~9.0% (업계 평균 상회)</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">위험 요소 인식</h3>
+                <ul class="content-list">
+                    <li><strong>원재료 가격:</strong> 구리·강재 등 원재료비 변동성</li>
+                    <li><strong>환율 리스크:</strong> 북미 사업 확대에 따른 환율 영향</li>
+                    <li><strong>정부 정책:</strong> 국내 전력망 투자 정책 변화</li>
+                    <li><strong>경쟁 심화:</strong> 국내 경쟁사 및 글로벌 대형사의 공격적 진출</li>
+                    <li><strong>기술 표준 변화:</strong> 미국 전력망 표준 변경 가능성</li>
+                    <li><strong>지정학적 리스크:</strong> 미국의 보호주의 정책 강화 가능성</li>
+                </ul>
+            </div>
+
+            <div class="content-card" style="background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(92, 125, 158, 0.1) 100%); border: 2px solid var(--gold-dim);">
+                <h3 class="content-card-title">최종 투자 의견</h3>
+                <p class="content-card-text" style="font-size: 1.05rem; line-height: 1.8;">
+                    <strong>긍정적 평가:</strong> 일진전기는 국내 시장에서의 안정적 기반과 북미 시장 진출이라는 성장 기회를 동시에 보유한 유망 기업입니다. 2026~2028년간 매출과 영업이익의 지속적 성장이 예상되며, 북미 수주 확대에 따른 고마진 사업 비중 증대로 수익성도 개선될 것으로 전망됩니다.
+                </p>
+                <p class="content-card-text" style="font-size: 1.05rem; line-height: 1.8;">
+                    <strong>투자 호평 사유:</strong> (1) 구조적 성장 모멘텀 (제2공장 가동 + 북미 진출), (2) 높은 수익성 (영업이익률 8~9%), (3) 장기 공급 계약으로 인한 매출 예측성 향상, (4) 글로벌 시장 확대 잠재력.
+                </p>
+                <p class="content-card-text" style="font-size: 1.05rem; line-height: 1.8;">
+                    <strong>권장:</strong> 3~5년 중기 투자 관점에서 매력적인 기회를 제시하는 종목으로 평가됩니다. 다만 원재료비 변동성과 환율 리스크를 모니터링해야 합니다.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="content-card-title">향후 주목 지표</h3>
+                <div class="two-column">
+                    <div>
+                        <p style="color: var(--gold-light); font-weight: 600; margin-bottom: 1rem;">분기별 모니터링</p>
+                        <ul class="content-list">
+                            <li>분기 매출 추이 (북미 수주 규모)</li>
+                            <li>영업이익률 변화 추이</li>
+                            <li>제2공장 가동률</li>
+                            <li>수주잔고 규모</li>
+                            <li>원재료비 변동성</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold-light); font-weight: 600; margin-bottom: 1rem;">중기 이정표</p>
+                        <ul class="content-list">
+                            <li>2026년 영업이익 1,612~2,176억원 달성</li>
+                            <li>북미 지역 추가 수주 확보</li>
+                            <li>해외 매출 비중 20% 이상</li>
+                            <li>캐나다 시장 진출</li>
+                            <li>스마트 변압기 상용화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="report-update-block">
+            <div class="update-label">최종 업데이트</div>
+            <div class="update-time">2026년 04월 27일 09:00 KST</div>
+        </div>
+
+        <div class="report-info">
+            <h3 style="color: var(--gold-light); margin-bottom: 1rem;">보고서 정보</h3>
+            <p class="footer-text">본 리포트는 공개 정보와 산업 분석에 기반하여 작성되었습니다.</p>
+            <p class="footer-text">투자 판단의 참고자료이며, 투자 권유나 보장은 아닙니다.</p>
+            <p class="copyright">© 2026 FLOVAH Insights. All rights reserved.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-text">일진전기 기업 분석 리포트 | FLOVAH Insights</div>
+        <div class="footer-text">분석일: 2026년 04월 27일</div>
+        <p class="copyright">Copyright © 2026 FLOVAH. All rights reserved.</p>
+    </footer>
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

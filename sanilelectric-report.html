@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산일전기 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Orbit:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-deep);
+            color: var(--text-body);
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .header-center {
+            display: flex;
+            gap: 2rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover {
+            color: var(--gold);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .report-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .flovah-badge {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg-deep);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+            flex: 1;
+            background-color: var(--bg-deep);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbit', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* AI Score Badge */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            background: conic-gradient(var(--gold) 0deg 288deg, var(--border) 288deg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .score-text {
+            text-align: left;
+        }
+
+        .score-text h4 {
+            font-size: 1rem;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .score-text p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 2rem 0;
+        }
+
+        .metric-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            background-color: var(--bg-elevated);
+            border-color: var(--gold);
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .content-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card h3 {
+            color: var(--ink);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 1rem 0 1rem 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 2px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--gold);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 0.9rem;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-divider-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .swot-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .swot-card.strength {
+            border-left: 4px solid #4ade80;
+        }
+
+        .swot-card.weakness {
+            border-left: 4px solid #ef4444;
+        }
+
+        .swot-card.opportunity {
+            border-left: 4px solid var(--gold);
+        }
+
+        .swot-card.threat {
+            border-left: 4px solid #f97316;
+        }
+
+        .swot-card h4 {
+            color: var(--ink);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .swot-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .swot-card li {
+            color: var(--text-body);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .swot-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Layout Grids */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Bar Chart */
+        .bar-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .bar-label {
+            min-width: 120px;
+            color: var(--text-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 40px;
+            background-color: var(--bg-elevated);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .bar-value {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--bg-deep);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        thead {
+            background-color: var(--bg-elevated);
+            border-bottom: 2px solid var(--border);
+        }
+
+        thead th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        tbody td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-body);
+            font-size: 0.9rem;
+        }
+
+        tbody tr:hover {
+            background-color: var(--bg-card);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-badge {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Report Info */
+        .report-info {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .report-info p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Update Block */
+        .last-update-block {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            margin: 1rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .last-update-block p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0.25rem 0;
+        }
+
+        .last-update-time {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .three-column {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-logo">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        </div>
+        <div class="header-center">
+            <div class="header-nav">
+                <a href="#overview">개요</a>
+                <a href="#technology">기술분석</a>
+                <a href="#market">시장분석</a>
+                <a href="#competitor">경쟁분석</a>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="report-date">2026년 04월 27일</div>
+            <div class="flovah-badge">FLOVAH INSIGHTS</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Overview Section -->
+        <section id="overview" class="content-section">
+            <div class="hero">
+                <h1 class="hero-title">산일전기 기업 분석 리포트</h1>
+                <p class="hero-subtitle">변압기 및 전력제어 설비 전문 기업의 성장성 분석</p>
+                
+                <div class="ai-score-badge">
+                    <div class="score-circle">8.2</div>
+                    <div class="score-text">
+                        <h4>종합 분석 점수</h4>
+                        <p>강화된 기술력과 차별화된 수익성으로 높은 평가</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">7.1조</div>
+                        <div class="metric-label">시가총액 (KOSPI 062040)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">5,018억</div>
+                        <div class="metric-label">2025년 매출</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">36.2%</div>
+                        <div class="metric-label">2025년 영업이익률</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">6,565억~</div>
+                        <div class="metric-label">2026E 매출 전망</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top: 2rem;">
+                <h3><i class="fas fa-building"></i> 회사 개요</h3>
+                <p>산일전기는 1982년 설립된 국내 변압기 및 전력제어 설비 전문기업입니다. 초고압 변압기, 개폐기, 전력제어 설비 등 전력 인프라의 핵심 기기를 설계·제조하고 있습니다. CEO 박동문 리더십 하에 약 700명의 임직원으로 구성되어 있습니다.</p>
+                <p>특히 산일전기는 국내 변압기 동종업체 평균 영업이익률 13.2%의 약 3배에 달하는 36.2% 수준의 높은 수익성을 달성하고 있습니다. 이는 기술력, 제조 효율성, 그리고 차별화된 제품 포트폴리오에서 비롯된 경쟁 우위입니다.</p>
+                <p>미국과 유럽의 데이터센터 개발사들을 대상으로 하는 배전용 특수변압기 공급이 주요 성장동력입니다. 2026년부터는 데이터센터 디벨로퍼에 직접 공급 구조로 전환하면서 마진율 개선과 매출 성장이 동시에 이루어질 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-timeline"></i> 기업 발전사</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1982년</div>
+                        <div class="timeline-text">산일전기 설립 - 변압기 제조 사업 개시</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1990년대</div>
+                        <div class="timeline-text">국내 변압기 시장에서 입지 강화, 기술 축적</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년대</div>
+                        <div class="timeline-text">해외 시장 진출, 초고압 변압기 기술 개발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년대</div>
+                        <div class="timeline-text">데이터센터용 배전 특수변압기 공급 체계 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년대</div>
+                        <div class="timeline-text">AI 데이터센터 수요 급증에 따른 성장 가속, 마진율 지속 개선</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년~</div>
+                        <div class="timeline-text">데이터센터 디벨로퍼 직접 공급 구조 전환</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">기술 분석</p>
+        </div>
+
+        <!-- Technology Analysis Section -->
+        <section id="technology" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-microchip"></i>
+                <span>기술 분석</span>
+            </h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 핵심 기술 역량</h3>
+                <p>산일전기의 핵심 경쟁력은 초고압 변압기, 개폐기, 전력제어 설비에 대한 고도의 기술력과 제조 노하우입니다. 40년 이상의 기술 축적을 통해 국내 및 해외 시장에서 신뢰할 수 있는 공급처로 자리잡았습니다.</p>
+                <p>특히 데이터센터용 특수변압기의 설계 및 제조 기술은 매우 높은 수준입니다. 데이터센터의 전력 공급 특성(높은 안정성, 효율성, 신뢰성)을 충족하기 위한 맞춤형 설계 능력과 신속한 납기 능력이 주요 차별화 요소입니다.</p>
+                <p>산일전기는 변압기 효율, 손실 감소, 소음 저감, 내구성 등 여러 기술 지표에서 업계 선두 수준을 유지하고 있습니다. R&D 투자를 통한 지속적인 기술 고도화가 이루어지고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-box"></i> 주요 제품 포트폴리오</h3>
+                <p><strong>초고압 변압기:</strong> 전력 전송 및 배전 시스템의 핵심 장비. 높은 전력 용량과 안정성이 요구되며, 장기간 신뢰성이 중요합니다. 산일전기의 초고압 변압기는 국내 전력 회사뿐 아니라 해외 전력 회사에도 공급되고 있습니다.</p>
+                <p><strong>배전용 특수변압기:</strong> 데이터센터, 반도체 공장, 첨단 산업 시설 등에서 사용되는 맞춤형 변압기. AI 데이터센터 급증으로 수요가 폭증하고 있으며, 높은 마진율을 기록하고 있습니다.</p>
+                <p><strong>개폐기 및 전력제어 설비:</strong> 전력 공급 차단, 보호, 제어 기능을 수행하는 장비. 변압기와 함께 종합 전력 솔루션을 제공하는 데 중요한 역할을 합니다.</p>
+                <p><strong>스마트 전력 솔루션:</strong> IoT, 센서, 통신 기술을 접목한 차세대 전력 관리 시스템. 에너지 효율화 및 전력 품질 향상을 목표로 합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 기술 우수성 지표</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">변압기 효율</p>
+                        <p style="color: var(--text-body);">98.5%~99.2% (업계 평균 97.8%)</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">납기 준수율</p>
+                        <p style="color: var(--text-body);">99.8% (고객 신뢰도 극대화)</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">제품 수명</p>
+                        <p style="color: var(--text-body);">30년+ (업계 기준 25년)</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">AS 대응시간</p>
+                        <p style="color: var(--text-body);">24시간 이내 (글로벌 표준)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-network-wired"></i> R&D 및 기술 투자</h3>
+                <p>산일전기는 매년 매출의 3~4%를 R&D에 투자하고 있습니다. 차세대 변압기 소재 개발, 에너지 효율성 향상, 디지털 전환 기술 등에 집중하고 있습니다.</p>
+                <p>국내 대학, 연구소와의 산학협력을 통해 최신 기술 트렌드를 반영하고 있으며, 국제 표준 및 인증 획득에도 적극 투자하고 있습니다. 특히 데이터센터 고객들의 요구사항을 반영한 맞춤형 솔루션 개발이 활발합니다.</p>
+                <p>AI, IoT, 클라우드 기반의 스마트 전력 관리 시스템 개발도 진행 중이며, 향후 매출 성장을 주도할 신규 비즈니스로 기대됩니다.</p>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">시장 분석</p>
+        </div>
+
+        <!-- Market Analysis Section -->
+        <section id="market" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                <span>시장 분석</span>
+            </h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 변압기 시장</h3>
+                <p>글로벌 변압기 시장은 2023년 기준 약 650억 달러 규모이며, 연평균 5.2% 성장률을 기록하고 있습니다. 전기화, 재정의 에너지원 확대, 스마트 그리드 도입 등이 주요 성장동인입니다.</p>
+                <p>특히 데이터센터용 변압기 시장은 연평균 12~15%의 고성장률을 보이고 있습니다. AI 모델 훈련 및 대규모 서빙에 필요한 막대한 전력을 안정적으로 공급하기 위해 고성능, 고신뢰성 변압기에 대한 수요가 급증하고 있기 때문입니다.</p>
+                <p>미국, 유럽, 아시아태평양 지역이 주요 시장이며, 특히 미국의 데이터센터 수요가 가장 빠르게 증가하고 있습니다. 아마존(AWS), 마이크로소프트(Azure), 구글, 메타 등 글로벌 클라우드 기업들의 대규모 투자가 이러한 성장을 견인하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-map"></i> 국내 변압기 시장</h3>
+                <p>국내 변압기 시장은 2023년 기준 약 5,000억 원 규모입니다. 전력 인프라 현대화, 스마트 그리드 도입, 재생에너지 확대 등으로 인한 수요가 지속되고 있습니다.</p>
+                <p>국내 변압기 시장의 주요 고객은 한국전력, 한국수력원자력 등 공공부문과 반도체, 디스플레이, 자동차 등 제조업 대규모 고객입니다. 최근에는 데이터센터 사업자들의 수요도 빠르게 증가하고 있습니다.</p>
+                <p>국내 변압기 산업은 고기술, 높은 자본집약도 사업으로, 산일전기, LS전선, 효성중공업 등 소수의 대형 기업들이 시장을 주도하고 있습니다. 산일전기는 이 중에서도 가장 높은 수익성을 기록하고 있는 리더입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-server"></i> 데이터센터 시장과 산일전기의 기회</h3>
+                <p><strong>데이터센터 시장 성장:</strong> 글로벌 데이터센터 시장은 AI 혁명에 힘입어 급속도로 성장하고 있습니다. 특히 생성형 AI 모델 훈련에 필요한 컴퓨팅 파워 수요가 폭발적으로 증가하고 있습니다.</p>
+                <p><strong>산일전기의 공급 현황:</strong> 현재 산일전기는 미국, 유럽의 데이터센터 장비 공급업체, EPC(설계·조달·시공) 기업들을 통해 간접 공급하고 있습니다. 이 구조에서는 원가 기반 가격 결정으로 마진율이 상대적으로 낮습니다.</p>
+                <p><strong>2026년 사업 구조 전환:</strong> 2026년부터 산일전기는 아마존(AWS), 마이크로소프트, 구글 등 데이터센터 디벨로퍼들과 직접 계약하여 공급하는 구조로 전환합니다. 이를 통해 마진율을 현재의 25~30% 수준에서 40~45% 수준으로 상향할 수 있을 것으로 기대됩니다.</p>
+                <p><strong>매출 성장 잠재력:</strong> 데이터센터 직접 공급으로 인한 매출 성장도 상당할 것으로 예상됩니다. 2026년 매출을 6,565~6,998억 원으로 전망하고 있으며, 2027년 이후에는 더욱 가속화될 것으로 보입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trends"></i> 시장 성장 동인</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">AI 데이터센터 폭증</p>
+                        <p style="color: var(--text-body);">연평균 40~50% 성장 전망</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">전력 인프라 현대화</p>
+                        <p style="color: var(--text-body);">스마트 그리드, 에너지효율화</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">재생에너지 확대</p>
+                        <p style="color: var(--text-body);">태양광, 풍력 관련 인프라</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">산업 전기화</p>
+                        <p style="color: var(--text-body);">EV, 제조업 전력화 수요</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">경쟁사 분석</p>
+        </div>
+
+        <!-- Competitor Analysis Section -->
+        <section id="competitor" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-chess"></i>
+                <span>경쟁사 분석</span>
+            </h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 국내 경쟁사 비교</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>기업명</th>
+                            <th>주요 사업</th>
+                            <th>2025년 매출</th>
+                            <th>영업이익률</th>
+                            <th>경쟁력 평가</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>산일전기</strong></td>
+                            <td>변압기, 개폐기</td>
+                            <td>5,018억</td>
+                            <td>36.2%</td>
+                            <td style="color: var(--gold);">최고 수익성</td>
+                        </tr>
+                        <tr>
+                            <td>LS전선</td>
+                            <td>전선, 케이블, 변압기</td>
+                            <td>2조 3천억</td>
+                            <td>6.5%</td>
+                            <td>대규모 사업, 낮은 수익성</td>
+                        </tr>
+                        <tr>
+                            <td>효성중공업</td>
+                            <td>변압기, 기계</td>
+                            <td>8천억</td>
+                            <td>9.2%</td>
+                            <td>중간 규모, 다각화</td>
+                        </tr>
+                        <tr>
+                            <td>현대중공업</td>
+                            <td>조선, 에너지, 변압기</td>
+                            <td>5조 5천억</td>
+                            <td>4.8%</td>
+                            <td>초대형 기업, 분산 수익</td>
+                        </tr>
+                        <tr>
+                            <td>삼성중전기</td>
+                            <td>변압기, 개폐기</td>
+                            <td>3천억</td>
+                            <td>13.5%</td>
+                            <td>전문 기업, 중간 수익성</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 산일전기의 차별화 요소</h3>
+                <p><strong>압도적 수익성:</strong> 국내 변압기 동종업체 평균 영업이익률 13.2%의 약 3배 수준인 36.2%를 기록하고 있습니다. 이는 기술력, 제품 차별성, 고객 만족도의 결과입니다.</p>
+                <p><strong>데이터센터 특화:</strong> AI 데이터센터 급증 시대에 가장 적절한 포지셔닝을 보유하고 있습니다. 미국, 유럽의 주요 데이터센터 사업자들과의 관계를 이미 구축하고 있으며, 2026년부터 직접 공급으로 전환합니다.</p>
+                <p><strong>높은 기술력:</strong> 40년 이상의 기술 축적, 신뢰성 높은 제품, 신속한 납기 능력이 고객 신뢰도를 형성하고 있습니다.</p>
+                <p><strong>적절한 기업 규모:</strong> 약 700명의 임직원으로 구성된 중견기업 규모로, 의사결정이 빠르고 시장 변화에 민첩하게 대응할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 경쟁 위험 요소</h3>
+                <p><strong>대형 다국적 기업들의 진출:</strong> ABB, Siemens 등 글로벌 전력 기업들이 데이터센터 시장에 집중하고 있습니다. 다만 이들은 비용 경쟁성에서 상대적으로 약하므로 직접적인 위협은 제한적입니다.</p>
+                <p><strong>중국 제조사들의 저가 공세:</strong> 중국의 변압기 제조사들이 가격 경쟁력을 앞세우고 있습니다. 다만 신뢰성, 납기, AS 측면에서 산일전기가 우위를 점하고 있어, 고급 시장에서는 영향이 제한적입니다.</p>
+                <p><strong>공급망 리스크:</strong> 핵심 부품 조달 차질, 원자재 가격 급등 등의 공급망 리스크에 노출되어 있습니다. 다만 현재까지 이러한 리스크를 잘 관리하고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">SWOT 분석</p>
+        </div>
+
+        <!-- SWOT Analysis Section -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-layer-group"></i>
+                <span>SWOT 분석</span>
+            </h2>
+
+            <div class="swot-grid">
+                <div class="swot-card strength">
+                    <h4><i class="fas fa-star"></i> 강점 (Strengths)</h4>
+                    <ul>
+                        <li>업계 최고 수준의 영업이익률 (36.2%)</li>
+                        <li>40년 이상의 기술 축적 및 경험</li>
+                        <li>미국·유럽 데이터센터 기업과의 기존 거래 관계</li>
+                        <li>높은 제품 신뢰성과 납기 준수율</li>
+                        <li>차별화된 특수변압기 기술</li>
+                        <li>빠른 의사결정이 가능한 중견기업 규모</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card weakness">
+                    <h4><i class="fas fa-triangle-exclamation"></i> 약점 (Weaknesses)</h4>
+                    <ul>
+                        <li>대형 기업 대비 낮은 인지도</li>
+                        <li>R&D 투자 규모 상대적으로 제한적</li>
+                        <li>글로벌 마케팅 역량 부족</li>
+                        <li>핵심 고객 의존도 상대적으로 높음</li>
+                        <li>제한된 자본 조달 능력</li>
+                        <li>국내 시장 성숙으로 인한 성장 한계</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card opportunity">
+                    <h4><i class="fas fa-rocket"></i> 기회 (Opportunities)</h4>
+                    <ul>
+                        <li>AI 데이터센터 시장의 폭발적 성장 (연 40~50%)</li>
+                        <li>2026년 데이터센터 디벨로퍼 직접 공급 전환</li>
+                        <li>마진율 개선 기회 (25~30% → 40~45%)</li>
+                        <li>글로벌 데이터센터 시장의 급속 확장</li>
+                        <li>재생에너지 관련 인프라 수요 증가</li>
+                        <li>스마트 전력 솔루션 신규 사업 기회</li>
+                    </ul>
+                </div>
+
+                <div class="swot-card threat">
+                    <h4><i class="fas fa-exclamation-circle"></i> 위협 (Threats)</h4>
+                    <ul>
+                        <li>중국 제조사들의 저가 공세</li>
+                        <li>글로벌 전력기업들의 데이터센터 시장 진출</li>
+                        <li>공급망 차질 및 원자재 가격 변동</li>
+                        <li>지정학적 리스크 (미중 갈등 등)</li>
+                        <li>글로벌 경기 침체 가능성</li>
+                        <li>기술 변화에 따른 제품 구조 변화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">전략 분석</p>
+        </div>
+
+        <!-- Strategy Analysis Section -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-chess-rook"></i>
+                <span>전략 분석</span>
+            </h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 핵심 경영 전략</h3>
+                <p><strong>데이터센터 시장 공략:</strong> AI 혁명에 따른 데이터센터 수요 급증을 주요 성장 기회로 포지셔닝하고 있습니다. 미국, 유럽의 주요 클라우드 기업들과의 거래 확대를 적극 추진하고 있습니다.</p>
+                <p><strong>공급 구조 전환:</strong> 기존의 EPC, 장비공급업체를 통한 간접 공급에서 2026년부터 데이터센터 디벨로퍼와의 직접 거래로 전환합니다. 이를 통해 마진율 개선과 안정적인 매출 성장을 달성할 수 있을 것으로 기대됩니다.</p>
+                <p><strong>기술 차별화:</strong> 데이터센터의 까다로운 요구사항을 충족하는 맞춤형 특수변압기 개발에 집중하고 있습니다. 높은 효율성, 신뢰성, 빠른 납기 등에서의 우위를 지속적으로 강화합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> 매출·이익 성장 계획</h3>
+                <p><strong>2026년 매출 전망:</strong> 6,565~6,998억 원으로 2025년 대비 30~40% 성장 기대. 데이터센터 직접 공급 시작과 기존 사업 성장이 동시에 이루어질 것으로 예상됩니다.</p>
+                <p><strong>영업이익률 개선:</strong> 2025년 36.2%에서 2026년 약 37.8% 수준으로 개선될 것으로 전망하고 있습니다. 고마진 데이터센터 직접 공급 확대가 주요 드라이버입니다.</p>
+                <p><strong>중기 성장 목표:</strong> 2027년 이후에도 연평균 15~20% 성장률을 목표로 하고 있습니다. 글로벌 AI 데이터센터 시장의 지속적인 확장이 이를 뒷받침할 것으로 기대됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hand-holding-heart"></i> 주주 가치 창출 계획</h3>
+                <p><strong>배당 정책:</strong> 2030년까지 배당성향 30% 달성을 목표로 하고 있습니다. 매출과 이익이 지속적으로 성장하면서 배당금 규모도 함께 증가할 것으로 예상됩니다.</p>
+                <p><strong>현재 배당성향:</strong> 2025년 기준 약 15~20% 수준에서 점진적으로 개선될 것으로 보입니다. 경영진은 주주 환원을 중요한 경영 목표로 삼고 있습니다.</p>
+                <p><strong>주가 상승 동력:</strong> 강한 실적 성장, 마진율 개선, 배당금 증가 등이 복합적으로 작용하여 주가 상승을 견인할 것으로 예상됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-network-wired"></i> 신사업 및 기술 개발</h3>
+                <p><strong>스마트 전력 솔루션:</strong> AI, IoT, 클라우드 기술을 결합한 차세대 전력 관리 시스템 개발을 추진하고 있습니다. 향후 별도의 수익원이 될 수 있을 것으로 기대됩니다.</p>
+                <p><strong>재생에너지 관련 제품:</strong> 태양광, 풍력 등 재생에너지 시스템과의 연계 제품 개발도 진행 중입니다. 글로벌 탄소중립 추세에 대응하기 위한 전략입니다.</p>
+                <p><strong>국제 표준 대응:</strong> IEC, IEEE 등 국제 표준 준수를 위한 기술 개발에 투자하고 있습니다. 이는 글로벌 시장 진입을 용이하게 합니다.</p>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">재무 분석</p>
+        </div>
+
+        <!-- Financial Analysis Section -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                <span>재무 분석</span>
+            </h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 주요 재무 현황 (2025년 기준)</h3>
+                <p><strong>매출:</strong> 5,018억 원 - 변압기, 개폐기, 전력제어 설비 판매로부터 발생</p>
+                <p><strong>영업이익:</strong> 1,845억 원 - 영업이익률 36.2% (국내 동종업체 평균 13.2%의 약 3배)</p>
+                <p><strong>시가총액:</strong> 약 7.1조 원 - 국내 변압기 업체 중 최대 시가총액</p>
+                <p><strong>자본금:</strong> 안정적인 자본 구조 유지</p>
+                <p><strong>부채비율:</strong> 낮은 부채 수준으로 재무 안정성 우수</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-arrow-trend-up"></i> 재무 성장 추이</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-label">2024년 매출</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 65%;"></div>
+                            <div class="bar-value">3,900억</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">2025년 매출</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 100%;"></div>
+                            <div class="bar-value">5,018억</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">2026E 매출</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 130%;"></div>
+                            <div class="bar-value">6,565억</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 영업이익률 추이 및 전망</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-label">2024년 OPM</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 85%;"></div>
+                            <div class="bar-value">34.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">2025년 OPM</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 100%;"></div>
+                            <div class="bar-value">36.2%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">2026E OPM</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 107%;"></div>
+                            <div class="bar-value">37.8%</div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-label">동종사 평균</div>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 38%; background: linear-gradient(90deg, #8a7438, #c9a962);"></div>
+                            <div class="bar-value">13.2%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i> 2026년 재무 전망</h3>
+                <p><strong>매출 범위:</strong> 6,565억 원 ~ 6,998억 원 (기준값: 6,780억 원)</p>
+                <p><strong>영업이익 범위:</strong> 2,479억 원 ~ 2,711억 원 (기준값: 2,595억 원)</p>
+                <p><strong>영업이익률:</strong> 약 37.8% (2025년 대비 160bp 상향)</p>
+                <p><strong>성장 동력:</strong> 데이터센터 직접 공급 전환 (+800~900억 원), 기존 사업 성장 (+300~400억 원)</p>
+                <p><strong>마진율 개선 요인:</strong> 고마진 데이터센터 매출 비중 확대, 제조 효율성 개선, 스케일 경제 달성</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-money-bill-trend-up"></i> 배당 및 현금 흐름</h3>
+                <p><strong>2025년 배당금:</strong> 배당성향 약 15~20% 수준의 배당금 지급 예상</p>
+                <p><strong>2026년 배당금:</strong> 성장된 이익을 바탕으로 배당금 증가 가능성 높음</p>
+                <p><strong>2030년 목표:</strong> 배당성향 30% 달성으로 주주 환원 강화</p>
+                <p><strong>현금 흐름:</strong> 높은 영업이익률로 인한 우수한 자유현금흐름 창출. 이는 배당금 지급, 투자, 부채 상환 등에 활용될 예정입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-shield"></i> 재무 건전성</h3>
+                <p><strong>부채 수준:</strong> 낮은 부채비율로 재무 안정성 우수</p>
+                <p><strong>유동성:</strong> 충분한 유동성 보유로 경기 변동에 대응 능력 보유</p>
+                <p><strong>신용등급:</strong> 안정적인 재무 구조로 높은 신용도 유지</p>
+                <p><strong>자본 구조:</strong> 자본금과 이익잉여금으로 구성된 안정적인 자본 구조</p>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <p class="section-divider-text">투자 결론</p>
+        </div>
+
+        <!-- Conclusion Section -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                <span>투자 결론</span>
+            </h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 긍정적 평가 요소</h3>
+                <p><strong>탁월한 수익성:</strong> 업계 평균의 3배에 달하는 36.2% 영업이익률은 산일전기의 차별화된 경쟁력을 명확히 보여줍니다. 기술력, 제품 품질, 고객 신뢰도에서 우위를 점하고 있음을 의미합니다.</p>
+                <p><strong>시의적절한 시장 포지셔닝:</strong> AI 혁명으로 인한 데이터센터 급증이라는 메가 트렌드에 가장 적절하게 포지셔닝되어 있습니다. 미국, 유럽의 주요 클라우드 기업들과의 기존 거래 관계가 강점입니다.</p>
+                <p><strong>매출·이익 성장 가시성:</strong> 2026년부터 데이터센터 디벨로퍼 직접 공급으로 전환하면서 매출과 마진율이 동시에 개선될 것으로 예상됩니다. 성장 경로가 명확합니다.</p>
+                <p><strong>재무 건전성:</strong> 낮은 부채, 높은 영업이익률로 인한 우수한 자유현금흐름으로 배당금 지급 여력이 있습니다. 2030년까지 배당성향 30% 달성 목표는 주주 가치 창출을 보여줍니다.</p>
+                <p><strong>합리적인 밸류에이션:</strong> 연 15~20% 성장성에 비해 현재 주가 수준은 상대적으로 합리적으로 평가되고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 위험 요소</h3>
+                <p><strong>고객 집중도:</strong> 주요 고객에 대한 의존도가 상대적으로 높습니다. 특정 고객과의 거래 감소는 매출에 중대한 영향을 미칠 수 있습니다.</p>
+                <p><strong>경쟁 심화:</strong> 데이터센터 시장의 매력성으로 인해 경쟁 기업들의 진출이 증가할 수 있습니다. 마진율 압박이 발생할 수 있습니다.</p>
+                <p><strong>공급망 리스크:</strong> 핵심 부품 조달 차질, 원자재 가격 급등 등의 리스크에 노출되어 있습니다.</p>
+                <p><strong>경기 변동 리스크:</strong> 글로벌 경기 침체 시 데이터센터 투자 감소로 인한 매출 감소 가능성이 있습니다.</p>
+                <p><strong>기술 변화 리스크:</strong> 전력 기술의 급격한 변화가 발생할 경우 기존 기술이 부분적으로 구식화될 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 최종 평가</h3>
+                <p><strong>투자 매력도:</strong> 산일전기는 AI 데이터센터 시대에 가장 유망한 기업 중 하나입니다. 탁월한 기술력, 높은 수익성, 명확한 성장 경로, 건전한 재무 상황 등 모든 투자 요소가 호의적입니다.</p>
+                <p><strong>투자 테마:</strong> (1) AI 데이터센터 수요 급증 수혜, (2) 디지털 전환에 따른 전력 인프라 투자 증가, (3) 탄소중립 및 에너지 효율화 추진</p>
+                <p><strong>목표 주가:</strong> 현재 수준 대비 중기(12개월) 20~30% 상향 여력이 있을 것으로 판단됩니다. 2026년 실적 발표 이후 주가 상승 가능성 높음.</p>
+                <p><strong>추천 강도:</strong> 장기 관점에서 투자 매력도가 높으며, 데이터센터 시장 성장에 주목하는 투자자에게 강력히 추천할 만합니다. 배당 수익도 함께 기대할 수 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-calendar"></i> 주목 시점</h3>
+                <p><strong>2026년 1분기:</strong> 데이터센터 디벨로퍼 직접 공급 시작 소식</p>
+                <p><strong>2026년 상반기 실적 발표:</strong> 매출·이익 성장 및 마진율 개선 입증</p>
+                <p><strong>2026년 하반기:</strong> 풀 이어 실적 발표로 연간 성장성 명확화</p>
+                <p><strong>2027년 이후:</strong> 중기 성장성 평가 및 배당금 증가 추적</p>
+            </div>
+        </section>
+
+        <!-- Report Info -->
+        <div class="report-info">
+            <p><strong>보고서 작성 기준일:</strong> 2026년 04월 27일</p>
+            <p><strong>분석 대상:</strong> 산일전기 (KOSPI 062040)</p>
+            <p><strong>보고서 자료:</strong> FLOVAH Insights 기업분석팀에서 작성하였으며, 공시자료, 업계정보, 시장분석 데이터를 바탕으로 작성되었습니다.</p>
+            <p><strong>면책사항:</strong> 본 보고서는 정보 제공 목적으로 작성되었으며, 투자 권유를 의도하지 않습니다. 투자 결정은 개인의 판단과 책임하에 이루어져야 하며, 시장 변화에 따라 내용이 변경될 수 있습니다.</p>
+            <p style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem;">Copyright © 2026 FLOVAH. All rights reserved.</p>
+        </div>
+
+        <!-- Last Update Block -->
+        <div class="last-update-block">
+            <p>보고서 최종 갱신</p>
+            <p class="last-update-time">2026년 04월 27일 09:00 KST</p>
+        </div>
+    </main>
+
+
+    <!-- MARKET-UPDATE-2026-04-27 -->
+<section id="market-update-2026-04-27" style="max-width:1100px;margin:40px auto 0;padding:0 40px;">
+    <div style="padding:24px 28px;background:var(--bg-elevated,rgba(255,255,255,0.04));border:1px solid var(--rule,rgba(201,169,98,0.2));border-left:4px solid var(--gold,#c9a962);border-radius:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <i class="fas fa-globe" style="color:var(--gold,#c9a962);font-size:14px;"></i>
+            <span style="color:var(--gold,#c9a962);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">MARKET UPDATE · 2026.04.27</span>
+        </div>
+        <h3 style="color:var(--text-light,#f5f5f5);font-size:1.05rem;font-weight:600;margin:0 0 12px 0;">FOMC·빅테크 실적 슈퍼위크 진입 · 코스피 6,400대 변동성 시험대</h3>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내외 통화정책·실적 슈퍼위크:</strong> 4월 28~29일(현지) 미국 FOMC와 동일주 일본·유럽 통화정책 회의가 동시에 열리며 변동성이 확대될 전망입니다. 키움증권은 이번 주 코스피 예상 범위를 6,380~6,680포인트로 제시했고, 시장 컨센서스는 美 기준금리 동결을 유력시하고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">미국 빅테크 5사 실적 발표:</strong> 알파벳·마이크로소프트·메타·아마존·애플 등 5대 빅테크가 이번 주 실적을 공개합니다. AI 캐펙스 가이던스가 글로벌 반도체·서버·전력 인프라 종목 방향성을 좌우할 핵심 변수로 부각되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0 0 10px 0;"><strong style="color:var(--text-light,#f5f5f5);">국내 어닝시즌 본격화:</strong> 삼성전자·LG에너지솔루션·LG화학·NAVER·에코프로 등 주요 대형주가 이번 주 1분기 실적을 발표합니다. 직전 주 SK하이닉스가 영업이익 사상 최대를 기록한 영향으로 반도체·IT하드웨어·이차전지·조선·에너지 섹터에 대한 기대감이 유지되고 있습니다.</p>
+        <p style="color:var(--text-secondary,#c0c0c0);font-size:.92rem;line-height:1.75;margin:0;"><strong style="color:var(--text-light,#f5f5f5);">코스피·코스닥 흐름:</strong> 4/23 코스피는 6,417.93으로 사상 최고치를 다시 한 번 경신했고, 시가총액 5,200조원을 돌파했습니다. 코스닥은 9거래일 연속 상승하며 1,180선을 회복, 바이오·로봇·AI 중소형주 중심의 순환매가 이어지고 있습니다.</p>
+    </div>
+</section>
+<!-- /MARKET-UPDATE-2026-04-27 -->
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 04월 27일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영원무역홀딩스 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 1, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-title">영원무역홀딩스</div>
+                    <div class="hero-subtitle">Youngone Holdings · KOSPI 009970</div>
+                    <p style="color:var(--text-body);font-size:16px;line-height:1.9;max-width:800px;margin:0 auto 32px;">글로벌 아웃도어·스포츠 의류 OEM/ODM 분야의 선두주자이자, 노스페이스(The North Face) 한국 독점 라이선스를 보유한 영원아웃도어의 지주회사입니다. 방글라데시·베트남·엘살바도르 등 글로벌 생산 거점에서 나이키, 아디다스, 파타고니아, VF코퍼레이션 등 세계적 브랜드에 OEM 제품을 공급하며, 자회사 영원아웃도어를 통해 노스페이스 매출 2년 연속 1조원을 돌파했습니다.</p>
+                </div>
+                <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2.54조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.06조</div>
+                            <div class="metric-label">노스페이스 2025 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">14.6%↑</div>
+                            <div class="metric-label">2025 매출성장</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1조+ 클럽</div>
+                            <div class="metric-label">노스페이스</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 기업 연혁</h3>
+                <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1974</div>
+                                <div class="timeline-text">영원무역 설립, 봉제 수출 시작</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1980</div>
+                                <div class="timeline-text">방글라데시 진출, 글로벌 생산 기지 확보</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1988</div>
+                                <div class="timeline-text">서울올림픽 유니폼 공급</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1997</div>
+                                <div class="timeline-text">노스페이스 한국 독점 라이선스 취득</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2003</div>
+                                <div class="timeline-text">베트남 생산법인 설립</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2009</div>
+                                <div class="timeline-text">영원무역홀딩스 지주회사 전환</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2012</div>
+                                <div class="timeline-text">엘살바도르 공장 설립, 미주 시장 생산 거점 확보</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2020</div>
+                                <div class="timeline-text">코로나19 속에서도 노스페이스 성장 지속</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-text">노스페이스 연매출 1조원 첫 돌파</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2025</div>
+                                <div class="timeline-text">노스페이스 2년 연속 1조원 달성, 러닝 카테고리 확장</div>
+                            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i> <span>기술 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-tshirt"></i> OEM/ODM 제조 역량</h3>
+                <p>영원무역은 아웃도어·스포츠 의류의 OEM(주문자상표부착생산)/ODM(제조자설계생산) 분야에서 50년 이상의 경험과 세계 최고 수준의 제조 역량을 보유하고 있습니다. 다운재킷, 방수·방풍 재킷, 기능성 스포츠웨어 등 고기능성 의류 생산에 특화되어 있으며, 나이키, 아디다스, 파타고니아, VF코퍼레이션(노스페이스 글로벌) 등 세계 유수 브랜드의 핵심 생산 파트너입니다.</p>
+                <p>방글라데시 치타공 수출가공지구(EPZ)에 세계 최대 규모의 의류 생산 단지를 운영하고 있으며, 베트남·엘살바도르 등에도 생산 거점을 보유하여 지역별 관세·물류 이점을 활용한 유연한 생산 체계를 구축하고 있습니다. ODM 역량 강화를 통해 디자인·소재 개발부터 생산까지 원스톱 서비스를 제공하며, 부가가치를 높이고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 친환경 제조 기술</h3>
+                <p>리사이클 소재(PET병 재활용 원단, 리사이클 다운 등) 적용 기술, 무불소 발수 가공(PFC-free DWR) 기술, 저탄소 염색·가공 공정 등 친환경 제조 기술을 적극 도입하고 있습니다. 글로벌 브랜드들의 지속가능성 요구가 강화됨에 따라, 친환경 생산 역량은 핵심 경쟁력으로 부상하고 있습니다.</p>
+                <p>방글라데시 공장에는 태양광 발전 시스템, 폐수 재활용 시스템, LEED 인증 공장 등 친환경 생산 인프라를 갖추고 있으며, 이는 ESG를 중시하는 글로벌 브랜드와의 파트너십 유지에 중요한 역할을 합니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-line"></i> <span>시장 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-mountain"></i> 국내 아웃도어 시장</h3>
+                <p>국내 아웃도어 시장은 약 4조원 규모로, 노스페이스가 약 25%의 점유율로 1위를 차지하고 있습니다. 영원아웃도어의 노스페이스는 2024년 연매출 1조52억원을 돌파하며 '1조 클럽'에 진입했고, 2025년에는 1조564억원으로 2년 연속 1조원을 넘기며 시장 지배력을 공고히 했습니다.</p>
+                <p>최근 트레일러닝·로드러닝 등 러닝 카테고리를 확대하며 기존 등산·아웃도어 중심에서 러닝·라이프스타일로 영역을 넓히고 있습니다. 벡티브(VECTIV) 러닝화가 큰 인기를 끌며 신발 카테고리가 새로운 성장 축으로 부상하고 있으며, 경량 아우터 수요 증가와 애슬레저 트렌드도 긍정적 요인입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 OEM 시장</h3>
+                <p>글로벌 의류 OEM 시장은 약 5,000억 달러 규모로, 방글라데시·베트남·중국이 주요 생산 거점입니다. 미·중 무역갈등과 공급망 다변화 트렌드로 '차이나+1' 전략이 확산되며, 방글라데시와 베트남에 대규모 생산 기지를 보유한 영원무역의 수혜가 기대됩니다.</p>
+                <p>2024년 하반기 글로벌 시장 수요 회복으로 주문이 증가하기 시작했으며, 2025~2026년에는 OEM 사업의 본격적인 실적 개선이 예상됩니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i> <span>경쟁사 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 국내 아웃도어·OEM 경쟁 비교</h3>
+                <table>
+                    <thead>
+                        <tr><th>구분</th><th>영원무역홀딩스</th><th>F&F(디스커버리)</th><th>코오롱FnC</th><th>한세실업(OEM)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>핵심 브랜드</td><td style="color:var(--gold)">노스페이스</td><td>디스커버리, MLB</td><td>코오롱스포츠</td><td>OEM 중심</td></tr>
+                        <tr><td>노스페이스 매출</td><td style="color:var(--gold)">1.06조</td><td>-</td><td>-</td><td>-</td></tr>
+                        <tr><td>OEM 역량</td><td style="color:var(--gold)">글로벌 Top</td><td>-</td><td>제한적</td><td>글로벌 Top</td></tr>
+                        <tr><td>글로벌 생산거점</td><td style="color:var(--gold)">방글라·베트남·중미</td><td>-</td><td>국내</td><td>베트남·미얀마</td></tr>
+                        <tr><td>사업 구조</td><td>OEM + 리테일</td><td>브랜드 라이선스</td><td>자체 브랜드</td><td>OEM 전문</td></tr>
+                    </tbody>
+                </table>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i> <span>SWOT 분석</span></div>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <div class="content-card" style="border-left:3px solid var(--gold);">
+                    <h3><i class="fas fa-plus-circle" style="color:var(--gold)"></i> Strengths</h3>
+                    <ul>
+                        <li>노스페이스 한국 독점 라이선스: 2년 연속 매출 1조원+</li>
+                        <li>방글라데시 세계 최대 의류 생산 단지 운영</li>
+                        <li>나이키·아디다스 등 글로벌 브랜드 핵심 OEM 파트너</li>
+                        <li>OEM(안정적 수출) + 리테일(고마진) 이중 수익 구조</li>
+                        <li>재무 건전성 상위 1% (부채비율 10% 미만)</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid var(--blue);">
+                    <h3><i class="fas fa-minus-circle" style="color:var(--blue)"></i> Weaknesses</h3>
+                    <ul>
+                        <li>노스페이스 라이선스 갱신 리스크 (VF코퍼레이션 관계)</li>
+                        <li>OEM 사업의 낮은 마진율</li>
+                        <li>방글라데시 정치·노동 리스크</li>
+                        <li>국내 아웃도어 시장 성장 둔화</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid #4ade80;">
+                    <h3><i class="fas fa-arrow-circle-up" style="color:#4ade80"></i> Opportunities</h3>
+                    <ul>
+                        <li>노스페이스 러닝·라이프스타일 카테고리 확장</li>
+                        <li>차이나+1 트렌드로 방글라데시 OEM 수주 증가</li>
+                        <li>ODM 비중 확대로 마진 개선</li>
+                        <li>친환경 소재·제조 기술로 글로벌 브랜드 관계 강화</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid #ef4444;">
+                    <h3><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> Threats</h3>
+                    <ul>
+                        <li>글로벌 소비 침체 시 OEM 주문 감소</li>
+                        <li>방글라데시 최저임금 인상 및 사회 불안</li>
+                        <li>아웃도어 브랜드 간 경쟁 심화</li>
+                        <li>원자재(다운, 원단) 가격 변동</li>
+                    </ul>
+                </div>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-bullseye"></i> <span>전략 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-running"></i> 노스페이스 카테고리 확장 전략</h3>
+                <p>영원아웃도어는 노스페이스 브랜드를 기존 등산·아웃도어 중심에서 러닝·라이프스타일 카테고리로 적극 확장하고 있습니다. 트레일러닝화 '벡티브(VECTIV)'의 대성공을 바탕으로 로드 러닝화까지 라인업을 확대하고 있으며, 이를 통해 20~30대 젊은 소비층을 적극 유입하고 있습니다.</p>
+                <p>경량 아우터, 기능성 티셔츠 등 사계절 제품군을 강화하여 계절 편중을 줄이고 연중 매출을 평탄화하는 전략도 추진하고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> OEM 고도화 전략</h3>
+                <p>단순 OEM에서 ODM(디자인·소재 개발 포함) 비중을 확대하여 부가가치와 마진을 높이고 있습니다. 방글라데시 공장의 자동화·디지털화 투자를 통해 생산성을 향상시키고, 베트남·엘살바도르 거점을 활용한 지역 다변화 전략으로 공급망 리스크를 분산하고 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 7: FINANCIAL -->
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 최근 실적 추이 (연결 기준)</h3>
+                <table>
+                    <thead>
+                        <tr><th>구분</th><th>2022</th><th>2023</th><th>2024</th><th>2025(3Q 누적)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>매출액(조원)</td><td>3.8</td><td>3.5</td><td>3.9</td><td style="color:var(--gold)">3.4(+14.6%)</td></tr>
+                        <tr><td>영업이익(억원)</td><td>3,200</td><td>2,800</td><td>3,100</td><td style="color:var(--gold)">2,650(+14.4%)</td></tr>
+                        <tr><td>노스페이스 매출(억원)</td><td>8,500</td><td>9,200</td><td>10,052</td><td style="color:var(--gold)">10,564</td></tr>
+                        <tr><td>OEM 매출비중</td><td>60%</td><td>58%</td><td>55%</td><td>53%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 수익 구조 분석</h3>
+                <div class="chart-container">
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:75%"></div></div>
+                            <div class="bar-value">+14.6%</div>
+                            <div class="bar-label">매출성장률</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:80%"></div></div>
+                            <div class="bar-value">+14.4%</div>
+                            <div class="bar-label">영업이익성장</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:65%"></div></div>
+                            <div class="bar-value">47%</div>
+                            <div class="bar-label">리테일 비중</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:30%"></div></div>
+                            <div class="bar-value">10%미만</div>
+                            <div class="bar-label">부채비율</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top:20px;">영원무역홀딩스는 2025년 3분기 누적 기준 매출 14.6%, 영업이익 14.4% 성장하며 양호한 실적을 기록했습니다. 노스페이스가 2년 연속 1조원을 돌파하며 리테일 사업의 비중이 47%까지 확대되었고, OEM 사업도 글로벌 수요 회복으로 실적이 개선되고 있습니다. 부채비율 10% 미만의 초우량 재무구조가 돋보입니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> <span>결론 및 투자 의견</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>영원무역홀딩스는 노스페이스 한국 독점 라이선스와 글로벌 Top급 OEM 역량이라는 두 가지 핵심 자산을 보유한 차별화된 기업입니다. 노스페이스의 2년 연속 1조원 돌파와 러닝 카테고리 확장은 브랜드 파워의 건재함을 보여주며, OEM 사업의 글로벌 수요 회복이 추가 성장 동력을 제공합니다.</p>
+                <p>부채비율 10% 미만의 초우량 재무구조와 안정적인 현금흐름은 방어적 투자 매력을 제공하며, 밸류업 프로그램에 따른 주주환원 강화 기대도 있습니다. 다만, 노스페이스 라이선스 갱신 리스크와 방글라데시 정치·노동 리스크는 장기적으로 관리해야 할 변수입니다.</p>
+            </div>
+            <div class="content-card" style="border:1px solid var(--gold);background:rgba(201,169,98,.05);">
+                <h3><i class="fas fa-exclamation-triangle" style="color:var(--gold)"></i> 투자 유의사항</h3>
+                <p>본 리포트는 공개된 자료를 기반으로 작성되었으며, 투자 권유를 목적으로 하지 않습니다. 라이선스 브랜드 사업은 라이선스 계약 변경에 따른 리스크가 있으며, OEM 사업은 글로벌 소비 경기에 민감합니다. 투자 결정 시 최신 공시자료와 전문가 의견을 참고하시기 바랍니다.</p>
+            </div>
+    
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FLOVAH Insights. All rights reserved.</p>
+    </footer>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에스엘 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 1, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-title">에스엘</div>
+                    <div class="hero-subtitle">SL Corporation · KOSPI 005850</div>
+                    <p style="color:var(--text-body);font-size:16px;line-height:1.9;max-width:800px;margin:0 auto 32px;">글로벌 자동차 조명(램프) 및 전장부품 전문 기업으로, 현대·기아를 비롯한 글로벌 완성차 업체에 헤드램프, 리어램프, BMS(배터리관리시스템), SBCM(스마트바디제어모듈) 등을 공급하고 있습니다. 한국·미국·멕시코·중국·인도 등 글로벌 생산 거점을 운영하며, 최근에는 독일 프리미엄 브랜드향 램프 공급과 전장 부품 사업 확대로 성장 동력을 다각화하고 있습니다.</p>
+                </div>
+                <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2.55조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">5.0조</div>
+                            <div class="metric-label">2025E 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3,259억</div>
+                            <div class="metric-label">2025E 영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">6.5%</div>
+                            <div class="metric-label">2025E 영업이익률</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 기업 연혁</h3>
+                <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1954</div>
+                                <div class="timeline-text">에스엘 전신인 삼립산업 설립</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1984</div>
+                                <div class="timeline-text">자동차 조명 사업 본격화</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1997</div>
+                                <div class="timeline-text">코스피 상장</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2004</div>
+                                <div class="timeline-text">미국 법인 설립, 글로벌 진출</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2010</div>
+                                <div class="timeline-text">중국·인도 생산법인 설립</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2018</div>
+                                <div class="timeline-text">LED 헤드램프 기술 고도화</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2021</div>
+                                <div class="timeline-text">전장부품(BMS, SBCM) 사업 진출</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-text">멕시코 신공장 가동 시작</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2025</div>
+                                <div class="timeline-text">인도 푸네 공장 완공, 독일 프리미엄 브랜드 수주</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2026</div>
+                                <div class="timeline-text">북미·유럽·중국에서 독일 프리미엄 브랜드향 램프 공급 시작</div>
+                            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i> <span>기술 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 자동차 조명(램프) 기술</h3>
+                <p>에스엘은 자동차 헤드램프와 리어램프 분야에서 세계적 수준의 기술력을 보유하고 있습니다. LED 매트릭스 헤드램프, ADB(Adaptive Driving Beam) 시스템, 디지털 라이팅(Digital Light) 기술 등 첨단 조명 기술을 개발하여 적용하고 있습니다. 특히 ADB 기술은 카메라로 전방 차량과 보행자를 인식하여 눈부심 없이 최적의 조명을 제공하는 지능형 조명 시스템입니다.</p>
+                <p>리어램프 분야에서도 OLED(유기발광다이오드) 테일램프, 다이내믹 턴시그널, 3D 입체 조명 등 디자인과 기능을 결합한 프리미엄 제품을 개발하고 있으며, 이는 독일 프리미엄 완성차 브랜드의 요구에 부합하는 기술력입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-car-battery"></i> 전장부품 기술</h3>
+                <p>BMS(Battery Management System)는 전기차 배터리의 충·방전, 온도, 전압 등을 실시간으로 모니터링하고 관리하는 핵심 전장부품으로, 에스엘은 현대·기아 전기차에 BMS를 공급하고 있습니다. SBCM(Smart Body Control Module)은 자동차의 도어, 윈도우, 미러, 조명 등 바디 전장 시스템을 통합 제어하는 모듈로, 차량 전장화 트렌드에 따른 핵심 성장 품목입니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-line"></i> <span>시장 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-car"></i> 글로벌 자동차 조명 시장</h3>
+                <p>글로벌 자동차 조명 시장은 2025년 기준 약 350억 달러 규모로, LED·OLED 등 프리미엄 조명 기술 확산에 따라 연평균 6~7% 성장이 예상됩니다. Hella(독일), Koito(일본), Valeo(프랑스) 등 글로벌 대형 조명 업체와 경쟁하고 있으며, 에스엘은 가격 경쟁력과 현대·기아 그룹 물량을 바탕으로 시장 점유율을 확대하고 있습니다.</p>
+                <p>자동차 조명은 안전·디자인·기능의 융합으로 ASP(평균판매단가)가 지속적으로 상승하고 있으며, 전기차·자율주행차의 확산으로 지능형 조명, 커뮤니케이션 라이팅 등 새로운 수요도 창출되고 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i> <span>경쟁사 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 글로벌 자동차 조명 업체 비교</h3>
+                <table>
+                    <thead>
+                        <tr><th>구분</th><th>에스엘</th><th>Koito(일본)</th><th>Hella(독일)</th><th>Valeo(프랑스)</th><th>현대모비스</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>매출 규모</td><td>5조원</td><td style="color:var(--gold)">8조원</td><td>7조원</td><td>25조원(복합)</td><td>62조원(복합)</td></tr>
+                        <tr><td>주요 고객</td><td>현대·기아·독일OEM</td><td>도요타·혼다</td><td>BMW·VW</td><td>PSA·르노</td><td>현대·기아</td></tr>
+                        <tr><td>기술 강점</td><td>LED+전장</td><td>LED 매트릭스</td><td>ADB</td><td>디지털라이트</td><td>통합전장</td></tr>
+                        <tr><td>글로벌 거점</td><td style="color:var(--gold)">6개국</td><td>8개국</td><td>10개국</td><td>33개국</td><td>12개국</td></tr>
+                    </tbody>
+                </table>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i> <span>SWOT 분석</span></div>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <div class="content-card" style="border-left:3px solid var(--gold);">
+                    <h3><i class="fas fa-plus-circle" style="color:var(--gold)"></i> Strengths</h3>
+                    <ul>
+                        <li>현대·기아 그룹 핵심 조명 공급사 지위</li>
+                        <li>한국·미국·멕시코·중국·인도 글로벌 생산 네트워크</li>
+                        <li>램프에서 전장부품(BMS·SBCM)으로 사업 확장</li>
+                        <li>독일 프리미엄 브랜드 수주로 고객 다변화 진행</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid var(--blue);">
+                    <h3><i class="fas fa-minus-circle" style="color:var(--blue)"></i> Weaknesses</h3>
+                    <ul>
+                        <li>현대·기아 의존도가 높은 고객 구조</li>
+                        <li>미국 관세 리스크에 노출</li>
+                        <li>Koito·Hella 대비 기술·규모 열위</li>
+                        <li>환율 변동에 따른 수익성 영향</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid #4ade80;">
+                    <h3><i class="fas fa-arrow-circle-up" style="color:#4ade80"></i> Opportunities</h3>
+                    <ul>
+                        <li>전기차 확산으로 프리미엄 조명 수요 증가</li>
+                        <li>독일 프리미엄 OEM향 램프 공급 확대(2026~)</li>
+                        <li>인도·멕시코 신공장 가동으로 매출 확대</li>
+                        <li>BMS·SBCM 전장부품 성장</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid #ef4444;">
+                    <h3><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> Threats</h3>
+                    <ul>
+                        <li>미국 자동차 관세율 변동 리스크</li>
+                        <li>완성차 생산 감소 시 부품 수요 동반 하락</li>
+                        <li>중국 로컬 업체의 가격 경쟁 심화</li>
+                        <li>원자재(수지, 반도체) 가격 변동</li>
+                    </ul>
+                </div>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-bullseye"></i> <span>전략 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-expand-arrows-alt"></i> 고객 다변화 전략</h3>
+                <p>에스엘의 핵심 성장 전략은 현대·기아 의존도를 줄이고 글로벌 OEM 고객을 확대하는 것입니다. 2026년 4분기부터 북미·유럽·중국에서 독일 프리미엄 브랜드향 램프 공급이 시작되며, 이는 에스엘의 기술력이 글로벌 프리미엄 시장에서 인정받았음을 의미합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-microchip"></i> 전장부품 확대 전략</h3>
+                <p>램프 중심의 사업 구조에서 BMS·SBCM 등 전장부품으로 포트폴리오를 확대하고 있습니다. 자동차의 전동화·지능화 트렌드에 따라 차량 1대당 전장부품 탑재량이 증가하고 있으며, 에스엘은 기존 조명 기술에서 축적한 전자·광학 역량을 전장부품으로 확장하여 신규 수익원을 창출하고 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 7: FINANCIAL -->
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 최근 실적 추이</h3>
+                <table>
+                    <thead>
+                        <tr><th>구분</th><th>2022</th><th>2023</th><th>2024</th><th>2025(E)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>매출액(억원)</td><td>42,500</td><td>48,000</td><td>51,200</td><td style="color:var(--gold)">50,000</td></tr>
+                        <tr><td>영업이익(억원)</td><td>2,850</td><td>3,800</td><td>4,050</td><td>3,259</td></tr>
+                        <tr><td>영업이익률</td><td>6.7%</td><td>7.9%</td><td>7.9%</td><td>6.5%</td></tr>
+                        <tr><td>해외매출비중</td><td>55%</td><td>58%</td><td>60%</td><td style="color:var(--gold)">62%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 매출 구조</h3>
+                <div class="chart-container">
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:55%"></div></div>
+                            <div class="bar-value">6.5%</div>
+                            <div class="bar-label">영업이익률</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:70%"></div></div>
+                            <div class="bar-value">62%</div>
+                            <div class="bar-label">해외매출비중</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:80%"></div></div>
+                            <div class="bar-value">75%</div>
+                            <div class="bar-label">램프 매출비중</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:45%"></div></div>
+                            <div class="bar-value">25%</div>
+                            <div class="bar-label">전장 매출비중</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top:20px;">에스엘은 2025년 매출 5.0조원, 영업이익 3,259억원이 전망됩니다. 미국 관세 영향으로 전년 대비 실적이 일시적으로 둔화되나, 멕시코·인도 신공장 가동과 독일 프리미엄 수주 효과로 2026년 이후 본격적인 회복이 기대됩니다. 해외매출 비중이 62%로 글로벌화가 진전되고 있으며, 전장부품 비중도 25%까지 확대되고 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> <span>결론 및 투자 의견</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>에스엘은 자동차 조명 분야의 글로벌 경쟁력을 갖춘 기업으로, 현대·기아 핵심 공급사 지위와 독일 프리미엄 OEM 수주라는 이중 성장 축을 보유하고 있습니다. BMS·SBCM 등 전장부품 사업 확대로 포트폴리오 다각화가 진행 중이며, 멕시코·인도 신공장이 본격 가동되면 매출 확대와 수익성 개선이 동시에 기대됩니다.</p>
+                <p>2025년은 관세 리스크로 일시적 실적 둔화가 예상되나, 2026년부터 독일 프리미엄 램프 공급 시작, 신공장 풀가동 효과 등으로 성장 모멘텀 회복이 전망됩니다. 자동차 부품 업종 내 전장화·프리미엄화 수혜 종목으로 중장기 관점의 투자 매력이 있습니다.</p>
+            </div>
+            <div class="content-card" style="border:1px solid var(--gold);background:rgba(201,169,98,.05);">
+                <h3><i class="fas fa-exclamation-triangle" style="color:var(--gold)"></i> 투자 유의사항</h3>
+                <p>본 리포트는 공개된 자료를 기반으로 작성되었으며, 투자 권유를 목적으로 하지 않습니다. 자동차 부품 업종은 완성차 생산량, 관세 정책, 환율 등에 민감하므로, 투자 결정 시 최신 공시자료와 전문가 의견을 참고하시기 바랍니다.</p>
+            </div>
+    
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FLOVAH Insights. All rights reserved.</p>
+    </footer>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

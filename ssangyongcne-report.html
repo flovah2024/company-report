@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쌍용C&E 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 1, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-title">쌍용C&E</div>
+                    <div class="hero-subtitle">Ssangyong C&E · KOSPI 003410</div>
+                    <p style="color:var(--text-body);font-size:16px;line-height:1.9;max-width:800px;margin:0 auto 32px;">국내 시멘트 시장 점유율 1위(약 25%)를 차지하는 대한민국 대표 시멘트·건설소재 기업입니다. 1962년 설립 이후 60년 이상 시멘트 제조업의 선두를 지켜왔으며, 시멘트 사업을 중심으로 석회석·해운·환경자원 사업까지 수직계열화된 포트폴리오를 구축하고 있습니다. 2021년 쌍용양회에서 쌍용C&E(Cement & Environment)로 사명을 변경하며 친환경 소재 기업으로의 전환을 선언했습니다.</p>
+                </div>
+                <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">3.11조</div>
+                            <div class="metric-label">시가총액</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.15조</div>
+                            <div class="metric-label">2024 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,193억</div>
+                            <div class="metric-label">2024 영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">25%</div>
+                            <div class="metric-label">시멘트 점유율</div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 기업 연혁</h3>
+                <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1962</div>
+                                <div class="timeline-text">쌍용양회공업 설립, 영월공장 준공</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1975</div>
+                                <div class="timeline-text">동해공장 준공, 국내 최대 시멘트 생산 체제 구축</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1987</div>
+                                <div class="timeline-text">국내 시멘트 생산량 1위 달성</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1999</div>
+                                <div class="timeline-text">일본 태평양시멘트와 전략적 제휴</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2003</div>
+                                <div class="timeline-text">한앤코시멘트 인수, 경영권 변동</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2015</div>
+                                <div class="timeline-text">환경자원사업부 신설, 순환자원 사업 진출</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2021</div>
+                                <div class="timeline-text">쌍용C&E로 사명 변경, ESG 경영 선언</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-text">한앤코 공개매수를 통한 경영권 강화</div>
+                            </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i> <span>기술 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-industry"></i> 시멘트 제조 기술</h3>
+                <p>쌍용C&E는 반건식법(NSP, New Suspension Preheater) 기반의 첨단 시멘트 생산 공정을 운영하고 있습니다. 영월·동해 2개 공장에서 연간 약 2,000만 톤의 클링커 생산 능력을 보유하고 있으며, 품질 관리 시스템을 통해 보통 포틀랜드 시멘트, 고로슬래그 시멘트, 플라이애시 시멘트 등 다양한 제품군을 생산합니다.</p>
+                <p>디지털 전환 측면에서는 AI 기반 공정 최적화 시스템을 도입하여 소성로(Kiln) 온도, 원료 투입량, 분쇄 공정 등을 실시간으로 모니터링하고 최적화하고 있으며, 이를 통해 에너지 효율을 개선하고 제품 품질의 일관성을 높이고 있습니다. 또한 폐기물 및 대체 연료(SRF, 폐타이어 등) 활용 기술을 고도화하여 순환경제 실현에 기여하고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> 친환경 기술 및 탄소 저감</h3>
+                <p>시멘트 산업은 제조 과정에서 상당량의 CO₂를 배출하는 산업으로, 쌍용C&E는 탄소중립을 위한 다양한 기술 혁신을 추진하고 있습니다. CCUS(탄소 포집·활용·저장) 기술 개발에 투자하고 있으며, 혼합 시멘트 비율 확대를 통해 클링커 사용량을 줄이는 방식으로 탄소 배출을 저감하고 있습니다.</p>
+                <p>순환자원 활용 기술도 핵심 경쟁력 중 하나입니다. 시멘트 소성 공정의 고온(1,450°C 이상) 환경을 활용하여 폐기물을 친환경적으로 처리하는 동시에 대체 연료로 활용하는 시스템을 구축했습니다. 이를 통해 폐기물 매립 감소와 화석연료 사용 절감이라는 이중 효과를 실현하고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 특수 시멘트 및 신소재</h3>
+                <p>초고강도 시멘트, 초속경 시멘트, 내황산염 시멘트 등 특수 시멘트 제품군을 개발하여 대형 인프라 프로젝트(원전, 해양 구조물, 초고층 빌딩)의 특수 수요에 대응하고 있습니다. 또한 친환경 저탄소 시멘트 개발에도 적극 투자하여, 탄소 배출을 30% 이상 줄인 '에코 시멘트' 제품의 상용화를 추진하고 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 3: MARKET -->
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-line"></i> <span>시장 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 국내 시멘트 시장</h3>
+                <p>국내 시멘트 시장 규모는 연간 약 5,000만 톤 수준으로, 건설 경기와 밀접한 상관관계를 보이고 있습니다. 쌍용C&E는 약 25%의 시장 점유율로 1위를 차지하고 있으며, 한일시멘트(약 18%), 삼표시멘트(약 15%), 성신양회(약 14%) 등이 뒤를 잇고 있습니다.</p>
+                <p>2025~2026년 국내 시멘트 수요는 GTX 건설, 수도권 3기 신도시 개발, 대규모 재건축·재개발 사업 등으로 인해 안정적인 수준을 유지할 것으로 전망됩니다. 다만, 인구 감소와 건설 투자 둔화 등 장기적인 구조적 변화에 대비한 사업 다각화가 필요한 시점입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 시멘트 시장</h3>
+                <p>글로벌 시멘트 시장은 2025년 기준 약 4,200억 달러 규모로, 아시아(특히 중국, 인도)가 전체 수요의 70% 이상을 차지합니다. 글로벌 시멘트 산업은 탄소중립 규제 강화에 따라 저탄소 시멘트, CCUS 기술, 대체 연료 활용 등이 핵심 경쟁력으로 부상하고 있습니다.</p>
+                <p>쌍용C&E는 내수 중심의 사업 구조를 가지고 있으나, 동남아시아·중앙아시아 등 개발도상국의 인프라 투자 확대에 따른 시멘트 수출 기회를 모색하고 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 4: COMPETITORS -->
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i> <span>경쟁사 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 국내 시멘트 업체 비교</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>쌍용C&E</th>
+                            <th>한일시멘트</th>
+                            <th>삼표시멘트</th>
+                            <th>성신양회</th>
+                            <th>아세아시멘트</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>시장 점유율</td><td style="color:var(--gold)">~25%</td><td>~18%</td><td>~15%</td><td>~14%</td><td>~10%</td></tr>
+                        <tr><td>연간 매출</td><td style="color:var(--gold)">1.15조</td><td>0.85조</td><td>0.65조(추정)</td><td>0.55조</td><td>0.45조</td></tr>
+                        <tr><td>생산능력</td><td style="color:var(--gold)">2,000만톤</td><td>1,500만톤</td><td>1,200만톤</td><td>1,100만톤</td><td>800만톤</td></tr>
+                        <tr><td>공장 수</td><td>2개</td><td>2개</td><td>2개</td><td>1개</td><td>1개</td></tr>
+                        <tr><td>환경사업</td><td style="color:var(--gold)">적극</td><td>보통</td><td>보통</td><td>보통</td><td>소극</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 경쟁 우위</h3>
+                <p>쌍용C&E는 국내 최대 생산 능력과 전국적인 유통 네트워크를 바탕으로 시멘트 시장의 가격 결정력(Pricing Power)을 보유하고 있습니다. 또한 환경자원사업의 선제적 확대를 통해 폐기물 처리 수익과 대체 연료 비용 절감의 이중 효과를 누리고 있으며, 이는 다른 시멘트 업체 대비 차별화된 수익 구조를 제공합니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 5: SWOT -->
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i> <span>SWOT 분석</span></div>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <div class="content-card" style="border-left:3px solid var(--gold);">
+                    <h3><i class="fas fa-plus-circle" style="color:var(--gold)"></i> Strengths</h3>
+                    <ul>
+                        <li>국내 시멘트 시장 점유율 1위(약 25%)</li>
+                        <li>영월·동해 2개 공장 기반 연간 2,000만 톤 생산 능력</li>
+                        <li>순환자원·환경 사업을 통한 사업 다각화</li>
+                        <li>안정적인 현금흐름과 높은 영업이익률(약 10%)</li>
+                        <li>60년 이상의 업력과 브랜드 신뢰도</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid var(--blue);">
+                    <h3><i class="fas fa-minus-circle" style="color:var(--blue)"></i> Weaknesses</h3>
+                    <ul>
+                        <li>내수 의존도 높아 건설 경기 변동에 취약</li>
+                        <li>시멘트 산업의 고탄소 배출 특성으로 ESG 리스크</li>
+                        <li>제품 차별화 어려운 범용 소재 산업 특성</li>
+                        <li>석회석 자원 매장량 한계에 따른 장기 원료 리스크</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid #4ade80;">
+                    <h3><i class="fas fa-arrow-circle-up" style="color:#4ade80"></i> Opportunities</h3>
+                    <ul>
+                        <li>GTX, 3기 신도시 등 대형 인프라 투자 확대</li>
+                        <li>환경자원(폐기물 처리) 사업 성장</li>
+                        <li>저탄소 시멘트·친환경 소재 시장 확대</li>
+                        <li>원전·데이터센터 건설에 따른 특수 시멘트 수요</li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:3px solid #ef4444;">
+                    <h3><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> Threats</h3>
+                    <ul>
+                        <li>인구 감소에 따른 장기적 건설 수요 위축</li>
+                        <li>탄소배출권 비용 증가로 수익성 압박</li>
+                        <li>에너지(석탄·전력) 비용 변동 리스크</li>
+                        <li>건설경기 침체 시 시멘트 가격 하락 압력</li>
+                    </ul>
+                </div>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 6: STRATEGY -->
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-bullseye"></i> <span>전략 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-recycle"></i> C&E(Cement & Environment) 전략</h3>
+                <p>사명 변경에서 드러나듯, 쌍용C&E는 전통적인 시멘트 제조업에서 '시멘트 + 환경' 융합 기업으로의 전환을 추진하고 있습니다. 시멘트 소성 공정의 고온 환경을 활용한 폐기물 처리 사업을 확대하여, 환경자원사업 매출 비중을 현재 약 7%에서 중장기적으로 15~20%까지 끌어올릴 계획입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-seedling"></i> 탄소중립 로드맵</h3>
+                <p>2050 탄소중립 달성을 목표로, ① 대체 연료(SRF, 바이오매스) 사용 비율 확대 ② 혼합 시멘트 생산 확대를 통한 클링커 비율 감소 ③ CCUS 기술 상용화 ④ 에너지 효율 개선 등 4대 전략을 추진하고 있습니다. 특히 2030년까지 대체 연료 사용 비율을 현재 20%대에서 40%로 확대하여 화석연료 의존도를 크게 낮출 계획입니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 7: FINANCIAL -->
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 최근 실적 추이</h3>
+                <table>
+                    <thead>
+                        <tr><th>구분</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>매출액(억원)</td><td>10,250</td><td>11,180</td><td>11,020</td><td style="color:var(--gold)">11,538</td></tr>
+                        <tr><td>영업이익(억원)</td><td>1,050</td><td>1,120</td><td>1,080</td><td style="color:var(--gold)">1,193</td></tr>
+                        <tr><td>영업이익률</td><td>10.2%</td><td>10.0%</td><td>9.8%</td><td style="color:var(--gold)">10.3%</td></tr>
+                        <tr><td>당기순이익(억원)</td><td>1,180</td><td>1,250</td><td>1,443</td><td style="color:var(--gold)">2,124</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-coins"></i> 주요 재무 지표</h3>
+                <div class="chart-container">
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:80%"></div></div>
+                            <div class="bar-value">10.3%</div>
+                            <div class="bar-label">영업이익률</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:90%"></div></div>
+                            <div class="bar-value">18.4%</div>
+                            <div class="bar-label">당기순이익률</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:60%"></div></div>
+                            <div class="bar-value">82%</div>
+                            <div class="bar-label">시멘트 매출비중</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container"><div class="bar" style="height:45%"></div></div>
+                            <div class="bar-value">7%</div>
+                            <div class="bar-label">환경사업 비중</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top:20px;">쌍용C&E는 시멘트 업계 특유의 안정적인 현금흐름을 바탕으로 높은 영업이익률(10% 이상)을 유지하고 있습니다. 2024년에는 당기순이익 2,124억원을 기록하며 전년 대비 47% 증가한 양호한 실적을 달성했습니다. 매출 구성은 시멘트사업 82%, 환경자원사업 7%, 기타(석회석·해운) 11%로 구성되어 있습니다.</p>
+            </div>
+    
+        </section>
+
+        <!-- SECTION 8: CONCLUSION -->
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> <span>결론 및 투자 의견</span></div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>쌍용C&E는 국내 시멘트 시장 1위 사업자로서 안정적인 시장 지배력과 높은 수익성을 갖추고 있습니다. 시멘트 산업의 진입장벽(대규모 설비 투자, 물류 네트워크, 원료 확보)이 높아 경쟁 구도가 크게 변하지 않는 과점 시장 특성이 방어적 투자 매력을 제공합니다.</p>
+                <p>중장기적으로는 환경자원사업 확대와 저탄소 시멘트 기술 개발이 성장의 핵심 동력이 될 것이며, GTX·신도시 개발 등 대형 인프라 투자가 시멘트 수요를 견인할 것으로 예상됩니다. 다만, 한앤코의 공개매수에 따른 지배구조 변화와 상장 유지 여부는 투자 시 고려해야 할 중요한 변수입니다.</p>
+            </div>
+            <div class="content-card" style="border:1px solid var(--gold);background:rgba(201,169,98,.05);">
+                <h3><i class="fas fa-exclamation-triangle" style="color:var(--gold)"></i> 투자 유의사항</h3>
+                <p>본 리포트는 공개된 자료를 기반으로 작성되었으며, 투자 권유를 목적으로 하지 않습니다. 시멘트 산업은 건설 경기에 민감하며, 탄소배출권 비용 증가가 수익성에 영향을 줄 수 있습니다. 투자 결정 시 최신 공시자료와 전문가 의견을 참고하시기 바랍니다.</p>
+            </div>
+    
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FLOVAH Insights. All rights reserved.</p>
+    </footer>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

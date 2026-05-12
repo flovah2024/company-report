@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성전자 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 12, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-title">
+                        농심
+                        <span class="hero-title-highlight">기업 분석 리포트</span>
+                    </div>
+                    <div class="hero-subtitle">신라면으로 세계를 사로잡은 K-Food 글로벌 리더의 성장 전략 분석</div>
+                    <div class="ai-score-badge">
+                        <div class="score-circle" style="background:conic-gradient(var(--gold) 0deg 244deg, var(--rule) 244deg 360deg);">
+                            <span style="font-size:22px">68</span>
+                        </div>
+                        <div style="text-align:left">
+                            <div style="font-size:10px;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase">FLOVAH AI Score</div>
+                            <div style="font-size:20px;color:var(--ink-strong);font-family:'Orbit',sans-serif;font-weight:900">68<span style="font-size:14px;color:var(--text-muted)"> / 100</span></div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card"><div class="metric-value">3.5조</div><div class="metric-label">2025E 연 매출</div></div>
+<div class="metric-card"><div class="metric-value">1,874억</div><div class="metric-label">2025E 영업이익</div></div>
+<div class="metric-card"><div class="metric-value">2.2조</div><div class="metric-label">시가총액</div></div>
+<div class="metric-card"><div class="metric-value">60년+</div><div class="metric-label">업력</div></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content"><h4>기업명</h4><p>농심 (Nongshim Co., Ltd.)</p></div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content"><h4>종목코드</h4><p>KOSPI 004370</p></div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content"><h4>대표이사</h4><p>이병훈</p></div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="report-info-content"><h4>설립연도</h4><p>1965년</p></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 기업 개요</h3>
+                <p>농심은 1965년 설립된 한국 최대의 라면 및 스낵 제조기업으로, 대표 브랜드 신라면을 중심으로 글로벌 100여 개국에 수출하고 있습니다. 2025년 기준 연결 매출액 약 3조 5,480억원, 영업이익 1,874억원을 기록하며 안정적인 성장세를 유지하고 있습니다. 신라면은 2025년 글로벌 누적 매출 30조원을 돌파하며 세계 라면 시장에서 가장 인지도 높은 브랜드 중 하나로 자리매김했습니다. 국내 라면 시장에서 약 55%의 점유율을 확보하고 있으며, 미국·중국·일본·동남아 등 주요 시장에서 현지 생산 법인을 운영하며 글로벌 시장 확대에 주력하고 있습니다.</p>
+                <p>농심은 라면 외에도 새우깡, 꿀꽈배기 등 스낵 제품군과 백산수, 웰치스 등 음료 사업도 영위하고 있습니다. 최근에는 신라면 툼바, 배홍동칼빔면 등 프리미엄 신제품을 지속 출시하며 제품 포트폴리오를 강화하고 있습니다. 비건·할랄 인증 제품 확대로 글로벌 소비자 기반을 넓혀가고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">COMPANY</span></div>
+
+        <section id="company">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-building"></i> COMPANY PROFILE</div>
+                <h2>농심 기업 분석</h2>
+                <p>Nongshim Co., Ltd. · KOSPI 004370</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 연혁 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-item-year">1965</div><div class="timeline-item-content">롯데공업 설립 (농심의 전신)</div></div>
+<div class="timeline-item"><div class="timeline-item-year">1971</div><div class="timeline-item-content">농심 브랜드 출범, 새우깡 출시</div></div>
+<div class="timeline-item"><div class="timeline-item-year">1986</div><div class="timeline-item-content">신라면 출시 - K-라면의 글로벌 아이콘 탄생</div></div>
+<div class="timeline-item"><div class="timeline-item-year">1996</div><div class="timeline-item-content">미국 법인 설립, 해외 시장 본격 진출</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2005</div><div class="timeline-item-content">중국 상하이·선양 공장 가동</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2012</div><div class="timeline-item-content">짜파구리 열풍으로 글로벌 재조명</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2020</div><div class="timeline-item-content">기생충 효과 글로벌 매출 급증, 미국 공장 증설</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2024-2026</div><div class="timeline-item-content">신라면 글로벌 누적 매출 30조 돌파</div></div>
+
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i> 비전</h3>
+                    <p>인류의 식생활 문화를 풍요롭게 하는 글로벌 식품 기업으로 도약하는 것입니다. 농심은 맛과 건강을 동시에 추구하며, 한국 식문화의 세계화를 선도하고자 합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-bullseye"></i> 미션</h3>
+                    <p>최고의 맛과 품질로 고객에게 행복을 전달하며, 글로벌 시장에서 K-Food의 가치를 확산시키는 것을 목표로 합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i> 사업 부문</h3>
+                <ul class="content-list">
+                    <li>라면 사업부: 신라면, 너구리, 짜파게티, 안성탕면, 신라면 툼바 등</li>
+<li>스낵 사업부: 새우깡, 양파링, 꿀꽈배기, 먹태깡 등</li>
+<li>음료 사업부: 백산수, 웰치스, 카프리썬 등</li>
+<li>해외 사업부: 미국, 중국, 일본, 동남아, 유럽 현지 법인</li>
+
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">TECHNOLOGY</span></div>
+
+        <section id="technology">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-microchip"></i> TECHNOLOGY</div>
+                <h2>R&D 및 제조 기술 역량</h2>
+                <p>농심의 핵심 기술 역량과 R&D 전략</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 핵심 기술 분석</h3>
+                <p>농심은 연구개발센터를 중심으로 신제품 개발, 품질 혁신, 건강 기능성 식품 연구에 지속 투자하고 있습니다. 2025년 기준 연간 R&D 투자 규모는 약 500억원 수준으로, 매출의 1.5% 이상을 연구개발에 투입하고 있습니다. 특히 에어프라이어용 라면, 비건 라면, 저칼로리 면 등 소비자 트렌드에 맞는 제품 개발에 집중하고 있습니다. 글로벌 생산 네트워크는 국내 4개 공장, 미국 2개 공장, 중국 3개 공장 등 총 9개 이상의 생산기지를 운영하고 있으며, 자동화 시스템과 AI 기반 품질관리 시스템을 도입하여 생산 효율성을 극대화하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 기술 상세</h3>
+                <p>농심의 핵심 기술력은 면류 가공 기술에 있습니다. 독자적인 반죽·숙성·유탕 기술을 보유하고 있으며, 천연 양념 추출 기술과 동결건조 기술을 통해 차별화된 맛을 구현합니다. 최근에는 식물성 단백질 기반 대체육 면류, 기능성 성분 첨가 제품 등 건강지향적 신기술 개발도 적극적으로 추진하고 있습니다. 또한 친환경 포장재 전환, 에너지 효율화, 탄소 배출 감축 등 ESG 관련 기술 혁신에도 힘쓰고 있어 지속가능한 성장 기반을 구축하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">면류가공기술</span>
+<span class="tech-badge">천연양념추출</span>
+<span class="tech-badge">동결건조</span>
+<span class="tech-badge">AI품질관리</span>
+<span class="tech-badge">자동화생산</span>
+<span class="tech-badge">비건인증</span>
+<span class="tech-badge">할랄인증</span>
+<span class="tech-badge">친환경포장</span>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">MARKET</span></div>
+
+        <section id="market">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-globe"></i> MARKET ANALYSIS</div>
+                <h2>시장 분석</h2>
+                <p>농심의 시장 환경과 경쟁 구도</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 시장 현황</h3>
+                <p>글로벌 인스턴트 라면 시장은 2025년 기준 약 650억 달러 규모로 추정되며, 연평균 4~5%의 성장률을 보이고 있습니다. 특히 K-컬처 확산에 힘입어 한국 라면의 글로벌 수출은 2024년 처음으로 10억 달러를 돌파했으며, 2025년에도 두 자릿수 성장을 기록하고 있습니다. 농심은 국내 라면 시장 1위로 약 55%의 점유율을 유지하고 있으며, 글로벌 시장에서는 닛신, 강사부, 인도미에 이어 4~5위권의 시장 점유율을 확보하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-search-dollar"></i> 시장 심층 분석</h3>
+                <p>국내 스낵 시장은 약 3조원 규모로 농심이 오리온, 롯데웰푸드와 함께 상위 3강을 형성하고 있습니다. 건강 스낵, 프리미엄 스낵 트렌드에 맞춰 먹태깡, 메론킥 등 차별화 제품을 출시하며 시장을 선도하고 있습니다. 음료 시장에서는 백산수가 제주삼다수에 이어 생수 시장 2위를 유지하고 있으며, 프리미엄 생수 시장 공략을 강화하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">COMPETITORS</span></div>
+
+        <section id="competitors">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-users"></i> COMPETITIVE LANDSCAPE</div>
+                <h2>경쟁사 비교 분석</h2>
+                <p>주요 경쟁사와의 시장 포지셔닝 비교</p>
+            </div>
+
+            <div class="content-card">
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>매출</th>
+                                <th>이익률</th>
+                                <th>시장점유율</th>
+                                <th>핵심 강점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="color:var(--ink);font-weight:600">삼양식품</td><td>1.2조</td><td>15%</td><td>18%</td><td>불닭볶음면 글로벌 인기</td></tr>
+<tr><td style="color:var(--ink);font-weight:600">오뚜기</td><td>3.0조</td><td>8%</td><td>25%</td><td>진라면, 다각화된 식품 포트폴리오</td></tr>
+<tr><td style="color:var(--ink);font-weight:600">닛신식품</td><td>6.5조</td><td>10%</td><td>글로벌 1위</td><td>컵누들, 글로벌 유통망</td></tr>
+<tr><td style="color:var(--ink);font-weight:600">인도미</td><td>5.0조</td><td>12%</td><td>동남아 1위</td><td>인도네시아 독점적 점유율</td></tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">SWOT</span></div>
+
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-th-large"></i> SWOT ANALYSIS</div>
+                <h2>SWOT 분석</h2>
+                <p>농심의 강점·약점·기회·위협 종합 분석</p>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-shield-alt" style="color:var(--gold)"></i> Strengths</h3>
+                    <ul><li>신라면 브랜드 파워 및 글로벌 인지도</li><li>국내 라면 시장 55% 점유율 1위</li><li>미국·중국 현지 생산 인프라 보유</li><li>K-Food 트렌드 수혜 극대화</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-exclamation-circle" style="color:var(--blue)"></i> Weaknesses</h3>
+                    <ul><li>라면 중심 포트폴리오 편중</li><li>원재료(밀가루·팜유) 가격 변동 리스크</li><li>프리미엄 라면 세그먼트에서 삼양식품 추격</li><li>음료·스낵 사업 수익성 개선 과제</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-rocket" style="color:var(--gold)"></i> Opportunities</h3>
+                    <ul><li>K-Food 글로벌 수요 지속 증가</li><li>미국·유럽 프리미엄 라면 시장 확대</li><li>비건·할랄 시장 성장</li><li>동남아·인도 등 신흥시장 진출 가속</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-bolt" style="color:var(--blue)"></i> Threats</h3>
+                    <ul><li>글로벌 경쟁 심화(닛신, 삼양식품 등)</li><li>원자재 가격 상승 및 환율 변동</li><li>건강식품 트렌드에 따른 라면 기피 우려</li><li>무역 분쟁 및 보호무역주의 확산</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">STRATEGY</span></div>
+
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chess"></i> STRATEGY</div>
+                <h2>전략 분석</h2>
+                <p>농심의 핵심 성장 전략과 미래 방향성</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 핵심 전략</h3>
+                <p>농심의 핵심 전략은 '글로벌 K-Food 리더십 확대'에 있습니다. 첫째, 미국 시장에서의 입지를 더욱 강화하기 위해 제2공장 증설과 유통 채널 다변화를 추진하고 있습니다. 둘째, 프리미엄 전략을 통한 수익성 개선을 추구하고 있습니다. 신라면 블랙, 신라면 툼바 등 고급 라인업을 확대하며 ASP 인상을 도모하고 있습니다. 셋째, ESG 경영을 강화하여 친환경 패키징, 탄소중립 생산 공정, 사회공헌 활동을 체계적으로 추진하고 있습니다. 넷째, 디지털 전환(DX)을 통해 스마트 팩토리 구축, AI 기반 수요 예측, 디지털 마케팅 강화 등 운영 효율성 제고에 나서고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 실행 전략</h3>
+                <p>농심의 해외 전략은 지역별 맞춤형 접근에 기반합니다. 미국 시장에서는 코스트코·월마트 등 대형 유통과의 파트너십을 강화하고 있으며, 중국에서는 현지 소비 트렌드에 맞춘 제품 현지화를 추진하고 있습니다. 일본에서는 프리미엄 포지셔닝으로 고급 라면 시장을 공략하고, 동남아에서는 할랄 인증 제품을 앞세워 이슬람 소비자 시장을 개척하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">FINANCIALS</span></div>
+
+        <section id="finance">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-won-sign"></i> FINANCIALS</div>
+                <h2>재무 분석</h2>
+                <p>농심의 실적 추이와 재무 건전성 분석</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 매출 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-container"><div class="bar" style="height:80%"></div></div><div class="bar-value">2.8조</div><div class="bar-label">2021</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:88%"></div></div><div class="bar-value">3.1조</div><div class="bar-label">2022</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:91%"></div></div><div class="bar-value">3.2조</div><div class="bar-label">2023</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:97%"></div></div><div class="bar-value">3.4조</div><div class="bar-label">2024</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:100%"></div></div><div class="bar-value">3.5조</div><div class="bar-label">2025E</div></div>
+
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 핵심 재무 지표</h3>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">영업이익률</span><span class="progress-label-value">5.3%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:10.6%"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">ROE</span><span class="progress-label-value">8.5%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:25.5%"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">부채비율</span><span class="progress-label-value">45%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:15.0%"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">유동비율</span><span class="progress-label-value">160%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:53.333333333333336%"></div></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 재무 분석 요약</h3>
+                <p>농심의 2025년 추정 연결 매출액은 약 3조 5,480억원으로 전년 대비 약 4% 성장할 것으로 전망됩니다. 영업이익은 약 1,874억원으로 영업이익률 5.3%를 기록할 것으로 예상됩니다. 해외 매출 비중이 40%에 달하며 환율 효과에 따른 수익성 변동이 존재하지만, 프리미엄 제품 비중 확대로 수익성 개선이 기대됩니다. 재무 건전성 측면에서 부채비율 45%, 유동비율 160% 수준으로 안정적인 재무구조를 유지하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">CONCLUSION</span></div>
+
+        <section id="conclusion">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-flag-checkered"></i> CONCLUSION</div>
+                <h2>결론 및 전망</h2>
+                <p>농심의 투자 가치와 향후 전망</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>농심은 K-Food 글로벌화의 핵심 수혜주로, 신라면 브랜드의 강력한 인지도와 해외 생산·유통 인프라를 기반으로 안정적인 성장이 기대됩니다. 단기적으로는 원자재 가격 변동과 환율 리스크가 존재하지만, 중장기적으로 글로벌 라면 시장 확대와 프리미엄 전략 추진으로 수익성 개선이 전망됩니다. 투자 관점에서 농심은 경기 방어적 성격의 식품주로서 안정적인 배당과 함께 K-Food 성장 스토리를 보유한 종목입니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align:center;padding:48px 40px 36px;border-top:1px solid var(--rule);max-width:1140px;margin:0 auto;">
+        <p style="font-size:11px;color:var(--text-muted);line-height:1.8;">
+            본 리포트는 FLOVAH Insights 시스템에 의해 자동 생성된 AI 기반 기업 분석 자료입니다.<br>
+            투자 판단의 최종 책임은 투자자 본인에게 있으며, FLOVAH는 본 자료의 정확성을 보증하지 않습니다.
+        </p>
+        <p style="font-size:10px;color:var(--text-muted);margin-top:12px;letter-spacing:1px;">© 2026 FLOVAH. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => { fill.style.animation = ''; }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 12일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

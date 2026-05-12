@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼성전자 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            margin-bottom: 36px;
+            font-weight: 400;
+            font-style: italic;
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: var(--bg-card);
+            border-top: 3px solid var(--gold);
+            border-bottom: 1px solid var(--rule);
+            border-left: none; border-right: none;
+            border-radius: 0;
+            padding: 64px 56px 56px;
+            margin-bottom: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* ============ METRICS ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .metric-card {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 24px;
+            text-align: center;
+            transition: background .3s ease;
+        }
+
+        .metric-card:hover {
+            background: var(--gold-glow);
+            transform: none;
+            border-color: var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            background: none;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AI Score */
+        .ai-score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 16px 28px;
+            margin: 28px 0;
+            font-weight: 600;
+        }
+
+        .score-circle {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--ink-strong);
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: none;
+            border-top: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 36px 40px;
+            margin-bottom: 0;
+            transition: background .3s ease;
+        }
+
+        .content-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--rule);
+        }
+
+        .content-card h3 {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--ink-strong);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0;
+        }
+
+        .content-card h3 i {
+            font-size: 18px;
+            color: var(--gold);
+            opacity: .85;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            line-height: 1.95;
+            margin-bottom: 16px;
+            font-size: 17px;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .content-card strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .content-list { list-style: none; margin-top: 16px; }
+
+        .content-list li {
+            padding: 10px 0;
+            padding-left: 20px;
+            color: var(--text-body);
+            font-size: 16px;
+            position: relative;
+            line-height: 1.75;
+            border-bottom: 1px solid rgba(42,45,54,.6);
+        }
+
+        .content-list li:last-child { border-bottom: none; }
+
+        .content-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--gold-dim);
+            font-weight: 700;
+        }
+
+        /* ============ TIMELINE ============ */
+        .timeline { position: relative; padding: 32px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            padding-left: 80px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 18px; top: 6px;
+            width: 20px; height: 20px;
+            background: var(--bg-deep);
+            border: 2px solid var(--gold-dim);
+            border-radius: 50%;
+        }
+
+        .timeline-item-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .timeline-item-content {
+            color: var(--text-body);
+            font-size: 13.5px;
+            line-height: 1.7;
+        }
+
+        /* ============ TABLE ============ */
+        .comparison-table { overflow-x: auto; margin-top: 24px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        td { color: var(--text-body); }
+
+        tr:hover { background: var(--gold-glow); }
+
+        /* ============ PROGRESS BARS ============ */
+        .progress-item { margin-bottom: 22px; }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 12.5px;
+        }
+
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: var(--bg-elevated);
+            border-radius: 3px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%);
+            border-radius: 3px;
+            transition: width .5s ease;
+        }
+
+        /* ============ BAR CHART ============ */
+        .bar-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 12, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-title">
+                        세아베스틸지주
+                        <span class="hero-title-highlight">기업 분석 리포트</span>
+                    </div>
+                    <div class="hero-subtitle">글로벌 특수강 선도기업, 에너지·자동차 소재 핵심 공급자의 성장 전략 분석</div>
+                    <div class="ai-score-badge">
+                        <div class="score-circle" style="background:conic-gradient(var(--gold) 0deg 234deg, var(--rule) 234deg 360deg);">
+                            <span style="font-size:22px">65</span>
+                        </div>
+                        <div style="text-align:left">
+                            <div style="font-size:10px;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase">FLOVAH AI Score</div>
+                            <div style="font-size:20px;color:var(--ink-strong);font-family:'Orbit',sans-serif;font-weight:900">65<span style="font-size:14px;color:var(--text-muted)"> / 100</span></div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card"><div class="metric-value">3.65조</div><div class="metric-label">2025 연 매출</div></div>
+<div class="metric-card"><div class="metric-value">1,024억</div><div class="metric-label">2025 영업이익</div></div>
+<div class="metric-card"><div class="metric-value">1.8조</div><div class="metric-label">시가총액</div></div>
+<div class="metric-card"><div class="metric-value">70년+</div><div class="metric-label">업력</div></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-building"></i></div>
+                    <div class="report-info-content"><h4>기업명</h4><p>세아베스틸지주 (SeAH Besteel Holdings Corp.)</p></div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content"><h4>종목코드</h4><p>KOSPI 001430</p></div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content"><h4>대표이사</h4><p>김철희, 박주두</p></div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="report-info-content"><h4>설립연도</h4><p>1953년</p></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 기업 개요</h3>
+                <p>세아베스틸지주는 1953년 설립된 국내 최대 특수강 및 스테인리스강 전문기업 그룹의 지주회사입니다. 세아베스틸, 세아창원특수강, 세아제강 등 핵심 자회사를 보유하며, 특수강·스테인리스강·강관 등 고부가가치 철강 제품을 생산하고 있습니다. 2025년 연결 기준 매출 3조 6,500억원, 영업이익 1,024억원을 기록했습니다. 특수강은 자동차, 기계, 에너지, 항공우주 산업에 핵심 소재로 활용되며, 국내 1위의 시장 지위를 확보하고 있습니다.</p>
+                <p>세아베스틸지주의 핵심 사업은 자회사를 통한 특수강 제조 및 판매입니다. 세아베스틸은 공구강, 베어링강, 스프링강 등 고급 특수강을 생산하며, 세아창원특수강은 스테인리스강 분야에서 국내 상위권을 차지하고 있습니다. 세아제강은 강관 제조 전문기업으로, 미국 텍사스에 OCTG 공장을 운영하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">COMPANY</span></div>
+
+        <section id="company">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-building"></i> COMPANY PROFILE</div>
+                <h2>세아베스틸지주 기업 분석</h2>
+                <p>SeAH Besteel Holdings Corp. · KOSPI 001430</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 연혁 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-item-year">1953</div><div class="timeline-item-content">부산주물공업 설립</div></div>
+<div class="timeline-item"><div class="timeline-item-year">1970</div><div class="timeline-item-content">특수강 생산 시작</div></div>
+<div class="timeline-item"><div class="timeline-item-year">1988</div><div class="timeline-item-content">코스피 상장</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2001</div><div class="timeline-item-content">세아창원특수강 인수</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2010</div><div class="timeline-item-content">미국 텍사스 OCTG 공장 설립</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2018</div><div class="timeline-item-content">세아베스틸지주 지주회사 전환</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2022</div><div class="timeline-item-content">미국 IRA법 수혜, 에너지 인프라 수요 급증</div></div>
+<div class="timeline-item"><div class="timeline-item-year">2025</div><div class="timeline-item-content">연결 매출 3.65조</div></div>
+
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i> 비전</h3>
+                    <p>글로벌 특수강 리더로서 산업의 핵심 소재를 공급하며, 지속가능한 철강 산업의 미래를 선도합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-bullseye"></i> 미션</h3>
+                    <p>최고 품질의 특수강 제품을 통해 자동차, 에너지, 산업기계 분야의 혁신을 지원합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-sitemap"></i> 사업 부문</h3>
+                <ul class="content-list">
+                    <li>세아베스틸: 특수강 제조</li>
+<li>세아창원특수강: 스테인리스강 제조</li>
+<li>세아제강: 강관(OCTG, 라인파이프) 제조</li>
+<li>해외법인: 미국 텍사스 OCTG 공장</li>
+
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">TECHNOLOGY</span></div>
+
+        <section id="technology">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-microchip"></i> TECHNOLOGY</div>
+                <h2>특수강 제조 기술 및 R&D</h2>
+                <p>세아베스틸지주의 핵심 기술 역량과 R&D 전략</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i> 핵심 기술 분석</h3>
+                <p>세아베스틸그룹은 전기로(EAF) 기반 특수강 제조 기술에서 국내 최고 수준의 역량을 보유하고 있습니다. 정밀 성분 제어, 진공탈가스, 연속주조, 열간압연 등 첨단 기술을 통해 자동차 엔진 부품, 항공기 랜딩기어, 원자력 발전소 핵심 부품 등에 사용되는 고품질 특수강을 생산합니다. 최근에는 수소환원제철, 탄소포집 등 친환경 제철 기술 개발에도 주력하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 기술 상세</h3>
+                <p>세아창원특수강의 스테인리스강 기술력은 국내 독보적입니다. 듀플렉스 스테인리스강 등 고부가가치 제품 개발에 성공하며, LNG 선박, 해양플랜트, 반도체 장비 등에 소재를 공급하고 있습니다. 세아제강은 미국 에너지 시장에 핵심 OCTG 제품을 공급하며, 셰일가스 개발에 기여하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">전기로제강</span>
+<span class="tech-badge">진공탈가스</span>
+<span class="tech-badge">특수강정밀제어</span>
+<span class="tech-badge">스테인리스강</span>
+<span class="tech-badge">OCTG</span>
+<span class="tech-badge">수소환원제철</span>
+<span class="tech-badge">스마트팩토리</span>
+<span class="tech-badge">친환경제철</span>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">MARKET</span></div>
+
+        <section id="market">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-globe"></i> MARKET ANALYSIS</div>
+                <h2>시장 분석</h2>
+                <p>세아베스틸지주의 시장 환경과 경쟁 구도</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i> 시장 현황</h3>
+                <p>글로벌 특수강 시장은 2025년 기준 약 2,500억 달러 규모로, 연평균 3~4% 성장이 전망됩니다. 세아베스틸은 국내 특수강 시장에서 30% 이상의 점유율로 1위를 차지하고 있습니다. OCTG 시장은 미국 셰일가스 생산 확대로 수요가 증가하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-search-dollar"></i> 시장 심층 분석</h3>
+                <p>스테인리스강 시장은 글로벌 약 1,500억 달러 규모로, LNG 산업 성장, 반도체 장비 수요 등에 따라 고부가가치 제품 수요가 증가하고 있습니다. 자동차 분야에서는 전기차 전환에 따른 소재 변화가 중요한 변수입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">COMPETITORS</span></div>
+
+        <section id="competitors">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-users"></i> COMPETITIVE LANDSCAPE</div>
+                <h2>경쟁사 비교 분석</h2>
+                <p>주요 경쟁사와의 시장 포지셔닝 비교</p>
+            </div>
+
+            <div class="content-card">
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>기업</th>
+                                <th>매출</th>
+                                <th>이익률</th>
+                                <th>시장점유율</th>
+                                <th>핵심 강점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="color:var(--ink);font-weight:600">포스코</td><td>77조</td><td>3%</td><td>국내 1위</td><td>수직계열화, 규모의 경제</td></tr>
+<tr><td style="color:var(--ink);font-weight:600">현대제철</td><td>21조</td><td>2%</td><td>국내 2위</td><td>자동차 강판, 현대차 캡티브</td></tr>
+<tr><td style="color:var(--ink);font-weight:600">대동제강</td><td>0.8조</td><td>5%</td><td>국내 특수강 3위</td><td>니치 마켓 특화</td></tr>
+<tr><td style="color:var(--ink);font-weight:600">일본제철</td><td>65조</td><td>8%</td><td>글로벌 3위</td><td>초고장력강판 기술력</td></tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">SWOT</span></div>
+
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-th-large"></i> SWOT ANALYSIS</div>
+                <h2>SWOT 분석</h2>
+                <p>세아베스틸지주의 강점·약점·기회·위협 종합 분석</p>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-shield-alt" style="color:var(--gold)"></i> Strengths</h3>
+                    <ul><li>국내 특수강 시장 점유율 1위</li><li>다각화된 포트폴리오</li><li>미국 텍사스 현지 생산 거점</li><li>70년 이상 제조 노하우</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-exclamation-circle" style="color:var(--blue)"></i> Weaknesses</h3>
+                    <ul><li>철강 경기 사이클 민감도</li><li>원자재 가격 변동 리스크</li><li>포스코 대비 규모의 열위</li><li>지주회사 디스카운트</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-rocket" style="color:var(--gold)"></i> Opportunities</h3>
+                    <ul><li>미국 IRA법 에너지 인프라 투자 확대</li><li>LNG·수소 에너지 전환 수요</li><li>자동차 경량화 고급 특수강 수요</li><li>친환경 제철 선도 기회</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-bolt" style="color:var(--blue)"></i> Threats</h3>
+                    <ul><li>중국산 저가 철강 수입 증가</li><li>글로벌 철강 과잉 공급</li><li>전기차 전환에 따른 수요 변화</li><li>탄소 규제 강화</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">STRATEGY</span></div>
+
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chess"></i> STRATEGY</div>
+                <h2>전략 분석</h2>
+                <p>세아베스틸지주의 핵심 성장 전략과 미래 방향성</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> 핵심 전략</h3>
+                <p>세아베스틸지주의 핵심 전략은 '고부가가치 특수강 중심의 글로벌 경쟁력 강화'입니다. 자동차·에너지·항공우주 등 고급 특수강 수요처를 확대하며, 미국 사업 확대를 통해 글로벌 시장 입지를 강화하고 있습니다. 친환경 제철 전환과 그룹 내 시너지 극대화도 주요 전략입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 실행 전략</h3>
+                <p>디지털 전환(DX)을 통한 제조 혁신에도 주력하고 있습니다. AI 기반 품질 예측 시스템, 스마트 팩토리 구축을 통해 생산 효율성과 수율을 개선하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">FINANCIALS</span></div>
+
+        <section id="finance">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-won-sign"></i> FINANCIALS</div>
+                <h2>재무 분석</h2>
+                <p>세아베스틸지주의 실적 추이와 재무 건전성 분석</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 매출 추이</h3>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-container"><div class="bar" style="height:73%"></div></div><div class="bar-value">3.0조</div><div class="bar-label">2021</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:100%"></div></div><div class="bar-value">4.1조</div><div class="bar-label">2022</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:85%"></div></div><div class="bar-value">3.5조</div><div class="bar-label">2023</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:82%"></div></div><div class="bar-value">3.4조</div><div class="bar-label">2024</div></div>
+<div class="bar-item"><div class="bar-container"><div class="bar" style="height:89%"></div></div><div class="bar-value">3.65조</div><div class="bar-label">2025</div></div>
+
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 핵심 재무 지표</h3>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">영업이익률</span><span class="progress-label-value">2.8%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:5.6%"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">ROE</span><span class="progress-label-value">5.5%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:16.5%"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">부채비율</span><span class="progress-label-value">110%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:36.666666666666664%"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label"><span class="progress-label-name">유동비율</span><span class="progress-label-value">120%</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:40.0%"></div></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 재무 분석 요약</h3>
+                <p>세아베스틸지주의 2025년 연결 매출은 3조 6,500억원, 영업이익 1,024억원으로 영업이익률 2.8%를 기록했습니다. 철강 업종의 특성상 마진율은 높지 않으나, 고부가가치 전략으로 수익성 개선을 추진하고 있습니다. 부채비율 110%, 유동비율 120%로 철강업 평균과 유사한 수준입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">CONCLUSION</span></div>
+
+        <section id="conclusion">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-flag-checkered"></i> CONCLUSION</div>
+                <h2>결론 및 전망</h2>
+                <p>세아베스틸지주의 투자 가치와 향후 전망</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> 종합 평가</h3>
+                <p>세아베스틸지주는 국내 최대 특수강 그룹으로, 자동차·에너지·산업기계 등 핵심 산업의 소재 공급자로서 안정적인 시장 지위를 확보하고 있습니다. PBR 0.4배 수준의 저평가 매력과 특수강 시장의 구조적 성장 잠재력이 긍정적입니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align:center;padding:48px 40px 36px;border-top:1px solid var(--rule);max-width:1140px;margin:0 auto;">
+        <p style="font-size:11px;color:var(--text-muted);line-height:1.8;">
+            본 리포트는 FLOVAH Insights 시스템에 의해 자동 생성된 AI 기반 기업 분석 자료입니다.<br>
+            투자 판단의 최종 책임은 투자자 본인에게 있으며, FLOVAH는 본 자료의 정확성을 보증하지 않습니다.
+        </p>
+        <p style="font-size:10px;color:var(--text-muted);margin-top:12px;letter-spacing:1px;">© 2026 FLOVAH. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => { fill.style.animation = ''; }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 12일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

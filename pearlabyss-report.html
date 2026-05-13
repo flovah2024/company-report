@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>펄어비스 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+            --bg-hover: #191b1f; --bg-surface: #111316;
+            --ink: #ede8df; --ink-strong: #f5f1e8; --text-body: #b5ad9e;
+            --text-secondary: #7d7568; --text-muted: #524c42; --text-light: #9a9184;
+            --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e; --blue-dim: #465f7a;
+            --rule: #1e1f24; --border: #1e1f24; --border-light: #1a1b20; --border-color: #1e1f24;
+            --accent: #c9a962; --accent2: #5c7d9e; --success: #c9a962;
+            --danger: #c9a962; --warning: #c9a962; --purple: #5c7d9e;
+            --card-bg: #0f1014; --dark-bg: #09090b; --navy: #c9a962;
+            --navy-light: #5c7d9e; --cream: rgba(201,169,98,.05);
+        }
+        body { background: var(--bg-deep); font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-body); font-size: 17px; line-height: 1.9; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: rgba(201,169,98,.25); color: var(--ink-strong); }
+        header { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(12,14,19,.92); backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 1000; }
+        .logo-section { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+        .logo { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+        nav { display: flex; gap: 24px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color .3s ease; position: relative; padding-bottom: 4px; }
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+        nav a.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--gold); }
+        .header-meta { display: flex; align-items: center; gap: 16px; font-size: 11px; }
+        .header-date { color: var(--text-muted); font-weight: 400; letter-spacing: 0.5px; }
+        .flovah-badge { background: transparent; color: var(--gold); padding: 4px 12px; border: 1px solid var(--gold-dim); border-radius: 0; font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        main { margin-top: 60px; padding: 56px 48px 80px; max-width: 1140px; margin-left: auto; margin-right: auto; }
+        section { margin-bottom: 72px; }
+        .section-title { font-family: 'Orbit', sans-serif; font-size: 38px; font-weight: 700; color: var(--ink-strong); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; letter-spacing: -0.3px; }
+        .section-title i { font-size: 28px; color: var(--gold); opacity: .8; }
+        .section-title span { color: var(--ink-strong); }
+        .section-subtitle { color: var(--text-secondary); font-size: 17px; margin-bottom: 36px; font-weight: 400; font-style: italic; }
+        .hero { background: var(--bg-card); border-top: 3px solid var(--gold); border-bottom: 1px solid var(--rule); border-left: none; border-right: none; border-radius: 0; padding: 64px 56px 56px; margin-bottom: 64px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-title { font-family: 'Orbit', sans-serif; font-size: 52px; font-weight: 900; color: var(--ink-strong); margin-bottom: 24px; letter-spacing: -1px; line-height: 1.2; }
+        .hero-title-highlight { color: var(--gold); display: block; }
+        .hero-subtitle { font-family: 'Orbit', sans-serif; font-size: 20px; color: var(--text-secondary); margin-bottom: 48px; font-weight: 400; font-style: italic; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }
+        .metric-card { background: transparent; border: none; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 0; padding: 28px 24px; text-align: center; transition: background .3s ease; }
+        .metric-card:hover { background: var(--gold-glow); }
+        .metric-card:last-child { border-right: none; }
+        .metric-value { font-family: 'Orbit', sans-serif; font-size: 34px; font-weight: 900; margin-bottom: 8px; color: var(--gold); }
+        .metric-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .ai-score-badge { display: inline-flex; align-items: center; gap: 16px; background: var(--bg-elevated); border: 1px solid var(--rule); border-radius: 0; padding: 16px 28px; margin: 28px 0; font-weight: 600; }
+        .score-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbit', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink-strong); }
+        .content-card { background: var(--bg-card); border: none; border-top: 1px solid var(--rule); border-radius: 0; padding: 36px 40px; margin-bottom: 0; transition: background .3s ease; animation: fadeInUp .5s ease forwards; }
+        .content-card:hover { background: var(--bg-hover); }
+        .content-card h3 { font-family: 'Google Sans', 'Noto Sans KR', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 18px; color: var(--ink-strong); display: flex; align-items: center; gap: 10px; }
+        .content-card h3 i { font-size: 18px; color: var(--gold); opacity: .85; }
+        .content-card p { color: var(--text-body); line-height: 1.95; margin-bottom: 16px; font-size: 17px; text-align: justify; word-break: keep-all; }
+        .content-card strong { color: var(--ink); font-weight: 600; }
+        .content-list { list-style: none; margin-top: 16px; }
+        .content-list li { padding: 10px 0; padding-left: 20px; color: var(--text-body); font-size: 16px; position: relative; line-height: 1.75; border-bottom: 1px solid rgba(42,45,54,.6); }
+        .content-list li:last-child { border-bottom: none; }
+        .content-list li::before { content: '\2014'; position: absolute; left: 0; color: var(--gold-dim); font-weight: 700; }
+        .timeline { position: relative; padding: 32px 0; }
+        .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+        .timeline-item { padding-left: 80px; margin-bottom: 32px; position: relative; animation: slideInRight .5s ease forwards; }
+        .timeline-item::before { content: ''; position: absolute; left: 18px; top: 6px; width: 20px; height: 20px; background: var(--bg-deep); border: 2px solid var(--gold-dim); border-radius: 50%; }
+        .timeline-item-year { font-family: 'Orbit', sans-serif; font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+        .timeline-item-content { color: var(--text-body); font-size: 13.5px; line-height: 1.7; }
+        table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--rule); }
+        th { background: var(--bg-elevated); color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.5px; border-bottom: 2px solid var(--gold-dim); }
+        td { color: var(--text-body); }
+        tr:hover { background: var(--gold-glow); }
+        .progress-item { margin-bottom: 22px; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12.5px; }
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+        .progress-bar-bg { width: 100%; height: 5px; background: var(--bg-elevated); border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%); border-radius: 3px; transition: width .5s ease; }
+        .bar-chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; }
+        .bar-item { text-align: center; }
+        .bar-container { height: 180px; background: var(--bg-elevated); border-radius: 0; display: flex; align-items: flex-end; justify-content: center; padding: 16px 8px 0; border: 1px solid var(--rule); border-bottom: none; }
+        .bar { width: 55%; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%); border-radius: 2px 2px 0 0; transition: all .4s ease; }
+        .bar-value { padding: 8px; background: var(--bg-card); border: 1px solid var(--rule); border-top: 2px solid var(--gold-dim); font-family: 'Orbit', sans-serif; font-weight: 700; font-size: 13px; color: var(--gold); }
+        .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); }
+        .two-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .two-column > .content-card:last-child { border-right: none; }
+        .three-column { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+        .three-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .three-column > .content-card:last-child { border-right: none; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+        .tech-badge { background: transparent; border: 1px solid var(--gold-dim); color: var(--gold); padding: 6px 14px; border-radius: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; transition: all .3s ease; }
+        .tech-badge:hover { background: var(--gold-glow); border-color: var(--gold); }
+        .section-header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+        .section-header h2 { font-family: 'Orbit', sans-serif; font-size: 36px; font-weight: 900; color: var(--ink-strong); margin-bottom: 12px; }
+        .section-header p { font-family: 'Orbit', sans-serif; font-size: 17px; color: var(--text-secondary); font-style: italic; }
+        .section-badge { display: inline-block; background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+        .divider { height: 0; border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+        .section-divider { text-align: center; margin: 64px 0; position: relative; }
+        .section-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--rule); }
+        .section-divider-text { display: inline-block; background: var(--bg-deep); padding: 0 24px; position: relative; z-index: 1; font-family: 'Orbit', sans-serif; font-size: 14px; color: var(--gold); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .report-info { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 0; padding: 28px 32px; margin-bottom: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .report-info-item { display: flex; gap: 14px; }
+        .report-info-icon { font-size: 18px; color: var(--gold-dim); flex-shrink: 0; }
+        .report-info-content h4 { color: var(--ink); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .report-info-content p { color: var(--text-body); font-size: 13px; line-height: 1.5; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 32px; border-top: 1px solid var(--rule); }
+        .swot-card { background: var(--bg-card); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 36px 32px; }
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+        .swot-card h3 { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .swot-card ul { list-style: none; }
+        .swot-card li { padding: 8px 0; padding-left: 18px; color: var(--text-body); font-size: 15px; position: relative; line-height: 1.6; border-bottom: 1px solid rgba(42,45,54,.4); }
+        .swot-card li:last-child { border-bottom: none; }
+        .swot-card li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; font-size: 16px; }
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card, .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+        @media print { header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; } nav { display: none; } body { background: #fff; color: #222; } .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 13, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">펄어비스<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">검은사막·붉은사막 프랜차이즈의 글로벌 게임 개발사, K-게임의 미래</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle" style="background: conic-gradient(var(--gold) 0deg 252deg, var(--rule) 252deg 360deg);">70</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card"><div class="metric-value">9,754억</div><div class="metric-label">2026E 연 매출</div></div>
+                        <div class="metric-card"><div class="metric-value">5.0조+</div><div class="metric-label">시가총액</div></div>
+                        <div class="metric-card"><div class="metric-value">+420%</div><div class="metric-label">2026 1Q 매출 성장</div></div>
+                        <div class="metric-card"><div class="metric-value">14년</div><div class="metric-label">업력</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="report-info">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-calendar"></i></div><div class="report-info-content"><h4>리포트 발행일</h4><p>2026년 05월 13일</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-building"></i></div><div class="report-info-content"><h4>기업명</h4><p>펄어비스 (Pearl Abyss Corp.)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-code"></i></div><div class="report-info-content"><h4>상장 코드</h4><p>KOSDAQ 263750</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-user-tie"></i></div><div class="report-info-content"><h4>대표이사</h4><p>정경인</p></div></div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">I. 기업 개요</span></div>
+
+        <section id="company">
+            <div class="section-title"><i class="fas fa-building"></i><span>기업 개요</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>펄어비스는 2010년 설립된 게임 개발사로, 글로벌 히트작 '검은사막(Black Desert)' 시리즈와 2025년 출시된 '붉은사막(Crimson Desert)'을 통해 글로벌 게임 시장에서 두각을 나타내고 있습니다. 자체 게임 엔진을 보유한 기술 중심 게임사로, 오픈월드 MMORPG와 액션 어드벤처 장르에서 세계적 경쟁력을 갖추고 있습니다.</p>
+<p>2026년 1분기 매출 3,285억원(전년 동기 대비 +420%)을 달성하며 폭발적 성장을 기록했습니다. 이는 '붉은사막'의 글로벌 흥행에 힘입은 것으로, 2026년 연간 매출 8,790~9,754억원이 전망됩니다. 붉은사막은 콘솔·PC 동시 출시로 글로벌 시장을 타깃하며, 한국 게임사 최초의 AAA급 대작으로 평가받고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-item-year">2010</div><div class="timeline-item-content">펄어비스 설립, 정경인 대표 창업</div></div><div class="timeline-item"><div class="timeline-item-year">2014</div><div class="timeline-item-content">검은사막 온라인 한국 출시</div></div><div class="timeline-item"><div class="timeline-item-year">2016</div><div class="timeline-item-content">검은사막 글로벌 서비스 확대</div></div><div class="timeline-item"><div class="timeline-item-year">2017</div><div class="timeline-item-content">코스닥 상장</div></div><div class="timeline-item"><div class="timeline-item-year">2018</div><div class="timeline-item-content">검은사막 모바일 글로벌 출시</div></div><div class="timeline-item"><div class="timeline-item-year">2020</div><div class="timeline-item-content">붉은사막, 도깨비 개발 공개</div></div><div class="timeline-item"><div class="timeline-item-year">2025</div><div class="timeline-item-content">붉은사막 글로벌 출시, 대흥행</div></div><div class="timeline-item"><div class="timeline-item-year">2026</div><div class="timeline-item-content">1Q 매출 3,285억(+420%), 역대 최대 실적</div></div>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 세계를 감동시키는 게임을 만드는 글로벌 최고의 게임 개발사가 되는 것입니다.</p><p><strong>미션:</strong> 독자적 게임 엔진과 창의적 콘텐츠로 전 세계 게이머에게 최고의 경험을 제공합니다.</p><p><strong>핵심 가치:</strong> 기술 혁신, 몰입감 있는 스토리텔링, 글로벌 서비스, 커뮤니티 중심 운영</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>검은사막 프랜차이즈: PC/콘솔/모바일 MMORPG</li><li>붉은사막: AAA 오픈월드 액션 어드벤처</li><li>도깨비: 차기 프로젝트 (개발 중)</li><li>플랜8: 차세대 FPS 프로젝트</li><li>자체 게임 엔진: BlackSpace Engine</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list"><li>글로벌 게이머 - PC/콘솔/모바일 유저</li><li>Steam, PlayStation, Xbox - 플랫폼 파트너</li><li>글로벌 퍼블리셔 - 지역별 서비스 파트너</li><li>이스포츠 팬 - 검은사막 대회</li><li>게임 스트리머/콘텐츠 크리에이터</li></ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list"><li>Sony PlayStation - 콘솔 독점 시한부 파트너</li><li>Microsoft Xbox - 콘솔 플랫폼 파트너</li><li>Steam/Valve - PC 유통 파트너</li><li>카카오게임즈 - 한국 퍼블리싱 전 파트너</li><li>글로벌 이스포츠 파트너</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">II. 기술 분석</span></div>
+
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i><span>기술 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p><strong>BlackSpace Engine:</strong> 펄어비스의 자체 개발 게임 엔진으로, 대규모 오픈월드를 심리스(Seamless)로 구현하고 수백 명의 플레이어가 동시에 전투할 수 있는 기술을 보유합니다. 물리 기반 렌더링(PBR), 글로벌 일루미네이션, 실시간 날씨 시스템 등 AAA급 그래픽 기술을 탑재하고 있습니다.</p><p><strong>오픈월드 기술:</strong> 로딩 없는 심리스 월드, 동적 이벤트 시스템, AI 기반 NPC 행동, 대규모 공성전 등 오픈월드 MMORPG의 핵심 기술에서 세계적 경쟁력을 보유합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>붉은사막 DLC/확장팩:</strong> 붉은사막의 성공을 기반으로 DLC, 확장팩, 시즌 패스 등 지속적 콘텐츠 업데이트를 통한 라이브 서비스 모델을 확립합니다.</p><p><strong>도깨비 프로젝트:</strong> 한국 전통 설화를 모티브로 한 차세대 게임으로, 독특한 아트 스타일과 게임플레이가 기대됩니다.</p><p><strong>AI 콘텐츠 생성:</strong> 생성형 AI를 활용한 게임 콘텐츠 자동 생성 기술을 개발하여, 콘텐츠 업데이트 주기를 단축하고 개발 비용을 절감합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item"><div class="progress-label"><span class="progress-label-name">BlackSpace 엔진</span><span class="progress-label-value">92%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">오픈월드 기술</span><span class="progress-label-value">90%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 90%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">그래픽 품질</span><span class="progress-label-value">88%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 88%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">네트워크/서버</span><span class="progress-label-value">85%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">AI 콘텐츠 생성</span><span class="progress-label-value">55%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 55%;"></div></div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>R&D 역량</h3>
+                <p>펄어비스는 직원의 약 70%가 개발 인력으로, 800명 이상의 개발자가 게임 엔진, 콘텐츠, 서버 기술 개발에 전념합니다. 자체 엔진 보유는 타 게임사 대비 기술적 유연성과 장기 비용 절감 효과를 제공합니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">BlackSpace Engine</span><span class="tech-badge">오픈월드</span><span class="tech-badge">MMORPG</span><span class="tech-badge">액션 어드벤처</span><span class="tech-badge">PBR</span><span class="tech-badge">심리스 월드</span><span class="tech-badge">라이브 서비스</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">III. 시장 분석</span></div>
+
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-bar"></i><span>시장 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>시장 환경</h3>
+                <p>글로벌 게임 시장은 2026년 약 2,200억 달러 규모이며, 콘솔/PC 게임 시장은 약 800억 달러입니다. AAA급 대작 게임은 출시 초기 대규모 매출을 창출하며, 라이브 서비스 모델로 장기 수익을 확보하는 추세입니다. 한국 게임사 중 AAA 콘솔 게임에 도전하는 기업은 극소수이며, 펄어비스의 붉은사막은 K-게임의 글로벌 위상을 높이는 이정표입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>시장 규모 및 성장 전망</h3>
+                <p>PC/콘솔 AAA 게임 시장은 연간 약 500억 달러 규모이며, 상위 10개 타이틀이 전체 매출의 30% 이상을 차지합니다. 붉은사막이 이 상위 그룹에 진입할 경우 연 10-20억 달러 매출이 가능합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-crosshairs"></i>시장 포지셔닝</h3>
+                <p>펄어비스는 한국 게임사 중 유일하게 AAA 콘솔 게임에서 글로벌 성공을 거둔 기업으로, 크래프톤(배틀그라운드)과 함께 K-게임의 양대 축입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">IV. 경쟁 분석</span></div>
+
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i><span>경쟁 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>기업</th><th>대표작</th><th>매출(2025)</th><th>장르</th><th>플랫폼</th></tr></thead>
+                        <tbody><tr><td><strong>펄어비스</strong></td><td>붉은사막/검은사막</td><td>5,000억</td><td>오픈월드 RPG</td><td>PC/콘솔/모바일</td></tr><tr><td>크래프톤</td><td>배틀그라운드</td><td>2.5조</td><td>배틀로얄</td><td>PC/모바일</td></tr><tr><td>넥슨</td><td>메이플/던파</td><td>4.5조</td><td>MMORPG</td><td>PC/모바일</td></tr><tr><td>엔씨소프트</td><td>리니지/TL</td><td>1.8조</td><td>MMORPG</td><td>PC/모바일</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>경쟁 우위 요소</h3>
+                <p>펄어비스의 핵심 경쟁 우위는 자체 게임 엔진(BlackSpace)과 AAA급 오픈월드 게임 개발 역량에 있습니다. 한국 게임사 중 콘솔 AAA 대작을 성공시킨 최초의 기업이라는 상징성과, 검은사막이라는 안정적 캐시카우를 동시에 보유합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">V. SWOT 분석</span></div>
+
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i><span>SWOT 분석</span></div>
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-star" style="color:var(--gold);"></i>Strengths (강점)</h3>
+                    <ul><li>붉은사막 글로벌 대흥행 (1Q +420%)</li><li>자체 게임 엔진 보유</li><li>검은사막 캐시카우 안정적 수익</li><li>AAA 콘솔 게임 개발 입증</li><li>글로벌 자체 퍼블리싱 역량</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-exclamation-triangle" style="color:var(--blue);"></i>Weaknesses (약점)</h3>
+                    <ul><li>붉은사막 이후 차기작 공백 리스크</li><li>게임 산업 특유의 흥행 불확실성</li><li>모바일 게임 경쟁력 상대적 약세</li><li>중국 시장 진출 한계</li><li>높은 개발비 부담</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-lightbulb" style="color:var(--gold);"></i>Opportunities (기회)</h3>
+                    <ul><li>붉은사막 DLC/확장팩 장기 라이브 서비스</li><li>콘솔 시장 지속 성장</li><li>도깨비 등 차기작 파이프라인</li><li>IP 확장 (영화, 드라마, 굿즈)</li><li>클라우드 게임 시장 확대</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-bolt" style="color:var(--blue);"></i>Threats (위협)</h3>
+                    <ul><li>붉은사막 장기 흥행 유지 불확실</li><li>글로벌 AAA 게임사와의 경쟁</li><li>게임 규제 강화 리스크</li><li>핵심 개발 인력 이탈</li><li>게임 시장 트렌드 변화</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VI. 성장 전략</span></div>
+
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-chess-king"></i><span>성장 전략</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>단기 전략 (1-2년)</h3>
+                <p>2026-2027년은 붉은사막 라이브 서비스 안정화와 DLC/확장팩 출시에 집중합니다. 검은사막 프랜차이즈의 지속적 업데이트로 안정적 매출 기반을 유지하면서, 붉은사막의 글로벌 유저 기반을 확대합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i>중장기 전략 (3-5년)</h3>
+                <p>중장기적으로는 멀티 프랜차이즈 전략을 통해 게임 포트폴리오를 다각화하고, IP 확장을 통한 미디어 프랜차이즈 기업으로 발전합니다. 2030년까지 매출 2조원, 글로벌 Top10 게임사 진입을 목표로 합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i>핵심 리스크 요인</h3>
+                <p><strong>흥행 리스크:</strong> 게임 산업은 히트 타이틀 의존도가 높아, 신작의 흥행 성패에 따라 실적 변동이 극심할 수 있습니다.</p><p><strong>라이브 서비스 리스크:</strong> 붉은사막의 장기 유저 유지율이 기대에 못 미칠 경우 매출 하락이 빠르게 진행될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VII. 재무 분석</span></div>
+
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i><span>재무 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>실적 추이</h3>
+                <p>펄어비스는 2026년 1분기 매출 3,285억원(+420% YoY)을 달성하며 분기 사상 최대 실적을 기록했습니다. 붉은사막 글로벌 출시 효과가 반영된 것으로, 연간 매출 8,790~9,754억원이 전망됩니다. 영업이익률은 40% 이상으로, 디지털 유통 비중이 높아 높은 수익성을 보입니다.</p>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-container"><div class="bar" style="height:41px;"></div></div><div class="bar-value">2,500억</div><div class="bar-label">2023</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:52px;"></div></div><div class="bar-value">3,200억</div><div class="bar-label">2024</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:81px;"></div></div><div class="bar-value">5,000억</div><div class="bar-label">2025E</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:160px;"></div></div><div class="bar-value">9,754억</div><div class="bar-label">2026E</div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>주요 재무 지표</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>지표</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody><tr><td>매출액</td><td>2,500억</td><td>3,200억</td><td>5,000억</td><td>9,754억</td></tr><tr><td>영업이익</td><td>300억</td><td>500억</td><td>1,500억</td><td>4,000억</td></tr><tr><td>영업이익률</td><td>12.0%</td><td>15.6%</td><td>30.0%</td><td>41.0%</td></tr><tr><td>순이익</td><td>250억</td><td>420억</td><td>1,200억</td><td>3,200억</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>밸류에이션 분석</h3>
+                <p>펄어비스의 2026년 예상 PER은 약 15-18배 수준으로, 게임사 중에서는 합리적인 밸류에이션입니다. 붉은사막의 장기 흥행 여부에 따라 추가 리레이팅 가능성이 있으나, 게임 산업 특유의 불확실성이 할인 요인입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VIII. 결론</span></div>
+
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i><span>결론 및 투자 의견</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>FLOVAH 분석 의견</h3>
+                <p>FLOVAH의 분석 결과, 펄어비스는 붉은사막 대흥행으로 기업가치가 한 단계 도약한 기업입니다.</p><p><strong>긍정 평가:</strong> (1) 붉은사막 글로벌 대흥행 (+420%), (2) 자체 엔진의 기술적 해자, (3) 검은사막 캐시카우 안정적 수익</p><p><strong>부정 평가:</strong> (1) 붉은사막 장기 흥행 불확실성, (2) 차기작 파이프라인 공백, (3) 게임 산업 변동성</p><p><strong>종합 평가:</strong> 중기 매수(Buy) 의견이며, 붉은사막 라이브 서비스 안정화 시 추가 상승 여지가 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>투자자 요약</h3>
+                <p><strong>투자 등급:</strong> 매수 (Buy)</p><p><strong>추천 투자 기간:</strong> 중기(1-2년)</p><p><strong>투자 포지션:</strong> K-게임 글로벌 성장주</p><p><strong>주요 모니터링:</strong> 붉은사막 DAU/MAU, DLC 매출, 검은사막 유지율, 차기작 개발 진행</p>
+            </div>
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-file-alt"></i></div><div class="report-info-content"><h4>리포트 분류</h4><p>기업 종합 분석 리포트</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-pen-alt"></i></div><div class="report-info-content"><h4>분석 깊이</h4><p>프리미엄 등급 (정성 정량 분석)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-shield-alt"></i></div><div class="report-info-content"><h4>면책사항</h4><p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-robot"></i></div><div class="report-info-content"><h4>작성 출처</h4><p>FLOVAH Advanced Analytics</p></div></div>
+            </div>
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>펄어비스 분기보고서 및 사업보고서 (DART)</li><li>Steam, PlayStation Store 판매 데이터</li><li>Newzoo, Sensor Tower 게임 시장 분석</li><li>국내외 증권사 게임 리서치 리포트</li><li>글로벌 게임 미디어 리뷰</li>
+                </ul>
+            </div>
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 05월 13일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) link.classList.add('active');
+            });
+        });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.progress-bar-fill').forEach((fill, i) => {
+                        setTimeout(() => { fill.style.animation = 'none'; setTimeout(() => { fill.style.animation = ''; }, 10); }, i * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 13일 14:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

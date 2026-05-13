@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISC 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+            --bg-hover: #191b1f; --bg-surface: #111316;
+            --ink: #ede8df; --ink-strong: #f5f1e8; --text-body: #b5ad9e;
+            --text-secondary: #7d7568; --text-muted: #524c42; --text-light: #9a9184;
+            --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e; --blue-dim: #465f7a;
+            --rule: #1e1f24; --border: #1e1f24; --border-light: #1a1b20; --border-color: #1e1f24;
+            --accent: #c9a962; --accent2: #5c7d9e; --success: #c9a962;
+            --danger: #c9a962; --warning: #c9a962; --purple: #5c7d9e;
+            --card-bg: #0f1014; --dark-bg: #09090b; --navy: #c9a962;
+            --navy-light: #5c7d9e; --cream: rgba(201,169,98,.05);
+        }
+        body { background: var(--bg-deep); font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-body); font-size: 17px; line-height: 1.9; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: rgba(201,169,98,.25); color: var(--ink-strong); }
+        header { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(12,14,19,.92); backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 1000; }
+        .logo-section { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+        .logo { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+        nav { display: flex; gap: 24px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color .3s ease; position: relative; padding-bottom: 4px; }
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+        nav a.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--gold); }
+        .header-meta { display: flex; align-items: center; gap: 16px; font-size: 11px; }
+        .header-date { color: var(--text-muted); font-weight: 400; letter-spacing: 0.5px; }
+        .flovah-badge { background: transparent; color: var(--gold); padding: 4px 12px; border: 1px solid var(--gold-dim); border-radius: 0; font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        main { margin-top: 60px; padding: 56px 48px 80px; max-width: 1140px; margin-left: auto; margin-right: auto; }
+        section { margin-bottom: 72px; }
+        .section-title { font-family: 'Orbit', sans-serif; font-size: 38px; font-weight: 700; color: var(--ink-strong); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; letter-spacing: -0.3px; }
+        .section-title i { font-size: 28px; color: var(--gold); opacity: .8; }
+        .section-title span { color: var(--ink-strong); }
+        .section-subtitle { color: var(--text-secondary); font-size: 17px; margin-bottom: 36px; font-weight: 400; font-style: italic; }
+        .hero { background: var(--bg-card); border-top: 3px solid var(--gold); border-bottom: 1px solid var(--rule); border-left: none; border-right: none; border-radius: 0; padding: 64px 56px 56px; margin-bottom: 64px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-title { font-family: 'Orbit', sans-serif; font-size: 52px; font-weight: 900; color: var(--ink-strong); margin-bottom: 24px; letter-spacing: -1px; line-height: 1.2; }
+        .hero-title-highlight { color: var(--gold); display: block; }
+        .hero-subtitle { font-family: 'Orbit', sans-serif; font-size: 20px; color: var(--text-secondary); margin-bottom: 48px; font-weight: 400; font-style: italic; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }
+        .metric-card { background: transparent; border: none; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 0; padding: 28px 24px; text-align: center; transition: background .3s ease; }
+        .metric-card:hover { background: var(--gold-glow); }
+        .metric-card:last-child { border-right: none; }
+        .metric-value { font-family: 'Orbit', sans-serif; font-size: 34px; font-weight: 900; margin-bottom: 8px; color: var(--gold); }
+        .metric-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .ai-score-badge { display: inline-flex; align-items: center; gap: 16px; background: var(--bg-elevated); border: 1px solid var(--rule); border-radius: 0; padding: 16px 28px; margin: 28px 0; font-weight: 600; }
+        .score-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbit', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink-strong); }
+        .content-card { background: var(--bg-card); border: none; border-top: 1px solid var(--rule); border-radius: 0; padding: 36px 40px; margin-bottom: 0; transition: background .3s ease; animation: fadeInUp .5s ease forwards; }
+        .content-card:hover { background: var(--bg-hover); }
+        .content-card h3 { font-family: 'Google Sans', 'Noto Sans KR', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 18px; color: var(--ink-strong); display: flex; align-items: center; gap: 10px; }
+        .content-card h3 i { font-size: 18px; color: var(--gold); opacity: .85; }
+        .content-card p { color: var(--text-body); line-height: 1.95; margin-bottom: 16px; font-size: 17px; text-align: justify; word-break: keep-all; }
+        .content-card strong { color: var(--ink); font-weight: 600; }
+        .content-list { list-style: none; margin-top: 16px; }
+        .content-list li { padding: 10px 0; padding-left: 20px; color: var(--text-body); font-size: 16px; position: relative; line-height: 1.75; border-bottom: 1px solid rgba(42,45,54,.6); }
+        .content-list li:last-child { border-bottom: none; }
+        .content-list li::before { content: '\2014'; position: absolute; left: 0; color: var(--gold-dim); font-weight: 700; }
+        .timeline { position: relative; padding: 32px 0; }
+        .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+        .timeline-item { padding-left: 80px; margin-bottom: 32px; position: relative; animation: slideInRight .5s ease forwards; }
+        .timeline-item::before { content: ''; position: absolute; left: 18px; top: 6px; width: 20px; height: 20px; background: var(--bg-deep); border: 2px solid var(--gold-dim); border-radius: 50%; }
+        .timeline-item-year { font-family: 'Orbit', sans-serif; font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+        .timeline-item-content { color: var(--text-body); font-size: 13.5px; line-height: 1.7; }
+        table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--rule); }
+        th { background: var(--bg-elevated); color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.5px; border-bottom: 2px solid var(--gold-dim); }
+        td { color: var(--text-body); }
+        tr:hover { background: var(--gold-glow); }
+        .progress-item { margin-bottom: 22px; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12.5px; }
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+        .progress-bar-bg { width: 100%; height: 5px; background: var(--bg-elevated); border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%); border-radius: 3px; transition: width .5s ease; }
+        .bar-chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; }
+        .bar-item { text-align: center; }
+        .bar-container { height: 180px; background: var(--bg-elevated); border-radius: 0; display: flex; align-items: flex-end; justify-content: center; padding: 16px 8px 0; border: 1px solid var(--rule); border-bottom: none; }
+        .bar { width: 55%; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%); border-radius: 2px 2px 0 0; transition: all .4s ease; }
+        .bar-value { padding: 8px; background: var(--bg-card); border: 1px solid var(--rule); border-top: 2px solid var(--gold-dim); font-family: 'Orbit', sans-serif; font-weight: 700; font-size: 13px; color: var(--gold); }
+        .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); }
+        .two-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .two-column > .content-card:last-child { border-right: none; }
+        .three-column { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+        .three-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .three-column > .content-card:last-child { border-right: none; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+        .tech-badge { background: transparent; border: 1px solid var(--gold-dim); color: var(--gold); padding: 6px 14px; border-radius: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; transition: all .3s ease; }
+        .tech-badge:hover { background: var(--gold-glow); border-color: var(--gold); }
+        .section-header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+        .section-header h2 { font-family: 'Orbit', sans-serif; font-size: 36px; font-weight: 900; color: var(--ink-strong); margin-bottom: 12px; }
+        .section-header p { font-family: 'Orbit', sans-serif; font-size: 17px; color: var(--text-secondary); font-style: italic; }
+        .section-badge { display: inline-block; background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+        .divider { height: 0; border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+        .section-divider { text-align: center; margin: 64px 0; position: relative; }
+        .section-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--rule); }
+        .section-divider-text { display: inline-block; background: var(--bg-deep); padding: 0 24px; position: relative; z-index: 1; font-family: 'Orbit', sans-serif; font-size: 14px; color: var(--gold); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .report-info { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 0; padding: 28px 32px; margin-bottom: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .report-info-item { display: flex; gap: 14px; }
+        .report-info-icon { font-size: 18px; color: var(--gold-dim); flex-shrink: 0; }
+        .report-info-content h4 { color: var(--ink); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .report-info-content p { color: var(--text-body); font-size: 13px; line-height: 1.5; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 32px; border-top: 1px solid var(--rule); }
+        .swot-card { background: var(--bg-card); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 36px 32px; }
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+        .swot-card h3 { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .swot-card ul { list-style: none; }
+        .swot-card li { padding: 8px 0; padding-left: 18px; color: var(--text-body); font-size: 15px; position: relative; line-height: 1.6; border-bottom: 1px solid rgba(42,45,54,.4); }
+        .swot-card li:last-child { border-bottom: none; }
+        .swot-card li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; font-size: 16px; }
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card, .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+        @media print { header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; } nav { display: none; } body { background: #fff; color: #222; } .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 13, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">ISC<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">실리콘러버소켓 세계 1위, 반도체 테스트 인터페이스 글로벌 리더</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle" style="background: conic-gradient(var(--gold) 0deg 288deg, var(--rule) 288deg 360deg);">80</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card"><div class="metric-value">3,290억</div><div class="metric-label">2026E 연 매출</div></div>
+                        <div class="metric-card"><div class="metric-value">3.0조+</div><div class="metric-label">시가총액</div></div>
+                        <div class="metric-card"><div class="metric-value">+237%</div><div class="metric-label">2026 1Q 영업이익 증가</div></div>
+                        <div class="metric-card"><div class="metric-value">24년</div><div class="metric-label">업력</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="report-info">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-calendar"></i></div><div class="report-info-content"><h4>리포트 발행일</h4><p>2026년 05월 13일</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-building"></i></div><div class="report-info-content"><h4>기업명</h4><p>ISC (ISC Co., Ltd.)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-code"></i></div><div class="report-info-content"><h4>상장 코드</h4><p>KOSDAQ 095340</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-user-tie"></i></div><div class="report-info-content"><h4>대표이사</h4><p>김종우</p></div></div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">I. 기업 개요</span></div>
+
+        <section id="company">
+            <div class="section-title"><i class="fas fa-building"></i><span>기업 개요</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>ISC는 2002년 설립된 반도체 테스트 인터페이스(Test Interface) 전문기업으로, 실리콘러버소켓(Silicone Rubber Socket) 분야에서 세계 1위의 시장 점유율을 보유하고 있습니다. 반도체 칩의 전기적 특성을 검사하는 테스트 공정에서 사용되는 핵심 부품을 공급하며, 글로벌 반도체 대기업들이 ISC의 주요 고객입니다.</p>
+<p>2026년 1분기 영업이익이 전년 동기 대비 237% 증가하며 폭발적 성장세를 보이고 있습니다. AI 반도체, HBM, 첨단 패키징 수요 증가에 따라 테스트 공정의 중요성과 복잡도가 높아지면서, ISC의 고성능 테스트소켓 수요가 구조적으로 확대되고 있습니다. 2026년 연매출 3,290억원이 전망되며, 사상 최대 실적 달성이 기대됩니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-item-year">2002</div><div class="timeline-item-content">ISC 설립, 반도체 테스트소켓 사업 시작</div></div><div class="timeline-item"><div class="timeline-item-year">2008</div><div class="timeline-item-content">실리콘러버소켓 독자 기술 개발 성공</div></div><div class="timeline-item"><div class="timeline-item-year">2012</div><div class="timeline-item-content">코스닥 상장, 글로벌 고객 확대</div></div><div class="timeline-item"><div class="timeline-item-year">2015</div><div class="timeline-item-content">삼성전자·SK하이닉스 핵심 공급사 지위 확보</div></div><div class="timeline-item"><div class="timeline-item-year">2018</div><div class="timeline-item-content">해외 매출 비중 50% 돌파</div></div><div class="timeline-item"><div class="timeline-item-year">2020</div><div class="timeline-item-content">HBM 테스트소켓 공급 시작</div></div><div class="timeline-item"><div class="timeline-item-year">2024</div><div class="timeline-item-content">영업이익 1,000억원 돌파</div></div><div class="timeline-item"><div class="timeline-item-year">2026</div><div class="timeline-item-content">1Q 영업이익 +237%, 역대 최고 실적 전망</div></div>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 반도체 테스트 인터페이스 기술의 글로벌 표준을 선도하는 세계 1위 기업을 유지하는 것입니다.</p><p><strong>미션:</strong> 반도체 칩의 품질과 신뢰성을 보장하는 최고 성능의 테스트 솔루션을 개발·공급합니다.</p><p><strong>핵심 가치:</strong> 기술 혁신, 품질 제일, 고객 신뢰, 글로벌 시장 리더십을 추구합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>실리콘러버소켓: 반도체 테스트용 핵심 인터페이스 부품</li><li>테스트보드: PCB 기반 테스트 기판</li><li>프로브카드: 웨이퍼 레벨 테스트 솔루션</li><li>번인소켓: 반도체 신뢰성 테스트용 소켓</li><li>HBM 테스트소켓: AI 메모리 전용 고성능 소켓</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list"><li>삼성전자 - 메모리/파운드리 테스트소켓</li><li>SK하이닉스 - HBM/DRAM 테스트소켓</li><li>TSMC - 파운드리 테스트 인터페이스</li><li>인텔, AMD - 로직 칩 테스트소켓</li><li>마이크론, 키옥시아 - 메모리 테스트</li></ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list"><li>글로벌 ATE(자동 테스트 장비) 업체 - Advantest, Teradyne</li><li>삼성전자 - 공동 개발 파트너</li><li>소재 업체 - 실리콘러버 원재료 공급</li><li>PCB 업체 - 테스트보드 협력</li><li>반도체 OSAT - 후공정 테스트 파트너</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">II. 기술 분석</span></div>
+
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i><span>기술 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p><strong>실리콘러버소켓:</strong> ISC의 핵심 기술인 실리콘러버소켓은 도전성 입자가 분산된 실리콘러버를 이용하여 반도체 칩의 전기적 특성을 비파괴적으로 검사하는 테스트 인터페이스입니다. 기존 포고핀(Pogo-pin) 방식 대비 미세 피치 대응이 용이하고, 칩 손상 위험이 낮으며, 교체 비용이 저렴한 장점이 있습니다. HBM, AI 칩 등 고밀도 패키징 반도체의 미세 피치 테스트에서 독보적 기술 우위를 보유합니다.</p><p><strong>HBM 테스트소켓:</strong> HBM은 수천 개의 미세 범프를 통해 연결되므로, 테스트 소켓의 정밀도가 극도로 높아야 합니다. ISC는 HBM3E/HBM4 대응 초미세 피치 테스트소켓을 세계 최초로 개발·양산하고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>HBM4 대응 소켓:</strong> 2026년 하반기 양산이 예상되는 HBM4에 맞춘 차세대 테스트소켓을 개발 중입니다. 더욱 미세한 피치와 높은 대역폭에 대응해야 하며, 열관리 기능이 내장된 신형 소켓을 준비하고 있습니다.</p><p><strong>2.5D/3D 패키징 테스트:</strong> CoWoS, HBM-on-Logic 등 첨단 패키징 기술의 확산에 따라, 패키지 레벨의 복합 테스트 솔루션을 개발하고 있습니다.</p><p><strong>자동차 반도체 테스트:</strong> 차량용 반도체의 신뢰성 테스트 요구가 높아짐에 따라, 고온·고습 환경에서의 번인(Burn-in) 테스트 소켓 라인업을 확대합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item"><div class="progress-label"><span class="progress-label-name">실리콘러버소켓</span><span class="progress-label-value">95%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">HBM 테스트소켓</span><span class="progress-label-value">92%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 92%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">테스트보드</span><span class="progress-label-value">85%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">첨단 패키징 대응</span><span class="progress-label-value">80%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">자동차 반도체 대응</span><span class="progress-label-value">72%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 72%;"></div></div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>R&D 역량</h3>
+                <p>ISC는 매출의 약 8%를 R&D에 투자하며, 150명 이상의 연구 인력이 차세대 테스트 인터페이스 개발에 전념합니다. 실리콘러버 소재 배합, 미세 피치 설계, 전기적 특성 최적화 등에서 200건 이상의 특허를 보유하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">실리콘러버소켓</span><span class="tech-badge">HBM 테스트</span><span class="tech-badge">테스트보드</span><span class="tech-badge">번인소켓</span><span class="tech-badge">미세피치</span><span class="tech-badge">프로브카드</span><span class="tech-badge">3D 패키징</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">III. 시장 분석</span></div>
+
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-bar"></i><span>시장 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>시장 환경</h3>
+                <p>글로벌 반도체 테스트 장비·인터페이스 시장은 2026년 약 80억 달러 규모이며, AI 반도체 수요 확대에 따라 테스트 공정의 복잡도와 비용이 증가하고 있습니다. 특히 HBM, 첨단 로직 칩, 자동차 반도체에서 테스트 인터페이스의 고급화 트렌드가 뚜렷합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>시장 규모 및 성장 전망</h3>
+                <p>테스트소켓 시장은 전체 반도체 테스트 시장의 약 15%인 12억 달러 규모이며, 연평균 12-15%의 높은 성장률을 보이고 있습니다. ISC는 실리콘러버소켓 세그먼트에서 세계 1위로, 약 40-50%의 점유율을 차지하고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-crosshairs"></i>시장 포지셔닝</h3>
+                <p>ISC는 실리콘러버소켓 분야의 글로벌 압도적 1위 기업으로, 일본 Yokowo, Enplas 등과 경쟁하고 있습니다. HBM 테스트소켓에서는 사실상 독점에 가까운 시장 지위를 확보하고 있어, AI 반도체 성장의 직접적 수혜를 받고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">IV. 경쟁 분석</span></div>
+
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i><span>경쟁 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>기업</th><th>매출</th><th>주력 제품</th><th>시장 지위</th><th>차별점</th></tr></thead>
+                        <tbody><tr><td><strong>ISC</strong></td><td>3,290억</td><td>실리콘러버소켓</td><td>세계 1위</td><td>HBM 독점, 미세피치</td></tr><tr><td>Yokowo</td><td>$200M</td><td>포고핀소켓</td><td>2위</td><td>일본 내수 강세</td></tr><tr><td>Enplas</td><td>$180M</td><td>테스트소켓</td><td>3위</td><td>다양한 소켓 라인업</td></tr><tr><td>Smiths Interconnect</td><td>$150M</td><td>RF 테스트</td><td>4위</td><td>고주파 특화</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>경쟁 우위 요소</h3>
+                <p>ISC의 핵심 경쟁 우위는 실리콘러버소켓 원천 기술과 HBM 테스트소켓 독점적 공급 지위에 있습니다. 20년 이상 축적된 소재·설계 노하우는 후발 업체가 쉽게 따라올 수 없는 기술적 진입장벽을 형성합니다. 글로벌 주요 반도체 업체 모두와 거래 관계를 맺고 있어, 안정적인 고객 기반도 강점입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">V. SWOT 분석</span></div>
+
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i><span>SWOT 분석</span></div>
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-star" style="color:var(--gold);"></i>Strengths (강점)</h3>
+                    <ul><li>실리콘러버소켓 세계 1위 (점유율 40-50%)</li><li>HBM 테스트소켓 사실상 독점</li><li>20년 이상 축적된 소재·설계 노하우</li><li>글로벌 반도체 빅5 모두 고객사</li><li>높은 영업이익률 (30%+)</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-exclamation-triangle" style="color:var(--blue);"></i>Weaknesses (약점)</h3>
+                    <ul><li>단일 제품군(테스트소켓) 집중도 높음</li><li>삼성전자·SK하이닉스 의존도</li><li>반도체 테스트 시장 규모 자체의 한계</li><li>원재료(실리콘러버) 가격 변동</li><li>경쟁사의 기술 추격 가능성</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-lightbulb" style="color:var(--gold);"></i>Opportunities (기회)</h3>
+                    <ul><li>HBM 세대 전환 시 소켓 교체 수요</li><li>AI 반도체 테스트 복잡도 증가</li><li>자동차 반도체 테스트 시장 성장</li><li>첨단 패키징(CoWoS, 3D IC) 테스트 수요</li><li>중국·인도 반도체 팹 확장</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-bolt" style="color:var(--blue);"></i>Threats (위협)</h3>
+                    <ul><li>반도체 업황 하락 시 테스트 수요 감소</li><li>일본 경쟁사의 기술 추격</li><li>새로운 테스트 방식 등장 가능성</li><li>고객사 내재화(In-house) 리스크</li><li>미·중 반도체 규제 간접 영향</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VI. 성장 전략</span></div>
+
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-chess-king"></i><span>성장 전략</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>단기 전략 (1-2년)</h3>
+                <p>2026-2027년은 HBM4/HBM5 대응 소켓 선제 개발과 글로벌 고객 확대에 집중합니다. 삼성전자, SK하이닉스의 HBM 생산 증가에 맞춰 공급 능력을 확대하며, TSMC, Intel 등 해외 고객 비중을 높입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i>중장기 전략 (3-5년)</h3>
+                <p>중장기적으로는 테스트 인터페이스 토털 솔루션 기업으로 도약합니다. 소켓, 보드, 프로브카드를 아우르는 통합 솔루션을 제공하고, 자동차·우주항공 반도체 테스트 시장에 진출합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i>핵심 리스크 요인</h3>
+                <p><strong>사이클 리스크:</strong> 반도체 업황에 따른 테스트 물량 변동이 실적에 영향을 미칩니다.</p><p><strong>기술 대체 리스크:</strong> 비접촉식 테스트 등 새로운 기술이 등장할 경우 기존 소켓 시장이 축소될 수 있습니다.</p><p><strong>집중 리스크:</strong> 테스트소켓이라는 단일 제품군에 대한 의존도가 높아, 사업 다각화가 필요합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VII. 재무 분석</span></div>
+
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i><span>재무 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>실적 추이</h3>
+                <p>ISC는 2026년 1분기 영업이익이 전년 동기 대비 237% 급증하며 폭발적 실적 성장을 보이고 있습니다. 2026년 연매출 3,290억원, 영업이익률 30% 이상이 전망되며, 사상 최대 실적 달성이 확실시됩니다. HBM 테스트소켓의 고부가가치 제품 믹스 개선이 수익성 향상의 핵심 동력입니다.</p>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-container"><div class="bar" style="height:72px;"></div></div><div class="bar-value">1,500억</div><div class="bar-label">2023</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:107px;"></div></div><div class="bar-value">2,200억</div><div class="bar-label">2024</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:136px;"></div></div><div class="bar-value">2,800억</div><div class="bar-label">2025E</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:160px;"></div></div><div class="bar-value">3,290억</div><div class="bar-label">2026E</div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>주요 재무 지표</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>지표</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody><tr><td>매출액</td><td>1,500억</td><td>2,200억</td><td>2,800억</td><td>3,290억</td></tr><tr><td>영업이익</td><td>350억</td><td>600억</td><td>840억</td><td>1,000억+</td></tr><tr><td>영업이익률</td><td>23.3%</td><td>27.3%</td><td>30.0%</td><td>30.4%</td></tr><tr><td>순이익</td><td>290억</td><td>500억</td><td>700억</td><td>830억</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>밸류에이션 분석</h3>
+                <p>ISC의 2026년 예상 PER은 약 30-35배 수준으로, HBM 테스트소켓 독점이라는 프리미엄이 반영되어 있습니다. 글로벌 반도체 테스트 업체 평균 PER 25배 대비 소폭 프리미엄이나, 성장률을 감안하면 합리적 수준입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VIII. 결론</span></div>
+
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i><span>결론 및 투자 의견</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>FLOVAH 분석 의견</h3>
+                <p>FLOVAH의 분석 결과, ISC는 HBM 테스트소켓 독점 지위를 기반으로 AI 반도체 성장의 핵심 수혜 기업입니다.</p><p><strong>긍정 평가:</strong> (1) 실리콘러버소켓 세계 1위의 독보적 지위, (2) HBM 수요 폭증의 직접 수혜, (3) 30% 이상의 높은 영업이익률</p><p><strong>부정 평가:</strong> (1) 단일 제품군 집중 리스크, (2) 높은 밸류에이션, (3) 사이클 민감도</p><p><strong>종합 평가:</strong> 중기 매수(Buy) 의견입니다. HBM 슈퍼사이클이 지속되는 한 실적 성장이 담보됩니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>투자자 요약</h3>
+                <p><strong>투자 등급:</strong> 매수 (Buy)</p><p><strong>추천 투자 기간:</strong> 중기(1-3년)</p><p><strong>투자 포지션:</strong> HBM 테스트 독점 수혜주</p><p><strong>주요 모니터링:</strong> HBM 생산량, 테스트소켓 ASP 추이, 해외 고객 비중, 분기 실적</p>
+            </div>
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-file-alt"></i></div><div class="report-info-content"><h4>리포트 분류</h4><p>기업 종합 분석 리포트</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-pen-alt"></i></div><div class="report-info-content"><h4>분석 깊이</h4><p>프리미엄 등급 (정성 정량 분석)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-shield-alt"></i></div><div class="report-info-content"><h4>면책사항</h4><p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-robot"></i></div><div class="report-info-content"><h4>작성 출처</h4><p>FLOVAH Advanced Analytics</p></div></div>
+            </div>
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>ISC 분기보고서 및 사업보고서 (DART)</li><li>한국거래소(KRX) 공시 정보</li><li>SEMI 반도체 테스트 시장 통계</li><li>Advantest, Teradyne 등 ATE 업체 IR</li><li>국내외 증권사 리서치 리포트</li>
+                </ul>
+            </div>
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 05월 13일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) link.classList.add('active');
+            });
+        });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.progress-bar-fill').forEach((fill, i) => {
+                        setTimeout(() => { fill.style.animation = 'none'; setTimeout(() => { fill.style.animation = ''; }, 10); }, i * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 13일 14:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

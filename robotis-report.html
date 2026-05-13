@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로보티즈 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+            --bg-hover: #191b1f; --bg-surface: #111316;
+            --ink: #ede8df; --ink-strong: #f5f1e8; --text-body: #b5ad9e;
+            --text-secondary: #7d7568; --text-muted: #524c42; --text-light: #9a9184;
+            --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e; --blue-dim: #465f7a;
+            --rule: #1e1f24; --border: #1e1f24; --border-light: #1a1b20; --border-color: #1e1f24;
+            --accent: #c9a962; --accent2: #5c7d9e; --success: #c9a962;
+            --danger: #c9a962; --warning: #c9a962; --purple: #5c7d9e;
+            --card-bg: #0f1014; --dark-bg: #09090b; --navy: #c9a962;
+            --navy-light: #5c7d9e; --cream: rgba(201,169,98,.05);
+        }
+        body { background: var(--bg-deep); font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-body); font-size: 17px; line-height: 1.9; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: rgba(201,169,98,.25); color: var(--ink-strong); }
+        header { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(12,14,19,.92); backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 1000; }
+        .logo-section { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+        .logo { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+        nav { display: flex; gap: 24px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color .3s ease; position: relative; padding-bottom: 4px; }
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+        nav a.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--gold); }
+        .header-meta { display: flex; align-items: center; gap: 16px; font-size: 11px; }
+        .header-date { color: var(--text-muted); font-weight: 400; letter-spacing: 0.5px; }
+        .flovah-badge { background: transparent; color: var(--gold); padding: 4px 12px; border: 1px solid var(--gold-dim); border-radius: 0; font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        main { margin-top: 60px; padding: 56px 48px 80px; max-width: 1140px; margin-left: auto; margin-right: auto; }
+        section { margin-bottom: 72px; }
+        .section-title { font-family: 'Orbit', sans-serif; font-size: 38px; font-weight: 700; color: var(--ink-strong); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; letter-spacing: -0.3px; }
+        .section-title i { font-size: 28px; color: var(--gold); opacity: .8; }
+        .section-title span { color: var(--ink-strong); }
+        .section-subtitle { color: var(--text-secondary); font-size: 17px; margin-bottom: 36px; font-weight: 400; font-style: italic; }
+        .hero { background: var(--bg-card); border-top: 3px solid var(--gold); border-bottom: 1px solid var(--rule); border-left: none; border-right: none; border-radius: 0; padding: 64px 56px 56px; margin-bottom: 64px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-title { font-family: 'Orbit', sans-serif; font-size: 52px; font-weight: 900; color: var(--ink-strong); margin-bottom: 24px; letter-spacing: -1px; line-height: 1.2; }
+        .hero-title-highlight { color: var(--gold); display: block; }
+        .hero-subtitle { font-family: 'Orbit', sans-serif; font-size: 20px; color: var(--text-secondary); margin-bottom: 48px; font-weight: 400; font-style: italic; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }
+        .metric-card { background: transparent; border: none; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 0; padding: 28px 24px; text-align: center; transition: background .3s ease; }
+        .metric-card:hover { background: var(--gold-glow); }
+        .metric-card:last-child { border-right: none; }
+        .metric-value { font-family: 'Orbit', sans-serif; font-size: 34px; font-weight: 900; margin-bottom: 8px; color: var(--gold); }
+        .metric-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .ai-score-badge { display: inline-flex; align-items: center; gap: 16px; background: var(--bg-elevated); border: 1px solid var(--rule); border-radius: 0; padding: 16px 28px; margin: 28px 0; font-weight: 600; }
+        .score-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbit', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink-strong); }
+        .content-card { background: var(--bg-card); border: none; border-top: 1px solid var(--rule); border-radius: 0; padding: 36px 40px; margin-bottom: 0; transition: background .3s ease; animation: fadeInUp .5s ease forwards; }
+        .content-card:hover { background: var(--bg-hover); }
+        .content-card h3 { font-family: 'Google Sans', 'Noto Sans KR', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 18px; color: var(--ink-strong); display: flex; align-items: center; gap: 10px; }
+        .content-card h3 i { font-size: 18px; color: var(--gold); opacity: .85; }
+        .content-card p { color: var(--text-body); line-height: 1.95; margin-bottom: 16px; font-size: 17px; text-align: justify; word-break: keep-all; }
+        .content-card strong { color: var(--ink); font-weight: 600; }
+        .content-list { list-style: none; margin-top: 16px; }
+        .content-list li { padding: 10px 0; padding-left: 20px; color: var(--text-body); font-size: 16px; position: relative; line-height: 1.75; border-bottom: 1px solid rgba(42,45,54,.6); }
+        .content-list li:last-child { border-bottom: none; }
+        .content-list li::before { content: '\2014'; position: absolute; left: 0; color: var(--gold-dim); font-weight: 700; }
+        .timeline { position: relative; padding: 32px 0; }
+        .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+        .timeline-item { padding-left: 80px; margin-bottom: 32px; position: relative; animation: slideInRight .5s ease forwards; }
+        .timeline-item::before { content: ''; position: absolute; left: 18px; top: 6px; width: 20px; height: 20px; background: var(--bg-deep); border: 2px solid var(--gold-dim); border-radius: 50%; }
+        .timeline-item-year { font-family: 'Orbit', sans-serif; font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+        .timeline-item-content { color: var(--text-body); font-size: 13.5px; line-height: 1.7; }
+        table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--rule); }
+        th { background: var(--bg-elevated); color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.5px; border-bottom: 2px solid var(--gold-dim); }
+        td { color: var(--text-body); }
+        tr:hover { background: var(--gold-glow); }
+        .progress-item { margin-bottom: 22px; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12.5px; }
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+        .progress-bar-bg { width: 100%; height: 5px; background: var(--bg-elevated); border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%); border-radius: 3px; transition: width .5s ease; }
+        .bar-chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; }
+        .bar-item { text-align: center; }
+        .bar-container { height: 180px; background: var(--bg-elevated); border-radius: 0; display: flex; align-items: flex-end; justify-content: center; padding: 16px 8px 0; border: 1px solid var(--rule); border-bottom: none; }
+        .bar { width: 55%; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%); border-radius: 2px 2px 0 0; transition: all .4s ease; }
+        .bar-value { padding: 8px; background: var(--bg-card); border: 1px solid var(--rule); border-top: 2px solid var(--gold-dim); font-family: 'Orbit', sans-serif; font-weight: 700; font-size: 13px; color: var(--gold); }
+        .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); }
+        .two-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .two-column > .content-card:last-child { border-right: none; }
+        .three-column { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+        .three-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .three-column > .content-card:last-child { border-right: none; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+        .tech-badge { background: transparent; border: 1px solid var(--gold-dim); color: var(--gold); padding: 6px 14px; border-radius: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; transition: all .3s ease; }
+        .tech-badge:hover { background: var(--gold-glow); border-color: var(--gold); }
+        .section-header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+        .section-header h2 { font-family: 'Orbit', sans-serif; font-size: 36px; font-weight: 900; color: var(--ink-strong); margin-bottom: 12px; }
+        .section-header p { font-family: 'Orbit', sans-serif; font-size: 17px; color: var(--text-secondary); font-style: italic; }
+        .section-badge { display: inline-block; background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+        .divider { height: 0; border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+        .section-divider { text-align: center; margin: 64px 0; position: relative; }
+        .section-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--rule); }
+        .section-divider-text { display: inline-block; background: var(--bg-deep); padding: 0 24px; position: relative; z-index: 1; font-family: 'Orbit', sans-serif; font-size: 14px; color: var(--gold); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .report-info { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 0; padding: 28px 32px; margin-bottom: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .report-info-item { display: flex; gap: 14px; }
+        .report-info-icon { font-size: 18px; color: var(--gold-dim); flex-shrink: 0; }
+        .report-info-content h4 { color: var(--ink); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .report-info-content p { color: var(--text-body); font-size: 13px; line-height: 1.5; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 32px; border-top: 1px solid var(--rule); }
+        .swot-card { background: var(--bg-card); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 36px 32px; }
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+        .swot-card h3 { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .swot-card ul { list-style: none; }
+        .swot-card li { padding: 8px 0; padding-left: 18px; color: var(--text-body); font-size: 15px; position: relative; line-height: 1.6; border-bottom: 1px solid rgba(42,45,54,.4); }
+        .swot-card li:last-child { border-bottom: none; }
+        .swot-card li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; font-size: 16px; }
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card, .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+        @media print { header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; } nav { display: none; } body { background: #fff; color: #222; } .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 13, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">로보티즈<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">다이나믹셀 액추에이터 글로벌 리더, AI 휴머노이드 로봇 시대의 핵심 부품 공급자</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle" style="background: conic-gradient(var(--gold) 0deg 266deg, var(--rule) 266deg 360deg);">74</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card"><div class="metric-value">800억</div><div class="metric-label">2026E 연 매출</div></div>
+                        <div class="metric-card"><div class="metric-value">2.5조+</div><div class="metric-label">시가총액</div></div>
+                        <div class="metric-card"><div class="metric-value">+105%</div><div class="metric-label">2026E 매출 성장</div></div>
+                        <div class="metric-card"><div class="metric-value">25년</div><div class="metric-label">업력</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="report-info">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-calendar"></i></div><div class="report-info-content"><h4>리포트 발행일</h4><p>2026년 05월 13일</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-building"></i></div><div class="report-info-content"><h4>기업명</h4><p>로보티즈 (ROBOTIS Co., Ltd.)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-code"></i></div><div class="report-info-content"><h4>상장 코드</h4><p>KOSDAQ 108860</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-user-tie"></i></div><div class="report-info-content"><h4>대표이사</h4><p>김병수</p></div></div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">I. 기업 개요</span></div>
+
+        <section id="company">
+            <div class="section-title"><i class="fas fa-building"></i><span>기업 개요</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>로보티즈는 1999년 설립된 로봇 부품·솔루션 전문기업으로, 지능형 액추에이터 '다이나믹셀(DYNAMIXEL)'의 세계적 브랜드를 보유하고 있습니다. 다이나믹셀은 서보모터, 감속기, 드라이버, 통신 모듈을 일체화한 스마트 액추에이터로, 글로벌 로봇 연구·교육·산업 분야에서 사실상의 표준으로 사용되고 있습니다.</p>
+<p>2026년에는 매출 800억원(전년 대비 +105%)이 전망되며, 다이나믹셀 누적 출하량 100만개를 돌파할 것으로 예상됩니다. 최근 테슬라 옵티머스, 피규어 AI, 보스턴 다이나믹스 등 글로벌 휴머노이드 로봇 프로젝트의 확산으로, 고성능 액추에이터 수요가 폭발적으로 증가하고 있습니다. 로보티즈는 이러한 휴머노이드 로봇 시대의 핵심 부품 공급자로서 구조적 성장이 기대됩니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-item-year">1999</div><div class="timeline-item-content">로보티즈 설립, 로봇 부품 개발 시작</div></div><div class="timeline-item"><div class="timeline-item-year">2006</div><div class="timeline-item-content">다이나믹셀 브랜드 출시, 글로벌 판매 개시</div></div><div class="timeline-item"><div class="timeline-item-year">2010</div><div class="timeline-item-content">ROS(Robot Operating System) 호환 생태계 구축</div></div><div class="timeline-item"><div class="timeline-item-year">2015</div><div class="timeline-item-content">코스닥 상장, 교육용 로봇 시장 확대</div></div><div class="timeline-item"><div class="timeline-item-year">2018</div><div class="timeline-item-content">오픈소스 로봇 플랫폼 TurtleBot 글로벌 확산</div></div><div class="timeline-item"><div class="timeline-item-year">2022</div><div class="timeline-item-content">산업용 다이나믹셀 라인업 확대</div></div><div class="timeline-item"><div class="timeline-item-year">2024</div><div class="timeline-item-content">휴머노이드 로봇용 고토크 액추에이터 개발</div></div><div class="timeline-item"><div class="timeline-item-year">2025-2026</div><div class="timeline-item-content">매출 +105% 성장, 100만개 출하 돌파 전망</div></div>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 로봇이 일상이 되는 세상을 만드는 글로벌 로봇 기술 기업이 되는 것입니다.</p><p><strong>미션:</strong> 세계 최고의 지능형 액추에이터와 로봇 플랫폼을 개발하여, 로봇 산업의 성장을 가속화합니다.</p><p><strong>핵심 가치:</strong> 기술 혁신, 오픈 생태계, 글로벌 표준화, 사용자 중심 설계를 추구합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>다이나믹셀 사업부: 지능형 액추에이터 (매출 주력)</li><li>로봇 플랫폼: TurtleBot, OpenMANIPULATOR 등</li><li>교육 로봇: DREAM, BIOLOID 시리즈</li><li>솔루션 사업부: 산업용 로봇 시스템</li><li>소프트웨어: ROS2 호환 SW, AI 제어</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list"><li>글로벌 로봇 스타트업 - 휴머노이드/서비스 로봇</li><li>테슬라, Figure AI - 휴머노이드 로봇 프로젝트</li><li>MIT, Stanford, KAIST - 로봇 연구 기관</li><li>글로벌 교육 시장 - STEM 로봇 교육</li><li>산업용 로봇 업체 - 협동 로봇 부품</li></ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list"><li>NVIDIA - AI 로봇 생태계 협력</li><li>Open Robotics - ROS2 생태계 공동 발전</li><li>삼성전자 - 서비스 로봇 부품 협력</li><li>글로벌 대학·연구소 - 공동 연구</li><li>AWS RoboMaker - 클라우드 로봇 플랫폼</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">II. 기술 분석</span></div>
+
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i><span>기술 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p><strong>다이나믹셀(DYNAMIXEL):</strong> 로보티즈의 핵심 제품인 다이나믹셀은 모터, 감속기, 제어기, 통신 모듈이 일체화된 올인원 스마트 액추에이터입니다. 위치·속도·토크 제어가 가능하며, 데이지체인 통신으로 다수의 액추에이터를 간편하게 연결할 수 있습니다. X 시리즈, P 시리즈, Y 시리즈 등 다양한 라인업을 보유하여 소형 로봇부터 대형 휴머노이드까지 대응합니다.</p><p><strong>고토크 액추에이터:</strong> 휴머노이드 로봇의 관절에 사용되는 고토크 액추에이터를 개발하여, 테슬라 옵티머스급 대형 휴머노이드 로봇의 부품 시장에 진출하고 있습니다. 인체 관절에 준하는 자유도와 토크를 제공하며, AI 기반 정밀 제어가 가능합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>AI 적응형 액추에이터:</strong> 강화학습(RL) 기반의 자율 제어 알고리즘을 액추에이터에 내장하여, 환경에 적응하는 스마트 구동 시스템을 개발 중입니다.</p><p><strong>탄성 액추에이터(SEA):</strong> 사람과 안전하게 협동할 수 있는 탄성 직렬 액추에이터를 개발하여, 서비스 로봇과 의료 로봇 시장을 타깃합니다.</p><p><strong>대형 휴머노이드 플랫폼:</strong> 자체 휴머노이드 로봇 플랫폼을 개발하여, 액추에이터뿐 아니라 완제품 로봇 시장에도 진출할 계획입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item"><div class="progress-label"><span class="progress-label-name">다이나믹셀 기술력</span><span class="progress-label-value">95%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">고토크 액추에이터</span><span class="progress-label-value">78%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">AI 제어 기술</span><span class="progress-label-value">70%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 70%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">ROS2 생태계</span><span class="progress-label-value">90%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 90%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">휴머노이드 플랫폼</span><span class="progress-label-value">55%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 55%;"></div></div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>R&D 역량</h3>
+                <p>로보티즈는 매출의 약 15%를 R&D에 투자하며, 100명 이상의 연구진이 차세대 액추에이터와 로봇 플랫폼 개발에 전념합니다. 글로벌 오픈소스 로봇 커뮤니티와의 협력을 통해 기술 표준화를 선도하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">DYNAMIXEL</span><span class="tech-badge">ROS2</span><span class="tech-badge">액추에이터</span><span class="tech-badge">서보모터</span><span class="tech-badge">TurtleBot</span><span class="tech-badge">AI 제어</span><span class="tech-badge">휴머노이드</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">III. 시장 분석</span></div>
+
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-bar"></i><span>시장 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>시장 환경</h3>
+                <p>글로벌 로봇 시장은 2026년 약 800억 달러 규모이며, 특히 휴머노이드 로봇 시장은 테슬라, 피규어 AI, 보스턴 다이나믹스 등의 투자로 2030년 100억 달러 이상으로 급성장할 전망입니다. 로봇용 액추에이터 시장도 연 30-40% 이상의 고성장이 예상됩니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>시장 규모 및 성장 전망</h3>
+                <p>글로벌 로봇용 정밀 액추에이터 시장은 2026년 약 30억 달러 규모이며, 휴머노이드 로봇 시장 확대에 따라 2030년 100억 달러 이상으로 성장이 전망됩니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-crosshairs"></i>시장 포지셔닝</h3>
+                <p>로보티즈는 스마트 액추에이터 분야에서 글로벌 독보적 위치를 차지하고 있습니다. 다이나믹셀은 전 세계 로봇 연구·교육 시장의 사실상 표준이며, 산업용·휴머노이드용으로 시장을 확대하고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">IV. 경쟁 분석</span></div>
+
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i><span>경쟁 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>기업</th><th>주력 제품</th><th>타깃 시장</th><th>강점</th><th>약점</th></tr></thead>
+                        <tbody><tr><td><strong>로보티즈</strong></td><td>DYNAMIXEL</td><td>연구/교육/산업</td><td>글로벌 표준, 생태계</td><td>규모 작음</td></tr><tr><td>Harmonic Drive</td><td>감속기</td><td>산업 로봇</td><td>정밀 감속기 1위</td><td>액추에이터 아님</td></tr><tr><td>Maxon Motor</td><td>서보모터</td><td>의료/산업</td><td>고정밀 모터</td><td>통합 솔루션 부족</td></tr><tr><td>Oriental Motor</td><td>스텝모터</td><td>자동화 장비</td><td>다양한 라인업</td><td>스마트 기능 미흡</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>경쟁 우위 요소</h3>
+                <p>로보티즈의 핵심 경쟁 우위는 올인원 스마트 액추에이터라는 제품 컨셉과 글로벌 로봇 생태계에서의 사실상 표준 지위에 있습니다. ROS2와의 완벽한 호환, 풍부한 개발 자료, 글로벌 커뮤니티 지원 등 소프트웨어 생태계가 하드웨어와 결합된 경쟁 우위는 후발 업체가 쉽게 복제할 수 없습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">V. SWOT 분석</span></div>
+
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i><span>SWOT 분석</span></div>
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-star" style="color:var(--gold);"></i>Strengths (강점)</h3>
+                    <ul><li>다이나믹셀 글로벌 사실상 표준 지위</li><li>올인원 스마트 액추에이터 원조</li><li>ROS2 생태계 핵심 파트너</li><li>휴머노이드 로봇 시대 핵심 수혜</li><li>100만개+ 누적 출하의 검증된 신뢰성</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-exclamation-triangle" style="color:var(--blue);"></i>Weaknesses (약점)</h3>
+                    <ul><li>절대적 매출 규모 아직 소형 (800억)</li><li>산업용 대형 액추에이터 경험 부족</li><li>대량 생산 체제 구축 필요</li><li>가격 대비 대형 로봇 적용 한계</li><li>마케팅·영업 인프라 한계</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-lightbulb" style="color:var(--gold);"></i>Opportunities (기회)</h3>
+                    <ul><li>휴머노이드 로봇 시장 폭발적 성장</li><li>AI 로봇 자율 제어 시대 도래</li><li>서비스 로봇 상용화 가속</li><li>글로벌 제조업 자동화 수요</li><li>국방·우주 로봇 신규 시장</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-bolt" style="color:var(--blue);"></i>Threats (위협)</h3>
+                    <ul><li>대기업의 액추에이터 시장 진출</li><li>중국 저가 액추에이터 경쟁</li><li>기술 표준 변화 리스크</li><li>로봇 시장 성장 둔화 가능성</li><li>핵심 부품 수급 불안정</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VI. 성장 전략</span></div>
+
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-chess-king"></i><span>성장 전략</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>단기 전략 (1-2년)</h3>
+                <p>2026-2027년은 휴머노이드 로봇용 고토크 액추에이터 공급 확대와 대량 생산 체제 구축에 집중합니다. 테슬라, Figure AI 등 글로벌 휴머노이드 로봇 프로젝트에 핵심 부품을 공급하며, 생산 CAPA를 3배 이상 확대합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i>중장기 전략 (3-5년)</h3>
+                <p>중장기적으로는 액추에이터 + 소프트웨어 + 플랫폼을 통합하는 로봇 토털 솔루션 기업으로 성장합니다. 자체 휴머노이드 로봇 플랫폼 출시, 글로벌 매출 비중 70% 이상 달성, 매출 3,000억원 돌파를 목표로 합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i>핵심 리스크 요인</h3>
+                <p><strong>시장 기대 리스크:</strong> 휴머노이드 로봇 시장의 상용화가 예상보다 느릴 경우, 높은 밸류에이션에 대한 조정 가능성이 있습니다.</p><p><strong>경쟁 리스크:</strong> 대기업이나 중국 업체의 액추에이터 시장 진출 시 가격 경쟁이 심화될 수 있습니다.</p><p><strong>생산 역량 리스크:</strong> 급증하는 수요에 맞춰 생산 능력을 적시에 확보하지 못할 경우 기회 손실이 발생할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VII. 재무 분석</span></div>
+
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i><span>재무 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>실적 추이</h3>
+                <p>로보티즈는 2025년 매출 약 390억원을 기록했으며, 2026년에는 105% 성장한 800억원이 전망됩니다. 다이나믹셀 수요 폭증과 고부가가치 산업용·휴머노이드용 제품 비중 확대가 성장의 핵심 동력입니다.</p>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-container"><div class="bar" style="height:44px;"></div></div><div class="bar-value">220억</div><div class="bar-label">2023</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:60px;"></div></div><div class="bar-value">300억</div><div class="bar-label">2024</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:78px;"></div></div><div class="bar-value">390억</div><div class="bar-label">2025E</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:160px;"></div></div><div class="bar-value">800억</div><div class="bar-label">2026E</div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>주요 재무 지표</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>지표</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody><tr><td>매출액</td><td>220억</td><td>300억</td><td>390억</td><td>800억</td></tr><tr><td>영업이익</td><td>-15억</td><td>10억</td><td>25억</td><td>80억</td></tr><tr><td>영업이익률</td><td>-6.8%</td><td>3.3%</td><td>6.4%</td><td>10.0%</td></tr><tr><td>순이익</td><td>-20억</td><td>5억</td><td>20억</td><td>65억</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>밸류에이션 분석</h3>
+                <p>로보티즈의 2026년 예상 PER은 약 350배 이상으로 극도로 높은 밸류에이션을 보이고 있습니다. 이는 휴머노이드 로봇 시장의 미래 성장성에 대한 기대 프리미엄이 반영된 것으로, 실적 대비 밸류에이션 부담이 큽니다. 다만 2027-2028년 매출 성장이 가시화되면 PER이 빠르게 정상화될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VIII. 결론</span></div>
+
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i><span>결론 및 투자 의견</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>FLOVAH 분석 의견</h3>
+                <p>FLOVAH의 분석 결과, 로보티즈는 휴머노이드 로봇 시대의 핵심 수혜주로, 높은 성장 잠재력을 보유합니다.</p><p><strong>긍정 평가:</strong> (1) 다이나믹셀 글로벌 표준 지위, (2) 휴머노이드 로봇 시장 폭발적 성장 수혜, (3) ROS2 생태계 핵심 파트너</p><p><strong>부정 평가:</strong> (1) 극도로 높은 밸류에이션, (2) 소형 기업 리소스 한계, (3) 휴머노이드 시장 상용화 시점 불확실</p><p><strong>종합 평가:</strong> 고위험·고수익 투자 관점에서 관심종목입니다. 실적 가시성 확보 후 매수 전략을 권장합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>투자자 요약</h3>
+                <p><strong>투자 등급:</strong> 관심 (Watch)</p><p><strong>추천 투자 기간:</strong> 중장기(3-5년)</p><p><strong>투자 포지션:</strong> 휴머노이드 로봇 핵심 부품주</p><p><strong>주요 모니터링:</strong> 다이나믹셀 출하량, 휴머노이드 로봇 시장 확대 속도, 대형 고객 수주, 분기 매출 성장률</p>
+            </div>
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-file-alt"></i></div><div class="report-info-content"><h4>리포트 분류</h4><p>기업 종합 분석 리포트</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-pen-alt"></i></div><div class="report-info-content"><h4>분석 깊이</h4><p>프리미엄 등급 (정성 정량 분석)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-shield-alt"></i></div><div class="report-info-content"><h4>면책사항</h4><p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-robot"></i></div><div class="report-info-content"><h4>작성 출처</h4><p>FLOVAH Advanced Analytics</p></div></div>
+            </div>
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>로보티즈 분기보고서 및 사업보고서 (DART)</li><li>한국거래소(KRX) 공시 정보</li><li>IFR(International Federation of Robotics) 시장 데이터</li><li>테슬라, Figure AI 등 휴머노이드 로봇 관련 발표</li><li>국내외 증권사 리서치 리포트</li>
+                </ul>
+            </div>
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 05월 13일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) link.classList.add('active');
+            });
+        });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.progress-bar-fill').forEach((fill, i) => {
+                        setTimeout(() => { fill.style.animation = 'none'; setTimeout(() => { fill.style.animation = ''; }, 10); }, i * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 13일 14:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

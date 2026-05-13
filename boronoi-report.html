@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보로노이 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+            --bg-hover: #191b1f; --bg-surface: #111316;
+            --ink: #ede8df; --ink-strong: #f5f1e8; --text-body: #b5ad9e;
+            --text-secondary: #7d7568; --text-muted: #524c42; --text-light: #9a9184;
+            --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e; --blue-dim: #465f7a;
+            --rule: #1e1f24; --border: #1e1f24; --border-light: #1a1b20; --border-color: #1e1f24;
+            --accent: #c9a962; --accent2: #5c7d9e; --success: #c9a962;
+            --danger: #c9a962; --warning: #c9a962; --purple: #5c7d9e;
+            --card-bg: #0f1014; --dark-bg: #09090b; --navy: #c9a962;
+            --navy-light: #5c7d9e; --cream: rgba(201,169,98,.05);
+        }
+        body { background: var(--bg-deep); font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-body); font-size: 17px; line-height: 1.9; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: rgba(201,169,98,.25); color: var(--ink-strong); }
+        header { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(12,14,19,.92); backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; z-index: 1000; }
+        .logo-section { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+        .logo { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+        nav { display: flex; gap: 24px; }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color .3s ease; position: relative; padding-bottom: 4px; }
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+        nav a.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px; background: var(--gold); }
+        .header-meta { display: flex; align-items: center; gap: 16px; font-size: 11px; }
+        .header-date { color: var(--text-muted); font-weight: 400; letter-spacing: 0.5px; }
+        .flovah-badge { background: transparent; color: var(--gold); padding: 4px 12px; border: 1px solid var(--gold-dim); border-radius: 0; font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        main { margin-top: 60px; padding: 56px 48px 80px; max-width: 1140px; margin-left: auto; margin-right: auto; }
+        section { margin-bottom: 72px; }
+        .section-title { font-family: 'Orbit', sans-serif; font-size: 38px; font-weight: 700; color: var(--ink-strong); margin-bottom: 40px; display: flex; align-items: center; gap: 14px; letter-spacing: -0.3px; }
+        .section-title i { font-size: 28px; color: var(--gold); opacity: .8; }
+        .section-title span { color: var(--ink-strong); }
+        .section-subtitle { color: var(--text-secondary); font-size: 17px; margin-bottom: 36px; font-weight: 400; font-style: italic; }
+        .hero { background: var(--bg-card); border-top: 3px solid var(--gold); border-bottom: 1px solid var(--rule); border-left: none; border-right: none; border-radius: 0; padding: 64px 56px 56px; margin-bottom: 64px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.06) 0%, transparent 60%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-title { font-family: 'Orbit', sans-serif; font-size: 52px; font-weight: 900; color: var(--ink-strong); margin-bottom: 24px; letter-spacing: -1px; line-height: 1.2; }
+        .hero-title-highlight { color: var(--gold); display: block; }
+        .hero-subtitle { font-family: 'Orbit', sans-serif; font-size: 20px; color: var(--text-secondary); margin-bottom: 48px; font-weight: 400; font-style: italic; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--rule); }
+        .metric-card { background: transparent; border: none; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 0; padding: 28px 24px; text-align: center; transition: background .3s ease; }
+        .metric-card:hover { background: var(--gold-glow); }
+        .metric-card:last-child { border-right: none; }
+        .metric-value { font-family: 'Orbit', sans-serif; font-size: 34px; font-weight: 900; margin-bottom: 8px; color: var(--gold); }
+        .metric-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .ai-score-badge { display: inline-flex; align-items: center; gap: 16px; background: var(--bg-elevated); border: 1px solid var(--rule); border-radius: 0; padding: 16px 28px; margin: 28px 0; font-weight: 600; }
+        .score-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbit', sans-serif; font-weight: 900; font-size: 22px; color: var(--ink-strong); }
+        .content-card { background: var(--bg-card); border: none; border-top: 1px solid var(--rule); border-radius: 0; padding: 36px 40px; margin-bottom: 0; transition: background .3s ease; animation: fadeInUp .5s ease forwards; }
+        .content-card:hover { background: var(--bg-hover); }
+        .content-card h3 { font-family: 'Google Sans', 'Noto Sans KR', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 18px; color: var(--ink-strong); display: flex; align-items: center; gap: 10px; }
+        .content-card h3 i { font-size: 18px; color: var(--gold); opacity: .85; }
+        .content-card p { color: var(--text-body); line-height: 1.95; margin-bottom: 16px; font-size: 17px; text-align: justify; word-break: keep-all; }
+        .content-card strong { color: var(--ink); font-weight: 600; }
+        .content-list { list-style: none; margin-top: 16px; }
+        .content-list li { padding: 10px 0; padding-left: 20px; color: var(--text-body); font-size: 16px; position: relative; line-height: 1.75; border-bottom: 1px solid rgba(42,45,54,.6); }
+        .content-list li:last-child { border-bottom: none; }
+        .content-list li::before { content: '\2014'; position: absolute; left: 0; color: var(--gold-dim); font-weight: 700; }
+        .timeline { position: relative; padding: 32px 0; }
+        .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+        .timeline-item { padding-left: 80px; margin-bottom: 32px; position: relative; animation: slideInRight .5s ease forwards; }
+        .timeline-item::before { content: ''; position: absolute; left: 18px; top: 6px; width: 20px; height: 20px; background: var(--bg-deep); border: 2px solid var(--gold-dim); border-radius: 50%; }
+        .timeline-item-year { font-family: 'Orbit', sans-serif; font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+        .timeline-item-content { color: var(--text-body); font-size: 13.5px; line-height: 1.7; }
+        table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--rule); }
+        th { background: var(--bg-elevated); color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.5px; border-bottom: 2px solid var(--gold-dim); }
+        td { color: var(--text-body); }
+        tr:hover { background: var(--gold-glow); }
+        .progress-item { margin-bottom: 22px; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12.5px; }
+        .progress-label-name { color: var(--ink); font-weight: 500; }
+        .progress-label-value { color: var(--gold); font-weight: 700; }
+        .progress-bar-bg { width: 100%; height: 5px; background: var(--bg-elevated); border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-light) 100%); border-radius: 3px; transition: width .5s ease; }
+        .bar-chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; }
+        .bar-item { text-align: center; }
+        .bar-container { height: 180px; background: var(--bg-elevated); border-radius: 0; display: flex; align-items: flex-end; justify-content: center; padding: 16px 8px 0; border: 1px solid var(--rule); border-bottom: none; }
+        .bar { width: 55%; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%); border-radius: 2px 2px 0 0; transition: all .4s ease; }
+        .bar-value { padding: 8px; background: var(--bg-card); border: 1px solid var(--rule); border-top: 2px solid var(--gold-dim); font-family: 'Orbit', sans-serif; font-weight: 700; font-size: 13px; color: var(--gold); }
+        .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--rule); }
+        .two-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .two-column > .content-card:last-child { border-right: none; }
+        .three-column { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+        .three-column > .content-card { border-top: none; border-right: 1px solid var(--rule); }
+        .three-column > .content-card:last-child { border-right: none; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+        .tech-badge { background: transparent; border: 1px solid var(--gold-dim); color: var(--gold); padding: 6px 14px; border-radius: 0; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; transition: all .3s ease; }
+        .tech-badge:hover { background: var(--gold-glow); border-color: var(--gold); }
+        .section-header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+        .section-header h2 { font-family: 'Orbit', sans-serif; font-size: 36px; font-weight: 900; color: var(--ink-strong); margin-bottom: 12px; }
+        .section-header p { font-family: 'Orbit', sans-serif; font-size: 17px; color: var(--text-secondary); font-style: italic; }
+        .section-badge { display: inline-block; background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+        .divider { height: 0; border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+        .section-divider { text-align: center; margin: 64px 0; position: relative; }
+        .section-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--rule); }
+        .section-divider-text { display: inline-block; background: var(--bg-deep); padding: 0 24px; position: relative; z-index: 1; font-family: 'Orbit', sans-serif; font-size: 14px; color: var(--gold); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .report-info { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 0; padding: 28px 32px; margin-bottom: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .report-info-item { display: flex; gap: 14px; }
+        .report-info-icon { font-size: 18px; color: var(--gold-dim); flex-shrink: 0; }
+        .report-info-content h4 { color: var(--ink); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .report-info-content p { color: var(--text-body); font-size: 13px; line-height: 1.5; }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 32px; border-top: 1px solid var(--rule); }
+        .swot-card { background: var(--bg-card); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 36px 32px; }
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+        .swot-card h3 { font-family: 'Orbit', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .swot-card ul { list-style: none; }
+        .swot-card li { padding: 8px 0; padding-left: 18px; color: var(--text-body); font-size: 15px; position: relative; line-height: 1.6; border-bottom: 1px solid rgba(42,45,54,.4); }
+        .swot-card li:last-child { border-bottom: none; }
+        .swot-card li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; font-size: 16px; }
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card, .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+        @media print { header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; } nav { display: none; } body { background: #fff; color: #222; } .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">May 13, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">보로노이<span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">차세대 항암 표적치료제 개발의 선두주자, 글로벌 바이오텍 혁신 기업</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle" style="background: conic-gradient(var(--gold) 0deg 259deg, var(--rule) 259deg 360deg);">72</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">AI 준비도 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">AI 기술 혁신과 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card"><div class="metric-value">Phase 2</div><div class="metric-label">핵심 파이프라인</div></div>
+                        <div class="metric-card"><div class="metric-value">2.0조+</div><div class="metric-label">시가총액</div></div>
+                        <div class="metric-card"><div class="metric-value">100%</div><div class="metric-label">VRN11 ORR</div></div>
+                        <div class="metric-card"><div class="metric-value">12종+</div><div class="metric-label">파이프라인</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="report-info">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-calendar"></i></div><div class="report-info-content"><h4>리포트 발행일</h4><p>2026년 05월 13일</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-building"></i></div><div class="report-info-content"><h4>기업명</h4><p>보로노이 (Voronoi Bio Inc.)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-code"></i></div><div class="report-info-content"><h4>상장 코드</h4><p>KOSDAQ 310210</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-user-tie"></i></div><div class="report-info-content"><h4>대표이사</h4><p>김현태</p></div></div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">I. 기업 개요</span></div>
+
+        <section id="company">
+            <div class="section-title"><i class="fas fa-building"></i><span>기업 개요</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i>기업 정보 및 역사</h3>
+                <p>보로노이는 2015년 설립된 바이오 신약 개발 전문기업으로, 독자적인 약물 설계 플랫폼(V-STAR)을 기반으로 차세대 항암 표적치료제를 개발하고 있습니다. '보로노이 다이어그램'이라는 수학적 개념에서 영감을 받은 사명처럼, 약물의 3D 구조를 정밀하게 설계하여 표적 단백질에 최적화된 치료제를 만드는 것이 핵심 역량입니다.</p>
+<p>가장 주목받는 파이프라인은 EGFR 변이 비소세포폐암 치료제 VRN11로, 임상 2상에서 객관적 반응률(ORR) 100%라는 놀라운 결과를 보여주며 글로벌 제약사들의 주목을 받고 있습니다. 2026년에는 1차 치료(First-line) 임상을 개시할 예정이며, 이는 글로벌 블록버스터 잠재력을 보여주는 중요한 이정표입니다. 현재 매출은 기술이전(License-out) 수입 위주이나, 파이프라인의 임상 성과에 따라 기업가치 재평가 가능성이 높습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-hourglass-start"></i>발전 과정 타임라인</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-item-year">2015</div><div class="timeline-item-content">보로노이 설립, V-STAR 약물 설계 플랫폼 구축</div></div><div class="timeline-item"><div class="timeline-item-year">2018</div><div class="timeline-item-content">핵심 파이프라인 VRN07 개발 착수</div></div><div class="timeline-item"><div class="timeline-item-year">2020</div><div class="timeline-item-content">코스닥 상장, R&D 투자 확대</div></div><div class="timeline-item"><div class="timeline-item-year">2021</div><div class="timeline-item-content">VRN11 (EGFR 변이 폐암) 개발 시작</div></div><div class="timeline-item"><div class="timeline-item-year">2023</div><div class="timeline-item-content">VRN11 임상 1상 진입, 초기 유효성 확인</div></div><div class="timeline-item"><div class="timeline-item-year">2024</div><div class="timeline-item-content">VRN11 임상 2상 ORR 100% 달성</div></div><div class="timeline-item"><div class="timeline-item-year">2025</div><div class="timeline-item-content">글로벌 제약사와 기술이전 협상 본격화</div></div><div class="timeline-item"><div class="timeline-item-year">2026</div><div class="timeline-item-content">VRN11 1차 치료 임상 개시, 추가 파이프라인 진전</div></div>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-eye"></i>경영 철학</h3>
+                    <p><strong>비전:</strong> 정밀 약물 설계 기술로 난치성 암 환자들에게 새로운 치료 옵션을 제공하는 글로벌 바이오텍 기업이 되는 것입니다.</p><p><strong>미션:</strong> V-STAR 플랫폼을 활용하여 기존 치료제의 내성 문제를 극복하는 차세대 표적치료제를 개발하고, 글로벌 시장에서 환자 접근성을 높이는 것입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-network-wired"></i>사업 부문 구조</h3>
+                    <ul class="content-list">
+                        <li>항암 치료제: EGFR, BTK, FLT3 등 표적 항암제</li><li>자가면역질환 치료제: BTK 억제제 기반</li><li>기술이전(L/O): 글로벌 제약사 대상 파이프라인 라이선스</li><li>V-STAR 플랫폼: AI 기반 약물 설계 기술 서비스</li><li>공동연구: 글로벌 파트너와의 신약 공동개발</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-users"></i>주요 고객사</h3>
+                    <ul class="content-list"><li>글로벌 제약사 - 기술이전 대상 (빅파마)</li><li>국내 대형 제약사 - 공동 개발 파트너</li><li>글로벌 CRO/CMO - 임상·생산 파트너</li><li>FDA, EMA - 규제기관 승인 대상</li><li>암 환자 - 최종 수혜자</li></ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-handshake"></i>전략적 파트너</h3>
+                    <ul class="content-list"><li>글로벌 빅파마 - VRN11 기술이전 협상 중</li><li>국내 대학병원 - 임상시험 수행 파트너</li><li>삼성바이오로직스 - CMO 위탁생산 협력</li><li>한국화학연구원 - 기초 연구 협력</li><li>미국 NCI - 항암 연구 네트워크</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">II. 기술 분석</span></div>
+
+        <section id="technology">
+            <div class="section-title"><i class="fas fa-microchip"></i><span>기술 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i>핵심 기술</h3>
+                <p><strong>V-STAR 플랫폼:</strong> 보로노이의 독자적 약물 설계 플랫폼으로, 표적 단백질의 3차원 구조를 정밀하게 분석하여 최적의 약물 분자를 설계합니다. 전통적인 High-Throughput Screening 방식과 달리, 구조 기반(Structure-Based) 약물 설계를 통해 개발 기간과 비용을 크게 절감합니다. AI/머신러닝 기술을 접목하여 약물 후보 도출 속도를 10배 이상 향상시켰습니다.</p><p><strong>VRN11 (EGFR C797S 변이 극복):</strong> 3세대 EGFR TKI(타그리소 등) 내성 변이인 C797S를 극복하는 차세대 4세대 EGFR 억제제입니다. 임상 2상에서 ORR 100%를 달성하며, 타그리소 내성 환자에게 유일한 치료 옵션으로 주목받고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i>차세대 기술 개발</h3>
+                <p><strong>VRN11 1차 치료 확장:</strong> 2026년 1차 치료(First-line) 임상 개시 예정으로, 기존 타그리소를 대체할 수 있는 잠재력을 가지고 있습니다. 글로벌 EGFR 변이 비소세포폐암 시장은 연 100억 달러 이상 규모입니다.</p><p><strong>VRN07 (BTK 억제제):</strong> 혈액암 및 자가면역질환을 대상으로 하는 차세대 BTK 억제제로, 기존 이브루티닙의 부작용을 줄인 선택적 억제제입니다.</p><p><strong>PROTAC 기술:</strong> 표적 단백질을 분해하는 PROTAC(Proteolysis Targeting Chimera) 기술을 V-STAR 플랫폼과 접목하여, 기존에 약물로 공략하기 어려운 타깃을 대상으로 하는 신약 개발을 추진하고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>기술 경쟁력 평가</h3>
+                <div style="margin-top: 24px;">
+                    <div class="progress-item"><div class="progress-label"><span class="progress-label-name">V-STAR 약물 설계</span><span class="progress-label-value">90%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 90%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">VRN11 임상 진행도</span><span class="progress-label-value">85%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">BTK 억제제 개발</span><span class="progress-label-value">65%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">PROTAC 기술</span><span class="progress-label-value">55%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 55%;"></div></div></div><div class="progress-item"><div class="progress-label"><span class="progress-label-name">AI 신약 탐색</span><span class="progress-label-value">78%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 78%;"></div></div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-flask"></i>R&D 역량</h3>
+                <p>보로노이는 매출의 대부분을 R&D에 재투자하며, 약 150명의 연구진이 12종 이상의 파이프라인을 동시에 진행하고 있습니다. 특히 구조생물학, 컴퓨터 약물 설계, AI/ML 분야의 전문 인력이 핵심 경쟁력입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">V-STAR</span><span class="tech-badge">EGFR</span><span class="tech-badge">BTK</span><span class="tech-badge">PROTAC</span><span class="tech-badge">구조 기반 설계</span><span class="tech-badge">AI 신약</span><span class="tech-badge">표적치료제</span><span class="tech-badge">4세대 TKI</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">III. 시장 분석</span></div>
+
+        <section id="market">
+            <div class="section-title"><i class="fas fa-chart-bar"></i><span>시장 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i>시장 환경</h3>
+                <p>글로벌 항암제 시장은 2026년 약 3,000억 달러 규모로, 연평균 10% 이상 성장하고 있습니다. 특히 표적치료제와 면역항암제가 시장 성장을 주도하고 있으며, EGFR 변이 비소세포폐암 치료제 시장만 연 150억 달러 이상입니다. 타그리소(오시머티닙)의 특허 만료(2030년대 초)를 앞두고, 차세대 EGFR 억제제 개발 경쟁이 치열해지고 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-area"></i>시장 규모 및 성장 전망</h3>
+                <p>EGFR 변이 비소세포폐암 치료제 시장은 2025년 기준 약 80억 달러이며, 2030년에는 150억 달러 이상으로 성장이 전망됩니다. VRN11이 1차 치료까지 적응증을 확대할 경우, 피크 매출 30-50억 달러의 블록버스터 잠재력이 있습니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-crosshairs"></i>시장 포지셔닝</h3>
+                <p>보로노이는 4세대 EGFR TKI 개발에서 글로벌 선두 그룹에 위치하고 있습니다. ORR 100%라는 임상 데이터는 경쟁사 대비 월등한 유효성을 시사하며, 글로벌 빅파마들의 기술이전 관심이 높아지고 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">IV. 경쟁 분석</span></div>
+
+        <section id="competitors">
+            <div class="section-title"><i class="fas fa-chess"></i><span>경쟁 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i>주요 경쟁사 비교</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>기업</th><th>약물</th><th>타깃</th><th>임상 단계</th><th>ORR</th></tr></thead>
+                        <tbody><tr><td><strong>보로노이</strong></td><td>VRN11</td><td>EGFR C797S</td><td>Phase 2</td><td>100%</td></tr><tr><td>아스트라제네카</td><td>타그리소</td><td>EGFR T790M</td><td>시판 중</td><td>71%</td></tr><tr><td>J&J/얀센</td><td>라즐레시닙</td><td>EGFR ex20ins</td><td>Phase 3</td><td>60%</td></tr><tr><td>BeiGene</td><td>BPI-361175</td><td>EGFR C797S</td><td>Phase 1</td><td>미공개</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-shield-alt"></i>경쟁 우위 요소</h3>
+                <p>보로노이의 핵심 경쟁 우위는 VRN11의 압도적인 임상 데이터(ORR 100%)와 V-STAR 플랫폼의 반복적 신약 창출 능력에 있습니다. 기존 3세대 TKI 내성을 극복하는 유일한 4세대 치료제로서, First-in-Class 가치가 높습니다. 경쟁사 대비 빠른 임상 진행 속도도 차별화 요소입니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">V. SWOT 분석</span></div>
+
+        <section id="swot">
+            <div class="section-title"><i class="fas fa-th-large"></i><span>SWOT 분석</span></div>
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-star" style="color:var(--gold);"></i>Strengths (강점)</h3>
+                    <ul><li>VRN11 ORR 100%의 압도적 임상 데이터</li><li>V-STAR 독자 약물 설계 플랫폼</li><li>12종 이상의 풍부한 파이프라인</li><li>First-in-Class 4세대 EGFR TKI</li><li>글로벌 빅파마 기술이전 잠재력</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-exclamation-triangle" style="color:var(--blue);"></i>Weaknesses (약점)</h3>
+                    <ul><li>아직 상업화 제품 없는 pre-revenue 단계</li><li>임상 실패 리스크 상존</li><li>지속적인 R&D 자금 소요</li><li>규제 승인 불확실성</li><li>글로벌 영업·마케팅 인프라 부재</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-lightbulb" style="color:var(--gold);"></i>Opportunities (기회)</h3>
+                    <ul><li>VRN11 1차 치료 확장 시 블록버스터 잠재력</li><li>글로벌 빅파마 대형 기술이전 딜</li><li>타그리소 특허 만료 대비 시장 선점</li><li>V-STAR 기반 추가 파이프라인 창출</li><li>중국·아시아 시장 진출 기회</li></ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-bolt" style="color:var(--blue);"></i>Threats (위협)</h3>
+                    <ul><li>임상 후기 단계 실패 가능성</li><li>경쟁 4세대 TKI 개발 가속화</li><li>규제 환경 변화 리스크</li><li>자금 조달 희석 리스크</li><li>빅파마의 자체 개발 전환 가능성</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VI. 성장 전략</span></div>
+
+        <section id="strategy">
+            <div class="section-title"><i class="fas fa-chess-king"></i><span>성장 전략</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i>단기 전략 (1-2년)</h3>
+                <p>2026-2027년은 VRN11 1차 치료 임상 개시와 글로벌 기술이전 계약 체결이 핵심 목표입니다. 2차 치료 임상 데이터를 기반으로 빅파마와의 대형 L/O 딜을 추진하며, 추가 파이프라인의 IND 신청도 진행합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i>중장기 전략 (3-5년)</h3>
+                <p>중장기적으로는 VRN11의 글로벌 승인 및 상업화, V-STAR 플랫폼 기반의 다양한 적응증 확대, 자체 영업 인프라 구축을 통한 하이브리드 상업화 모델 확립을 목표로 합니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i>핵심 리스크 요인</h3>
+                <p><strong>임상 리스크:</strong> 바이오 신약의 임상 성공률은 10% 미만으로, 후기 임상에서의 실패 가능성이 상존합니다. VRN11의 대규모 임상에서 초기 데이터의 재현 여부가 핵심입니다.</p><p><strong>자금 리스크:</strong> 신약 개발에는 수천억원의 자금이 필요하며, 지속적인 자금 조달이 필수적입니다.</p><p><strong>경쟁 리스크:</strong> 글로벌 빅파마들도 4세대 EGFR TKI 개발에 투자하고 있어, 시장 선점 경쟁이 치열합니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VII. 재무 분석</span></div>
+
+        <section id="finance">
+            <div class="section-title"><i class="fas fa-coins"></i><span>재무 분석</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i>실적 추이</h3>
+                <p>보로노이는 pre-revenue 단계의 바이오텍으로, 매출은 기술이전 수입과 연구용역 수입이 주를 이루고 있습니다. 2025년 기준 연간 R&D 비용은 약 500-600억원 수준이며, 영업손실이 지속되고 있습니다. 다만 VRN11의 기술이전 계약 체결 시 수천억원 규모의 계약금/마일스톤 수입이 발생할 수 있습니다.</p>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-container"><div class="bar" style="height:16px;"></div></div><div class="bar-value">-380억</div><div class="bar-label">2023</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:16px;"></div></div><div class="bar-value">-420억</div><div class="bar-label">2024</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:16px;"></div></div><div class="bar-value">-500억</div><div class="bar-label">2025E</div></div><div class="bar-item"><div class="bar-container"><div class="bar" style="height:80px;"></div></div><div class="bar-value">L/O 기대</div><div class="bar-label">2026E</div></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-calculator"></i>주요 재무 지표</h3>
+                <div class="comparison-table" style="overflow-x:auto;margin-top:24px;">
+                    <table>
+                        <thead><tr><th>지표</th><th>2023</th><th>2024</th><th>2025E</th><th>2026E</th></tr></thead>
+                        <tbody><tr><td>매출액</td><td>50억</td><td>80억</td><td>120억</td><td>L/O 수입 기대</td></tr><tr><td>영업손실</td><td>-380억</td><td>-420억</td><td>-500억</td><td>변동</td></tr><tr><td>R&D 비용</td><td>400억</td><td>480억</td><td>550억</td><td>600억</td></tr><tr><td>현금성자산</td><td>1,200억</td><td>900억</td><td>1,500억</td><td>변동</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i>밸류에이션 분석</h3>
+                <p>보로노이의 기업가치는 전통적인 PER/PBR이 아닌 파이프라인 가치 평가(rNPV) 방식으로 산정해야 합니다. VRN11의 임상 성공 확률과 글로벌 시장 규모를 감안한 rNPV는 약 2-4조원 수준으로 추정되며, 현재 시가총액은 이 범위 내에 있어 임상 진행 상황에 따른 리레이팅 여지가 있습니다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span class="section-divider-text">VIII. 결론</span></div>
+
+        <section id="conclusion">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i><span>결론 및 투자 의견</span></div>
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i>FLOVAH 분석 의견</h3>
+                <p>FLOVAH의 분석 결과, 보로노이는 VRN11의 혁신적 임상 데이터를 기반으로 높은 업사이드 잠재력을 보유한 바이오텍입니다.</p><p><strong>긍정 평가:</strong> (1) ORR 100%의 차별화된 임상 데이터, (2) V-STAR 플랫폼의 반복적 신약 창출 역량, (3) 대형 기술이전 딜 가능성</p><p><strong>부정 평가:</strong> (1) pre-revenue 단계의 재무 불확실성, (2) 임상 실패 리스크, (3) 높은 밸류에이션 부담</p><p><strong>종합 평가:</strong> 고위험·고수익 투자 관점에서 관심종목으로 추천합니다. VRN11 1차 치료 임상 결과가 핵심 촉매입니다.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fas fa-chart-pie"></i>투자자 요약</h3>
+                <p><strong>투자 등급:</strong> 관심 (Speculative Buy)</p><p><strong>추천 투자 기간:</strong> 중장기(3-5년)</p><p><strong>투자 포지션:</strong> 바이오 파이프라인 가치투자</p><p><strong>주요 모니터링:</strong> VRN11 1차 치료 임상 데이터, 기술이전 계약 소식, 추가 파이프라인 진전, 현금 소진율(Cash Burn Rate)</p>
+            </div>
+            <div class="report-info" style="margin-top: 64px;">
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-file-alt"></i></div><div class="report-info-content"><h4>리포트 분류</h4><p>기업 종합 분석 리포트</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-pen-alt"></i></div><div class="report-info-content"><h4>분석 깊이</h4><p>프리미엄 등급 (정성 정량 분석)</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-shield-alt"></i></div><div class="report-info-content"><h4>면책사항</h4><p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p></div></div>
+                <div class="report-info-item"><div class="report-info-icon"><i class="fas fa-robot"></i></div><div class="report-info-content"><h4>작성 출처</h4><p>FLOVAH Advanced Analytics</p></div></div>
+            </div>
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>보로노이 분기보고서 및 사업보고서 (DART)</li><li>ClinicalTrials.gov 임상시험 등록 정보</li><li>ASCO, AACR 등 학술 컨퍼런스 발표 자료</li><li>글로벌 항암제 시장 조사 보고서</li><li>국내외 증권사 바이오 리서치 리포트</li>
+                </ul>
+            </div>
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 2026년 05월 13일 발행</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) link.classList.add('active');
+            });
+        });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.progress-bar-fill').forEach((fill, i) => {
+                        setTimeout(() => { fill.style.animation = 'none'; setTimeout(() => { fill.style.animation = ''; }, 10); }, i * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    </script>
+    <!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 13일 14:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

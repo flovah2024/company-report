@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국콜마 (161890) 기업 분석 리포트 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+    --bg-hover: #191b1f; --bg-surface: #111316;
+    --ink: #ede8df; --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e; --text-secondary: #7d7568;
+    --text-muted: #524c42; --text-light: #9a9184;
+    --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e; --blue-dim: #465f7a;
+    --rule: #1e1f24; --border: #1e1f24;
+    --accent: #c9a962; --accent2: #5c7d9e;
+    --card-bg: #0f1014; --dark-bg: #09090b;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* === HEADER === */
+.site-header {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    height: 60px;
+    background: rgba(9,9,11,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+}
+.header-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.header-logo img { height:22px; }
+.header-logo span { font-family:'Orbit',sans-serif; font-size:15px; color:var(--gold); letter-spacing:2px; }
+.header-nav { display:flex; gap:32px; }
+.header-nav a { color:var(--text-secondary); text-decoration:none; font-size:13px; letter-spacing:0.5px; transition:color 0.2s; }
+.header-nav a:hover, .header-nav a.active { color:var(--gold); }
+.header-right { display:flex; align-items:center; gap:16px; }
+.header-date { font-size:12px; color:var(--text-muted); }
+.header-badge { font-size:10px; color:var(--gold); border:1px solid var(--gold-dim); padding:3px 10px; letter-spacing:1px; text-transform:uppercase; }
+
+/* === HERO === */
+.hero-section {
+    margin-top: 60px;
+    padding: 80px 40px 60px;
+    max-width: 1100px; margin-left:auto; margin-right:auto;
+}
+.hero-card {
+    border-top: 2px solid var(--gold);
+    background: var(--bg-card);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::before {
+    content:''; position:absolute; top:0; right:0; width:400px; height:400px;
+    background: radial-gradient(circle at top right, rgba(201,169,98,0.06) 0%, transparent 70%);
+    pointer-events:none;
+}
+.hero-badge { display:inline-block; font-size:11px; color:var(--gold); border:1px solid var(--gold-dim); padding:4px 12px; letter-spacing:1px; margin-bottom:20px; }
+.hero-title { font-family:'Orbit',sans-serif; font-size:36px; color:var(--ink-strong); letter-spacing:1px; margin-bottom:8px; }
+.hero-subtitle { font-size:15px; color:var(--text-secondary); margin-bottom:32px; }
+.hero-meta { display:flex; gap:24px; flex-wrap:wrap; }
+.hero-meta-item { font-size:13px; color:var(--text-muted); }
+.hero-meta-item strong { color:var(--text-light); }
+
+/* === METRIC CARDS === */
+.metrics-grid {
+    display:grid; grid-template-columns: repeat(4,1fr); gap:16px;
+    max-width:1100px; margin:0 auto; padding:0 40px 40px;
+}
+.metric-card {
+    background:var(--bg-card); border:1px solid var(--border); padding:24px;
+    transition: border-color 0.3s;
+}
+.metric-card:hover { border-color: var(--gold-dim); }
+.metric-label { font-size:12px; color:var(--text-muted); margin-bottom:8px; letter-spacing:0.5px; }
+.metric-value { font-size:28px; font-weight:700; color:var(--ink-strong); margin-bottom:4px; }
+.metric-change { font-size:12px; }
+.metric-change.up { color:#5cb85c; }
+.metric-change.down { color:#d9534f; }
+
+/* === SECTIONS === */
+.content-section {
+    max-width:1100px; margin:0 auto; padding:0 40px 48px;
+}
+.section-header {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:28px; padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+}
+.section-icon {
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--gold-dim); color:var(--gold); font-size:14px;
+}
+.section-title { font-family:'Orbit',sans-serif; font-size:22px; color:var(--ink-strong); letter-spacing:0.5px; }
+.section-number { font-size:12px; color:var(--text-muted); margin-left:auto; letter-spacing:1px; }
+
+.text-block { margin-bottom:24px; }
+.text-block h3 { font-size:16px; color:var(--ink); margin-bottom:12px; font-weight:600; }
+.text-block p { color:var(--text-body); line-height:1.9; margin-bottom:16px; }
+
+/* === TIMELINE === */
+.timeline { position:relative; padding-left:28px; margin:32px 0; }
+.timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:1px; background:var(--border); }
+.timeline-item { position:relative; margin-bottom:24px; }
+.timeline-dot {
+    position:absolute; left:-24px; top:4px; width:12px; height:12px;
+    border:2px solid var(--gold); background:var(--bg-deep);
+}
+.timeline-year { font-size:13px; color:var(--gold); font-weight:600; margin-bottom:4px; }
+.timeline-desc { font-size:14px; color:var(--text-secondary); }
+
+/* === TABLE === */
+.data-table { width:100%; border-collapse:collapse; margin:24px 0; }
+.data-table th {
+    text-align:left; padding:12px 16px; font-size:12px; color:var(--text-muted);
+    border-bottom:1px solid var(--border); letter-spacing:0.5px; font-weight:500;
+    text-transform:uppercase;
+}
+.data-table td {
+    padding:14px 16px; font-size:14px; color:var(--text-body);
+    border-bottom:1px solid var(--border);
+}
+.data-table tr:hover td { background:var(--bg-hover); }
+.data-table .highlight { color:var(--gold); font-weight:600; }
+
+/* === SWOT === */
+.swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+.swot-card { background:var(--bg-card); border:1px solid var(--border); padding:24px; }
+.swot-card h4 { font-size:14px; color:var(--gold); margin-bottom:12px; letter-spacing:0.5px; }
+.swot-card ul { list-style:none; }
+.swot-card li { font-size:14px; color:var(--text-body); padding:6px 0; padding-left:16px; position:relative; }
+.swot-card li::before { content:'—'; position:absolute; left:0; color:var(--text-muted); }
+
+/* === PROGRESS BAR === */
+.progress-row { margin-bottom:20px; }
+.progress-label { display:flex; justify-content:space-between; margin-bottom:6px; }
+.progress-label span:first-child { font-size:13px; color:var(--text-light); }
+.progress-label span:last-child { font-size:13px; color:var(--gold); font-weight:600; }
+.progress-bar { height:6px; background:var(--bg-hover); overflow:hidden; }
+.progress-fill { height:100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); width:0; transition: width 1.2s ease-out; }
+
+/* === INSIGHT BOX === */
+.insight-box {
+    background: linear-gradient(135deg, rgba(201,169,98,0.06) 0%, rgba(92,125,158,0.04) 100%);
+    border:1px solid var(--border); padding:28px; margin:24px 0;
+}
+.insight-box .insight-title { font-size:14px; color:var(--gold); font-weight:600; margin-bottom:12px; }
+.insight-box p { font-size:14px; color:var(--text-body); line-height:1.8; }
+
+/* === FOOTER === */
+.site-footer {
+    max-width:1100px; margin:40px auto 0; padding:40px;
+    border-top:1px solid var(--border);
+}
+.footer-disclaimer { font-size:12px; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
+.footer-copy { font-size:11px; color:var(--text-muted); }
+
+/* === RESPONSIVE === */
+@media (max-width:768px) {
+    .metrics-grid { grid-template-columns:1fr 1fr; }
+    .swot-grid { grid-template-columns:1fr; }
+    .hero-card { padding:28px; }
+    .site-header { padding:0 20px; }
+    .content-section, .hero-section { padding-left:20px; padding-right:20px; }
+    .hero-title { font-size:24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <a href="index.html" class="header-logo">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <nav class="header-nav">
+        <a href="#overview">기업개요</a>
+        <a href="#technical">기술분석</a>
+        <a href="#market">시장분석</a>
+        <a href="#competitors">경쟁사</a>
+        <a href="#swot">SWOT</a>
+        <a href="#strategy">전략</a>
+        <a href="#financials">재무</a>
+        <a href="#conclusion">결론</a>
+    </nav>
+    <div class="header-right">
+        <span class="header-date">May 14, 2026</span>
+        <span class="header-badge">KOSPI</span>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section" id="overview">
+    <div class="hero-card">
+        <span class="hero-badge">EQUITY RESEARCH</span>
+        <h1 class="hero-title">한국콜마 (161890)</h1>
+        <p class="hero-subtitle">화장품·의약품 ODM/OEM 글로벌 리딩 기업 — K-뷰티 가치사슬의 핵심 축</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">섹터 <strong>화장품·뷰티</strong></div>
+            <div class="hero-meta-item">시장 <strong>KOSPI</strong></div>
+            <div class="hero-meta-item">시가총액 <strong>1.8조원</strong></div>
+            <div class="hero-meta-item">주가 <strong>93,600원</strong></div>
+            <div class="hero-meta-item">목표가 <strong>112,000원</strong></div>
+        </div>
+    </div>
+</section>
+
+<!-- METRIC CARDS -->
+<div class="metrics-grid">
+    <div class="metric-card">
+        <div class="metric-label">2026 1Q 매출액</div>
+        <div class="metric-value">7,280억</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +12.0% YoY</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">2026 1Q 영업이익</div>
+        <div class="metric-value">789억</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +31.6% YoY</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">2026 1Q 당기순이익</div>
+        <div class="metric-value">600억</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +159% YoY</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">BNK 목표주가</div>
+        <div class="metric-value">112,000</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> 매수 의견</div>
+    </div>
+</div>
+
+<!-- SECTION 1: 기업 개요 -->
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-building"></i></div>
+        <h2 class="section-title">기업 개요</h2>
+        <span class="section-number">01 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>한국콜마의 사업 구조와 핵심 역량</h3>
+        <p>한국콜마는 1990년 윤동한 회장이 설립한 화장품·의약품 ODM/OEM 전문 기업으로, 국내 화장품 제조 산업의 패러다임을 근본적으로 변화시킨 기업이다. 설립 초기부터 '연구개발 중심의 ODM(Original Design Manufacturing)' 모델을 도입하여, 단순 위탁 생산에 머물던 기존 OEM 시장에 혁신적인 사업 모델을 제시했다. 현재 한국콜마는 화장품 ODM 사업을 필두로 제약(HK이노엔), 패키징(연우) 등 뷰티·헬스케어 가치사슬 전반에 걸친 포트폴리오를 구축하고 있다.</p>
+        <p>한국콜마의 핵심 경쟁력은 압도적인 R&D 역량과 세계 최대 규모의 화장품 ODM 생산 능력에 있다. 국내 세종·대전 공장을 비롯하여, 중국 무석(Wuxi) 공장, 미국 공장, 캐나다 공장 등 글로벌 4개국에 생산 거점을 운영하고 있으며, 연간 수만 건의 신제품 처방을 개발할 수 있는 R&D 인프라를 보유하고 있다. 특히 스킨케어, 메이크업, 선케어, 헤어·바디케어 등 전 카테고리에 걸쳐 축적된 처방 데이터베이스는 후발 주자가 단기간에 추격하기 어려운 진입 장벽으로 기능한다.</p>
+        <p>사업 구조적 측면에서 한국콜마의 연결 매출은 크게 화장품 사업부문, HK이노엔(제약), 연우(패키징)로 구분된다. 화장품 사업부문은 한국 본사와 중국·북미 법인의 ODM 매출로 구성되며, 전체 연결 매출의 약 55~60%를 차지한다. HK이노엔은 소화기 계열 전문의약품과 건강기능식품 등을 생산하는 제약 자회사로, 안정적인 현금흐름을 창출하는 캐시카우 역할을 수행한다. 연우는 화장품 용기 및 패키징 전문 기업으로, 콜마그룹의 수직 통합 전략의 마지막 퍼즐 역할을 한다.</p>
+        <p>최근 한국콜마의 성장 모멘텀을 견인하는 핵심 동력은 K-뷰티 인디 브랜드들의 글로벌 수출 호조이다. 라운드랩, 닥터엘시아, 스킨1004, 조선미녀 등 국내 인디 뷰티 브랜드들이 미국, 일본, 동남아 시장에서 폭발적인 성장을 기록하면서, 이들 브랜드의 제품을 ODM으로 생산하는 한국콜마의 수주 물량이 급증하고 있다. 2026년 1분기 별도 매출 성장률이 +23.2%를 기록하며 한국 화장품 전체 수출 성장률(+19%)을 상회한 것은 이러한 구조적 수혜를 명확히 반영한다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>주요 연혁 및 성장 궤적</h3>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1990</div>
+            <div class="timeline-desc">한국콜마 설립 — 윤동한 회장, 국내 최초 화장품 ODM 사업 개시</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2001</div>
+            <div class="timeline-desc">코스닥 상장, 화장품 ODM 시장 본격 개척</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2010</div>
+            <div class="timeline-desc">중국 무석(Wuxi) 공장 설립 — 글로벌 생산 네트워크 확장</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2014</div>
+            <div class="timeline-desc">한국콜마홀딩스 체제 출범, KOSPI 이전 상장</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2018</div>
+            <div class="timeline-desc">북미 시장 진출 — 미국·캐나다 생산법인 설립</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2023</div>
+            <div class="timeline-desc">K-뷰티 글로벌 수출 붐에 따른 ODM 수주 폭증, 실적 턴어라운드</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2026 1Q</div>
+            <div class="timeline-desc">역대 최대 분기 실적 달성 — 매출 7,280억, 영업이익 789억</div>
+        </div>
+    </div>
+
+    <div class="text-block">
+        <p>한국콜마의 성장 궤적은 한국 화장품 산업의 발전사와 궤를 같이한다. 2010년대 초반 중국 시장 진출 이후 K-뷰티 열풍과 함께 급성장했으나, 2017~2019년 사드(THAAD) 보복 및 중국 시장 둔화로 일시적인 정체기를 경험했다. 그러나 2023년 이후 미국·일본 등 선진국 시장에서의 K-뷰티 수요 확대와 인디 브랜드 성장 트렌드가 맞물리며 새로운 성장 국면에 진입했다. 특히 중국 의존도를 줄이고 북미·일본·동남아 등으로 고객사 포트폴리오를 다변화한 전략이 주효하면서, 과거 대비 훨씬 건강한 성장 구조를 확보했다.</p>
+        <p>기업 지배구조 측면에서 한국콜마는 윤동한 회장을 중심으로 한 오너 경영 체제를 유지하고 있으며, 한국콜마홀딩스가 지주회사로서 한국콜마, HK이노엔, 연우 등 주요 계열사를 관리하는 구조이다. 오너 경영의 장점인 신속한 의사결정과 장기 전략 추진 역량이 화장품 ODM 시장에서의 선도적 지위 유지에 기여해왔다는 평가를 받고 있다.</p>
+    </div>
+</section>
+
+<!-- SECTION 2: 기술 분석 -->
+<section class="content-section" id="technical">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+        <h2 class="section-title">기술 분석</h2>
+        <span class="section-number">02 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>주가 흐름 및 기술적 패턴 분석</h3>
+        <p>한국콜마의 주가는 2024년 하반기부터 본격적인 상승 추세를 형성하며, 2026년 5월 현재 93,600원 수준에서 거래되고 있다. 2023년 초 40,000원대에서 시작된 상승 흐름은 2024년 중반 60,000원대를 돌파한 후, 2025년 들어 K-뷰티 수출 호조와 실적 개선 기대감에 힘입어 80,000원대를 넘어서며 강세 국면을 이어가고 있다. 기술적 관점에서 현재 주가는 20일, 60일, 120일 이동평균선 모두를 상회하는 전형적인 정배열 구간에 위치해 있다.</p>
+        <p>볼린저 밴드(Bollinger Band) 분석 결과, 최근 주가는 밴드 상단부에 근접하며 강한 모멘텀을 시현하고 있다. 다만 밴드폭이 확대되는 구간으로, 단기적으로 변동성이 확대될 가능성도 내재되어 있다. RSI(Relative Strength Index)는 65~70 구간에서 형성되어 있어, 과매수 영역(70 이상)에 근접하지만 아직 진입하지는 않은 상태이다. 이는 추가 상승 여력이 남아 있으나, 단기적으로 속도 조절이 필요할 수 있는 구간임을 시사한다.</p>
+        <p>MACD(Moving Average Convergence Divergence) 지표는 시그널선 상방에서 양(+)의 히스토그램을 유지하고 있어, 중기 상승 추세의 유효성을 확인해주고 있다. 다만 MACD 히스토그램의 기울기가 최근 소폭 둔화되는 모습을 보이고 있어, 추세 강도가 정점을 지나는 초기 단계일 가능성에 대한 모니터링이 필요하다. 스토캐스틱 오실레이터는 %K와 %D 모두 고위(高位) 영역에서 교차하지 않고 동반 상승 중이어서, 단기 매수 모멘텀이 여전히 유효한 것으로 판단된다.</p>
+        <p>거래량 분석에서도 긍정적인 신호가 확인된다. 2026년 1분기 실적 발표 이후 거래량이 평균 대비 2배 이상 급증하며 주가 상승을 뒷받침했다. OBV(On-Balance Volume) 지표가 주가와 함께 우상향하는 모습은 기관 및 외국인의 적극적인 매수 참여를 반영하는 것으로 해석된다. 특히 외국인 지분율이 최근 6개월간 꾸준히 증가하고 있는 점은 글로벌 투자자들의 한국 화장품 ODM 산업에 대한 관심이 확대되고 있음을 보여준다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>지지선·저항선 및 매매 전략</h3>
+        <p>현재 주가 기준 주요 지지선은 1차 85,000원(60일 이동평균선 인근), 2차 78,000원(120일 이동평균선 및 전 고점 돌파 후 지지 확인 구간)으로 설정할 수 있다. 주요 저항선은 1차 100,000원(심리적 저항 및 2024년 고점 인근), 2차 112,000원(BNK투자증권 목표주가)이다. 기술적 관점에서 100,000원 돌파 시 신고가 영역 진입에 따른 추가 상승 탄력이 예상되며, 85,000원 이탈 시에는 추세 전환 가능성에 대비할 필요가 있다.</p>
+        <p>피보나치 되돌림(Fibonacci Retracement) 분석 결과, 2024년 저점(48,000원) 대비 현재 수준까지의 상승폭을 기준으로 38.2% 되돌림 수준은 약 76,000원, 50% 되돌림 수준은 약 71,000원에 해당한다. 이러한 피보나치 레벨은 조정 시 매수 포인트로 활용 가능하다. 일목균형표(Ichimoku) 분석에서는 전환선이 기준선 상방에 위치하며, 후행 스팬이 26일 전 주가 상방에서 유지되고 있어, 종합적인 추세 방향성은 상승으로 판단된다.</p>
+        <p>중장기 차트 패턴 분석에서 한국콜마는 2023~2025년 기간 동안 '상승 쐐기(Ascending Wedge)' 또는 '상승 깃발(Bull Flag)' 패턴에 이어, 2026년 들어 본격적인 브레이크아웃을 시현한 것으로 분석된다. 월봉 차트에서 확인되는 이러한 대형 강세 패턴은 중장기 상승 추세의 지속 가능성을 높이는 요인이다. 다만 주봉 기준 RSI가 이미 65를 상회하고 있어, 단기 과열 해소를 위한 횡보 또는 소폭 조정 후 재상승하는 패턴을 예상할 수 있다.</p>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-title"><i class="fas fa-lightbulb"></i> 기술적 핵심 판단</div>
+        <p>한국콜마는 주요 이동평균선 정배열, MACD 양(+)의 히스토그램, OBV 우상향 등 대부분의 기술적 지표가 상승 추세를 지지하고 있다. 다만 RSI 65 이상의 고위 영역 진입과 볼린저 밴드 상단 근접 등을 고려할 때, 단기적으로 속도 조절 가능성을 열어두되, 중기 추세 상 85,000원 지지 확인 시 매수 관점 유지가 적절한 것으로 판단한다.</p>
+    </div>
+</section>
+
+<!-- SECTION 3: 시장 분석 -->
+<section class="content-section" id="market">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-globe"></i></div>
+        <h2 class="section-title">시장 분석</h2>
+        <span class="section-number">03 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>글로벌 화장품 ODM 시장의 구조적 성장</h3>
+        <p>글로벌 화장품 ODM/OEM 시장은 2025년 기준 약 650억 달러 규모로 추정되며, 연평균 7~8%의 성장률을 유지하고 있다. 이 시장의 구조적 성장을 견인하는 핵심 동력은 크게 세 가지로 분류할 수 있다. 첫째, 인디 뷰티 브랜드의 폭발적 증가이다. SNS와 이커머스의 발달로 브랜드 런칭 비용이 현저히 낮아지면서, 자체 생산 시설 없이 ODM 기업에 생산을 위탁하는 인디 브랜드가 급증하고 있다. 이는 ODM 기업의 주요 고객층 확대를 의미한다.</p>
+        <p>둘째, 글로벌 대형 뷰티 기업들의 외부 생산 비중 확대 추세이다. P&G, 유니레버, 로레알 등 글로벌 메이저 기업들도 비용 효율화와 제품 다양성 확보를 위해 외부 ODM 활용을 늘리고 있으며, 특히 한국 ODM 기업들의 기술력과 품질 경쟁력을 높이 평가하여 한국 기업과의 협력을 확대하고 있다. 셋째, 클린 뷰티·비건 화장품·맞춤형 화장품 등 소비자 트렌드의 빠른 변화에 대응하기 위한 ODM 의존도 증가이다. 트렌드 변화에 신속히 대응할 수 있는 R&D 역량과 다품종 소량 생산 유연성을 갖춘 ODM 기업의 전략적 가치가 높아지고 있다.</p>
+        <p>K-뷰티는 이 글로벌 시장에서 독보적인 위치를 점하고 있다. 한국산 화장품 수출액은 2025년 기준 약 120억 달러를 기록하며 전년 대비 19% 성장했다. 이는 한국이 프랑스에 이어 세계 2위 화장품 수출국의 지위를 공고히 하고 있음을 보여준다. 특히 미국, 일본, 동남아 시장에서의 K-뷰티 인지도와 선호도가 구조적으로 상승하고 있으며, 이는 단순한 트렌드를 넘어 지속 가능한 구조적 성장으로 평가된다. 한국콜마는 이러한 K-뷰티 수출 성장의 최대 수혜자로, 별도 기준 매출 성장률이 한국 화장품 수출 성장률을 상회하고 있다.</p>
+        <p>중국 화장품 시장은 과거 K-뷰티의 최대 성장 동력이었으나, 최근 중국 로컬 브랜드의 부상과 소비 둔화로 인해 성장성이 제한적인 상황이다. 한국콜마 중국 법인(무석)의 매출 성장률은 한자릿수 초반에 머물고 있으며, 중국 시장의 회복 속도에 대해서는 보수적 전망이 우세하다. 다만 한국콜마가 중국 의존도를 줄이고 북미·일본 등 선진 시장으로 다각화한 전략은 이러한 리스크를 효과적으로 상쇄하고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>인디 뷰티 생태계와 한국콜마의 포지셔닝</h3>
+        <p>인디 뷰티 시장의 성장은 한국콜마에게 양적·질적 양면에서 긍정적인 영향을 미치고 있다. 양적 측면에서는 라운드랩, 닥터엘시아, 스킨1004, 토리든, 조선미녀 등 국내 인디 브랜드들의 해외 매출이 연간 50% 이상 성장하면서 ODM 수주 물량이 급증하고 있다. 질적 측면에서는 인디 브랜드들이 요구하는 고기능성·차별화된 처방 개발 수요가 한국콜마의 R&D 역량을 더욱 강화시키는 선순환 구조를 형성하고 있다.</p>
+        <p>특히 주목할 점은 인디 브랜드의 ODM 마진이 대형 브랜드 대비 높다는 점이다. 대형 브랜드는 대규모 물량을 기반으로 강력한 가격 협상력을 행사하는 반면, 인디 브랜드는 소량 다품종 주문이 많아 건당 마진율이 높은 편이다. 또한 인디 브랜드와의 ODM 계약은 처방 개발부터 포뮬레이션, 테스팅, 양산까지 전 과정을 포괄하는 Full-ODM 계약이 대부분으로, 부가가치가 높다.</p>
+        <p>미국 시장에서의 K-뷰티 성장세는 특히 눈여겨볼 만하다. 아마존, 울타 뷰티(Ulta Beauty), 세포라(Sephora) 등 주요 유통 채널에서 K-뷰티 제품의 카테고리 점유율이 지속적으로 확대되고 있으며, 특히 선케어, 세럼, 토너 등 스킨케어 카테고리에서 압도적인 성장세를 보이고 있다. 한국콜마의 미국 법인은 이러한 수요에 대응하기 위해 생산 CAPA 확대를 진행 중이며, 현지 생산을 통한 리드타임 단축과 관세 회피 효과도 기대된다.</p>
+        <p>일본 시장 역시 K-뷰티의 핵심 성장 시장으로 부상하고 있다. 일본 소비자들의 K-뷰티에 대한 관심이 2024년 이후 가파르게 상승하면서, 한국 화장품의 대일(對日) 수출이 전년 대비 30% 이상 증가했다. 한국콜마의 주요 고객사인 인디 브랜드들이 일본 시장에서 강력한 브랜드 파워를 구축하고 있어, 간접적인 수혜 효과가 크다. Qoo10, 아마존 재팬, 로프트(LOFT) 등 일본 주요 유통 채널에서 K-뷰티 전용 코너가 확대되는 추세도 긍정적이다.</p>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-title"><i class="fas fa-chart-area"></i> 시장 핵심 인사이트</div>
+        <p>글로벌 화장품 ODM 시장은 인디 브랜드 성장, 대형 기업의 외주화 확대, 소비 트렌드 다변화 등 구조적 성장 동력이 견조하다. 한국콜마는 K-뷰티 생태계의 핵심 인프라로서 이 구조적 성장의 최대 수혜자 위치에 있으며, 중국 의존도 축소와 선진국 시장 다각화 전략이 리스크를 효과적으로 관리하고 있다.</p>
+    </div>
+</section>
+
+<!-- SECTION 4: 경쟁사 분석 -->
+<section class="content-section" id="competitors">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chess"></i></div>
+        <h2 class="section-title">경쟁사 분석</h2>
+        <span class="section-number">04 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>화장품 ODM 산업 경쟁 구도</h3>
+        <p>한국 화장품 ODM 시장은 한국콜마와 코스맥스(COSMAX)가 양강 구도를 형성하며 시장을 과점하고 있다. 두 기업은 각각 독자적인 강점을 보유하고 있으나, 한국콜마는 R&D 처방 역량과 사업 다각화(제약·패키징)에서 강점을 보이는 반면, 코스맥스는 중국·동남아 시장에서의 공격적 확장과 색조 화장품 분야에서 차별화된 경쟁력을 보유하고 있다. 그 외 중소형 ODM 기업으로는 코스메카코리아, 한국화장품제조 등이 있으나, 상위 2개사 대비 기술력과 규모의 격차가 상당하다.</p>
+        <p>글로벌 경쟁 구도에서 보면, 이탈리아의 인터코스(Intercos), 프랑스의 파르피나스(Farfinas), 일본의 니혼콜마(Nihon Kolmar) 등이 주요 경쟁자로 분류되나, 기술력·가격 경쟁력·생산 유연성 등 종합적 측면에서 한국 ODM 기업들이 글로벌 1~2위를 차지하고 있다. 특히 스킨케어 카테고리에서 한국 ODM 기업들의 기술적 우위는 글로벌 시장에서도 명확히 인정받고 있다.</p>
+        <p>한국콜마와 코스맥스 간의 경쟁은 최근 더욱 치열해지고 있다. 양사 모두 북미 시장 확대를 위한 투자를 확대하고 있으며, 차세대 성장 동력인 바이오 화장품, AI 기반 처방 개발, 맞춤형 화장품(Personalized Cosmetics) 등 신기술 분야에서도 경쟁이 가속화되고 있다. 다만 한국콜마는 HK이노엔(제약)과 연우(패키징)를 통한 사업 다각화로 안정적인 포트폴리오를 구축하고 있다는 점에서 코스맥스 대비 상대적 안전 마진을 보유하고 있다.</p>
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>항목</th>
+                <th>한국콜마</th>
+                <th>코스맥스</th>
+                <th>코스메카코리아</th>
+                <th>인터코스(이탈리아)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>시가총액</td>
+                <td class="highlight">1.8조원</td>
+                <td>2.5조원</td>
+                <td>3,200억원</td>
+                <td>비상장</td>
+            </tr>
+            <tr>
+                <td>2025 매출(연결)</td>
+                <td class="highlight">2.8조원</td>
+                <td>2.2조원</td>
+                <td>3,100억원</td>
+                <td>1.2조원</td>
+            </tr>
+            <tr>
+                <td>영업이익률</td>
+                <td class="highlight">10.8%</td>
+                <td>9.2%</td>
+                <td>7.5%</td>
+                <td>8.0%</td>
+            </tr>
+            <tr>
+                <td>R&D 비중</td>
+                <td class="highlight">3.5%</td>
+                <td>3.2%</td>
+                <td>2.8%</td>
+                <td>3.0%</td>
+            </tr>
+            <tr>
+                <td>글로벌 거점</td>
+                <td class="highlight">4개국</td>
+                <td>5개국</td>
+                <td>2개국</td>
+                <td>3개국</td>
+            </tr>
+            <tr>
+                <td>주력 분야</td>
+                <td class="highlight">스킨케어·기초</td>
+                <td>색조·스킨케어</td>
+                <td>기초·선케어</td>
+                <td>색조·럭셔리</td>
+            </tr>
+            <tr>
+                <td>사업 다각화</td>
+                <td class="highlight">제약·패키징</td>
+                <td>화장품 집중</td>
+                <td>화장품 집중</td>
+                <td>향수·색조</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-block">
+        <h3>경쟁 우위 및 차별화 전략</h3>
+        <p>한국콜마의 핵심 경쟁 우위는 첫째, 30년 이상 축적된 처방 데이터베이스와 R&D 인프라이다. 한국콜마는 연간 수천 건의 신규 처방을 개발하고 있으며, 축적된 처방 데이터와 원료 노하우는 후발 주자가 단기간에 복제할 수 없는 핵심 자산이다. 둘째, 화장품-제약-패키징을 아우르는 수직 통합형 포트폴리오이다. HK이노엔의 제약 사업은 화장품 사업 대비 경기 변동성이 낮아 안정적인 수익 기반을 제공하며, 연우의 패키징 역량은 ODM 고객에게 원스톱 솔루션을 제공할 수 있는 차별점이 된다.</p>
+        <p>셋째, 글로벌 4개국 생산 거점을 기반으로 한 공급망 유연성이다. 특히 미국 관세 정책 변화에 대응할 수 있는 북미 현지 생산 능력은 중요한 전략적 자산이다. 넷째, 클린 뷰티·비건·지속가능성 등 글로벌 뷰티 트렌드에 선제적으로 대응하는 혁신 역량이다. 한국콜마는 EWG 그린 등급 원료 사용 확대, 비건 인증 제품 라인업 강화, 친환경 포장재 개발 등 ESG 관련 역량을 지속적으로 강화하고 있다.</p>
+    </div>
+</section>
+
+<!-- SECTION 5: SWOT 분석 -->
+<section class="content-section" id="swot">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-th-large"></i></div>
+        <h2 class="section-title">SWOT 분석</h2>
+        <span class="section-number">05 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <p>한국콜마의 현재 전략적 포지셔닝을 종합적으로 평가하기 위해 SWOT(강점·약점·기회·위협) 프레임워크를 활용한다. 한국콜마는 강력한 R&D 역량과 다각화된 사업 포트폴리오를 기반으로 K-뷰티 글로벌 확산이라는 구조적 기회를 최대한 활용하고 있으나, 원자재 가격 변동과 글로벌 경쟁 심화라는 위협 요인에 대한 지속적인 관리가 필요하다.</p>
+    </div>
+
+    <div class="swot-grid">
+        <div class="swot-card">
+            <h4><i class="fas fa-arrow-up" style="margin-right:8px;"></i>강점 (Strengths)</h4>
+            <ul>
+                <li>30년+ 화장품 ODM 기술 노하우 및 처방 데이터베이스</li>
+                <li>글로벌 4개국(한국·중국·미국·캐나다) 생산 네트워크</li>
+                <li>HK이노엔(제약)·연우(패키징) 사업 다각화</li>
+                <li>라운드랩, 닥터엘시아 등 K-뷰티 인디 브랜드 핵심 파트너</li>
+                <li>별도 매출 성장률 +23.2%, 업계 평균 상회</li>
+                <li>스킨케어 카테고리 글로벌 기술 리더십</li>
+                <li>역대 최대 분기 영업이익(789억원) 달성</li>
+                <li>클린 뷰티·비건 인증 제품 라인업 강화</li>
+            </ul>
+        </div>
+        <div class="swot-card">
+            <h4><i class="fas fa-arrow-down" style="margin-right:8px;"></i>약점 (Weaknesses)</h4>
+            <ul>
+                <li>중국 법인(무석) 성장 둔화 — 한자릿수 성장률에 그침</li>
+                <li>색조 화장품 분야 코스맥스 대비 경쟁력 열위</li>
+                <li>인디 브랜드 의존도 확대에 따른 고객 집중 리스크</li>
+                <li>오너 경영 구조에 따른 지배구조 할인 가능성</li>
+                <li>HK이노엔 실적 변동성 — 의약품 가격 정책 영향</li>
+                <li>북미 생산법인 초기 투자 부담 지속</li>
+            </ul>
+        </div>
+        <div class="swot-card">
+            <h4><i class="fas fa-expand-arrows-alt" style="margin-right:8px;"></i>기회 (Opportunities)</h4>
+            <ul>
+                <li>K-뷰티 글로벌 수출 구조적 성장(미국·일본·동남아)</li>
+                <li>인디 브랜드 생태계 확대 — ODM 수요 지속 증가</li>
+                <li>맞춤형 화장품·AI 기반 처방 개발 시장 개화</li>
+                <li>글로벌 대형 뷰티 기업의 한국 ODM 활용 확대</li>
+                <li>바이오 화장품·피부 마이크로바이옴 신기술 적용</li>
+                <li>미국 현지 생산 기반 북미 시장 직접 공략 확대</li>
+                <li>ESG·지속가능 뷰티 트렌드 대응 선점</li>
+            </ul>
+        </div>
+        <div class="swot-card">
+            <h4><i class="fas fa-exclamation-triangle" style="margin-right:8px;"></i>위협 (Threats)</h4>
+            <ul>
+                <li>글로벌 화장품 원자재 가격 상승 리스크</li>
+                <li>환율 변동성 — 원/달러 환율에 따른 수익성 변동</li>
+                <li>중국 로컬 ODM 기업의 기술력 추격</li>
+                <li>인디 브랜드의 자체 생산 전환(In-house Manufacturing) 가능성</li>
+                <li>미국·EU 화장품 규제 강화(성분 규제, 환경 규제)</li>
+                <li>K-뷰티 트렌드 둔화 가능성 — 경쟁 심화에 따른 차별화 약화</li>
+                <li>글로벌 경기 침체 시 소비재 수요 감소</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-block">
+        <h3>SWOT 종합 평가</h3>
+        <p>한국콜마의 SWOT 분석 결과, 강점(S)과 기회(O)의 조합이 약점(W)과 위협(T)의 조합을 유의미하게 상회하는 것으로 판단된다. 특히 K-뷰티 글로벌 수출의 구조적 성장(O)과 한국콜마의 압도적 R&D 역량(S)이 결합되어 강력한 SO(강점-기회) 전략이 형성되어 있다. 중국 시장 둔화(W)와 원자재 가격 상승(T)의 WT 리스크는 존재하나, 선진국 시장 다각화와 수직 통합 포트폴리오가 이를 상당 부분 완화하고 있다.</p>
+        <p>향후 핵심 전략 방향은 SO 전략의 극대화(K-뷰티 수출 확대에 따른 ODM 수주 확대)와 WO 전략(북미 생산 기지 활용을 통한 선진국 시장 공략)에 집중하되, WT 리스크(중국 시장 둔화 + 원자재 가격 상승)에 대한 헤지 전략을 병행하는 것이 적절하다.</p>
+    </div>
+</section>
+
+<!-- SECTION 6: 전략 분석 -->
+<section class="content-section" id="strategy">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-compass"></i></div>
+        <h2 class="section-title">전략 분석</h2>
+        <span class="section-number">06 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>글로벌 멀티 허브 전략의 전개</h3>
+        <p>한국콜마는 '글로벌 멀티 허브(Global Multi-Hub)' 전략을 핵심 성장 동력으로 추진하고 있다. 이 전략은 한국 본사를 R&D 혁신 센터로 유지하면서, 중국(무석), 미국, 캐나다 등 주요 소비 시장에 인접한 생산 거점을 통해 현지화된 ODM 서비스를 제공하는 것을 골자로 한다. 각 거점은 해당 시장의 규제 환경, 소비자 선호, 유통 구조에 최적화된 생산·서비스 역량을 구축하고 있다.</p>
+        <p>북미 전략에서 가장 주목할 부분은 현지 생산 역량 강화이다. 미국 시장에서 K-뷰티 수요가 폭발적으로 성장하면서, 한국에서 미국으로의 수출 물류 리드타임과 비용이 경쟁력의 제약 요인으로 작용할 수 있다. 한국콜마의 미국·캐나다 생산법인은 이러한 문제를 해결하고, 나아가 미국의 관세 정책 변화에 대한 대비책으로도 기능한다. 향후 미국법인의 CAPA 확대가 본격화되면, 북미 매출 비중이 현재 약 10% 수준에서 15~20%까지 확대될 것으로 전망된다.</p>
+        <p>중국 전략은 '선별적 성장'으로 요약할 수 있다. 과거 중국 시장의 양적 성장에 의존하던 전략에서 벗어나, 고마진 프리미엄 세그먼트와 로컬 인디 브랜드 고객에 집중하는 질적 성장 전략으로 전환하고 있다. 중국 소비자들의 C-뷰티(중국 로컬 뷰티) 선호 확대와 경제 둔화 속에서도, 프리미엄 스킨케어 수요는 상대적으로 견조하며, 한국 ODM의 기술적 차별성이 이 세그먼트에서 여전히 유효하기 때문이다.</p>
+        <p>연구개발(R&D) 전략 측면에서 한국콜마는 차세대 화장품 기술에 대한 선제적 투자를 확대하고 있다. 피부 마이크로바이옴(Microbiome) 기반 스킨케어, AI를 활용한 처방 최적화, 바이오 유래 천연 원료 개발, 맞춤형 화장품(Personalized Beauty) 솔루션 등이 주요 R&D 투자 영역이다. 특히 AI 기반 처방 개발 플랫폼은 신제품 개발 기간을 기존 대비 30~40% 단축시키며, 고객사에게 더 빠르고 효율적인 ODM 서비스를 제공할 수 있는 차별적 역량으로 주목받고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>M&A 및 사업 포트폴리오 전략</h3>
+        <p>한국콜마의 그룹 차원 전략에서 M&A는 중요한 성장 수단으로 활용되어 왔다. HK이노엔(舊 CJ헬스케어)의 인수는 화장품 ODM 기업에서 뷰티·헬스케어 플랫폼 기업으로의 전환을 위한 전략적 결정이었으며, 연우 인수는 화장품 가치사슬의 수직 통합을 완성하기 위한 포석이었다. 향후에도 글로벌 시장 확대를 위한 현지 ODM 기업 인수, 신기술 보유 기업 인수 등 전략적 M&A가 예상된다.</p>
+        <p>ESG(환경·사회·지배구조) 전략도 한국콜마의 중장기 경쟁력을 좌우할 핵심 요소이다. 글로벌 뷰티 시장에서 지속가능성은 더 이상 선택이 아닌 필수가 되었으며, 한국콜마는 친환경 원료 사용 비율 확대, 탄소 배출 감축, 패키징 재활용률 제고, 동물 실험 대체 시험법 도입 등 다양한 ESG 이니셔티브를 추진하고 있다. 이러한 ESG 역량은 글로벌 대형 브랜드들이 ODM 파트너를 선정할 때 점점 더 중요한 평가 기준이 되고 있어, 한국콜마의 글로벌 수주 경쟁력 강화에 기여할 것으로 예상된다.</p>
+        <p>디지털 트랜스포메이션(DX) 역시 한국콜마의 전략적 중점 분야이다. 스마트 팩토리 구축을 통한 생산 효율성 향상, 디지털 트윈(Digital Twin) 기반 공정 최적화, 빅데이터 분석을 활용한 소비자 트렌드 예측 등이 진행되고 있다. 이를 통해 다품종 소량 생산의 효율성을 극대화하고, 고객사에게 더 빠른 시장 대응력을 제공하는 것이 목표이다.</p>
+    </div>
+</section>
+
+<!-- SECTION 7: 재무 분석 -->
+<section class="content-section" id="financials">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-bar"></i></div>
+        <h2 class="section-title">재무 분석</h2>
+        <span class="section-number">07 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>2026년 1분기 실적 심층 분석</h3>
+        <p>한국콜마는 2026년 1분기 연결 기준 매출 7,280억원(+12.0% YoY), 영업이익 789억원(+31.6% YoY), 당기순이익 600억원(+159.0% YoY)을 기록하며 역대 최대 분기 실적을 달성했다. 이 실적은 시장 컨센서스(매출 6,800억원, 영업이익 680억원)를 크게 상회하는 어닝 서프라이즈(Earnings Surprise)로, 발표 직후 주가가 상한가에 근접하는 급등세를 보였다.</p>
+        <p>실적 호조의 핵심 동력을 분석하면, 별도 기준(화장품 ODM 본업) 매출이 전년 동기 대비 +23.2% 성장한 점이 가장 돋보인다. 이는 한국 화장품 전체 수출 성장률(+19%)을 상회하는 수치로, K-뷰티 수출 호조 속에서도 한국콜마가 시장 평균 이상의 성장을 시현하고 있음을 의미한다. 이는 라운드랩, 닥터엘시아, 토리든 등 주요 인디 브랜드 고객사들의 해외 매출 급증에 따른 ODM 수주 확대가 주된 원인이다.</p>
+        <p>영업이익률은 10.8%를 기록하며, 전년 동기(9.2%) 대비 1.6%p 개선되었다. 이는 매출 성장에 따른 고정비 레버리지 효과, 고마진 인디 브랜드 수주 비중 확대, 원자재 비용 안정화 등이 복합적으로 작용한 결과이다. 당기순이익이 +159% 급증한 것은 영업이익 증가 외에도, 환차익 발생 및 HK이노엔의 비영업손익 개선 등이 기여한 것으로 분석된다.</p>
+        <p>사업부문별로 보면, 화장품 사업부문(별도)이 가장 강한 성장세를 보였으며, 중국 법인(무석)은 전년 동기 대비 소폭 성장에 그쳤다. HK이노엔은 안정적인 매출 성장(+5~7%)을 유지하며 캐시카우 역할을 충실히 수행했고, 연우(패키징)는 K-뷰티 수출 증가에 따른 수혜로 양호한 성장을 기록했다. 이러한 사업부문별 차별화된 성장 양상은 한국콜마 그룹의 포트폴리오 리스크 분산 효과를 잘 보여준다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>주요 재무 지표</h3>
+    </div>
+
+    <div class="progress-row">
+        <div class="progress-label"><span>매출 성장률 (YoY)</span><span>+12.0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="72"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>영업이익률</span><span>10.8%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="65"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>순이익 성장률 (YoY)</span><span>+159.0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="95"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>별도 매출 성장률</span><span>+23.2%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="80"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>ROE (추정)</span><span>14.5%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="58"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>부채비율</span><span>85.0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="42"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>R&D 투자 비중</span><span>3.5%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="35"></div></div>
+    </div>
+
+    <div class="text-block">
+        <h3>밸류에이션 분석</h3>
+        <p>현재 한국콜마의 주가 93,600원 기준 PER(주가수익비율)은 약 22~24배 수준으로, 과거 5년 평균 PER(18~20배) 대비 프리미엄이 부여되어 있다. 이러한 프리미엄은 K-뷰티 구조적 성장에 대한 시장의 기대감, 역대 최대 실적 달성에 따른 이익 모멘텀, 그리고 글로벌 뷰티 산업의 높은 성장 잠재력을 반영한 것으로 해석된다.</p>
+        <p>PBR(주가순자산비율)은 약 2.5~2.8배로, 자산 가치 대비 적정 수준이다. EV/EBITDA는 약 12~14배로 글로벌 화장품 ODM 피어 그룹 평균(10~15배)의 중상위 수준에 해당한다. BNK투자증권의 목표주가 112,000원은 2026년 예상 EPS에 목표 PER 26~28배를 적용한 것으로 추정되며, K-뷰티 성장 모멘텀이 지속되는 한 이러한 프리미엄 밸류에이션은 정당화될 수 있다고 판단한다.</p>
+        <p>다만 주가가 100,000원을 상회할 경우 PER 25배 이상의 고밸류에이션 영역에 진입하게 되므로, 실적 성장률 둔화 시 밸류에이션 디레이팅(De-rating) 리스크에 유의할 필요가 있다. 현재 밸류에이션 수준에서의 안전 마진(Margin of Safety)은 제한적이며, 추가 상승을 위해서는 2분기 이후에도 매출 성장률 두 자릿수 유지, 영업이익률 개선 지속 등의 실적 뒷받침이 필수적이다.</p>
+    </div>
+</section>
+
+<!-- SECTION 8: 결론 및 투자 의견 -->
+<section class="content-section" id="conclusion">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 class="section-title">결론 및 투자 의견</h2>
+        <span class="section-number">08 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>종합 투자 판단</h3>
+        <p>한국콜마(161890)는 K-뷰티 글로벌 수출의 구조적 성장기에서 최대 수혜를 받고 있는 핵심 기업이다. 2026년 1분기 역대 최대 분기 실적(매출 7,280억원, 영업이익 789억원)은 인디 브랜드 중심의 K-뷰티 수출 호조와 한국콜마의 탁월한 ODM 역량이 결합된 결과물이며, 별도 매출 성장률이 시장 평균을 상회하는 점은 시장 내 지위 강화를 확인시켜 준다.</p>
+        <p>중장기적으로 한국콜마의 투자 매력은 세 가지 축에서 지지된다. 첫째, K-뷰티의 글로벌 확산이 일시적 트렌드가 아닌 구조적 현상이라는 점이다. 미국, 일본, 동남아 등 주요 시장에서 K-뷰티의 카테고리 침투율이 지속적으로 확대되고 있으며, 이는 화장품 ODM 수요의 장기 성장을 담보한다. 둘째, 한국콜마의 글로벌 멀티 허브 전략이 수출 의존에서 현지 생산 기반 성장으로의 전환을 가능하게 한다는 점이다. 셋째, 제약(HK이노엔)·패키징(연우)을 통한 사업 다각화가 화장품 시장의 경기 변동성을 효과적으로 완화한다는 점이다.</p>
+        <p>리스크 요인으로는 중국 시장의 구조적 둔화, 원자재 가격 상승, 인디 브랜드의 자체 생산 전환 가능성, 환율 변동 등이 존재한다. 그러나 현재까지 이러한 리스크는 관리 가능한 수준으로 판단되며, 선진국 시장 다각화, 수직 통합 포트폴리오, 지속적인 R&D 투자 등을 통해 효과적으로 헤지되고 있다.</p>
+        <p>BNK투자증권의 목표주가 112,000원(매수)은 현재 주가 대비 약 19.7%의 상승 여력을 시사한다. 현재 PER 22~24배 수준은 K-뷰티 성장 모멘텀을 감안하면 과도하지 않은 밸류에이션으로 판단되며, 실적 성장이 지속되는 한 밸류에이션 프리미엄은 유지될 수 있다. 다만 100,000원 이상의 고밸류에이션 영역에서는 실적 기대치가 높아진 만큼, 분기별 실적 모니터링을 통한 적극적 대응이 필요하다.</p>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-title"><i class="fas fa-flag"></i> 최종 투자 의견</div>
+        <p><strong style="color:var(--gold);">투자 의견: 매수(BUY)</strong> | 목표주가: 112,000원 | 현재가: 93,600원 | 상승 여력: +19.7%</p>
+        <p style="margin-top:12px;">K-뷰티 ODM 산업의 구조적 성장 수혜, 역대 최대 실적 모멘텀, 글로벌 멀티 허브 전략의 가시성 확대를 종합적으로 고려할 때, 한국콜마는 중장기 포트폴리오에 편입할 가치가 충분한 종목으로 판단한다. 단기적 조정 시 85,000원 이하 구간에서의 비중 확대 전략을 제안한다.</p>
+    </div>
+</section>
+
+
+
+<!-- DEEP DIVE: 추가 심층 분석 섹션들 -->
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-microscope"></i></div>
+        <h2 class="section-title">심층 분석: R&D 역량과 처방 기술</h2>
+        <span class="section-number">APPENDIX A</span>
+    </div>
+
+    <div class="text-block">
+        <h3>처방 데이터베이스와 R&D 파이프라인</h3>
+        <p>한국콜마의 R&D 역량은 단순히 연구소 규모나 투자 금액으로 측정되지 않는다. 핵심은 30년 이상 축적된 처방(Formulation) 데이터베이스의 깊이와 폭에 있다. 한국콜마는 매년 수천 건의 신규 처방을 개발하고 있으며, 이 과정에서 생성되는 원료 호환성 데이터, 안정성 테스트 결과, 관능 평가 데이터 등이 체계적으로 데이터베이스화되어 있다. 이 데이터베이스는 신규 처방 개발 시 참조 자료로 활용되어 개발 기간을 단축하고 성공률을 높이는 핵심 자산이다.</p>
+        <p>특히 주목할 부분은 AI 기반 처방 최적화 시스템의 도입이다. 한국콜마는 머신러닝 알고리즘을 활용하여 축적된 처방 데이터에서 패턴을 추출하고, 고객이 원하는 제형 및 효능과 가격대에 최적화된 처방을 자동으로 제안하는 시스템을 개발했다. 이 시스템은 기존 3개월에서 6개월 소요되던 처방 개발 기간을 2개월에서 3개월로 단축시키며, 고객사에게 더 빠르고 정확한 ODM 서비스를 제공할 수 있게 한다. 이러한 기술적 혁신은 화장품 ODM 산업에서 선도적 위치를 공고히 하는 핵심 역량으로 평가된다.</p>
+        <p>바이오 화장품 분야에서의 R&D 투자도 확대되고 있다. 피부 마이크로바이옴(Microbiome) 연구, 줄기세포 유래 성분 개발, 엑소좀(Exosome) 기반 스킨케어 기술 등 차세대 바이오 화장품 기술에 대한 선제적 투자가 진행 중이다. 이러한 기술들은 기존 화학 원료 기반 화장품과 차별화된 효능과 안전성을 제공하며, 프리미엄 가격대에서의 경쟁력을 확보하는 핵심 수단이 된다. 마이크로바이옴 기반 화장품은 개인의 피부 생태계를 분석하여 맞춤형 제품을 제공하는 퍼스널라이제이션(Personalization) 트렌드와도 맞닿아 있어, 향후 시장 성장 잠재력이 매우 크다.</p>
+        <p>클린 뷰티(Clean Beauty)와 비건(Vegan) 화장품 트렌드에 대한 대응도 R&D의 중요한 축이다. 유해 성분 배제(Free-from), 천연 유래 원료 사용 비율 확대, EWG 그린 등급 인증 원료 적용, 비건 인증 획득 등이 핵심 과제이며, 한국콜마는 이 분야에서 업계 선도적인 포지션을 구축하고 있다. 특히 유럽 시장 진출을 위해서는 EU 화장품 규정(EC Regulation)에 따른 성분 규제 대응이 필수적이며, 한국콜마의 글로벌 규제 대응 역량은 중요한 경쟁 우위 요소이다.</p>
+        <p>선케어(Sun Care) 분야는 한국콜마의 특히 강점이 돋보이는 카테고리이다. 한국 화장품의 선케어 기술은 일본과 함께 세계 최고 수준으로 평가받고 있으며, 한국콜마는 자외선 차단 효능, 제형 안정성, 사용감 등에서 차별화된 처방 기술을 보유하고 있다. 미국과 유럽에서 한국산 선스크린의 인기가 급상승하면서, 선케어 ODM 수주가 빠르게 증가하고 있는 것은 이러한 기술적 우위를 반영한다. 한국콜마의 선케어 처방은 높은 SPF 지수와 PA 등급을 유지하면서도 백탁 현상 없이 자연스러운 사용감을 제공하는 것이 특징으로, 이는 미국 시장에서 일본 선스크린과 함께 최고의 평가를 받고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>생산 기술과 품질 관리 시스템</h3>
+        <p>한국콜마의 생산 시설은 단순한 제조 공장을 넘어, 첨단 품질 관리 시스템과 자동화 설비가 갖춰진 스마트 팩토리로 진화하고 있다. 세종과 대전 등 국내 주요 공장에서는 IoT(사물인터넷) 센서를 통한 실시간 생산 모니터링, AI 기반 품질 예측 시스템, 자동화된 원료 투입과 배합 및 충전과 포장 라인 등이 운영되고 있다. 이러한 스마트 팩토리 구축은 다품종 소량 생산의 효율성을 극대화하고, 제품 품질의 일관성을 보장하는 핵심 인프라이다.</p>
+        <p>GMP(Good Manufacturing Practice) 인증을 기반으로 한 품질 관리 체계는 한국콜마의 글로벌 경쟁력의 기반이다. 한국, 미국, 유럽, 중국 등 주요 시장의 화장품 GMP 기준을 모두 충족하는 통합 품질 관리 시스템을 운영하고 있으며, 이는 글로벌 브랜드들이 한국콜마를 ODM 파트너로 선정하는 핵심 요인 중 하나이다. 특히 의약품 수준의 품질 관리 역량은 기능성 화장품, 메디칼 뷰티(Medical Beauty) 등 고부가가치 제품군에서의 경쟁력을 더욱 강화한다.</p>
+        <p>패키징 혁신도 중요한 경쟁 요소이다. 연우를 통한 수직 통합 패키징 역량은 제품 용기의 디자인부터 소재 선정, 금형 제작, 양산까지 일관된 관리를 가능하게 한다. 최근에는 친환경 패키징에 대한 수요가 급증하면서, 재활용 가능 소재, 생분해성 용기, 리필형 패키지 등 지속가능한 패키징 솔루션 개발에 주력하고 있다. 이는 ESG 경영 트렌드와 맞물려 글로벌 브랜드들의 높은 관심을 받고 있다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-pie"></i></div>
+        <h2 class="section-title">심층 분석: 사업부문별 성과와 전망</h2>
+        <span class="section-number">APPENDIX B</span>
+    </div>
+
+    <div class="text-block">
+        <h3>화장품 ODM 본업(별도 기준) 상세 분석</h3>
+        <p>한국콜마 별도 실적은 화장품 ODM 본업의 순수한 성과를 보여주는 핵심 지표이다. 2026년 1분기 별도 매출 성장률 +23.2%는 한국 화장품 전체 수출 성장률(+19%)을 4.2%p 상회하는 수치로, 이는 한국콜마가 K-뷰티 수출 성장 트렌드에서 시장 평균 이상의 수혜를 받고 있음을 명확히 보여준다. 이러한 아웃퍼포먼스의 핵심 원인은 주요 인디 브랜드 고객사들의 해외 매출 급증과, 한국콜마의 차별화된 ODM 역량에 대한 시장의 인정이다.</p>
+        <p>고객사 포트폴리오 분석에서 주목할 점은 인디 브랜드 비중의 확대이다. 과거에는 아모레퍼시픽, LG생활건강 등 대형 브랜드 고객의 비중이 높았으나, 최근 라운드랩, 닥터엘시아, 토리든, 스킨1004, 조선미녀, 메디힐 등 인디 브랜드 고객의 비중이 빠르게 확대되고 있다. 인디 브랜드 고객의 특성상 Full-ODM(처방 개발부터 양산까지 일괄 수주) 비율이 높아 건당 부가가치가 높으며, 브랜드 성장에 따른 주문량 급증이 자연스럽게 이루어지는 구조적 장점이 있다.</p>
+        <p>카테고리별로 보면, 스킨케어(토너, 세럼, 에센스, 크림 등)가 ODM 매출의 약 60%에서 65%로 가장 큰 비중을 차지하며, 선케어(20%에서 25%), 클렌징(10%), 기타(5%에서 10%) 순이다. 특히 미국 시장에서 한국산 선스크린의 인기가 폭발하면서 선케어 ODM 수주가 전년 대비 30% 이상 급증했다. 스킨케어에서는 비타민C 세럼, 레티놀 크림, 히알루론산 앰플 등 기능성 제품 수주가 증가하고 있다.</p>
+        <p>수출 지역별로는 미국이 가장 빠른 성장을 보이고 있으며, 일본, 동남아(태국, 베트남, 인도네시아), 유럽 순이다. 미국 시장의 K-뷰티 침투율은 아직 초기 단계로, 향후 성장 잠재력이 매우 크다. 아마존에서의 K-뷰티 검색량이 지속적으로 증가하고 있으며, 울타 뷰티와 세포라 등 주요 오프라인 유통에서도 K-뷰티 전용 코너가 확대되고 있어 구조적 성장의 가시성이 높다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>HK이노엔(제약) 사업부문 분석</h3>
+        <p>HK이노엔(구 CJ헬스케어)은 한국콜마그룹의 제약 자회사로, 소화기 계열 전문의약품을 주력으로 생산하고 있다. 케이캡(Kcab, 포타슘 경쟁적 위산분비차단제)은 HK이노엔의 대표 제품으로, 기존 PPI(양성자펌프억제제) 대비 빠른 작용 시작과 강력한 위산 분비 억제 효과를 제공한다. 케이캡은 출시 이후 꾸준한 시장 점유율 확대를 이루며, 연매출 수천억 원 규모의 블록버스터 의약품으로 성장했다.</p>
+        <p>HK이노엔의 매출 성장률은 연간 5%에서 7% 수준으로, 화장품 ODM 본업 대비 성장 속도는 느리지만 높은 수익 안정성을 제공한다. 제약 사업의 특성상 경기 변동에 대한 민감도가 낮으며, 전문의약품의 안정적인 처방 수요가 실적의 예측 가능성을 높여준다. 이는 한국콜마그룹 전체의 실적 변동성을 완화하는 캐시카우(Cash Cow) 역할을 수행한다.</p>
+        <p>다만 제약 사업의 리스크 요인으로는 건강보험 약가 인하 정책, 제네릭 의약품과의 경쟁, R&D 파이프라인의 성과 불확실성 등이 있다. HK이노엔은 케이캡 외에도 신규 파이프라인 확보를 위한 R&D 투자를 지속하고 있으며, 해외 시장 진출(특히 중국, 동남아)을 통한 성장 동력 확보도 추진 중이다. 바이오시밀러 및 신약 개발 파이프라인의 진전 여부가 중장기 성장성을 가늠하는 핵심 변수로 작용할 것이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>연우(패키징) 사업부문 분석</h3>
+        <p>연우는 화장품 용기 및 패키징 전문 기업으로, 펌프, 디스펜서, 튜브, 콤팩트 등 다양한 화장품 용기를 생산한다. 한국콜마그룹의 수직 통합 전략에서 핵심적인 역할을 담당하며, ODM 고객에게 제품 처방부터 용기와 패키징까지 일괄 솔루션을 제공할 수 있는 차별적 가치를 창출한다.</p>
+        <p>연우의 성장은 K-뷰티 수출 확대와 직접적으로 연동된다. K-뷰티 브랜드들의 해외 매출이 증가할수록 용기와 패키징 수요도 비례하여 증가하기 때문이다. 특히 최근 친환경 패키징에 대한 글로벌 수요가 급증하면서, 재활용 가능 소재, 바이오 플라스틱, 리필형 용기 등 친환경 패키징 솔루션이 연우의 새로운 성장 동력으로 부상하고 있다. 글로벌 뷰티 시장에서 패키징의 전략적 중요성은 갈수록 커지고 있으며, 소비자들이 제품의 기능성뿐만 아니라 패키징 디자인, 사용 편의성, 환경 친화성까지 고려하여 구매 결정을 내리기 때문이다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <h2 class="section-title">심층 분석: 글로벌 시장별 전략</h2>
+        <span class="section-number">APPENDIX C</span>
+    </div>
+
+    <div class="text-block">
+        <h3>미국 시장 전략과 성장 잠재력</h3>
+        <p>미국은 세계 최대의 화장품 소비 시장(약 1,000억 달러 규모)으로, K-뷰티의 침투율 확대가 가장 빠르게 진행되는 시장이다. 한국 화장품의 대미 수출은 2024년 이후 연간 30% 이상 성장하고 있으며, 특히 아마존, 울타 뷰티, 세포라, 코스트코 등 주요 유통 채널에서 K-뷰티의 가시성이 크게 높아졌다. 한국콜마의 미국 전략은 크게 두 가지 축으로 전개되고 있다. 첫째는 한국 본사에서의 수출을 통한 K-뷰티 브랜드에 대한 ODM 공급이며, 둘째는 미국 현지 생산 법인을 통한 로컬 브랜드 고객 확보이다.</p>
+        <p>미국 현지 생산은 리드타임 단축, 관세 회피, Made in USA 라벨 활용 등의 이점을 제공하며, 미국 로컬 인디 브랜드들의 ODM 수요를 직접 흡수할 수 있는 채널이 된다. 미국 화장품 시장의 트렌드 변화도 한국콜마에게 유리하게 작용하고 있다. 미국 소비자들의 스킨케어 루틴 다단계화(Multi-step Skincare), 성분(Ingredient) 중심 소비 트렌드, 선케어에 대한 인식 변화 등은 모두 한국 화장품의 강점이 발휘되는 영역이다.</p>
+        <p>다만 미국 시장의 규제 환경은 점점 강화되고 있다. FDA의 화장품 규제 현대화법(MoCRA)의 시행으로 화장품의 안전성 보고, 성분 공개, 제조 시설 등록 등의 요건이 강화되었다. 한국콜마는 이러한 규제 환경 변화에 선제적으로 대응하고 있으며, 글로벌 수준의 GMP 시스템과 규제 대응 역량이 경쟁사 대비 우위로 작용하고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>일본 및 동남아 시장 확대 전략</h3>
+        <p>일본 화장품 시장은 세계 3위 규모(약 400억 달러)로, 전통적으로 일본 로컬 브랜드가 압도적인 시장 점유율을 차지해왔다. 그러나 2023년 이후 K-뷰티의 일본 시장 침투가 가파르게 진행되면서, 한국 화장품의 대일(對日) 수출이 연간 30% 이상 성장하는 괄목할 만한 성과를 보이고 있다. 한국콜마의 주요 고객사인 인디 브랜드들이 일본 시장에서 강력한 브랜드 인지도를 구축하고 있어, 한국콜마의 간접적 수혜가 크다.</p>
+        <p>동남아시아는 K-뷰티의 차세대 핵심 성장 시장으로 부상하고 있다. 태국, 베트남, 인도네시아, 필리핀 등에서 한류(Hallyu)와 연계된 K-뷰티 수요가 빠르게 확대되고 있으며, 특히 젊은 인구 구성비가 높은 동남아 시장의 인구 구조적 특성은 뷰티 시장의 장기 성장 잠재력을 높이는 요인이다. 쇼피(Shopee), 라자다(Lazada) 등 동남아 이커머스 플랫폼에서 K-뷰티의 카테고리 점유율이 지속적으로 상승하고 있다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-balance-scale"></i></div>
+        <h2 class="section-title">심층 분석: ESG와 지속가능경영</h2>
+        <span class="section-number">APPENDIX D</span>
+    </div>
+
+    <div class="text-block">
+        <h3>환경(E): 친환경 생산과 탄소 감축</h3>
+        <p>한국콜마는 ESG(환경, 사회, 지배구조) 경영을 기업의 핵심 전략으로 내재화하고 있다. 환경 측면에서는 탄소 배출 감축, 폐수 처리 고도화, 재생 에너지 사용 비율 확대, 친환경 원료 및 패키징 도입 등 다양한 이니셔티브를 추진하고 있다. 세종 공장의 태양광 발전 설비 확대, 공정 효율화를 통한 에너지 사용량 절감, 수자원 재활용 시스템 도입 등이 대표적인 사례이다.</p>
+        <p>화장품 산업에서의 환경 이슈는 크게 원료의 지속가능성, 생산 과정의 환경 영향, 패키징의 재활용 가능성으로 구분된다. 한국콜마는 이 세 가지 영역 모두에서 개선을 추진하고 있다. 원료 측면에서는 식물 유래 천연 원료, 바이오 발효 원료, 업사이클링 원료 등의 사용 비율을 확대하고 있으며, 생산 과정에서는 에너지 효율화, 폐기물 감량, 유해 물질 사용 저감 등을 추진하고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>사회(S) 및 지배구조(G): 공급망 관리와 투명성</h3>
+        <p>사회적 측면에서 한국콜마는 공급망 관리, 근로자 안전 및 건강, 지역사회 기여 등에 주력하고 있다. 원료 공급업체에 대한 ESG 평가를 도입하여 공급망 전체의 지속가능성을 확보하고 있으며, 동물 실험 대체 시험법(In-vitro 시험, 인공피부 모델 등) 도입을 통해 크루얼티 프리(Cruelty-free) 정책을 강화하고 있다.</p>
+        <p>지배구조 측면에서는 오너 경영 체제의 특성상 의사결정의 신속성과 장기 전략 추진의 일관성이라는 강점이 있으나, 소액주주 권리 보호, 이사회 독립성, 경영 승계 계획 등에 대한 시장의 관심이 높아지고 있다. 한국콜마홀딩스를 통한 지주회사 체제의 투명성 제고, 사외이사 비중 확대, ESG 위원회 설치 등의 개선 노력이 진행 중이며, 이는 중장기적으로 기업 가치 할인 요인의 축소에 기여할 것으로 판단된다. 글로벌 투자자들의 ESG 평가에서 한국콜마의 포지셔닝은 중상위권으로 평가되며, 지속적인 ESG 개선 노력이 글로벌 기관투자자들의 투자 대상 편입에 긍정적으로 작용하고 있다.</p>
+    </div>
+</section>
+
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-search-dollar"></i></div>
+        <h2 class="section-title">심층 분석: 밸류에이션 시나리오</h2>
+        <span class="section-number">APPENDIX E</span>
+    </div>
+
+    <div class="text-block">
+        <h3>베이스 케이스 시나리오 (Base Case)</h3>
+        <p>베이스 케이스 시나리오에서는 K-뷰티 수출 성장률이 현재 수준(약 15~20%)을 유지하고, 한국콜마의 별도 매출 성장률이 시장 평균 수준(약 15~18%)을 기록하는 것을 전제한다. 이 경우 2026년 연간 연결 매출은 약 3.0~3.1조원, 영업이익은 약 3,200~3,400억원으로 추정되며, 목표 PER 22~24배 적용 시 적정 주가는 약 100,000~110,000원 수준으로 산출된다. 이는 BNK투자증권의 목표주가 112,000원과 유사한 수준이다.</p>
+        <p>이 시나리오에서는 중국 법인의 성장이 한자릿수에 머물고, HK이노엔은 5~7% 성장, 연우는 10~12% 성장하는 것을 가정한다. 영업이익률은 별도 기준 11~12%, 연결 기준 10~11% 수준으로 현재 대비 소폭 개선되는 것으로 전망한다. 이 시나리오의 핵심 가정은 K-뷰티 수출 성장의 지속성으로, 미국과 일본 시장에서의 구조적 성장이 유지되는 것이 핵심 전제이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>불(Bull) 케이스 시나리오</h3>
+        <p>불 케이스 시나리오에서는 K-뷰티 수출이 예상을 상회하여 25% 이상 성장하고, 한국콜마의 별도 매출 성장률이 25~30%를 기록하는 것을 전제한다. 이 경우 2026년 연간 연결 매출은 약 3.3~3.5조원, 영업이익은 약 3,800~4,200억원까지 확대될 수 있다. 목표 PER 26~28배 적용 시 적정 주가는 약 130,000~150,000원 수준으로, 현재 대비 40~60%의 상승 여력이 있다.</p>
+        <p>불 케이스를 지지하는 핵심 근거는 미국 시장에서의 K-뷰티 침투율 가속화, 유럽 시장에서의 K-뷰티 인지도 급상승, 글로벌 대형 뷰티 기업의 한국 ODM 대규모 발주 등이다. 특히 미국에서 K-뷰티가 단순한 트렌드를 넘어 메인스트림 카테고리로 정착할 경우, ODM 수주 물량의 비선형적 증가가 가능하다. 또한 한국콜마의 미국 법인 CAPA 확대가 본격화되면, 미국 로컬 고객 확보를 통한 추가 매출 성장도 기대된다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>베어(Bear) 케이스 시나리오</h3>
+        <p>베어 케이스 시나리오에서는 K-뷰티 수출 성장 둔화(한자릿수 성장), 중국 시장 추가 악화, 원자재 가격 급등 등의 부정적 요인이 복합적으로 작용하는 것을 전제한다. 이 경우 2026년 연간 연결 매출은 약 2.8~2.9조원, 영업이익은 약 2,600~2,800억원 수준에 그칠 수 있다. 목표 PER 16~18배 적용 시 적정 주가는 약 70,000~80,000원 수준으로, 현재 대비 15~25%의 하방 리스크가 존재한다.</p>
+        <p>베어 케이스의 핵심 트리거는 K-뷰티 트렌드의 둔화, 미국 관세 정책 변화에 따른 수출 부담 증가, 인디 브랜드의 자체 생산 전환, 글로벌 경기 침체에 따른 소비 위축 등이다. 다만 한국콜마의 사업 다각화(제약, 패키징)와 글로벌 생산 네트워크는 베어 케이스에서도 하방 지지력을 제공하는 구조적 안전 장치로 기능할 것으로 판단된다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-industry"></i></div>
+        <h2 class="section-title">심층 분석: 산업 가치사슬과 구조적 변화</h2>
+        <span class="section-number">APPENDIX F</span>
+    </div>
+
+    <div class="text-block">
+        <h3>화장품 ODM 산업의 가치사슬 분석</h3>
+        <p>화장품 산업의 가치사슬은 크게 원료 공급 → R&D 및 처방 개발 → 생산(ODM/OEM) → 패키징 → 브랜드 마케팅 → 유통 → 소비자로 구성된다. 한국콜마는 이 가치사슬에서 R&D, 생산, 패키징(연우)까지 3개 단계를 커버하는 독보적인 포지셔닝을 확보하고 있다. 이러한 수직 통합 구조는 원스톱 솔루션 제공, 비용 효율성, 품질 일관성 등의 측면에서 단일 단계만 커버하는 경쟁사 대비 구조적 경쟁 우위를 제공한다.</p>
+        <p>최근 화장품 가치사슬에서 가장 큰 구조적 변화는 브랜드와 ODM 기업 간의 역할 재편이다. 전통적으로 대형 브랜드는 자체 R&D를 통해 제품을 기획하고 ODM 기업은 단순 생산을 담당했으나, 인디 브랜드의 부상과 함께 ODM 기업이 제품 기획부터 처방 개발, 생산, 패키징까지 전 과정을 총괄하는 Full-ODM 모델이 확산되고 있다. 이는 ODM 기업의 부가가치와 교섭력을 높이는 방향으로의 구조적 변화이며, 한국콜마는 이 트렌드의 최대 수혜자이다.</p>
+        <p>디지털 커머스의 발전도 가치사슬 변화의 핵심 동력이다. D2C(Direct to Consumer) 모델의 확산으로 브랜드 런칭 비용이 대폭 절감되면서, ODM 기업에 생산을 위탁하는 소규모 브랜드가 급증하고 있다. 소셜 미디어와 이커머스 플랫폼의 발달로 브랜드가 소비자에게 직접 접근할 수 있게 되면서, 유통 채널의 중개 역할이 약화되고, ODM 기업과 브랜드 간의 직접 협업이 강화되는 추세이다.</p>
+        <p>원료 공급 측면에서는 지속가능한 원료(Sustainable Ingredients)에 대한 수요가 급증하고 있다. 천연 유래 원료, 유기농 인증 원료, 페어트레이드 원료 등의 사용 확대는 화장품 원가 상승 요인이 될 수 있으나, 프리미엄 가격 설정을 가능하게 하는 차별화 요소이기도 하다. 한국콜마는 자체 원료 연구소를 통해 바이오 발효 원료, 식물 줄기세포 원료 등 차별화된 원료를 개발하고 있으며, 이는 처방 경쟁력 강화에 직결된다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>K-뷰티 생태계의 구조적 경쟁력</h3>
+        <p>K-뷰티의 글로벌 경쟁력은 단일 기업의 역량이 아닌, 한국 화장품 산업 생태계 전체의 시스템적 경쟁력에서 비롯된다. 세계 최고 수준의 ODM/OEM 인프라(한국콜마, 코스맥스), 혁신적인 원료 기업(한국콜마, 코스맥스, 코스메카코리아 등의 원료 연구소), 빠른 트렌드 반영 능력, 높은 품질 기준, 합리적인 가격 경쟁력 등이 유기적으로 결합되어 글로벌 시장에서 독보적인 경쟁력을 형성하고 있다.</p>
+        <p>한국 화장품 산업 클러스터(세종, 오송, 대전 등)는 원료 공급업체, ODM 기업, 패키징 기업, 브랜드, R&D 기관 등이 지리적으로 집적된 산업 생태계를 형성하고 있다. 이러한 클러스터 효과는 정보의 빠른 공유, 협업의 용이성, 공급망 효율성 등을 높여 산업 전체의 경쟁력을 강화한다. 한국콜마의 세종 및 대전 공장은 이 클러스터의 핵심에 위치하며, 생태계 전체의 시너지를 최대한 활용하고 있다.</p>
+    </div>
+</section>
+
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-flask"></i></div>
+        <h2 class="section-title">심층 분석: 기술 혁신과 미래 전략</h2>
+        <span class="section-number">APPENDIX G</span>
+    </div>
+
+    <div class="text-block">
+        <h3>AI 기반 뷰티테크(BeautyTech) 혁신</h3>
+        <p>한국콜마는 AI와 빅데이터를 활용한 뷰티테크(BeautyTech) 혁신을 차세대 핵심 경쟁력으로 육성하고 있다. AI 기반 처방 최적화 플랫폼은 수만 건의 과거 처방 데이터를 머신러닝 알고리즘으로 분석하여, 원하는 효능과 제형 및 가격대에 맞는 최적 처방을 자동으로 제안하는 시스템이다. 이 플랫폼은 처방 개발 시간을 기존 대비 30% 이상 단축하고, 처방 성공률(첫 시제품 합격률)을 20% 이상 향상시킨 것으로 내부 평가되고 있다.</p>
+        <p>빅데이터 분석을 활용한 소비자 트렌드 예측 역량도 ODM 경쟁력의 핵심이다. 한국콜마는 글로벌 소셜 미디어(TikTok, Instagram, YouTube, 샤오홍슈 등)에서의 뷰티 트렌드 데이터, 이커머스 플랫폼(아마존, 큐텐, 쇼피 등)에서의 판매 데이터, 글로벌 뷰티 전시회 및 업계 리포트 등을 종합 분석하여 6개월에서 1년 후의 트렌드를 예측하는 시스템을 구축하고 있다. 이를 기반으로 고객사에게 선제적인 제품 기획 제안을 하는 것이 Full-ODM 서비스의 핵심 가치 제안이다.</p>
+        <p>맞춤형 화장품(Personalized Cosmetics) 분야에서의 기술 개발도 주목할 만하다. 개인의 피부 상태, 생활 환경, 유전적 특성 등을 분석하여 최적화된 화장품을 제공하는 퍼스널라이제이션 트렌드는 글로벌 뷰티 산업의 차세대 메가트렌드로 부상하고 있다. 한국콜마는 AI 피부 분석 기술, 모듈형 생산 시스템(다양한 성분 조합을 유연하게 생산할 수 있는 설비), 소량 맞춤 배합 기술 등을 개발하고 있으며, 이는 향후 맞춤형 화장품 시장이 본격화될 때 핵심 경쟁 우위로 작용할 것이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>지속가능 뷰티와 미래 원료 기술</h3>
+        <p>지속가능 뷰티(Sustainable Beauty)는 단순한 마케팅 콘셉트를 넘어 산업 구조 자체를 변화시키는 메가트렌드로 자리 잡았다. 한국콜마는 이 트렌드에 선제적으로 대응하여, 지속가능한 원료 소싱, 친환경 생산 공정, 제로 웨이스트(Zero Waste) 패키징, 탄소 중립(Carbon Neutrality) 로드맵 등을 포괄하는 종합적인 지속가능 전략을 수립하고 있다.</p>
+        <p>원료 혁신 측면에서 특히 주목되는 분야는 업사이클링(Upcycling) 원료이다. 식품 산업의 부산물(예: 커피 찌꺼기, 포도 껍질, 쌀겨 등)에서 화장품 활성 성분을 추출하는 기술은 환경적 가치와 경제적 가치를 동시에 창출하는 혁신 사례이다. 한국콜마는 국내 농산물 부산물을 활용한 업사이클링 원료 개발에 투자하고 있으며, 이러한 스토리텔링이 가능한 원료는 클린 뷰티 시장에서 높은 부가가치를 창출할 수 있다.</p>
+        <p>바이오 발효 기술을 활용한 원료 개발도 핵심 R&D 분야이다. 한국의 전통 발효 기술(김치, 된장, 막걸리 등에서 영감을 받은 발효 프로세스)을 현대 바이오 테크놀로지와 결합하여 개발한 발효 원료는 K-뷰티의 독자적인 기술적 차별점으로 인정받고 있다. 발효 원료는 분자량이 작아 피부 흡수율이 높고, 항산화 효과가 증가하는 등 과학적 근거가 확인된 효능을 제공하여, 글로벌 시장에서 프리미엄 포지셔닝이 가능하다.</p>
+        <p>한국콜마의 미래 기술 로드맵에는 디지털 스킨(Digital Skin) 기술, 웨어러블 뷰티 디바이스와 연동된 스킨케어 솔루션, 3D 프린팅 기반 맞춤형 메이크업 등 미래 지향적인 기술 개발도 포함되어 있다. 이러한 장기 R&D 투자는 단기적으로는 비용 부담 요인이 될 수 있으나, 화장품 ODM 산업의 기술적 진입 장벽을 더욱 높이고 한국콜마의 선도적 지위를 공고히 하는 전략적 투자로 평가된다.</p>
+    </div>
+</section>
+
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-users"></i></div>
+        <h2 class="section-title">심층 분석: 고객 포트폴리오와 수주 구조</h2>
+        <span class="section-number">APPENDIX H</span>
+    </div>
+
+    <div class="text-block">
+        <h3>인디 브랜드 성장과 ODM 수주 확대의 선순환</h3>
+        <p>한국콜마의 수주 구조는 K-뷰티 인디 브랜드 생태계의 성장과 긴밀하게 연동되어 있다. 최근 3년간 인디 브랜드 고객의 매출 비중은 꾸준히 확대되어 왔으며, 이는 한국콜마의 수익성 개선에도 긍정적으로 기여하고 있다. 인디 브랜드들은 대형 브랜드 대비 주문 규모는 작지만, 건당 마진율이 높고 Full-ODM 서비스를 필요로 하기 때문에 부가가치가 높다.</p>
+        <p>특히 인디 브랜드의 성장 궤적은 한국콜마의 매출 성장에 비선형적 효과를 창출한다. 예를 들어, 한 인디 브랜드가 해외 시장에서 바이럴 히트를 기록하면, 해당 브랜드의 ODM 주문량이 수개월 내에 2배에서 3배 이상 급증하는 사례가 빈번하다. 라운드랩의 독도 라인, 닥터엘시아의 글루타치온 라인, 토리든의 다이브인 라인 등이 이러한 폭발적 성장을 경험한 대표적 사례이다. 한국콜마는 이러한 급증하는 수요에 유연하게 대응할 수 있는 생산 CAPA와 원료 조달 네트워크를 보유하고 있어, 인디 브랜드 성장의 수혜를 온전히 흡수할 수 있다.</p>
+        <p>대형 브랜드 고객과의 관계도 여전히 중요하다. 아모레퍼시픽, LG생활건강, 신세계인터내셔널 등 국내 대형 뷰티 기업은 물론, 글로벌 메이저 기업(로레알, 에스티 로더, P&G 등)과의 거래 확대도 추진 중이다. 대형 고객은 안정적인 기반 매출을 제공하며, 신기술 적용과 품질 관리 역량을 지속적으로 향상시키는 계기가 된다. 인디 브랜드와 대형 브랜드의 적절한 포트폴리오 균형은 한국콜마의 매출 안정성과 성장성을 동시에 확보하는 핵심 전략이다.</p>
+        <p>글로벌 고객 다변화도 중요한 전략적 방향이다. 미국, 일본, 유럽의 로컬 인디 브랜드들이 한국 ODM 기업에 대한 관심을 높이고 있으며, 한국콜마는 해외 전시회 참가, 글로벌 영업 네트워크 강화, 현지 법인을 통한 직접 마케팅 등을 통해 비한국계 고객 확보에 주력하고 있다. 미국 법인을 통한 미국 로컬 인디 브랜드 고객 확보는 특히 중요한 성장 전략으로, 한국에서 수출하는 것과는 다른 차원의 시장 접근성을 제공한다.</p>
+    </div>
+</section>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-05-14 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 7,500선 내외 변동성 확대. 외국인 매도세 지속되나 펀더멘털 훼손 신호 제한적. 반도체·방산·조선 섹터 중심 순환매 진행 중.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 CPI·PPI 발표 앞두고 인플레이션 우려 재부각. 원/달러 환율 1,430원대 변동성. 미·중 관세 협상 후속 진전 여부 주시.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">업종 동향</div>방산·조선·원전 모멘텀 견조. 바이오 임상 모멘텀 종목 차별화. 화장품·뷰티 섹터 K-뷰티 수출 호조 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">투자 포인트</div>어닝시즌 본격화에 따른 실적 서프라이즈 종목 주목. 2차전지·전력기기·AI 인프라 관련 투자 모멘텀 지속.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 14일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <p class="footer-disclaimer">
+        <strong style="color:var(--text-light);">면책 조항 (Disclaimer)</strong><br>
+        본 리포트는 투자 참고 자료로서 교육 목적으로만 작성되었으며, 특정 종목에 대한 매수 또는 매도를 권유하는 것이 아닙니다.
+        본 리포트에 포함된 정보, 분석, 의견은 작성 시점의 공개된 자료를 기반으로 하며, 정보의 정확성, 완전성, 적시성을 보장하지 않습니다.
+        투자 결정은 반드시 본인의 판단과 책임하에 이루어져야 하며, 본 리포트를 근거로 한 투자 손실에 대해 FLOVAH는 어떠한 책임도 지지 않습니다.
+        과거의 실적이 미래의 수익을 보장하지 않으며, 모든 투자에는 원금 손실의 위험이 수반됩니다.
+    </p>
+    <p class="footer-copy">
+        &copy; 2026 FLOVAH. 이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.
+    </p>
+</footer>
+
+<!-- JS: Smooth scroll + intersection observer -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const fills = entry.target.querySelectorAll('.progress-fill');
+            fills.forEach(fill => {
+                const width = fill.getAttribute('data-width');
+                fill.style.width = width + '%';
+            });
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.progress-row').forEach(row => observer.observe(row));
+
+// Nav active state
+const sections = document.querySelectorAll('.content-section, .hero-section');
+const navLinks = document.querySelectorAll('.header-nav a');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(section => { if (section.id) navObserver.observe(section); });
+</script>
+</body>
+</html>

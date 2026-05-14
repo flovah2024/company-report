@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>효성티앤씨 (298020) 기업분석 리포트 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+    --bg-hover: #191b1f; --bg-surface: #111316;
+    --ink: #ede8df; --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e; --text-secondary: #7d7568;
+    --text-muted: #524c42; --text-light: #9a9184;
+    --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e; --blue-dim: #465f7a;
+    --rule: #1e1f24; --border: #1e1f24;
+    --accent: #c9a962; --accent2: #5c7d9e;
+    --card-bg: #0f1014; --dark-bg: #09090b;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+.site-header {
+    position: fixed; top:0; left:0; right:0; height:60px; z-index:1000;
+    background: rgba(9,9,11,.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; padding: 0 40px;
+}
+.site-header img { height: 22px; }
+.site-header .header-right { margin-left: auto; display:flex; align-items:center; gap:20px; }
+.site-header .header-date { font-size:12px; color:var(--text-muted); letter-spacing:.5px; }
+.site-header nav a {
+    font-size:13px; color:var(--text-secondary); text-decoration:none;
+    transition: color .2s;
+}
+.site-header nav a:hover { color: var(--gold); }
+.report-container { max-width:1100px; margin:0 auto; padding: 80px 40px 60px; }
+.report-section {
+    margin-bottom: 56px;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+.report-section.visible { opacity:1; transform:translateY(0); }
+.section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--gold); margin-bottom: 10px; font-weight: 600;
+}
+.section-label i { font-size: 10px; }
+.section-title {
+    font-family: 'Orbit', sans-serif;
+    font-size: 28px; color: var(--ink-strong); margin-bottom: 24px;
+    font-weight: 400; line-height: 1.3;
+}
+.section-body { font-size: 15px; line-height: 1.9; color: var(--text-body); }
+.section-body p { margin-bottom: 16px; }
+.hero-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 0;
+    padding: 48px 44px 40px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::after {
+    content:''; position:absolute; top:0; right:0;
+    width:300px; height:300px;
+    background: radial-gradient(circle at top right, var(--gold-glow), transparent 70%);
+    pointer-events:none;
+}
+.hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background: rgba(201,169,98,.08); border:1px solid var(--gold-dim);
+    padding: 4px 14px; font-size:11px; color:var(--gold); letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:20px; font-weight:600;
+}
+.hero-company {
+    font-family:'Orbit', sans-serif;
+    font-size:42px; color:var(--ink-strong); font-weight:400;
+    margin-bottom:6px; line-height:1.2;
+}
+.hero-sub {
+    font-size:15px; color:var(--text-secondary); margin-bottom:32px;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+}
+.hero-sub .tag {
+    background:var(--bg-elevated); border:1px solid var(--border);
+    padding:2px 10px; font-size:11px; color:var(--text-light);
+}
+.hero-metrics {
+    display:grid; grid-template-columns: repeat(4,1fr); gap:20px;
+}
+.metric-box {
+    background:var(--bg-elevated); border:1px solid var(--border);
+    padding:20px 22px; border-radius:0;
+}
+.metric-box .metric-label {
+    font-size:11px; color:var(--text-muted); text-transform:uppercase;
+    letter-spacing:1.2px; margin-bottom:8px;
+}
+.metric-box .metric-value {
+    font-family:'Orbit',sans-serif; font-size:26px; color:var(--ink-strong);
+    font-weight:400; line-height:1.2;
+}
+.metric-box .metric-change { font-size:12px; margin-top:4px; }
+.metric-box .metric-change.up { color:#5faa6a; }
+.metric-box .metric-change.down { color:#c45c5c; }
+.analysis-card {
+    background: var(--bg-card); border:1px solid var(--border);
+    padding: 36px 40px; margin-bottom:24px; border-radius:0;
+}
+.analysis-card h3 {
+    font-family:'Orbit',sans-serif; font-size:18px;
+    color:var(--ink); font-weight:400; margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+}
+.analysis-card h3 i { color:var(--gold); font-size:14px; }
+.timeline { position:relative; padding-left:28px; margin:24px 0; }
+.timeline::before {
+    content:''; position:absolute; left:8px; top:0; bottom:0;
+    width:1px; background:var(--border);
+}
+.timeline-item { position:relative; margin-bottom:22px; }
+.timeline-item::before {
+    content:''; position:absolute; left:-24px; top:6px;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--gold); border:2px solid var(--bg-deep);
+}
+.timeline-item .tl-date {
+    font-size:11px; color:var(--gold); font-weight:600;
+    letter-spacing:.8px; margin-bottom:2px;
+}
+.timeline-item .tl-text { font-size:14px; color:var(--text-body); line-height:1.7; }
+.comp-table-wrap { overflow-x:auto; margin:20px 0; }
+.comp-table { width:100%; border-collapse:collapse; font-size:13px; }
+.comp-table th {
+    text-align:left; padding:12px 16px;
+    background:var(--bg-elevated); color:var(--gold);
+    font-weight:600; font-size:11px; text-transform:uppercase;
+    letter-spacing:1px; border-bottom:1px solid var(--border);
+}
+.comp-table td {
+    padding:12px 16px; border-bottom:1px solid var(--border);
+    color:var(--text-body); vertical-align:top;
+}
+.comp-table tr:hover td { background:var(--bg-hover); }
+.comp-table .highlight-row td { color:var(--gold-light); font-weight:500; }
+.swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0; }
+.swot-box {
+    background:var(--bg-elevated); border:1px solid var(--border);
+    padding:24px 28px; border-radius:0;
+}
+.swot-box h4 {
+    font-family:'Orbit',sans-serif; font-size:15px;
+    margin-bottom:14px; font-weight:400;
+    display:flex; align-items:center; gap:8px;
+}
+.swot-box.strength h4 { color:#5faa6a; }
+.swot-box.weakness h4 { color:#c45c5c; }
+.swot-box.opportunity h4 { color:var(--gold); }
+.swot-box.threat h4 { color:var(--blue); }
+.swot-box ul { list-style:none; }
+.swot-box ul li {
+    font-size:13px; color:var(--text-body); line-height:1.8;
+    padding:4px 0; padding-left:16px; position:relative;
+}
+.swot-box ul li::before {
+    content:''; position:absolute; left:0; top:12px;
+    width:6px; height:6px; border-radius:50%;
+}
+.swot-box.strength ul li::before { background:#5faa6a; }
+.swot-box.weakness ul li::before { background:#c45c5c; }
+.swot-box.opportunity ul li::before { background:var(--gold); }
+.swot-box.threat ul li::before { background:var(--blue); }
+.progress-group { margin:20px 0; }
+.progress-item { margin-bottom:18px; }
+.progress-item .prog-header {
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:6px;
+}
+.progress-item .prog-label { font-size:13px; color:var(--text-light); }
+.progress-item .prog-value { font-size:13px; color:var(--gold); font-weight:600; }
+.progress-bar-bg {
+    width:100%; height:8px; background:var(--bg-elevated);
+    border:1px solid var(--border); border-radius:0; overflow:hidden;
+}
+.progress-bar-fill {
+    height:100%; border-radius:0;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    transition: width 1.2s ease;
+}
+.progress-bar-fill.blue {
+    background: linear-gradient(90deg, var(--blue-dim), var(--blue));
+}
+.verdict-card {
+    background: linear-gradient(135deg, rgba(201,169,98,.06) 0%, rgba(92,125,158,.04) 100%);
+    border:1px solid var(--gold-dim); padding:40px 44px; border-radius:0;
+    margin:24px 0;
+}
+.verdict-grade {
+    font-family:'Orbit',sans-serif; font-size:56px;
+    color:var(--gold); font-weight:400; text-align:center;
+    margin-bottom:8px;
+}
+.verdict-label {
+    text-align:center; font-size:14px; color:var(--text-secondary);
+    margin-bottom:24px;
+}
+.verdict-body { font-size:14px; color:var(--text-body); line-height:1.9; }
+.disclaimer {
+    margin-top:48px; padding:28px 32px;
+    background:var(--bg-card); border:1px solid var(--border); border-radius:0;
+}
+.disclaimer h4 {
+    font-size:12px; color:var(--gold); text-transform:uppercase;
+    letter-spacing:1.5px; margin-bottom:12px;
+}
+.disclaimer p { font-size:11px; color:var(--text-muted); line-height:1.8; }
+.site-footer {
+    text-align:center; padding:48px 40px 32px;
+    border-top:1px solid var(--border); margin-top:40px;
+}
+.site-footer .footer-logo { height:18px; opacity:.5; margin-bottom:12px; }
+.site-footer p { font-size:11px; color:var(--text-muted); line-height:1.8; }
+.key-figures {
+    display: grid; grid-template-columns: repeat(3,1fr); gap:16px; margin:20px 0;
+}
+.key-fig {
+    background:var(--bg-elevated); border:1px solid var(--border);
+    padding:18px 20px; text-align:center;
+}
+.key-fig .kf-val {
+    font-family:'Orbit',sans-serif; font-size:22px;
+    color:var(--ink-strong); margin-bottom:4px;
+}
+.key-fig .kf-label { font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.8px; }
+.insight-quote {
+    border-left:3px solid var(--gold);
+    padding:16px 24px; margin:20px 0;
+    background:var(--bg-surface); font-size:14px;
+    color:var(--text-light); font-style:italic; line-height:1.8;
+}
+.sub-card {
+    background: var(--bg-surface); border:1px solid var(--border);
+    padding: 24px 28px; margin-bottom: 16px; border-radius:0;
+}
+.sub-card h4 {
+    font-size:14px; color:var(--ink); margin-bottom:10px;
+    display:flex; align-items:center; gap:8px; font-weight:500;
+}
+.sub-card h4 i { color:var(--gold); font-size:12px; }
+.sub-card p { font-size:13px; line-height:1.8; color:var(--text-body); }
+.text-gold { color: var(--gold); }
+.text-blue { color: var(--blue); }
+.text-green { color: #5faa6a; }
+.text-red { color: #c45c5c; }
+.fw-600 { font-weight:600; }
+.tag-inline {
+    display:inline-block; background:var(--bg-elevated);
+    border:1px solid var(--border); padding:2px 10px;
+    font-size:11px; color:var(--text-light); margin:2px 4px 2px 0;
+}
+.nav-dots {
+    position:fixed; right:20px; top:50%; transform:translateY(-50%);
+    z-index:999; display:flex; flex-direction:column; gap:10px;
+}
+.nav-dots a {
+    width:8px; height:8px; border-radius:50%;
+    background:var(--text-muted); transition: all .3s; display:block;
+}
+.nav-dots a.active { background:var(--gold); transform:scale(1.3); }
+@media (max-width:768px) {
+    .report-container { padding: 72px 18px 40px; }
+    .hero-card { padding:28px 20px 24px; }
+    .hero-company { font-size:28px; }
+    .hero-metrics { grid-template-columns:1fr 1fr; gap:12px; }
+    .analysis-card { padding:24px 20px; }
+    .swot-grid { grid-template-columns:1fr; }
+    .site-header { padding:0 18px; }
+    .comp-table { font-size:11px; }
+    .comp-table th, .comp-table td { padding:8px 10px; }
+    .section-title { font-size:22px; }
+    .metric-box .metric-value { font-size:20px; }
+    .nav-dots { display:none; }
+    .key-figures { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:480px) {
+    .hero-metrics { grid-template-columns:1fr; }
+    .hero-company { font-size:24px; }
+    .key-figures { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="index.html"><img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH"></a>
+    <div class="header-right">
+        <nav><a href="index.html">리포트 목록</a></nav>
+        <span class="header-date">May 14, 2026</span>
+    </div>
+</header>
+
+<div class="nav-dots" id="navDots">
+    <a href="#section-overview" title="기업 개요"></a>
+    <a href="#section-technical" title="기술 분석"></a>
+    <a href="#section-market" title="시장 분석"></a>
+    <a href="#section-competitor" title="경쟁사 분석"></a>
+    <a href="#section-swot" title="SWOT 분석"></a>
+    <a href="#section-strategy" title="전략 분석"></a>
+    <a href="#section-financial" title="재무 분석"></a>
+    <a href="#section-conclusion" title="결론"></a>
+</div>
+
+<div class="report-container">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 1 : 기업 개요
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-overview" class="report-section">
+    <div class="hero-card">
+        <div class="hero-badge"><i class="fas fa-flask"></i> KOSPI 298020</div>
+        <h1 class="hero-company">효성티앤씨</h1>
+        <div class="hero-sub">
+            <span>Hyosung TNC Co., Ltd.</span>
+            <span class="tag">에너지·소재·화학</span>
+            <span class="tag">스판덱스</span>
+            <span class="tag">효성그룹</span>
+        </div>
+        <div class="hero-metrics">
+            <div class="metric-box">
+                <div class="metric-label">2026E 매출</div>
+                <div class="metric-value">7.15<span style="font-size:14px;color:var(--text-secondary);">조</span></div>
+                <div class="metric-change up"><i class="fas fa-caret-up"></i> +21.4% YoY</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">영업이익</div>
+                <div class="metric-value">9,713<span style="font-size:14px;color:var(--text-secondary);">억</span></div>
+                <div class="metric-change up"><i class="fas fa-caret-up"></i> +36.6% YoY</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">시가총액</div>
+                <div class="metric-value">9.7<span style="font-size:14px;color:var(--text-secondary);">조</span></div>
+                <div class="metric-change up"><i class="fas fa-caret-up"></i> 역대 최고 수준</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label">발행주식수</div>
+                <div class="metric-value">433<span style="font-size:14px;color:var(--text-secondary);">만주</span></div>
+                <div class="metric-change up"><i class="fas fa-caret-up"></i> 소형 유통주식</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-building"></i> 기업 소개</h3>
+        <div class="section-body">
+            <p>효성티앤씨는 효성그룹(조현준 회장)의 핵심 계열사로, 글로벌 스판덱스(탄성섬유) 및 나일론 시장에서 세계 1위의 시장 지배력을 보유하고 있다. 2018년 효성그룹 사업 재편 과정에서 섬유·무역 부문을 물적분할하여 설립되었으며, KOSPI 시장에 상장(종목코드 298020)되어 있다.</p>
+            <p>동사의 핵심 제품인 스판덱스(상표명 '크레오라')는 의류, 스포츠웨어, 내의, 위생재 등에 필수적으로 사용되는 탄성섬유로, 글로벌 시장 점유율 약 30%로 부동의 1위를 차지하고 있다. 생산 거점은 한국(울산), 중국(주하이·자싱), 베트남(동나이), 터키(이스탄불), 브라질(산타카타리나), 인도(마하라슈트라) 등 전 세계 6개국에 분포하며, 연산 약 35만톤의 글로벌 최대 생산 능력을 갖추고 있다.</p>
+            <p>2026년 예상 연결 매출은 7조 1,539억원(+21.4% YoY), 영업이익은 9,713억원(+36.6% YoY)으로, 스판덱스 업황 회복과 시장 과점화에 따른 가격 결정력 강화가 실적 성장의 핵심 동력이다. 시가총액은 약 9.7조원으로, 화학·소재 섹터 내 대형주로 자리매김하고 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-clock-rotate-left"></i> 기업 연혁</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="tl-date">1966</div>
+                <div class="tl-text">효성그룹 섬유사업 시작 — 나일론 원사 생산 개시</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">1992</div>
+                <div class="tl-text">스판덱스 '크레오라(creora)' 국산화 성공 — 국내 최초 생산</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2000</div>
+                <div class="tl-text">중국 주하이 공장 설립 — 글로벌 생산 네트워크 본격 확장</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2007</div>
+                <div class="tl-text">글로벌 스판덱스 시장 점유율 1위 달성</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2012</div>
+                <div class="tl-text">베트남 동나이 공장 가동 시작 — 동남아 생산 거점 확보</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2018. 06</div>
+                <div class="tl-text">효성그룹 사업재편으로 (주)효성에서 물적분할, '효성티앤씨' 독립 법인 설립 및 코스피 상장</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2020</div>
+                <div class="tl-text">친환경 리사이클 스판덱스 'creora regen' 출시 — ESG 경영 강화</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2022</div>
+                <div class="tl-text">인도 마하라슈트라 공장 가동 — 6개국 글로벌 생산 체제 완성</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2024</div>
+                <div class="tl-text">중국 비메이저 스판덱스 업체 구조조정 가속(22개→약 14개)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2025</div>
+                <div class="tl-text">중국 비메이저 10개로 감소, 시장 과점화 본격화 — 가격 결정력 회복</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2026. 05</div>
+                <div class="tl-text">시가총액 9.7조원 돌파, 2026E 영업이익 9,713억원 전망 — 사상 최대 실적 기대</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 2 : 기술 분석
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-technical" class="report-section">
+    <div class="section-label"><i class="fas fa-chart-line"></i> Section 02</div>
+    <h2 class="section-title">기술 분석</h2>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-chart-candlestick"></i> 주가 추이 및 기술적 지표</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 주가는 2024년 하반기 이후 스판덱스 업황 회복 기대감을 반영하며 강한 상승 추세를 형성하고 있다. 2025년 초 약 150만원대에서 출발한 주가는 2026년 5월 현재 약 220~240만원대까지 상승하며 역사적 고점 영역에 진입했다. 시가총액은 약 9.7조원으로, 화학·소재 섹터 내 대표 대형주로서의 위상을 공고히 하고 있다.</p>
+            <p>기술적 관점에서 주가는 20일, 60일, 120일 이동평균선이 모두 정배열 상태이며, 장기 상승 추세가 유지되고 있다. RSI(14일)는 약 68로 과매수 영역(70) 직전에 위치해 있어 단기 조정 가능성에 유의할 필요가 있다. MACD는 시그널선 위에서 양의 괴리를 유지하며 상승 모멘텀이 지속되고 있음을 시사한다.</p>
+        </div>
+
+        <div class="key-figures">
+            <div class="key-fig">
+                <div class="kf-val">~230만</div>
+                <div class="kf-label">현재가(원)</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">200만</div>
+                <div class="kf-label">지지선(원)</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">260만</div>
+                <div class="kf-label">저항선(원)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-wave-square"></i> 거래량 및 수급 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨는 발행주식수가 433만주로 극소형 유통 주식 구조를 가지고 있다. 대주주 및 특수관계인 지분이 약 50% 이상이며, 자사주 등을 제외하면 실질 유통 주식은 약 200만주 내외에 불과하다. 이러한 유통 물량의 희소성은 주가의 높은 변동성과 프리미엄의 원인이 된다.</p>
+            <p>외국인 투자자 지분율은 약 20~25% 수준으로, 글로벌 스판덱스 업황에 대한 외국인의 시각이 수급에 중요한 영향을 미친다. 최근 기관 투자자의 순매수세가 두드러지며, 특히 국내 연기금의 비중 확대가 관측되고 있다. 5일 평균 거래대금은 약 300~400억원으로, 시총 대비 거래 회전율은 낮은 편이나, 호가 스프레드가 넓어 대량 매매 시 시장 충격(Market Impact)이 크다는 점에 유의해야 한다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-chart-area"></i> 이동평균선 및 추세 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 주가는 2025년 2분기 이후 본격적인 정배열 구간에 진입했다. 5일선 > 20일선 > 60일선 > 120일선 > 200일선 순서의 완전 정배열이 유지되고 있으며, 이는 중장기 상승 추세의 견고함을 의미한다. 특히 60일 이동평균선이 강한 지지선 역할을 하고 있어, 단기 조정 시에도 이 수준에서의 반등이 예상된다.</p>
+            <p>볼린저 밴드 상단(+2σ)에 근접한 위치에서 거래되고 있어 단기적으로 밴드 중심(20일선)까지의 조정 가능성이 존재한다. 다만 강한 업황 사이클이 진행 중인 만큼, 조정 시 매수 기회로 활용하는 전략이 유효하다. 일목균형표 기준으로도 구름대 위에서 양운 형성이 진행 중이며, 전환선과 기준선 모두 상승 방향을 유지하고 있다.</p>
+        </div>
+        <div class="insight-quote">
+            "유통주식수가 극히 적은 효성티앤씨의 특성상, 기관·외국인의 동시 매수 시 주가 급등이, 동시 매도 시 급락이 발생할 수 있다. 수급 쏠림에 의한 변동성 리스크가 기술적 분석의 최대 불확실성 요인이다."
+        </div>
+    </div>
+
+    <div class="sub-card">
+        <h4><i class="fas fa-signal"></i> 기술적 시그널 요약</h4>
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">RSI (14일)</span>
+                    <span class="prog-value">68</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:68%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">MACD 히스토그램</span>
+                    <span class="prog-value">강한 양전환</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:78%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">이동평균 정배열 강도</span>
+                    <span class="prog-value">완전 정배열</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:90%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">거래량 추세</span>
+                    <span class="prog-value">증가세</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:65%;"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 3 : 시장 분석
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-market" class="report-section">
+    <div class="section-label"><i class="fas fa-globe"></i> Section 03</div>
+    <h2 class="section-title">시장 분석</h2>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-flask-vial"></i> 글로벌 스판덱스 시장 구조 변화</h3>
+        <div class="section-body">
+            <p>글로벌 스판덱스 시장은 2020~2023년의 과잉 공급 국면에서 2024~2026년 구조적 공급 조정 국면으로 전환되고 있다. 이 변화의 핵심은 중국 비메이저(Non-Major) 스판덱스 업체들의 대규모 구조조정이다. 2022년 약 22개에 달하던 중국 비메이저 스판덱스 업체가 2025년 기준 약 10개로 급감했으며, 이 과정에서 약 30만톤 이상의 비효율적 생산 능력이 시장에서 퇴출되었다.</p>
+            <p>이러한 공급 측면의 구조조정은 스판덱스 시장의 수급 균형을 근본적으로 변화시키고 있다. 과거 과잉 공급으로 인해 가격 하방 압력이 지속되던 구조에서, 소수의 대형 메이저 업체가 시장을 과점하는 구조로 전환되면서 가격 결정력이 생산자 측으로 이동하고 있다. 효성티앤씨는 이 과점 구조의 최대 수혜주로, 글로벌 M/S 약 30%의 압도적 1위로서 가격 리더십을 행사할 수 있는 위치에 있다.</p>
+        </div>
+
+        <div class="key-figures">
+            <div class="key-fig">
+                <div class="kf-val">30%</div>
+                <div class="kf-label">글로벌 M/S 1위</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">22→10</div>
+                <div class="kf-label">中 비메이저 업체수</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">35만톤</div>
+                <div class="kf-label">연간 생산능력</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-shirt"></i> 수요 측면 — 애슬레저·위생재 성장</h3>
+        <div class="section-body">
+            <p>스판덱스의 수요 구조는 전통적 의류(내의·양말) 중심에서 고기능성 분야로 빠르게 확장되고 있다. 가장 주목할 트렌드는 '애슬레저(Athleisure)' 시장의 폭발적 성장이다. 운동복과 일상복의 경계가 허물어지면서 요가팬츠, 레깅스, 기능성 운동복 등 스판덱스 고함량 의류의 수요가 연평균 12~15% 성장하고 있다.</p>
+            <p>기저귀·생리대 등 위생재 분야도 안정적 수요처로 자리잡고 있다. 특히 인도, 동남아, 아프리카 등 신흥국에서 일회용 위생재 시장의 침투율이 빠르게 상승하면서, 위생재용 스판덱스 수요가 연평균 8~10% 증가하고 있다. 의료용(압박 스타킹, 수술용 밴드 등) 스판덱스 시장도 고령화 트렌드에 힘입어 꾸준한 성장세를 보이고 있다.</p>
+            <p>나일론 시장 역시 자동차 경량화(엔지니어링 플라스틱 수요), 아웃도어 의류, 에어백 원사 등 고부가가치 분야로의 전환이 진행 중이다. 효성티앤씨는 나일론 원사·칩 분야에서도 국내 1위·글로벌 상위권의 위치를 차지하고 있어, 스판덱스와 나일론의 양 축에서 동시 성장이 가능한 포트폴리오를 보유하고 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-industry"></i> 산업 사이클 포지셔닝</h3>
+        <div class="section-body">
+            <p>스판덱스 산업은 전형적인 시클리컬(경기 순환) 특성을 보이며, 현재 사이클 상의 위치는 '확장기 초·중반'으로 판단된다. 2020~2023년의 하강기(가격 하락·마진 축소)를 거쳐, 2024년 하반기부터 반등이 시작되었고, 2025~2026년에는 본격적인 확장기에 진입할 것으로 전망된다.</p>
+            <p>이번 확장기의 특징은 과거와 달리 공급 조정이 동반된 '건강한 회복'이라는 점이다. 중국 비메이저 업체의 구조조정으로 시장의 과잉 공급 문제가 상당 부분 해소되었으며, 메이저 업체들의 신규 투자도 제한적이어서 공급 과잉의 재발 가능성이 낮다. 이는 이번 업사이클의 지속 기간이 과거 대비 길어질 수 있음을 시사한다.</p>
+        </div>
+
+        <div class="sub-card">
+            <h4><i class="fas fa-arrows-spin"></i> 스판덱스 사이클 단계별 분석</h4>
+            <div class="progress-group">
+                <div class="progress-item">
+                    <div class="prog-header">
+                        <span class="prog-label">수요 성장률</span>
+                        <span class="prog-value">연 6~8%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:72%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="prog-header">
+                        <span class="prog-label">공급 증가율</span>
+                        <span class="prog-value">연 2~3% (제한적)</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:25%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="prog-header">
+                        <span class="prog-label">가격 회복 강도</span>
+                        <span class="prog-value">중상</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:68%;"></div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="prog-header">
+                        <span class="prog-label">사이클 지속 가능성</span>
+                        <span class="prog-value">높음</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:80%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 4 : 경쟁사 분석
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-competitor" class="report-section">
+    <div class="section-label"><i class="fas fa-users"></i> Section 04</div>
+    <h2 class="section-title">경쟁사 분석</h2>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-table"></i> 글로벌 스판덱스 메이저 업체 비교</h3>
+        <div class="comp-table-wrap">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>효성티앤씨</th>
+                        <th>화펑그룹</th>
+                        <th>인비스타(코크)</th>
+                        <th>아사히카세이</th>
+                        <th>태광산업</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td>국적</td>
+                        <td>한국</td>
+                        <td>중국</td>
+                        <td>미국</td>
+                        <td>일본</td>
+                        <td>한국</td>
+                    </tr>
+                    <tr>
+                        <td>글로벌 M/S</td>
+                        <td class="text-gold fw-600">~30%</td>
+                        <td>~18%</td>
+                        <td>~12%</td>
+                        <td>~8%</td>
+                        <td>~5%</td>
+                    </tr>
+                    <tr>
+                        <td>연산능력(만톤)</td>
+                        <td class="text-gold fw-600">~35</td>
+                        <td>~25</td>
+                        <td>~15</td>
+                        <td>~10</td>
+                        <td>~6</td>
+                    </tr>
+                    <tr>
+                        <td>생산 거점 수</td>
+                        <td class="text-gold fw-600">6개국</td>
+                        <td>중국 집중</td>
+                        <td>3개국</td>
+                        <td>3개국</td>
+                        <td>한국·베트남</td>
+                    </tr>
+                    <tr>
+                        <td>제품 포지셔닝</td>
+                        <td>프리미엄 + 범용</td>
+                        <td>범용·가격</td>
+                        <td>프리미엄</td>
+                        <td>프리미엄</td>
+                        <td>범용</td>
+                    </tr>
+                    <tr>
+                        <td>브랜드</td>
+                        <td class="text-gold">creora</td>
+                        <td>Qianxi</td>
+                        <td>LYCRA</td>
+                        <td>ROICA</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>수직 계열화</td>
+                        <td>PTMEG→스판덱스</td>
+                        <td>부분 계열화</td>
+                        <td>PTMEG 자체 생산</td>
+                        <td>부분 계열화</td>
+                        <td>PTMEG 외부 조달</td>
+                    </tr>
+                    <tr>
+                        <td>ESG 대응</td>
+                        <td>creora regen</td>
+                        <td>초기 단계</td>
+                        <td>Lycra Adaptiv</td>
+                        <td>ROICA EF</td>
+                        <td>초기 단계</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-scale-balanced"></i> 경쟁 구도 심층 분석</h3>
+        <div class="section-body">
+            <p><strong class="text-gold">효성티앤씨 vs 화펑그룹:</strong> 화펑그룹(華峰集團)은 중국 최대 스판덱스 생산업체로, 글로벌 M/S 약 18%의 2위 사업자이다. 가격 경쟁력은 중국 현지 생산 비용의 이점을 활용해 우위에 있으나, 제품 품질과 브랜드 인지도에서는 효성티앤씨에 열위하다. 중국 정부의 환경 규제 강화로 화펑그룹의 증설이 제한되고 있어, 시장 점유율 격차가 확대되는 추세이다.</p>
+            <p><strong class="text-gold">효성티앤씨 vs 인비스타(INVISTA):</strong> 인비스타는 코크인더스트리즈(Koch Industries) 소유의 글로벌 섬유 화학 기업으로, 'LYCRA' 브랜드를 보유하고 있다. 프리미엄 시장에서 강력한 브랜드 파워를 발휘하고 있으나, 생산 규모 면에서는 효성티앤씨에 크게 뒤진다. LYCRA 브랜드는 소비자 인지도가 높아 B2C 마케팅에서 우위를 보이나, B2B 대량 거래에서는 효성티앤씨의 가격·품질 경쟁력이 우세하다.</p>
+            <p><strong class="text-gold">효성티앤씨 vs 아사히카세이:</strong> 일본의 아사히카세이는 'ROICA' 브랜드로 프리미엄 스판덱스 시장에 집중하고 있다. 재활용(ROICA EF) 등 친환경 제품에서 기술적 우위를 보유하고 있으나, 규모의 경제 측면에서 효성티앤씨에 크게 열위하다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 5 : SWOT 분석
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-swot" class="report-section">
+    <div class="section-label"><i class="fas fa-chess"></i> Section 05</div>
+    <h2 class="section-title">SWOT 분석</h2>
+
+    <div class="swot-grid">
+        <div class="swot-box strength">
+            <h4><i class="fas fa-shield-halved"></i> Strengths (강점)</h4>
+            <ul>
+                <li>글로벌 스판덱스 시장 점유율 약 30%로 부동의 1위</li>
+                <li>6개국 글로벌 생산 네트워크 — 지정학적 리스크 분산</li>
+                <li>PTMEG→스판덱스 수직 계열화를 통한 원가 경쟁력</li>
+                <li>'creora' 브랜드 인지도 및 글로벌 고객 기반</li>
+                <li>나일론 사업과의 시너지 — 양 축 동시 성장 가능</li>
+                <li>업계 최고 수준의 R&D 역량 및 제품 포트폴리오 다변화</li>
+            </ul>
+        </div>
+        <div class="swot-box weakness">
+            <h4><i class="fas fa-triangle-exclamation"></i> Weaknesses (약점)</h4>
+            <ul>
+                <li>발행주식수 433만주의 극소형 유통 구조 — 주가 변동성 극대화</li>
+                <li>효성그룹 지배구조 리스크 — 총수 리스크·일감 몰아주기 논란</li>
+                <li>시클리컬 산업 특성상 업황 하강 시 실적 급감 불가피</li>
+                <li>중국 매출 비중 높아 미·중 무역분쟁 리스크 노출</li>
+                <li>높은 원재료(PTMEG, MDI) 가격 변동성에 대한 노출</li>
+            </ul>
+        </div>
+        <div class="swot-box opportunity">
+            <h4><i class="fas fa-lightbulb"></i> Opportunities (기회)</h4>
+            <ul>
+                <li>중국 비메이저 업체 구조조정(22개→10개)으로 시장 과점화</li>
+                <li>애슬레저 시장의 구조적 성장(연 12~15% CAGR)</li>
+                <li>신흥국 위생재 침투율 상승 → 위생재용 스판덱스 수요 확대</li>
+                <li>친환경·리사이클 스판덱스(creora regen) 시장 선점</li>
+                <li>인도·동남아 생산 거점의 원가 경쟁력 활용 확대</li>
+                <li>자동차 경량화 트렌드에 따른 나일론 엔지니어링 플라스틱 수요</li>
+            </ul>
+        </div>
+        <div class="swot-box threat">
+            <h4><i class="fas fa-bolt"></i> Threats (위협)</h4>
+            <ul>
+                <li>스판덱스 업황 사이클 하강 시 실적 급감 및 주가 하락 리스크</li>
+                <li>중국 메이저 업체(화펑 등)의 공격적 증설 재개 가능성</li>
+                <li>글로벌 경기침체에 따른 의류·섬유 수요 감소</li>
+                <li>환율 변동(원/달러, 위안/달러)에 따른 수익성 변동</li>
+                <li>원재료(PTMEG, MDI) 가격 급등 시 마진 압박</li>
+                <li>미·중 무역갈등 심화 시 중국 내 사업 환경 악화</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 6 : 전략 분석
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-strategy" class="report-section">
+    <div class="section-label"><i class="fas fa-compass"></i> Section 06</div>
+    <h2 class="section-title">전략 분석</h2>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-globe"></i> 글로벌 생산 네트워크 전략</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 가장 핵심적인 전략적 자산은 6개국에 걸친 글로벌 생산 네트워크이다. 한국(울산), 중국(주하이·자싱), 베트남(동나이), 터키(이스탄불), 브라질(산타카타리나), 인도(마하라슈트라)에 위치한 생산 거점은 지역별 수요에 즉각적으로 대응할 수 있는 유연성을 제공하며, 동시에 지정학적 리스크를 분산시키는 역할을 한다.</p>
+            <p>특히 미·중 무역분쟁이 장기화됨에 따라, 비중국 생산 거점(베트남, 인도, 터키)의 전략적 가치가 크게 부각되고 있다. 서방 패션 브랜드들이 '차이나 플러스 원(China+1)' 전략을 적극 추진하면서, 베트남·인도산 스판덱스에 대한 수요가 급증하고 있다. 효성티앤씨는 이미 이 지역에 대규모 생산 설비를 갖추고 있어, 이러한 글로벌 공급망 재편의 최대 수혜를 받을 수 있는 위치에 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-leaf"></i> ESG·친환경 전략 — creora regen</h3>
+        <div class="section-body">
+            <p>글로벌 패션 산업의 친환경 전환이 가속화되면서, 리사이클 소재에 대한 수요가 폭발적으로 증가하고 있다. 효성티앤씨는 2020년 리사이클 스판덱스 'creora regen'을 출시하며 업계 최초로 친환경 탄성섬유 시장을 개척했다. creora regen은 폐스판덱스를 재활용하여 생산한 제품으로, 기존 제품 대비 탄소 배출량을 약 30% 절감할 수 있다.</p>
+            <p>글로벌 SPA(패스트 패션) 브랜드 및 스포츠 브랜드의 ESG 목표 달성을 위해 creora regen의 채택이 빠르게 확산되고 있다. 나이키, 아디다스, 룰루레몬, 자라 등 글로벌 주요 브랜드가 creora regen의 고객사이며, ESG 규제 강화에 따라 리사이클 소재의 비중이 점진적으로 확대될 전망이다.</p>
+            <p>또한 동사는 바이오 기반 스판덱스(Bio-based Spandex) 개발에도 착수하였으며, 석유 유래 원료를 식물 유래 원료로 대체하는 차세대 기술의 상업화를 2028년까지 목표로 하고 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-link"></i> 수직 계열화 — PTMEG 내재화</h3>
+        <div class="section-body">
+            <p>스판덱스의 핵심 원재료인 PTMEG(Polytetramethylene Ether Glycol)을 자체 생산하는 수직 계열화 구조는 효성티앤씨의 가장 강력한 원가 경쟁력의 원천이다. PTMEG은 스판덱스 원가의 약 55~60%를 차지하는 핵심 소재로, 외부 조달 시 시황 변동에 따른 마진 변동성이 극대화된다.</p>
+            <p>효성티앤씨는 울산 공장에서 PTMEG을 자체 생산하여 스판덱스 원가를 안정적으로 관리하고 있으며, 이를 통해 경쟁사 대비 약 5~8%의 원가 우위를 확보하고 있다. 특히 PTMEG 가격이 상승하는 국면에서는 외부 조달 업체 대비 마진 방어력이 뛰어나며, PTMEG 자체의 외부 판매 수익도 추가적으로 확보할 수 있는 구조적 장점이 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-microchip"></i> 제품 포트폴리오 다변화 — 고부가가치 전환</h3>
+        <div class="section-body">
+            <p>효성티앤씨는 범용 스판덱스에서 고기능성·고부가가치 제품으로의 포트폴리오 전환을 적극 추진하고 있다. 주요 고부가가치 제품군으로는:</p>
+            <p>• <strong>creora Fresh</strong> — 항균·소취 기능을 갖춘 위생용 스판덱스<br>
+            • <strong>creora Color+</strong> — 염색 안정성이 극대화된 패션용 스판덱스<br>
+            • <strong>creora Highclo</strong> — 고내염소 기능으로 수영복·스포츠웨어에 최적화<br>
+            • <strong>creora Power Fit</strong> — 고탄성·고복원력의 컴프레션 웨어용 스판덱스<br>
+            • <strong>creora regen</strong> — 리사이클 친환경 스판덱스</p>
+            <p>이러한 고부가가치 제품의 매출 비중은 현재 약 25%에서 2028년까지 40%로 확대할 계획이며, 이는 제품 믹스 개선을 통한 평균 판가 상승과 마진 확대로 이어질 전망이다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 7 : 재무 분석
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-financial" class="report-section">
+    <div class="section-label"><i class="fas fa-chart-bar"></i> Section 07</div>
+    <h2 class="section-title">재무 분석</h2>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-coins"></i> 수익성 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 2026년 예상 실적은 연결 매출 7조 1,539억원(+21.4% YoY), 영업이익 9,713억원(+36.6% YoY)으로, 사상 최대 실적 경신이 전망된다. 영업이익률은 약 13.6%로, 2023~2024년의 업황 하강기(영업이익률 5~8%)에서 대폭 개선된 수치이다.</p>
+            <p>수익성 개선의 핵심 동력은 세 가지이다. 첫째, 스판덱스 가격의 구조적 반등이다. 중국 비메이저 업체 구조조정에 따른 공급 감소로 스판덱스 가격이 톤당 4,000~4,500달러 수준에서 5,500~6,000달러 수준으로 약 30~40% 회복되었다. 둘째, 수요의 구조적 성장이다. 애슬레저·위생재·의료용 등 고성장 분야에서의 수요 확대가 판매량 증가로 이어지고 있다. 셋째, 비용 효율화이다. 베트남·인도 공장의 가동률 상승과 PTMEG 수직 계열화를 통한 원가 절감이 마진 개선에 기여하고 있다.</p>
+        </div>
+
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">영업이익률</span>
+                    <span class="prog-value">13.6%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:68%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">매출 성장률(YoY)</span>
+                    <span class="prog-value">+21.4%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:71%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">영업이익 성장률(YoY)</span>
+                    <span class="prog-value">+36.6%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:82%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">ROE(예상)</span>
+                    <span class="prog-value">~28%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:75%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-scale-unbalanced"></i> 재무 건전성</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 재무 건전성은 실적 회복에 힘입어 빠르게 개선되고 있다. 부채비율은 2024년 약 180%에서 2026년 약 140~150% 수준으로 하락할 것으로 예상되며, 이는 영업이익의 큰 폭 증가에 따른 자기자본 확충에 기인한다. 순차입금/EBITDA 비율은 약 1.2~1.5배로, 화학 업종 평균(2.0~2.5배) 대비 양호한 수준이다.</p>
+            <p>현금 창출 능력 역시 우수하다. 2026년 예상 EBITDA는 약 1.3조원으로, CAPEX(약 3,000~4,000억원)를 제외한 잉여현금흐름(FCF)은 약 8,000~9,000억원에 달할 전망이다. 이는 배당 확대, 부채 상환, 신규 투자 등에 충분한 재원을 제공한다.</p>
+        </div>
+
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">부채비율</span>
+                    <span class="prog-value">~145%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:48%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">순차입금/EBITDA</span>
+                    <span class="prog-value">1.3x</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:32%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">잉여현금흐름(FCF)</span>
+                    <span class="prog-value">~8,500억</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:78%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">이자보상배율</span>
+                    <span class="prog-value">8.5x</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:72%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-magnifying-glass-chart"></i> 밸류에이션 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 현재 밸류에이션은 2026년 예상 실적 기준 PER 약 10~11배로, 스판덱스 업사이클 초기의 밸류에이션으로는 합리적 수준이다. 다만 과거 업사이클 고점에서의 PER이 8~9배까지 하락했던 점을 감안하면, 현재가 사이클 중반으로 갈수록 밸류에이션 압축 가능성이 존재한다.</p>
+            <p>EV/EBITDA는 약 7~8배로, 글로벌 화학·소재 섹터 평균(8~10배)과 비교하면 적정 내지 소폭 저평가 수준이다. PBR은 약 2.5~3.0배로, ROE 28%를 감안하면 합리적 범위 내에 있다. 발행주식수가 433만주로 극히 적어 시가총액 대비 유통 시가총액이 낮으며, 이로 인해 밸류에이션에 '유동성 프리미엄'이 반영되어 있다는 점도 고려해야 한다.</p>
+        </div>
+
+        <div class="key-figures">
+            <div class="key-fig">
+                <div class="kf-val">10~11x</div>
+                <div class="kf-label">2026E PER</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">7~8x</div>
+                <div class="kf-label">EV/EBITDA</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">2.5~3.0x</div>
+                <div class="kf-label">PBR</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 8 : 결론 및 투자 의견
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="section-conclusion" class="report-section">
+    <div class="section-label"><i class="fas fa-flag-checkered"></i> Section 08</div>
+    <h2 class="section-title">결론 및 투자 의견</h2>
+
+    <div class="verdict-card">
+        <div class="verdict-grade">A-</div>
+        <div class="verdict-label">투자의견: 매수 (Buy)</div>
+        <div class="verdict-body">
+            <p>효성티앤씨는 글로벌 스판덱스 시장의 구조적 재편(과점화)과 수요 측면의 구조적 성장(애슬레저·위생재)이라는 강력한 이중 모멘텀을 보유한 기업이다. 2026년 예상 매출 7.15조원(+21.4%), 영업이익 9,713억원(+36.6%)으로 사상 최대 실적이 전망되며, 이번 업사이클은 공급 조정이 동반된 '건강한 회복'으로서 지속성이 높다.</p>
+            <p>글로벌 M/S 약 30%의 압도적 1위 지위, 6개국 생산 네트워크, PTMEG 수직 계열화, creora 브랜드 파워 등 구조적 경쟁 우위가 확고하다. ESG 측면에서도 creora regen을 통한 친환경 시장 선점이 차별화 요인으로 작용하고 있다.</p>
+            <p>다만 발행주식수 433만주의 극소형 유통 구조로 인한 주가 변동성, 시클리컬 산업 특성에 따른 사이클 하강 리스크, 효성그룹 지배구조 리스크 등은 지속적 모니터링이 필요한 하방 리스크이다. 목표 시가총액은 2026년 영업이익 기준 EV/EBITDA 8배 적용 시 약 11~12조원으로, 현재 시총(9.7조원) 대비 약 13~24%의 상승 여력이 있는 것으로 판단된다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-bullseye"></i> 투자 포인트 요약</h3>
+        <div class="section-body">
+            <div class="sub-card">
+                <h4><i class="fas fa-check-circle"></i> 긍정 요인</h4>
+                <p>• 글로벌 스판덱스 1위(M/S 30%), 시장 과점화로 가격 결정력 강화<br>
+                • 2026E 영업이익 9,713억원(+36.6%), 사상 최대 실적 전망<br>
+                • 애슬레저·위생재 등 구조적 수요 성장 지속<br>
+                • 6개국 생산 네트워크로 글로벌 공급망 재편 최대 수혜<br>
+                • creora regen 등 ESG 친환경 제품 포트폴리오<br>
+                • PTMEG 수직 계열화를 통한 원가 경쟁력 확보</p>
+            </div>
+            <div class="sub-card">
+                <h4><i class="fas fa-exclamation-circle"></i> 리스크 요인</h4>
+                <p>• 발행주식수 433만주 극소형 유통 구조 — 급등락 변동성<br>
+                • 시클리컬 산업 특성 — 업황 하강 시 실적 급감 불가피<br>
+                • 효성그룹 지배구조·총수 리스크<br>
+                • 중국 메이저 업체 증설 재개 시 공급 과잉 재발 가능성<br>
+                • 원재료(PTMEG, MDI) 가격 급등 시 마진 압박<br>
+                • 글로벌 경기침체에 따른 소비 수요 감소</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-chart-line"></i> 핵심 재무 전망</h3>
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">2026E 매출 성장률</span>
+                    <span class="prog-value">+21.4%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:71%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">2026E 영업이익률</span>
+                    <span class="prog-value">13.6%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:68%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">업사이클 지속 기대감</span>
+                    <span class="prog-value">높음</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:85%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">밸류에이션 매력도</span>
+                    <span class="prog-value">양호</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:70%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">종합 리스크 수준</span>
+                    <span class="prog-value">중간</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:50%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <h4><i class="fas fa-gavel"></i> Disclaimer — 법적 고지</h4>
+        <p>본 리포트는 FLOVAH Insights에서 작성한 기업분석 자료이며, 투자 권유 또는 매매의 권유를 목적으로 하지 않습니다. 본 자료에 포함된 모든 정보는 공개된 자료를 기반으로 작성되었으며, 그 정확성이나 완전성을 보장하지 않습니다. 투자에 따른 모든 손실에 대해 FLOVAH는 어떠한 법적 책임도 부담하지 않습니다. 투자 결정은 반드시 투자자 본인의 판단과 책임 하에 이루어져야 합니다. 본 자료는 AI 기반 분석 시스템을 활용하여 작성되었으며, 자료의 내용은 시장 상황에 따라 수시로 변동될 수 있습니다. 과거의 수익률이 미래의 수익률을 보장하지 않습니다.</p>
+        <p style="margin-top:10px;">© 2026 FLOVAH Insights. All rights reserved. 본 자료의 무단 복제, 배포, 전송을 금지합니다.</p>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ADDITIONAL DEEP DIVE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="report-section" id="section-deep1">
+    <div class="section-label"><i class="fas fa-microscope"></i> Deep Dive</div>
+    <h2 class="section-title">업종 심층 분석 — 에너지·소재·화학</h2>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-flask-vial"></i> 스판덱스 가격 동향 및 전망</h3>
+        <div class="section-body">
+            <p>글로벌 스판덱스 가격은 2022~2023년의 바닥 구간(톤당 3,500~4,000달러)에서 벗어나 2024년 하반기부터 본격적인 반등세를 시작했다. 2026년 5월 현재 중국 내수 기준 스판덱스 20D 가격은 톤당 약 45,000~48,000위안(약 $6,200~6,600), 수출 가격은 톤당 약 $5,800~6,200 수준에서 거래되고 있다.</p>
+            <p>가격 반등의 핵심 요인은 공급 측면의 구조적 변화이다. 중국 비메이저 업체의 구조조정으로 약 30만톤 이상의 비효율적 설비가 퇴출되면서, 글로벌 스판덱스 가동률은 약 80~85%로 상승했다. 이는 과거 과잉 공급 시기(가동률 60~65%)와 비교하면 획기적인 개선이며, 메이저 업체들의 가격 결정력을 크게 강화하는 환경이 조성되었다.</p>
+            <p>향후 스판덱스 가격은 2026년 하반기~2027년까지 완만한 상승 추세가 지속될 것으로 전망된다. 수요 측면에서 애슬레저 및 위생재 시장의 구조적 성장이 지속되고, 공급 측면에서 대규모 신규 투자가 제한적이기 때문이다. 다만 중국 메이저 업체(화펑, 신셩 등)의 증설 재개 시 2028년 이후 공급 과잉 리스크가 재부상할 수 있다.</p>
+        </div>
+        <div class="key-figures">
+            <div class="key-fig">
+                <div class="kf-val">$6,200</div>
+                <div class="kf-label">20D 가격(/톤)</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">80~85%</div>
+                <div class="kf-label">글로벌 가동률</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">+40%</div>
+                <div class="kf-label">바닥 대비 반등폭</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-chart-pie"></i> 원재료 구조 및 원가 분석</h3>
+        <div class="section-body">
+            <p>스판덱스의 원가 구조에서 가장 큰 비중을 차지하는 것은 핵심 원재료인 PTMEG(Polytetramethylene Ether Glycol)과 MDI(Methylene Diphenyl Diisocyanate)이다. PTMEG은 원가의 약 55~60%, MDI는 약 15~20%를 차지하며, 이 두 원재료의 가격 변동이 스판덱스 마진에 결정적 영향을 미친다.</p>
+            <p>효성티앤씨는 PTMEG을 울산 공장에서 자체 생산하여 수직 계열화를 달성하고 있으며, 이를 통해 외부 조달 대비 약 10~15%의 원가 절감 효과를 누리고 있다. 이는 PTMEG 가격이 상승하는 국면에서 특히 큰 경쟁 우위로 작용한다. 반면 MDI는 바스프(BASF), 완화화학(万华化学) 등 소수 글로벌 메이저로부터 조달하고 있어, 가격 협상력이 상대적으로 제한적이다.</p>
+            <p>2026년 PTMEG 가격은 톤당 약 $2,500~2,800 수준에서 거래되고 있으며, MDI 가격은 톤당 약 $2,200~2,500이다. 현재의 원재료 가격 수준에서 스판덱스 마진 스프레드(판가 - 원가)는 톤당 약 $2,500~3,000로, 역사적 평균(약 $2,000~2,500) 대비 양호한 수준이다.</p>
+        </div>
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">PTMEG 원가 비중</span>
+                    <span class="prog-value">55~60%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:58%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">MDI 원가 비중</span>
+                    <span class="prog-value">15~20%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:18%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">기타(유틸리티·인건비·감가)</span>
+                    <span class="prog-value">20~30%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:25%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">마진 스프레드(현재)</span>
+                    <span class="prog-value">양호 ($2,700)</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:72%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-people-group"></i> 경영진 및 지배구조 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨는 효성그룹(조현준 회장)의 핵심 계열사로, 그룹의 지배구조 이슈가 주가에 직접적 영향을 미칠 수 있다. 조현준 회장은 효성그룹 전체를 총괄하면서 섬유·무역 부문에 대한 전략적 방향을 제시하는 역할을 하고 있으며, 실질적 경영은 전문경영인이 담당하고 있다.</p>
+            <p>지배구조 관점에서 효성그룹의 순환출자 구조, 계열사 간 내부거래 비중, 총수일가의 경영 참여 등은 ESG 평가에서 지속적으로 지적받는 사항이다. 다만 효성티앤씨 자체의 사업 경쟁력이 워낙 강력하여, 지배구조 디스카운트에도 불구하고 높은 밸류에이션이 유지되고 있다.</p>
+            <p>배당 정책은 연결 순이익의 약 20~30%를 배당성향으로 설정하고 있으며, 2026년 예상 DPS(주당배당금)는 약 50,000~60,000원으로 현재 주가 대비 배당수익률 약 2.2~2.6%가 예상된다. 발행주식수가 433만주로 극히 적어 총 배당금 규모 대비 주당 배당금이 높은 구조적 특성이 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-seedling"></i> ESG 경영 현황 평가</h3>
+        <div class="section-body">
+            <p><strong class="text-green">환경(E):</strong> 화학 산업 특성상 탄소 배출, 화학 폐수 처리, 에너지 소비 등 환경 이슈에 대한 대응이 중요하다. 효성티앤씨는 리사이클 스판덱스(creora regen) 출시, 재생에너지 활용 확대(2030년까지 RE100 30% 목표), 폐수 처리 시설 고도화 등을 추진하고 있다. 특히 creora regen은 업계 최초의 리사이클 스판덱스로서, 글로벌 패션 브랜드의 ESG 수요를 선점하는 데 크게 기여하고 있다.</p>
+            <p><strong class="text-gold">사회(S):</strong> 6개국에 걸친 생산 거점에서의 노동 환경 관리가 핵심 과제이다. 동사는 글로벌 공급망 윤리 기준(SA8000)을 도입하여 현지 노동자의 근무 환경을 관리하고 있으며, 지역사회 공헌 활동도 활발히 전개하고 있다. 울산 본사 인근 지역의 환경 정화 사업, 교육 지원 프로그램 등이 대표적이다.</p>
+            <p><strong class="text-blue">지배구조(G):</strong> 효성그룹 차원의 지배구조 리스크가 가장 큰 ESG 약점이다. 순환출자 구조, 총수일가 관련 법적 이슈, 계열사 간 내부거래 비중 등이 개선 과제로 남아 있다. 다만 사외이사 비율 확대, 감사위원회 독립성 강화 등 점진적 개선 노력이 진행 중이다.</p>
+        </div>
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">환경(E) 등급</span>
+                    <span class="prog-value">B+</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:65%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">사회(S) 등급</span>
+                    <span class="prog-value">B</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:55%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">지배구조(G) 등급</span>
+                    <span class="prog-value">C+</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:40%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">ESG 종합</span>
+                    <span class="prog-value">B</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:55%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-chart-gantt"></i> 중장기 실적 전망 시나리오</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 중장기 실적을 세 가지 시나리오로 분석하면 다음과 같다. 각 시나리오는 스판덱스 가격, 중국 업체 구조조정 지속 여부, 글로벌 수요 성장률, 원재료 가격 등 핵심 변수에 따라 구분된다.</p>
+        </div>
+        <div class="sub-card">
+            <h4><i class="fas fa-arrow-trend-up"></i> 낙관 시나리오 (확률 30%)</h4>
+            <p>스판덱스 가격 톤당 $6,500 이상, 중국 비메이저 추가 퇴출로 가동률 90% 돌파, 애슬레저 수요 연 15% 성장 지속. 2026년 영업이익 1.1~1.2조원, 2027년 1.3~1.5조원 달성 가능. 목표 시가총액 13~15조원(EV/EBITDA 9~10배 적용).</p>
+        </div>
+        <div class="sub-card">
+            <h4><i class="fas fa-arrows-left-right"></i> 기본 시나리오 (확률 45%)</h4>
+            <p>스판덱스 가격 톤당 $5,800~6,200, 현 시장 구조 유지, 수요 연 6~8% 성장. 2026년 영업이익 9,713억원(컨센서스), 2027년 1.0~1.1조원 전망. 목표 시가총액 11~12조원(EV/EBITDA 8배 적용). 현재가 대비 약 13~24% 상승 여력.</p>
+        </div>
+        <div class="sub-card">
+            <h4><i class="fas fa-arrow-trend-down"></i> 보수 시나리오 (확률 25%)</h4>
+            <p>중국 메이저 업체 증설 재개, 스판덱스 가격 톤당 $4,500~5,000, 글로벌 경기침체로 수요 둔화. 2026년 영업이익 7,000~8,000억원, 2027년 6,000~7,000억원으로 감소. 시가총액 8~9조원 수준으로 조정 가능. 이 시나리오에서도 글로벌 1위 지위는 유지.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-people-group"></i> 주요 주주 구성 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 주주 구성은 최대주주(효성 및 특수관계인) 약 50%, 국민연금 약 10%, 외국인 약 20~25%, 기타 일반주주 약 15~20%로 이루어져 있다. 발행주식수가 433만주로 극히 적어, 주주 구성의 변화가 주가에 미치는 영향이 매우 크다.</p>
+            <p>외국인 투자자의 비중이 20~25%로 상당히 높은 편이며, 이는 글로벌 스판덱스 업황에 대한 해외 기관의 높은 관심을 반영한다. 블랙록, 뱅가드 등 글로벌 패시브 펀드와 일부 액티브 해외 펀드가 주요 외국인 주주로 파악된다. 국민연금의 보유 비중(10%)도 국내 기관 중 가장 높아, 장기 투자 관점에서의 신뢰도를 시사한다.</p>
+        </div>
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">최대주주(효성 및 특수관계인)</span>
+                    <span class="prog-value">~50%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:50%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">국민연금</span>
+                    <span class="prog-value">~10%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:10%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">외국인</span>
+                    <span class="prog-value">~22%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:22%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">기타 일반주주</span>
+                    <span class="prog-value">~18%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:18%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-industry"></i> 나일론 사업부 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 사업 포트폴리오에서 스판덱스 다음으로 중요한 축은 나일론(Nylon) 사업이다. 동사는 나일론 원사, 나일론 칩, 나일론 직물 등 나일론 밸류체인 전반에 걸쳐 사업을 영위하고 있으며, 국내 1위·글로벌 상위권의 시장 지위를 보유하고 있다.</p>
+            <p>나일론 사업의 매출 비중은 전체의 약 25~30%이며, 주요 응용 분야는 의류(아웃도어·스포츠웨어), 자동차(에어백 원사, 타이어 코드), 산업용(로프, 필터) 등이다. 특히 자동차용 에어백 원사 분야에서 글로벌 시장 점유율 약 20%를 차지하며, 현대·기아차, 도요타, 폭스바겐 등 글로벌 완성차 업체에 공급하고 있다.</p>
+            <p>자동차 산업의 전동화(EV 전환) 추세는 나일론 수요에 복합적 영향을 미친다. 에어백 원사 수요는 안전 규제 강화로 꾸준히 증가하는 한편, 나일론 엔지니어링 플라스틱은 EV의 경량화 수요에 의해 고성장이 기대된다. 효성티앤씨는 이 두 분야 모두에서 확고한 기술적 우위를 보유하고 있다.</p>
+        </div>
+        <div class="key-figures">
+            <div class="key-fig">
+                <div class="kf-val">25~30%</div>
+                <div class="kf-label">나일론 매출 비중</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">20%</div>
+                <div class="kf-label">에어백 원사 M/S</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">국내 1위</div>
+                <div class="kf-label">나일론 원사 지위</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-shield-virus"></i> 리스크 매트릭스</h3>
+        <div class="section-body">
+            <p>효성티앤씨에 대한 투자 판단 시 고려해야 할 리스크를 발생 확률과 영향도 기준으로 분류하면 다음과 같다.</p>
+        </div>
+        <div class="sub-card">
+            <h4><i class="fas fa-circle-exclamation"></i> 고확률·고영향 리스크</h4>
+            <p>• 스판덱스 업황 사이클 반전 (시클리컬 특성상 불가피)<br>
+            • 원재료(PTMEG, MDI) 가격 급등에 따른 마진 압박<br>
+            • 발행주식수 극소형 구조로 인한 주가 급변동성</p>
+        </div>
+        <div class="sub-card">
+            <h4><i class="fas fa-circle-info"></i> 저확률·고영향 리스크</h4>
+            <p>• 중국 메이저 업체의 대규모 증설 재개 (공급 과잉 재발)<br>
+            • 효성그룹 지배구조 관련 대형 법적 이슈 발생<br>
+            • 미·중 무역전쟁 심화로 중국 내 사업 환경 급변</p>
+        </div>
+        <div class="sub-card">
+            <h4><i class="fas fa-circle-check"></i> 고확률·저영향 리스크</h4>
+            <p>• 분기별 실적 변동에 따른 단기 주가 조정<br>
+            • 환율 소폭 변동에 의한 환산 손익 변동<br>
+            • 원재료 가격 소폭 조정에 따른 마진 변동</p>
+        </div>
+    </div>
+</section>
+    <div class="analysis-card">
+        <h3><i class="fas fa-earth-americas"></i> 지역별 매출 구조 및 전략</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 매출은 지역별로 고르게 분포되어 있어, 특정 지역에 대한 의존도가 낮은 건전한 구조를 갖추고 있다. 2026년 예상 기준 지역별 매출 비중은 중국 약 35%, 아시아(중국 제외) 약 25%, 유럽 및 중동 약 20%, 아메리카 약 15%, 한국 국내 약 5%이다.</p>
+            <p>중국 시장은 전통적으로 최대 수요처로서, 내의와 양말 등 기초 섬유제품과 스포츠웨어 분야의 수요가 견조하다. 다만 미중 무역분쟁의 장기화에 따라 중국 의존도를 점진적으로 축소하는 한편, 인도와 베트남, 인도네시아 등 차이나 플러스 원 시장을 적극 개척하고 있다.</p>
+            <p>유럽 시장은 프리미엄 제품(creora Color+, creora regen) 중심으로 고부가가치 매출을 창출하는 전략적 시장이다. 유럽 패션 브랜드의 ESG 요구사항이 강화되면서, 친환경 제품인 creora regen의 유럽 매출이 빠르게 성장하고 있다. 아메리카 시장은 애슬레저 트렌드의 본거지로서, 룰루레몬과 나이키, 언더아머 등 북미 스포츠 브랜드와의 장기 공급 계약이 안정적 수익을 보장하고 있다.</p>
+        </div>
+        <div class="progress-group">
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">중국</span>
+                    <span class="prog-value">~35%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:35%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">아시아(중국 제외)</span>
+                    <span class="prog-value">~25%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:25%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">유럽 및 중동</span>
+                    <span class="prog-value">~20%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:20%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">아메리카</span>
+                    <span class="prog-value">~15%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill blue" style="width:15%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="prog-header">
+                    <span class="prog-label">한국 국내</span>
+                    <span class="prog-value">~5%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:5%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-microscope"></i> R&D 역량 및 기술 경쟁력</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 R&D 역량은 글로벌 스판덱스 업계에서 최고 수준으로 평가받고 있다. 연간 R&D 투자액은 매출의 약 2.5~3.0%인 약 1,800~2,100억원 규모이며, 울산 중앙연구소를 중심으로 약 350명의 연구인력이 신제품 개발, 공정 혁신, 원가 절감 기술 개발에 종사하고 있다.</p>
+            <p>보유 특허 수는 국내외 합계 약 1,200건 이상으로, 스판덱스 제조 공정, 원료 배합, 기능성 부여 기술 등 핵심 기술 영역에서 포괄적인 지적재산권 포트폴리오를 구축하고 있다. 특히 고탄성과 고내열, 항균, 리사이클 등 차별화된 기능성 스판덱스 제조 기술은 경쟁사 대비 2~3년의 기술 리드를 보유한 것으로 분석된다.</p>
+            <p>현재 진행 중인 주요 R&D 프로젝트로는 바이오 기반 스판덱스(석유 유래에서 식물 유래 원료로 전환), 해양 미세플라스틱 저감 스판덱스, 자가치유(Self-healing) 기능 스판덱스, 전도성 스판덱스(웨어러블 기기용) 등이 있다. 이러한 차세대 기술의 상업화가 성공할 경우, 동사의 기술적 해자(Moat)는 더욱 견고해질 전망이다.</p>
+        </div>
+        <div class="key-figures">
+            <div class="key-fig">
+                <div class="kf-val">~2,100억</div>
+                <div class="kf-label">연간 R&D 투자</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">1,200건+</div>
+                <div class="kf-label">보유 특허</div>
+            </div>
+            <div class="key-fig">
+                <div class="kf-val">350명</div>
+                <div class="kf-label">R&D 인력</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-network-wired"></i> 무역 및 유통 사업부 분석</h3>
+        <div class="section-body">
+            <p>효성티앤씨의 사업 포트폴리오에는 섬유(스판덱스와 나일론) 외에도 무역 및 유통 부문이 포함되어 있다. 무역 사업은 효성그룹 계열사 제품의 수출입 대행, 원자재 트레이딩 등을 수행하며, 전체 매출의 약 20~25%를 차지한다. 무역 부문의 영업이익률은 약 1~2%로 낮은 편이나, 안정적 현금흐름을 제공하고 환리스크 헤징에 기여하는 역할을 한다.</p>
+            <p>무역 사업의 핵심 경쟁력은 글로벌 네트워크이다. 미주, 유럽, 아시아, 중동 등 전 세계 주요 지역에 약 20개의 해외 법인 및 사무소를 보유하고 있으며, 이를 통해 스판덱스와 나일론 제품의 판매 채널로도 활용하고 있다. 다만 무역 부문은 환율 변동, 글로벌 경기, 무역 분쟁 등 매크로 변수에 민감하여, 분기별 실적 변동성이 큰 편이다.</p>
+            <p>장기적으로 효성티앤씨는 무역 사업의 수익성을 개선하기 위해 단순 중개에서 부가가치 트레이딩(원자재 파생상품 활용, 고부가 제품 중심 포트폴리오 전환)으로의 전환을 추진하고 있다. 또한 디지털 무역 플랫폼 구축을 통해 거래 효율성을 높이고, B2B 전자상거래 채널을 확대하는 전략을 병행하고 있다.</p>
+        </div>
+    </div>
+
+    <div class="analysis-card">
+        <h3><i class="fas fa-hands-holding-circle"></i> 효성그룹 시너지 및 계열사 관계</h3>
+        <div class="section-body">
+            <p>효성티앤씨는 효성그룹 내에서 섬유와 무역 사업을 담당하는 핵심 계열사이다. 효성그룹은 효성티앤씨 외에도 효성(지주회사), 효성첨단소재(탄소섬유와 타이어코드), 효성중공업(전력기기와 건설), 효성화학(PP와 DH) 등 주요 계열사를 보유하고 있다.</p>
+            <p>그룹 내 시너지는 주로 원재료 조달, 인프라 공유, 글로벌 네트워크 활용 측면에서 발생한다. 특히 효성화학의 PTMEG 생산 기술과 효성티앤씨의 스판덱스 생산 간 수직 계열화가 핵심 시너지이며, 효성첨단소재와의 기술 교류(고기능성 섬유 개발)도 R&D 역량 강화에 기여하고 있다.</p>
+            <p>다만 그룹 내 내부거래 비중이 높아 공정거래 관련 리스크가 존재하며, 총수일가의 경영 참여에 따른 지배구조 리스크도 상존한다. 투자자 관점에서는 효성티앤씨의 독자적 사업 경쟁력과 그룹 차원의 지배구조 리스크를 구분하여 평가할 필요가 있다.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-05-14 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 7,500선 내외 변동성 확대. 외국인 매도세 지속되나 펀더멘털 훼손 제한적.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 CPI·PPI 발표 앞두고 인플레이션 우려. 원/달러 1,430원대.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">업종 동향</div>항공·관광 회복 본격화. 소재·화학 업황 반등 기대. LCC 수요 증가 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">투자 포인트</div>어닝시즌 실적 개선 확인 종목 주목. 스판덱스·섬유 수요 호조.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 14일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<footer class="site-footer">
+    <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="footer-logo"><br>
+    <p>© 2026 FLOVAH Insights. All rights reserved.<br>
+    본 콘텐츠는 정보 제공 목적으로만 작성되었으며, 투자 권유가 아닙니다.</p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+        e.preventDefault();
+        const t=document.querySelector(a.getAttribute('href'));
+        if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+});
+const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+    });
+},{threshold:0.08});
+document.querySelectorAll('.report-section').forEach(s=>io.observe(s));
+const sections=document.querySelectorAll('.report-section');
+const dots=document.querySelectorAll('.nav-dots a');
+const so=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            dots.forEach(d=>d.classList.remove('active'));
+            const idx=[...sections].indexOf(e.target);
+            if(dots[idx]) dots[idx].classList.add('active');
+        }
+    });
+},{threshold:0.3});
+sections.forEach(s=>so.observe(s));
+const po=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.querySelectorAll('.progress-bar-fill').forEach(bar=>{
+                const w=bar.style.width;
+                bar.style.width='0%';
+                setTimeout(()=>{bar.style.width=w;},100);
+            });
+        }
+    });
+},{threshold:0.2});
+document.querySelectorAll('.progress-group').forEach(g=>po.observe(g));
+</script>
+</body>
+</html>

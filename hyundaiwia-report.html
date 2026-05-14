@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>현대위아 (011210) 기업 분석 리포트 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+    --bg-hover: #191b1f; --bg-surface: #111316;
+    --ink: #ede8df; --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e; --text-secondary: #7d7568;
+    --text-muted: #524c42; --text-light: #9a9184;
+    --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e; --blue-dim: #465f7a;
+    --rule: #1e1f24; --border: #1e1f24;
+    --accent: #c9a962; --accent2: #5c7d9e;
+    --card-bg: #0f1014; --dark-bg: #09090b;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+.site-header {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    height: 60px;
+    background: rgba(9,9,11,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+}
+.header-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.header-logo img { height:22px; }
+.header-logo span { font-family:'Orbit',sans-serif; font-size:15px; color:var(--gold); letter-spacing:2px; }
+.header-nav { display:flex; gap:32px; }
+.header-nav a { color:var(--text-secondary); text-decoration:none; font-size:13px; letter-spacing:0.5px; transition:color 0.2s; }
+.header-nav a:hover, .header-nav a.active { color:var(--gold); }
+.header-right { display:flex; align-items:center; gap:16px; }
+.header-date { font-size:12px; color:var(--text-muted); }
+.header-badge { font-size:10px; color:var(--gold); border:1px solid var(--gold-dim); padding:3px 10px; letter-spacing:1px; text-transform:uppercase; }
+.hero-section {
+    margin-top: 60px;
+    padding: 80px 40px 60px;
+    max-width: 1100px; margin-left:auto; margin-right:auto;
+}
+.hero-card {
+    border-top: 2px solid var(--gold);
+    background: var(--bg-card);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::before {
+    content:''; position:absolute; top:0; right:0; width:400px; height:400px;
+    background: radial-gradient(circle at top right, rgba(201,169,98,0.06) 0%, transparent 70%);
+    pointer-events:none;
+}
+.hero-badge { display:inline-block; font-size:11px; color:var(--gold); border:1px solid var(--gold-dim); padding:4px 12px; letter-spacing:1px; margin-bottom:20px; }
+.hero-title { font-family:'Orbit',sans-serif; font-size:36px; color:var(--ink-strong); letter-spacing:1px; margin-bottom:8px; }
+.hero-subtitle { font-size:15px; color:var(--text-secondary); margin-bottom:32px; }
+.hero-meta { display:flex; gap:24px; flex-wrap:wrap; }
+.hero-meta-item { font-size:13px; color:var(--text-muted); }
+.hero-meta-item strong { color:var(--text-light); }
+.metrics-grid {
+    display:grid; grid-template-columns: repeat(4,1fr); gap:16px;
+    max-width:1100px; margin:0 auto; padding:0 40px 40px;
+}
+.metric-card {
+    background:var(--bg-card); border:1px solid var(--border); padding:24px;
+    transition: border-color 0.3s;
+}
+.metric-card:hover { border-color: var(--gold-dim); }
+.metric-label { font-size:12px; color:var(--text-muted); margin-bottom:8px; letter-spacing:0.5px; }
+.metric-value { font-size:28px; font-weight:700; color:var(--ink-strong); margin-bottom:4px; }
+.metric-change { font-size:12px; }
+.metric-change.up { color:#5cb85c; }
+.metric-change.down { color:#d9534f; }
+.content-section {
+    max-width:1100px; margin:0 auto; padding:0 40px 48px;
+}
+.section-header {
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:28px; padding-bottom:16px;
+    border-bottom:1px solid var(--border);
+}
+.section-icon {
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--gold-dim); color:var(--gold); font-size:14px;
+}
+.section-title { font-family:'Orbit',sans-serif; font-size:22px; color:var(--ink-strong); letter-spacing:0.5px; }
+.section-number { font-size:12px; color:var(--text-muted); margin-left:auto; letter-spacing:1px; }
+.text-block { margin-bottom:24px; }
+.text-block h3 { font-size:16px; color:var(--ink); margin-bottom:12px; font-weight:600; }
+.text-block p { color:var(--text-body); line-height:1.9; margin-bottom:16px; }
+.timeline { position:relative; padding-left:28px; margin:32px 0; }
+.timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:1px; background:var(--border); }
+.timeline-item { position:relative; margin-bottom:24px; }
+.timeline-dot {
+    position:absolute; left:-24px; top:4px; width:12px; height:12px;
+    border:2px solid var(--gold); background:var(--bg-deep);
+}
+.timeline-year { font-size:13px; color:var(--gold); font-weight:600; margin-bottom:4px; }
+.timeline-desc { font-size:14px; color:var(--text-secondary); }
+.data-table { width:100%; border-collapse:collapse; margin:24px 0; }
+.data-table th {
+    text-align:left; padding:12px 16px; font-size:12px; color:var(--text-muted);
+    border-bottom:1px solid var(--border); letter-spacing:0.5px; font-weight:500;
+    text-transform:uppercase;
+}
+.data-table td {
+    padding:14px 16px; font-size:14px; color:var(--text-body);
+    border-bottom:1px solid var(--border);
+}
+.data-table tr:hover td { background:var(--bg-hover); }
+.data-table .highlight { color:var(--gold); font-weight:600; }
+.swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+.swot-card { background:var(--bg-card); border:1px solid var(--border); padding:24px; }
+.swot-card h4 { font-size:14px; color:var(--gold); margin-bottom:12px; letter-spacing:0.5px; }
+.swot-card ul { list-style:none; }
+.swot-card li { font-size:14px; color:var(--text-body); padding:6px 0; padding-left:16px; position:relative; }
+.swot-card li::before { content:'—'; position:absolute; left:0; color:var(--text-muted); }
+.progress-row { margin-bottom:20px; }
+.progress-label { display:flex; justify-content:space-between; margin-bottom:6px; }
+.progress-label span:first-child { font-size:13px; color:var(--text-light); }
+.progress-label span:last-child { font-size:13px; color:var(--gold); font-weight:600; }
+.progress-bar { height:6px; background:var(--bg-hover); overflow:hidden; }
+.progress-fill { height:100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); width:0; transition: width 1.2s ease-out; }
+.insight-box {
+    background: linear-gradient(135deg, rgba(201,169,98,0.06) 0%, rgba(92,125,158,0.04) 100%);
+    border:1px solid var(--border); padding:28px; margin:24px 0;
+}
+.insight-box .insight-title { font-size:14px; color:var(--gold); font-weight:600; margin-bottom:12px; }
+.insight-box p { font-size:14px; color:var(--text-body); line-height:1.8; }
+.site-footer {
+    max-width:1100px; margin:40px auto 0; padding:40px;
+    border-top:1px solid var(--border);
+}
+.footer-disclaimer { font-size:12px; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
+.footer-copy { font-size:11px; color:var(--text-muted); }
+@media (max-width:768px) {
+    .metrics-grid { grid-template-columns:1fr 1fr; }
+    .swot-grid { grid-template-columns:1fr; }
+    .hero-card { padding:28px; }
+    .site-header { padding:0 20px; }
+    .content-section, .hero-section { padding-left:20px; padding-right:20px; }
+    .hero-title { font-size:24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <a href="index.html" class="header-logo">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <nav class="header-nav">
+        <a href="#overview">기업개요</a>
+        <a href="#technical">기술분석</a>
+        <a href="#market">시장분석</a>
+        <a href="#competitors">경쟁사</a>
+        <a href="#swot">SWOT</a>
+        <a href="#strategy">전략</a>
+        <a href="#financials">재무</a>
+        <a href="#conclusion">결론</a>
+    </nav>
+    <div class="header-right">
+        <span class="header-date">May 14, 2026</span>
+        <span class="header-badge">KOSPI</span>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section" id="overview">
+    <div class="hero-card">
+        <span class="hero-badge">EQUITY RESEARCH</span>
+        <h1 class="hero-title">현대위아 (011210)</h1>
+        <p class="hero-subtitle">자동차부품 + 방산 + 공작기계 — 현대차그룹의 모빌리티·방산 핵심 계열사</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">섹터 <strong>자동차·모빌리티 / 방산</strong></div>
+            <div class="hero-meta-item">시장 <strong>KOSPI</strong></div>
+            <div class="hero-meta-item">시가총액 <strong>2.3조원</strong></div>
+            <div class="hero-meta-item">2025 매출 <strong>8.48조원</strong></div>
+            <div class="hero-meta-item">그룹 <strong>현대자동차</strong></div>
+        </div>
+    </div>
+</section>
+
+<!-- METRIC CARDS -->
+<div class="metrics-grid">
+    <div class="metric-card">
+        <div class="metric-label">2026 1Q 매출액</div>
+        <div class="metric-value">2.18조</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +5.7% YoY</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">2026 1Q 영업이익</div>
+        <div class="metric-value">516억</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +6.2% YoY</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">모빌리티 부문 매출</div>
+        <div class="metric-value">1.9조</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> +4.4% YoY</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">방산 부문 OPM</div>
+        <div class="metric-value">10.0%</div>
+        <div class="metric-change up"><i class="fas fa-arrow-up"></i> 수주 확대</div>
+    </div>
+</div>
+
+<!-- SECTION 1: 기업 개요 -->
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-building"></i></div>
+        <h2 class="section-title">기업 개요</h2>
+        <span class="section-number">01 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>현대위아의 사업 구조와 핵심 역량</h3>
+        <p>현대위아(Hyundai Wia, 011210)는 현대자동차그룹의 핵심 계열사로, 자동차부품(모빌리티), 방위산업(방산), 공작기계의 세 가지 사업 축을 운영하는 복합 산업 기업이다. 1976년 기아기공으로 설립된 이래 반세기에 걸쳐 한국 제조업의 발전과 함께 성장해온 현대위아는, 현재 자동차 핵심부품 공급과 방산 장비 제조에서 국내 최고 수준의 기술력을 보유하고 있다.</p>
+        <p>모빌리티 사업부문은 현대위아 매출의 약 85~87%를 차지하는 핵심 사업이다. 4륜구동(4WD) 시스템, 등속조인트(CVJ), 엔진 부품, 변속기 부품 등 자동차 핵심 구동계 부품을 생산하며, 현대자동차·기아의 글로벌 생산 네트워크에 맞춰 한국, 중국, 미국, 인도 등에 생산 거점을 운영하고 있다. 특히 4WD 시스템 분야에서 글로벌 탑 티어(Top-tier)의 기술력을 보유하고 있으며, 전동화 트렌드에 대응하여 전기차(EV)용 감속기, e-4WD 시스템 등 차세대 구동계 부품 개발에 적극적으로 투자하고 있다.</p>
+        <p>방산 사업부문은 매출 비중은 약 8~10%로 상대적으로 작지만, 높은 수익성(OPM 10% 수준)과 안정적인 수주 특성으로 인해 기업 가치 평가에서 중요한 역할을 한다. K9 자주포용 포탑 시스템, 기동장비, 탄약 등 지상무기체계 분야에서 핵심 역할을 수행하고 있으며, 최근 글로벌 방산 수출 확대 트렌드에 힘입어 수주 규모가 확대되고 있다. 특히 K-방산의 글로벌 경쟁력이 입증되면서, 폴란드·호주·인도 등에 대한 수출 물량이 증가하고 있어 방산 부문의 성장 가시성이 높아지고 있다.</p>
+        <p>공작기계 사업부문(기타 부문)은 CNC 터닝센터, 머시닝센터 등 산업용 공작기계를 생산한다. 2026년 1분기 기준 기타 부문 매출은 1,854억원으로 전년 동기 대비 +15.4% 성장했다. 최근 글로벌 제조업 자동화·스마트 팩토리 투자 확대와 함께 공작기계 수요가 회복세를 보이고 있으며, 특히 로봇 관련 신사업 매출 증가가 기타 부문 성장을 견인하고 있다. 현대위아는 현대자동차그룹의 로봇 사업 전략과 연계하여 산업용 로봇·협동 로봇(Cobot) 분야로의 사업 확장을 추진 중이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>주요 연혁 및 성장 궤적</h3>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1976</div>
+            <div class="timeline-desc">기아기공 설립 — 공작기계 제조업으로 출발</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">1999</div>
+            <div class="timeline-desc">현대자동차그룹 편입, 위아(주)로 사명 변경</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2005</div>
+            <div class="timeline-desc">자동차부품 사업 본격화 — 4WD 시스템, CVJ 양산 확대</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2012</div>
+            <div class="timeline-desc">현대위아로 사명 변경, 방산 사업 강화</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2020</div>
+            <div class="timeline-desc">전기차 구동계 부품(e-4WD, 감속기) 양산 돌입</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2024</div>
+            <div class="timeline-desc">K-방산 수출 확대에 따른 방산 수주 급증</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2026 1Q</div>
+            <div class="timeline-desc">매출 2.18조원, 로봇 신사업 매출 가시화</div>
+        </div>
+    </div>
+
+    <div class="text-block">
+        <p>현대위아의 기업 역사는 한국 제조업의 기술 발전사를 압축적으로 보여준다. 공작기계에서 출발하여 자동차부품으로 사업 영역을 확장하고, 방산과 로봇이라는 미래 성장 동력을 확보해 나가는 과정은, 기술 축적과 사업 다각화의 교과서적인 사례라 할 수 있다. 특히 현대자동차그룹이라는 안정적인 사업 기반 위에서 방산·로봇 등 고성장 분야로의 포트폴리오 확장을 추진하고 있다는 점은, 중장기 성장 스토리의 핵심 근거가 된다.</p>
+        <p>현대자동차그룹 내에서 현대위아의 전략적 포지셔닝은 '모빌리티 밸류체인의 핵심 부품 공급자'이자 '그룹 차원의 방산·로봇 사업 실행 주체'로 요약할 수 있다. 그룹의 전동화 전략에 따라 EV용 구동계 부품 비중이 확대되고 있으며, 보스턴 다이나믹스 인수 등 그룹의 로봇 사업 강화 전략과 연계하여 로봇 제조·시스템 통합 역할도 확대되고 있다. 이는 단순 자동차부품 기업을 넘어선 '미래 모빌리티·로보틱스 플랫폼 기업'으로의 진화를 의미한다.</p>
+    </div>
+</section>
+
+<!-- SECTION 2: 기술 분석 -->
+<section class="content-section" id="technical">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+        <h2 class="section-title">기술 분석</h2>
+        <span class="section-number">02 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>주가 흐름 및 기술적 패턴 분석</h3>
+        <p>현대위아의 주가는 2025년 하반기부터 방산 테마와 로봇 신사업 기대감에 힘입어 견조한 상승 흐름을 보이고 있다. 2024년 초 50,000원대에서 형성되었던 주가는 K-방산 수출 확대 뉴스플로우와 함께 2024년 하반기 65,000원대까지 상승한 후, 2025년 들어 방산·로봇 테마 강세에 힘입어 80,000원대를 넘어서며 52주 신고가를 경신했다. 현재 시가총액 약 2.3조원 수준이다.</p>
+        <p>기술적 관점에서 현재 주가는 20일 이동평균선과 60일 이동평균선을 모두 상회하는 정배열 구간에 위치해 있다. 다만 120일 이동평균선과의 이격도가 확대되어 있어, 단기적으로 이동평균선과의 수렴 과정(시간 조정 또는 가격 조정)이 진행될 가능성이 있다. 볼린저 밴드 분석에서는 밴드 중심선(20일 이동평균) 상방에서 안정적인 흐름을 유지하고 있으며, 밴드폭은 최근 소폭 축소되는 추세로 변동성이 감소하는 구간에 위치해 있다.</p>
+        <p>RSI(Relative Strength Index)는 55~60 구간에서 형성되어 있어, 과매수도 과매도도 아닌 중립 구간에 위치해 있다. 이는 추가 상승 여력이 충분하다는 긍정적 신호로 해석할 수 있다. MACD 지표는 시그널선과의 교차 지점에 근접하며, 향후 골든 크로스(Golden Cross) 발생 시 추가 상승 모멘텀이 형성될 가능성이 높다. 스토캐스틱 오실레이터는 중립 구간에서 상방 전환을 시도하고 있어, 단기 매수 타이밍의 접근 가능성을 시사한다.</p>
+        <p>거래량 패턴에서 주목할 점은 방산 수출 관련 뉴스 발생 시 거래량이 급증하는 '이벤트 드리븐(Event-Driven)' 특성이 강하다는 것이다. 이는 현대위아의 주가가 방산 관련 뉴스플로우에 민감하게 반응함을 의미하며, 방산 수출 수주 확정 등의 이벤트 시 거래량을 동반한 급등 가능성을 열어둘 필요가 있다. OBV(On-Balance Volume)는 주가와 함께 우상향 추세를 유지하고 있어, 구조적 매수세가 유입되고 있음을 확인할 수 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>지지선·저항선 및 매매 전략</h3>
+        <p>현재 주가 기준 주요 지지선은 1차 72,000원(60일 이동평균선 인근), 2차 65,000원(전 저점 및 120일 이동평균선)으로 설정할 수 있다. 주요 저항선은 1차 90,000원(심리적 저항선), 2차 100,000원(대형주 매수세 유입 기대 가격대)이다. 피보나치 되돌림 기준 38.2% 되돌림 수준은 약 68,000원, 50% 되돌림 수준은 약 63,000원에 해당한다.</p>
+        <p>일목균형표 분석에서 현대위아는 구름대(Kumo) 상방에 위치하며, 전환선이 기준선 상방에 있는 강세 구도를 형성하고 있다. 다만 구름대의 두께가 상대적으로 얇아, 구름대 하방 이탈 시 추세 전환이 빠르게 진행될 수 있다는 점에 유의할 필요가 있다. 현재 가격대에서의 매매 전략은 '분할 매수'가 적절한 것으로 판단되며, 72,000원 이하 조정 시 비중 확대, 90,000원 돌파 시 추가 매수를 검토하는 전략이 유효하다.</p>
+        <p>주봉 차트에서 현대위아는 2024년 이후 '계단식 상승(Staircase Pattern)' 패턴을 형성하고 있다. 상승 → 횡보(박스권) → 재상승의 패턴이 반복되면서 안정적인 상승 추세를 구축하고 있으며, 이는 방산·로봇 등 신규 성장 동력에 대한 시장의 점진적인 밸류에이션 재평가가 진행 중임을 시사한다. 월봉 기준으로는 장기 하락 추세에서 벗어나 상승 추세로 전환하는 초기 단계로 판단되며, 중장기적으로 상승 여력이 충분한 구간으로 평가된다.</p>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-title"><i class="fas fa-lightbulb"></i> 기술적 핵심 판단</div>
+        <p>현대위아는 이동평균선 정배열, OBV 우상향, RSI 중립 구간 등 기술적 지표가 안정적인 상승 추세를 지지하고 있다. 방산 수출 관련 이벤트 드리븐 특성이 강하며, 72,000원 지지 확인 시 매수 관점 유지가 적절하다. 90,000원 돌파 시 신고가 경신에 따른 추가 상승 탄력이 예상된다.</p>
+    </div>
+</section>
+
+<!-- SECTION 3: 시장 분석 -->
+<section class="content-section" id="market">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-globe"></i></div>
+        <h2 class="section-title">시장 분석</h2>
+        <span class="section-number">03 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>글로벌 자동차부품 시장과 전동화 전환</h3>
+        <p>글로벌 자동차부품 시장은 2025년 기준 약 4,500억 달러 규모로, 전동화(Electrification), 자율주행(Autonomous Driving), 소프트웨어 정의 차량(SDV) 등 메가트렌드에 의해 근본적인 구조 변화가 진행 중이다. 내연기관(ICE) 관련 부품의 수요는 점진적으로 감소하는 반면, 전기차(EV) 관련 구동계·배터리·전장부품의 수요는 가파르게 증가하고 있다.</p>
+        <p>현대위아의 모빌리티 사업에 대한 시사점은 명확하다. 4WD 시스템, CVJ, 엔진 부품 등 기존 주력 제품군은 내연기관 차량에 주로 적용되는 부품으로, 장기적으로 시장 축소 리스크에 노출되어 있다. 그러나 현대위아는 이에 선제적으로 대응하여 EV용 e-4WD 시스템, 전기차 감속기(Reducer), 전동 구동계(e-Axle) 등 차세대 부품 개발에 집중하고 있다. 현대·기아 그룹의 EV 전환 속도에 맞춰 EV 관련 매출 비중을 확대하는 것이 모빌리티 사업의 핵심 전략이다.</p>
+        <p>자동차 시장의 지역별 동향을 보면, 미국 시장은 견조한 완성차 판매와 하이브리드(HEV) 수요 확대로 현대·기아의 판매 호조가 이어지고 있어 현대위아의 부품 수주에 긍정적이다. 유럽 시장은 2025년 CO2 배출 규제 강화로 EV/HEV 비중이 빠르게 확대되고 있으며, 이는 현대위아의 EV 부품 수요 증가로 연결된다. 인도 시장은 현대자동차의 현지 IPO와 생산 확대에 따라 부품 공급 기회가 확대되고 있다.</p>
+        <p>현대자동차그룹 전체의 판매 실적은 현대위아의 모빌리티 부문 매출에 직접적인 영향을 미친다. 2025년 현대·기아의 글로벌 판매량은 약 730만 대를 기록하며 역대 최고치를 경신했고, 2026년에도 전년 대비 소폭 성장이 예상된다. 그룹 차원의 EV 판매 비중 확대(2026년 목표 약 12~15%)는 현대위아의 EV 부품 매출 증가를 견인할 핵심 동력이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>글로벌 방산 시장의 구조적 성장</h3>
+        <p>글로벌 방산 시장은 우크라이나-러시아 전쟁 장기화, 중동 지정학적 긴장 고조, 동북아시아 안보 불확실성 증대 등에 의해 구조적 성장 국면에 진입했다. NATO 회원국들의 GDP 대비 국방비 2% 이상 지출 목표 설정, 주요국의 방위력 증강 투자 확대 등은 향후 10년 이상 지속될 장기 트렌드로 평가된다. 스톡홀름국제평화연구소(SIPRI)에 따르면, 2025년 글로벌 군사비 지출은 약 2.5조 달러를 넘어서며 사상 최고치를 기록했다.</p>
+        <p>K-방산(한국 방위산업)은 이러한 글로벌 방산 시장의 구조적 성장에서 가장 주목받는 플레이어 중 하나로 부상했다. K9 자주포, K2 전차, FA-50 경공격기, 천궁-II 방공미사일 등 한국의 첨단 무기체계가 가격 대비 성능(Cost-Performance Ratio)에서 글로벌 최고 수준의 경쟁력을 인정받으면서, 폴란드, 호주, 노르웨이, 인도, UAE, 사우디아라비아 등 다양한 국가로의 수출이 확대되고 있다.</p>
+        <p>현대위아는 K-방산 가치사슬에서 핵심적인 역할을 수행하고 있다. K9 자주포의 포탑 시스템을 비롯하여, 군용 기동장비, 탄약, 사격통제장치 등 다양한 지상무기체계 부품·시스템을 공급하고 있으며, 한화에어로스페이스·현대로템 등과 함께 K-방산 수출의 핵심 수혜 기업으로 분류된다. 특히 폴란드 K9 수출 계약에 따른 포탑 시스템 공급, 호주 육군 현대화 프로그램 참여 등이 방산 수주 확대의 주요 동력으로 작용하고 있다.</p>
+        <p>방산 부문의 수익성도 주목할 만하다. 현대위아의 방산 OPM(영업이익률)은 약 10% 수준으로, 모빌리티 부문(OPM 약 1.5~2.0%) 대비 현저히 높다. 이는 방산 수주가 확대될수록 전사 수익성 개선에 기여하는 구조를 의미하며, 방산 매출 비중 확대가 곧 기업 가치 재평가로 연결되는 핵심 논리이다. 향후 방산 매출 비중이 현재 8~10%에서 15~20%까지 확대될 경우, 전사 영업이익률이 유의미하게 개선될 수 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>로봇·공작기계 시장의 성장 기회</h3>
+        <p>글로벌 산업용 로봇 시장은 제조업 자동화 확대, 인건비 상승, 그리고 AI 기술 발전에 의해 연평균 10% 이상의 고성장을 이어가고 있다. 특히 협동 로봇(Collaborative Robot, Cobot) 시장은 중소기업의 자동화 수요 증가와 함께 연평균 20% 이상의 초고성장을 기록하고 있다. 현대자동차그룹은 보스턴 다이나믹스 인수(2021년)를 필두로 로보틱스 사업에 대한 전략적 투자를 확대하고 있으며, 현대위아는 그룹 차원의 로봇 사업 전략에서 제조·시스템 통합 역할을 담당하고 있다.</p>
+        <p>공작기계 시장은 글로벌 경기 사이클에 민감한 시장이나, 스마트 팩토리 투자 확대, 리쇼어링(Reshoring) 트렌드, 반도체·배터리 장비 수요 증가 등 구조적 수요 증가 요인이 존재한다. 현대위아의 공작기계는 국내 시장에서 높은 인지도와 시장 점유율을 보유하고 있으며, 최근 해외 시장(인도, 동남아 등)에서의 매출 확대를 추진하고 있다. 기타 부문 매출이 2026년 1분기 +15.4% 성장한 것은 로봇·공작기계 시장에서의 성장 모멘텀을 반영한다.</p>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-title"><i class="fas fa-chart-area"></i> 시장 핵심 인사이트</div>
+        <p>현대위아는 자동차부품(안정적 기반), 방산(고수익 성장), 로봇(미래 동력)이라는 세 가지 시장에 걸쳐 사업을 영위하며, 각 시장의 구조적 성장 트렌드에서 수혜를 받고 있다. 특히 K-방산의 글로벌 수출 확대는 현대위아의 기업 가치 재평가를 견인할 핵심 카탈리스트(Catalyst)로 판단된다.</p>
+    </div>
+</section>
+
+<!-- SECTION 4: 경쟁사 분석 -->
+<section class="content-section" id="competitors">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chess"></i></div>
+        <h2 class="section-title">경쟁사 분석</h2>
+        <span class="section-number">04 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>다축 경쟁 구도 분석</h3>
+        <p>현대위아는 사업 포트폴리오의 다각화된 특성상, 사업부문별로 상이한 경쟁 구도에 놓여 있다. 자동차부품 분야에서는 현대모비스, 만도, 한온시스템 등 국내 자동차부품 대기업과 글로벌 Tier-1 부품사(보쉬, ZF, 콘티넨탈 등)가 경쟁자이다. 방산 분야에서는 한화에어로스페이스, 현대로템, LIG넥스원 등이 주요 경쟁사이며, 공작기계 분야에서는 두산공작기계, 일본의 화낙(FANUC)·마자크(Mazak) 등과 경쟁한다.</p>
+        <p>현대위아의 핵심 차별화 포인트는 이 세 가지 사업이 서로 시너지를 창출하는 통합 역량에 있다. 자동차부품 생산에서 축적된 정밀 가공·조립 기술이 방산 부품의 높은 품질 기준 충족에 기여하고, 공작기계 사업의 기계 설계·제어 기술이 자동차부품과 방산 장비의 생산 효율성을 높이는 선순환 구조가 형성되어 있다. 또한 현대자동차그룹이라는 안정적인 캡티브(Captive) 수요 기반은 경쟁사 대비 중요한 구조적 강점이다.</p>
+        <p>방산 분야에서 현대위아의 경쟁 포지셔닝은 특히 주목할 만하다. 한화에어로스페이스가 K9 자주포 완성체(Hull)를 생산하는 반면, 현대위아는 포탑 시스템이라는 핵심 서브시스템을 공급하는 구조로, 양사는 경쟁보다는 보완적 관계에 있다. 이는 K9 수출 확대 시 현대위아가 자동적으로 수혜를 받는 구조를 의미하며, 방산 수출 확대의 직접적 수혜 근거가 된다.</p>
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>항목</th>
+                <th>현대위아</th>
+                <th>현대모비스</th>
+                <th>한화에어로스페이스</th>
+                <th>두산공작기계</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>시가총액</td>
+                <td class="highlight">2.3조원</td>
+                <td>22조원</td>
+                <td>35조원</td>
+                <td>비상장(MBK)</td>
+            </tr>
+            <tr>
+                <td>2025 매출</td>
+                <td class="highlight">8.48조원</td>
+                <td>58조원</td>
+                <td>12조원</td>
+                <td>2조원(추정)</td>
+            </tr>
+            <tr>
+                <td>영업이익률</td>
+                <td class="highlight">2.4%</td>
+                <td>5.5%</td>
+                <td>12.0%</td>
+                <td>8.0%(추정)</td>
+            </tr>
+            <tr>
+                <td>주력 사업</td>
+                <td class="highlight">자동차부품+방산</td>
+                <td>모듈·전장</td>
+                <td>항공·방산 엔진</td>
+                <td>공작기계</td>
+            </tr>
+            <tr>
+                <td>방산 비중</td>
+                <td class="highlight">~10%</td>
+                <td>-</td>
+                <td>~40%</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>EV 대응</td>
+                <td class="highlight">e-4WD, 감속기</td>
+                <td>전장·자율주행</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>신사업</td>
+                <td class="highlight">로봇·자동화</td>
+                <td>UAM·로봇</td>
+                <td>우주·UAM</td>
+                <td>자동화솔루션</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-block">
+        <h3>밸류에이션 갭과 리레이팅 가능성</h3>
+        <p>현대위아의 시가총액(2.3조원)은 한화에어로스페이스(35조원)와 비교할 때 현저한 밸류에이션 갭이 존재한다. 물론 방산 매출 비중과 사업 규모에서 차이가 있으나, 현대위아의 방산 사업이 본격적으로 확대되고 수익성이 가시화될 경우, 방산 프리미엄이 반영되면서 밸류에이션 리레이팅(Re-rating)이 진행될 가능성이 높다.</p>
+        <p>또한 현대위아의 로봇 신사업이 본격화되면, 로봇 관련 밸류에이션 프리미엄이 추가로 반영될 여지도 있다. 현재 시장은 현대위아를 주로 자동차부품 기업으로 평가하고 있으나, 방산·로봇 사업의 성장에 따라 '방산+로봇+모빌리티' 복합 플랫폼 기업으로의 재평가가 진행될 수 있다. 이는 현재 PER 10~12배 수준에서 15~18배 수준으로의 밸류에이션 확대를 의미할 수 있다.</p>
+    </div>
+</section>
+
+<!-- SECTION 5: SWOT 분석 -->
+<section class="content-section" id="swot">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-th-large"></i></div>
+        <h2 class="section-title">SWOT 분석</h2>
+        <span class="section-number">05 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <p>현대위아의 전략적 포지셔닝을 종합적으로 평가하기 위해 SWOT 분석을 수행한다. 현대위아는 현대차그룹의 안정적 기반과 방산 기술력을 강점으로, K-방산 수출과 로봇 신사업이라는 구조적 기회를 포착하고 있으나, 모빌리티 부문의 낮은 수익성과 전동화 전환 리스크에 대한 관리가 필요하다.</p>
+    </div>
+
+    <div class="swot-grid">
+        <div class="swot-card">
+            <h4><i class="fas fa-arrow-up" style="margin-right:8px;"></i>강점 (Strengths)</h4>
+            <ul>
+                <li>현대자동차그룹 캡티브 수요 — 안정적 매출 기반</li>
+                <li>4WD 시스템 글로벌 탑 티어 기술력</li>
+                <li>K9 포탑 시스템 등 방산 핵심 기술 보유</li>
+                <li>자동차-방산-공작기계 사업 간 시너지</li>
+                <li>방산 부문 OPM 10% — 전사 수익성 견인</li>
+                <li>글로벌 생산 네트워크(한국·중국·미국·인도)</li>
+                <li>로봇·자동화 신사업 추진 — 그룹 전략 연계</li>
+                <li>50년 이상 축적된 정밀 제조 역량</li>
+            </ul>
+        </div>
+        <div class="swot-card">
+            <h4><i class="fas fa-arrow-down" style="margin-right:8px;"></i>약점 (Weaknesses)</h4>
+            <ul>
+                <li>모빌리티 부문 영업이익률 약 1.5~2.0%로 낮은 수준</li>
+                <li>내연기관 부품 의존도 높음 — 전동화 전환 과도기</li>
+                <li>현대차그룹 의존도 과다 — 고객 다변화 미흡</li>
+                <li>방산 매출 비중 10% 미만 — 방산주 프리미엄 제한적</li>
+                <li>전사 영업이익률 2.4% — 동종 업계 대비 낮은 수준</li>
+                <li>EV 부품 전환 투자에 따른 일시적 비용 부담</li>
+            </ul>
+        </div>
+        <div class="swot-card">
+            <h4><i class="fas fa-expand-arrows-alt" style="margin-right:8px;"></i>기회 (Opportunities)</h4>
+            <ul>
+                <li>K-방산 글로벌 수출 확대 — 폴란드, 호주, 인도 등</li>
+                <li>현대차 그룹 EV 전환 가속 — EV 부품 수요 증가</li>
+                <li>로봇·자동화 시장 구조적 성장</li>
+                <li>글로벌 리쇼어링 트렌드 — 공작기계 수요 확대</li>
+                <li>방산 부문 매출 비중 확대에 따른 밸류에이션 리레이팅</li>
+                <li>인도 시장 확대 — 현대차 인도 IPO 수혜</li>
+                <li>스마트 팩토리·디지털 트윈 솔루션 사업화</li>
+            </ul>
+        </div>
+        <div class="swot-card">
+            <h4><i class="fas fa-exclamation-triangle" style="margin-right:8px;"></i>위협 (Threats)</h4>
+            <ul>
+                <li>자동차 산업 전동화에 따른 ICE 부품 수요 감소</li>
+                <li>글로벌 경기 둔화 시 완성차 판매 감소 → 부품 수주 감소</li>
+                <li>중국 자동차부품 기업의 저가 공세</li>
+                <li>환율 변동 리스크 — 원화 강세 시 수출 경쟁력 약화</li>
+                <li>방산 수출 정치·외교적 리스크</li>
+                <li>글로벌 공급망 재편에 따른 불확실성</li>
+                <li>노동 비용 상승 및 인력 확보 경쟁</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-block">
+        <h3>SWOT 종합 평가</h3>
+        <p>현대위아의 SWOT 분석 결과, 핵심 투자 논점은 '방산·로봇 성장에 의한 밸류에이션 리레이팅이 모빌리티 부문의 구조적 리스크를 상쇄할 수 있는가'로 귀결된다. 현재까지의 분석에 따르면, K-방산 수출의 구조적 확대와 로봇 신사업의 가시화가 SO(강점-기회) 전략의 핵심 동력으로 기능하고 있으며, 모빌리티 부문의 EV 전환이 성공적으로 진행될 경우 WT(약점-위협) 리스크를 효과적으로 관리할 수 있을 것으로 판단된다.</p>
+        <p>다만 전사 영업이익률이 2.4%에 불과한 점은 핵심 약점으로, 방산 매출 비중 확대와 모빌리티 부문의 EV 부품 전환에 따른 마진 개선이 중장기적으로 실현되어야 밸류에이션 프리미엄이 정당화될 수 있다. 로봇 신사업은 아직 초기 단계로 실적 기여도가 미미하나, 현대자동차그룹의 전략적 방향성을 고려할 때 향후 2~3년 내 유의미한 매출 기여가 기대된다.</p>
+    </div>
+</section>
+
+<!-- SECTION 6: 전략 분석 -->
+<section class="content-section" id="strategy">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-compass"></i></div>
+        <h2 class="section-title">전략 분석</h2>
+        <span class="section-number">06 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>삼각 성장 엔진 전략: 모빌리티 × 방산 × 로봇</h3>
+        <p>현대위아의 중장기 전략은 '모빌리티(Mobility) × 방산(Defense) × 로봇(Robotics)'이라는 세 가지 성장 엔진의 균형적 발전으로 요약할 수 있다. 이 삼각 구도에서 모빌리티는 안정적인 매출 기반(Base), 방산은 고수익 성장 동력(Growth Driver), 로봇은 미래 가치 창출원(Future Value Creator)의 역할을 담당한다.</p>
+        <p>모빌리티 전략의 핵심은 '수익성 개선'과 'EV 전환'이다. 현재 모빌리티 부문의 OPM이 1.5~2.0%에 불과한 것은 내연기관 부품 중심의 제품 믹스, 현대차그룹에 대한 높은 의존도에 따른 교섭력 약화 등이 복합적으로 작용한 결과이다. 향후 전략적 방향은 EV 부품(e-4WD, 감속기, e-Axle)의 매출 비중을 확대하여 제품 믹스를 개선하고, 비그룹사 고객 확보를 통해 교섭력을 강화하는 것이다. 특히 e-4WD 시스템은 EV 시대에도 4WD 수요가 유지되는 분야로, 현대위아의 핵심 경쟁력이 유지될 수 있는 영역이다.</p>
+        <p>방산 전략은 '수출 확대를 통한 규모의 경제 달성'에 초점을 맞추고 있다. 국내 방산 시장은 국방 예산의 제약으로 성장에 한계가 있으나, K-방산의 글로벌 수출 확대는 이러한 한계를 극복할 수 있는 핵심 경로이다. 현대위아는 K9 자주포 포탑 시스템의 수출을 기반으로 독자적인 지상무기체계 포트폴리오를 확대하고 있으며, 군용 로봇·무인화 시스템 등 차세대 방산 제품 개발에도 투자하고 있다. 방산 매출 비중이 15% 이상으로 확대될 경우, 전사 영업이익률이 3~4% 수준으로 개선되며, 이는 밸류에이션 리레이팅의 트리거가 될 수 있다.</p>
+        <p>로봇 전략은 현대자동차그룹의 그룹 차원 로보틱스 전략과 긴밀히 연계되어 있다. 현대위아는 산업용 로봇의 제조·시스템 통합 역할을 담당하며, 특히 공작기계 사업에서 축적된 정밀 제어·기계 설계 역량이 로봇 제조에 직접적으로 활용되고 있다. 보스턴 다이나믹스의 로봇 기술과 현대위아의 제조 역량이 결합되면, 다양한 산업용·서비스용 로봇의 양산 체제 구축이 가능해진다. 2026년 1분기 기타 부문 매출의 +15.4% 성장에 로봇 관련 신사업 매출 증가가 기여한 것은 이러한 전략의 초기 성과를 보여준다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>글로벌 생산 네트워크 최적화</h3>
+        <p>현대위아는 한국, 중국, 미국, 인도 등에 글로벌 생산 거점을 운영하고 있으며, 이를 최적화하여 글로벌 공급망 효율성을 극대화하는 전략을 추진하고 있다. 미국 앨라배마 공장은 현대자동차그룹의 미국 생산 확대에 맞춰 부품 공급 능력을 강화하고 있으며, 특히 IRA(Inflation Reduction Act) 등 미국의 보호무역 정책에 대응하기 위한 현지화 전략의 핵심 거점이다.</p>
+        <p>인도 시장에서의 확장 역시 중요한 전략적 방향이다. 현대자동차가 인도에서 IPO를 추진하며 현지 사업을 확대하고 있으며, 인도의 자동차 시장이 연간 500만 대 규모로 성장하면서 현대위아의 인도 법인 매출도 확대되고 있다. 인도는 향후 제조업 허브로서의 전략적 중요성이 더욱 높아질 것으로 예상되며, 현대위아는 이를 선점하기 위한 투자를 확대하고 있다.</p>
+        <p>디지털 트랜스포메이션(DX) 관점에서 현대위아는 스마트 팩토리 구축, AI 기반 품질 관리, 디지털 트윈 기반 생산 최적화 등을 추진하고 있다. 이는 다품종 소량 생산 체제에서의 효율성을 극대화하고, 방산·로봇 등 고부가가치 제품의 생산 품질을 보장하기 위한 필수적 투자이다. 공작기계 사업의 기술 역량이 스마트 팩토리 솔루션 사업으로 확장되는 것도 주목할 만한 전략적 방향이다.</p>
+    </div>
+</section>
+
+<!-- SECTION 7: 재무 분석 -->
+<section class="content-section" id="financials">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-bar"></i></div>
+        <h2 class="section-title">재무 분석</h2>
+        <span class="section-number">07 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>2026년 1분기 및 2025년 연간 실적 분석</h3>
+        <p>현대위아는 2026년 1분기 연결 기준 매출 2조 1,793억원(+5.7% YoY), 영업이익 516억원(+6.2% YoY)을 기록했다. 매출과 영업이익 모두 전년 동기 대비 성장을 시현했으나, 성장 폭은 시장 기대치에 부합하는 수준이었다. 사업부문별로 보면, 모빌리티 부문은 매출 1.9조원(+4.4% YoY), 영업이익 약 300억원을 기록하며 안정적인 성장을 유지했다. 현대·기아 그룹의 글로벌 판매 호조와 SUV·크로스오버 등 4WD 채용 비중이 높은 차종의 판매 확대가 긍정적으로 작용했다.</p>
+        <p>방산 부문은 매출 약 4,000억원을 기록하며, 방산 영업이익률(OPM)은 약 10% 수준을 유지했다. K-방산 수출 확대에 따른 수주 증가가 실적에 반영되기 시작했으며, 수주잔고 기준으로도 방산 부문의 성장 가시성이 높아지고 있다. 기타 부문(공작기계·로봇 등)은 매출 1,854억원(+15.4% YoY)을 기록하며, 공작기계 교체 수요 증가와 로봇 관련 신사업 매출 확대가 성장을 견인했다.</p>
+        <p>2025년 연간 실적을 보면, 매출 8조 4,816억원(+3.7% YoY), 영업이익 2,044억원(-6.6% YoY)을 기록했다. 매출은 성장했으나 영업이익이 감소한 것은 모빌리티 부문의 원자재 비용 상승, EV 부품 전환 초기 비용 부담, 일부 방산 프로젝트의 비용 증가 등이 작용한 결과이다. 전사 영업이익률은 2.4%로, 전년(2.7%) 대비 소폭 하락했다.</p>
+        <p>재무 건전성 측면에서 현대위아의 부채비율은 약 120% 수준으로, 제조업 특성을 감안하면 양호한 수준이다. 다만 EV 부품 전환 투자, 방산 CAPA 확대, 로봇 신사업 투자 등 향후 2~3년간 투자 지출이 확대될 것으로 예상되어, 영업현금흐름의 안정적 확보가 중요한 과제이다. EBITDA 마진은 약 5~6% 수준으로, 방산 비중 확대와 제품 믹스 개선에 따라 점진적 개선이 기대된다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>주요 재무 지표</h3>
+    </div>
+
+    <div class="progress-row">
+        <div class="progress-label"><span>매출 성장률 (1Q YoY)</span><span>+5.7%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="48"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>영업이익률 (전사)</span><span>2.4%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="24"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>방산 영업이익률</span><span>10.0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="60"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>모빌리티 매출 비중</span><span>87.0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="87"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>기타 부문 성장률</span><span>+15.4%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="65"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>부채비율</span><span>120.0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="55"></div></div>
+    </div>
+    <div class="progress-row">
+        <div class="progress-label"><span>EBITDA 마진</span><span>5.5%</span></div>
+        <div class="progress-bar"><div class="progress-fill" data-width="38"></div></div>
+    </div>
+
+    <div class="text-block">
+        <h3>밸류에이션 분석</h3>
+        <p>현대위아의 현재 PER은 약 10~12배 수준으로, 자동차부품 업종 평균(8~10배)과 비교하면 소폭 프리미엄이 반영되어 있다. 이는 방산·로봇 등 비자동차 사업에 대한 시장의 성장 기대가 일부 반영된 것으로 해석된다. 그러나 한화에어로스페이스(PER 30배+), 현대로템(PER 20배+) 등 순수 방산 기업 대비로는 상당한 밸류에이션 디스카운트가 존재한다.</p>
+        <p>PBR은 약 0.7~0.8배로 1배 미만에서 거래되고 있어, 자산 가치 대비 저평가 상태이다. EV/EBITDA는 약 8~10배로 합리적인 수준이나, 방산 프리미엄이 본격적으로 반영될 경우 12~15배까지의 확대가 가능할 것으로 전망된다. Sum-of-the-Parts(SOTP) 밸류에이션 방법론을 적용할 경우, 모빌리티 부문(PER 8배), 방산 부문(PER 20배), 기타(PER 12배)를 각각 적용하면 적정 시가총액은 현재 대비 30~50% 높은 수준으로 산출된다.</p>
+        <p>현대위아의 투자 핵심 변수는 방산 매출 비중의 확대 속도이다. 방산 매출 비중이 현재 10%에서 15%로 확대될 경우, 전사 영업이익에서 방산이 차지하는 비중은 약 40~50%까지 상승하게 되며, 이는 밸류에이션 멀티플의 유의미한 확대를 정당화할 수 있다. 또한 로봇 신사업의 매출 가시화 시점도 중요한 밸류에이션 트리거로 작용할 것이다.</p>
+    </div>
+</section>
+
+<!-- SECTION 8: 결론 및 투자 의견 -->
+<section class="content-section" id="conclusion">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 class="section-title">결론 및 투자 의견</h2>
+        <span class="section-number">08 / 08</span>
+    </div>
+
+    <div class="text-block">
+        <h3>종합 투자 판단</h3>
+        <p>현대위아(011210)는 자동차부품·방산·로봇이라는 세 가지 성장 축을 보유한 복합 산업 기업으로, 현재 시장에서 자동차부품 중심의 밸류에이션(PER 10~12배)을 받고 있으나, 방산·로봇 사업의 성장에 따른 밸류에이션 리레이팅 가능성이 핵심 투자 포인트이다.</p>
+        <p>단기적으로는 2026년 1분기 실적(매출 2.18조원, 영업이익 516억원)이 안정적인 성장을 확인시켜 주었으며, K-방산 수출 확대에 따른 방산 수주 증가와 기타 부문(로봇·공작기계)의 +15.4% 성장이 긍정적 신호로 작용하고 있다. 모빌리티 부문은 현대·기아 글로벌 판매 호조에 힘입어 안정적인 성장을 유지하고 있으며, 방산 부문의 OPM 10% 수준은 전사 수익성 견인의 핵심 역할을 수행하고 있다.</p>
+        <p>중장기적으로 현대위아의 투자 매력은 세 가지로 요약된다. 첫째, K-방산의 글로벌 수출 확대가 구조적 트렌드로서 향후 5~10년간 지속될 것으로 전망되며, 현대위아는 K9 포탑 시스템 등 핵심 방산 기술을 통해 이 트렌드의 직접적 수혜자이다. 둘째, 현대자동차그룹의 EV 전환 전략에 따라 EV 부품(e-4WD, 감속기) 매출이 확대되면서, 모빌리티 부문의 전동화 전환 리스크가 점진적으로 완화될 것이다. 셋째, 로봇·자동화 신사업이 그룹 전략과 연계하여 매출 기여를 시작하고 있어, 미래 성장 동력의 가시성이 높아지고 있다.</p>
+        <p>리스크 요인으로는 전사 영업이익률의 낮은 수준(2.4%), 내연기관 부품 의존도, 현대차그룹에 대한 매출 집중, 방산 수출의 정치·외교적 리스크 등이 존재한다. 그러나 이러한 리스크는 방산 비중 확대, EV 전환 가속, 고객 다변화 등의 전략을 통해 관리 가능한 것으로 판단된다.</p>
+    </div>
+
+    <div class="insight-box">
+        <div class="insight-title"><i class="fas fa-flag"></i> 최종 투자 의견</div>
+        <p><strong style="color:var(--gold);">투자 의견: 관심 종목(WATCH)</strong> | 시가총액: 2.3조원 | PER: 10~12배 | PBR: 0.7~0.8배</p>
+        <p style="margin-top:12px;">현대위아는 K-방산 수출 확대와 로봇 신사업이라는 구조적 카탈리스트를 보유한 저평가 복합 산업 기업이다. 방산 매출 비중 확대에 따른 밸류에이션 리레이팅이 핵심 투자 논리이며, SOTP 기준 적정 가치는 현재 대비 30~50% 상회하는 것으로 추정된다. 단기적으로 모빌리티 부문의 수익성 개선과 방산 수주 실현이 확인되는 시점에서의 비중 확대를 제안하며, 72,000원 이하 조정 시 매수 기회로 활용할 수 있다.</p>
+    </div>
+</section>
+
+
+<!-- DEEP DIVE: 추가 심층 분석 -->
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-rocket"></i></div>
+        <h2 class="section-title">심층 분석: 방산 사업의 성장 궤적</h2>
+        <span class="section-number">APPENDIX A</span>
+    </div>
+
+    <div class="text-block">
+        <h3>K-방산 수출 확대와 현대위아의 역할</h3>
+        <p>K-방산(한국 방위산업)의 글로벌 수출 확대는 2022년 우크라이나 전쟁을 계기로 가속화되었으며, 이후 구조적 성장 트렌드로 자리 잡았다. NATO 회원국들의 국방비 증액, 동유럽 국가들의 군 현대화 프로그램, 중동 및 아시아 국가들의 방위력 강화 등이 맞물리면서, 한국산 무기체계에 대한 글로벌 수요가 전례 없는 수준으로 확대되고 있다. 2025년 한국의 방산 수출 규모는 약 200억 달러를 넘어서며 역대 최고치를 기록한 것으로 추정된다.</p>
+        <p>현대위아는 이 K-방산 수출 확대의 핵심 수혜 기업 중 하나이다. K9 자주포는 한국 방산 수출의 대표 품목으로, 폴란드, 호주, 에스토니아, 핀란드, 인도, 이집트, 노르웨이 등 다양한 국가에 수출되고 있다. 현대위아는 K9 자주포의 핵심 서브시스템인 포탑(Turret) 시스템을 공급하는 기업으로, K9 수출이 확대될수록 포탑 시스템 공급 물량도 비례하여 증가하는 구조이다.</p>
+        <p>포탑 시스템은 K9 자주포의 핵심 전투 시스템으로, 155mm 곡사포, 자동 장전 시스템, 사격통제장치, 포탑 회전 구동장치 등으로 구성된다. 이 시스템은 고도의 정밀 기계 가공, 전자제어, 유압 시스템 등 복합 기술이 집약된 고부가가치 제품이다. 한국콜마의 정밀 제조 역량과 방산 분야에서 축적된 기술 노하우가 포탑 시스템의 품질과 신뢰성을 보장하는 핵심이며, 이는 글로벌 시장에서 K9의 경쟁력을 뒷받침하는 중요한 요소이다.</p>
+        <p>폴란드 K9 수출 계약은 현대위아 방산 부문의 성장 가시성을 크게 높인 랜드마크 딜이다. 폴란드는 K9 자주포 1,000문 이상을 도입하는 초대형 계약을 체결했으며, 이 중 일부는 한국에서 완제품으로 수출되고 나머지는 폴란드 현지에서 라이선스 생산될 예정이다. 현대위아는 폴란드향 포탑 시스템 공급 물량 확보를 위해 생산 CAPA를 확대하고 있으며, 이 계약만으로도 향후 수년간의 안정적인 방산 매출이 보장되는 효과가 있다.</p>
+        <p>호주 시장에서의 기회도 주목할 만하다. 호주는 LAND 8116 프로그램을 통해 차기 자주포 체계를 도입할 예정이며, K9 자주포가 유력 후보로 거론되고 있다. 호주의 국방 투자 확대는 AUKUS(미영호 안보협의체) 체결 이후 가속화되고 있으며, 한국 방산 기업에 대한 호주 정부의 관심이 높아지고 있다. 현대위아는 호주 프로젝트 참여를 위한 현지 파트너십 구축과 기술 협력을 추진하고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>방산 수주잔고와 실적 가시성</h3>
+        <p>방산 사업의 핵심 매력은 높은 수익성(OPM 10%)과 장기 수주잔고에 기반한 실적 예측 가능성에 있다. 방산 계약은 일반적으로 3년에서 10년의 장기 계약으로 체결되며, 수주잔고를 기반으로 향후 매출을 높은 확신도로 예측할 수 있다. 현대위아의 방산 수주잔고는 최근 2년간 큰 폭으로 증가했으며, 이는 향후 3~5년간의 방산 매출 성장을 가시적으로 보장하는 요소이다.</p>
+        <p>방산 영업이익률(OPM) 10% 수준은 모빌리티 부문(OPM 1.5~2.0%) 대비 5배 이상 높은 수준이다. 이는 방산 매출 비중이 확대될수록 전사 영업이익률이 유의미하게 개선되는 구조를 의미한다. 수치적으로 살펴보면, 방산 매출 비중이 현재 10%에서 15%로 5%p 확대될 경우, 전사 영업이익에서 방산이 차지하는 비중은 약 30%에서 40~50%로 상승하며, 전사 영업이익률은 현재 2.4%에서 약 3.0~3.5% 수준으로 개선될 수 있다.</p>
+        <p>방산 부문의 리스크 요인도 고려할 필요가 있다. 방산 수출은 정치적, 외교적 변수에 민감하며, 수출 허가 과정에서의 지연이나 취소 가능성이 상존한다. 또한 대규모 방산 프로젝트의 경우 초기 투자비용이 크고, 계약 조건 변경이나 기술 사양 변경에 따른 비용 증가 리스크도 있다. 현대위아는 이러한 리스크를 분산하기 위해 다양한 국가, 다양한 제품군에 걸친 수주 포트폴리오 구축을 추진하고 있다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-robot"></i></div>
+        <h2 class="section-title">심층 분석: 로봇 및 자동화 신사업</h2>
+        <span class="section-number">APPENDIX B</span>
+    </div>
+
+    <div class="text-block">
+        <h3>현대자동차그룹 로보틱스 전략과 현대위아의 역할</h3>
+        <p>현대자동차그룹은 2021년 보스턴 다이나믹스(Boston Dynamics) 인수를 통해 글로벌 로보틱스 산업에 본격 진출했다. 그룹의 로보틱스 비전은 자동차 제조 역량과 AI 기술, 보스턴 다이나믹스의 로봇 기술을 결합하여, 제조업용 산업 로봇에서 서비스 로봇, 물류 로봇, 인간형 로봇(Humanoid Robot)까지 아우르는 종합 로봇 기업으로의 진화이다.</p>
+        <p>현대위아는 이 그룹 전략에서 산업용 로봇의 제조와 시스템 통합(System Integration)을 담당하는 핵심 실행 주체로 포지셔닝되어 있다. 현대위아의 공작기계 사업에서 축적된 정밀 가공 기술, 서보 제어 기술, 기계 설계 역량 등은 로봇 제조에 직접적으로 활용 가능한 핵심 역량이다. CNC 공작기계와 산업용 로봇은 기본적으로 정밀 모션 제어(Precision Motion Control)라는 공통 기술 플랫폼을 공유하기 때문이다.</p>
+        <p>협동 로봇(Collaborative Robot, Cobot) 시장은 현대위아가 단기적으로 가장 빠르게 진입할 수 있는 로봇 시장이다. 협동 로봇은 안전 펜스 없이 사람과 같은 공간에서 협업할 수 있는 소형 로봇으로, 제조업 현장의 조립, 검사, 포장, 팔레타이징 등 다양한 작업에 활용된다. 시장 규모가 연평균 20% 이상 성장하고 있으며, 중소기업의 자동화 수요 증가와 함께 시장 확대가 가속화되고 있다.</p>
+        <p>물류 로봇(AMR, Autonomous Mobile Robot) 시장도 현대위아의 진출 대상 시장이다. 이커머스 성장에 따른 물류 자동화 수요 증가, 인건비 상승, 물류 센터의 24시간 운영 니즈 등이 물류 로봇 시장의 성장 동력이다. 현대위아는 자율주행 기술과 정밀 내비게이션 기술을 결합한 물류 로봇 솔루션을 개발 중이며, 현대자동차그룹의 물류 인프라를 테스트베드로 활용하여 기술 완성도를 높이고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>로봇 사업의 매출 기여 전망</h3>
+        <p>현대위아의 로봇 사업은 아직 초기 단계로, 전사 매출에서 차지하는 비중은 미미하다. 그러나 2026년 1분기 기타 부문 매출의 +15.4% 성장에 로봇 관련 매출 증가가 기여한 것은 사업의 초기 가시화를 보여주는 긍정적 신호이다. 향후 2~3년 내 로봇 사업의 연간 매출이 수백억 원 규모에 도달할 것으로 전망되며, 중장기적으로는 수천억 원 규모로 성장할 잠재력이 있다.</p>
+        <p>로봇 사업이 현대위아의 밸류에이션에 미치는 영향은 매출 규모 대비 크다. 로봇 산업은 높은 성장성과 기술적 진입 장벽으로 인해 높은 밸류에이션 멀티플(PER 30배 이상)을 받는 산업이다. 현대위아의 로봇 사업이 유의미한 매출을 기록하기 시작하면, SOTP(Sum of the Parts) 밸류에이션에서 로봇 부문에 높은 멀티플이 적용되어 전사 밸류에이션이 상향될 수 있다.</p>
+        <p>다만 로봇 사업의 리스크 요인도 존재한다. 글로벌 로봇 시장은 화낙(FANUC), ABB, 쿠카(KUKA), 유니버설 로봇(Universal Robots) 등 기존 강자들이 포진해 있어 경쟁이 치열하다. 현대위아가 의미 있는 시장 점유율을 확보하기 위해서는 차별화된 기술 역량과 가격 경쟁력을 동시에 갖춰야 한다. 현대자동차그룹의 브랜드 파워와 글로벌 영업 네트워크는 이러한 과제를 극복하는 데 도움이 될 것으로 판단되나, 실행 리스크는 여전히 존재한다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-bolt"></i></div>
+        <h2 class="section-title">심층 분석: 전동화 전환과 EV 부품</h2>
+        <span class="section-number">APPENDIX C</span>
+    </div>
+
+    <div class="text-block">
+        <h3>EV 전환에 따른 사업 구조 변화</h3>
+        <p>자동차 산업의 전동화(Electrification)는 현대위아의 모빌리티 사업에 가장 큰 구조적 변화를 야기하는 메가트렌드이다. 내연기관(ICE) 차량에서 전기차(EV)로의 전환은 엔진 부품, 변속기 부품 등 현대위아의 기존 주력 제품 수요를 장기적으로 감소시키는 반면, EV용 감속기, e-4WD 시스템, e-Axle 등 새로운 제품 수요를 창출한다.</p>
+        <p>현대위아는 이러한 구조적 전환에 선제적으로 대응하기 위해 EV 부품 R&D와 양산 투자를 확대하고 있다. e-4WD 시스템은 전기차에서도 사륜구동 기능을 제공하는 핵심 부품으로, 기존 기계식 4WD에서 축적된 현대위아의 기술 역량이 직접적으로 활용 가능한 제품이다. 특히 전기차의 특성상 후륜 모터를 추가하는 형태의 전기식 AWD(All-Wheel Drive) 시스템에 대한 수요가 증가하고 있으며, 현대위아는 이 분야에서 기술적 우위를 점하고 있다.</p>
+        <p>EV 감속기(Reducer)는 전기차 모터의 고속 회전을 바퀴에 적합한 속도와 토크로 변환하는 핵심 구동계 부품이다. 내연기관의 변속기(Transmission)에 해당하는 부품으로, 현대위아의 정밀 기어 가공 기술과 변속기 설계 역량이 직접 활용된다. EV 감속기 시장은 글로벌 EV 판매량 증가와 함께 연평균 20% 이상 성장하고 있으며, 현대위아는 현대와 기아 그룹의 EV 플랫폼(E-GMP, IMA)에 감속기를 공급하고 있다.</p>
+        <p>e-Axle은 모터, 인버터, 감속기를 하나의 유닛으로 통합한 전기차용 통합 구동 시스템으로, EV 구동계의 궁극적인 형태로 평가받고 있다. 현대위아는 e-Axle 개발을 위해 모터 및 인버터 기술 확보에 투자하고 있으며, 장기적으로는 e-Axle 공급자로서의 포지셔닝을 목표로 하고 있다. 다만 e-Axle 시장은 보쉬, ZF, 니덱(Nidec) 등 글로벌 경쟁이 치열하여, 현대위아가 의미 있는 시장 점유율을 확보하기 위해서는 지속적인 기술 투자와 현대차그룹과의 긴밀한 협력이 필수적이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>하이브리드(HEV) 수요 증가의 수혜</h3>
+        <p>최근 글로벌 자동차 시장에서 순수 전기차(BEV)의 성장 속도가 당초 기대 대비 둔화되는 한편, 하이브리드(HEV)와 플러그인 하이브리드(PHEV)의 수요가 급증하고 있다. 이는 현대위아에게 단기적으로 매우 긍정적인 시장 환경이다. HEV/PHEV 차량은 내연기관과 전기모터를 동시에 탑재하기 때문에, 엔진 부품과 변속기 부품 수요가 유지되면서 동시에 전기 구동계 부품 수요도 추가되는 것이다.</p>
+        <p>현대와 기아 그룹의 HEV 판매가 빠르게 확대되고 있는 점은 현대위아의 모빌리티 부문에 직접적인 긍정적 영향을 미친다. 특히 미국 시장에서 현대와 기아의 HEV 모델(투싼 HEV, 싼타페 HEV, 쏘렌토 HEV 등)의 판매가 호조를 보이면서, 관련 부품 수주가 증가하고 있다. HEV 시장의 성장은 EV 전환의 과도기에서 현대위아의 매출과 수익성을 지지하는 중요한 버퍼 역할을 수행한다.</p>
+        <p>SUV와 크로스오버 시장의 지속적 성장도 현대위아에 유리한 시장 환경이다. 4WD/AWD 채용 비율이 높은 SUV 모델의 판매 호조는 현대위아의 핵심 제품인 4WD 시스템과 관련 부품의 수요를 안정적으로 유지시킨다. 글로벌적으로 SUV 시장 점유율이 지속 상승하고 있으며, 현대와 기아 그룹의 SUV 라인업 확대 전략이 현대위아의 수혜로 이어지고 있다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-search-dollar"></i></div>
+        <h2 class="section-title">심층 분석: 밸류에이션 시나리오</h2>
+        <span class="section-number">APPENDIX D</span>
+    </div>
+
+    <div class="text-block">
+        <h3>SOTP(Sum of the Parts) 밸류에이션</h3>
+        <p>현대위아의 적정 가치를 산출하기 위해 SOTP 방법론을 적용한다. 모빌리티 부문(2025 매출 약 7.3조원, OPM 약 1.7%)에 자동차부품 업종 평균 PER 8배를 적용하면 약 1.0조원의 가치가 산출된다. 방산 부문(2025 매출 약 8,500억원, OPM 약 10%)에 방산 업종 평균 PER 20배를 적용하면 약 1.7조원의 가치가 산출된다. 기타 부문(2025 매출 약 6,300억원)에 공작기계 및 로봇 업종 평균 PER 12배를 적용하면 약 0.6조원의 가치가 산출된다.</p>
+        <p>SOTP 합산 적정 시가총액은 약 3.3조원으로, 현재 시가총액 2.3조원 대비 약 43%의 상승 여력이 존재한다. 이러한 밸류에이션 갭은 현재 시장이 현대위아를 주로 자동차부품 기업(낮은 PER)으로 평가하고 있기 때문에 발생하는 것으로, 방산과 로봇 사업의 성장에 따라 점진적으로 해소될 것으로 전망된다.</p>
+        <p>불(Bull) 케이스에서는 방산 부문에 PER 25배, 기타 부문(로봇 프리미엄 반영)에 PER 15배를 적용할 경우, SOTP 합산 적정 시가총액은 약 4.0~4.5조원으로 확대된다. 이는 현재 대비 70~95%의 상승 여력을 시사하며, 방산 수출 대형 수주와 로봇 사업 본격화가 동시에 실현될 경우 달성 가능한 시나리오이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>피어 그룹(Peer Group) 비교 분석</h3>
+        <p>현대위아의 밸류에이션을 글로벌 피어 그룹과 비교하면 뚜렷한 할인이 존재한다. 글로벌 자동차부품 기업들의 평균 PER은 8~12배로, 현대위아의 PER 10~12배는 이 범위 내에 있다. 그러나 방산 사업을 영위하는 복합 기업들의 경우 방산 프리미엄이 반영되어 더 높은 밸류에이션을 받는 경우가 많다. 예를 들어, L3Harris Technologies(미국)의 PER은 약 20배, Rheinmetall(독일)의 PER은 약 25배 수준이다.</p>
+        <p>국내 방산 기업과의 비교에서도 현대위아의 밸류에이션 디스카운트는 명확하다. 한화에어로스페이스(PER 30배 이상), 현대로템(PER 20배 이상), LIG넥스원(PER 18배 이상) 등 국내 순수 방산주들의 밸류에이션은 현대위아(PER 10~12배) 대비 현저히 높다. 이는 현대위아의 방산 매출 비중이 아직 10% 미만으로 방산주로의 카테고리 재분류가 이루어지지 않았기 때문이다.</p>
+        <p>현대위아의 밸류에이션 리레이팅이 실현되기 위한 핵심 조건은 명확하다. 첫째, 방산 매출 비중이 15% 이상으로 확대되어 방산 프리미엄이 적용 가능한 수준에 도달해야 한다. 둘째, 전사 영업이익률이 3% 이상으로 개선되어 수익성에 대한 시장의 우려가 해소되어야 한다. 셋째, 로봇 사업의 매출 가시성이 확보되어 미래 성장 동력에 대한 시장의 확신이 형성되어야 한다. 이 세 가지 조건 중 하나라도 충족되면 부분적인 밸류에이션 리레이팅이, 모두 충족되면 본격적인 리레이팅이 진행될 수 있다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-cogs"></i></div>
+        <h2 class="section-title">심층 분석: 공작기계와 스마트 제조</h2>
+        <span class="section-number">APPENDIX E</span>
+    </div>
+
+    <div class="text-block">
+        <h3>공작기계 사업의 시장 포지셔닝</h3>
+        <p>현대위아의 공작기계 사업은 CNC 터닝센터, 머시닝센터, 복합 가공기 등을 생산하는 분야로, 국내 공작기계 시장에서 두산공작기계와 함께 양강 구도를 형성하고 있다. 글로벌 시장에서는 일본의 화낙(FANUC), 야마자키 마자크(Mazak), DMG MORI, 독일의 트룸프(TRUMPF) 등 선두 기업 대비 기술 경쟁력에서는 다소 격차가 있으나, 가격 경쟁력과 AS 서비스에서 강점을 보이고 있다.</p>
+        <p>공작기계 시장의 성장 동력은 크게 세 가지이다. 첫째, 글로벌 제조업의 자동화 및 스마트 팩토리 투자 확대이다. Industry 4.0 트렌드에 따라 기존 범용 공작기계에서 IoT 연결, AI 기반 자동 가공, 디지털 트윈 연동 등이 가능한 스마트 공작기계로의 교체 수요가 증가하고 있다. 둘째, 리쇼어링(Reshoring) 트렌드에 따른 선진국의 제조업 회귀와 관련 설비 투자 확대이다. 미국의 IRA, CHIPS Act 등 제조업 육성 정책이 공작기계 수요를 자극하고 있다.</p>
+        <p>셋째, 반도체, 배터리, 전기차, 우주항공 등 첨단 산업의 정밀 가공 수요 증가이다. 이들 산업에서 요구하는 초정밀 가공 수준은 갈수록 높아지고 있으며, 이에 대응할 수 있는 고성능 공작기계의 수요가 확대되고 있다. 현대위아는 이러한 첨단 산업 수요에 대응하기 위해 5축 가공, 초정밀 가공, 복합 가공 등 고부가가치 공작기계 라인업을 강화하고 있다.</p>
+        <p>스마트 팩토리 솔루션 사업은 공작기계 사업의 자연스러운 확장 영역이다. 현대위아는 공작기계에 IoT 센서, 클라우드 연결, AI 분석 기능을 탑재한 스마트 공작기계를 개발하고 있으며, 나아가 공장 전체의 생산 설비를 통합 관리하는 스마트 팩토리 플랫폼 솔루션까지 사업 영역을 확대하고 있다. 이는 제품 판매(Hardware)에서 솔루션 서비스(Software + Service)로의 사업 모델 전환을 의미하며, 반복 수익(Recurring Revenue)을 창출할 수 있는 고부가가치 사업으로 평가된다.</p>
+    </div>
+</section>
+
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-globe-americas"></i></div>
+        <h2 class="section-title">심층 분석: 글로벌 생산 네트워크와 지역 전략</h2>
+        <span class="section-number">APPENDIX F</span>
+    </div>
+
+    <div class="text-block">
+        <h3>미국 생산 거점과 IRA 수혜</h3>
+        <p>현대위아의 미국 앨라배마 공장은 현대자동차그룹의 미국 생산 전략과 긴밀하게 연계되어 운영되고 있다. 현대차와 기아의 미국 내 생산 규모 확대에 따라 현대위아의 미국 부품 공급 물량도 지속적으로 증가하고 있으며, 특히 미국 조지아주에 건설 중인 현대차그룹 EV 전용 공장(메타플랜트 아메리카)의 가동 개시 시 EV 관련 부품 공급 기회가 대폭 확대될 전망이다.</p>
+        <p>미국의 인플레이션 감축법(IRA, Inflation Reduction Act)은 현대위아에게 직간접적인 수혜를 제공한다. IRA는 미국 내 생산 EV에 대해 최대 7,500달러의 세액 공제를 제공하며, 이는 현대차그룹의 미국 EV 생산 확대를 촉진한다. 현대위아는 이러한 EV 생산 확대에 따른 EV 부품(감속기, e-4WD 등) 공급 기회를 확보하게 된다. 또한 미국 내 부품 현지화율 요건 충족을 위해 현대위아의 미국 공장 역할이 더욱 중요해지고 있다.</p>
+        <p>보호무역주의 확대에 따른 관세 리스크 관리 측면에서도 미국 현지 생산은 중요한 전략적 의미를 갖는다. 미국 정부의 대중국 관세 부과, USMCA(미국-멕시코-캐나다 협정)의 원산지 규정 강화 등은 글로벌 자동차 부품 공급망에 큰 변화를 야기하고 있으며, 현대위아는 미국 현지 생산 역량을 기반으로 이러한 무역 환경 변화에 유연하게 대응할 수 있는 포지션을 구축하고 있다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>인도 시장의 전략적 중요성</h3>
+        <p>인도 자동차 시장은 연간 약 500만 대 규모로 세계 3위이며, 향후 세계 2위 시장으로 성장할 잠재력을 보유하고 있다. 현대자동차는 인도 시장에서 마루티 스즈키에 이어 2위의 시장 점유율을 차지하고 있으며, 2024년 현대차 인도법인의 IPO를 통해 인도 사업의 전략적 중요성을 더욱 부각시켰다. 현대위아의 인도 법인은 현대차 인도 생산에 필요한 핵심 부품을 공급하는 역할을 수행하고 있으며, 인도 시장의 성장에 따라 매출 확대가 기대된다.</p>
+        <p>인도의 자동차 산업 성장률은 연간 8~10%에 달하며, 특히 SUV 세그먼트의 성장이 두드러진다. 인도 소비자들의 SUV 선호가 빠르게 확대되면서, 4WD/AWD 시스템에 대한 수요도 증가하고 있다. 현대위아의 4WD 시스템 기술력은 인도 시장에서의 경쟁력 확보에 핵심 자산이며, 현대차 인도 모델(크레타, 투싼 등)에 대한 부품 공급 확대를 통해 인도 법인의 매출 성장이 기대된다.</p>
+        <p>인도는 제조업 허브로서의 글로벌 전략적 중요성도 높아지고 있다. 중국 의존도를 줄이기 위한 글로벌 기업들의 인도 투자 확대(차이나 플러스 원 전략), 인도 정부의 제조업 육성 정책(Make in India), 젊은 인구 구조에 기반한 인건비 경쟁력 등이 인도를 글로벌 제조업의 핵심 거점으로 부상시키고 있다. 현대위아의 인도 생산 거점은 이러한 글로벌 공급망 재편 트렌드에서 전략적 가치가 더욱 높아질 것으로 전망된다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>중국 시장 전략과 리스크 관리</h3>
+        <p>중국 자동차 시장은 연간 약 2,800만 대 규모로 세계 최대이나, 최근 중국 로컬 브랜드(BYD, 지리, 장안 등)의 급부상과 가격 경쟁 심화로 현대차그룹의 중국 시장 점유율이 하락하는 추세이다. 이는 현대위아의 중국 법인 매출에도 직접적인 영향을 미치며, 중국 시장의 불확실성은 현대위아의 리스크 요인 중 하나이다.</p>
+        <p>현대위아의 중국 전략은 현대차그룹의 중국 전략과 긴밀하게 연동되어 있다. 현대차그룹이 중국 시장에서의 EV 전환을 가속화하고, 합작법인의 경쟁력을 강화하는 전략을 추진하고 있어, 현대위아 중국 법인도 이에 맞춰 EV 부품 공급 역량을 확대하고 있다. 다만 중국 시장의 구조적 경쟁 심화를 고려할 때, 중국 매출에 대한 과도한 의존은 지양하고, 인도와 미국 등 성장 시장에서의 매출 확대를 통해 지역별 포트폴리오를 재균형하는 것이 적절한 전략이다.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-balance-scale"></i></div>
+        <h2 class="section-title">심층 분석: ESG 경영과 지속가능성</h2>
+        <span class="section-number">APPENDIX G</span>
+    </div>
+
+    <div class="text-block">
+        <h3>환경 경영과 탄소 중립 전략</h3>
+        <p>현대위아는 현대자동차그룹의 2045 탄소중립 로드맵에 맞춰 자사의 환경 경영 전략을 수립하고 있다. 생산 공정에서의 에너지 효율화, 재생 에너지 사용 비율 확대, 폐기물 재활용률 제고 등이 핵심 추진 과제이다. 국내 주요 공장에 태양광 발전 설비를 설치하고, LED 조명 전환, 에너지 관리 시스템(EMS) 도입 등을 통해 단계적인 탄소 배출 감축을 추진하고 있다.</p>
+        <p>자동차부품 산업에서의 ESG 중요성은 갈수록 높아지고 있다. 현대와 기아 그룹은 공급망 전체의 ESG 관리를 강화하고 있으며, 현대위아를 포함한 주요 협력사에 대한 ESG 평가와 감사를 정례화하고 있다. 또한 글로벌 완성차 OEM들이 공급망 탄소 배출(Scope 3) 관리를 강화하면서, 부품 기업의 탄소 배출 관리 역량이 수주 경쟁에서의 핵심 평가 기준으로 작용하고 있다.</p>
+        <p>방산 분야에서의 ESG는 독특한 과제를 제기한다. 방산 사업 자체가 ESG 투자 배제(Exclusion) 대상이 될 수 있다는 우려가 있으나, 최근 글로벌 ESG 투자 기준에서 방산을 일률적으로 배제하는 것이 아니라, 국가 안보에 기여하는 방산 사업의 사회적 가치를 인정하는 방향으로 기준이 변화하고 있다. 특히 NATO 회원국의 국방비 증액이 글로벌 안보 질서 유지에 기여한다는 인식이 확산되면서, 방산 기업에 대한 ESG 투자 기준이 완화되는 추세이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>사회적 책임과 지배구조</h3>
+        <p>현대위아는 산업 안전, 근로자 복지, 지역사회 기여 등 사회적 책임(S) 분야에서도 다양한 활동을 전개하고 있다. 중대재해처벌법 시행에 따른 산업 안전 관리 체계 강화, 스마트 안전 시스템 도입, 임직원 역량 개발 프로그램 확대 등이 주요 추진 과제이다. 방산 사업의 특성상 보안과 안전에 대한 높은 기준이 요구되며, 이는 전사적인 안전 문화 확립에도 기여하고 있다.</p>
+        <p>지배구조(G) 측면에서 현대위아는 현대자동차그룹의 지배구조 개선 노력의 일환으로, 이사회 독립성 강화, ESG 위원회 운영, 소액주주 권리 보호 등을 추진하고 있다. 현대자동차그룹 전체의 지배구조 프리미엄이 개선될 경우, 현대위아를 포함한 그룹 계열사 전체의 밸류에이션에도 긍정적인 영향을 미칠 수 있다.</p>
+    </div>
+</section>
+
+
+<section class="content-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-shield-alt"></i></div>
+        <h2 class="section-title">심층 분석: 방산 기술 심화</h2>
+        <span class="section-number">APPENDIX H</span>
+    </div>
+
+    <div class="text-block">
+        <h3>차세대 방산 제품 포트폴리오</h3>
+        <p>현대위아의 방산 사업 확장 전략은 기존 K9 포탑 시스템 외에 독자적인 방산 제품 포트폴리오를 구축하는 방향으로 전개되고 있다. 군용 로봇 분야는 현대위아의 로봇 기술과 방산 역량이 융합되는 핵심 전략 영역이다. 지뢰 제거 로봇, 정찰 로봇, 보급 지원 로봇 등 다양한 군용 로봇 시스템의 개발이 추진 중이며, 이는 글로벌 군사 로보틱스 시장의 급성장(연평균 15% 이상)에 대응하기 위한 전략이다.</p>
+        <p>무인화 시스템(Unmanned Systems)도 주목할 만한 방산 신사업 분야이다. 무인 지상 차량(UGV, Unmanned Ground Vehicle), 원격 제어 무기 체계(RCWS, Remote Controlled Weapon Station) 등 무인화와 자동화 기술을 접목한 차세대 방산 제품 개발이 진행 중이다. 글로벌 군사 트렌드가 유무인 복합전투체계(MUM-T, Manned-Unmanned Teaming)로 진화하면서, 이 분야의 기술 확보는 중장기적으로 방산 사업의 핵심 경쟁력이 될 것이다.</p>
+        <p>탄약 사업도 현대위아 방산 포트폴리오의 중요한 구성요소이다. 155mm 포탄을 비롯한 다양한 탄종의 생산 능력을 보유하고 있으며, 우크라이나 전쟁으로 인한 글로벌 탄약 수요 급증은 현대위아의 탄약 사업에 긍정적인 영향을 미치고 있다. NATO 회원국들의 탄약 재고 보충 수요, 한국의 미국 및 유럽향 탄약 수출 확대 등이 탄약 부문의 성장 동력으로 작용하고 있다.</p>
+        <p>방산 정비(MRO, Maintenance Repair and Overhaul) 사업도 향후 성장이 기대되는 분야이다. K-방산 장비의 해외 수출이 확대되면서, 수출국에 대한 정비 및 기술 지원 서비스의 수요도 함께 증가하고 있다. 방산 MRO는 초기 장비 납품 후 수십 년간 반복적으로 발생하는 수익원으로, 안정적인 매출 기반을 구축할 수 있는 사업이다. 현대위아는 포탑 시스템의 해외 운용국에 대한 정비 서비스 체계를 구축하고 있으며, 이는 장기적으로 방산 부문의 수익 안정성을 높이는 요소가 될 것이다.</p>
+    </div>
+
+    <div class="text-block">
+        <h3>글로벌 방산 시장의 경쟁 환경과 한국의 위상</h3>
+        <p>글로벌 방산 시장은 미국(록히드마틴, 레이시온, 노스롭그루먼), 유럽(BAE Systems, 에어버스, 라인메탈), 이스라엘(IAI, 엘빗시스템즈) 등 전통적 방산 강국들이 지배하는 시장이다. 한국은 이 시장에서 신흥 강국으로 부상하고 있으며, K9 자주포, K2 전차, FA-50 경공격기, 천궁 방공미사일 등의 수출 성공을 통해 글로벌 방산 시장에서의 입지를 빠르게 확대하고 있다.</p>
+        <p>K-방산의 핵심 경쟁력은 가격 대비 성능(Cost-Performance Ratio)에 있다. 미국과 유럽 방산 기업의 제품 대비 20~30% 저렴한 가격에 동등하거나 그 이상의 성능을 제공하는 것이 K-방산의 핵심 가치 제안이다. 이는 한국의 제조업 역량, 효율적인 방산 조달 체계, 실전 경험(한국의 안보 환경에서 축적된 운용 경험) 등이 복합적으로 작용한 결과이다. 현대위아의 포탑 시스템도 이러한 K-방산의 가격-성능 경쟁력을 공유하며, 글로벌 수출 시장에서 높은 평가를 받고 있다.</p>
+        <p>향후 K-방산의 성장을 위해서는 기술 혁신, 현지화 전략, 정부 간(G2G) 관계 강화 등이 핵심 과제이다. 수출국과의 기술 이전(Technology Transfer)과 현지 생산(Licensed Production) 협력은 대규모 방산 수출 계약 수주의 필수 조건으로 작용하고 있으며, 현대위아도 폴란드 등 주요 수출국과의 기술 협력 체계를 구축하고 있다. 한국 정부의 적극적인 방산 외교 지원도 K-방산 수출 확대의 중요한 촉매제이다.</p>
+    </div>
+</section>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-05-14 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 7,500선 내외 변동성 확대. 외국인 매도세 지속되나 펀더멘털 훼손 신호 제한적. 반도체·방산·조선 섹터 중심 순환매 진행 중.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 CPI·PPI 발표 앞두고 인플레이션 우려 재부각. 원/달러 환율 1,430원대 변동성. 미·중 관세 협상 후속 진전 여부 주시.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">업종 동향</div>방산·조선·원전 모멘텀 견조. 바이오 임상 모멘텀 종목 차별화. 화장품·뷰티 섹터 K-뷰티 수출 호조 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">투자 포인트</div>어닝시즌 본격화에 따른 실적 서프라이즈 종목 주목. 2차전지·전력기기·AI 인프라 관련 투자 모멘텀 지속.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 14일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <p class="footer-disclaimer">
+        <strong style="color:var(--text-light);">면책 조항 (Disclaimer)</strong><br>
+        본 리포트는 투자 참고 자료로서 교육 목적으로만 작성되었으며, 특정 종목에 대한 매수 또는 매도를 권유하는 것이 아닙니다.
+        본 리포트에 포함된 정보, 분석, 의견은 작성 시점의 공개된 자료를 기반으로 하며, 정보의 정확성, 완전성, 적시성을 보장하지 않습니다.
+        투자 결정은 반드시 본인의 판단과 책임하에 이루어져야 하며, 본 리포트를 근거로 한 투자 손실에 대해 FLOVAH는 어떠한 책임도 지지 않습니다.
+        과거의 실적이 미래의 수익을 보장하지 않으며, 모든 투자에는 원금 손실의 위험이 수반됩니다.
+    </p>
+    <p class="footer-copy">
+        &copy; 2026 FLOVAH. 이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.
+    </p>
+</footer>
+
+<!-- JS: Smooth scroll + intersection observer -->
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const fills = entry.target.querySelectorAll('.progress-fill');
+            fills.forEach(fill => {
+                const width = fill.getAttribute('data-width');
+                fill.style.width = width + '%';
+            });
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.progress-row').forEach(row => observer.observe(row));
+
+const sections = document.querySelectorAll('.content-section, .hero-section');
+const navLinks = document.querySelectorAll('.header-nav a');
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(section => { if (section.id) navObserver.observe(section); });
+</script>
+</body>
+</html>

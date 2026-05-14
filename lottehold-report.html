@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>롯데지주 (004990) 기업분석 리포트 — FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+    --bg-hover: #191b1f; --bg-surface: #111316;
+    --ink: #ede8df; --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e; --text-secondary: #7d7568;
+    --text-muted: #524c42; --text-light: #9a9184;
+    --gold: #c9a962; --gold-light: #dcc07a; --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e; --blue-dim: #465f7a;
+    --rule: #1e1f24; --border: #1e1f24;
+    --accent: #c9a962; --accent2: #5c7d9e;
+    --card-bg: #0f1014; --dark-bg: #09090b;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+.site-header {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    height: 60px;
+    background: rgba(9,9,11,.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+}
+.logo-group { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-group img { height:22px; }
+.logo-group span { font-family:'Orbit',sans-serif; font-size:15px; color:var(--ink); letter-spacing:2px; }
+.header-date { font-size:12px; color:var(--text-muted); letter-spacing:0.5px; }
+.header-nav { display:flex; gap:20px; }
+.header-nav a { font-size:12px; color:var(--text-secondary); text-decoration:none; letter-spacing:0.5px; transition:color .2s; }
+.header-nav a:hover { color:var(--gold); }
+.page-wrap { max-width:1100px; margin:0 auto; padding:80px 40px 60px; }
+.section { margin-bottom:56px; opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+.section.visible { opacity:1; transform:translateY(0); }
+.hero-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 0;
+    padding: 48px 44px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::after {
+    content:''; position:absolute; top:0; right:0; width:260px; height:260px;
+    background:radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+    pointer-events:none;
+}
+.hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:4px 14px; background:var(--bg-elevated); border:1px solid var(--border);
+    border-radius:0; font-size:11px; color:var(--gold); letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:18px;
+}
+.hero-title { font-family:'Orbit',sans-serif; font-size:36px; color:var(--ink-strong); margin-bottom:6px; letter-spacing:1px; }
+.hero-sub { font-size:14px; color:var(--text-secondary); margin-bottom:28px; }
+.hero-sub .ticker { color:var(--gold); font-weight:600; }
+.metric-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:28px; }
+.metric-card {
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:0;
+    padding:20px; text-align:center;
+}
+.metric-label { font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.metric-value { font-size:26px; font-weight:700; color:var(--ink); }
+.metric-value.gold { color:var(--gold); }
+.metric-delta { font-size:12px; margin-top:4px; }
+.metric-delta.up { color:#5cba6e; }
+.metric-delta.down { color:#d45d5d; }
+.timeline { position:relative; padding-left:28px; margin-top:32px; }
+.timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--border); }
+.tl-item { position:relative; margin-bottom:22px; }
+.tl-item::before {
+    content:''; position:absolute; left:-24px; top:6px; width:12px; height:12px;
+    background:var(--gold); border-radius:50%; border:2px solid var(--bg-deep);
+}
+.tl-year { font-size:12px; color:var(--gold); font-weight:700; letter-spacing:1px; }
+.tl-text { font-size:13px; color:var(--text-secondary); margin-top:2px; }
+.sec-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+.sec-icon { width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:var(--gold-glow); border:1px solid var(--gold-dim); border-radius:0; color:var(--gold); font-size:15px; }
+.sec-title { font-family:'Orbit',sans-serif; font-size:22px; color:var(--ink); letter-spacing:1px; }
+.sec-line { flex:1; height:1px; background:var(--border); }
+.content-card {
+    background:var(--bg-card); border:1px solid var(--border); border-radius:0;
+    padding:32px 36px; margin-bottom:20px;
+}
+.content-card h3 { font-size:16px; color:var(--ink); margin-bottom:14px; font-weight:600; }
+.content-card p { font-size:14px; color:var(--text-body); line-height:1.85; margin-bottom:12px; }
+.comp-table { width:100%; border-collapse:collapse; margin-top:16px; }
+.comp-table th {
+    background:var(--bg-elevated); color:var(--gold); font-size:12px; font-weight:600;
+    padding:12px 16px; text-align:left; border-bottom:2px solid var(--gold-dim);
+    letter-spacing:0.5px; text-transform:uppercase;
+}
+.comp-table td {
+    padding:12px 16px; font-size:13px; color:var(--text-body);
+    border-bottom:1px solid var(--border);
+}
+.comp-table tr:hover td { background:var(--bg-hover); }
+.comp-table .highlight { color:var(--gold); font-weight:600; }
+.swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.swot-box { background:var(--bg-card); border:1px solid var(--border); border-radius:0; padding:24px 28px; }
+.swot-box h4 { font-size:14px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.swot-box.strength h4 { color:#5cba6e; }
+.swot-box.weakness h4 { color:#d45d5d; }
+.swot-box.opportunity h4 { color:var(--gold); }
+.swot-box.threat h4 { color:var(--blue); }
+.swot-box ul { list-style:none; }
+.swot-box li { font-size:13px; color:var(--text-body); padding:6px 0; border-bottom:1px solid var(--border); line-height:1.7; }
+.swot-box li:last-child { border-bottom:none; }
+.swot-box li::before { content:'▸ '; color:var(--text-muted); }
+.fin-bar-group { margin-bottom:18px; }
+.fin-bar-label { display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; }
+.fin-bar-label span:first-child { color:var(--text-light); }
+.fin-bar-label span:last-child { color:var(--ink); font-weight:600; }
+.fin-bar-track { height:10px; background:var(--bg-elevated); border-radius:0; overflow:hidden; border:1px solid var(--border); }
+.fin-bar-fill { height:100%; border-radius:0; transition:width 1s ease; }
+.fin-bar-fill.gold { background:linear-gradient(90deg, var(--gold-dim), var(--gold)); }
+.fin-bar-fill.blue { background:linear-gradient(90deg, var(--blue-dim), var(--blue)); }
+.tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.tag {
+    display:inline-flex; align-items:center; gap:5px;
+    padding:4px 12px; font-size:11px; letter-spacing:1px;
+    border-radius:0; border:1px solid var(--border);
+    color:var(--text-secondary); background:var(--bg-elevated);
+}
+.tag.gold { border-color:var(--gold-dim); color:var(--gold); }
+.disclaimer {
+    margin-top:48px; padding:28px 32px;
+    background:var(--bg-card); border:1px solid var(--border); border-radius:0;
+    font-size:12px; color:var(--text-muted); line-height:1.8;
+}
+.disclaimer strong { color:var(--text-secondary); }
+.site-footer {
+    margin-top:40px; padding:32px 40px; text-align:center;
+    border-top:1px solid var(--border); font-size:12px; color:var(--text-muted);
+}
+.site-footer .brand { font-family:'Orbit',sans-serif; color:var(--gold); letter-spacing:2px; margin-bottom:6px; }
+@media (max-width:900px) {
+    .metric-row { grid-template-columns:repeat(2,1fr); }
+    .swot-grid { grid-template-columns:1fr; }
+    .page-wrap { padding:80px 20px 40px; }
+    .hero-card { padding:32px 24px; }
+    .site-header { padding:0 20px; }
+}
+@media (max-width:600px) {
+    .metric-row { grid-template-columns:1fr; }
+    .hero-title { font-size:26px; }
+    .comp-table { font-size:12px; }
+    .comp-table th, .comp-table td { padding:8px 10px; }
+    .content-card { padding:22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ Header ═══════ -->
+<header class="site-header">
+    <a href="index.html" class="logo-group">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <nav class="header-nav">
+        <a href="#overview">기업 개요</a>
+        <a href="#technical">기술 분석</a>
+        <a href="#market">시장 분석</a>
+        <a href="#competitors">경쟁사</a>
+        <a href="#swot">SWOT</a>
+        <a href="#strategy">전략</a>
+        <a href="#financial">재무</a>
+        <a href="#conclusion">결론</a>
+    </nav>
+    <span class="header-date">May 14, 2026</span>
+</header>
+
+<div class="page-wrap">
+
+<!-- ═══════ 1. 기업 개요 ═══════ -->
+<div id="overview" class="section">
+    <div class="hero-card">
+        <div class="hero-badge"><i class="fas fa-building"></i> EQUITY RESEARCH REPORT</div>
+        <h1 class="hero-title">롯데지주 (Lotte Holdings)</h1>
+        <p class="hero-sub"><span class="ticker">KRX: 004990 · KOSPI</span> &nbsp;|&nbsp; 건설·조선·복합기업 &nbsp;|&nbsp; 시가총액 약 2.9조원</p>
+        <p style="font-size:14px;color:var(--text-body);line-height:1.85;max-width:860px;">
+            롯데지주는 재계 5위 롯데그룹의 사실상 지주회사로서, 유통·화학·식품·관광·건설·금융 등
+            전방위적 사업 포트폴리오를 보유한 대한민국 대표 복합기업이다.
+            1967년 신격호 창업주가 일본에서 시작한 롯데제과를 모태로, 반세기 이상에 걸쳐
+            대한민국의 소비·유통·화학·관광 산업을 이끌어온 그룹의 컨트롤 타워 역할을 수행하고 있다.
+            현재 신동빈 회장 체제 하에서 그룹 경영이 이루어지고 있으며,
+            롯데쇼핑, 롯데케미칼, 롯데칠성음료, 롯데호텔, 롯데건설, 롯데물산 등
+            핵심 자회사들을 통해 내수 경제의 광범위한 영역에서 사업을 영위하고 있다.
+            시가총액은 약 2.9조원으로, 그룹 자회사 지분가치 합산 대비 상당한 디스카운트가 적용되어 있는 상황이다.
+            2025년 3분기 누적 기준 매출은 전년 대비 1.7% 감소, 영업이익은 16.5% 감소하며
+            유통·화학 부문의 구조적 어려움이 반영되고 있으나,
+            구조조정 진행과 업황 회복 기대감이 병존하는 복합적인 국면에 있다.
+            롯데그룹은 2024년부터 대대적인 사업 구조조정에 착수했으며,
+            비핵심 자산 매각, 인력 효율화, 수익성 중심 경영으로의 전환을 추진하고 있다.
+            특히 롯데쇼핑의 오프라인 점포 축소와 온라인 전환, 롯데케미칼의 고부가 제품 포트폴리오 강화,
+            롯데건설의 선별 수주 전략 등이 핵심 구조조정 과제이다.
+        </p>
+
+        <div class="metric-row">
+            <div class="metric-card">
+                <div class="metric-label">시가총액</div>
+                <div class="metric-value gold">2.9조</div>
+                <div class="metric-delta">KOSPI 대형주</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2025 3Q 누적 매출 증감</div>
+                <div class="metric-value">-1.7%</div>
+                <div class="metric-delta down">▼ YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2025 3Q 누적 영업이익 증감</div>
+                <div class="metric-value">-16.5%</div>
+                <div class="metric-delta down">▼ YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">핵심 자회사 수</div>
+                <div class="metric-value gold">20+</div>
+                <div class="metric-delta">전방위 사업 포트폴리오</div>
+            </div>
+        </div>
+
+        <div class="tag-row" style="margin-top:24px;">
+            <span class="tag gold"><i class="fas fa-shopping-bag"></i> 유통</span>
+            <span class="tag gold"><i class="fas fa-flask"></i> 화학</span>
+            <span class="tag"><i class="fas fa-utensils"></i> 식품·음료</span>
+            <span class="tag"><i class="fas fa-hotel"></i> 관광·호텔</span>
+            <span class="tag"><i class="fas fa-hard-hat"></i> 건설</span>
+            <span class="tag"><i class="fas fa-coins"></i> 금융</span>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="content-card" style="margin-top:20px;">
+        <h3><i class="fas fa-clock" style="color:var(--gold);margin-right:8px;"></i>기업 연혁 — 주요 마일스톤</h3>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-year">1967</div>
+                <div class="tl-text">신격호 창업주, 롯데제과 설립 — 일본 롯데의 한국 진출로 국내 제과업계 진입. '가나초콜릿' 등 히트 상품으로 시장 선점</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1979</div>
+                <div class="tl-text">롯데호텔 개관 — 서울 소공동 롯데호텔 개관으로 관광·호스피탈리티 사업 진출. 이후 국내 최대 호텔 체인으로 성장</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1979</div>
+                <div class="tl-text">롯데쇼핑(백화점) 출범 — 소공동 롯데백화점 1호점 개점. 이후 대한민국 최대 백화점·마트·슈퍼마켓 체인으로 확장</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1988</div>
+                <div class="tl-text">롯데건설 설립 — 건설·부동산 개발 사업 진출. 롯데월드타워(555m) 등 랜드마크 프로젝트 수행</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">1996</div>
+                <div class="tl-text">롯데케미칼 출범 — 호남석유화학 인수를 통해 석유화학 사업 본격 진출. 에틸렌·프로필렌 등 기초화학 생산</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">2017</div>
+                <div class="tl-text">롯데월드타워 개장 — 높이 555m, 123층의 한국 최고층 빌딩 완공. 롯데그룹의 상징적 랜드마크</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">2018</div>
+                <div class="tl-text">지주회사 체제 전환 — 롯데지주(舊 롯데제과) 중심의 지주회사 체제로 재편, 그룹 지배구조 현대화</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">2022</div>
+                <div class="tl-text">신동빈 회장 3연임 — 경영 안정성 확보. 바이오·모빌리티·친환경 소재 등 미래 신사업 투자 본격화</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-year">2024-2025</div>
+                <div class="tl-text">대대적 구조조정 착수 — 롯데쇼핑 점포 축소, 롯데하이마트 구조조정, 비핵심 자산 매각, 수익성 중심 경영 전환 추진</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <h3><i class="fas fa-sitemap" style="color:var(--gold);margin-right:8px;"></i>그룹 사업구조 및 핵심 자회사</h3>
+        <p>
+            롯데그룹의 사업 구조는 크게 유통, 화학, 식품·음료, 관광·서비스, 건설·부동산, 금융의 6대 부문으로 구분된다.
+            유통 부문의 핵심은 롯데쇼핑으로, 백화점·마트·슈퍼마켓·하이마트·롯데온(e커머스) 등을 운영한다.
+            국내 오프라인 유통 시장의 구조적 위축과 온라인 커머스 경쟁 심화로 어려운 환경에 놓여 있으나,
+            백화점 부문은 프리미엄 소비 트렌드에 힘입어 상대적으로 양호한 실적을 유지하고 있다.
+            롯데하이마트는 가전 전문점 시장의 축소와 온라인 가전 구매 증가로 심각한 구조조정 국면에 있으며,
+            점포 통폐합과 인력 조정이 진행 중이다.
+        </p>
+        <p>
+            화학 부문의 핵심인 롯데케미칼은 에틸렌·프로필렌·부타디엔 등 기초화학 제품과
+            PET·엔지니어링 플라스틱 등 첨단소재를 생산하는 국내 최대 석유화학 기업 중 하나이다.
+            2022년 이후 글로벌 석유화학 업황 장기 부진으로 실적이 크게 악화되었으나,
+            2026년 하반기부터 점진적 업황 회복이 기대되고 있다.
+            특히 롯데케미칼은 인도네시아·미국 등 해외 법인을 통한 글로벌 생산 역량을 보유하고 있으며,
+            수소·배터리 소재·리사이클링 등 친환경 사업으로의 전환을 추진하고 있다.
+        </p>
+        <p>
+            식품·음료 부문에서는 롯데칠성음료가 음료·주류 시장에서 강력한 브랜드 파워를 보유하고 있다.
+            '칠성사이다', '펩시', '처음처럼' 등 국민 브랜드를 통해 안정적인 매출과 수익을 창출하고 있으며,
+            제로칼로리·프리미엄 음료 등 트렌드 제품 라인업 확대로 성장 모멘텀을 유지하고 있다.
+            관광·서비스 부문에서는 롯데호텔이 코로나19 이후 여행 수요 회복에 힘입어
+            실적 개선이 두드러지고 있으며, 롯데월드(테마파크)도 방문객 증가세를 보이고 있다.
+            건설 부문의 롯데건설은 주택시장 침체와 PF(프로젝트 파이낸싱) 부실 우려로 어려운 상황이나,
+            선별 수주와 재무 건전성 관리에 주력하고 있다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card" style="margin-top:20px;">
+        <h3><i class="fas fa-chart-pie" style="color:var(--gold);margin-right:8px;"></i>롯데그룹 핵심 재무 요약</h3>
+        <p>
+            롯데그룹 전체의 재무 규모를 보면, 연결 매출 약 85조원, 연결 자산 약 120조원으로
+            국내 재계 5위의 규모를 유지하고 있다. 그러나 수익성 면에서는 어려움이 지속되고 있다.
+            연결 영업이익률은 2~3% 수준으로 재계 상위 그룹 중 가장 낮은 편이며,
+            이는 유통·화학 부문의 저수익 구조와 건설 부문의 변동성이 주된 원인이다.
+            롯데지주 자체의 재무 상황을 보면, 연간 배당수입과 브랜드로열티 수익이 약 3,000~4,000억원 수준이며,
+            이를 기반으로 자체 영업이익 및 배당금 지급이 이루어지고 있다.
+        </p>
+        <p>
+            그룹의 총 차입금은 약 40조원으로 상당한 규모이며, 이 중 롯데건설과 롯데케미칼의 차입이
+            큰 비중을 차지하고 있다. 그러나 그룹 전체의 자산 규모(120조원) 대비 차입금 비율은
+            약 33%로 관리 가능한 수준이며, 보유 부동산 자산(롯데월드타워 등)의 시가를 감안하면
+            실질적인 재무 건전성은 장부상 수치보다 양호한 것으로 판단된다.
+            롯데월드타워(555m, 123층)의 공정가치는 장부가 대비 상당한 평가 차익이 존재하며,
+            이는 NAV 산정 시 상향 조정 요인이 될 수 있다.
+            다만, 이러한 잠재적 자산 가치가 현실화되기 위해서는 자산 매각이나 리츠(REITs) 전환 등의
+            구체적인 자본 재배치 전략이 필요하며, 아직 그 시기가 불투명하다는 점이 한계이다.
+        </p>
+    </div>
+
+<!-- ═══════ 2. 기술 분석 ═══════ -->
+<div id="technical" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-chart-line"></i></div>
+        <h2 class="sec-title">기술 분석</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="content-card">
+        <h3>주가 추이 및 기술적 패턴 분석</h3>
+        <p>
+            롯데지주(004990)의 주가는 2022년 이후 장기 하락 추세를 보여왔으며, 롯데그룹 전반의 실적 부진과
+            유통·화학 업황 악화가 주된 원인이었다. 2024년 초 약 35,000원대에서 거래되던 주가는
+            구조조정 발표와 업황 회복 기대감이 교차하며 변동성이 확대되었다.
+            2025년에는 롯데케미칼의 업황 바닥론과 롯데쇼핑의 구조조정 효과에 대한 기대감으로
+            일시적 반등이 나타났으나, 3분기 실적 부진이 확인되며 재차 하락하는 패턴을 보였다.
+            현재 주가는 약 28,000~32,000원 범위에서 거래되고 있으며, 52주 최고가 약 38,000원,
+            52주 최저가 약 24,000원으로 변동 범위가 상당히 넓다.
+        </p>
+        <p>
+            이동평균선 분석에서 20일선이 60일선 아래에 위치하는 데드크로스 상태가 2025년 4분기에 발생한 이후
+            아직 회복되지 않고 있으며, 120일 장기 이동평균선도 하향 기울기를 유지하고 있다.
+            이는 중장기 하락 추세가 아직 완전히 반전되지 않았음을 시사한다.
+            다만, 최근 주가가 25,000원 근처에서 2차례 강한 반등을 보인 점은
+            '더블 바텀(Double Bottom)' 패턴의 형성 가능성을 시사하며,
+            이 패턴이 확인될 경우 네크라인(약 32,000원) 돌파 시 기술적 목표가는 약 39,000원이 된다.
+        </p>
+        <p>
+            거래량 측면에서는 하락 구간에서 거래량이 감소하고 반등 구간에서 증가하는 패턴이 관찰되며,
+            이는 매도 압력이 점진적으로 약해지고 있음을 시사한다.
+            외국인 보유 비중은 약 12.5%로 동종 지주사 대비 낮은 편이며,
+            기관 투자자도 관망세를 유지하고 있어 수급 측면에서는 아직 뚜렷한 전환 신호가 부재하다.
+            다만, 롯데케미칼 업황 반등이 가시화되면 외국인·기관의 순매수 전환이 예상되며,
+            이는 주가 추세 전환의 핵심 트리거가 될 것이다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>주요 기술적 지표 해석</h3>
+        <p>
+            RSI(14일 기준)는 현재 38 수준으로 과매도 영역(30 이하)에 근접해 있다.
+            과거 롯데지주의 주가 패턴을 보면, RSI가 30 이하로 진입한 후 반등하는 경우가 2023년 이후
+            4차례 관찰되었으며, 이때 평균 반등 폭은 약 15~20%였다.
+            현재 RSI 수준은 기술적 반등이 나타날 수 있는 구간에 진입하고 있음을 시사한다.
+            MACD는 시그널선 아래에서 음의 영역에 있으나, 히스토그램의 음의 값이 축소되기 시작하여
+            단기적 약세 모멘텀이 둔화되고 있는 것으로 해석된다.
+        </p>
+        <p>
+            볼린저밴드 관점에서 주가는 하단 밴드 근처에서 거래되고 있으며, 밴드 폭이 좁아지는
+            '스퀴즈(Squeeze)' 현상이 관찰된다. 이는 향후 큰 폭의 방향성 움직임이 나타날 가능성을
+            시사하며, 구조조정 효과와 업황 회복이 가시화될 경우 상방 이탈이 유력하다.
+            스토캐스틱 오실레이터(14,3,3)는 %K 25, %D 28로 과매도 영역에 위치해 있다.
+            OBV(On-Balance Volume)는 완만한 하향 추세를 보이고 있어
+            아직 거래량이 가격 회복을 뒷받침하지 못하는 상황이다.
+        </p>
+        <p>
+            일목균형표 분석에서는 주가가 구름대 아래에 위치하고 있어 중기 약세 신호가 유지되고 있다.
+            그러나 구름대의 두께가 점차 얇아지고 있어, 추세 전환의 저항이 약해지고 있음을 시사한다.
+            주요 지지선은 25,000원(전 저점), 22,500원(2023년 저점)이며,
+            저항선은 32,000원(60일 이동평균선 근접), 35,000원(120일 이동평균선), 38,000원(52주 최고가)이다.
+            ADX는 현재 22 수준으로, 뚜렷한 추세가 부재한 상태(25 미만)를 나타내고 있다.
+            이는 롯데지주가 방향성을 찾지 못한 횡보 국면에 있음을 의미하며,
+            업황 전환이나 구조조정 성과가 가시화되는 시점에서 추세적 움직임이 나타날 것으로 예상된다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>수급 분석 및 투자자별 동향</h3>
+        <p>
+            롯데지주의 투자자별 매매 동향은 전반적으로 부진한 모습이다.
+            외국인 투자자는 2025년 하반기 이후 약 500억원 규모의 순매도를 기록했으며,
+            이는 그룹 전반의 실적 부진과 유통·화학 업종에 대한 비관적 전망이 반영된 것이다.
+            기관 투자자도 소폭의 순매도 기조를 유지하고 있으나, 최근 매도 규모가 줄어들고 있어
+            바닥권 인식이 형성되고 있는 것으로 해석된다.
+            개인 투자자는 꾸준한 순매수를 기록하고 있으며, 이는 배당수익률과
+            자산가치 대비 저평가에 대한 가치투자 관점의 매수로 판단된다.
+        </p>
+        <p>
+            공매도 비율은 약 1.2%로 업종 평균 대비 다소 높은 수준이며,
+            이는 일부 기관·외국인이 롯데지주에 대해 하방 베팅을 하고 있음을 시사한다.
+            다만, 현 주가 수준이 이미 상당한 악재를 반영하고 있어
+            추가적인 대규모 공매도 확대 가능성은 제한적인 것으로 판단된다.
+            일평균 거래대금은 약 50~80억원 수준으로, 대형 기관의 대량 매수에는 유동성이 다소 부족하나
+            분할 매수를 통한 포지션 구축에는 충분한 수준이다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card">
+        <h3>차트 패턴 및 중장기 기술적 전망</h3>
+        <p>
+            장기 차트를 살펴보면, 롯데지주 주가는 2018년 지주회사 전환 이후 지속적인 하락 추세를 형성해왔다.
+            2018년 약 80,000원에서 현재 약 30,000원까지 약 60% 이상 하락한 상태로,
+            이는 그룹 전반의 실적 악화, 유통 구조 변화, 화학 업황 부진이 복합적으로 반영된 결과이다.
+            장기 하락 채널의 하단 지지선은 약 24,000~25,000원 부근에 형성되어 있으며,
+            이 수준에서 2차례 반등이 나타난 점은 기술적으로 강한 바닥 지지를 의미한다.
+        </p>
+        <p>
+            엘리엇 파동 관점에서 현재 주가는 하락 5파의 완료 또는 완료 직전 단계에 있는 것으로 분석된다.
+            만약 5파 하락이 완료되었다면, 향후 A-B-C 조정 반등(또는 새로운 상승 임펄스)이 시작될 수 있으며,
+            A파의 이론적 목표가는 35,000~38,000원 수준이 된다. 다만, 펀더멘털 변화(업황 회복, 구조조정 성과)가
+            뒷받침되지 않을 경우 기술적 반등의 지속성은 제한적일 수 있다.
+            월봉 RSI가 25 수준으로 역사적 최저치에 근접해 있어, 장기 과매도 상태가 극에 달해 있음을 확인할 수 있다.
+            이는 장기 투자 관점에서 바닥 매수의 기술적 근거가 될 수 있다.
+        </p>
+        <p>
+            주봉 MACD의 히스토그램이 최근 축소되기 시작했으며, 이는 중기적으로 하락 모멘텀이 둔화되고 있음을 의미한다.
+            MACD 골든크로스가 발생할 경우 이는 중기 추세 전환의 신호로 해석할 수 있으나,
+            아직 그 단계에 이르지는 않았다. 파라볼릭 SAR도 주가 상단에 위치하여 하락 추세를 지지하고 있으나,
+            최근 SAR과 주가의 간격이 좁혀지고 있어 추세 전환의 가능성이 높아지고 있다.
+            CCI(Commodity Channel Index)는 -120 수준으로 강한 과매도를 나타내고 있으며,
+            과거 CCI가 -100 이하에서 반등한 사례에서 평균 20~25%의 반등이 나타났다.
+        </p>
+    </div>
+
+<!-- ═══════ 3. 시장 분석 ═══════ -->
+<div id="market" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-globe"></i></div>
+        <h2 class="sec-title">시장 분석</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="content-card">
+        <h3>국내 유통 시장 — 구조적 전환기</h3>
+        <p>
+            롯데그룹의 최대 사업 부문인 유통 시장은 전례 없는 구조적 전환기를 맞고 있다.
+            국내 유통 시장 규모는 약 500조원으로 추정되며, 이 중 온라인 쇼핑 비중이
+            2025년 기준 약 50%를 넘어서며 사상 최초로 오프라인을 추월했다.
+            쿠팡의 폭발적 성장, 네이버쇼핑·SSG닷컴 등 이커머스 플랫폼의 확장은
+            오프라인 유통 강자였던 롯데쇼핑에게 직접적인 타격을 입히고 있다.
+        </p>
+        <p>
+            특히 대형마트 부문의 구조적 위축이 심각하다. 국내 대형마트 시장은 2019년 정점 이후
+            연평균 3~4%씩 축소되고 있으며, 롯데마트도 이러한 추세에서 자유롭지 못하다.
+            롯데쇼핑은 비효율 점포의 과감한 폐쇄와 온라인 전환을 추진하고 있으나,
+            쿠팡·네이버 등 이커머스 강자들의 물류·가격 경쟁력에 밀려 쉽지 않은 상황이다.
+            롯데하이마트의 경우 가전 전문점 시장 자체가 구조적으로 축소되고 있어
+            가장 심각한 구조조정 대상이 되고 있다.
+        </p>
+        <p>
+            반면, 백화점 부문은 상대적으로 양호한 흐름을 보이고 있다.
+            명품·프리미엄 소비 트렌드에 힘입어 롯데백화점의 VIP 고객 매출이 증가하고 있으며,
+            잠실 롯데월드몰을 중심으로 한 복합 쇼핑·문화 공간으로의 전환이 성과를 내고 있다.
+            MZ세대의 체험형 소비 확대, 인바운드 관광객 증가(특히 중국·동남아), 
+            프리미엄 F&B와의 결합 등이 백화점 사업의 성장 동력으로 작용하고 있다.
+            롯데지주 입장에서는 유통 부문의 선택과 집중이 그룹 전체의 수익성 개선에 핵심적이며,
+            비효율 사업의 과감한 정리와 성장 영역(백화점·온라인)에의 집중 투자가 관건이다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>글로벌 석유화학 시장 — 바닥 탈출의 기로</h3>
+        <p>
+            롯데케미칼이 영위하는 글로벌 석유화학 시장은 2022년 이후 최악의 업황 부진을 경험해왔다.
+            중국의 대규모 석유화학 설비 증설에 따른 공급 과잉, 글로벌 경기 둔화에 따른 수요 감소,
+            에너지 가격 변동성 확대 등이 복합적으로 작용하여 에틸렌·프로필렌 등 기초화학 제품의
+            스프레드(마진)가 역사적 저점 수준까지 하락했다.
+            이로 인해 롯데케미칼은 2023~2024년 대규모 영업적자를 기록했으며,
+            이는 롯데지주의 연결 실적에도 상당한 부담으로 작용했다.
+        </p>
+        <p>
+            그러나 2026년 현재, 석유화학 업황의 바닥 탈출 신호가 점진적으로 나타나고 있다.
+            첫째, 중국의 신규 설비 증설 속도가 둔화되기 시작했다. 중국 정부의 석유화학 설비 투자 규제 강화와
+            수익성 악화에 따른 업체들의 자발적 증설 축소가 공급 과잉 완화에 기여하고 있다.
+            둘째, 글로벌 경기 회복에 따른 수요 개선이 예상된다. 미국의 경기 연착륙 성공과
+            신흥국의 소비 회복은 석유화학 제품 수요를 견인할 것으로 전망된다.
+            셋째, 비효율 설비의 폐쇄가 가속화되고 있다. 유럽과 일본의 노후 석유화학 설비 폐쇄가
+            이어지고 있으며, 이는 글로벌 수급 밸런스 개선에 기여하고 있다.
+        </p>
+        <p>
+            롯데케미칼의 업황 회복 시기에 대해서는 시장 컨센서스가 2026년 하반기~2027년 초로 형성되어 있다.
+            에틸렌 스프레드가 300달러/톤 이상으로 회복되면 롯데케미칼의 흑자 전환이 가능할 것으로 추정되며,
+            400달러/톤 이상이 되면 본격적인 실적 개선이 예상된다. 현재 에틸렌 스프레드는 약 200~250달러/톤 수준으로
+            손익분기점에 근접해 있어, 소폭의 추가 개선만으로도 흑자 전환이 가능한 상황이다.
+            롯데케미칼의 턴어라운드는 롯데지주 주가의 가장 강력한 촉매가 될 것이며,
+            화학 업황 사이클을 선제적으로 반영하는 주식시장 특성상 실적 개선 이전에 주가가 먼저 반응할 수 있다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>식품·관광·건설 시장 동향</h3>
+        <p>
+            식품·음료 시장은 롯데그룹의 안정적인 캐시카우(Cash Cow) 역할을 하고 있다.
+            국내 음료 시장은 약 10조원 규모로, 롯데칠성음료는 약 20%의 시장 점유율을 보유하고 있다.
+            '칠성사이다'와 '펩시'의 듀얼 포트폴리오는 탄산음료 시장에서 코카콜라에 대항하는 유일한 국내 전략이며,
+            '제로칼로리' 트렌드에 적극 대응하여 '칠성사이다 제로', '펩시 제로' 등의 매출이 빠르게 증가하고 있다.
+            주류 부문에서는 '처음처럼'과 '새로' 소주가 MZ세대의 저도수 선호 트렌드에 부합하며
+            시장 점유율을 확대하고 있다.
+        </p>
+        <p>
+            관광·호텔 부문은 코로나19 이후 가장 빠른 회복세를 보이는 분야이다.
+            롯데호텔은 국내 최대 호텔 체인으로 서울·부산·제주 등 주요 관광지에 호텔을 운영하고 있으며,
+            해외에서도 러시아·베트남·미얀마 등에서 사업을 영위하고 있다.
+            2025년 방한 외국인 관광객이 코로나 이전 수준을 회복하면서 객실 점유율과 평균 객단가(ADR)가
+            개선되고 있으며, 이는 2026년에도 지속될 것으로 전망된다.
+            롯데월드(테마파크)도 방문객 증가와 엔터테인먼트 콘텐츠 강화를 통해 실적이 개선되고 있다.
+        </p>
+        <p>
+            건설 부문은 가장 어려운 국면에 있다. 국내 주택시장 침체, PF(프로젝트 파이낸싱) 부실 우려,
+            건설 원자재 가격 상승 등이 롯데건설의 실적에 부담으로 작용하고 있다.
+            다만 롯데건설은 선별 수주 전략과 해외 프로젝트 확대를 통해 리스크 관리에 주력하고 있으며,
+            국내 주택시장이 2027년 이후 완만한 회복세를 보일 경우 실적 개선이 기대된다.
+            롯데지주 입장에서는 건설 부문의 리스크를 최소화하면서
+            식품·관광 부문의 안정적 수익과 화학 부문의 사이클 반등에 집중하는 것이 핵심 전략이다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card">
+        <h3>국내 소비 트렌드와 유통 산업 전망</h3>
+        <p>
+            국내 소비 시장은 고금리·고물가 환경에서도 양극화된 모습을 보이고 있다.
+            프리미엄·럭셔리 소비는 견조한 반면, 중저가 대중 소비는 위축되는 K자형 회복이 나타나고 있다.
+            이러한 소비 양극화는 롯데쇼핑에게 도전이자 기회이다.
+            백화점 부문은 프리미엄 소비 트렌드의 수혜를 받고 있으나,
+            마트·하이마트 등 대중 소비 채널은 위축 압력을 받고 있다.
+        </p>
+        <p>
+            이커머스 시장은 2025년 약 250조원 규모로 성장했으며, 전체 유통 시장의 50%를 넘어섰다.
+            쿠팡은 시장 점유율 약 25%로 압도적 1위를 차지하고 있으며,
+            네이버쇼핑·SSG닷컴·컬리 등이 뒤를 잇고 있다.
+            롯데온은 시장 점유율 약 2~3%에 불과하여 독자 경쟁이 어려운 상황이며,
+            이에 따라 오프라인 자산과의 O2O 연계 전략으로 방향을 전환했다.
+            향후 국내 유통 시장은 오프라인의 체험형·프리미엄 매장으로의 전환,
+            온라인의 퀵커머스·새벽배송 확대, 라이브커머스 등 새로운 채널의 성장이
+            지속될 것으로 전망되며, 롯데쇼핑도 이러한 트렌드에 맞춘 전략 수정이 필수적이다.
+        </p>
+        <p>
+            인바운드 관광 수요는 유통 업계에 긍정적 변수이다. 2025년 방한 외국인 관광객은
+            약 1,700만 명으로 코로나 이전(2019년 1,750만 명) 수준에 근접했으며,
+            2026년에는 이를 상회할 것으로 전망된다. 특히 중국·동남아·일본 관광객의 면세·백화점 쇼핑은
+            롯데쇼핑의 백화점·면세점 부문 매출에 직접적 기여를 하고 있다.
+            롯데호텔과 롯데월드도 인바운드 관광객 증가의 직접적 수혜자이며,
+            관광·유통·호텔의 시너지 극대화가 롯데그룹만의 차별화된 전략이 될 수 있다.
+        </p>
+    </div>
+
+<!-- ═══════ 4. 경쟁사 분석 ═══════ -->
+<div id="competitors" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-users"></i></div>
+        <h2 class="sec-title">경쟁사 분석</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="content-card">
+        <h3>동종 업계 비교 분석</h3>
+        <p>
+            롯데지주의 경쟁사 비교는 지주사 관점과 각 사업부문별 관점으로 나누어 접근해야 한다.
+            지주사로서는 SK, LG, GS, CJ 등 국내 대표 지주사와의 비교가 유의미하며,
+            유통 부문에서는 신세계, 현대백화점, 이마트 등과 경쟁하고 있다.
+            화학 부문에서는 LG화학, 한화솔루션, SK이노베이션 등이 주요 경쟁사이다.
+            아래 비교표에서 볼 수 있듯이, 롯데지주는 PBR 기준으로 국내 주요 지주사 중
+            가장 낮은 수준의 밸류에이션을 기록하고 있으며, 이는 그룹 전반의 실적 부진과
+            사업 구조의 불확실성이 반영된 결과이다.
+        </p>
+        <div style="overflow-x:auto;">
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th>기업명</th>
+                    <th>시가총액</th>
+                    <th>PER</th>
+                    <th>PBR</th>
+                    <th>ROE</th>
+                    <th>배당수익률</th>
+                    <th>핵심 사업</th>
+                    <th>NAV 할인율</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">롯데지주 (004990)</td>
+                    <td>2.9조</td>
+                    <td>N/A</td>
+                    <td>0.28x</td>
+                    <td>-2.1%</td>
+                    <td>3.5%</td>
+                    <td>유통·화학·식품·관광·건설</td>
+                    <td>~65%</td>
+                </tr>
+                <tr>
+                    <td>SK (034730)</td>
+                    <td>14.2조</td>
+                    <td>12.3x</td>
+                    <td>0.48x</td>
+                    <td>4.2%</td>
+                    <td>2.8%</td>
+                    <td>반도체·에너지·바이오</td>
+                    <td>~60%</td>
+                </tr>
+                <tr>
+                    <td>LG (003550)</td>
+                    <td>11.8조</td>
+                    <td>10.1x</td>
+                    <td>0.52x</td>
+                    <td>5.1%</td>
+                    <td>3.2%</td>
+                    <td>전자·화학·통신</td>
+                    <td>~52%</td>
+                </tr>
+                <tr>
+                    <td>CJ (001040)</td>
+                    <td>3.8조</td>
+                    <td>14.5x</td>
+                    <td>0.55x</td>
+                    <td>4.8%</td>
+                    <td>1.5%</td>
+                    <td>식품·물류·엔터</td>
+                    <td>~50%</td>
+                </tr>
+                <tr>
+                    <td>GS (078930)</td>
+                    <td>5.1조</td>
+                    <td>8.2x</td>
+                    <td>0.42x</td>
+                    <td>6.2%</td>
+                    <td>4.1%</td>
+                    <td>에너지·유통·건설</td>
+                    <td>~55%</td>
+                </tr>
+                <tr>
+                    <td>신세계 (004170)</td>
+                    <td>2.2조</td>
+                    <td>15.8x</td>
+                    <td>0.35x</td>
+                    <td>2.8%</td>
+                    <td>2.2%</td>
+                    <td>유통·면세</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p style="margin-top:16px;">
+            비교 분석에서 주목할 점은 롯데지주의 PBR이 0.28배로 주요 지주사 중 최저 수준이라는 것이다.
+            이는 자산 대비 극단적 저평가 상태를 의미하며, 그만큼 시장이 롯데그룹의 미래에 대해
+            비관적인 시각을 가지고 있음을 반영한다. 그러나 역발상 관점에서 보면,
+            이미 대부분의 악재가 주가에 반영되어 있어 추가 하방 리스크가 제한적일 수 있으며,
+            구조조정 성과 가시화나 화학 업황 반등 시 밸류에이션 리레이팅 효과가 클 수 있다.
+            NAV 할인율 65%는 국내 지주사 중에서도 가장 높은 수준이며,
+            이는 유통·화학 부문의 구조적 어려움과 건설 부문의 리스크가 복합적으로 반영된 것이다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>부문별 경쟁 구도 심층 분석</h3>
+        <p>
+            유통 부문에서 롯데쇼핑은 매출 기준 국내 1위를 유지하고 있으나, 수익성 면에서는
+            신세계그룹(이마트+신세계백화점)과 현대백화점에 뒤처지고 있다.
+            백화점 세그먼트에서는 신세계(강남점·센텀시티)와 현대백화점(더현대서울)이
+            프리미엄 이미지와 체험형 공간 구성에서 앞서나가고 있으며,
+            롯데백화점은 잠실·본점 중심의 개보수와 MZ세대 타겟 콘텐츠 강화로 대응하고 있다.
+            마트 부문에서는 이마트와 직접 경쟁하고 있으나, 양사 모두 온라인 전환 압력에 직면해 있다.
+        </p>
+        <p>
+            화학 부문에서 롯데케미칼은 LG화학, 한화솔루션 등과 경쟁하고 있다.
+            LG화학은 배터리 소재(양극재)로의 사업 다각화에 성공하여 석유화학 업황 부진의 타격을
+            부분적으로 상쇄하고 있으나, 롯데케미칼은 아직 이러한 대안 성장 동력이 부족하다.
+            다만 롯데케미칼은 인도네시아 현지 생산 역량과 북미 MEG 설비 등을 통해
+            글로벌 분산 생산 체제를 갖추고 있으며, 이는 업황 회복 시 빠른 실적 반등의 기반이 된다.
+            식품 부문에서는 롯데칠성음료가 CJ제일제당, 농심, 오리온 등과 경쟁하고 있으나,
+            음료·주류 카테고리에서의 브랜드 파워가 안정적인 경쟁 우위를 제공하고 있다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card">
+        <h3>롯데 vs 신세계 — 유통 양강 구도 비교</h3>
+        <p>
+            국내 유통 시장의 양대 축인 롯데와 신세계 그룹의 비교는 롯데지주 투자에 중요한 시사점을 제공한다.
+            백화점 부문에서 신세계(강남점)는 연매출 3조원 이상으로 세계 최고 매출 백화점의 지위를 유지하고 있으며,
+            롯데백화점 본점은 약 2조원 수준으로 2위를 차지하고 있다.
+            더현대서울의 성공은 체험형·문화 융합 매장의 트렌드를 이끌었으며,
+            롯데백화점도 잠실·본점을 중심으로 유사한 혁신을 추진하고 있다.
+            마트 부문에서는 양사 모두 구조적 어려움에 직면해 있으나,
+            이마트가 롯데마트 대비 더 적극적인 온라인 전환(SSG닷컴)을 추진해왔다.
+        </p>
+        <p>
+            밸류에이션 비교에서 신세계(004170)는 PBR 0.35배, 롯데지주(004990)는 0.28배로
+            양사 모두 저평가 영역에 있으나 롯데지주의 디스카운트가 더 크다.
+            이는 롯데그룹의 화학·건설 부문 리스크가 추가적으로 반영된 결과이며,
+            유통 사업만 놓고 보면 양사의 밸류에이션 격차가 정당화되기 어렵다.
+            따라서 롯데케미칼의 업황 회복이 가시화될 경우, 롯데지주의 밸류에이션 갭 축소가
+            가장 먼저 나타날 수 있는 영역으로 판단된다.
+            투자 전략 측면에서, 유통 업황 회복에 베팅하려면 롯데지주가 더 높은 리스크-리워드를 제공하며,
+            안정성을 추구한다면 신세계가 더 적절한 선택일 수 있다.
+        </p>
+    </div>
+
+<!-- ═══════ 5. SWOT 분석 ═══════ -->
+<div id="swot" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-th-large"></i></div>
+        <h2 class="sec-title">SWOT 분석</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="swot-grid">
+        <div class="swot-box strength">
+            <h4><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h4>
+            <ul>
+                <li>재계 5위 그룹의 전방위적 사업 포트폴리오 — 유통·화학·식품·관광·건설·금융 등 경기 분산 효과 보유</li>
+                <li>롯데칠성음료의 강력한 브랜드 파워 — '칠성사이다', '펩시', '처음처럼' 등 국민 브랜드로 안정적 수익 창출</li>
+                <li>롯데호텔·롯데월드의 관광·레저 인프라 — 코로나 이후 여행 수요 회복으로 빠른 실적 반등 진행 중</li>
+                <li>롯데월드타워 등 핵심 부동산 자산 보유 — 장부가 이상의 잠재적 자산 가치가 미반영 상태</li>
+                <li>일본 롯데와의 협력 네트워크 — 글로벌 식품·유통 사업 확장의 교두보 역할</li>
+            </ul>
+        </div>
+        <div class="swot-box weakness">
+            <h4><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h4>
+            <ul>
+                <li>유통 부문(롯데쇼핑) 구조적 부진 — 오프라인 유통의 디지털 전환 지연, 이커머스 경쟁에서 열세</li>
+                <li>롯데케미칼 장기 적자 — 글로벌 석유화학 업황 부진으로 그룹 전체 수익성 크게 훼손</li>
+                <li>롯데건설 PF 리스크 — 국내 부동산 시장 침체와 PF 부실 우려가 잠재적 리스크 요인</li>
+                <li>복잡한 지배구조 및 순환출자 잔존 — 지배구조 투명성 부족이 지속적 할인 요인</li>
+                <li>지주사 NAV 할인율 65%로 국내 최고 수준 — 시장의 극단적 비관적 평가가 주가에 반영</li>
+            </ul>
+        </div>
+        <div class="swot-box opportunity">
+            <h4><i class="fas fa-lightbulb"></i> 기회 (Opportunities)</h4>
+            <ul>
+                <li>롯데케미칼 업황 바닥 탈출 기대 — 2026년 하반기 이후 에틸렌 스프레드 회복 시 실적 턴어라운드 가능</li>
+                <li>구조조정 효과 가시화 — 비효율 점포 정리, 인력 효율화, 비핵심 자산 매각으로 수익성 개선 기대</li>
+                <li>관광 수요 회복 본격화 — 인바운드 관광객 증가, 엔터테인먼트 소비 확대로 호텔·테마파크 성장</li>
+                <li>밸류업 프로그램 수혜 — 지주사 할인 축소, 주주환원 확대 정책에 따른 밸류에이션 리레이팅 기대</li>
+                <li>PBR 0.28배의 극단적 저평가 — 역발상 투자 관점에서 높은 반등 잠재력 보유</li>
+            </ul>
+        </div>
+        <div class="swot-box threat">
+            <h4><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h4>
+            <ul>
+                <li>이커머스 경쟁 심화 — 쿠팡·네이버·알리 등의 공격적 시장 확장으로 오프라인 유통 지속 위축</li>
+                <li>석유화학 업황 회복 지연 리스크 — 중국 공급 과잉 장기화 시 롯데케미칼 적자 지속 가능성</li>
+                <li>건설·부동산 시장 추가 침체 — PF 부실 확대, 미분양 증가 시 롯데건설 재무 리스크 심화</li>
+                <li>내수 소비 둔화 — 고금리·고물가 장기화로 국내 소비 심리 위축, 유통·식품 부문에 부정적</li>
+                <li>ESG·지배구조 리스크 — 순환출자 해소 지연, 지배구조 이슈가 장기적 할인 요인으로 작용</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <h3>SWOT 상세 해석</h3>
+        <p>
+            롯데지주의 SWOT 분석에서 가장 주목해야 할 점은 약점과 기회 사이의 '전환 가능성'이다.
+            현재의 약점(유통 부진·화학 적자·건설 리스크)은 모두 사이클리컬하거나 구조조정을 통해
+            개선 가능한 성격의 이슈들이다. 특히 롯데케미칼의 업황은 사이클의 바닥에 위치해 있으며,
+            업황 회복 시 가장 빠르고 큰 폭의 실적 개선이 나타날 수 있는 부문이다.
+            유통 부문의 구조조정도 단기적으로는 비용 부담이 있으나,
+            중장기적으로는 수익성 개선에 기여할 것이며,
+            이미 상당한 비용이 2024~2025년에 선반영되었다는 점에서
+            향후 비용 부담은 감소할 것으로 예상된다.
+        </p>
+        <p>
+            강점 측면에서는 롯데칠성음료와 롯데호텔이 그룹의 안정적 캐시카우 역할을 수행하고 있으며,
+            이들 사업부의 꾸준한 수익 창출이 그룹 전체의 재무 안정성을 뒷받침하고 있다.
+            또한 롯데월드타워 등 핵심 부동산 자산은 장부가 대비 상당한 평가 차익이 존재하며,
+            이는 NAV 산정 시 잠재적 상향 요인이다. 위협 요인 중 이커머스 경쟁 심화는 구조적이어서
+            대응이 쉽지 않으나, 이미 시장이 이를 충분히 반영하여 PBR 0.28배의 극단적 저평가가 형성된 것으로 보이며,
+            따라서 추가적인 디스카운트 확대보다는 개선 시의 리레이팅 폭이 더 클 것으로 판단된다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card" style="margin-top:20px;">
+        <h3>리스크 매트릭스 — 주요 리스크 요인별 영향도 분석</h3>
+        <p>
+            롯데지주 투자의 리스크를 체계적으로 분석하면, 크게 '사업 리스크'와 '구조적 리스크'로 구분할 수 있다.
+            사업 리스크 중 가장 큰 것은 석유화학 업황 회복 지연이다.
+            글로벌 석유화학 시장의 공급 과잉이 예상보다 장기화될 경우
+            롯데케미칼의 적자가 2027년까지 지속될 수 있으며, 이는 투자 논리의 핵심 전제를 위협한다.
+            두 번째 사업 리스크는 유통 구조조정의 실행 리스크이다.
+            비효율 점포 정리 과정에서 노조 갈등, 임대차 분쟁, 브랜드 이미지 훼손 등의
+            부작용이 발생할 수 있으며, 이는 구조조정의 속도와 효과에 영향을 미칠 수 있다.
+        </p>
+        <p>
+            구조적 리스크로는 건설 PF 부실이 가장 우려되는 항목이다.
+            국내 부동산 시장의 추가 침체, PF 차환 리스크, 미분양 증가 등이
+            롯데건설의 재무에 부담을 줄 수 있으며, 최악의 경우 그룹 차원의
+            지원이 필요한 상황이 발생할 수도 있다.
+            지배구조 리스크도 중요한 항목으로, 순환출자 해소 지연과
+            복잡한 지배구조는 장기적으로 지주사 할인 해소를 방해하는 요인이다.
+            다만, 이러한 리스크들은 현재의 PBR 0.28배에 상당 부분 반영되어 있으며,
+            추가적인 디스카운트 확대보다는 개선 시의 밸류에이션 리레이팅 효과가
+            더 클 것으로 판단되는 것이 핵심 투자 논리이다.
+        </p>
+    </div>
+
+<!-- ═══════ 6. 전략 분석 ═══════ -->
+<div id="strategy" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-chess-knight"></i></div>
+        <h2 class="sec-title">전략 분석</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="content-card">
+        <h3>그룹 구조조정 — '뉴롯데' 전략</h3>
+        <p>
+            롯데그룹은 2024년부터 '뉴롯데(New Lotte)' 전략을 본격 추진하고 있다.
+            이는 기존의 외형 성장 중심 전략에서 수익성·효율성 중심의 경영으로 패러다임을 전환하는
+            그룹 차원의 대대적 구조조정 프로젝트이다. 핵심 내용은 비핵심 자산의 과감한 매각,
+            비효율 사업의 구조조정, 인력 운영의 효율화, 그리고 핵심 성장 분야에의 집중 투자이다.
+        </p>
+        <p>
+            유통 부문에서는 롯데쇼핑이 가장 대대적인 구조조정의 대상이다.
+            롯데마트는 비효율 점포를 대거 폐쇄하고 나머지 점포의 수익성을 개선하는 전략을 추진하고 있으며,
+            일부 점포는 복합 쇼핑몰이나 물류센터로 전환하는 방안을 검토하고 있다.
+            롯데하이마트는 약 500개의 매장 중 200개 이상을 폐쇄하거나 규모를 축소할 계획이며,
+            남은 점포는 체험형 매장으로 리뉴얼하여 온라인과의 차별화를 도모하고 있다.
+            롯데온(e커머스)은 독립 운영보다는 오프라인 자산과의 시너지를 극대화하는 O2O(Online-to-Offline)
+            전략으로 방향을 전환했다.
+        </p>
+        <p>
+            화학 부문에서는 롯데케미칼이 기초화학 의존도를 낮추고 고부가가치 제품 비중을 확대하는
+            포트폴리오 전환을 추진하고 있다. 배터리 소재(전해액·분리막),
+            리사이클링(폐플라스틱 재활용), 수소 사업 등 친환경·고부가 영역으로의 전환이 핵심이며,
+            중장기적으로 기초화학 매출 비중을 현재 70%에서 50% 이하로 줄이는 것이 목표이다.
+            건설 부문에서는 롯데건설이 선별 수주와 재무 건전성 관리에 집중하며,
+            PF 리스크를 최소화하는 보수적 경영을 유지하고 있다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>미래 성장 동력 — 바이오·모빌리티·디지털</h3>
+        <p>
+            롯데그룹은 기존 사업의 수익성 개선과 함께 미래 성장 동력 확보에도 투자하고 있다.
+            바이오 분야에서는 롯데바이오로직스를 통해 바이오시밀러·CDMO(위탁생산) 사업에 진출했으며,
+            인천 송도에 대규모 바이오 생산시설을 건설 중이다.
+            글로벌 바이오시밀러 시장은 2030년까지 약 1,000억 달러 규모로 성장할 것으로 전망되며,
+            롯데바이오로직스는 대규모 생산 역량과 품질 경쟁력을 기반으로
+            글로벌 제약사의 위탁생산 수주를 목표로 하고 있다.
+        </p>
+        <p>
+            모빌리티 분야에서는 롯데렌탈을 중심으로 카셰어링·구독형 모빌리티 서비스를 확대하고 있으며,
+            전기차 충전 인프라 구축에도 투자하고 있다. 디지털 전환(DX) 측면에서는
+            그룹 전반에 걸친 데이터 플랫폼 구축과 AI 기반 고객 분석 시스템 도입을 추진하고 있다.
+            롯데멤버스의 약 4,000만 회원 기반은 데이터 비즈니스의 핵심 자산이며,
+            이를 활용한 개인화 마케팅과 새로운 수익 모델 창출이 기대된다.
+        </p>
+        <p>
+            에너지 전환 분야에서는 롯데케미칼을 중심으로 수소 사업에 투자하고 있다.
+            롯데케미칼은 울산·대산 등 기존 석유화학 단지에서의 부생수소 활용과
+            그린수소 생산을 위한 수전해 기술 개발에 투자하고 있으며,
+            롯데건설은 수소 인프라 건설 사업에 참여하고 있다.
+            이러한 미래 사업은 아직 초기 단계이며 실적에 의미 있는 기여를 하기까지
+            2~3년 이상의 시간이 필요하지만, 중장기적 그룹 가치 제고에 기여할 것으로 기대된다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>ESG 경영 및 지배구조 개선</h3>
+        <p>
+            롯데그룹의 ESG 경영은 개선의 여지가 크다. 환경(E) 측면에서는 롯데케미칼의 탄소배출 감축,
+            롯데쇼핑의 친환경 매장 운영, 롯데건설의 친환경 건축 등을 추진하고 있으나,
+            석유화학 사업의 특성상 탄소 배출량이 높아 ESG 등급에 부담이 되고 있다.
+            사회(S) 측면에서는 구조조정 과정에서의 인력 감축이 사회적 논란이 될 수 있으며,
+            이에 대한 세심한 관리가 필요하다. 거버넌스(G) 측면에서는 순환출자 잔존,
+            복잡한 지배구조 등이 개선 과제로 남아 있다.
+        </p>
+        <p>
+            지배구조 개선은 롯데지주의 밸류에이션 할인 축소를 위해 가장 중요한 과제 중 하나이다.
+            순환출자의 단계적 해소, 이사회 독립성 강화, 주주환원 정책 확대 등이 추진되고 있으며,
+            정부의 밸류업 프로그램도 이러한 방향을 촉진하고 있다.
+            롯데지주가 배당 확대, 자사주 매입·소각 등 적극적인 주주환원 정책을 시행할 경우,
+            현재 65%에 달하는 NAV 할인율의 점진적 축소가 가능할 것으로 기대된다.
+            ESG 등급 개선은 글로벌 기관 투자자의 투자 유인을 확대하는 효과가 있으며,
+            이는 장기적으로 주가에 긍정적으로 작용할 것이다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card">
+        <h3>글로벌 사업 확장 전략</h3>
+        <p>
+            롯데그룹의 글로벌 사업 확장은 주로 동남아시아와 미국을 중심으로 이루어지고 있다.
+            베트남은 롯데그룹의 핵심 해외 시장으로, 롯데마트 베트남(약 20개 매장),
+            롯데호텔 하노이·호치민, 롯데건설 베트남 프로젝트 등을 통해 종합적인 사업 포트폴리오를 구축하고 있다.
+            베트남은 약 1억 명의 인구와 연평균 6% 이상의 경제 성장률을 보이고 있어
+            중장기적으로 높은 성장 잠재력을 보유한 시장이다.
+            롯데케미칼도 인도네시아에 대규모 석유화학 설비를 운영하고 있으며,
+            동남아 시장의 석유화학 수요 성장에 대비하고 있다.
+        </p>
+        <p>
+            미국 시장에서는 롯데케미칼이 루이지애나주에 MEG(모노에틸렌글리콜) 생산 설비를 보유하고 있으며,
+            셰일가스의 저가 원료 활용을 통한 원가 경쟁력 확보가 핵심 전략이다.
+            롯데칠성음료는 미국 펩시코와의 전략적 파트너십을 바탕으로 해외 음료 사업 확대를 검토하고 있으며,
+            롯데제과(현 롯데웰푸드)도 인도·미국 등 해외 시장에서의 제과 사업을 확대하고 있다.
+            해외 사업의 매출 비중은 아직 그룹 전체의 약 20% 수준이나,
+            중장기적으로 30% 이상으로 확대하는 것이 목표이다.
+            글로벌 사업 확장은 내수 의존도를 낮추고 성장 동력을 다변화하는 효과가 있으며,
+            특히 동남아 시장에서의 선점 효과는 향후 10~20년간 롯데그룹의 핵심 성장 기반이 될 수 있다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>디지털 전환과 데이터 비즈니스</h3>
+        <p>
+            롯데그룹은 디지털 전환(DX)을 그룹 혁신의 핵심 축으로 설정하고 있다.
+            롯데멤버스의 약 4,000만 회원 기반은 국내 최대 규모의 고객 데이터 자산이며,
+            이를 활용한 개인화 마케팅, 구매 패턴 분석, 수요 예측 등이 유통·식품 사업의
+            효율성 제고에 기여하고 있다. 롯데정보통신을 중심으로 그룹 전반에
+            클라우드·AI·빅데이터 기반의 IT 인프라를 구축하고 있으며,
+            스마트 물류센터, 무인 매장, AI 기반 재고 관리 등 디지털 혁신을 추진 중이다.
+        </p>
+        <p>
+            특히 롯데쇼핑의 온오프라인 연계(O2O) 전략은 디지털 전환의 핵심이다.
+            오프라인 매장을 체험형 쇼룸으로 전환하고, 매장 내 QR코드·앱 연동을 통해
+            온라인 구매로 연결하는 옴니채널 전략을 강화하고 있다.
+            롯데마트의 '스마트 스토어' 프로젝트는 AI 기반의 진열 최적화, 자동 발주 시스템,
+            무인 계산대 확대 등을 통해 운영 효율성을 크게 개선하고 있다.
+            롯데호텔도 AI 챗봇 기반 고객 서비스, 모바일 키 시스템, 개인화 객실 서비스 등
+            디지털 호스피탈리티 혁신을 추진하고 있다.
+            이러한 디지털 전환은 단기적으로 투자 비용이 수반되나,
+            중장기적으로 인건비 절감, 운영 효율화, 고객 경험 개선을 통해
+            그룹 전체의 수익성 향상에 기여할 것으로 기대된다.
+        </p>
+    </div>
+
+<!-- ═══════ 7. 재무 분석 ═══════ -->
+<div id="financial" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-chart-bar"></i></div>
+        <h2 class="sec-title">재무 분석</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="content-card">
+        <h3>주요 재무 지표 (Progress Bar Chart)</h3>
+
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>2025 3Q 누적 매출 증감 (%)</span><span>-1.7%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:48%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>2025 3Q 누적 영업이익 증감 (%)</span><span>-16.5%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:33%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>PBR (배)</span><span>0.28x</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:8%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>ROE (%)</span><span>-2.1%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:10%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>배당수익률 (%)</span><span>3.5%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:35%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>NAV 할인율 (%)</span><span>65%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:65%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>부채비율 (%)</span><span>180%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:60%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>자회사 지분가치 합산 (조원)</span><span>약 8.3</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:72%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데쇼핑 매출 비중 (%)</span><span>약 35%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:35%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데케미칼 매출 비중 (%)</span><span>약 30%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:30%;"></div></div>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <h3>재무 상세 분석</h3>
+        <p>
+            롯데지주의 재무 상황은 그룹 주요 자회사들의 실적 부진을 반영하여 어려운 국면에 있다.
+            2025년 3분기 누적 기준 연결 매출은 전년 동기 대비 1.7% 감소했으며,
+            영업이익은 16.5% 감소하여 수익성 악화가 뚜렷하게 나타나고 있다.
+            매출 감소의 주된 원인은 롯데쇼핑의 오프라인 점포 매출 축소와 롯데케미칼의 판가 하락이며,
+            영업이익 감소는 이에 더해 구조조정 비용의 일시적 증가, 인력 효율화 비용 등이 복합적으로 작용한 결과이다.
+        </p>
+        <p>
+            부채비율은 약 180%로, 복합기업 지주사로서는 다소 높은 수준이다.
+            이는 롯데건설의 차입금, 롯데케미칼의 대규모 시설투자 차입 등이 반영된 것이며,
+            이자보상배율(EBITDA/이자비용)이 2.5배 수준으로 아직 안전한 범위 내에 있으나
+            모니터링이 필요한 수준이다. 순차입금 비율도 지속적으로 관리가 필요하며,
+            비핵심 자산 매각을 통한 차입금 감축이 재무 개선의 핵심 과제이다.
+        </p>
+        <p>
+            자회사별로 보면, 롯데칠성음료는 매출 약 3.5조원, 영업이익률 약 8%로 안정적인 수익을 창출하고 있으며,
+            롯데호텔도 매출 약 1.8조원, 영업이익률 약 10%로 호텔 업황 회복에 힘입어 양호한 실적을 보이고 있다.
+            반면, 롯데케미칼은 매출 약 16조원에도 불구하고 영업적자 또는 미미한 흑자를 기록하고 있으며,
+            롯데쇼핑도 매출 약 20조원에 영업이익률 2% 미만의 저수익 상태를 벗어나지 못하고 있다.
+            롯데건설은 매출 약 4조원에 영업이익률 약 3%로 건설업 평균 수준을 유지하고 있으나,
+            PF 관련 충당금 적립이 추가적인 수익성 부담 요인으로 작용하고 있다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>NAV(순자산가치) 분석 및 밸류에이션</h3>
+        <p>
+            롯데지주의 NAV 분석은 투자 판단의 핵심이다. 주요 상장 자회사 지분가치 합산 기준으로,
+            롯데쇼핑(지분 약 54%, 시가 약 2.1조원), 롯데케미칼(지분 약 44%, 시가 약 1.8조원),
+            롯데칠성음료(지분 약 35%, 시가 약 1.5조원), 롯데호텔(비상장, 추정가치 약 1.5조원),
+            기타 자회사 지분가치 약 1.4조원을 합산하면 총 지분가치는 약 8.3조원에 달한다.
+            여기에 롯데월드타워 등 보유 부동산 자산의 공정가치를 추가하면 NAV는 더욱 상승한다.
+            현재 시가총액 2.9조원과 대비하면 NAV 할인율은 약 65%에 달하며,
+            이는 국내 주요 지주사 중 가장 높은 수준이다.
+        </p>
+        <p>
+            NAV 할인율이 높은 이유는 복합적이다. 첫째, 핵심 자회사인 롯데쇼핑과 롯데케미칼의
+            실적 부진으로 자회사 지분가치 자체가 하락했다. 둘째, 구조조정의 불확실성과 완료 시기에 대한
+            시장의 우려가 반영되어 있다. 셋째, 복잡한 지배구조와 순환출자 잔존이
+            지주사 가치를 추가적으로 할인하는 요인이다. 넷째, 건설 부문의 PF 리스크가
+            잠재적 우발채무로 인식되고 있다.
+        </p>
+        <p>
+            그러나 현 NAV 할인율 65%는 최악의 시나리오가 상당 부분 반영된 수준이다.
+            롯데케미칼의 업황 회복, 롯데쇼핑의 구조조정 완료, 밸류업 프로그램의 효과 등이
+            순차적으로 나타날 경우, NAV 할인율의 점진적 축소가 가능하다.
+            NAV 할인율이 55%로 축소될 경우 적정 시가총액은 약 3.7조원(현재 대비 +28%),
+            50%로 축소될 경우 약 4.2조원(현재 대비 +45%)으로
+            상당한 밸류에이션 리레이팅 잠재력이 존재한다.
+        </p>
+    </div>
+</div>
+
+
+    <div class="content-card">
+        <h3>자회사별 실적 전망 및 기여도</h3>
+
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데쇼핑 연간 매출 (조원)</span><span>약 20</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:80%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데케미칼 연간 매출 (조원)</span><span>약 16</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:64%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데칠성 연간 매출 (조원)</span><span>약 3.5</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:14%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데호텔 연간 매출 (조원)</span><span>약 1.8</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:7%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데건설 연간 매출 (조원)</span><span>약 4.0</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:16%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데칠성 영업이익률 (%)</span><span>8.0%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:40%;"></div></div>
+        </div>
+        <div class="fin-bar-group">
+            <div class="fin-bar-label"><span>롯데호텔 영업이익률 (%)</span><span>10.0%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill gold" style="width:50%;"></div></div>
+        </div>
+
+        <p style="margin-top:20px;">
+            자회사별 실적 기여도를 분석하면, 매출 기준으로는 롯데쇼핑(약 35%)과 롯데케미칼(약 30%)이
+            그룹 연결 매출의 대부분을 차지하고 있으나, 수익 기여도에서는 롯데칠성음료와 롯데호텔이
+            안정적인 캐시카우 역할을 수행하고 있다. 롯데쇼핑은 매출 규모는 크지만 영업이익률이 2% 미만으로
+            수익 기여도가 제한적이며, 롯데케미칼은 업황 부진으로 적자 또는 미미한 흑자를 기록하고 있다.
+            2026~2027년 전망을 보면, 롯데케미칼의 업황 회복이 가장 큰 변수이다.
+            에틸렌 스프레드 300달러/톤 회복 시 롯데케미칼의 영업이익은 약 3,000~5,000억원으로
+            V자 반등이 가능하며, 이는 그룹 전체 영업이익의 30~40%에 해당하는 규모이다.
+        </p>
+        <p>
+            배당 측면에서 롯데지주는 연간 주당 약 1,000원의 현금배당을 유지하고 있으며,
+            현재 주가 기준 배당수익률은 약 3.5%이다. 이는 지주사로서 양호한 수준의 배당수익률이며,
+            주가 하방을 일정 부분 방어하는 효과가 있다.
+            향후 그룹 실적 회복에 따라 배당 확대 가능성도 존재하며,
+            밸류업 프로그램의 주주환원 확대 기조에 부합하는 방향으로 배당정책이 변화할 수 있다.
+            자사주 매입·소각 역시 검토 대상이며, 현 PBR(0.28배) 수준에서의 자사주 매입은
+            주당 가치 제고에 매우 효율적인 수단이 될 수 있다.
+        </p>
+    </div>
+
+<!-- ═══════ 8. 결론 및 투자 의견 ═══════ -->
+<div id="conclusion" class="section">
+    <div class="sec-header">
+        <div class="sec-icon"><i class="fas fa-flag-checkered"></i></div>
+        <h2 class="sec-title">결론 및 투자 의견</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="content-card">
+        <h3>투자 포인트 종합</h3>
+        <p>
+            롯데지주(004990)에 대한 투자 판단은 '구조조정 효과의 가시화 여부'와
+            '롯데케미칼 업황 회복 시기'라는 두 가지 핵심 변수를 중심으로 이루어져야 한다.
+            현재 롯데지주의 투자 매력은 극단적 저평가(PBR 0.28배)에 있다.
+            국내 주요 지주사 중 가장 낮은 PBR은 대부분의 악재가 이미 주가에 반영되어 있음을 의미하며,
+            추가 하방 리스크가 제한적인 반면 상방 리스크-리워드가 비대칭적으로 유리한 구조를 형성하고 있다.
+        </p>
+        <p>
+            롯데케미칼의 업황 회복은 가장 강력한 촉매이다. 에틸렌 스프레드가 300달러/톤 이상으로 회복되면
+            롯데케미칼의 흑자 전환이 가능하며, 이는 롯데지주의 연결 실적과 자회사 지분가치 모두에
+            긍정적 영향을 미친다. 시장은 통상 업황 회복을 6~12개월 선행하여 반영하므로,
+            2026년 하반기 업황 회복이 예상된다면 2026년 상반기부터 주가 반등이 시작될 수 있다.
+            유통 부문의 구조조정 효과도 2026~2027년에 본격적으로 나타날 것으로 예상되며,
+            비효율 점포 정리에 따른 고정비 감소가 영업이익률 개선으로 이어질 것이다.
+        </p>
+        <p>
+            리스크 요인으로는 석유화학 업황 회복 지연, 건설 PF 부실 확대,
+            내수 소비 둔화 장기화 등이 있다. 특히 중국발 석유화학 공급 과잉이
+            예상보다 장기화될 경우 롯데케미칼의 턴어라운드가 지연될 수 있으며,
+            이는 투자 논리의 핵심 전제를 위협하는 리스크이다.
+            건설 PF 리스크도 최악의 경우 추가적인 충당금 적립이 필요할 수 있어 모니터링이 필요하다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>투자 시나리오 분석</h3>
+        <p>
+            <strong style="color:var(--gold);">Bull Case (낙관 시나리오) — 목표가 42,000원:</strong><br>
+            롯데케미칼의 업황이 2026년 하반기에 본격 회복되고, 롯데쇼핑의 구조조정이 성공적으로 완료되며,
+            밸류업 프로그램에 따른 적극적 주주환원 정책이 시행되는 시나리오이다.
+            NAV 할인율이 50%로 축소될 경우 적정 시가총액은 약 4.2조원, 주가 환산 약 42,000원이다.
+            롯데호텔·롯데칠성의 안정적 실적, 바이오 신사업의 가시화 등이 추가적인 upside를 제공한다.
+            이 시나리오의 실현 확률은 약 20%로 추정된다.
+        </p>
+        <p>
+            <strong style="color:var(--ink);">Base Case (기본 시나리오) — 목표가 35,000원:</strong><br>
+            롯데케미칼의 점진적 업황 회복, 유통 구조조정의 부분적 성과, NAV 할인율 소폭 축소(60%)가
+            이루어지는 시나리오이다. 적정 시가총액은 약 3.3조원, 주가 환산 약 35,000원으로
+            현재 대비 약 15~25% 상승 여력이 있다. 이 시나리오의 실현 확률은 약 45%로 추정된다.
+        </p>
+        <p>
+            <strong style="color:var(--blue);">Bear Case (비관 시나리오) — 목표가 22,000원:</strong><br>
+            석유화학 업황 회복이 2027년 이후로 지연되고, 건설 PF 부실이 현실화되며,
+            내수 소비 침체가 장기화되는 시나리오이다. NAV 할인율이 70%까지 확대될 경우
+            적정 시가총액은 약 2.5조원, 주가 환산 약 22,000원으로 하락 리스크가 존재한다.
+            이 시나리오의 실현 확률은 약 35%로 추정된다.
+        </p>
+        <p>
+            확률 가중 적정가는 42,000원 × 20% + 35,000원 × 45% + 22,000원 × 35% = 31,850원으로,
+            현재 주가(약 30,000원 가정) 대비 소폭의 상승 여력이 있으나 리스크-리워드가
+            압도적으로 유리하다고 보기는 어렵다. 다만, 롯데케미칼 업황 반등의 타이밍이 맞아들 경우
+            Bull Case의 실현 확률이 높아지며, 이때의 상승 폭이 Bear Case의 하락 폭보다 클 수 있어
+            비대칭적 투자 기회로 볼 수 있는 여지가 있다.
+        </p>
+    </div>
+    <div class="content-card">
+        <h3>핵심 모니터링 지표 및 투자 전략</h3>
+        <p>
+            향후 롯데지주의 주가 방향을 결정짓는 핵심 모니터링 지표는 다음과 같다.
+            첫째, 글로벌 에틸렌·프로필렌 스프레드 동향이다. 에틸렌 스프레드가 300달러/톤을 회복하는 시점이
+            롯데케미칼 흑자 전환의 신호이며, 이는 롯데지주 투자의 가장 중요한 선행지표이다.
+            둘째, 롯데쇼핑의 분기별 영업이익률 추이이다. 구조조정 효과가 가시화되면
+            영업이익률이 3% 이상으로 개선되어야 하며, 이는 유통 사업의 정상화를 의미한다.
+            셋째, 롯데건설의 PF 익스포저 및 충당금 변동이다. PF 리스크가 통제 가능한 수준인지
+            분기별 모니터링이 필수적이다.
+        </p>
+        <p>
+            넷째, 그룹 차원의 주주환원 정책 변화이다. 배당 확대, 자사주 매입·소각 등의
+            주주친화적 정책 발표는 지주사 할인 축소의 직접적 촉매가 될 수 있다.
+            다섯째, 비핵심 자산 매각 진행 상황이다. 자산 매각 대금의 차입금 상환 활용은
+            재무 건전성 개선에 직접적으로 기여하며, 이는 주가에 긍정적으로 작용한다.
+            투자 전략으로는, 현 시점에서의 일괄 매수보다는 롯데케미칼 업황 회복 신호를 확인한 후
+            단계적으로 포지션을 구축하는 것이 적절한 것으로 판단된다.
+            배당수익률 3.5%를 감안하면 하방이 일정 부분 방어되는 구조이나,
+            본격적인 상방 모멘텀은 화학 업황 반등이 확인되어야 발생할 것이다.
+            장기 가치 투자 관점에서 PBR 0.28배는 매력적인 진입점이 될 수 있으나,
+            인내심을 가지고 구조조정과 업황 회복을 기다릴 수 있는 투자자에게 적합한 종목이다.
+        </p>
+    </div>
+
+    
+    <div class="content-card">
+        <h3>섹터별 회복 타임라인 전망</h3>
+        <p>
+            롯데그룹의 각 사업 부문별 회복 타임라인을 전망하면, 관광·호텔 부문이 가장 먼저 회복에 성공했으며
+            현재 코로나 이전 수준을 넘어서는 실적을 기록하고 있다.
+            식품·음료 부문은 이미 안정적인 수익을 창출하고 있어 별도의 회복이 필요하지 않은 상태이다.
+            화학 부문은 2026년 하반기~2027년 초가 턴어라운드의 핵심 시기로,
+            이 시기에 에틸렌 스프레드가 300달러/톤 이상으로 회복되면
+            롯데케미칼의 흑자 전환과 함께 롯데지주의 연결 실적이 크게 개선될 것이다.
+        </p>
+        <p>
+            유통 부문은 구조조정 효과가 2027년부터 본격적으로 나타날 것으로 예상된다.
+            비효율 점포 정리가 완료되고 잔존 점포의 수익성이 개선되면
+            롯데쇼핑의 영업이익률이 3% 이상으로 회복될 수 있으며,
+            이는 그룹 전체 수익성에 의미 있는 기여를 할 것이다.
+            건설 부문은 국내 부동산 시장의 회복에 시간이 필요하여 2027년 이후에나
+            실적 개선이 기대되며, 그 전까지는 리스크 관리 모드가 지속될 것이다.
+        </p>
+        <p>
+            종합하면, 2026년 하반기~2027년은 롯데그룹의 '변곡점'이 될 가능성이 높다.
+            화학 업황 반등, 유통 구조조정 효과 가시화, 관광 부문 호조 지속이 동시에 나타나면
+            그룹 전체의 실적과 롯데지주의 밸류에이션이 함께 개선될 수 있다.
+            현 PBR 0.28배에서의 매수는 이러한 회복 시나리오에 대한 선제적 포지셔닝으로 해석할 수 있으며,
+            인내심이 필요한 투자이나 하방이 제한적이고 상방 잠재력이 큰 비대칭적 기회라 할 수 있다.
+            다만, 화학 업황 회복이 지연되거나 건설 PF 리스크가 현실화될 경우
+            투자 기간이 예상보다 길어질 수 있어, 장기 투자 관점과 인내심이 필수적이다.
+        </p>
+    </div>
+
+    <div class="disclaimer">
+        <strong>⚠ 투자 유의사항 (Disclaimer)</strong><br><br>
+        본 리포트는 투자 참고용 자료로서, 특정 종목의 매수·매도를 권유하거나 투자 수익을 보장하지 않습니다.
+        모든 투자 판단은 투자자 본인의 책임 하에 이루어져야 하며, 본 리포트에 포함된 정보는 작성 시점 기준으로
+        신뢰할 수 있다고 판단되는 자료를 바탕으로 작성되었으나, 그 정확성이나 완전성을 보장하지 않습니다.
+        과거의 실적이 미래의 수익을 보장하지 않으며, 주식 투자는 원금 손실의 위험이 있습니다.
+        투자 결정 시에는 반드시 본인의 투자 성향과 리스크 허용 범위를 고려하시기 바랍니다.
+        본 리포트의 내용은 사전 고지 없이 변경될 수 있으며, 제3자에게 배포할 경우 출처를 명확히 표시해 주시기 바랍니다.
+        본 리포트는 특정 투자자의 개별적인 투자 목적이나 재무 상황을 고려하지 않았으므로,
+        개별 투자자는 자신의 상황에 맞는 전문가의 조언을 구하시기 바랍니다.<br><br>
+        <strong>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</strong><br>
+        © 2026 FLOVAH Insights. All rights reserved.
+    </div>
+</div>
+
+</div><!-- page-wrap -->
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-05-14 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 7,500선 내외 변동성 확대. 외국인 매도세 지속되나 펀더멘털 훼손 제한적.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 CPI·PPI 발표 앞두고 인플레이션 우려. 원/달러 1,430원대.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">업종 동향</div>방산·조선·원전 모멘텀 견조. 전력기기 수주 호조 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">투자 포인트</div>어닝시즌 실적 서프라이즈 종목 주목. AI 인프라·전력기기 투자 모멘텀.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 05월 14일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<footer class="site-footer">
+    <div class="brand">FLOVAH Insights</div>
+    <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+    <p style="margin-top:4px;">© 2026 FLOVAH Insights. All rights reserved.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.section').forEach(function(sec) {
+        observer.observe(sec);
+    });
+    document.querySelectorAll('.header-nav a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

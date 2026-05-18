@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>현대무벡스 (319400) — FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbit&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b; --bg-card: #0f1014; --bg-elevated: #141619;
+    --gold: #c9a962; --blue: #5c7d9e;
+    --ink: #ede8df; --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e; --text-secondary: #7d7568;
+    --text-muted: #524c42; --text-light: #9a9184;
+    --rule: #1e1f24; --border: #1e1f24;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg-deep); color: var(--text-body); font-family: 'Noto Sans KR', sans-serif; font-size: 15px; line-height: 1.75; padding-top: 64px; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(9,9,11,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; z-index: 1000; }
+.header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.header-logo img { height: 28px; width: auto; }
+.header-logo span { font-family: 'Orbit', sans-serif; font-size: 16px; color: var(--gold); letter-spacing: 0.08em; }
+.header-nav { display: flex; gap: 24px; align-items: center; }
+.header-nav a { color: var(--text-secondary); text-decoration: none; font-size: 13px; letter-spacing: 0.05em; transition: color 0.2s; }
+.header-nav a:hover { color: var(--gold); }
+.header-badge { background: rgba(201,169,98,0.12); border: 1px solid rgba(201,169,98,0.3); color: var(--gold); font-size: 11px; padding: 3px 10px; letter-spacing: 0.08em; }
+section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+section:nth-child(odd) { background: var(--bg-deep); }
+section:nth-child(even) { background: var(--bg-card); }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+.section-header { margin-bottom: 48px; }
+.section-tag { display: inline-block; font-size: 11px; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+.section-title { font-size: 28px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.02em; line-height: 1.3; }
+.section-subtitle { margin-top: 10px; color: var(--text-secondary); font-size: 14px; max-width: 680px; }
+.divider { width: 40px; height: 2px; background: var(--gold); margin: 16px 0 0 0; }
+.hero { padding: 96px 0 80px; background: var(--bg-deep); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(92,125,158,0.08) 0%, transparent 70%); pointer-events: none; }
+.hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.hero-tag { background: rgba(201,169,98,0.1); border: 1px solid rgba(201,169,98,0.25); color: var(--gold); font-size: 11px; letter-spacing: 0.12em; padding: 4px 12px; font-weight: 500; }
+.hero-market { color: var(--text-secondary); font-size: 12px; letter-spacing: 0.08em; }
+.hero h1 { font-size: 52px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 8px; }
+.hero-en { font-size: 18px; color: var(--text-secondary); letter-spacing: 0.04em; margin-bottom: 20px; font-weight: 300; }
+.hero-desc { font-size: 16px; color: var(--text-body); max-width: 640px; line-height: 1.8; margin-bottom: 48px; }
+.hero-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 56px; }
+.hero-metric { background: var(--bg-card); padding: 24px 28px; display: flex; flex-direction: column; gap: 6px; }
+.metric-label { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+.metric-value { font-size: 26px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.02em; }
+.metric-sub { font-size: 12px; color: var(--text-secondary); }
+.metric-change.up { color: #6fa87e; font-size: 12px; font-weight: 600; }
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+.timeline-item { position: relative; padding: 0 0 28px 28px; }
+.timeline-item::before { content: ''; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; background: var(--gold); border-radius: 50%; }
+.timeline-year { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 4px; }
+.timeline-text { font-size: 14px; color: var(--text-body); line-height: 1.65; }
+.card-grid { display: grid; gap: 24px; }
+.card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.card { background: var(--bg-elevated); border: 1px solid var(--border); padding: 28px; }
+.card-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(201,169,98,0.08); border: 1px solid rgba(201,169,98,0.18); margin-bottom: 16px; font-size: 16px; color: var(--gold); }
+.card-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.card-body { font-size: 13.5px; color: var(--text-body); line-height: 1.75; }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.spec-table th { background: var(--bg-elevated); border: 1px solid var(--border); padding: 12px 16px; text-align: left; color: var(--text-light); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.spec-table td { border: 1px solid var(--border); padding: 13px 16px; color: var(--text-body); vertical-align: top; }
+.spec-table tr:hover td { background: rgba(255,255,255,0.015); }
+.spec-table .label { color: var(--ink); font-weight: 500; width: 200px; }
+.market-bar-block { margin-bottom: 20px; }
+.market-bar-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-body); margin-bottom: 7px; }
+.market-bar-label span:last-child { color: var(--ink); font-weight: 600; }
+.market-bar-track { height: 6px; background: var(--border); }
+.market-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), rgba(201,169,98,0.5)); }
+.market-bar-fill.blue { background: linear-gradient(90deg, var(--blue), rgba(92,125,158,0.4)); }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.comp-table thead th { background: var(--bg-deep); border: 1px solid var(--border); padding: 13px 16px; text-align: center; color: var(--gold); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 600; }
+.comp-table thead th:first-child { text-align: left; }
+.comp-table tbody td { border: 1px solid var(--border); padding: 13px 16px; text-align: center; color: var(--text-body); }
+.comp-table tbody td:first-child { text-align: left; color: var(--ink); font-weight: 500; }
+.comp-table tbody tr:hover td { background: rgba(255,255,255,0.015); }
+.comp-table .highlight-row td { background: rgba(201,169,98,0.04); border-color: rgba(201,169,98,0.18); }
+.comp-table .highlight-row td:first-child { color: var(--gold); }
+.badge-good { background: rgba(111,168,126,0.12); color: #6fa87e; font-size: 11px; padding: 2px 8px; font-weight: 600; }
+.badge-mid { background: rgba(201,169,98,0.1); color: var(--gold); font-size: 11px; padding: 2px 8px; font-weight: 600; }
+.badge-low { background: rgba(176,92,92,0.1); color: #b05c5c; font-size: 11px; padding: 2px 8px; font-weight: 600; }
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.swot-cell { background: var(--bg-elevated); padding: 32px; }
+.swot-label { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.swot-letter { font-size: 28px; font-weight: 700; color: var(--gold); font-family: 'Orbit', sans-serif; line-height: 1; }
+.swot-name { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: 0.06em; text-transform: uppercase; }
+.swot-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.swot-list li { padding-left: 16px; position: relative; font-size: 13.5px; color: var(--text-body); line-height: 1.6; }
+.swot-list li::before { content: '\2014'; position: absolute; left: 0; color: var(--gold); font-size: 11px; }
+.strategy-row { display: grid; grid-template-columns: 260px 1fr; gap: 0; border: 1px solid var(--border); margin-bottom: 1px; }
+.strategy-label { background: var(--bg-elevated); padding: 24px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+.strategy-num { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; }
+.strategy-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+.strategy-content { background: var(--bg-card); padding: 24px 28px; font-size: 13.5px; color: var(--text-body); line-height: 1.8; }
+.strategy-content strong { color: var(--ink); font-weight: 600; }
+.fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.fin-section-title { font-size: 13px; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.fin-bar-block { margin-bottom: 18px; }
+.fin-bar-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-body); margin-bottom: 6px; }
+.fin-bar-value { color: var(--ink); font-weight: 600; }
+.fin-bar-track { height: 5px; background: var(--border); }
+.fin-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), rgba(201,169,98,0.45)); }
+.fin-bar-fill.blue { background: linear-gradient(90deg, var(--blue), rgba(92,125,158,0.4)); }
+.fin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.fin-table th { border: 1px solid var(--border); padding: 10px 14px; text-align: right; color: var(--text-light); font-size: 11px; letter-spacing: 0.07em; background: var(--bg-elevated); font-weight: 500; }
+.fin-table th:first-child { text-align: left; }
+.fin-table td { border: 1px solid var(--border); padding: 10px 14px; text-align: right; color: var(--text-body); }
+.fin-table td:first-child { text-align: left; color: var(--ink); font-weight: 500; }
+.fin-table .est-col { color: var(--gold); }
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 32px; }
+.kpi-cell { background: var(--bg-elevated); padding: 20px 22px; }
+.kpi-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 6px; }
+.kpi-value { font-size: 22px; font-weight: 700; color: var(--ink-strong); letter-spacing: -0.02em; }
+.kpi-note { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.verdict-box { border: 1px solid rgba(201,169,98,0.3); background: rgba(201,169,98,0.04); padding: 36px; margin-bottom: 32px; position: relative; }
+.verdict-box::before { content: '"'; position: absolute; top: 16px; left: 28px; font-size: 80px; color: rgba(201,169,98,0.08); font-family: Georgia, serif; line-height: 1; }
+.verdict-rating { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.verdict-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; }
+.verdict-label { font-size: 12px; color: var(--gold); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.verdict-text { font-size: 15px; color: var(--text-body); line-height: 1.85; }
+.verdict-text strong { color: var(--ink); font-weight: 600; }
+.risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.risk-card { border: 1px solid var(--border); background: var(--bg-elevated); padding: 22px; }
+.risk-card-title { font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.risk-card-title.bull { color: #6fa87e; }
+.risk-card-title.bear { color: #b05c5c; }
+.risk-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.risk-list li { font-size: 13px; color: var(--text-body); padding-left: 14px; position: relative; line-height: 1.6; }
+.risk-list.bull li::before { content: '+'; position: absolute; left: 0; color: #6fa87e; font-weight: 700; }
+.risk-list.bear li::before { content: '\2212'; position: absolute; left: 0; color: #b05c5c; font-weight: 700; }
+.daily-market-card { background: var(--bg-elevated); border: 1px solid rgba(92,125,158,0.25); padding: 28px; margin-top: 32px; }
+.dmc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.dmc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; }
+.dmc-date { font-size: 11px; color: var(--text-muted); }
+.dmc-body { font-size: 13.5px; color: var(--text-body); line-height: 1.8; }
+.dmc-body strong { color: var(--ink); }
+footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 48px 40px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.footer-brand img { height: 22px; }
+.footer-brand span { font-family: 'Orbit', sans-serif; font-size: 14px; color: var(--gold); letter-spacing: 0.08em; }
+.footer-copy { font-size: 12px; color: var(--text-muted); line-height: 1.7; max-width: 480px; }
+.last-update-block { font-size: 12px; color: var(--text-muted); text-align: right; }
+.last-update-block strong { display: block; color: var(--gold); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 4px; }
+.scroll-progress { position: fixed; top: 64px; left: 0; width: 0%; height: 2px; background: var(--gold); z-index: 999; transition: width 0.1s linear; }
+.highlight { color: var(--gold); font-weight: 600; }
+.pull-quote { border-left: 2px solid var(--gold); padding: 16px 24px; margin: 28px 0; background: rgba(201,169,98,0.03); }
+.pull-quote p { font-size: 14.5px; color: var(--text-body); line-height: 1.8; font-style: italic; }
+.pull-quote p strong { color: var(--ink); font-style: normal; }
+@media (max-width: 768px) {
+    body { padding-top: 56px; }
+    .container { padding: 0 20px; }
+    section { padding: 56px 0; }
+    .hero { padding: 64px 0 56px; }
+    .hero h1 { font-size: 36px; }
+    .hero-metrics { grid-template-columns: 1fr 1fr; }
+    .card-grid.cols-2, .card-grid.cols-3 { grid-template-columns: 1fr; }
+    .swot-grid, .fin-grid, .risk-grid { grid-template-columns: 1fr; }
+    .strategy-row { grid-template-columns: 1fr; }
+    .strategy-label { border-right: none; border-bottom: 1px solid var(--border); }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .header-nav { display: none; }
+    .footer-inner { flex-direction: column; }
+    .last-update-block { text-align: left; }
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<header class="site-header">
+    <a class="header-logo" href="#">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <nav class="header-nav">
+        <a href="#overview">기업개요</a>
+        <a href="#tech">기술분석</a>
+        <a href="#market">시장분석</a>
+        <a href="#competitor">경쟁사</a>
+        <a href="#swot">SWOT</a>
+        <a href="#strategy">전략</a>
+        <a href="#finance">재무</a>
+        <a href="#conclusion">결론</a>
+        <span class="header-badge">KOSDAQ 319400</span>
+    </nav>
+</header>
+
+<!-- SECTION 1: 기업 개요 -->
+<section class="hero" id="overview">
+<div class="container">
+<div class="hero-eyebrow">
+    <span class="hero-tag">KOSDAQ · 319400</span>
+    <span class="hero-market">물류자동화 &nbsp;/&nbsp; 로보틱스 &nbsp;/&nbsp; 현대자동차그룹 계열</span>
+</div>
+<h1>현대무벡스</h1>
+<div class="hero-en">Hyundai Movex Co., Ltd.</div>
+<p class="hero-desc">1988년 설립, 2019년 KOSDAQ 상장. AGV·AMR·갠트리 로봇 등 종합 물류자동화 토탈 솔루션을 공급하는 현대자동차그룹 계열 물류·유통 자동화 전문기업. 청라 R&amp;D 센터를 구심점으로 수십 종의 물류 로봇을 독자 개발하였으며, 반도체 클린룸 물류설비 영역으로 사업을 확장 중이다. 해외 고마진 프로젝트 확대와 MRO 매출 비중 증가가 중장기 수익성 개선의 핵심 동력이다.</p>
+<div class="hero-metrics">
+    <div class="hero-metric">
+        <div class="metric-label">시가총액</div>
+        <div class="metric-value">4,199억</div>
+        <div class="metric-sub">원 (2026E 기준)</div>
+    </div>
+    <div class="hero-metric">
+        <div class="metric-label">2026E 매출액</div>
+        <div class="metric-value">4,963억</div>
+        <div class="metric-sub">원 <span class="metric-change up">YoY +27%</span></div>
+    </div>
+    <div class="hero-metric">
+        <div class="metric-label">2026E 영업이익</div>
+        <div class="metric-value">385억</div>
+        <div class="metric-sub">원 <span class="metric-change up">YoY +62%</span></div>
+    </div>
+    <div class="hero-metric">
+        <div class="metric-label">설립 / 상장</div>
+        <div class="metric-value">1988</div>
+        <div class="metric-sub">상장 2019 · KOSDAQ</div>
+    </div>
+</div>
+<div class="section-header">
+    <span class="section-tag">Corporate History</span>
+    <h2 class="section-title">기업 연혁</h2>
+    <div class="divider"></div>
+</div>
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-year">1988</div>
+        <div class="timeline-text">현대무벡스 설립 — 국내 최초 물류·운반 자동화 전문기업으로 출범. 현대자동차그룹 물류 인프라 구축의 핵심 파트너로 자리매김하며 국내 자동화 설비 시장의 선구자 역할 수행.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">1990년대~2000년대</div>
+        <div class="timeline-text">자동창고(AS/RS), 컨베이어·소팅 시스템 기술 내재화 완료. 현대·기아차 생산라인 물류 자동화 수주를 기반으로 국내 제조업 물류센터 다수 구축. 이커머스 초기 성장과 함께 유통·물류 고객층 다변화.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-text">KOSDAQ 상장(종목코드 319400). 공모 자금을 바탕으로 인천 청라 R&amp;D 센터 설립 착수. 물류자동화 전문기업으로서의 독립적 성장 경로를 확보하고 로봇 독자 개발 역량 강화의 전략적 거점 마련.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2019~2022</div>
+        <div class="timeline-text">청라 R&amp;D 센터를 통해 AGV(자율유도차량), AMR(자율이동로봇), 갠트리 로봇 등 수십 종 물류 로봇 독자 개발. 자체 플릿 관리 소프트웨어(FMCS) 및 WMS 내재화로 소프트웨어·하드웨어 수직 통합 가치사슬 완성.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2023~2024</div>
+        <div class="timeline-text">반도체 클린룸 전용 물류설비 시장 진입 선언. ISO Class 5 대응 FOUP 반송 시스템 개발 완료. 동남아시아·중동·동유럽 해외 수주 본격화로 국제 매출 비중 상승. 이커머스 풀필먼트 센터 물류 자동화 수주 급증.</div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-year">2025~2026E</div>
+        <div class="timeline-text">연간 매출 4,963억원(+27% YoY), 영업이익 385억원(+62% YoY) 달성 전망. 영업이익률 7.8%로 지속 개선. 반도체 클린룸 파일럿 프로젝트 착수, MRO 매출 비중 확대로 수익 안정성 고도화 추진.</div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: 기술분석 -->
+<section id="tech">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">Technology Analysis</span>
+    <h2 class="section-title">기술 분석</h2>
+    <p class="section-subtitle">청라 R&amp;D 센터를 중심으로 독자 개발한 물류 로봇과 자동화 솔루션 포트폴리오를 심층 분석합니다.</p>
+    <div class="divider"></div>
+</div>
+<div class="card-grid cols-3" style="margin-bottom:40px;">
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="card-title">AGV (자율유도차량)</div>
+        <div class="card-body">자기 테이프·레이저·자기 마크 복합 유도 방식의 무인운반차. 페이로드 500 kg~10 t 대응, 현대차그룹 생산 라인 납품 실적 다수. 2D/3D LiDAR 통합 안전 시스템 IEC 62443 국제 규격 준수. 자동 충전 스테이션 연계 24시간 무인 운행 지원.</div>
+    </div>
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+        <div class="card-title">AMR (자율이동로봇)</div>
+        <div class="card-body">SLAM 기반 자율항법으로 별도 인프라 없이 동적 환경 주행. 자체 개발 FMCS(플릿 관리 소프트웨어)로 100대 이상 동시 운영 지원. 전자상거래 풀필먼트·제약 창고 맞춤형 아키텍처. 다층 창고·협소 통로 특화 소형 모델 라인업 보유.</div>
+    </div>
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-gear"></i></div>
+        <div class="card-title">갠트리 로봇</div>
+        <div class="card-body">X-Y-Z 3축 고하중 이재기로 팔레트 자동 적재·해체 전용 설계. 최대 적재 하중 800 kg, 반복 정밀도 ±1 mm. 식품·제약·자동차 부품 창고 맞춤 구성 가능. 비전 시스템 연동 혼합 팔레트 인식 및 자동 분류 기능 탑재.</div>
+    </div>
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+        <div class="card-title">AS/RS (자동창고)</div>
+        <div class="card-body">스태커 크레인·셔틀 기반 고밀도 자동창고 솔루션. 층고 최대 40 m 대응, 냉동·냉장(-30°C) 전용 모델 보유. WMS 연동 실시간 재고 최적화 알고리즘 내장. 입출고 처리량 시간당 최대 2,000 팔레트 이상 지원.</div>
+    </div>
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="card-title">컨베이어 &amp; 소터</div>
+        <div class="card-body">크로스 벨트 소터 시간당 최대 15,000건 처리. AI 비전 연동 자동 라벨 인식 및 불량품 자동 분류. Plug-and-Play 모듈 설계로 증설 시 다운타임 최소화. 이커머스·의류·식품·택배 물류 허브 최적화 구성.</div>
+    </div>
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-atom"></i></div>
+        <div class="card-title">반도체 클린룸 물류</div>
+        <div class="card-body">ISO Class 5(Class 100) 환경 대응 클린룸 전용 반송 솔루션. FOUP(전면 개방형 웨이퍼 박스) 자동 반송 시스템 개발 완료. 최대 이동 속도 4 m/s, 진동·파티클 최소화 설계. 2026년 국내 주요 반도체 팹 납품 파일럿 프로젝트 추진 중.</div>
+    </div>
+</div>
+<div class="pull-quote">
+    <p>청라 R&amp;D 센터(2019 설립)는 <strong>소프트웨어(FMCS·WMS)와 하드웨어(로봇 기구·제어기) 완전 내재화</strong>를 목표로 조성된 연구 거점이다. 연간 R&amp;D 투자 비중이 매출 대비 약 3~4%로, 동종업계 평균(1~2%) 대비 높은 기술 투자 강도를 유지하고 있다.</p>
+</div>
+<h3 style="font-size:15px; font-weight:600; color:var(--ink); margin-bottom:16px;">핵심 제품 기술 사양 비교</h3>
+<table class="spec-table">
+<thead><tr><th>제품군</th><th>핵심 사양</th><th>적용 환경</th><th>내재화 수준</th></tr></thead>
+<tbody>
+<tr><td class="label">AGV (소형)</td><td>페이로드 500 kg, 최대속도 2.0 m/s, LiDAR + 마그넷 복합 유도</td><td>제조, 식품, 제약 창고</td><td><span class="badge-good">하드웨어·SW 완전 내재화</span></td></tr>
+<tr><td class="label">AGV (대형)</td><td>페이로드 최대 10 t, 레이저 유도, 자동충전 스테이션 포함</td><td>자동차 공장, 중공업 물류</td><td><span class="badge-good">하드웨어·SW 완전 내재화</span></td></tr>
+<tr><td class="label">AMR</td><td>SLAM 자율주행, 페이로드 100~500 kg, FMCS 100대+ 플릿 관리</td><td>이커머스 풀필먼트, DC 창고</td><td><span class="badge-good">독자 FMCS 완전 내재화</span></td></tr>
+<tr><td class="label">갠트리 로봇</td><td>3축, 최대 800 kg, ±1 mm 반복 정밀도, 비전 시스템 연동</td><td>팔레트 자동화, 자동차 부품</td><td><span class="badge-mid">기구 내재화, 일부 부품 외산</span></td></tr>
+<tr><td class="label">크로스 벨트 소터</td><td>시간당 15,000건, AI 비전 연동, 오류율 0.01% 이하</td><td>이커머스, 의류, 택배 허브</td><td><span class="badge-good">시스템 설계 내재화</span></td></tr>
+<tr><td class="label">클린룸 반송 시스템</td><td>ISO Class 5, FOUP 자동 반송, 속도 최대 4 m/s</td><td>반도체 팹, 디스플레이 공장</td><td><span class="badge-mid">개발 완료 · 파일럿 단계</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- SECTION 3: 시장분석 -->
+<section id="market">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">Market Analysis</span>
+    <h2 class="section-title">시장 분석</h2>
+    <p class="section-subtitle">글로벌 물류자동화·창고 로보틱스 시장 구조와 현대무벡스의 포지셔닝을 분석합니다.</p>
+    <div class="divider"></div>
+</div>
+<div class="card-grid cols-2" style="margin-bottom:48px;">
+    <div>
+        <div class="fin-section-title">글로벌 시장 규모 (2026E)</div>
+        <div class="market-bar-block"><div class="market-bar-label"><span>글로벌 물류자동화 시장</span><span>$123B</span></div><div class="market-bar-track"><div class="market-bar-fill" style="width:100%"></div></div></div>
+        <div class="market-bar-block"><div class="market-bar-label"><span>창고 로보틱스 (AMR·AGV)</span><span>$31B</span></div><div class="market-bar-track"><div class="market-bar-fill" style="width:62%"></div></div></div>
+        <div class="market-bar-block"><div class="market-bar-label"><span>AS/RS 자동창고</span><span>$22B</span></div><div class="market-bar-track"><div class="market-bar-fill" style="width:45%"></div></div></div>
+        <div class="market-bar-block"><div class="market-bar-label"><span>반도체 클린룸 물류 (OHT 등)</span><span>$8.4B</span></div><div class="market-bar-track"><div class="market-bar-fill blue" style="width:27%"></div></div></div>
+        <div class="market-bar-block"><div class="market-bar-label"><span>국내 물류자동화 시장</span><span>~$6B</span></div><div class="market-bar-track"><div class="market-bar-fill blue" style="width:19%"></div></div></div>
+    </div>
+    <div>
+        <div class="fin-section-title">핵심 성장 동인 4대 축</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="card" style="padding:18px 20px;"><div class="card-title" style="font-size:13.5px; margin-bottom:6px;"><i class="fa-solid fa-arrow-trend-up" style="color:var(--gold); margin-right:6px;"></i>이커머스 폭증 &amp; 물류센터 자동화 가속</div><div class="card-body" style="font-size:13px;">글로벌 이커머스 판매량 연 15% 이상 증가 추세 — 빠른 처리 속도와 정확도를 요구하는 풀필먼트 센터 신설 수요 급증하며 물류 SI 수주 기회 확대.</div></div>
+            <div class="card" style="padding:18px 20px;"><div class="card-title" style="font-size:13.5px; margin-bottom:6px;"><i class="fa-solid fa-users-slash" style="color:var(--gold); margin-right:6px;"></i>인건비 상승 &amp; 노동력 부족</div><div class="card-body" style="font-size:13px;">국내외 최저임금 지속 상승과 저출생·고령화로 물류 현장 인력난 심화. 로봇 투자 회수 기간 단축으로 ROI 매력도 상승해 자동화 전환 의사결정 가속.</div></div>
+            <div class="card" style="padding:18px 20px;"><div class="card-title" style="font-size:13.5px; margin-bottom:6px;"><i class="fa-solid fa-microchip" style="color:var(--gold); margin-right:6px;"></i>반도체·배터리 Fab 신증설 사이클</div><div class="card-body" style="font-size:13px;">삼성·SK하이닉스·TSMC 등 대규모 Fab 투자 지속 — 클린룸 내부 물류설비(OHT·클린룸 AMR) 수요 구조적 폭증 예상. 고단가·고마진 신규 수직 확장 기회.</div></div>
+            <div class="card" style="padding:18px 20px;"><div class="card-title" style="font-size:13.5px; margin-bottom:6px;"><i class="fa-solid fa-globe" style="color:var(--gold); margin-right:6px;"></i>해외 신흥시장 물류 인프라 구축 수요</div><div class="card-body" style="font-size:13px;">동남아·중동·동유럽 등 물류 후발 시장의 스마트 물류센터 구축 급증. 선진 기술 수요 공백이 한국 물류자동화 기업에 구조적 진출 기회 제공.</div></div>
+        </div>
+    </div>
+</div>
+<div class="kpi-grid" style="margin-bottom:32px;">
+    <div class="kpi-cell"><div class="kpi-label">글로벌 물류자동화 CAGR</div><div class="kpi-value">+14%</div><div class="kpi-note">2024~2030E 연평균 성장률</div></div>
+    <div class="kpi-cell"><div class="kpi-label">창고 AMR·AGV CAGR</div><div class="kpi-value">+21%</div><div class="kpi-note">가장 고성장 세그먼트</div></div>
+    <div class="kpi-cell"><div class="kpi-label">반도체 클린룸 물류 CAGR</div><div class="kpi-value">+18%</div><div class="kpi-note">Fab 신증설 사이클과 직결</div></div>
+    <div class="kpi-cell"><div class="kpi-label">국내 물류자동화 CAGR</div><div class="kpi-value">+12%</div><div class="kpi-note">이커머스·제약·식품 중심</div></div>
+    <div class="kpi-cell"><div class="kpi-label">MRO·유지보수 시장 CAGR</div><div class="kpi-value">+9%</div><div class="kpi-note">설치 기저 증가 → 안정 수익</div></div>
+    <div class="kpi-cell"><div class="kpi-label">현대무벡스 예상 성장률</div><div class="kpi-value highlight">+27%</div><div class="kpi-note">2026E 시장 초과 성장 전망</div></div>
+</div>
+<div class="pull-quote">
+    <p>현대무벡스는 <strong>단일 솔루션 공급사가 아닌 '토탈 자동화 솔루션 인테그레이터'</strong> 포지션을 확보하고 있다. 설계·제조·설치·유지보수까지 수직 통합 구조는 단순 장비 공급사 대비 마진 확보와 고객 Lock-in 측면에서 구조적 우위를 제공한다. 고객 1사 당 초기 시스템 구축 이후 유지보수·업그레이드 계약이 10년 이상 지속되는 구조로, 사업 안정성이 뛰어나다.</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4: 경쟁사 분석 -->
+<section id="competitor">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">Competitive Landscape</span>
+    <h2 class="section-title">경쟁사 분석</h2>
+    <p class="section-subtitle">국내외 물류자동화 및 로보틱스 경쟁사와의 포지셔닝 비교 분석입니다.</p>
+    <div class="divider"></div>
+</div>
+<table class="comp-table" style="margin-bottom:32px;">
+<thead><tr><th>기업</th><th>시장</th><th>주요 제품</th><th>매출 규모</th><th>영업이익률</th><th>반도체 물류</th><th>해외 수출</th><th>종합 평가</th></tr></thead>
+<tbody>
+<tr class="highlight-row"><td><strong>현대무벡스</strong></td><td>KOSDAQ</td><td>AGV·AMR·갠트리·AS/RS·클린룸</td><td>4,963억E</td><td>7.8%E</td><td><span class="badge-mid">진입중</span></td><td><span class="badge-good">확대중</span></td><td><span class="badge-good">매력적</span></td></tr>
+<tr><td>세메스 (삼성 계열)</td><td>비상장</td><td>OHT·클린룸 자동화 전문</td><td>~2조원+</td><td>~12%</td><td><span class="badge-good">전문특화</span></td><td><span class="badge-mid">내부 중심</span></td><td><span class="badge-mid">삼성 종속</span></td></tr>
+<tr><td>에스에프에이 (SFA)</td><td>KOSDAQ</td><td>반도체·디스플레이 물류</td><td>~1조원</td><td>~8~10%</td><td><span class="badge-good">강점</span></td><td><span class="badge-mid">중간</span></td><td><span class="badge-good">경쟁 강함</span></td></tr>
+<tr><td>CJ대한통운</td><td>KOSPI</td><td>물류 종합·SI</td><td>~12조원</td><td>~2~3%</td><td><span class="badge-low">미미</span></td><td><span class="badge-good">글로벌 네트워크</span></td><td><span class="badge-mid">저마진 대형</span></td></tr>
+<tr><td>Daifuku (일본)</td><td>Tokyo SE</td><td>글로벌 AS/RS·반도체 물류</td><td>~6조원</td><td>~8%</td><td><span class="badge-good">글로벌 1위</span></td><td><span class="badge-good">글로벌 지배</span></td><td><span class="badge-good">글로벌 강자</span></td></tr>
+<tr><td>Honeywell Intelligrated</td><td>NYSE</td><td>소터·컨베이어·WMS</td><td>~$2B</td><td>~10%</td><td><span class="badge-low">비전문</span></td><td><span class="badge-good">글로벌</span></td><td><span class="badge-mid">대형 경쟁사</span></td></tr>
+<tr><td>Kion / Dematic (독일)</td><td>MDAX</td><td>AS/RS·AMR·소프트웨어</td><td>~EUR 11B</td><td>~6~8%</td><td><span class="badge-mid">일부</span></td><td><span class="badge-good">유럽 주도</span></td><td><span class="badge-mid">대형 경쟁사</span></td></tr>
+</tbody>
+</table>
+<div class="card-grid cols-2">
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div class="card-title">현대무벡스의 차별적 강점</div>
+        <div class="card-body">현대자동차그룹 계열사로서 안정적 내부 수요와 브랜드 신뢰도를 보유하며, 국내 최초 물류자동화 전문기업으로서의 역사적 노하우와 기술 레퍼런스를 겸비한다. 글로벌 대형사 대비 프로젝트 대응 속도와 커스터마이징 유연성이 높아 중소·중견 고객사에 강점을 발휘한다. FMCS·WMS 소프트웨어와 하드웨어 통합 공급이 가능한 원스톱 구조는 경쟁사 대비 차별화 요소다.</div>
+    </div>
+    <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="card-title">주요 경쟁 리스크</div>
+        <div class="card-body">세메스(삼성 계열)의 반도체 클린룸 물류 독점력은 현대무벡스의 신시장 진입에 가장 높은 장벽이다. Daifuku·Kion 등 글로벌 기업의 기술·규모 우위와 해외 네트워크도 위협 요인이다. 중국 기업(Hai Robotics·Geek+)의 저가 AMR 공세는 신흥시장 수주 가격 경쟁을 심화시키고 있다.</div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 5: SWOT -->
+<section id="swot">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">SWOT Analysis</span>
+    <h2 class="section-title">SWOT 분석</h2>
+    <p class="section-subtitle">현대무벡스의 강점·약점·기회·위협 요인을 구조적으로 분석합니다.</p>
+    <div class="divider"></div>
+</div>
+<div class="swot-grid">
+    <div class="swot-cell">
+        <div class="swot-label"><div class="swot-letter">S</div><div class="swot-name">Strengths · 강점</div></div>
+        <ul class="swot-list">
+            <li>현대자동차그룹 계열사 지위 — 안정적 내부 Captive 수요와 브랜드 신뢰도 제공</li>
+            <li>1988년 창업 이후 축적된 국내 최장기 물류자동화 운영 노하우와 기술 레퍼런스</li>
+            <li>청라 R&amp;D 센터 기반 AGV·AMR·갠트리 등 수십 종 물류 로봇 독자 개발·소유</li>
+            <li>소프트웨어(FMCS·WMS)부터 하드웨어·설치·유지보수까지 수직 통합 가치사슬 완성</li>
+            <li>이커머스·제조·식품·제약 등 다변화된 고객 포트폴리오로 경기 민감도 분산</li>
+            <li>해외 프로젝트 마진이 국내 대비 높아 믹스 개선 시 이익률 레버리지 효과 큼</li>
+        </ul>
+    </div>
+    <div class="swot-cell">
+        <div class="swot-label"><div class="swot-letter">W</div><div class="swot-name">Weaknesses · 약점</div></div>
+        <ul class="swot-list">
+            <li>반도체 클린룸 물류 시장 진입 초기 단계 — 상업적 레퍼런스 및 인증 부족</li>
+            <li>매출의 상당 부분이 수주형 프로젝트에 의존 — 분기별 실적 변동성 높음</li>
+            <li>Daifuku·Kion 등 글로벌 대형사 대비 규모의 경제 및 해외 영업 네트워크 열위</li>
+            <li>대형 해외 입찰 경쟁력 제한 — 단독 수주보다 컨소시엄 참여 방식 비중 높음</li>
+            <li>R&amp;D 투자 비율은 높으나 절대 규모가 글로벌 경쟁사 대비 제한적</li>
+        </ul>
+    </div>
+    <div class="swot-cell">
+        <div class="swot-label"><div class="swot-letter">O</div><div class="swot-name">Opportunities · 기회</div></div>
+        <ul class="swot-list">
+            <li>반도체 Fab 신증설 사이클 — OHT·클린룸 AMR 수요 구조적 증가로 신규 고부가 시장 개척</li>
+            <li>동남아·중동·동유럽 물류 인프라 후발 시장의 한국산 시스템 수요 급증</li>
+            <li>이커머스·신선식품·의약품 물류센터 자동화 규제·가속화 트렌드</li>
+            <li>AI·컴퓨터 비전 융합 지능형 물류 로봇 시대 개막 — 소프트웨어 내재화 기업 유리</li>
+            <li>MRO·유지보수 매출 비중 확대로 경기 방어적 반복 수익 기반 강화 가능</li>
+            <li>현대차그룹 글로벌 EV 공장 자동화 파트너 역할 확대 — 해외 Captive 수요 선점</li>
+        </ul>
+    </div>
+    <div class="swot-cell">
+        <div class="swot-label"><div class="swot-letter">T</div><div class="swot-name">Threats · 위협</div></div>
+        <ul class="swot-list">
+            <li>중국 AMR 제조사(Hai Robotics·Geek+)의 저가 공세 — 신흥시장 가격경쟁 심화</li>
+            <li>글로벌 공급망 불안 — 반도체·모터·LiDAR 센서 등 핵심 부품 조달 리스크</li>
+            <li>반도체 Fab 투자 사이클 지연 시 클린룸 물류 신규 수주 감소 위험</li>
+            <li>원·달러 환율 변동이 해외 프로젝트 마진에 미치는 영향 불확실성</li>
+            <li>Daifuku·Murata 등 일본계 반도체 물류 선도기업의 한국 직접 공략 강화</li>
+            <li>물류 자동화 안전 인증 요건 강화에 따른 제품 개발·인증 비용 증가 가능성</li>
+        </ul>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6: 전략분석 -->
+<section id="strategy">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">Strategic Analysis</span>
+    <h2 class="section-title">전략 분석</h2>
+    <p class="section-subtitle">현대무벡스의 중장기 성장 전략과 핵심 실행 방향을 분석합니다.</p>
+    <div class="divider"></div>
+</div>
+<div class="strategy-row">
+    <div class="strategy-label"><div class="strategy-num">STRATEGY 01</div><div class="strategy-name">해외 시장 확대 &amp; 마진 믹스 개선</div></div>
+    <div class="strategy-content">해외 프로젝트는 국내 대비 <strong>영업이익률이 약 3~5%p 높은</strong> 구조적 특성을 지닌다. 동남아시아(베트남·인도네시아·태국), 중동(사우디·UAE), 동유럽(폴란드·체코)을 1차 타겟으로 수주 확대를 추진한다. 현지 파트너·에이전트 네트워크 강화와 함께 현대차그룹 글로벌 생산기지를 거점으로 해외 Captive 수요를 선점하는 이중 전략을 구사한다. 해외 매출 비중을 2026년 기준 약 20%에서 2029년 35% 이상으로 확대할 경우, 전사 영업이익률 2~3%p 추가 개선 효과가 기대된다.</div>
+</div>
+<div class="strategy-row">
+    <div class="strategy-label"><div class="strategy-num">STRATEGY 02</div><div class="strategy-name">반도체 클린룸 물류설비 시장 진입</div></div>
+    <div class="strategy-content">반도체 팹 내부 물류(OHT·클린룸 AMR)는 <strong>설치 당 단가가 일반 물류센터의 5~10배</strong>에 달하는 고부가 세그먼트다. 현대무벡스는 청라 R&amp;D 센터에서 ISO Class 5 대응 FOUP 반송 시스템 개발을 완료하고, 2026년 국내 주요 반도체 팹 파일럿 프로젝트 진입을 목표로 한다. 세메스(삼성 계열)·SFA 등 기존 플레이어가 특정 고객에 종속된 반면, 현대무벡스는 <strong>오픈 마켓 접근법</strong>으로 SK하이닉스·해외 팹 시장을 공략한다. 단 1건의 대형 클린룸 프로젝트(~500억원 규모) 수주만으로도 연간 매출의 10% 이상 기여가 가능하다.</div>
+</div>
+<div class="strategy-row">
+    <div class="strategy-label"><div class="strategy-num">STRATEGY 03</div><div class="strategy-name">MRO·유지보수 반복 매출 비중 확대</div></div>
+    <div class="strategy-content">설치 완료 기저(installed base)가 증가할수록 유지보수·부품 교체·업그레이드 수요가 자동으로 증가하는 <strong>'스노우볼 구조'</strong>가 작동한다. MRO 매출은 프로젝트 매출 대비 이익률이 5~8%p 높고 경기 변동에 방어적이다. 현재 MRO 비중을 매출의 약 15%에서 2028년 25% 이상으로 끌어올리기 위해, <strong>장기 서비스 계약(LTSA)</strong> 형태의 계약 구조 전환과 원격 모니터링(IoT 센서 + 클라우드 대시보드) 서비스 플랫폼 개발을 추진한다.</div>
+</div>
+<div class="strategy-row">
+    <div class="strategy-label"><div class="strategy-num">STRATEGY 04</div><div class="strategy-name">AI·소프트웨어 플랫폼 고도화</div></div>
+    <div class="strategy-content">하드웨어 납품에서 <strong>소프트웨어 구독(SaaS) 모델</strong>로의 점진적 전환을 통해 매출 안정성과 마진을 동시에 개선한다. 자체 플릿 관리 소프트웨어(FMCS)에 AI 경로 최적화·수요 예측 모듈을 추가해 차별화된 플랫폼으로 발전시킨다. AI 비전 기반 자동 불량 선별·재고 관리 솔루션을 개발하여 '데이터 기반 물류 최적화 파트너'로 포지셔닝을 전환한다.</div>
+</div>
+<div class="strategy-row">
+    <div class="strategy-label"><div class="strategy-num">STRATEGY 05</div><div class="strategy-name">현대자동차그룹 시너지 극대화</div></div>
+    <div class="strategy-content">현대차그룹의 글로벌 전기차(EV) 생산 전환 가속에 따른 배터리·부품 물류 자동화 수요를 <strong>최우선 Captive 수요</strong>로 흡수한다. 현대차의 싱가포르 글로벌 혁신센터(HMGICS), 인도 타밀나두 신공장, 미국 조지아 메타플랜트 등 글로벌 신공장 자동화 설비 파트너 역할 확대를 추진한다. 그룹 내 기아·현대모비스·현대트랜시스 등 부품사의 물류 자동화 수요도 체계적으로 관리하여 그룹 내 점유율을 높인다.</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 7: 재무분석 -->
+<section id="finance">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">Financial Analysis</span>
+    <h2 class="section-title">재무 분석</h2>
+    <p class="section-subtitle">주요 재무지표 및 수익성 추이를 분석하고 2026E 전망을 점검합니다.</p>
+    <div class="divider"></div>
+</div>
+<div class="kpi-grid">
+    <div class="kpi-cell"><div class="kpi-label">2026E 매출액</div><div class="kpi-value highlight">4,963억</div><div class="kpi-note">YoY +27.0%</div></div>
+    <div class="kpi-cell"><div class="kpi-label">2026E 영업이익</div><div class="kpi-value highlight">385억</div><div class="kpi-note">YoY +62.0%</div></div>
+    <div class="kpi-cell"><div class="kpi-label">2026E 영업이익률</div><div class="kpi-value">7.8%</div><div class="kpi-note">전년 대비 +2.0%p 개선</div></div>
+    <div class="kpi-cell"><div class="kpi-label">시가총액</div><div class="kpi-value">4,199억</div><div class="kpi-note">PSR 약 0.85x (2026E)</div></div>
+    <div class="kpi-cell"><div class="kpi-label">2026E PER (추정)</div><div class="kpi-value">~22x</div><div class="kpi-note">성장성 감안 적정 수준</div></div>
+    <div class="kpi-cell"><div class="kpi-label">2026E EV/EBITDA (추정)</div><div class="kpi-value">~13x</div><div class="kpi-note">동종업계 평균 수준</div></div>
+</div>
+<div class="fin-grid">
+    <div>
+        <div class="fin-section-title">매출액 &amp; 영업이익 추이 (억원)</div>
+        <table class="fin-table" style="margin-bottom:24px;">
+        <thead><tr><th>구분</th><th>2023A</th><th>2024A</th><th>2025A</th><th class="est-col">2026E</th></tr></thead>
+        <tbody>
+        <tr><td>매출액</td><td>2,850</td><td>3,350</td><td>3,907</td><td class="est-col">4,963</td></tr>
+        <tr><td>YoY</td><td>—</td><td>+17.5%</td><td>+16.6%</td><td class="est-col">+27.0%</td></tr>
+        <tr><td>영업이익</td><td>148</td><td>194</td><td>237</td><td class="est-col">385</td></tr>
+        <tr><td>영업이익률</td><td>5.2%</td><td>5.8%</td><td>6.1%</td><td class="est-col">7.8%</td></tr>
+        <tr><td>순이익 (추정)</td><td>95</td><td>130</td><td>162</td><td class="est-col">260</td></tr>
+        </tbody>
+        </table>
+        <div class="fin-section-title">매출액 Progress (2026E = 100%)</div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2023A — 2,850억원</span><span class="fin-bar-value">57%</span></div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:57%"></div></div></div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2024A — 3,350억원</span><span class="fin-bar-value">67%</span></div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:67%"></div></div></div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2025A — 3,907억원</span><span class="fin-bar-value">79%</span></div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:79%"></div></div></div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2026E — 4,963억원</span><span class="fin-bar-value highlight">100%</span></div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:100%"></div></div></div>
+    </div>
+    <div>
+        <div class="fin-section-title">수익성 지표 추이</div>
+        <table class="fin-table" style="margin-bottom:24px;">
+        <thead><tr><th>지표</th><th>2023A</th><th>2024A</th><th>2025A</th><th class="est-col">2026E</th></tr></thead>
+        <tbody>
+        <tr><td>영업이익률</td><td>5.2%</td><td>5.8%</td><td>6.1%</td><td class="est-col">7.8%</td></tr>
+        <tr><td>순이익률 (추정)</td><td>3.3%</td><td>3.9%</td><td>4.1%</td><td class="est-col">5.2%</td></tr>
+        <tr><td>ROE (추정)</td><td>8.2%</td><td>10.1%</td><td>11.5%</td><td class="est-col">14.8%</td></tr>
+        <tr><td>부채비율 (추정)</td><td>85%</td><td>80%</td><td>75%</td><td class="est-col">68%</td></tr>
+        </tbody>
+        </table>
+        <div class="fin-section-title">영업이익률 Progress (목표 10% 대비)</div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2023A</span><span class="fin-bar-value">5.2%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:52%"></div></div></div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2024A</span><span class="fin-bar-value">5.8%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:58%"></div></div></div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2025A</span><span class="fin-bar-value">6.1%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" style="width:61%"></div></div></div>
+        <div class="fin-bar-block"><div class="fin-bar-label"><span>2026E</span><span class="fin-bar-value highlight">7.8%</span></div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:78%"></div></div></div>
+        <div style="margin-top:20px; padding:16px; background:var(--bg-elevated); border:1px solid var(--border); font-size:13px; color:var(--text-body); line-height:1.75;">
+            <strong style="color:var(--gold);">재무 건전성 요약</strong><br>
+            부채비율 2023년 85%에서 2026E 68%로 지속 개선. ROE 8.2%에서 14.8%로 수익 효율성이 뚜렷하게 상승하고 있다. 해외 고마진 수주 확대와 MRO 비중 증가가 맞물릴 경우, 2027~2028년 영업이익률 10%+ 달성도 가능한 시나리오다.
+        </div>
+    </div>
+</div>
+<!-- DAILY-MARKET-CARD -->
+<div class="daily-market-card" style="margin-top:40px;">
+    <div class="dmc-header">
+        <div class="dmc-title"><i class="fa-solid fa-chart-line" style="margin-right:6px;"></i>시장 동향 · Daily Update</div>
+        <div class="dmc-date">2026년 05월 18일</div>
+    </div>
+    <div class="dmc-body">
+        <strong>코스피·코스닥 종합 동향:</strong> 2026년 5월 18일 기준 국내 증시는 미 연준의 금리 인하 기대 재부각과 외국인 순매수 전환으로 코스피가 2,780선을 회복하는 흐름을 보이고 있다. 원·달러 환율은 1,310원대로 안정세를 유지하며 수출 기업 실적 전망에 우호적 환경을 제공한다.<br><br>
+        <strong>물류·자동화 섹터 이슈:</strong> 국내 주요 이커머스 기업들의 2026년 물류센터 자동화 투자 계획이 잇따라 발표되며 물류 SI 기업에 대한 수주 기대감이 고조되고 있다. 반도체 Fab 투자 재개 소식으로 클린룸 물류 장비 종목에 대한 관심도 동반 상승 중이다.<br><br>
+        <strong>현대무벡스 관련:</strong> 2026년 상반기 해외 수주 모멘텀이 지속되고 있으며, 동남아 물류센터 프로젝트 계약 소식이 기업 가치 재평가의 촉매제로 주목받고 있다. 반도체 클린룸 파일럿 프로젝트의 가시적 성과 여부가 하반기 주가 방향성의 핵심 변수로 부상하고 있다.
+    </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+</div>
+</section>
+
+<!-- SECTION 8: 결론 및 투자의견 -->
+<section id="conclusion">
+<div class="container">
+<div class="section-header">
+    <span class="section-tag">Conclusion &amp; Investment View</span>
+    <h2 class="section-title">결론 및 투자의견</h2>
+    <p class="section-subtitle">종합적인 분석을 바탕으로 현대무벡스에 대한 투자 관점과 핵심 체크포인트를 정리합니다.</p>
+    <div class="divider"></div>
+</div>
+<div class="verdict-box">
+    <div class="verdict-rating">
+        <div class="verdict-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <div class="verdict-label">긍정적 관심 · Positive Watch</div>
+    </div>
+    <div class="verdict-text">
+        현대무벡스는 <strong>국내 물류자동화 시장의 구조적 성장 수혜주</strong>이자, 반도체 클린룸 물류라는 고부가 신시장 진입을 목전에 둔 전환점 기업이다. 2026E 매출 4,963억원(+27%), 영업이익 385억원(+62%)의 고성장 전망과 함께 영업이익률이 7.8%로 지속 개선되는 점은 투자 매력을 뒷받침한다.<br><br>
+        <strong>현대자동차그룹 계열사</strong>로서의 안정적 Captive 수요, 청라 R&amp;D 센터 기반의 독자 기술력, 해외 고마진 수주 확대, MRO 반복 매출 증가라는 네 가지 성장 축이 동시에 작동하고 있다는 점에서 중장기 밸류에이션 리레이팅 가능성이 존재한다. 반도체 클린룸 프로젝트의 첫 상업적 수주가 확인될 경우, 기업 가치에 대한 시장의 재평가가 본격화될 것으로 판단한다.<br><br>
+        다만 프로젝트형 매출 구조에 기인한 분기별 실적 변동성, 글로벌 대형사와의 규모 경쟁, 중국 저가 AMR 공세 등 리스크 요인은 지속적으로 모니터링해야 한다. <strong>단기 트레이딩보다는 해외 수주 확대와 클린룸 사업 성과를 확인하며 중장기 보유하는 접근이 적합</strong>하다.
+    </div>
+</div>
+<div class="risk-grid">
+    <div class="risk-card">
+        <div class="risk-card-title bull">상승 시나리오 (Bull Case)</div>
+        <ul class="risk-list bull">
+            <li>반도체 클린룸 파일럿 성공 → 대형 상업 수주 연계로 신규 사업부 가시화</li>
+            <li>해외(동남아·중동) 수주 급증으로 매출 믹스 개선 가속화 — 마진 레버리지</li>
+            <li>AI·AMR 융합 차세대 로봇 플랫폼 출시로 기술 프리미엄 인정</li>
+            <li>MRO 매출 비중 25%+ 달성 시 영업이익률 10%대 조기 진입</li>
+            <li>현대차 글로벌 EV 신공장 물류 자동화 파트너 공식 지정</li>
+            <li>2027년 영업이익 추가 50%+ 성장 시 PER 재평가 및 목표주가 상향</li>
+        </ul>
+    </div>
+    <div class="risk-card">
+        <div class="risk-card-title bear">하락 시나리오 (Bear Case)</div>
+        <ul class="risk-list bear">
+            <li>반도체 Fab 투자 지연 → 클린룸 물류설비 신규 수주 공백 장기화</li>
+            <li>중국 AMR 저가 공세로 신흥시장 수주 가격 경쟁 극심화</li>
+            <li>원화 급강세 시 해외 프로젝트 마진 축소 — 믹스 개선 효과 상쇄</li>
+            <li>주요 고객사 물류 투자 축소로 수주 공백 기간 발생</li>
+            <li>글로벌 공급망 혼란으로 핵심 부품(LiDAR·모터) 조달 차질</li>
+            <li>ROE 개선 지연 시 성장주 멀티플 디레이팅 위험 상존</li>
+        </ul>
+    </div>
+</div>
+<div style="margin-top:32px;">
+    <div class="fin-section-title">핵심 모니터링 포인트</div>
+    <div class="card-grid cols-2" style="margin-top:0;">
+        <div class="card" style="padding:20px 24px;">
+            <div class="card-title" style="font-size:13.5px; margin-bottom:8px;"><i class="fa-solid fa-magnifying-glass-chart" style="color:var(--gold); margin-right:6px;"></i>분기별 확인 사항</div>
+            <div class="card-body" style="font-size:13px;">① 해외 수주 공시(총 수주잔고 변화 추이)<br>② 반도체 클린룸 사업부 매출 최초 인식 시점<br>③ 영업이익률 개선 추이(분기 OPM 7~8% 유지 여부)<br>④ MRO 매출 비중 트래킹(목표 20% 이상)</div>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+            <div class="card-title" style="font-size:13.5px; margin-bottom:8px;"><i class="fa-solid fa-calendar-check" style="color:var(--gold); margin-right:6px;"></i>중장기 이벤트 캘린더</div>
+            <div class="card-body" style="font-size:13px;">① 2026년 하반기 — 반도체 팹 클린룸 파일럿 성과 발표<br>② 2026년 연간 — 해외 수주 목표(전체 20%+) 달성 여부<br>③ 2027년 — MRO 매출 비중 20% 돌파 기대<br>④ 현대차 신공장(미국·인도) 자동화 수주 결과</div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:40px; padding:20px 24px; border:1px solid var(--border); background:var(--bg-elevated); font-size:12px; color:var(--text-muted); line-height:1.8;">
+    본 리포트는 <strong style="color:var(--text-secondary);">FLOVAH Advanced Analytics</strong> | 최종 업데이트: <span class="last-update-time">2026년 05월 18일 09:00 KST</span> 기준으로 작성된 정보 제공 목적의 분석 자료입니다.
+    본 자료에 포함된 전망 및 의견은 작성 시점의 판단에 기반하며 실제 결과와 다를 수 있습니다.
+    투자 결정은 반드시 본인의 판단과 책임 하에 이루어져야 하며, 본 자료는 특정 종목의 매수·매도를 권유하지 않습니다.
+</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-inner">
+    <div>
+        <div class="footer-brand">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            <span>FLOVAH Insights</span>
+        </div>
+        <div class="footer-copy">
+            본 리포트는 공개 정보 및 데이터를 기반으로 작성된 분석 자료입니다. 투자 판단의 최종 책임은 투자자 본인에게 있으며,
+            FLOVAH는 본 자료로 인한 투자 손실에 대해 어떠한 법적 책임도 지지 않습니다.<br>
+            &copy; 2026 FLOVAH Advanced Analytics. All rights reserved.
+        </div>
+    </div>
+    <!-- LAST-UPDATE-BLOCK -->
+    <div class="last-update-block">
+        <strong>LAST UPDATE</strong>
+        2026년 05월 18일 09:00 KST<br>
+        <span style="font-size:11px; color:var(--text-muted);">현대무벡스 (KOSDAQ: 319400)</span><br>
+        <span style="font-size:11px; color:var(--text-muted);">FLOVAH Insights Company Report</span>
+    </div>
+    <!-- /LAST-UPDATE-BLOCK -->
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function () {
+    var el = document.getElementById('scrollProgress');
+    if (!el) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    el.style.width = pct + '%';
+});
+</script>
+</body>
+</html>

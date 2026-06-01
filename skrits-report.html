@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK리츠 기업분석 리포트 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b;
+    --bg-card: #0f1014;
+    --bg-elevated: #141619;
+    --bg-hover: #191b1f;
+    --bg-surface: #111316;
+    --ink: #ede8df;
+    --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e;
+    --text-secondary: #7d7568;
+    --text-muted: #524c42;
+    --text-light: #9a9184;
+    --gold: #c9a962;
+    --gold-light: #dcc07a;
+    --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e;
+    --blue-dim: #465f7a;
+    --rule: #1e1f24;
+    --border: #1e1f24;
+    --accent: #c9a962;
+    --accent2: #5c7d9e;
+    --card-bg: #0f1014;
+    --dark-bg: #09090b;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+.site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: 60px;
+    background: rgba(9,9,11,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+}
+.header-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+}
+.header-logo img { height: 28px; }
+.header-logo span {
+    font-family: 'Orbit', sans-serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+.header-date { font-size: 13px; color: var(--text-muted); }
+.nav-side {
+    position: fixed; left: 0; top: 60px; bottom: 0; width: 220px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: 32px 0; z-index: 900; overflow-y: auto;
+}
+.nav-side a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 24px; font-size: 13px;
+    color: var(--text-secondary); text-decoration: none;
+    transition: all 0.25s; border-left: 3px solid transparent;
+}
+.nav-side a:hover { color: var(--ink); background: var(--bg-hover); }
+.nav-side a.active {
+    color: var(--gold); border-left-color: var(--gold);
+    background: var(--gold-glow);
+}
+.nav-side a i { width: 18px; text-align: center; font-size: 12px; }
+.main-content {
+    margin-left: 220px; padding: 100px 40px 60px; max-width: 1100px;
+}
+.report-section {
+    margin-bottom: 64px; opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.report-section.visible { opacity: 1; transform: translateY(0); }
+.section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--gold); margin-bottom: 12px;
+}
+.section-label i { font-size: 10px; }
+.section-title {
+    font-family: 'Orbit', sans-serif; font-size: 26px;
+    color: var(--ink-strong); margin-bottom: 8px; line-height: 1.4;
+}
+.section-divider {
+    width: 48px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 28px;
+}
+.card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px; margin-bottom: 20px;
+}
+.card-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.card-header i { color: var(--gold); font-size: 16px; }
+.card-header h3 { font-size: 16px; font-weight: 600; color: var(--ink); }
+.hero-area {
+    background: linear-gradient(135deg, rgba(201,169,98,0.06) 0%, rgba(92,125,158,0.04) 100%);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 48px 40px; margin-bottom: 36px; position: relative; overflow: hidden;
+}
+.hero-area::before {
+    content: ''; position: absolute; top: -50%; right: -20%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,169,98,0.06), transparent 70%);
+    pointer-events: none;
+}
+.hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,169,98,0.12); border: 1px solid var(--gold-dim);
+    border-radius: 20px; padding: 4px 14px;
+    font-size: 11px; color: var(--gold-light); margin-bottom: 16px;
+}
+.hero-company {
+    font-family: 'Orbit', sans-serif; font-size: 38px;
+    color: var(--ink-strong); margin-bottom: 4px;
+}
+.hero-ticker { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
+.hero-desc {
+    font-size: 15px; color: var(--text-body); line-height: 1.9; max-width: 700px;
+}
+.score-ring {
+    width: 100px; height: 100px; position: absolute; top: 40px; right: 48px;
+}
+.score-ring svg { width: 100%; height: 100%; }
+.score-ring .ring-bg { fill: none; stroke: var(--border); stroke-width: 6; }
+.score-ring .ring-fill { fill: none; stroke: var(--gold); stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset 1.5s ease; }
+.score-ring .score-text {
+    font-family: 'Orbit', sans-serif; font-size: 22px;
+    fill: var(--ink-strong); text-anchor: middle; dominant-baseline: central;
+}
+.score-ring .score-label { font-size: 9px; fill: var(--text-muted); text-anchor: middle; }
+.metric-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-bottom: 36px;
+}
+.metric-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px; text-align: center;
+    transition: border-color 0.3s;
+}
+.metric-item:hover { border-color: var(--gold-dim); }
+.metric-value {
+    font-family: 'Orbit', sans-serif; font-size: 24px;
+    color: var(--gold); margin-bottom: 4px;
+}
+.metric-label { font-size: 12px; color: var(--text-secondary); }
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+    content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--gold-dim), var(--border));
+}
+.timeline-item { position: relative; margin-bottom: 28px; padding-left: 20px; }
+.timeline-item::before {
+    content: ''; position: absolute; left: -25px; top: 8px;
+    width: 10px; height: 10px; background: var(--gold);
+    border-radius: 50%; box-shadow: 0 0 8px rgba(201,169,98,0.4);
+}
+.timeline-year {
+    font-family: 'Orbit', sans-serif; font-size: 14px;
+    color: var(--gold); margin-bottom: 2px;
+}
+.timeline-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table thead th {
+    text-align: left; padding: 12px 16px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600;
+}
+.data-table tbody td {
+    padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-body);
+}
+.data-table tbody tr:hover { background: var(--bg-hover); }
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.swot-cell {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+}
+.swot-cell h4 {
+    font-size: 14px; font-weight: 700; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+}
+.swot-cell ul { list-style: none; padding: 0; }
+.swot-cell li {
+    font-size: 13px; color: var(--text-body); padding: 6px 0;
+    padding-left: 16px; position: relative; line-height: 1.7;
+}
+.swot-cell li::before {
+    content: '\203a'; position: absolute; left: 0;
+    color: var(--gold); font-weight: 700;
+}
+.swot-s h4 { color: #5ab88f; }
+.swot-w h4 { color: #d47a7a; }
+.swot-o h4 { color: #5c9ed4; }
+.swot-t h4 { color: #d4a55c; }
+.fin-bar-wrap { margin-bottom: 22px; }
+.fin-bar-label {
+    display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;
+}
+.fin-bar-label span:first-child { color: var(--text-body); }
+.fin-bar-label span:last-child { color: var(--gold); font-weight: 600; }
+.fin-bar-track {
+    width: 100%; height: 10px; background: var(--bg-hover);
+    border-radius: 6px; overflow: hidden;
+}
+.fin-bar-fill {
+    height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    width: 0; transition: width 1.5s ease;
+}
+.bar-chart {
+    display: flex; align-items: flex-end; gap: 20px; height: 180px;
+    padding-top: 20px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+}
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.bar-rect {
+    width: 100%; max-width: 56px; border-radius: 4px 4px 0 0;
+    transition: height 1.5s ease; height: 0;
+}
+.bar-rect.gold { background: linear-gradient(to top, var(--gold-dim), var(--gold)); }
+.bar-rect.blue { background: linear-gradient(to top, var(--blue-dim), var(--blue)); }
+.bar-val { font-family: 'Orbit', sans-serif; font-size: 12px; color: var(--ink); }
+.bar-lab { font-size: 11px; color: var(--text-muted); text-align: center; }
+.insight-block {
+    background: linear-gradient(135deg, rgba(201,169,98,0.06), rgba(92,125,158,0.04));
+    border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
+    padding: 20px 24px; margin: 20px 0; font-size: 14px;
+    color: var(--text-body); line-height: 1.8;
+}
+.insight-block strong { color: var(--ink); }
+.tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; font-size: 11px; border-radius: 4px;
+    background: rgba(201,169,98,0.1); color: var(--gold);
+    border: 1px solid rgba(201,169,98,0.2);
+}
+.tag.blue {
+    background: rgba(92,125,158,0.1); color: var(--blue);
+    border-color: rgba(92,125,158,0.2);
+}
+.report-footer { margin-left: 220px; padding: 40px 0 60px; }
+.footer-inner {
+    max-width: 1100px; margin: 0 auto; padding: 40px;
+    text-align: center; border-top: 1px solid var(--border);
+}
+.footer-inner .logo-text {
+    font-family: 'Orbit', sans-serif; font-size: 16px;
+    color: var(--gold-dim); margin-bottom: 8px;
+}
+.footer-inner p { font-size: 11px; color: var(--text-muted); line-height: 1.8; }
+@media (max-width: 900px) {
+    .nav-side { display: none; }
+    .main-content, .report-footer { margin-left: 0; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .hero-area { padding: 32px 24px; }
+    .score-ring { position: static; margin-bottom: 20px; }
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    .site-header { padding: 0 16px; }
+    .main-content { padding: 80px 16px 40px; }
+    .metric-grid { grid-template-columns: 1fr; }
+    .bar-chart { gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="index.html" class="header-logo">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <span class="header-date">June 1, 2026</span>
+</header>
+
+<nav class="nav-side" id="sideNav">
+    <a href="#overview" class="active" data-section="overview"><i class="fas fa-building"></i> 기업개요</a>
+    <a href="#tech" data-section="tech"><i class="fas fa-microchip"></i> 기술분석</a>
+    <a href="#market" data-section="market"><i class="fas fa-chart-line"></i> 시장분석</a>
+    <a href="#competitors" data-section="competitors"><i class="fas fa-users"></i> 경쟁사분석</a>
+    <a href="#swot" data-section="swot"><i class="fas fa-th-large"></i> SWOT 분석</a>
+    <a href="#strategy" data-section="strategy"><i class="fas fa-chess"></i> 전략분석</a>
+    <a href="#financials" data-section="financials"><i class="fas fa-coins"></i> 재무분석</a>
+    <a href="#conclusion" data-section="conclusion"><i class="fas fa-flag-checkered"></i> 결론</a>
+</nav>
+
+<main class="main-content">
+
+<!-- 1. 기업개요 -->
+<section class="report-section" id="overview">
+    <div class="section-label"><i class="fas fa-building"></i> COMPANY OVERVIEW</div>
+    <h2 class="section-title">기업개요</h2>
+    <div class="section-divider"></div>
+
+    <div class="hero-area">
+        <div class="hero-badge"><i class="fas fa-star"></i> FLOVAH 종합평가</div>
+        <h1 class="hero-company">SK리츠</h1>
+        <p class="hero-ticker">KOSPI 395400 &middot; 부동산투자신탁(REITs) &middot; 설립 2021년</p>
+        <p class="hero-desc">
+            SK리츠는 SK그룹의 핵심 부동산 자산을 기초로 설립된 상장 리츠(REITs)입니다.
+            종로타워, SK서린빌딩, SK-P타워 등 서울 핵심 입지의 프라임 오피스를 보유하며,
+            연 4회(3월, 6월, 9월, 12월) 안정적인 배당을 실시합니다. 2026년 Q2 기준 주당 배당금 66원,
+            배당수익률 약 5% 수준으로 국내 상장 리츠 중 대표적인 배당형 자산으로 자리매김하고 있습니다.
+            SK그룹이라는 강력한 스폰서를 배경으로 장기 임대 계약 기반의 안정적 현금흐름을 확보합니다.
+        </p>
+        <div class="score-ring">
+            <svg viewBox="0 0 100 100">
+                <circle class="ring-bg" cx="50" cy="50" r="42"/>
+                <circle class="ring-fill" cx="50" cy="50" r="42"
+                    stroke-dasharray="263.9" stroke-dashoffset="263.9"
+                    data-target="100.3" transform="rotate(-90 50 50)"/>
+                <text class="score-text" x="50" y="46">62</text>
+                <text class="score-label" x="50" y="62">/ 100</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="metric-grid">
+        <div class="metric-item">
+            <div class="metric-value">3.5조</div>
+            <div class="metric-label">자산총액</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">1.8조</div>
+            <div class="metric-label">시가총액</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">~5.0%</div>
+            <div class="metric-label">배당수익률</div>
+        </div>
+        <div class="metric-item">
+            <div class="metric-value">2021년</div>
+            <div class="metric-label">설립연도</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-history"></i><h3>핵심 연혁</h3></div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2021</div>
+                <div class="timeline-desc">SK리츠 설립 및 코스피 시장 상장. SK그룹의 부동산 자산 유동화 전략의 일환으로 출범. 국내 대기업 스폰서형 리츠의 대표 사례로 시장의 큰 관심을 받으며 IPO 완료.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-desc">종로타워 편입 완료. 서울 종로구 소재 랜드마크 오피스 빌딩을 포트폴리오에 추가. 임대 면적 약 54,000평, 서울 도심 핵심 입지의 프라임급 자산으로 포트폴리오 가치를 크게 상승.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-desc">SK서린빌딩 추가 편입. SK그룹 본사 사옥으로 사용되는 서린빌딩은 장기 임대차 계약이 체결되어 있어 안정적 임대수익의 핵심 원천. 임대율 100% 유지.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-desc">유상증자 실시. 신규 자산 편입을 위한 자금 조달 목적의 유상증자를 진행. 기존 주주들의 참여율이 높았으며, 시장에서도 성장 스토리에 대한 신뢰를 확인.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-desc">SK-P타워 편입 완료. 서울 핵심 업무 지구 소재의 대형 오피스 빌딩 편입으로 임대수익 본격 반영 시작. 자산총액 3.5조원 돌파, 포트폴리오 다각화 진전.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-desc">배당 정상화 및 안정적 분배금 체계 확립. Q2 배당 66원/주 결정. 배당수익률 약 5% 수준으로 국내 상장 리츠 중 상위권의 배당 매력 확보.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-city"></i><h3>보유 자산 현황</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠의 핵심 자산 포트폴리오는 서울 도심(CBD) 및 주요 업무 지구에 위치한 프라임급 오피스 빌딩으로 구성됩니다.
+            <strong style="color:var(--ink);">종로타워</strong>는 서울 종로구 소재의 지상 33층 규모 랜드마크 건물로,
+            약 54,000평의 임대 면적을 보유하고 있으며 다수의 우량 테넌트가 입주해 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">SK서린빌딩</strong>은 SK그룹 본사 사옥으로, 장기 책임 임대차 계약이 체결되어 있어
+            공실 리스크가 사실상 제로에 가깝습니다. SK그룹의 신용등급(AA+)에 기반한 안정적인 임대 수입이 특징입니다.
+            <strong style="color:var(--ink);">SK-P타워</strong>는 2025년 신규 편입된 대형 오피스로,
+            편입 이후 임대수익이 본격적으로 반영되면서 전체 포트폴리오의 수익성을 향상시키고 있습니다.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag"><i class="fas fa-building"></i> 종로타워</span>
+            <span class="tag"><i class="fas fa-building"></i> SK서린빌딩</span>
+            <span class="tag"><i class="fas fa-building"></i> SK-P타워</span>
+            <span class="tag blue"><i class="fas fa-map-marker-alt"></i> 서울 CBD</span>
+            <span class="tag blue"><i class="fas fa-percentage"></i> 배당수익률 5%</span>
+        </div>
+    </div>
+</section>
+
+<!-- 2. 기술분석 -->
+<section class="report-section" id="tech">
+    <div class="section-label"><i class="fas fa-microchip"></i> TECHNOLOGY ANALYSIS</div>
+    <h2 class="section-title">기술분석</h2>
+    <div class="section-divider"></div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-cogs"></i><h3>자산운용 및 관리 역량</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠의 자산운용은 전문 AMC(자산관리회사)를 통해 이루어지며, SK그룹의 부동산 관리 노하우를 활용합니다.
+            프라퍼티 매니지먼트(PM) 역량이 핵심이며, 건물의 유지보수, 테넌트 관리, 임대료 협상, 빌딩 운영 효율화 등
+            전방위적인 자산관리 서비스를 제공합니다. 특히 에너지 효율화, 스마트 빌딩 기술 도입 등을 통해
+            운영비용 절감과 ESG 경영을 동시에 추구하고 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            빌딩 자동화 시스템(BAS), IoT 기반 에너지 관리, 스마트 주차 시스템 등
+            첨단 프롭테크(PropTech) 기술의 적용을 확대하고 있으며, 이를 통해 건물의 운영 효율성과
+            테넌트 만족도를 동시에 향상시키고 있습니다. 종로타워에는 AI 기반 에너지 최적화 시스템이 도입되어
+            연간 에너지 비용을 약 15% 절감한 것으로 알려져 있습니다.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-leaf"></i><h3>ESG 및 친환경 건물 관리</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠는 ESG 경영을 자산운용의 핵심 원칙으로 삼고 있습니다. 보유 건물의 에너지 효율 등급 향상,
+            친환경 인증(LEED, G-SEED) 취득, 탄소 배출량 감축 등을 적극 추진하고 있으며,
+            이를 통해 글로벌 ESG 투자자들의 관심을 유도하고 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            종로타워는 국내 녹색건축인증(G-SEED) 우수 등급을 보유하고 있으며,
+            SK서린빌딩은 에너지 효율 1등급을 유지합니다. 향후 편입 예정 자산에 대해서도
+            ESG 평가 기준을 투자 결정의 핵심 요소로 반영하여, 지속가능한 포트폴리오 구축을 목표로 합니다.
+            재생에너지 사용 비율 확대, 수자원 절약 설비 설치, 폐기물 재활용률 향상 등의 구체적 목표도 설정되어 있습니다.
+        </p>
+        <div class="insight-block">
+            <strong><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:6px;"></i> FLOVAH 인사이트:</strong>
+            ESG 친환경 건물 관리는 단순한 비용이 아니라 장기적 자산가치 보전의 핵심입니다.
+            글로벌 기관투자자들의 ESG 투자 기준이 강화되면서, 친환경 인증 보유 건물의 프리미엄이 확대되고 있습니다.
+            SK리츠의 ESG 경영은 장기 투자 매력도를 높이는 긍정적 요인입니다.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-chart-line"></i><h3>임대차 관리 전략</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠의 임대차 관리 전략은 '장기 책임 임대 + 다각화된 테넌트 포트폴리오'를 핵심으로 합니다.
+            SK서린빌딩의 경우 SK그룹과의 장기(10년 이상) 책임 임대차 계약이 체결되어 있어,
+            경기 변동에 관계없이 안정적인 임대 수입이 보장됩니다.
+            이는 리츠 투자자에게 채권 유사한(bond-like) 현금흐름을 제공합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            종로타워는 다수의 테넌트로 구성되어 있어 특정 테넌트 의존도가 낮으며,
+            금융기관, 법률사무소, IT기업 등 우량 테넌트 비중이 높습니다.
+            현재 전체 포트폴리오의 평균 임대율은 약 98% 이상을 유지하고 있으며,
+            잔여 임대차 기간(WALE)은 약 7년으로 중장기적 수익 안정성이 확보되어 있습니다.
+            SK-P타워 편입 이후 포트폴리오의 지역적 다각화도 한층 강화되었습니다.
+        </p>
+    </div>
+</section>
+
+<!-- 3. 시장분석 -->
+<section class="report-section" id="market">
+    <div class="section-label"><i class="fas fa-chart-line"></i> MARKET ANALYSIS</div>
+    <h2 class="section-title">시장분석</h2>
+    <div class="section-divider"></div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-city"></i><h3>국내 REITs 시장 현황</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            국내 상장 리츠 시장은 2026년 기준 총 시가총액 약 15조원 규모로, 꾸준한 성장세를 보이고 있습니다.
+            기관투자자뿐 아니라 개인투자자들의 배당형 자산에 대한 관심이 높아지면서,
+            리츠는 주식과 채권의 중간적 특성을 가진 대체투자 상품으로 자리매김하고 있습니다.
+            한국은행 기준금리 2.50% 동결 속에서 하반기 인하 기대감이 리츠 섹터에 우호적으로 작용합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            오피스 리츠는 국내 상장 리츠 시장에서 가장 큰 비중을 차지하며,
+            서울 도심 프라임 오피스 시장의 공실률은 약 3~5% 수준으로 역사적 저점에 가까운 상태입니다.
+            오피스 임대료 상승세가 지속되면서 기존 임대차 갱신 시 rent uplift가 기대됩니다.
+            SK리츠와 같은 스폰서형 리츠는 자산 편입 파이프라인의 가시성이 높아 시장에서 프리미엄을 부여받고 있습니다.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-home"></i><h3>상업용 부동산 시장 동향</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            서울 오피스 시장은 2026년에도 견조한 임대 시장을 유지하고 있습니다. 프라임급 오피스의 공실률은
+            3% 미만으로, 신규 공급 물량 부족과 기업들의 오피스 복귀(Return to Office) 트렌드가
+            수요를 뒷받침하고 있습니다. 임대료는 전년 대비 약 3~5% 상승하여 실질적인 NOI(순영업수익) 증가에 기여합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            금리 인하 기대는 상업용 부동산 Cap Rate(자본환원율) 하락 요인으로 작용하며,
+            이는 보유 자산의 가치 상승(밸류에이션 향상)으로 이어질 수 있습니다.
+            다만 경기 둔화 시 기업 수요 감소, 원격근무 확대에 따른 장기적 오피스 수요 구조 변화,
+            그리고 신규 공급 물량에 따른 공실률 상승 가능성은 모니터링이 필요한 리스크 요인입니다.
+        </p>
+        <div class="insight-block">
+            <strong><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:6px;"></i> FLOVAH 인사이트:</strong>
+            한국은행의 기준금리 2.50% 동결과 하반기 인하 기대는 리츠 섹터에 우호적 환경을 조성합니다.
+            금리 인하 시 리츠의 상대적 배당 매력이 부각되며, 동시에 보유 자산의 감정가치 상승도 기대됩니다.
+            SK리츠는 이러한 금리 사이클에서 수혜를 받을 수 있는 대표적 상장 리츠입니다.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-chart-area"></i><h3>글로벌 REITs 비교</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            글로벌 리츠 시장은 미국을 중심으로 약 2,000조원 이상의 시가총액을 형성하고 있으며,
+            한국 리츠 시장은 아직 초기 성장 단계에 있습니다. 일본 J-REIT, 싱가포르 S-REIT와 비교하면
+            국내 리츠 시장의 제도적 성숙도와 시장 규모는 아직 개선 여지가 많습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            SK리츠의 배당수익률 약 5%는 글로벌 오피스 리츠 평균(3~4%)을 상회하는 수준으로,
+            한국 시장의 금리 프리미엄과 성장 잠재력을 감안하면 매력적인 수준입니다.
+            다만 글로벌 리츠 대비 유동성과 시장 깊이가 부족하며, 세제 혜택 등 제도적 인프라에서
+            차이가 있어 글로벌 기관투자자 유치에는 한계가 존재합니다.
+            정부의 리츠 활성화 정책이 지속적으로 추진되면서 이러한 격차는 점진적으로 좁혀질 전망입니다.
+        </p>
+    </div>
+</section>
+
+<!-- 4. 경쟁사분석 -->
+<section class="report-section" id="competitors">
+    <div class="section-label"><i class="fas fa-users"></i> COMPETITIVE ANALYSIS</div>
+    <h2 class="section-title">경쟁사분석</h2>
+    <div class="section-divider"></div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-table"></i><h3>주요 경쟁사 비교</h3></div>
+        <div style="overflow-x:auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>기업명</th>
+                        <th>시가총액</th>
+                        <th>자산유형</th>
+                        <th>자산규모</th>
+                        <th>배당수익률</th>
+                        <th>강점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color:var(--gold);font-weight:600;">SK리츠</td>
+                        <td>1.8조원</td>
+                        <td>오피스</td>
+                        <td>3.5조원</td>
+                        <td>5.0%</td>
+                        <td>SK그룹 스폰서, 프라임 오피스</td>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--ink);">맥쿼리인프라</td>
+                        <td>6.5조원</td>
+                        <td>인프라(도로/항만)</td>
+                        <td>8.2조원</td>
+                        <td>5.8%</td>
+                        <td>독점적 인프라 자산, 물가연동 수익</td>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--ink);">ESR켄달스퀘어리츠</td>
+                        <td>2.1조원</td>
+                        <td>물류센터</td>
+                        <td>4.8조원</td>
+                        <td>6.2%</td>
+                        <td>이커머스 성장 수혜, 물류 인프라</td>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--ink);">롯데리츠</td>
+                        <td>0.9조원</td>
+                        <td>리테일/호텔</td>
+                        <td>2.8조원</td>
+                        <td>7.1%</td>
+                        <td>롯데그룹 스폰서, 리테일 자산</td>
+                    </tr>
+                    <tr>
+                        <td style="color:var(--ink);">신한알파리츠</td>
+                        <td>1.2조원</td>
+                        <td>오피스/리테일</td>
+                        <td>2.5조원</td>
+                        <td>5.5%</td>
+                        <td>신한그룹 네트워크, 분산 포트폴리오</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-crosshairs"></i><h3>경쟁 포지셔닝</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠는 국내 상장 리츠 중 '대기업 스폰서형 오피스 리츠'로 명확하게 포지셔닝되어 있습니다.
+            맥쿼리인프라가 인프라 자산에, ESR켄달스퀘어리츠가 물류센터에 특화된 반면,
+            SK리츠는 서울 도심 프라임 오피스에 집중하여 차별화된 투자 포지션을 구축합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK그룹이라는 강력한 스폰서의 존재는 SK리츠의 핵심 경쟁 우위입니다.
+            스폰서 그룹이 장기 임차인이자 자산 파이프라인 제공자로서 이중적 역할을 수행하기 때문에,
+            임대 안정성과 성장 가시성이 동시에 확보됩니다. 롯데리츠도 유사한 스폰서 모델을 채택하고 있으나,
+            리테일 자산 중심이라는 점에서 오피스 중심의 SK리츠와 리스크 프로파일이 상이합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            배당수익률 측면에서 SK리츠의 약 5%는 업계 평균 수준이며,
+            ESR켄달스퀘어리츠(6.2%)나 롯데리츠(7.1%)보다는 낮습니다.
+            다만 자산 품질과 임대 안정성을 감안하면, 위험 조정 수익률(risk-adjusted return) 기준으로는
+            경쟁력 있는 수준으로 평가됩니다. NAV 대비 약 15% 할인 거래되고 있어 자산가치 대비 저평가 상태입니다.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-balance-scale"></i><h3>경쟁 우위 요인</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">1. SK그룹 스폰서 효과:</strong>
+            SK그룹(연결 매출 약 200조원, 신용등급 AA+)이라는 강력한 스폰서는
+            장기 임대 안정성, 자산 편입 파이프라인, 그리고 시장 신뢰도 측면에서 핵심 경쟁 우위입니다.
+            SK서린빌딩의 장기 책임 임대차 계약은 경기 변동과 무관한 안정적 현금흐름을 보장합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">2. 프라임 입지의 자산 포트폴리오:</strong>
+            서울 도심(CBD)의 핵심 입지에 위치한 프라임급 오피스만으로 포트폴리오를 구성하여,
+            자산 품질 측면에서 국내 상장 리츠 중 최상위 수준을 유지합니다.
+            이러한 프라임 자산은 경기 하락기에도 상대적으로 높은 임대율과 임대료를 유지하는 방어적 특성을 보입니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            <strong style="color:var(--ink);">3. 안정적 배당 정책:</strong>
+            연 4회 정기 배당으로 투자자에게 예측 가능한 현금흐름을 제공합니다.
+            2026년 Q2 배당 66원/주 기준 연간 배당수익률 약 5% 수준이며,
+            임대료 인상에 연동한 배당금 점진적 증가가 기대됩니다.
+        </p>
+    </div>
+</section>
+
+<!-- 5. SWOT 분석 -->
+<section class="report-section" id="swot">
+    <div class="section-label"><i class="fas fa-th-large"></i> SWOT ANALYSIS</div>
+    <h2 class="section-title">SWOT 분석</h2>
+    <div class="section-divider"></div>
+
+    <div class="swot-grid">
+        <div class="swot-cell swot-s">
+            <h4><i class="fas fa-arrow-up"></i> 강점 (Strengths)</h4>
+            <ul>
+                <li>SK그룹(AA+) 스폰서 &mdash; 장기 임대 안정성 및 자산 파이프라인 확보</li>
+                <li>서울 도심 프라임 오피스 포트폴리오 &mdash; 자산 품질 최상위</li>
+                <li>임대율 98% 이상 유지, 잔여 임대차 기간(WALE) 약 7년</li>
+                <li>연 4회 안정적 배당 &mdash; 배당수익률 약 5%, 예측 가능한 현금흐름</li>
+                <li>SK-P타워 편입으로 포트폴리오 다각화 및 수익 기반 확대</li>
+                <li>ESG 경영 적극 추진 &mdash; 친환경 인증, 에너지 효율화 투자</li>
+            </ul>
+        </div>
+        <div class="swot-cell swot-w">
+            <h4><i class="fas fa-arrow-down"></i> 약점 (Weaknesses)</h4>
+            <ul>
+                <li>SK그룹 의존도 과다 &mdash; 스폰서 리스크와 이해상충 가능성</li>
+                <li>오피스 자산 집중 &mdash; 자산 유형 다각화 부족, 오피스 사이클 민감</li>
+                <li>NAV 대비 15% 할인 거래 &mdash; 시장 인식 개선 필요</li>
+                <li>유상증자에 따른 주당 순자산(NAV) 희석 우려</li>
+                <li>국내 리츠 시장의 유동성 부족 &mdash; 거래 회전율 낮음</li>
+            </ul>
+        </div>
+        <div class="swot-cell swot-o">
+            <h4><i class="fas fa-expand-arrows-alt"></i> 기회 (Opportunities)</h4>
+            <ul>
+                <li>기준금리 인하 기대 &mdash; 리츠 배당 매력 부각 및 자산가치 상승</li>
+                <li>서울 오피스 임대료 상승 추세 &mdash; NOI 증가를 통한 배당 확대 가능</li>
+                <li>SK그룹 추가 자산 편입 파이프라인 &mdash; 외형 성장 가시성</li>
+                <li>국내 리츠 제도 개선 &mdash; 세제 혜택 확대, 투자자 저변 확대</li>
+                <li>글로벌 기관투자자 유치 &mdash; ESG 인증 자산의 프리미엄 확대</li>
+                <li>Return to Office 트렌드 &mdash; 오피스 수요 회복 및 임대율 개선</li>
+            </ul>
+        </div>
+        <div class="swot-cell swot-t">
+            <h4><i class="fas fa-exclamation-triangle"></i> 위협 (Threats)</h4>
+            <ul>
+                <li>금리 인상 리스크 &mdash; 리츠 매력도 하락 및 차입 비용 증가</li>
+                <li>원격근무 확대에 따른 장기적 오피스 수요 구조 변화</li>
+                <li>신규 오피스 공급 증가 &mdash; 공실률 상승 및 임대료 하락 압력</li>
+                <li>경기 둔화 시 기업 오피스 면적 축소 가능성</li>
+                <li>유상증자를 통한 성장 시 기존 주주 가치 희석 리스크</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="insight-block" style="margin-top:24px;">
+        <strong><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:6px;"></i> FLOVAH 종합 평가:</strong>
+        SK리츠의 핵심 투자 매력은 SK그룹 스폰서 기반의 안정적 배당과 프라임 오피스 자산입니다.
+        금리 인하 사이클 진입 시 배당 매력이 부각되며 자산가치 상승도 기대할 수 있으나,
+        오피스 섹터 집중과 스폰서 의존도가 구조적 리스크 요인입니다.
+        보수적 인컴 투자자에게 적합한 배당형 자산으로 평가됩니다.
+    </div>
+</section>
+
+<!-- 6. 전략분석 -->
+<section class="report-section" id="strategy">
+    <div class="section-label"><i class="fas fa-chess"></i> STRATEGY ANALYSIS</div>
+    <h2 class="section-title">전략분석</h2>
+    <div class="section-divider"></div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-bullseye"></i><h3>포트폴리오 성장 전략</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠의 핵심 성장 전략은 SK그룹의 부동산 자산 파이프라인을 활용한 자산 편입 확대입니다.
+            SK그룹은 전국에 다수의 사옥, 데이터센터, 물류시설 등을 보유하고 있으며,
+            이 중 적격 자산을 단계적으로 SK리츠에 편입하여 포트폴리오를 확대할 계획입니다.
+            이는 시장에서 '빌트인 성장(built-in growth)'으로 인식되며, 순수 외부 자산 취득 대비 리스크가 낮습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            2025년 SK-P타워 편입에 이어, 향후 2~3년 내 추가 1~2개 자산의 편입 가능성이 거론되고 있습니다.
+            편입 대상 자산은 주로 서울 및 수도권의 프라임급 오피스이며,
+            데이터센터와 같은 특수 목적 부동산으로의 다각화도 중장기적으로 검토되고 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            자산 편입 시 유상증자를 통한 자금 조달이 필요하나, 이는 기존 주주의 가치 희석 리스크를 수반합니다.
+            따라서 편입 자산의 Cap Rate가 기존 포트폴리오를 상회하여 주당 배당금이 증가하는
+            '배당 성장형(accretive)' 편입만을 추진하는 것이 핵심 원칙입니다.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-coins"></i><h3>배당 정책 및 주주환원</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠는 리츠법에 따라 배당가능이익의 90% 이상을 의무적으로 배당하며,
+            연 4회(3월, 6월, 9월, 12월) 정기 배당을 실시합니다. 2026년 Q2 주당 배당금은 66원으로,
+            연환산 배당수익률은 약 5.0% 수준입니다. 이는 3년 만기 국채 수익률(약 3.0%) 대비
+            약 200bp의 스프레드를 제공하여, 합리적인 위험 프리미엄을 반영하고 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            향후 배당 성장은 (1)임대료 인상에 따른 NOI 증가, (2)신규 자산 편입의 배당 성장 효과,
+            (3)차입금 리파이낸싱을 통한 금융비용 절감 등에 의해 견인될 전망입니다.
+            특히 서울 오피스 임대료가 연 3~5% 상승하는 현 시장 환경에서,
+            기존 임대차 갱신 시 임대료 인상분이 배당금 증가로 직접 연결됩니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            주주 소통 측면에서는 분기별 IR 자료 발표, 투자설명회 개최, 그리고 홈페이지를 통한
+            실시간 자산 정보 공개 등 투명한 정보 제공 정책을 유지하고 있습니다.
+            이를 통해 개인투자자와 기관투자자 모두에게 신뢰를 쌓아가고 있습니다.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-rocket"></i><h3>자산 다각화 전략</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">데이터센터 편입 검토:</strong>
+            SK그룹은 SK텔레콤, SK브로드밴드 등을 통해 다수의 데이터센터를 운영하고 있습니다.
+            클라우드 &middot; AI 수요 폭증에 따라 데이터센터 자산의 가치가 급등하고 있으며,
+            SK리츠가 이러한 특수 목적 자산을 편입할 경우 포트폴리오의 성장성과 다각화가 크게 강화될 수 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">지역 다각화:</strong>
+            현재 서울 도심(CBD)에 집중된 포트폴리오를 판교, 마곡, 상암 등
+            신흥 업무 지구로 확대하는 전략도 검토되고 있습니다.
+            이를 통해 특정 지역의 공실률 변동에 대한 포트폴리오 리스크를 분산할 수 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;">
+            <strong style="color:var(--ink);">해외 자산 편입 가능성:</strong>
+            중장기적으로 SK그룹의 해외 사업장(미국, 동남아 등) 부동산 자산의 편입도
+            이론적으로 가능하나, 현재 단계에서는 국내 자산 확대에 집중하고 있습니다.
+            해외 자산 편입 시 환율 리스크, 규제 차이 등 추가적인 고려 사항이 존재합니다.
+        </p>
+    </div>
+</section>
+
+<!-- 7. 재무분석 -->
+<section class="report-section" id="financials">
+    <div class="section-label"><i class="fas fa-coins"></i> FINANCIAL ANALYSIS</div>
+    <h2 class="section-title">재무분석</h2>
+    <div class="section-divider"></div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-chart-bar"></i><h3>핵심 재무 지표</h3></div>
+        <div class="fin-bar-wrap">
+            <div class="fin-bar-label"><span>임대수익</span><span>1,200억원</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill" data-width="78"></div></div>
+        </div>
+        <div class="fin-bar-wrap">
+            <div class="fin-bar-label"><span>당기순이익</span><span>450억원</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill" data-width="55"></div></div>
+        </div>
+        <div class="fin-bar-wrap">
+            <div class="fin-bar-label"><span>배당수익률</span><span>5.0%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill" data-width="65"></div></div>
+        </div>
+        <div class="fin-bar-wrap">
+            <div class="fin-bar-label"><span>NAV 대비 할인율</span><span>15%</span></div>
+            <div class="fin-bar-track"><div class="fin-bar-fill" data-width="38"></div></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-chart-area"></i><h3>연도별 임대수익 추이</h3></div>
+        <div class="bar-chart" id="barChart1">
+            <div class="bar-col"><div class="bar-val">320억</div><div class="bar-rect gold" data-height="27"></div><div class="bar-lab">2021</div></div>
+            <div class="bar-col"><div class="bar-val">580억</div><div class="bar-rect gold" data-height="48"></div><div class="bar-lab">2022</div></div>
+            <div class="bar-col"><div class="bar-val">780억</div><div class="bar-rect gold" data-height="65"></div><div class="bar-lab">2023</div></div>
+            <div class="bar-col"><div class="bar-val">950억</div><div class="bar-rect gold" data-height="79"></div><div class="bar-lab">2024</div></div>
+            <div class="bar-col"><div class="bar-val">1,200억</div><div class="bar-rect gold" data-height="100"></div><div class="bar-lab">2025E</div></div>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:right;">* 2025E는 SK-P타워 편입 효과 반영 추정치</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-percentage"></i><h3>주요 투자 지표</h3></div>
+        <div class="bar-chart" id="barChart2">
+            <div class="bar-col"><div class="bar-val">5.0%</div><div class="bar-rect blue" data-height="65"></div><div class="bar-lab">배당수익률</div></div>
+            <div class="bar-col"><div class="bar-val">4.2%</div><div class="bar-rect blue" data-height="55"></div><div class="bar-lab">Cap Rate</div></div>
+            <div class="bar-col"><div class="bar-val">15%</div><div class="bar-rect blue" data-height="38"></div><div class="bar-lab">NAV 할인율</div></div>
+            <div class="bar-col"><div class="bar-val">45%</div><div class="bar-rect blue" data-height="58"></div><div class="bar-lab">LTV 비율</div></div>
+            <div class="bar-col"><div class="bar-val">98%</div><div class="bar-rect blue" data-height="95"></div><div class="bar-lab">임대율</div></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-file-invoice-dollar"></i><h3>재무 상세 분석</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠의 2025년 연간 임대수익은 약 1,200억원으로 추정되며, 이는 SK-P타워 편입에 따른
+            본격적인 임대수익 반영이 반영된 수치입니다. 당기순이익은 약 450억원, FFO(Funds From Operations)는
+            약 520억원으로, 안정적인 배당 재원을 확보하고 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            LTV(Loan to Value) 비율은 약 45% 수준으로, 국내 상장 리츠 평균(50~55%)을 하회하여
+            재무 건전성이 양호합니다. 차입금의 대부분은 고정금리로 조달되어 있어
+            금리 변동에 따른 이자비용 리스크가 제한적입니다.
+            평균 차입 금리는 약 3.8%로, 자산 Cap Rate(4.2%) 대비 양의 스프레드를 유지하고 있어
+            레버리지 효과가 배당금 증가에 기여하고 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            NAV(순자산가치)는 주당 약 6,200원으로 추정되며, 현재 주가는 이를 약 15% 하회하여 거래되고 있습니다.
+            이는 금리 불확실성과 리츠 시장의 전반적 센티먼트가 반영된 것이나,
+            금리 인하 사이클 진입 시 NAV 대비 할인폭 축소가 기대됩니다.
+        </p>
+        <div class="insight-block">
+            <strong><i class="fas fa-lightbulb" style="color:var(--gold);margin-right:6px;"></i> FLOVAH 인사이트:</strong>
+            SK리츠의 NAV 대비 15% 할인은 국내 오피스 리츠의 평균적인 할인율과 유사하나,
+            자산 품질과 스폰서 신용도를 감안하면 할인폭 축소 여지가 있습니다.
+            금리 인하가 현실화되면 배당 매력 부각 &rarr; 주가 상승 &rarr; NAV 할인 축소의 선순환이 기대됩니다.
+            다만 유상증자 가능성은 NAV 희석 요인으로 주시해야 합니다.
+        </div>
+    </div>
+</section>
+
+<!-- 8. 결론 -->
+<section class="report-section" id="conclusion">
+    <div class="section-label"><i class="fas fa-flag-checkered"></i> CONCLUSION</div>
+    <h2 class="section-title">결론</h2>
+    <div class="section-divider"></div>
+
+    <div class="card">
+        <div class="card-header"><i class="fas fa-gavel"></i><h3>FLOVAH 종합 의견</h3></div>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            SK리츠(KOSPI 395400)는 SK그룹 스폰서 기반의 국내 대표 상장 오피스 리츠입니다.
+            종로타워, SK서린빌딩, SK-P타워 등 서울 도심 프라임 오피스를 보유하며,
+            연 4회 안정적 배당(배당수익률 약 5%)을 실시하는 인컴형 투자 자산입니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">투자 매력:</strong>
+            SK그룹의 장기 임대 보장, 프라임 입지의 우량 자산, 그리고 약 5%의 안정적 배당수익률이
+            핵심 투자 포인트입니다. NAV 대비 15% 할인 거래는 자산가치 대비 저평가를 의미하며,
+            금리 인하 사이클 진입 시 배당 매력 부각과 자산가치 상승의 이중 수혜가 기대됩니다.
+            SK그룹의 추가 자산 편입 파이프라인은 외형 성장의 가시성을 제공합니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">리스크 요인:</strong>
+            금리 인상 시 리츠 매력도 하락 및 차입 비용 증가, 원격근무 확대에 따른 장기적 오피스 수요 변화,
+            유상증자를 통한 성장 시 기존 주주 가치 희석, 그리고 SK그룹 의존도 과다에 따른
+            스폰서 리스크가 주요 하방 요인입니다. 또한 국내 리츠 시장의 유동성 부족으로
+            대량 매도 시 가격 충격이 발생할 수 있습니다.
+        </p>
+        <p style="color:var(--text-body);line-height:1.9;margin-bottom:16px;">
+            <strong style="color:var(--ink);">종합 평가:</strong>
+            FLOVAH 종합점수 62점/100점으로, 안정적 배당과 자산 품질이 우수하나
+            성장성 제한과 구조적 리스크 요인이 감점됩니다.
+            보수적 인컴 투자자, 배당 수익을 중시하는 장기 투자자에게 적합한 포트폴리오 편입 자산이며,
+            금리 인하 시기에 전술적 비중 확대를 고려할 수 있는 종목입니다.
+        </p>
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,rgba(201,169,98,0.08),rgba(92,125,158,0.06));border-color:var(--gold-dim);">
+        <div style="text-align:center;padding:16px 0;">
+            <div style="font-family:'Orbit',sans-serif;font-size:14px;color:var(--text-muted);margin-bottom:8px;">FLOVAH SCORE</div>
+            <div style="font-family:'Orbit',sans-serif;font-size:52px;color:var(--gold);line-height:1;">62</div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">/ 100</div>
+            <div style="display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap;">
+                <div style="text-align:center;"><div style="font-size:20px;color:var(--ink);font-family:'Orbit',sans-serif;">55</div><div style="font-size:11px;color:var(--text-muted);">성장성</div></div>
+                <div style="text-align:center;"><div style="font-size:20px;color:var(--ink);font-family:'Orbit',sans-serif;">68</div><div style="font-size:11px;color:var(--text-muted);">수익성</div></div>
+                <div style="text-align:center;"><div style="font-size:20px;color:var(--ink);font-family:'Orbit',sans-serif;">78</div><div style="font-size:11px;color:var(--text-muted);">안정성</div></div>
+                <div style="text-align:center;"><div style="font-size:20px;color:var(--ink);font-family:'Orbit',sans-serif;">72</div><div style="font-size:11px;color:var(--text-muted);">주주환원</div></div>
+                <div style="text-align:center;"><div style="font-size:20px;color:var(--ink);font-family:'Orbit',sans-serif;">48</div><div style="font-size:11px;color:var(--text-muted);">밸류에이션</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:24px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;">
+        <p style="font-size:11px;color:var(--text-muted);line-height:1.8;text-align:center;">
+            본 리포트는 FLOVAH Insights의 독자적 분석에 기반하며, 특정 종목에 대한 투자 권유가 아닙니다.<br>
+            투자 결정은 본인의 판단과 책임 하에 이루어져야 하며, FLOVAH는 투자 결과에 대해 책임을 지지 않습니다.<br>
+            데이터 기준일: 2026년 6월 1일 | 출처: DART, KRX, 각사 IR 자료<br>
+            &copy; 2026 FLOVAH Insights. All rights reserved.
+        </p>
+    </div>
+</section>
+
+</main>
+
+<div class="report-footer">
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-06-01 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 8,100선 박스권 횡보. IT·금융 섹터 강세, 리츠·인프라펀드 안정적 배당 매력 부각.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">금리·부동산</div>한국은행 기준금리 2.50% 동결, 하반기 인하 기대. 상업용 부동산 공실률 안정화, 오피스 임대료 상승세.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">핀테크·증권</div>증권업 실적 호조 — 거래대금 증가와 IB 수익 확대. 핀테크 플랫폼 경쟁 심화 속 수수료 차별화 가속.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+    <div class="footer-inner">
+        <div class="logo-text">FLOVAH Insights</div>
+        <p>본 콘텐츠는 정보 제공 목적으로 작성되었으며, 투자 자문이 아닙니다.<br>&copy; 2026 FLOVAH. All rights reserved.</p>
+    </div>
+</div>
+
+<script>
+(function(){var s=document.querySelectorAll('.report-section'),n=document.querySelectorAll('.nav-side a');function u(){var c='';s.forEach(function(e){if(e.getBoundingClientRect().top<=160)c=e.id;});n.forEach(function(l){l.classList.remove('active');if(l.dataset.section===c)l.classList.add('active');});}window.addEventListener('scroll',u);u();})();
+(function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)i.target.classList.add('visible');});},{threshold:0.08});document.querySelectorAll('.report-section').forEach(function(s){o.observe(s);});})();
+(function(){var r=document.querySelector('.ring-fill');if(!r)return;var t=parseFloat(r.dataset.target);setTimeout(function(){r.style.strokeDashoffset=t;},600);})();
+(function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)i.target.style.width=i.target.dataset.width+'%';});},{threshold:0.3});document.querySelectorAll('.fin-bar-fill').forEach(function(b){o.observe(b);});})();
+(function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)i.target.style.height=i.target.dataset.height+'%';});},{threshold:0.2});document.querySelectorAll('.bar-rect').forEach(function(r){o.observe(r);});})();
+document.querySelectorAll('.nav-side a').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();var t=document.getElementById(this.getAttribute('href').substring(1));if(t)window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});});});
+</script>
+</body>
+</html>

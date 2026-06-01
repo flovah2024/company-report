@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>현대그린푸드 기업 분석 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep:#09090b;--bg-card:#0f1014;--bg-elevated:#141619;--bg-hover:#191b1f;--bg-surface:#111316;
+    --ink:#ede8df;--ink-strong:#f5f1e8;--text-body:#b5ad9e;--text-secondary:#7d7568;--text-muted:#524c42;--text-light:#9a9184;
+    --gold:#c9a962;--gold-light:#dcc07a;--gold-dim:#8a7438;--gold-glow:rgba(201,169,98,.10);
+    --blue:#5c7d9e;--blue-dim:#465f7a;--rule:#1e1f24;--border:#1e1f24;
+    --accent:#c9a962;--accent2:#5c7d9e;--card-bg:#0f1014;--dark-bg:#09090b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-body);font-family:'Noto Sans KR',sans-serif;font-size:15px;line-height:1.75;}
+body{background:var(--bg-deep);min-height:100vh;}
+#progress-bar{position:fixed;top:0;left:0;height:2px;z-index:10000;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:0%;transition:width .2s ease-out;}
+header{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(9,9,11,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:9999;}
+.header-left{display:flex;align-items:center;gap:14px;}
+.header-left img{height:26px;}
+.header-left .logo-text{font-family:'Orbit',sans-serif;font-size:17px;color:var(--ink-strong);letter-spacing:2px;font-weight:400;}
+header nav{display:flex;gap:24px;}
+header nav a{color:var(--text-secondary);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s;}
+header nav a:hover,header nav a.active{color:var(--gold);}
+.header-right{display:flex;align-items:center;gap:16px;}
+.header-date{font-size:12px;color:var(--text-muted);}
+.flovah-badge{font-size:10px;letter-spacing:1px;color:var(--gold);border:1px solid var(--gold-dim);padding:3px 10px;border-radius:4px;font-weight:600;}
+.container{max-width:1100px;margin:0 auto;padding:80px 40px 40px;}
+.section{margin-bottom:56px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:16px;}
+.section-label i{font-size:12px;}
+.section-title{font-family:'Orbit',sans-serif;font-size:26px;color:var(--ink-strong);margin-bottom:10px;letter-spacing:1px;}
+.section-desc{font-size:14px;color:var(--text-secondary);margin-bottom:28px;line-height:1.8;max-width:780px;}
+.hero-banner{background:linear-gradient(135deg,rgba(201,169,98,.07) 0%,rgba(92,125,158,.05) 100%);border:1px solid var(--border);border-radius:16px;padding:44px 40px;margin-bottom:36px;position:relative;overflow:hidden;}
+.hero-banner::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);}
+.hero-company{font-family:'Orbit',sans-serif;font-size:36px;color:var(--ink-strong);letter-spacing:2px;}
+.hero-sub{font-size:14px;color:var(--text-secondary);margin-top:6px;}
+.hero-badges{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.hero-badges span{font-size:11px;letter-spacing:1px;padding:4px 12px;border-radius:4px;font-weight:600;}
+.badge-gold{background:var(--gold-glow);color:var(--gold);border:1px solid var(--gold-dim);}
+.badge-blue{background:rgba(92,125,158,.12);color:var(--blue);border:1px solid var(--blue-dim);}
+.score-wrap{display:flex;align-items:center;gap:40px;margin:32px 0;flex-wrap:wrap;}
+.score-circle{width:130px;height:130px;border-radius:50%;position:relative;background:conic-gradient(var(--gold) 0deg,var(--gold) calc(var(--score)*3.6deg),var(--bg-elevated) calc(var(--score)*3.6deg));display:flex;align-items:center;justify-content:center;}
+.score-circle-inner{width:106px;height:106px;border-radius:50%;background:var(--bg-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-num{font-family:'Orbit',sans-serif;font-size:34px;color:var(--ink-strong);line-height:1;}
+.score-label{font-size:11px;color:var(--text-muted);margin-top:4px;letter-spacing:1px;}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0;}
+.metric-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px 18px;transition:border-color .2s;}
+.metric-card:hover{border-color:var(--gold-dim);}
+.metric-card .mc-label{font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px;}
+.metric-card .mc-value{font-family:'Orbit',sans-serif;font-size:22px;color:var(--ink-strong);}
+.metric-card .mc-sub{font-size:12px;color:var(--text-secondary);margin-top:4px;}
+.timeline{position:relative;padding-left:28px;margin:32px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border);}
+.timeline-item{position:relative;margin-bottom:22px;}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg-deep);}
+.timeline-year{font-family:'Orbit',sans-serif;font-size:14px;color:var(--gold);}
+.timeline-text{font-size:13px;color:var(--text-secondary);margin-top:2px;}
+.card-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:20px;}
+.card-panel h3{font-size:16px;color:var(--ink-strong);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.card-panel h3 i{color:var(--gold);font-size:14px;}
+.card-panel p{font-size:14px;color:var(--text-body);margin-bottom:12px;line-height:1.8;}
+.tech-badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;}
+.tech-badge{font-size:11px;padding:5px 14px;border-radius:20px;background:var(--bg-elevated);border:1px solid var(--border);color:var(--text-light);letter-spacing:.5px;}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;}
+.data-table th{text-align:left;font-size:11px;letter-spacing:.5px;color:var(--text-muted);padding:12px 14px;border-bottom:1px solid var(--border);font-weight:600;}
+.data-table td{font-size:13px;color:var(--text-body);padding:12px 14px;border-bottom:1px solid var(--border);}
+.data-table tr:hover td{background:var(--bg-hover);}
+.data-table .highlight{color:var(--gold);font-weight:600;}
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.swot-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden;}
+.swot-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.swot-card.strength::before{background:linear-gradient(90deg,#4ade80,#22c55e);}
+.swot-card.weakness::before{background:linear-gradient(90deg,#f87171,#ef4444);}
+.swot-card.opportunity::before{background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.swot-card.threat::before{background:linear-gradient(90deg,#fb923c,#f97316);}
+.swot-card h4{font-size:14px;color:var(--ink-strong);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.swot-card ul{list-style:none;}
+.swot-card ul li{font-size:13px;color:var(--text-body);padding:5px 0;padding-left:16px;position:relative;line-height:1.7;}
+.swot-card ul li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;}
+.swot-card.strength ul li::before{background:#4ade80;}
+.swot-card.weakness ul li::before{background:#f87171;}
+.swot-card.opportunity ul li::before{background:var(--gold);}
+.swot-card.threat ul li::before{background:#fb923c;}
+.fin-bar-wrap{margin:16px 0;}
+.fin-bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+.fin-bar-label span:first-child{color:var(--text-light);}
+.fin-bar-label span:last-child{color:var(--ink-strong);font-weight:600;}
+.fin-bar-track{height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;}
+.fin-bar-fill{height:100%;border-radius:4px;width:0%;transition:width 1.2s ease-out;}
+.fin-bar-fill.gold{background:linear-gradient(90deg,var(--gold-dim),var(--gold));}
+.fin-bar-fill.blue{background:linear-gradient(90deg,var(--blue-dim),var(--blue));}
+.bar-chart{display:flex;align-items:flex-end;gap:18px;height:200px;margin:28px 0;padding:0 10px;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.bar-stick{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height 1.2s ease-out;position:relative;}
+.bar-stick.gold{background:linear-gradient(180deg,var(--gold),var(--gold-dim));}
+.bar-stick.blue{background:linear-gradient(180deg,var(--blue),var(--blue-dim));}
+.bar-val{font-size:11px;color:var(--text-light);font-weight:600;}
+.bar-label{font-size:11px;color:var(--text-muted);}
+.conclusion-box{background:linear-gradient(135deg,rgba(201,169,98,.08) 0%,rgba(92,125,158,.06) 100%);border:1px solid var(--gold-dim);border-radius:14px;padding:32px;margin:28px 0;}
+.conclusion-box h3{font-size:18px;color:var(--ink-strong);margin-bottom:14px;}
+.conclusion-box p{font-size:14px;color:var(--text-body);line-height:1.85;margin-bottom:10px;}
+footer{max-width:1100px;margin:0 auto;padding:40px 40px 60px;border-top:1px solid var(--border);}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-brand img{height:20px;}
+.footer-brand span{font-family:'Orbit',sans-serif;font-size:14px;color:var(--text-muted);letter-spacing:2px;}
+.footer-copy{font-size:11px;color:var(--text-muted);}
+@media(max-width:768px){
+    header{padding:0 16px;}header nav{display:none;}.container{padding:72px 16px 24px;}
+    .metric-grid{grid-template-columns:1fr 1fr;}.swot-grid{grid-template-columns:1fr;}
+    .hero-company{font-size:24px;}.score-wrap{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<header>
+    <div class="header-left">
+        <a href="index.html"><img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH"></a>
+        <span class="logo-text">FLOVAH Insights</span>
+    </div>
+    <nav>
+        <a href="#overview">기업 개요</a><a href="#tech">기술 분석</a><a href="#market">시장 분석</a>
+        <a href="#competitors">경쟁사</a><a href="#swot">SWOT</a><a href="#strategy">전략</a>
+        <a href="#financial">재무</a><a href="#conclusion">결론</a>
+    </nav>
+    <div class="header-right">
+        <span class="header-date">June 1, 2026</span>
+        <span class="flovah-badge">FLOVAH</span>
+    </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 1 : 기업 개요 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="overview">
+<div class="section-label"><i class="fas fa-building"></i> COMPANY OVERVIEW</div>
+<div class="hero-banner">
+    <div class="hero-company">현대그린푸드</div>
+    <div class="hero-sub">Hyundai Green Food Co., Ltd. | KOSPI 453340 | 기업 종합 분석</div>
+    <div class="hero-badges">
+        <span class="badge-gold">식품/급식/외식</span>
+        <span class="badge-blue">KOSPI 상장</span>
+        <span class="badge-gold">현대백화점그룹 계열</span>
+        <span class="badge-blue">설립 1976년</span>
+    </div>
+</div>
+
+<div class="score-wrap">
+    <div class="score-circle" style="--score:65">
+        <div class="score-circle-inner">
+            <div class="score-num">65</div>
+            <div class="score-label">SCORE</div>
+        </div>
+    </div>
+    <div>
+        <p style="font-size:14px;color:var(--text-body);max-width:560px;line-height:1.8;">
+            현대그린푸드는 1976년 설립된 종합 식품 기업으로, 단체급식·식자재유통·외식 3대 사업을 영위하고 있습니다.
+            현대백화점그룹의 식품 사업 부문을 담당하며, CK(Central Kitchen) 기반의 식재·간편식 사업을 통해
+            성장 동력을 확보하고 있습니다. 종합 분석 점수 65점은 안정적인 사업 기반과 실적 개선세를 반영하되,
+            경쟁 심화 및 성장성 한계를 고려한 결과입니다.
+        </p>
+    </div>
+</div>
+
+<div class="metric-grid">
+    <div class="metric-card"><div class="mc-label">2025 매출액</div><div class="mc-value">2.3조</div><div class="mc-sub">전년 대비 +6.8%</div></div>
+    <div class="metric-card"><div class="mc-label">시가총액</div><div class="mc-value">5,500억</div><div class="mc-sub">KOSPI 453340</div></div>
+    <div class="metric-card"><div class="mc-label">임직원 수</div><div class="mc-value">~8,000명</div><div class="mc-sub">급식·유통 현장 인력 포함</div></div>
+    <div class="metric-card"><div class="mc-label">설립연도</div><div class="mc-value">1976</div><div class="mc-sub">50년 업력</div></div>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-info-circle"></i> 기업 핵심 개요</h3>
+    <p>현대그린푸드는 현대백화점그룹의 식품 전문 계열사로, 단체급식, 식자재유통, 외식 등 푸드서비스 전 영역을 아우르는 종합 식품 기업입니다. 1976년 설립 이후 약 50년간 국내 식품 산업의 성장과 함께 발전해왔으며, 현재 기업·병원·학교·공공기관 등 다양한 고객군을 대상으로 급식 및 식자재 공급 서비스를 제공하고 있습니다.</p>
+    <p>사업 구조는 크게 세 가지 축으로 구성됩니다. 첫째, 단체급식 사업은 기업체, 병원, 학교, 군부대 등을 대상으로 급식 서비스를 제공하는 핵심 사업으로, 전체 매출의 약 45%를 차지합니다. 둘째, 식자재유통 사업은 호텔, 레스토랑, 편의점 등에 신선·가공 식자재를 공급하며 매출의 약 40%를 담당합니다. 셋째, 외식 사업은 프리미엄 레스토랑 및 카페 브랜드를 운영하며 매출의 약 15%를 구성합니다.</p>
+    <p>2025년 기준 총 매출 약 2조 3,000억 원을 기록했으며, 2026년 1분기에는 매출 6,215억 원(+8.9%), 영업이익 464억 원(+43.9%)으로 실적 개선세가 뚜렷하게 나타나고 있습니다. 이는 기업 급식 단가 인상 효과, CK(Central Kitchen) 기반 식재 사업 성장, 외식 사업 턴어라운드 등이 복합적으로 작용한 결과입니다.</p>
+    <p>현대그린푸드의 핵심 성장 동력은 스마트푸드센터로 대표되는 CK 사업입니다. 중앙집중식 식재 가공 시설을 통해 간편식(HMR), 반조리 식재 등을 생산·공급하며, 기존 급식 사업의 수익성을 높이는 동시에 B2C 채널로의 확장을 추진하고 있습니다. 또한 현대백화점그룹의 유통 인프라를 활용한 프리미엄 식품 시장 진출도 기대되는 부분입니다.</p>
+</div>
+
+<div class="section-label" style="margin-top:32px;"><i class="fas fa-clock"></i> KEY MILESTONES</div>
+<div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">1976</div><div class="timeline-text">회사 설립 — 식품 유통 사업으로 출발. 현대그룹 계열 식품 전문 기업으로 사업 기반을 확립하기 시작합니다.</div></div>
+    <div class="timeline-item"><div class="timeline-year">1990</div><div class="timeline-text">단체급식 사업 본격 진출 — 기업체 급식 위탁 운영을 시작하며 B2B 푸드서비스 시장에 진입. 급식 전문 기업으로의 전환을 시작합니다.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2003</div><div class="timeline-text">식자재유통 사업 확대 — 호텔·레스토랑·케이터링(HoReCa) 채널 공략을 본격화. 콜드체인 물류 인프라 구축에 착수합니다.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2011</div><div class="timeline-text">현대백화점그룹 편입 — 그룹 계열 재편을 통해 현대백화점그룹의 식품 사업 전담 법인으로 자리매김합니다.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-text">현대그린푸드로 사명 변경 — 친환경·건강식 트렌드를 반영한 브랜드 리포지셔닝. ESG 경영 기반을 강화합니다.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-text">외식 사업 강화 — 프리미엄 레스토랑 및 카페 브랜드 포트폴리오를 확대. MZ세대 타겟 외식 브랜드를 연이어 론칭합니다.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-text">스마트푸드센터 본격 가동 — CK 기반 식재·간편식 생산 시설 가동. 자동화 설비 도입으로 생산성과 품질 경쟁력을 확보합니다.</div></div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 2 : 기술 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="tech">
+<div class="section-label"><i class="fas fa-microchip"></i> TECHNOLOGY ANALYSIS</div>
+<div class="section-title">기술 분석</div>
+<div class="section-desc">현대그린푸드의 핵심 기술 역량, 스마트 푸드 시스템, 식품 안전 기술을 종합 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-utensils"></i> 스마트푸드센터(CK) 기술</h3>
+    <p>현대그린푸드의 핵심 기술 자산은 스마트푸드센터(Smart Food Center)로 대표되는 중앙집중식 식재 가공 시스템입니다. CK(Central Kitchen)는 식재료의 전처리, 조리, 포장을 하나의 시설에서 대규모로 수행하는 시스템으로, 개별 급식 사업장에서의 조리 부담을 줄이고 품질 균일성과 위생 안전성을 높이는 핵심 인프라입니다.</p>
+    <p>2025년 본격 가동한 스마트푸드센터는 자동화 로봇, IoT 센서, 데이터 분석 시스템이 통합된 첨단 식품 가공 시설입니다. 식재료 입고부터 전처리, 조리, 냉각, 포장, 출하까지 전 공정이 자동화되어 있으며, 실시간 온도·습도 모니터링과 HACCP 기준 위생 관리가 자동으로 수행됩니다. 일일 최대 10만 식 이상의 생산 능력을 보유하고 있습니다.</p>
+    <p>CK 시스템의 핵심 기술적 장점은 세 가지입니다. 첫째, 대량 생산을 통한 원가 절감 효과가 뛰어납니다. 원재료 대량 구매와 자동화 가공을 통해 개별 사업장 대비 15~20%의 원가 절감이 가능합니다. 둘째, 표준화된 레시피와 공정 관리를 통해 전국 어느 사업장에서도 동일한 품질의 음식을 제공할 수 있습니다. 셋째, 폐기물 최소화와 에너지 효율 극대화를 통해 ESG 경영에도 기여합니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-shield-alt"></i> 식품 안전 및 품질 관리 시스템</h3>
+    <p>현대그린푸드는 식품 안전을 최우선 가치로 두고 있으며, 이를 위한 기술 시스템을 지속적으로 고도화하고 있습니다. 전 사업장에 HACCP(위해요소중점관리기준) 인증을 획득하고 있으며, 자체 식품안전연구소를 운영하여 원재료 안전성 검사, 미생물 검사, 잔류농약 분석 등을 수행합니다.</p>
+    <p>블록체인 기반 식자재 이력추적 시스템을 도입하여 산지에서 소비자 식탁까지의 전체 유통 과정을 투명하게 관리하고 있습니다. 이를 통해 식품 안전 사고 발생 시 신속한 원인 추적과 리콜이 가능하며, 소비자 신뢰를 확보하는 기반이 됩니다. 또한 GPS 기반 배송 차량 온도 관리 시스템을 운영하여 콜드체인 물류의 안전성을 실시간으로 모니터링합니다.</p>
+    <p>인공지능 기반 식단 설계 시스템도 개발 중입니다. 영양학적 균형, 알레르기 정보, 계절 식재료 가용성, 고객 선호도 데이터를 종합 분석하여 최적의 식단을 자동 설계하는 시스템입니다. 특히 병원 급식의 경우 환자 개인의 질환 특성과 식이 요법을 반영한 맞춤형 식단을 제공하는 것을 목표로 하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-truck"></i> 콜드체인 물류 및 공급망 기술</h3>
+    <p>식자재유통 사업의 경쟁력은 콜드체인(Cold Chain) 물류 인프라에 크게 의존합니다. 현대그린푸드는 전국에 10개 이상의 물류센터를 운영하며, 신선 식재료의 온도 관리를 위한 다온도 물류 시스템을 구축하고 있습니다. 냉장(-5~5도), 냉동(-18도 이하), 상온 등 제품 특성에 맞는 다단계 온도 관리가 가능합니다.</p>
+    <p>물류 효율화를 위해 WMS(Warehouse Management System)와 TMS(Transportation Management System)를 통합 운영하고 있으며, 주문 예측 알고리즘을 활용한 재고 최적화, 배송 경로 최적화 등을 실현하고 있습니다. 이를 통해 식자재 폐기율을 업계 평균 대비 30% 이상 낮추는 성과를 달성하고 있습니다.</p>
+</div>
+
+<div style="margin-top:20px;">
+    <h3 style="font-size:14px;color:var(--ink-strong);margin-bottom:12px;">기술 스택 및 역량</h3>
+    <div class="tech-badges">
+        <span class="tech-badge">스마트푸드센터(CK)</span><span class="tech-badge">HACCP</span><span class="tech-badge">콜드체인 물류</span>
+        <span class="tech-badge">블록체인 이력추적</span><span class="tech-badge">IoT 센서 모니터링</span><span class="tech-badge">자동화 로봇</span>
+        <span class="tech-badge">식단 설계 시스템</span><span class="tech-badge">WMS/TMS</span><span class="tech-badge">주문예측 알고리즘</span>
+        <span class="tech-badge">식품안전연구소</span><span class="tech-badge">다온도 물류</span><span class="tech-badge">GPS 온도관리</span>
+        <span class="tech-badge">ESG 폐기물 관리</span><span class="tech-badge">HMR 생산기술</span>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 3 : 시장 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="market">
+<div class="section-label"><i class="fas fa-chart-line"></i> MARKET ANALYSIS</div>
+<div class="section-title">시장 분석</div>
+<div class="section-desc">국내 단체급식, 식자재유통, 외식 시장의 규모, 트렌드, 성장 동인을 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-store-alt"></i> 국내 단체급식 시장 현황</h3>
+    <p>국내 단체급식 시장은 2025년 기준 약 8~9조 원 규모로, 연평균 4~5% 성장하고 있습니다. 기업체 급식이 전체의 약 40%로 가장 큰 비중을 차지하며, 병원(20%), 학교(20%), 공공기관 및 군부대(20%) 순입니다. 코로나 팬데믹 이후 기업들의 사무실 복귀 확대, 재택근무 축소 추세에 따라 급식 수요가 지속적으로 회복되고 있습니다.</p>
+    <p>단체급식 시장의 주요 트렌드는 프리미엄화와 다양화입니다. 과거 단순한 영양 공급 중심에서 벗어나, 맛·건강·경험을 중시하는 방향으로 급식 서비스가 진화하고 있습니다. 기업들은 우수한 급식 서비스를 직원 복지의 핵심 요소로 인식하고 있으며, 이에 따라 급식 단가 인상과 메뉴 다양화가 이루어지고 있습니다. 비건, 할랄, 저탄수화물 등 특수 식단 수요도 증가하는 추세입니다.</p>
+    <p>시장 구조 측면에서는 소수의 대형 급식업체가 시장을 선도하는 과점 구조가 심화되고 있습니다. 삼성웰스토리, CJ프레시웨이, 현대그린푸드, 아워홈 등 4대 대형사가 전체 위탁급식 시장의 약 60~65%를 점유하고 있으며, 중소 급식업체의 시장 퇴출이 가속화되고 있습니다. 이는 식품 안전 규제 강화, 원가 상승 압력, 인력 부족 등이 중소업체에 불리하게 작용하기 때문입니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-boxes"></i> 식자재유통 시장 동향</h3>
+    <p>국내 식자재유통 시장은 2025년 기준 약 65~70조 원 규모의 대형 시장입니다. 다만 시장의 약 70%가 여전히 전통시장, 도매상 등 비조직화된 채널을 통해 유통되고 있어, 조직화된 기업형 유통의 성장 여지가 큽니다. 현대그린푸드, CJ프레시웨이, 신세계푸드 등 대형 식자재 유통사의 시장 침투율은 약 30% 수준입니다.</p>
+    <p>식자재유통 시장의 핵심 트렌드는 디지털화와 전문화입니다. 온라인 식자재 주문 플랫폼의 성장, 데이터 기반 수요 예측, 자동화 물류 등 디지털 기술 적용이 가속화되고 있습니다. 또한 HoReCa(Hotel/Restaurant/Cafe) 채널의 전문화된 식자재 수요가 증가하면서, 프리미엄 수입 식재료, 유기농 식재료 등 특화 카테고리의 성장이 두드러집니다.</p>
+    <p>간편식(HMR) 시장과의 연계도 주요 성장 동인입니다. 국내 HMR 시장은 2025년 기준 약 6조 원 규모로 연평균 10% 이상 성장하고 있으며, CK 기반의 식재 가공 역량을 보유한 식자재유통사들이 이 시장에 적극 진출하고 있습니다. 현대그린푸드의 스마트푸드센터는 이러한 시장 트렌드에 대응하기 위한 핵심 투자입니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-utensil-spoon"></i> 외식 시장 트렌드</h3>
+    <p>국내 외식 시장은 2025년 기준 약 170조 원 규모의 대형 시장이나, 매우 분산된 구조를 가지고 있습니다. 대형 프랜차이즈의 시장 점유율은 전체의 약 15~20% 수준에 불과하며, 나머지는 개인 운영 음식점이 차지합니다. 외식 시장은 경기 변동에 민감하며, 인건비·원재료비 상승이 수익성에 직접적 영향을 미치는 구조입니다.</p>
+    <p>외식 시장의 주요 트렌드로는 프리미엄 다이닝 수요 확대, 건강·웰빙 식단 선호 증가, 배달·테이크아웃 채널의 구조적 성장 등이 있습니다. 현대그린푸드는 현대백화점 식품관, 프리미엄 레스토랑 운영 등을 통해 프리미엄 외식 시장에서의 경쟁력을 강화하고 있으며, 그룹 유통 인프라와의 시너지를 활용한 차별화 전략을 추진하고 있습니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 4 : 경쟁사 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="competitors">
+<div class="section-label"><i class="fas fa-users"></i> COMPETITOR ANALYSIS</div>
+<div class="section-title">경쟁사 분석</div>
+<div class="section-desc">현대그린푸드의 국내 단체급식·식자재유통 경쟁 환경을 주요 지표를 통해 비교 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-chess"></i> 경쟁 구도 개관</h3>
+    <p>국내 단체급식·식자재유통 시장은 4대 대형사(삼성웰스토리, CJ프레시웨이, 현대그린푸드, 아워홈)를 중심으로 한 과점 구조입니다. 이들 4사는 각각 대기업 그룹의 계열사로서, 그룹 내 캡티브(Captive) 수요를 기반으로 안정적인 사업 기반을 확보하고 있습니다. 다만 캡티브 비중이 높다는 점은 성장 한계의 원인이기도 합니다.</p>
+    <p>경쟁의 핵심은 비캡티브 시장에서의 수주 경쟁력입니다. 식품 안전 관리 능력, 메뉴 경쟁력, 가격 경쟁력, 물류 인프라, 디지털 역량 등이 수주의 핵심 결정 요인이며, 최근에는 ESG 경영, 친환경 급식, 탄소 중립 등도 주요 경쟁 요소로 부상하고 있습니다. 특히 공공기관 급식 수주에서는 사회적 가치 평가가 중요한 비중을 차지합니다.</p>
+</div>
+
+<div class="card-panel" style="overflow-x:auto;">
+    <h3><i class="fas fa-table"></i> 주요 경쟁사 비교</h3>
+    <table class="data-table">
+        <thead><tr><th>기업명</th><th>그룹</th><th>매출액</th><th>영업이익</th><th>영업이익률</th><th>주요 사업</th><th>특이사항</th></tr></thead>
+        <tbody>
+            <tr><td class="highlight">현대그린푸드</td><td>현대백화점</td><td>~2.3조 원</td><td>~1,400억 원</td><td>6.1%</td><td>급식·식자재·외식</td><td>CK/스마트푸드센터 강점</td></tr>
+            <tr><td>삼성웰스토리</td><td>삼성</td><td>~3.8조 원</td><td>~2,200억 원</td><td>5.8%</td><td>급식·식자재·식음</td><td>업계 1위, 글로벌 급식 사업</td></tr>
+            <tr><td>CJ프레시웨이</td><td>CJ</td><td>~3.2조 원</td><td>~1,100억 원</td><td>3.4%</td><td>급식·식자재·유통</td><td>CJ그룹 식자재 유통 플랫폼</td></tr>
+            <tr><td>아워홈</td><td>독립</td><td>~2.5조 원</td><td>~1,000억 원</td><td>4.0%</td><td>급식·식자재·외식</td><td>비상장, 독립경영 체제</td></tr>
+            <tr><td>신세계푸드</td><td>신세계</td><td>~1.5조 원</td><td>~450억 원</td><td>3.0%</td><td>급식·식자재·베이커리</td><td>No Brand 버거, 대체육 사업</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-balance-scale"></i> 경쟁 우위 및 열위 요인</h3>
+    <p><strong style="color:var(--gold);">경쟁 우위:</strong> 현대그린푸드의 핵심 경쟁 우위는 스마트푸드센터를 통한 CK 역량과 현대백화점그룹 시너지에 있습니다. 스마트푸드센터는 업계 최고 수준의 자동화율과 생산 효율성을 보유하고 있으며, 이를 기반으로 한 간편식·식재 사업은 높은 성장 잠재력을 가집니다. 또한 현대백화점 식품관, 면세점 등 그룹 유통 채널을 활용한 프리미엄 식품 사업이 차별화 요소입니다.</p>
+    <p><strong style="color:var(--blue);">경쟁 열위:</strong> 매출 규모 면에서 삼성웰스토리, CJ프레시웨이에 비해 작으며, 이는 원가 경쟁력과 시장 지배력에서의 열위로 이어질 수 있습니다. 또한 그룹 캡티브 의존도가 높아 비캡티브 시장에서의 영업력 강화가 필요하며, 외식 사업의 수익성이 아직 안정적이지 않은 점도 개선 과제입니다. 브랜드 인지도 측면에서도 삼성웰스토리, CJ프레시웨이 대비 소비자 접점이 제한적입니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 5 : SWOT 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="swot">
+<div class="section-label"><i class="fas fa-th-large"></i> SWOT ANALYSIS</div>
+<div class="section-title">SWOT 분석</div>
+<div class="section-desc">현대그린푸드의 내부 강점·약점과 외부 기회·위협 요인을 체계적으로 분석합니다.</div>
+
+<div class="swot-grid">
+    <div class="swot-card strength">
+        <h4><i class="fas fa-arrow-up" style="color:#4ade80;"></i> 강점 (Strengths)</h4>
+        <ul>
+            <li>스마트푸드센터(CK) 기반의 업계 최고 수준 식재 가공 역량. 자동화율과 생산 효율성에서 경쟁사 대비 우위를 확보하고 있습니다.</li>
+            <li>현대백화점그룹의 프리미엄 유통 인프라 활용 가능. 백화점 식품관, 면세점, 온라인몰 등 다양한 판매 채널 접근이 가능합니다.</li>
+            <li>단체급식·식자재·외식 3대 사업의 수직 통합 구조. 원재료 조달부터 최종 소비자까지 밸류체인 전반을 커버합니다.</li>
+            <li>HACCP 인증, 식품안전연구소 등 식품 안전 관리 체계가 우수합니다. 대형 식품 안전 사고 이력이 없어 신뢰성이 높습니다.</li>
+            <li>2026년 Q1 영업이익 +43.9% 성장 등 실적 개선 모멘텀이 뚜렷하게 나타나고 있습니다.</li>
+        </ul>
+    </div>
+    <div class="swot-card weakness">
+        <h4><i class="fas fa-arrow-down" style="color:#f87171;"></i> 약점 (Weaknesses)</h4>
+        <ul>
+            <li>매출 규모 기준 업계 3~4위로, 삼성웰스토리·CJ프레시웨이 대비 규모의 경제에서 열위에 있습니다.</li>
+            <li>그룹 캡티브 매출 의존도가 높아 비캡티브 시장 확대를 위한 영업력 강화가 필요합니다.</li>
+            <li>외식 사업의 수익성이 불안정하며, 브랜드 포트폴리오의 경쟁력 검증이 필요합니다.</li>
+            <li>노동집약적 산업 특성상 인건비 상승 압력에 취약합니다. 전체 비용 중 인건비 비중이 약 40%에 달합니다.</li>
+            <li>현대백화점그룹 내 의사결정 구조에 따른 경영 자율성 제약이 존재할 수 있습니다.</li>
+        </ul>
+    </div>
+    <div class="swot-card opportunity">
+        <h4><i class="fas fa-lightbulb" style="color:var(--gold);"></i> 기회 (Opportunities)</h4>
+        <ul>
+            <li>간편식(HMR) 시장의 연평균 10%+ 고성장. CK 역량을 활용한 B2C 간편식 사업 진출 기회가 확대되고 있습니다.</li>
+            <li>기업 급식 프리미엄화 트렌드에 따른 급식 단가 인상 여력이 존재합니다.</li>
+            <li>식자재유통 시장의 조직화 진행에 따른 기업형 유통사의 시장 침투율 확대 가능성이 있습니다.</li>
+            <li>ESG 경영, 친환경 급식 수요 확대. 탄소 중립, 로컬 푸드, 식품 업사이클링 등이 새로운 사업 기회를 제공합니다.</li>
+            <li>고령화 사회 진입에 따른 실버 급식, 케어푸드 시장의 성장 잠재력이 높습니다.</li>
+        </ul>
+    </div>
+    <div class="swot-card threat">
+        <h4><i class="fas fa-exclamation-triangle" style="color:#fb923c;"></i> 위협 (Threats)</h4>
+        <ul>
+            <li>원재료비(농산물, 축산물) 가격 변동성 확대. 인플레이션 환경에서 원가 전가 능력이 수익성의 핵심 변수입니다.</li>
+            <li>최저임금 인상, 주52시간제 등 인건비 상승 압력이 구조적으로 지속되고 있습니다.</li>
+            <li>식품 안전 사고 발생 시 브랜드 타격 및 사업 기회 상실 위험이 있습니다. 급식 산업은 안전 이슈에 매우 민감합니다.</li>
+            <li>대기업 급식 시장에 대한 규제 강화 가능성. 중소기업 적합업종 지정 등 정책 리스크가 존재합니다.</li>
+            <li>경쟁 심화에 따른 수주 경쟁력 약화 및 마진 축소 압력이 지속되고 있습니다.</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 6 : 전략 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="strategy">
+<div class="section-label"><i class="fas fa-chess-queen"></i> STRATEGY ANALYSIS</div>
+<div class="section-title">전략 분석</div>
+<div class="section-desc">현대그린푸드의 성장 전략, 사업 다각화, 그룹 시너지 전략을 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-rocket"></i> CK 기반 성장 전략</h3>
+    <p>현대그린푸드의 핵심 성장 전략은 스마트푸드센터(CK)를 중심으로 한 식재·간편식 사업의 확대입니다. 2025년 본격 가동한 스마트푸드센터를 통해 기존 급식 사업장에 반조리·완조리 식재를 공급하여 현장 조리 부담을 줄이고, 동시에 B2C 간편식(HMR) 시장에도 진출하는 투트랙 전략을 추진하고 있습니다.</p>
+    <p>급식 사업 측면에서 CK는 원가 절감과 품질 균일화의 핵심 도구입니다. 개별 사업장에서의 조리 인력 수요를 줄이고, 원재료 대량 구매를 통한 원가 절감 효과를 극대화합니다. 이를 통해 급식 사업의 영업이익률을 현재 5~6%에서 중장기적으로 7~8%까지 개선하는 것을 목표로 합니다.</p>
+    <p>B2C 간편식 사업은 현대백화점그룹의 유통 채널을 활용한 프리미엄 포지셔닝을 추진합니다. 현대백화점 식품관, 현대홈쇼핑, 현대Hmall 등 그룹 채널을 1차 판매 거점으로 활용하고, 이후 편의점·대형마트 등 대중 채널로 확대하는 단계적 접근을 계획하고 있습니다. 프리미엄 건강식, 시니어 케어푸드, 키즈 전용 간편식 등 틈새시장을 타겟으로 차별화할 방침입니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-link"></i> 현대백화점그룹 시너지 전략</h3>
+    <p>현대그린푸드의 차별화된 경쟁력 중 하나는 현대백화점그룹과의 시너지 효과입니다. 그룹 내 현대백화점, 현대홈쇼핑, 현대리바트, 한섬 등 다양한 계열사와의 협업을 통해 식품 사업의 부가가치를 높이고 있습니다.</p>
+    <p>현대백화점 식품관은 현대그린푸드의 프리미엄 식품 브랜드를 테스트하고 론칭하는 핵심 채널입니다. 백화점의 프리미엄 이미지와 고소득 고객 기반을 활용하여 고부가가치 식품 사업을 전개하고 있으며, 특히 디저트, 베이커리, 프리미엄 델리 카테고리에서 시너지가 두드러집니다. 또한 현대백화점의 VIP 라운지 및 문화센터 케이터링 서비스 등 그룹 내 B2B 시너지도 활발합니다.</p>
+    <p>현대홈쇼핑과 현대Hmall을 통한 식품 이커머스 사업도 전략적 중요성이 높습니다. 코로나 이후 온라인 식품 구매가 구조적으로 증가하면서, 그룹 온라인 채널을 활용한 간편식·밀키트·프리미엄 식재료 판매가 새로운 성장 동력으로 부상하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-leaf"></i> ESG 경영 및 지속가능 전략</h3>
+    <p>현대그린푸드는 '그린(Green)' 브랜드 정체성에 맞게 ESG 경영을 적극 추진하고 있습니다. 식품 산업에서의 ESG는 식품 안전, 환경 영향 최소화, 공정한 공급망 관리, 지역사회 기여 등 다양한 차원을 포함합니다.</p>
+    <p>환경 측면에서는 식품 폐기물 감축, 포장재 친환경화, 탄소 배출 감축 등을 핵심 과제로 설정하고 있습니다. CK 시스템을 통한 식재료 이용률 극대화, 업사이클링 식품 개발, 식물성 대체 식품 확대 등을 통해 환경 영향을 줄이고 있습니다. 또한 로컬 푸드 활용 비율 확대를 통해 식재료 운송 과정에서의 탄소 발자국을 감축하고 있습니다.</p>
+    <p>사회적 책임 측면에서는 취약계층 급식 지원, 식생활 교육, 영양 불균형 해소 프로그램 등을 운영하고 있습니다. 공급망 관리에서는 중소 농가·식재료 업체와의 공정거래를 강화하고, 상생 프로그램을 통한 동반성장을 추구하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-expand-arrows-alt"></i> 사업 다각화 및 신사업 전략</h3>
+    <p>현대그린푸드는 기존 3대 사업(급식·식자재·외식) 외에 새로운 성장 영역으로의 확장을 모색하고 있습니다. 케어푸드(고령자·환자용 특수 식품) 시장은 고령화 사회 진입에 따라 급성장이 예상되는 분야로, 현대그린푸드의 병원 급식 노하우와 CK 생산 역량을 활용하여 선도적 지위를 확보할 수 있는 기회입니다.</p>
+    <p>또한 해외 급식 시장 진출도 중장기 전략으로 검토하고 있습니다. 한국 기업의 해외 진출 확대에 따른 해외 현지 급식 수요, 한식(K-Food)의 글로벌 인기 확대 등이 해외 사업 기회를 제공합니다. 동남아시아 지역을 시작으로 해외 급식·식자재 사업의 가능성을 탐색 중입니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 7 : 재무 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="financial">
+<div class="section-label"><i class="fas fa-chart-bar"></i> FINANCIAL ANALYSIS</div>
+<div class="section-title">재무 분석</div>
+<div class="section-desc">현대그린푸드의 주요 재무 지표, 수익성, 성장성을 정량적으로 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-coins"></i> 주요 재무 지표 (2025 기준)</h3>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>매출액</span><span>약 2조 3,000억 원</span></div><div class="fin-bar-track"><div class="fin-bar-fill gold" data-width="72"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>영업이익</span><span>약 1,400억 원</span></div><div class="fin-bar-track"><div class="fin-bar-fill gold" data-width="55"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>영업이익률</span><span>6.1%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" data-width="48"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>배당수익률</span><span>2.8%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" data-width="35"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>부채비율</span><span>78%</span></div><div class="fin-bar-track"><div class="fin-bar-fill gold" data-width="52"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>ROE (자기자본이익률)</span><span>8.5%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" data-width="45"></div></div></div>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-chart-area"></i> 연도별 매출 추이</h3>
+    <div class="bar-chart">
+        <div class="bar-col"><div class="bar-val">1.8조</div><div class="bar-stick gold" data-height="90" style="height:90px;"></div><div class="bar-label">2021</div></div>
+        <div class="bar-col"><div class="bar-val">1.9조</div><div class="bar-stick gold" data-height="102" style="height:102px;"></div><div class="bar-label">2022</div></div>
+        <div class="bar-col"><div class="bar-val">2.1조</div><div class="bar-stick gold" data-height="118" style="height:118px;"></div><div class="bar-label">2023</div></div>
+        <div class="bar-col"><div class="bar-val">2.15조</div><div class="bar-stick gold" data-height="130" style="height:130px;"></div><div class="bar-label">2024</div></div>
+        <div class="bar-col"><div class="bar-val">2.3조</div><div class="bar-stick gold" data-height="148" style="height:148px;"></div><div class="bar-label">2025</div></div>
+        <div class="bar-col"><div class="bar-val">2.5조E</div><div class="bar-stick blue" data-height="168" style="height:168px;"></div><div class="bar-label">2026E</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:8px;">연결매출 기준 | 2026E는 컨센서스 추정치</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-file-invoice-dollar"></i> 실적 분석 상세</h3>
+    <p>현대그린푸드의 2025년 실적은 매출 약 2조 3,000억 원, 영업이익 약 1,400억 원으로, 전년 대비 각각 6.8%, 18.2% 성장했습니다. 영업이익률은 6.1%로 전년(5.5%) 대비 0.6%p 개선되었습니다. 이는 급식 단가 인상 효과, CK 가동에 따른 원가 절감, 식자재유통 사업 효율화 등이 복합적으로 작용한 결과입니다.</p>
+    <p>2026년 1분기 실적은 더욱 고무적입니다. 매출 6,215억 원(+8.9%), 영업이익 464억 원(+43.9%)으로 성장세가 가속화되고 있습니다. 분기 영업이익률은 7.5%로 연간 목표를 상회하는 수준이며, 이는 스마트푸드센터의 가동률 상승에 따른 규모의 경제 효과와 고부가가치 메뉴 비중 확대가 주요 원인입니다.</p>
+    <p>사업 부문별로 보면, 단체급식 사업은 기업체 급식 단가 인상과 신규 수주 확대에 힘입어 안정적 성장을 기록했습니다. 식자재유통 사업은 HoReCa 채널의 회복과 프리미엄 식재료 판매 확대로 매출이 증가했습니다. 외식 사업은 프리미엄 브랜드 중심의 구조 조정 효과가 나타나며 수익성이 개선되고 있습니다.</p>
+    <p>재무 건전성도 양호합니다. 부채비율 78%는 업계 평균(약 100%) 대비 낮은 수준이며, 현금 창출 능력도 안정적입니다. 2025년 기준 배당수익률 2.8%는 식품 섹터 내에서 적정 수준이며, 향후 실적 개선에 따른 배당 확대 가능성도 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-piggy-bank"></i> 투자 효율성 및 수익성 분석</h3>
+    <p>현대그린푸드의 ROE(자기자본이익률)는 2025년 기준 약 8.5%로, 식품·급식 업종 평균(7~8%)을 소폭 상회하는 수준입니다. 다만 금융 섹터나 IT 섹터 대비로는 낮은 수준이며, 이는 식품 산업의 구조적 특성(낮은 마진, 높은 인건비)을 반영합니다.</p>
+    <p>ROIC(투하자본수익률)는 약 10% 수준으로, WACC(가중평균자본비용) 대비 양(+)의 스프레드를 유지하고 있어 가치 창출이 이루어지고 있습니다. 스마트푸드센터 투자에 따른 초기 감가상각 부담이 향후 2~3년간 존재하나, 가동률 상승과 함께 투자 효율성이 개선될 전망입니다.</p>
+    <p>FCF(잉여현금흐름)는 스마트푸드센터 투자 완료 후 2026년부터 본격적인 회복이 예상됩니다. 대규모 설비투자 사이클이 마무리됨에 따라 자본적 지출이 감소하고, 영업현금흐름 개선과 맞물려 FCF가 크게 확대될 전망입니다. 이는 향후 배당 확대, 자사주 매입, 신규 투자 재원 등으로 활용될 수 있습니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 8 : 결론 및 투자 의견 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="conclusion">
+<div class="section-label"><i class="fas fa-flag-checkered"></i> CONCLUSION</div>
+<div class="section-title">결론 및 투자 의견</div>
+<div class="section-desc">현대그린푸드에 대한 종합적인 분석 결론과 투자 관점에서의 시사점을 제시합니다.</div>
+
+<div class="conclusion-box">
+    <h3><i class="fas fa-star" style="color:var(--gold);"></i> 종합 투자 의견</h3>
+    <p>현대그린푸드는 단체급식·식자재유통·외식의 3대 사업을 영위하는 종합 식품 기업으로, 스마트푸드센터(CK) 가동을 통한 수익성 개선과 사업 다각화가 핵심 투자 포인트입니다. 종합 분석 점수 65점은 안정적인 사업 기반과 실적 개선 모멘텀을 반영하되, 경쟁 심화와 성장성 한계를 고려한 결과입니다.</p>
+    <p>현대그린푸드의 투자 매력은 크게 세 가지입니다. 첫째, 2026년 1분기 영업이익 +43.9% 성장이 보여주듯 실적 개선 모멘텀이 강화되고 있습니다. 스마트푸드센터 가동률 상승에 따른 규모의 경제 효과가 본격화되면서 영업이익률이 구조적으로 개선되는 국면입니다. 둘째, 간편식(HMR) 시장 진출과 프리미엄 식품 사업 등 새로운 성장 동력 확보가 진행 중입니다. 셋째, 현대백화점그룹과의 시너지를 통한 차별화된 사업 모델이 장기 경쟁력의 기반입니다.</p>
+    <p>리스크 요인으로는 원재료비·인건비 상승에 따른 수익성 압박, 급식 시장 경쟁 심화, 외식 사업의 불확실성 등이 있습니다. 또한 식품 안전 사고는 항상 잠재적 리스크로 존재하며, 대기업 급식 시장에 대한 규제 리스크도 모니터링이 필요합니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-bullseye"></i> 핵심 투자 포인트 요약</h3>
+    <p><strong style="color:var(--gold);">1. CK 가동 효과 본격화:</strong> 스마트푸드센터의 가동률 상승에 따라 2026~2027년 영업이익률이 7% 이상으로 구조적 개선이 예상됩니다. 이는 현재 주가에 충분히 반영되지 않은 업사이드 요인입니다.</p>
+    <p><strong style="color:var(--gold);">2. HMR 시장 성장 옵션:</strong> 연평균 10%+ 성장하는 간편식 시장 진출은 현대그린푸드의 중장기 성장 동력입니다. CK 역량과 그룹 유통 채널을 결합한 프리미엄 포지셔닝 전략은 높은 마진의 B2C 매출을 확보할 수 있습니다.</p>
+    <p><strong style="color:var(--gold);">3. 급식 단가 인상 여력:</strong> 기업 급식 프리미엄화 트렌드와 원가 전가 능력 향상에 따라 급식 단가의 점진적 인상이 가능합니다. 이는 매출 성장과 마진 개선의 이중 효과를 가져옵니다.</p>
+    <p><strong style="color:var(--gold);">4. 밸류에이션 매력:</strong> PER 약 10배, PBR 약 0.8배 수준의 밸류에이션은 실적 개선 추세를 감안하면 매력적인 수준입니다. 배당수익률 2.8%도 안정적 현금 흐름을 제공합니다.</p>
+    <p><strong style="color:var(--blue);">주요 모니터링 포인트:</strong> 스마트푸드센터 가동률 및 수익성 추이, 급식 수주 실적(특히 비캡티브), 원재료비 동향, HMR 사업 진출 성과, 외식 사업 턴어라운드 여부, 분기별 영업이익률 변화 등을 지속적으로 모니터링할 필요가 있습니다.</p>
+</div>
+</section>
+
+</div><!-- /.container -->
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-06-01 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 8,100선 박스권 — 6월 FOMC 앞두고 관망세 지속. 외국인 순매도 우위, 반도체·방산 섹터 강세 유지.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 PCE 물가 안정세 확인, 연준 9월 금리인하 기대감 유지. 달러 약세 전환 가능성에 원화 강세 압력.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>보험·금융주 배당 매력 부각, 식품·급식 업종 실적 개선세 지속. 중소형 가치주 순환매 이어지는 양상.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            <span>FLOVAH Insights</span>
+        </div>
+        <div class="footer-copy">&copy; 2026 FLOVAH Insights. All rights reserved. 본 리포트는 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다.</div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){var h=document.documentElement;var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;document.getElementById('progress-bar').style.width=pct+'%';});
+(function(){var sections=document.querySelectorAll('section[id]');var navLinks=document.querySelectorAll('header nav a');window.addEventListener('scroll',function(){var scrollPos=window.scrollY+120;sections.forEach(function(sec){if(sec.offsetTop<=scrollPos&&(sec.offsetTop+sec.offsetHeight)>scrollPos){navLinks.forEach(function(link){link.classList.remove('active');if(link.getAttribute('href')==='#'+sec.id){link.classList.add('active');}});}});});})();
+(function(){var bars=document.querySelectorAll('.fin-bar-fill[data-width]');var animated=new Set();function checkBars(){bars.forEach(function(bar){if(animated.has(bar))return;var rect=bar.getBoundingClientRect();if(rect.top<window.innerHeight-60){bar.style.width=bar.getAttribute('data-width')+'%';animated.add(bar);}});}window.addEventListener('scroll',checkBars);window.addEventListener('load',checkBars);})();
+(function(){var sticks=document.querySelectorAll('.bar-stick[data-height]');var done=false;function checkChart(){if(done)return;if(sticks.length===0)return;var rect=sticks[0].getBoundingClientRect();if(rect.top<window.innerHeight-40){sticks.forEach(function(s){s.style.height=s.getAttribute('data-height')+'px';});done=true;}}window.addEventListener('scroll',checkChart);window.addEventListener('load',checkChart);})();
+</script>
+</body>
+</html>

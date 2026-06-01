@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한세실업 기업분석 리포트 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b;
+    --bg-card: #0f1014;
+    --bg-elevated: #141619;
+    --bg-hover: #191b1f;
+    --bg-surface: #111316;
+    --ink: #ede8df;
+    --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e;
+    --text-secondary: #7d7568;
+    --text-muted: #524c42;
+    --text-light: #9a9184;
+    --gold: #c9a962;
+    --gold-light: #dcc07a;
+    --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e;
+    --blue-dim: #465f7a;
+    --rule: #1e1f24;
+    --border: #1e1f24;
+    --accent: #c9a962;
+    --accent2: #5c7d9e;
+    --card-bg: #0f1014;
+    --dark-bg: #09090b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-dim) var(--bg-deep);
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(9,9,11,.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.header-logo img {
+    height: 28px;
+    width: auto;
+}
+
+.header-logo span {
+    font-family: 'Orbit', sans-serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.header-date {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ── NAV ── */
+.side-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    z-index: 900;
+    overflow-y: auto;
+}
+
+.side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all .2s;
+    border-left: 3px solid transparent;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+    color: var(--gold);
+    background: var(--gold-glow);
+    border-left-color: var(--gold);
+}
+
+.side-nav a i {
+    width: 16px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ── MAIN ── */
+.main-content {
+    margin-left: 220px;
+    margin-top: 60px;
+    min-height: calc(100vh - 60px);
+}
+
+.section-block {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px;
+}
+
+.section-block + .section-block {
+    border-top: 1px solid var(--border);
+}
+
+/* ── HERO ── */
+.hero-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 40px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: 'Orbit', sans-serif;
+    font-size: 36px;
+    color: var(--ink-strong);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.hero-subtitle span {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ── SCORE ── */
+.score-ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 36px;
+}
+
+.score-ring {
+    position: relative;
+    width: 110px;
+    height: 110px;
+}
+
+.score-ring svg {
+    transform: rotate(-90deg);
+}
+
+.score-ring .bg-circle {
+    fill: none;
+    stroke: var(--bg-hover);
+    stroke-width: 8;
+}
+
+.score-ring .fg-circle {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 106;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.score-number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number .val {
+    font-family: 'Orbit', sans-serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.score-number .lbl {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.score-desc {
+    flex: 1;
+}
+
+.score-desc h3 {
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.score-desc p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ── METRICS ── */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color .2s;
+}
+
+.metric-card:hover {
+    border-color: var(--gold-dim);
+}
+
+.metric-card .mc-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metric-card .mc-label i {
+    color: var(--gold-dim);
+    font-size: 11px;
+}
+
+.metric-card .mc-value {
+    font-family: 'Orbit', sans-serif;
+    font-size: 22px;
+    color: var(--ink-strong);
+    line-height: 1.2;
+}
+
+.metric-card .mc-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.metric-card .mc-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    margin-top: 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.mc-change.up {
+    color: #6ec87a;
+    background: rgba(110,200,122,.08);
+}
+
+.mc-change.down {
+    color: #e06b6b;
+    background: rgba(224,107,107,.08);
+}
+
+/* ── TIMELINE ── */
+.timeline {
+    position: relative;
+    padding-left: 28px;
+    margin-top: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold-dim), var(--border));
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bg-deep);
+}
+
+.timeline-item .tl-year {
+    font-family: 'Orbit', sans-serif;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 2px;
+}
+
+.timeline-item .tl-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ── SECTION TITLE ── */
+.sec-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.sec-title .icon-box {
+    width: 40px;
+    height: 40px;
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 16px;
+}
+
+.sec-title h2 {
+    font-family: 'Orbit', sans-serif;
+    font-size: 22px;
+    color: var(--ink-strong);
+    letter-spacing: -0.3px;
+}
+
+.sec-title .sec-tag {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+/* ── CARD ── */
+.info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.info-card h4 {
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card h4 i {
+    color: var(--gold);
+    font-size: 13px;
+}
+
+.info-card p, .info-card li {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.85;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+
+.info-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+}
+
+/* ── TWO COL ── */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ── TABLE ── */
+.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.comp-table thead th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--bg-elevated);
+    color: var(--text-light);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.comp-table thead th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.comp-table thead th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.comp-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-body);
+}
+
+.comp-table tbody tr:hover td {
+    background: var(--bg-hover);
+}
+
+.comp-table .highlight-row td {
+    background: var(--gold-glow);
+    color: var(--ink);
+}
+
+/* ── SWOT ── */
+.swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.swot-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.swot-box .swot-label {
+    font-family: 'Orbit', sans-serif;
+    font-size: 14px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.swot-box.strength .swot-label { color: #6ec87a; }
+.swot-box.weakness .swot-label { color: #e06b6b; }
+.swot-box.opportunity .swot-label { color: var(--gold); }
+.swot-box.threat .swot-label { color: var(--blue); }
+
+.swot-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.swot-box ul li {
+    font-size: 13px;
+    color: var(--text-body);
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.7;
+}
+
+.swot-box.strength ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: #6ec87a; }
+.swot-box.weakness ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: #e06b6b; }
+.swot-box.opportunity ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.swot-box.threat ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+/* ── PROGRESS ── */
+.progress-row {
+    margin-bottom: 18px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.progress-label .pl-name {
+    color: var(--text-light);
+}
+
+.progress-label .pl-val {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--bg-hover);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    transition: width 1s ease;
+}
+
+.progress-bar .fill.blue {
+    background: linear-gradient(90deg, var(--blue-dim), var(--blue));
+}
+
+/* ── BAR CHART ── */
+.bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    height: 200px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.bar-col .bar {
+    width: 100%;
+    max-width: 48px;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(to top, var(--gold-dim), var(--gold));
+    transition: height 1s ease;
+}
+
+.bar-col .bar.blue {
+    background: linear-gradient(to top, var(--blue-dim), var(--blue));
+}
+
+.bar-col .bar-label {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.bar-col .bar-value {
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* ── CONCLUSION ── */
+.conclusion-box {
+    background: linear-gradient(135deg, rgba(201,169,98,0.06) 0%, rgba(92,125,158,0.04) 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 16px;
+    padding: 36px;
+}
+
+.conclusion-box h3 {
+    font-family: 'Orbit', sans-serif;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.conclusion-box p {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.9;
+    margin-bottom: 12px;
+}
+
+.conclusion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.conclusion-tags span {
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.conclusion-tags span.gold {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+    background: var(--gold-glow);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+    font-family: 'Orbit', sans-serif;
+    font-size: 16px;
+    color: var(--gold-dim);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .side-nav { display: none; }
+    .main-content { margin-left: 0; }
+}
+
+@media (max-width: 768px) {
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    .two-col, .swot-grid { grid-template-columns: 1fr; }
+    .section-block, .hero-section { padding: 32px 20px; }
+    .site-header { padding: 0 20px; }
+    .hero-title { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <a href="index.html" class="header-logo">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <div class="header-date">June 1, 2026</div>
+</header>
+
+<!-- SIDE NAV -->
+<nav class="side-nav" id="sideNav">
+    <a href="#overview" class="active"><i class="fas fa-building"></i>기업개요</a>
+    <a href="#tech"><i class="fas fa-microchip"></i>기술분석</a>
+    <a href="#market"><i class="fas fa-chart-line"></i>시장분석</a>
+    <a href="#competitor"><i class="fas fa-chess"></i>경쟁사분석</a>
+    <a href="#swot"><i class="fas fa-th-large"></i>SWOT 분석</a>
+    <a href="#strategy"><i class="fas fa-bullseye"></i>전략분석</a>
+    <a href="#financial"><i class="fas fa-coins"></i>재무분석</a>
+    <a href="#conclusion"><i class="fas fa-flag-checkered"></i>결론</a>
+</nav>
+
+<!-- MAIN -->
+<main class="main-content">
+
+<!-- ============================================================ -->
+<!-- SECTION 1: 기업개요 (Hero) -->
+<!-- ============================================================ -->
+<section id="overview">
+    <div class="hero-section">
+        <div class="hero-badge">
+            <i class="fas fa-tshirt"></i>
+            의류 OEM/ODM · KOSPI 105630
+        </div>
+        <h1 class="hero-title">한세실업</h1>
+        <p class="hero-subtitle">
+            글로벌 의류 OEM 강자 — <span>수직계열화</span>로 OPM 10% 시대 개막
+        </p>
+
+        <!-- Score Ring -->
+        <div class="score-ring-wrap">
+            <div class="score-ring">
+                <svg width="110" height="110" viewBox="0 0 110 110">
+                    <circle class="bg-circle" cx="55" cy="55" r="50"/>
+                    <circle class="fg-circle" cx="55" cy="55" r="50"/>
+                </svg>
+                <div class="score-number">
+                    <span class="val">66</span>
+                    <span class="lbl">/ 100</span>
+                </div>
+            </div>
+            <div class="score-desc">
+                <h3>투자 매력도 — 중립 이상</h3>
+                <p>8개국 글로벌 생산망과 과테말라 수직계열화 투자가 2026년부터 본격 수익 기여를 시작합니다. OPM 10% 돌파 전망은 업종 내 차별화 포인트이나, 글로벌 의류 수요 변동성과 환율 리스크는 관리 변수입니다.</p>
+            </div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-won-sign"></i>2025 매출</div>
+                <div class="mc-value">1.9조</div>
+                <div class="mc-change up"><i class="fas fa-arrow-up"></i>+6.1% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-landmark"></i>시가총액</div>
+                <div class="mc-value">~1.5조</div>
+                <div class="mc-sub">KOSPI 105630</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-users"></i>직원 수</div>
+                <div class="mc-value">~60,000</div>
+                <div class="mc-sub">해외법인 포함</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-calendar-alt"></i>설립연도</div>
+                <div class="mc-value">1982</div>
+                <div class="mc-sub">한세실업 설립</div>
+            </div>
+        </div>
+
+        <!-- Additional Metrics -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-chart-bar"></i>2025 영업이익</div>
+                <div class="mc-value">1,426억</div>
+                <div class="mc-sub">OPM 7.5%</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-bullseye"></i>2026 OPM 전망</div>
+                <div class="mc-value">10%+</div>
+                <div class="mc-change up"><i class="fas fa-arrow-up"></i>두자릿수 진입</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-globe-americas"></i>생산 거점</div>
+                <div class="mc-value">8개국</div>
+                <div class="mc-sub">글로벌 생산 네트워크</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-ship"></i>수출 비중</div>
+                <div class="mc-value">95%</div>
+                <div class="mc-sub">글로벌 바이어 직납</div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="info-card">
+            <h4><i class="fas fa-stream"></i>기업 연혁</h4>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="tl-year">1982</div>
+                    <div class="tl-text">한세실업 설립, 의류 OEM 사업 시작</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">1992</div>
+                    <div class="tl-text">베트남 생산법인 진출 — 해외 생산 기지 확장의 시작</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2001</div>
+                    <div class="tl-text">코스피 시장 상장, 자본시장 진입으로 성장 가속화</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2010</div>
+                    <div class="tl-text">글로벌 생산법인 8개국 확대 — 인도네시아, 미얀마, 니카라과 등</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2023</div>
+                    <div class="tl-text">과테말라 수직계열화 투자 착수 — C&T, ECOSPIN, TEXOLLINI</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2025</div>
+                    <div class="tl-text">C&T Vina 3공장 가동(2025.12), 매출 1.9조원 달성</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: 기술분석 -->
+<!-- ============================================================ -->
+<section id="tech">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-microchip"></i></div>
+            <h2>기술분석</h2>
+            <span class="sec-tag">Technology Analysis</span>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-industry"></i>수직계열화 생산 기술</h4>
+                <p>한세실업의 핵심 기술 전략은 '원사에서 완제품까지' 수직계열화입니다. 과테말라 거점에 C&T(원단 염색), ECOSPIN(방적), TEXOLLINI(원단 제직)를 구축하여 원료 조달부터 완제품 생산까지의 밸류체인을 내재화하고 있습니다. 이를 통해 원단 조달 리드타임을 기존 45일에서 15일로 단축하고, 원가율을 약 5~7%p 절감하는 효과를 기대합니다.</p>
+                <ul>
+                    <li>C&T(원단염색): 베트남 3공장 2025.12 가동</li>
+                    <li>ECOSPIN(방적): 과테말라 자체 방적 역량 확보</li>
+                    <li>TEXOLLINI(원단): 미국 근접 원단 제직 시설</li>
+                    <li>과테말라 신규 봉제공장 2026년 가동 예정</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-robot"></i>스마트 팩토리 도입</h4>
+                <p>대규모 해외 생산법인의 효율성 극대화를 위해 스마트 팩토리 기술을 단계적으로 도입하고 있습니다. 자동 재단 시스템, AI 기반 품질 검사, 실시간 생산 모니터링 시스템(MES)을 주요 공장에 적용하여 불량률 감소와 생산성 향상을 동시에 추구합니다.</p>
+                <ul>
+                    <li>AI 기반 원단 결함 자동 검출 시스템 도입</li>
+                    <li>자동 재단(Auto-Cutting) 라인 확대 적용</li>
+                    <li>MES(Manufacturing Execution System) 기반 실시간 생산 추적</li>
+                    <li>IoT 센서 기반 공장 에너지 효율 관리 시스템</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-palette"></i>ODM 디자인 역량 강화</h4>
+            <p>단순 OEM(주문자 상표 부착 생산)에서 ODM(제조업자 개발 생산)으로의 전환을 가속화하고 있습니다. 서울, 뉴욕, 호치민에 디자인 센터를 운영하며, 트렌드 분석부터 소재 개발, 패턴 설계까지 바이어에게 토탈 솔루션을 제공합니다. ODM 비중이 확대될수록 마진 개선 효과가 커지며, TARGET, GAP 등 주요 바이어와의 전략적 파트너십을 강화하는 핵심 차별화 요소입니다. 특히 지속가능 소재(리사이클 폴리에스터, 오가닉 코튼) 기반의 친환경 제품 개발 역량은 글로벌 바이어의 ESG 요구에 선제적으로 대응하는 경쟁 우위입니다.</p>
+            <ul>
+                <li>서울·뉴욕·호치민 3거점 디자인 센터 운영</li>
+                <li>ODM 비중 확대를 통한 고부가가치 생산 전환</li>
+                <li>리사이클 소재 기반 친환경 제품 라인업 확대</li>
+                <li>3D 가상 샘플링 기술로 개발 리드타임 50% 단축</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-network-wired"></i>글로벌 생산망 최적화 기술</h4>
+            <p>8개국에 분산된 생산 거점을 통합 관리하는 글로벌 SCM(Supply Chain Management) 플랫폼을 운영합니다. 바이어 주문을 각 생산 거점의 역량·비용·리드타임을 고려하여 최적 배분하며, 관세·무역 규제 변화에 대한 유연한 대응을 가능하게 합니다. 베트남, 인도네시아, 미얀마 등 아시아 거점은 물량 규모와 비용 경쟁력을, 니카라과, 과테말라 등 중미 거점은 미국 시장 근접성과 관세 혜택을 담당하는 이원화 전략을 구사합니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: 시장분석 -->
+<!-- ============================================================ -->
+<section id="market">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+            <h2>시장분석</h2>
+            <span class="sec-tag">Market Analysis</span>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-globe"></i>글로벌 의류 OEM 시장</h4>
+                <p>글로벌 의류 OEM 시장은 약 300조원 규모로, 수요 회복과 니어쇼어링(nearshoring) 트렌드에 힘입어 성장세를 이어가고 있습니다. 미국 시장의 소비 경기 견조세가 주요 바이어들의 발주 확대로 연결되고 있으며, 한국계 OEM 업체들은 품질·납기 경쟁력을 바탕으로 글로벌 시장 점유율을 확대 중입니다.</p>
+                <ul>
+                    <li>글로벌 의류 OEM 시장 규모: 약 300조원</li>
+                    <li>미국 의류 소비 시장 연평균 3~5% 성장</li>
+                    <li>니어쇼어링 트렌드로 중미 생산 거점 수요 증가</li>
+                    <li>한국계 OEM 업체 글로벌 시장 점유율 확대 추세</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-flag-usa"></i>미국 시장 동향</h4>
+                <p>한세실업 매출의 대부분을 차지하는 미국 시장은 PCE(개인소비지출) 안정세를 유지하며 의류 소비가 견조합니다. TARGET, GAP, WAL-MART, Nike 등 주요 바이어들의 재고 정상화가 완료되면서 2026년 발주 사이클이 본격 회복되고 있습니다. 원/달러 환율 1,500원대 중반 수준은 한세실업에 유리한 수출 환경을 제공합니다.</p>
+                <ul>
+                    <li>미국 PCE 안정세 — 의류 소비 견조</li>
+                    <li>주요 바이어 재고 정상화 완료, 발주 회복</li>
+                    <li>원/달러 1,500원대 중반 — 환율 수혜</li>
+                    <li>중미 거점(CAFTA-DR) 관세 혜택 지속</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-map-marked-alt"></i>생산 거점별 시장 전략</h4>
+            <p>한세실업은 8개국에 생산 거점을 운영하며, 각 거점의 지정학적·비용적 이점을 활용한 최적 생산 배분 전략을 구사합니다. 베트남은 최대 생산 거점으로서 규모의 경제와 숙련 노동력을 바탕으로 대량 물량을 소화하며, 인도네시아와 미얀마는 비용 경쟁력이 강점입니다. 니카라과와 과테말라 등 중미 거점은 미국과의 FTA(CAFTA-DR) 혜택을 활용한 무관세 수출이 가능하며, 미국까지의 리드타임이 아시아 대비 2~3주 짧아 빠른 납기가 요구되는 물량에 특화되어 있습니다. 특히 과테말라는 수직계열화 투자를 통해 원단부터 완제품까지 일관 생산이 가능한 전략적 거점으로 육성 중입니다.</p>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-seedling"></i>지속가능 패션 시장 대응</h4>
+            <p>글로벌 패션 산업의 ESG 트렌드가 가속화되면서, 바이어들의 지속가능 생산 요구가 강화되고 있습니다. 한세실업은 리사이클 소재 사용 확대, 저탄소 생산 공정 도입, 그리고 국제 인증(WRAP, BSCI, OEKO-TEX) 획득을 통해 ESG 역량을 강화하고 있습니다. 특히 과테말라 수직계열화 공장은 설계 단계부터 태양광 발전, 폐수 재활용 등 친환경 설비를 도입하여, 바이어들의 서플라이 체인 탈탄소화 요구에 선제적으로 대응하고 있습니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: 경쟁사분석 -->
+<!-- ============================================================ -->
+<section id="competitor">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-chess"></i></div>
+            <h2>경쟁사분석</h2>
+            <span class="sec-tag">Competitor Analysis</span>
+        </div>
+
+        <div class="info-card" style="overflow-x:auto;">
+            <h4><i class="fas fa-table"></i>주요 경쟁사 비교</h4>
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>기업명</th>
+                        <th>사업 모델</th>
+                        <th>매출 규모</th>
+                        <th>주요 거점</th>
+                        <th>핵심 강점</th>
+                        <th>OPM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><strong>한세실업</strong></td>
+                        <td>OEM/ODM</td>
+                        <td>1.9조원</td>
+                        <td>8개국(베트남·과테말라)</td>
+                        <td>수직계열화, 다각화</td>
+                        <td>7.5%</td>
+                    </tr>
+                    <tr>
+                        <td>영원무역</td>
+                        <td>OEM(아웃도어)</td>
+                        <td>~2.5조원</td>
+                        <td>방글라데시·베트남</td>
+                        <td>아웃도어 특화, The North Face</td>
+                        <td>~8%</td>
+                    </tr>
+                    <tr>
+                        <td>세아상역</td>
+                        <td>OEM/ODM</td>
+                        <td>~8,000억원</td>
+                        <td>베트남·인도네시아</td>
+                        <td>가격 경쟁력, 니트 특화</td>
+                        <td>~5%</td>
+                    </tr>
+                    <tr>
+                        <td>신성통상</td>
+                        <td>OEM+브랜드</td>
+                        <td>~1.2조원</td>
+                        <td>베트남·방글라데시</td>
+                        <td>TOPTEN 자체브랜드</td>
+                        <td>~4%</td>
+                    </tr>
+                    <tr>
+                        <td>Shenzhou International</td>
+                        <td>OEM(스포츠)</td>
+                        <td>~4.5조원</td>
+                        <td>중국·베트남·캄보디아</td>
+                        <td>Nike 최대 공급사</td>
+                        <td>~15%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-shield-alt"></i>한세실업 경쟁 우위</h4>
+                <ul>
+                    <li>8개국 분산 생산망으로 지정학적 리스크 분산</li>
+                    <li>과테말라 수직계열화로 원가 경쟁력 및 리드타임 우위</li>
+                    <li>TARGET, GAP, WAL-MART, Nike 등 다양한 바이어 포트폴리오</li>
+                    <li>OEM에서 ODM으로 전환 중 — 부가가치 상승</li>
+                    <li>CAFTA-DR 활용 미국향 무관세 수출 역량</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-exclamation-triangle"></i>경쟁 리스크 요인</h4>
+                <ul>
+                    <li>Shenzhou International 등 중국계 대형 OEM의 규모 우위</li>
+                    <li>방글라데시·캄보디아 저비용 생산국과의 가격 경쟁</li>
+                    <li>바이어 발주 집중도에 따른 협상력 리스크</li>
+                    <li>미국 무역 정책 변화(관세, 원산지 규정)에 대한 민감도</li>
+                    <li>인건비 상승 압력(베트남, 인도네시아 등)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-chess-knight"></i>경쟁 환경 전망</h4>
+            <p>글로벌 의류 OEM 산업은 '규모의 경제'와 '서플라이 체인 안정성'을 갖춘 대형 업체로의 쏠림 현상이 심화되고 있습니다. 바이어들은 코로나19 이후 공급망 리스크 관리를 위해 검증된 소수의 핵심 벤더에 물량을 집중하는 전략을 취하고 있으며, 이는 한세실업과 같은 Tier 1 OEM 업체에 유리한 환경입니다. 동시에 ESG 컴플라이언스, 디지털 트레이서빌리티, 그리고 빠른 납기 역량이 벤더 선정의 핵심 기준으로 부상하면서, 단순 비용 경쟁력만으로는 시장 지위를 유지하기 어려운 구조로 변화하고 있습니다. 한세실업의 수직계열화 투자는 이러한 경쟁 환경 변화에 선제적으로 대응하는 전략적 포석입니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: SWOT 분석 -->
+<!-- ============================================================ -->
+<section id="swot">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-th-large"></i></div>
+            <h2>SWOT 분석</h2>
+            <span class="sec-tag">SWOT Analysis</span>
+        </div>
+
+        <div class="swot-grid">
+            <div class="swot-box strength">
+                <div class="swot-label"><i class="fas fa-arrow-up"></i>강점 (Strengths)</div>
+                <ul>
+                    <li>8개국 글로벌 생산 네트워크로 리스크 분산 및 유연성 확보</li>
+                    <li>과테말라 수직계열화(C&T, ECOSPIN, TEXOLLINI)로 원가 구조 혁신</li>
+                    <li>TARGET, GAP, WAL-MART, Nike 등 세계적 바이어 포트폴리오</li>
+                    <li>42년 업력에 기반한 OEM/ODM 기술 노하우 축적</li>
+                    <li>약 60,000명의 대규모 숙련 인력 보유</li>
+                    <li>수출 비중 95% — 글로벌 수요 직접 수혜 구조</li>
+                </ul>
+            </div>
+            <div class="swot-box weakness">
+                <div class="swot-label"><i class="fas fa-arrow-down"></i>약점 (Weaknesses)</div>
+                <ul>
+                    <li>OPM 7.5%로 업종 선두(Shenzhou 15%) 대비 수익성 열위</li>
+                    <li>수출 비중 95%로 환율 변동에 대한 높은 민감도</li>
+                    <li>대규모 해외 인력 관리의 복잡성 및 인건비 상승 압력</li>
+                    <li>자체 브랜드 부재로 바이어 의존도 높은 사업 구조</li>
+                    <li>과테말라 수직계열화 투자 회수까지 자본 부담 지속</li>
+                    <li>미얀마 정치 불안정 등 일부 거점의 지정학적 리스크</li>
+                </ul>
+            </div>
+            <div class="swot-box opportunity">
+                <div class="swot-label"><i class="fas fa-lightbulb"></i>기회 (Opportunities)</div>
+                <ul>
+                    <li>수직계열화 본격 가동(2026~)으로 OPM 10%+ 돌파 전망</li>
+                    <li>미국 소비 경기 견조 및 바이어 발주 사이클 회복</li>
+                    <li>니어쇼어링 트렌드로 중미 거점 수요 확대</li>
+                    <li>ODM 비중 확대를 통한 부가가치 및 마진 개선</li>
+                    <li>원/달러 환율 1,500원대 중반 — 수출 기업 환율 수혜</li>
+                    <li>ESG 역량 기반 바이어 벤더 풀 집중의 수혜</li>
+                </ul>
+            </div>
+            <div class="swot-box threat">
+                <div class="swot-label"><i class="fas fa-bolt"></i>위협 (Threats)</div>
+                <ul>
+                    <li>글로벌 경기 둔화 시 바이어 발주 축소 리스크</li>
+                    <li>미국 무역 정책 변화(관세 인상, 원산지 규정 강화)</li>
+                    <li>베트남·인도네시아 등 주요 거점 최저임금 인상 압력</li>
+                    <li>중국계 대형 OEM(Shenzhou 등)과의 규모 경쟁 심화</li>
+                    <li>원자재(원사, 원단) 가격 변동에 따른 원가 압박</li>
+                    <li>자동화·AI 기술 발전에 따른 저비용 생산국 우위 약화 가능성</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: 전략분석 -->
+<!-- ============================================================ -->
+<section id="strategy">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-bullseye"></i></div>
+            <h2>전략분석</h2>
+            <span class="sec-tag">Strategy Analysis</span>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-rocket"></i>핵심 성장 전략: 수직계열화</h4>
+            <p>한세실업의 가장 중요한 전략적 이니셔티브는 과테말라 중심의 수직계열화입니다. C&T(원단염색), ECOSPIN(방적), TEXOLLINI(원단)를 통해 원사에서 완제품까지의 밸류체인을 내재화하며, 이를 통해 OPM을 현재 7.5%에서 2026년 10%+ 수준으로 끌어올리는 것을 목표로 합니다.</p>
+            <ul>
+                <li>C&T Vina 3공장: 2025.12 가동, 베트남 원단 자급률 확대</li>
+                <li>과테말라 봉제공장: 2026년 가동, 미국향 풀패키지 일관생산</li>
+                <li>원단 내재화율 50%+ 달성 시 OPM 10% 돌파 전망</li>
+                <li>수직계열화 완성 시 리드타임 45일에서 15일로 단축</li>
+                <li>바이어 대상 Speed-to-Market 솔루션 제공 역량 강화</li>
+            </ul>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-globe-americas"></i>지역 다변화 전략</h4>
+                <p>지정학적 리스크와 관세 변동에 대응하기 위해 아시아(베트남, 인도네시아, 미얀마)와 중미(니카라과, 과테말라) 이원화 전략을 심화하고 있습니다. 특히 미국 시장 접근성이 우수한 중미 거점의 비중을 확대하여, 미·중 무역 갈등 속에서도 안정적인 공급 역량을 확보합니다.</p>
+                <ul>
+                    <li>중미 거점(과테말라·니카라과) 생산 비중 확대</li>
+                    <li>CAFTA-DR 관세 혜택 극대화 전략</li>
+                    <li>아시아 거점: 대량 물량·비용 경쟁력 유지</li>
+                    <li>미·중 갈등 리스크 대비 탈중국 수혜 포지셔닝</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-handshake"></i>바이어 파트너십 강화</h4>
+                <p>단순 공급자 관계에서 전략적 파트너로의 관계 격상을 추진합니다. TARGET, GAP, WAL-MART, Nike 등 주요 바이어에게 OEM을 넘어 디자인·소재개발·물류까지 포함한 토탈 솔루션을 제공하며, 장기 발주 계약을 통한 안정적 매출 기반을 확보합니다.</p>
+                <ul>
+                    <li>주요 바이어 대상 ODM 제안 비중 확대</li>
+                    <li>지속가능 소재·생산 공정 컨설팅 서비스 제공</li>
+                    <li>디자인→샘플→양산→물류 원스톱 서비스</li>
+                    <li>바이어별 전담 팀 운영을 통한 맞춤 대응 강화</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-route"></i>중장기 성장 로드맵</h4>
+            <p>한세실업의 중장기 전략은 '수직계열화 완성을 통한 수익성 혁신'과 '글로벌 Tier 1 OEM/ODM으로의 위상 확립'에 초점을 맞추고 있습니다. 1단계(2025~2026)는 과테말라·베트남 수직계열화 공장 가동과 OPM 10% 달성에 집중합니다. 2단계(2027~2028)는 ODM 비중 30%+ 확대와 신규 바이어 확보를 통한 매출 2.5조원 돌파를 목표로 합니다. 3단계(2029~)는 자체 브랜드 론칭 검토 및 친환경 생산 체계 100% 전환을 통한 글로벌 지속가능 패션 리더십 확립을 지향합니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: 재무분석 -->
+<!-- ============================================================ -->
+<section id="financial">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-coins"></i></div>
+            <h2>재무분석</h2>
+            <span class="sec-tag">Financial Analysis</span>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="info-card">
+            <h4><i class="fas fa-chart-bar"></i>핵심 재무 지표</h4>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">매출액 (2025)</span>
+                    <span class="pl-val">1.9조원 (+6.1%)</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:76%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">영업이익 (2025)</span>
+                    <span class="pl-val">1,426억원</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:58%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">영업이익률 (OPM)</span>
+                    <span class="pl-val">7.5%</span>
+                </div>
+                <div class="progress-bar"><div class="fill blue" style="width:38%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">수출 비중</span>
+                    <span class="pl-val">95%</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:95%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">2026 OPM 전망</span>
+                    <span class="pl-val">10%+ (두자릿수)</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:50%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">시가총액</span>
+                    <span class="pl-val">~1.5조원</span>
+                </div>
+                <div class="progress-bar"><div class="fill blue" style="width:60%;"></div></div>
+            </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-chart-column"></i>연도별 매출 추이</h4>
+                <div class="bar-chart">
+                    <div class="bar-col">
+                        <div class="bar-value">1.4조</div>
+                        <div class="bar" style="height:50%;"></div>
+                        <div class="bar-label">2021</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">1.7조</div>
+                        <div class="bar" style="height:62%;"></div>
+                        <div class="bar-label">2022</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">1.6조</div>
+                        <div class="bar" style="height:58%;"></div>
+                        <div class="bar-label">2023</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">1.8조</div>
+                        <div class="bar" style="height:72%;"></div>
+                        <div class="bar-label">2024</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">1.9조</div>
+                        <div class="bar" style="height:82%;"></div>
+                        <div class="bar-label">2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-chart-column"></i>연도별 OPM 추이</h4>
+                <div class="bar-chart">
+                    <div class="bar-col">
+                        <div class="bar-value">5.2%</div>
+                        <div class="bar blue" style="height:35%;"></div>
+                        <div class="bar-label">2021</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">4.8%</div>
+                        <div class="bar blue" style="height:32%;"></div>
+                        <div class="bar-label">2022</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">5.5%</div>
+                        <div class="bar blue" style="height:37%;"></div>
+                        <div class="bar-label">2023</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">6.8%</div>
+                        <div class="bar blue" style="height:50%;"></div>
+                        <div class="bar-label">2024</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">7.5%</div>
+                        <div class="bar blue" style="height:58%;"></div>
+                        <div class="bar-label">2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-calculator"></i>수익성 분석</h4>
+                <p>한세실업의 OPM은 2021년 5.2%에서 2025년 7.5%로 꾸준히 개선되고 있으며, 2026년에는 수직계열화 효과의 본격 반영으로 두자릿수(10%+) 진입이 전망됩니다. 원단 내재화율 확대에 따른 원가율 개선과 ODM 비중 확대가 마진 확대의 핵심 동인입니다.</p>
+                <ul>
+                    <li>원단 내재화: 외부 구매 대비 원가 5~7%p 절감</li>
+                    <li>ODM 전환: OEM 대비 마진 2~3%p 추가 확보</li>
+                    <li>규모 확대: 고정비 레버리지 효과 본격화</li>
+                    <li>환율 효과: 원/달러 상승 시 수출 마진 개선</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-balance-scale"></i>밸류에이션 분석</h4>
+                <p>시가총액 약 1.5조원 기준, PER은 약 10~11배 수준으로 의류 OEM 업종 평균 대비 적정 수준입니다. 다만 2026년 OPM 10% 달성 시 실적 레벨업이 반영되면 PER이 7~8배 수준으로 하락하여 매력적인 밸류에이션을 제공할 전망입니다.</p>
+                <ul>
+                    <li>PER: ~10~11배 (현재 실적 기준)</li>
+                    <li>2026E PER: ~7~8배 (OPM 10% 반영 시)</li>
+                    <li>PBR: ~1.2배 — 업종 평균 수준</li>
+                    <li>배당수익률: ~2% — 안정적 주주환원</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-file-invoice-dollar"></i>재무 건전성 평가</h4>
+            <p>한세실업의 재무구조는 양호한 편입니다. 부채비율은 약 80% 수준으로 업종 평균 이하이며, 과테말라 수직계열화 투자에도 불구하고 안정적인 현금흐름을 유지하고 있습니다. 2025년 영업활동현금흐름은 약 2,000억원 수준으로 설비투자와 배당 지급을 충분히 소화할 여력이 있습니다. 다만 수직계열화 관련 CAPEX(약 3,000억원 규모)가 2024~2026년에 집중되면서 일시적인 FCF(잉여현금흐름) 감소가 예상되나, 공장 가동 이후 수익성 개선 효과가 이를 상쇄할 것으로 전망됩니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: 결론 -->
+<!-- ============================================================ -->
+<section id="conclusion">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-flag-checkered"></i></div>
+            <h2>결론</h2>
+            <span class="sec-tag">Conclusion</span>
+        </div>
+
+        <div class="conclusion-box">
+            <h3>투자 판단 요약 — 수직계열화가 열어갈 OPM 10% 시대</h3>
+            <p>한세실업은 42년의 업력과 8개국 글로벌 생산 네트워크를 바탕으로 세계적인 의류 OEM/ODM 기업으로 자리매김하고 있습니다. 2025년 매출 1.9조원(+6.1%), 영업이익 1,426억원(OPM 7.5%)으로 견조한 실적을 기록하며, TARGET, GAP, WAL-MART, Nike 등 글로벌 탑티어 바이어와의 안정적인 거래 관계가 사업의 기반을 이루고 있습니다.</p>
+            <p>가장 주목할 포인트는 과테말라 중심의 수직계열화 전략입니다. C&T, ECOSPIN, TEXOLLINI를 통한 원사→원단→완제품 일관 생산 체계 구축은 원가 구조의 근본적인 혁신을 가져올 전망이며, 2026년 OPM 10%+ 달성이라는 구체적인 성과 목표를 제시합니다. C&T Vina 3공장(2025.12 가동)과 과테말라 봉제공장(2026년 가동)의 순차적 가동이 이러한 전략의 핵심 실행 축입니다.</p>
+            <p>리스크 요인으로는 글로벌 소비 경기 둔화에 따른 바이어 발주 축소 가능성, 미국 무역 정책 변화(관세), 환율 변동성, 그리고 수직계열화 투자 회수 지연 가능성 등이 있습니다. 수출 비중 95%라는 높은 해외 의존도는 환율과 글로벌 수요 변동에 대한 민감도를 높이는 구조적 특성입니다.</p>
+            <p>종합적으로 한세실업은 수직계열화를 통한 수익성 레벨업이 가시화되는 시점에 있으며, OPM 10% 달성 여부가 밸류에이션 리레이팅의 핵심 트리거가 될 것입니다. 투자 매력도 66점으로, 수직계열화 효과의 실적 반영 추이를 확인하며 접근하는 것이 바람직합니다.</p>
+
+            <div class="conclusion-tags">
+                <span class="gold">의류 OEM 강자</span>
+                <span class="gold">수직계열화</span>
+                <span class="gold">OPM 10% 전망</span>
+                <span>환율 민감도</span>
+                <span class="gold">8개국 생산망</span>
+                <span>바이어 의존도</span>
+                <span class="gold">글로벌 바이어</span>
+                <span>투자 회수 리스크</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-06-01 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 8,100선 박스권. 소비재·서비스 업종 실적 개선 모멘텀, 의류 OEM 슈퍼사이클 기대.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">소비·서비스</div>렌탈 시장 안정 성장세, 친환경차 전환 가속. 의류 OEM 수직계열화로 마진 개선 본격화.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 소비 경기 견조, PCE 안정. 원/달러 1,500원대 중반, 수출 기업 환율 수혜 지속.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-logo">FLOVAH Insights</div>
+    <p class="footer-copy">&copy; 2026 FLOVAH. 본 리포트는 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다.</p>
+</footer>
+
+<!-- Scroll Spy JS -->
+<script>
+(function() {
+    const navLinks = document.querySelectorAll('.side-nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    function onScroll() {
+        let current = '';
+        const scrollY = window.scrollY + 120;
+
+        sections.forEach(function(section) {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Smooth scroll for nav links
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Animate progress bars on scroll
+    var progressBars = document.querySelectorAll('.progress-bar .fill');
+    var barCols = document.querySelectorAll('.bar-col .bar');
+    var observed = false;
+
+    function animateBars() {
+        if (observed) return;
+        var financialSection = document.getElementById('financial');
+        if (!financialSection) return;
+        var rect = financialSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+            observed = true;
+            progressBars.forEach(function(bar) {
+                var w = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(function() { bar.style.width = w; }, 100);
+            });
+            barCols.forEach(function(bar) {
+                var h = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(function() { bar.style.height = h; }, 100);
+            });
+        }
+    }
+
+    window.addEventListener('scroll', animateBars);
+    animateBars();
+})();
+</script>
+
+</body>
+</html>

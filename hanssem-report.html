@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한샘 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '\00b7';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ============ PROGRESS BAR ============ */
+        .progress-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 16px;
+        }
+
+        .progress-label {
+            width: 120px;
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .progress-bar-track {
+            flex: 1;
+            height: 10px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold) 100%);
+            border-radius: 0;
+            transition: width 1.2s ease;
+        }
+
+        .progress-value {
+            width: 80px;
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '\00b7';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">June 1, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 0: HERO & OVERVIEW -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">한샘 <span class="hero-title-highlight">국내 가구/인테리어 리딩 기업</span></h1>
+                    <p class="hero-subtitle">부엌가구 1위에서 홈 인테리어 토탈 솔루션으로 -- B2C 디지털 전환과 오피스가구 신사업 확장의 분기점</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">58</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">투자 매력 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">주택경기 부진 속 실적 회복 지연이 핵심 변수</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">약 1.7조</div>
+                            <div class="metric-label">시가총액 (2026.06)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1조 7,445억</div>
+                            <div class="metric-label">2025년 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">약 5,000명</div>
+                            <div class="metric-label">임직원 수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1970년</div>
+                            <div class="metric-label">설립연도</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 한샘 기업 소개</h3>
+                <p>한샘(KOSPI 009240)은 1970년 설립된 대한민국 대표 가구/인테리어 기업이다. '부엌가구'라는 카테고리를 국내 최초로 산업화한 선도 기업으로, 현재는 주방, 욕실, 바닥재, 수납, 침실, 거실 등 홈 인테리어 전 영역을 아우르는 토탈 솔루션 기업으로 성장했다.</p>
+                <p>사업 구조는 크게 B2C(소비자 직접 판매)와 B2B(건설사 납품)로 나뉜다. B2C 부문에서는 한샘몰을 중심으로 온라인 채널을 강화하고 있으며, 리하우스(리모델링) 서비스로 원스톱 인테리어 시공을 제공한다. B2B 부문은 아파트 신축 현장에 부엌, 욕실 등의 빌트인 가구를 납품하는 구조로, 건설경기 사이클에 직접적인 영향을 받는다.</p>
+                <p>2025년 기준 매출의 50% 이상이 B2C 주방/인테리어에서 발생하며, 한샘몰 온라인 매출이 전년 대비 약 20% 성장하는 등 디지털 전환이 가속화되고 있다. 최근에는 한샘넥서스를 합병하고 오피스가구 시장에 본격 진출하며 사업 다각화를 추진 중이다.</p>
+            </div>
+
+            <!-- Report Info -->
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>종목 코드</h4>
+                        <p>KOSPI 009240</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-industry"></i></div>
+                    <div class="report-info-content">
+                        <h4>산업 분류</h4>
+                        <p>가구 / 인테리어</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="report-info-content">
+                        <h4>본사 소재지</h4>
+                        <p>서울특별시 마포구</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="report-info-content">
+                        <h4>대표이사</h4>
+                        <p>김유진</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970년</div>
+                        <div class="timeline-text">한샘 설립 -- 국내 최초 부엌가구 전문 기업으로 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1980년</div>
+                        <div class="timeline-text">부엌가구 시장 점유율 1위 달성 -- 시스템 키친 개념 정립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1988년</div>
+                        <div class="timeline-text">인테리어 가구로 사업 영역 확장, 홈 토탈 인테리어 비전 수립</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1997년</div>
+                        <div class="timeline-text">한국거래소(KOSPI) 상장 -- 자본시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005년</div>
+                        <div class="timeline-text">B2B 건설사 납품 사업 본격화 -- 대단지 아파트 빌트인 가구 시장 선점</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">리하우스(리모델링) 인테리어 원스톱 서비스 론칭</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">플래그십 스토어 확대, 체험형 쇼룸 전략 가속</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">한샘몰 디지털 전환 본격화 -- 온라인 커머스 플랫폼 구축</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023년</div>
+                        <div class="timeline-text">한샘넥서스 합병, 오피스가구 시장 진출 발표</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">오피스가구 본격 확장, 한샘몰 온라인 매출 +20% 성장</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">기술 분석</div>
+        </div>
+
+        <!-- SECTION 1: TECHNOLOGY -->
+        <section id="technology">
+            <h2 class="section-title"><i class="fas fa-drafting-compass"></i> <span>한샘의 핵심 기술과 역량</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-couch"></i> 모듈러 시스템 가구 설계</h3>
+                <p>한샘은 국내 최초로 모듈러(조립식) 시스템 키친을 도입한 기업이다. 표준화된 모듈 유닛과 다양한 마감재 조합으로 소비자 맞춤형 주방을 구현한다. 이 모듈러 역량은 욕실, 수납장, 드레스룸 등 전 제품군으로 확장되었다. 최근에는 3D 시뮬레이션 기반의 공간 설계 시스템을 도입해 고객이 온라인에서 직접 가구 배치와 인테리어를 미리 체험할 수 있는 서비스를 제공하고 있다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">모듈러 시스템</span>
+                    <span class="tech-badge">3D 시뮬레이션</span>
+                    <span class="tech-badge">맞춤형 설계</span>
+                    <span class="tech-badge">BIM 연동</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-laptop-house"></i> 한샘몰 디지털 플랫폼</h3>
+                <p>한샘몰은 가구/인테리어 전문 이커머스 플랫폼으로, 제품 판매뿐 아니라 인테리어 시공 예약, 3D 공간 설계, 디자인 상담까지 통합된 원스톱 서비스를 제공한다. 2025년 기준 온라인 매출이 전년 대비 약 20% 성장하며 B2C 채널의 핵심 성장 동력이 되고 있다.</p>
+                <p>AR(증강현실) 기술을 활용한 '가구 배치 미리보기' 기능, AI 기반 인테리어 추천 알고리즘 등을 도입해 고객 경험을 차별화하고 있다. 온라인-오프라인(O2O) 연계형 쇼룸 전략으로, 체험은 매장에서, 구매는 온라인에서 이루어지는 하이브리드 모델을 구축 중이다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">한샘몰 플랫폼</span>
+                    <span class="tech-badge">AR 가구 배치</span>
+                    <span class="tech-badge">AI 인테리어 추천</span>
+                    <span class="tech-badge">O2O 커머스</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-tools"></i> 리하우스 시공 역량</h3>
+                <p>한샘 리하우스는 국내 최대 인테리어 리모델링 서비스 브랜드로, 주방, 욕실, 바닥, 도배, 조명 등 전 공정을 원스톱으로 제공한다. 자체 시공 관리 시스템과 전문 시공 인력 네트워크를 운영하며, 체계적인 품질 관리 프로세스가 강점이다. 시공 이후 A/S까지 일원화된 서비스 체계는 소비자 신뢰 확보에 핵심적인 역할을 한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chair"></i> 오피스가구 -- 신규 성장 축</h3>
+                <p>한샘넥서스 합병을 통해 오피스가구 시장에 본격 진출했다. 사무용 데스크, 파티션, 회의실 가구, 스마트 오피스 솔루션 등을 포함하며, 기업 고객 대상 B2B 영업 채널을 구축하고 있다. 국내 오피스가구 시장은 기존 코아스, 퍼시스 등이 주도하고 있으나, 한샘의 브랜드 파워와 유통 역량을 활용한 시장 확대가 기대된다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">시장 분석</div>
+        </div>
+
+        <!-- SECTION 2: MARKET -->
+        <section id="market">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> <span>시장 환경과 산업 구조</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-home"></i> 국내 가구/인테리어 시장 개관</h3>
+                <p>국내 가구/인테리어 시장은 약 30조원 규모로 추정되며, 이 중 가구 시장이 약 12~14조원, 인테리어/리모델링 시장이 16~18조원을 차지한다. 주택 노후화와 1~2인 가구 증가로 리모델링 수요는 구조적으로 성장하고 있으나, 신축 아파트 공급 감소와 주택시장 거래량 부진이 단기 변수로 작용한다.</p>
+                <p>시장은 크게 B2C(개인 소비자), B2B(건설사 납품), B2B(기업 사무용) 세그먼트로 나뉘며, 한샘은 B2C와 B2B(건설) 모두에서 주요 사업자 위치를 점하고 있다. 온라인 채널 비중이 빠르게 확대되면서 전통적인 오프라인 매장 중심 유통 구조에도 변화가 진행 중이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-line"></i> B2C 시장: 리모델링과 온라인 전환</h3>
+                <p>주택 노후화에 따른 리모델링 수요는 장기 성장 트렌드다. 전국 주택의 약 30%가 준공 20년 이상이며, 노후 주택의 리모델링 시장은 연 5~7% 성장이 전망된다. 한샘은 리하우스 브랜드를 통해 이 시장에서 선도적 위치를 확보하고 있다.</p>
+                <p>다만 2025~2026년 현재 주택시장 거래량 회복이 지연되면서, 인테리어/가구 구매 시점도 함께 지연되는 양상이다. 고금리 장기화와 실질 소득 정체가 소비 심리 위축 요인으로 작용하고 있어, 단기적으로는 B2C 매출 성장 속도에 제약이 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> B2B 시장: 건설경기 사이클</h3>
+                <p>건설사 빌트인 가구 납품(B2B) 부문은 신규 아파트 착공·분양 물량에 직접적으로 연동된다. 2023~2025년 건설경기 침체로 B2B 외형이 축소되었으며, 2026년 하반기 이후 반등 가능성이 제기되나 전망이 엇갈리고 있다.</p>
+                <p>한샘은 주요 건설사(대림, GS건설, 현대건설 등)에 시스템 키친, 욕실 가구 등을 납품하며, 납품 단가 인상과 프리미엄 라인업 확대를 통해 수익성 개선을 추진하고 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-briefcase"></i> 오피스가구 시장 기회</h3>
+                <p>국내 오피스가구 시장은 약 2~3조원 규모로, 기업의 사무 환경 개선 트렌드와 스마트오피스 수요 증가에 따라 성장이 기대된다. 기존 퍼시스, 코아스 등이 시장을 주도하고 있으나, 한샘은 한샘넥서스 합병을 통해 제조 역량을 확보하고 브랜드와 유통망을 활용한 차별화 전략을 추진하고 있다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">경쟁사 분석</div>
+        </div>
+
+        <!-- SECTION 3: COMPETITORS -->
+        <section id="competitors">
+            <h2 class="section-title"><i class="fas fa-users"></i> <span>경쟁사 비교 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 경쟁사 비교</h3>
+                <p>한샘은 국내 가구/인테리어 시장에서 현대리바트와 함께 양강 구도를 형성하고 있다. 이케아코리아의 국내 확장, 에넥스/까사미아 등 중견 브랜드의 경쟁도 변수다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>기업명</th>
+                            <th>주요 포지션</th>
+                            <th>매출 규모</th>
+                            <th>핵심 강점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>한샘</strong></td>
+                            <td>B2C+B2B 토탈 인테리어 1위</td>
+                            <td>1.7조원</td>
+                            <td>브랜드 파워, 리하우스 시공, 한샘몰</td>
+                        </tr>
+                        <tr>
+                            <td><strong>현대리바트</strong></td>
+                            <td>현대백화점그룹 계열</td>
+                            <td>1.5조원</td>
+                            <td>백화점 채널, B2B 건설사 납품 강점</td>
+                        </tr>
+                        <tr>
+                            <td><strong>이케아코리아</strong></td>
+                            <td>글로벌 가구 SPA</td>
+                            <td>약 6,000억원</td>
+                            <td>글로벌 브랜드, 저가 전략, DIY</td>
+                        </tr>
+                        <tr>
+                            <td><strong>에넥스</strong></td>
+                            <td>B2B 빌트인 가구 전문</td>
+                            <td>약 3,500억원</td>
+                            <td>건설사 납품 특화, 원가 경쟁력</td>
+                        </tr>
+                        <tr>
+                            <td><strong>까사미아</strong></td>
+                            <td>생활가구/인테리어 소품</td>
+                            <td>약 2,500억원</td>
+                            <td>디자인 감성, 라이프스타일 브랜드</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess-knight"></i> 경쟁 포지셔닝 분석</h3>
+                <p>한샘의 핵심 경쟁력은 '토탈 인테리어 원스톱 서비스'에 있다. 가구 제조-유통-시공-A/S를 수직 통합한 밸류체인은 개별 영역 특화 경쟁사 대비 고객 편의성과 브랜드 신뢰도에서 우위를 점한다. 다만, 이케아의 저가 전략과 현대리바트의 백화점 채널 활용은 각각 가격대와 프리미엄 세그먼트에서 한샘을 위협하는 요인이다.</p>
+                <p>온라인 시장에서는 한샘몰이 가구/인테리어 전문 플랫폼으로 차별화되어 있으나, 쿠팡, 네이버쇼핑 등 범용 이커머스 플랫폼의 가구 카테고리 확대도 경쟁 환경 변화 요인이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">SWOT 분석</div>
+        </div>
+
+        <!-- SECTION 4: SWOT -->
+        <section id="swot">
+            <h2 class="section-title"><i class="fas fa-crosshairs"></i> <span>SWOT 분석</span></h2>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-shield-alt"></i> STRENGTHS</h3>
+                    <ul>
+                        <li>부엌가구 1위 브랜드 인지도와 50년+ 업력</li>
+                        <li>리하우스 -- 국내 최대 인테리어 시공 네트워크</li>
+                        <li>한샘몰 디지털 플랫폼 (온라인 매출 +20% 성장)</li>
+                        <li>B2C+B2B 가구/인테리어 밸류체인 수직 통합</li>
+                        <li>전국 쇼룸/매장 네트워크 -- O2O 연계</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-exclamation-triangle"></i> WEAKNESSES</h3>
+                    <ul>
+                        <li>건설경기 사이클 의존도 높은 B2B 부문</li>
+                        <li>2025년 영업이익 184억원(-41%) -- 수익성 부진</li>
+                        <li>인테리어 시공 품질 편차 -- 개인 시공사 관리 한계</li>
+                        <li>중저가 가구 시장에서 이케아 대비 가격 열위</li>
+                        <li>오피스가구 신사업 초기 투자 부담</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold);"><i class="fas fa-lightbulb"></i> OPPORTUNITIES</h3>
+                    <ul>
+                        <li>주택 노후화 가속 -- 리모델링 수요 구조적 성장</li>
+                        <li>1~2인 가구 증가 -- 소형 맞춤형 가구 수요</li>
+                        <li>오피스가구 시장 진출 -- 사업 다각화</li>
+                        <li>온라인 커머스 성장 -- 디지털 전환 가속</li>
+                        <li>건설경기 2026 하반기 반등 가능성</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue);"><i class="fas fa-bolt"></i> THREATS</h3>
+                    <ul>
+                        <li>주택시장 거래량 회복 지연 -- 소비 심리 위축</li>
+                        <li>고금리 장기화에 따른 인테리어 지출 후순위화</li>
+                        <li>이케아/온라인 플랫폼의 가격 경쟁 심화</li>
+                        <li>원자재(목재, 강판 등) 가격 변동 리스크</li>
+                        <li>인테리어 시공 인력 수급난 및 인건비 상승</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">전략 분석</div>
+        </div>
+
+        <!-- SECTION 5: STRATEGY -->
+        <section id="strategy">
+            <h2 class="section-title"><i class="fas fa-chess"></i> <span>전략 방향</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-store"></i> B2C 디지털 전환 가속</h3>
+                <p>한샘은 한샘몰을 중심으로 온라인 판매 비중을 지속적으로 확대하고 있다. 2025년 온라인 매출이 전년 대비 약 20% 증가하며 디지털 전환이 본격화되고 있다. 3D 공간 설계 시뮬레이터, AR 가구 배치 미리보기, AI 기반 인테리어 추천 등 기술 투자를 통해 온라인 고객 경험을 차별화하고 있다.</p>
+                <p>오프라인 쇼룸은 체험 공간으로 전환해 '체험은 오프라인, 구매는 온라인'의 O2O(Online-to-Offline) 모델을 확립하고 있다. 이를 통해 매장 운영비를 최적화하면서도 고객 접점을 유지하는 전략이다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-hammer"></i> 리하우스 인테리어 시공 고도화</h3>
+                <p>리하우스 시공 서비스의 품질 표준화와 디지털 관리 시스템 도입을 통해 시공 품질 편차를 줄이고, 고객 만족도를 높이는 전략을 추진 중이다. 시공 인력의 체계적 교육과 인증 시스템을 강화하고, 시공 진행 현황을 앱으로 실시간 확인할 수 있는 서비스를 제공한다.</p>
+                <p>리하우스의 시공 매출 비중을 높이면 가구 단품 판매 대비 객단가가 크게 올라가므로, 매출과 수익성 모두에 긍정적인 영향이 기대된다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 오피스가구 신사업 확대</h3>
+                <p>한샘넥서스 합병을 통해 확보한 오피스가구 제조 역량을 바탕으로, 기업 고객 대상 B2B 사무용 가구 사업을 본격 전개하고 있다. 스마트오피스 트렌드에 맞춘 데스크, 회의 공간, 라운지 가구 등 프리미엄 라인업을 확대하며, 한샘의 브랜드 파워와 전국 유통망을 활용한 시장 침투 전략을 추진한다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> B2B 건설사 납품 수익성 개선</h3>
+                <p>건설경기 부진으로 외형이 축소된 B2B 부문에서는 납품 단가 인상과 프리미엄 빌트인 라인업 확대를 통해 수익성 개선에 집중하고 있다. 물량보다는 마진에 초점을 맞춘 전략으로, 건설경기 회복 시 레버리지 효과가 기대된다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> ESG 및 친환경 전략</h3>
+                <p>친환경 소재 사용 확대, 포름알데히드 저감 제품 라인업 강화, 폐가구 회수/재활용 프로그램 운영 등 ESG 경영을 추진하고 있다. 탄소중립 로드맵을 수립하고 제조 공정의 에너지 효율화를 진행 중이며, 이는 장기적으로 브랜드 가치와 규제 대응 경쟁력을 높이는 요인이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">재무 분석</div>
+        </div>
+
+        <!-- SECTION 6: FINANCE -->
+        <section id="finance">
+            <h2 class="section-title"><i class="fas fa-coins"></i> <span>재무 분석</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-table"></i> 주요 재무 지표 (연결 기준)</h3>
+                <table>
+                    <thead>
+                        <tr><th>항목</th><th>2023</th><th>2024</th><th>2025</th><th>2026 Q1</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>매출액</td><td>1조 8,200억</td><td>1조 7,900억</td><td>1조 7,445억</td><td>3,994억</td></tr>
+                        <tr><td>영업이익</td><td>310억</td><td>312억</td><td>184억</td><td>101억</td></tr>
+                        <tr><td>영업이익률</td><td>1.7%</td><td>1.7%</td><td>1.1%</td><td>2.5%</td></tr>
+                        <tr><td>당기순이익</td><td>180억</td><td>150억</td><td>80억</td><td>65억</td></tr>
+                        <tr><td>부채비율</td><td>115%</td><td>118%</td><td>120%</td><td>118%</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:16px;">2025년 실적은 매출 1조 7,445억원으로 전년 대비 소폭 감소했고, 영업이익 184억원은 전년 대비 41% 급감했다. B2B 건설경기 부진과 소비 심리 위축이 복합적으로 작용한 결과다. 그러나 2026년 1분기에는 매출 3,994억원(-9.9% YoY)에도 영업이익 101억원(+56% YoY)으로 수익성이 반등하며, 비용 구조 개선 효과가 나타나고 있다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chart-bar"></i> 핵심 재무 지표 시각화</h3>
+
+                <!-- Progress Bars -->
+                <div style="margin-top:24px;">
+                    <div class="progress-row">
+                        <div class="progress-label">매출액</div>
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" style="width:70%;"></div>
+                        </div>
+                        <div class="progress-value">1.7조</div>
+                    </div>
+                    <div class="progress-row">
+                        <div class="progress-label">영업이익</div>
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" style="width:12%;"></div>
+                        </div>
+                        <div class="progress-value">184억</div>
+                    </div>
+                    <div class="progress-row">
+                        <div class="progress-label">영업이익률</div>
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" style="width:11%;"></div>
+                        </div>
+                        <div class="progress-value">1.1%</div>
+                    </div>
+                    <div class="progress-row">
+                        <div class="progress-label">부채비율</div>
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" style="width:60%;"></div>
+                        </div>
+                        <div class="progress-value">120%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="chart-container">
+                <h3 style="color:var(--ink-strong);font-size:16px;font-weight:700;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 매출 및 영업이익 추이</h3>
+                <div class="bar-items">
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:78%;"></div>
+                        </div>
+                        <div class="bar-value">1.82조</div>
+                        <div class="bar-label">2023 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:75%;"></div>
+                        </div>
+                        <div class="bar-value">1.79조</div>
+                        <div class="bar-label">2024 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:72%;"></div>
+                        </div>
+                        <div class="bar-value">1.74조</div>
+                        <div class="bar-label">2025 매출</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:25%;"></div>
+                        </div>
+                        <div class="bar-value">310억</div>
+                        <div class="bar-label">2023 영업이익</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:25%;"></div>
+                        </div>
+                        <div class="bar-value">312억</div>
+                        <div class="bar-label">2024 영업이익</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-container">
+                            <div class="bar" style="height:15%;"></div>
+                        </div>
+                        <div class="bar-value">184억</div>
+                        <div class="bar-label">2025 영업이익</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card" style="margin-top:24px;">
+                <h3><i class="fas fa-search-dollar"></i> 재무 분석 요약</h3>
+                <p>한샘은 2023~2025년 3년 연속 매출이 소폭 감소하고, 영업이익률이 1%대로 하락하는 등 실적 부진이 지속되고 있다. 이는 건설경기 하강과 소비 심리 위축이라는 외부 환경 요인이 크다. 부채비율 120%는 업종 평균 대비 다소 높은 수준이며, 금리 환경에 따른 이자 비용 부담이 변수다.</p>
+                <p>다만 2026년 1분기 영업이익이 전년 동기 대비 56% 증가하며, 비용 효율화와 고마진 제품 비중 확대 효과가 나타나고 있다. 온라인 채널의 매출 성장과 리하우스 시공 객단가 상승이 중기 수익성 개선의 핵심 동인이 될 전망이다.</p>
+            </div>
+        </section>
+
+        <div class="section-divider">
+            <div class="section-divider-text">결론 및 투자 의견</div>
+        </div>
+
+        <!-- SECTION 7: CONCLUSION -->
+        <section id="conclusion">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> <span>결론 및 투자 의견</span></h2>
+
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> 투자 포인트 요약</h3>
+                <p>한샘은 국내 가구/인테리어 시장의 구조적 리더로서, 리모델링 수요의 장기 성장과 디지털 전환이라는 두 가지 메가트렌드의 수혜 기업이다. 한샘몰의 온라인 매출 성장, 리하우스 시공 서비스의 고도화, 오피스가구 신사업 진출은 중장기 성장 동력이다.</p>
+                <p>다만 단기적으로는 건설경기 부진, 주택 거래량 회복 지연, 소비 심리 위축이 실적 회복을 제약하는 요인이다. 2026년 1분기 영업이익 반등은 긍정적 시그널이나, 지속 가능한 턴어라운드 확인이 필요하다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i> 핵심 리스크</h3>
+                <ul>
+                    <li>주택시장 거래량 회복 지연 -- 인테리어 수요 위축 장기화</li>
+                    <li>건설경기 하반기 반등 불확실성 -- B2B 매출 회복 시기 미정</li>
+                    <li>이케아/온라인 플랫폼의 가격 경쟁 심화</li>
+                    <li>오피스가구 신사업 초기 투자 대비 수익화 시점 불투명</li>
+                    <li>원자재 가격 변동 및 시공 인력 수급난</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-eye"></i> 모니터링 체크포인트</h3>
+                <ul>
+                    <li>분기별 한샘몰 온라인 매출 성장률 및 GMV 추이</li>
+                    <li>리하우스 시공 건수 및 객단가 변화</li>
+                    <li>B2B 건설사 수주 잔고 및 납품 물량 추이</li>
+                    <li>오피스가구 신규 수주 및 매출 기여도</li>
+                    <li>주택 거래량 및 건축 허가/착공 통계</li>
+                    <li>분기별 영업이익률 추이 -- 턴어라운드 확인</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-star"></i> FLOVAH 총평</h3>
+                <p>한샘은 국내 가구/인테리어 시장의 구조적 수혜 기업이지만, 현재 시점에서는 건설경기와 소비 심리 회복이라는 외부 변수에 크게 의존하는 상황이다. 투자 매력 점수 58점은 '장기 성장 잠재력은 있으나, 단기 실적 가시성이 낮은 구간'을 의미한다. 2026년 1분기 수익성 반등이 지속되는지, 온라인과 오피스가구 신사업이 의미 있는 매출 기여를 시작하는지가 향후 리레이팅의 핵심 트리거가 될 것이다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 6월 1일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>한샘 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>한샘 공시 자료 (사업보고서, IR자료, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 한샘 IR 홈페이지</li>
+                    <li>통계청 주택/건설 통계, 한국건설산업연구원</li>
+                    <li>가구산업협회 시장 보고서</li>
+                    <li>증권사 리서치 보고서 (한국투자증권, 미래에셋증권 등)</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH Insights의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 시장, 산업, 경제 요인에 따른 예측 불확실성이 존재합니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 최종 업데이트: 2026년 06월 01일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-06-01 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피 / 코스닥</div>코스피 8,100선 박스권 횡보. 건설/철강 업종 실적 반등 기대감 유입, 내수 소비재 약세.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">내수 / 소비</div>주택시장 거래량 회복 지연, 인테리어/가구 수요 부진 지속. 건설경기 하반기 반등 전망 엇갈려.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">철강 / 소재</div>중국산 저가 공세 속 국내 철강사 수출 전략 전환. 봉형강 판매 확대와 고환율 효과로 채산성 개선.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll (scroll spy)
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars and elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

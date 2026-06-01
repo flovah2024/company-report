@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코리안리재보험 기업 분석 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep:#09090b;--bg-card:#0f1014;--bg-elevated:#141619;--bg-hover:#191b1f;--bg-surface:#111316;
+    --ink:#ede8df;--ink-strong:#f5f1e8;--text-body:#b5ad9e;--text-secondary:#7d7568;--text-muted:#524c42;--text-light:#9a9184;
+    --gold:#c9a962;--gold-light:#dcc07a;--gold-dim:#8a7438;--gold-glow:rgba(201,169,98,.10);
+    --blue:#5c7d9e;--blue-dim:#465f7a;--rule:#1e1f24;--border:#1e1f24;
+    --accent:#c9a962;--accent2:#5c7d9e;--card-bg:#0f1014;--dark-bg:#09090b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-body);font-family:'Noto Sans KR',sans-serif;font-size:15px;line-height:1.75;}
+body{background:var(--bg-deep);min-height:100vh;}
+#progress-bar{position:fixed;top:0;left:0;height:2px;z-index:10000;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:0%;transition:width .2s ease-out;}
+header{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(9,9,11,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:9999;}
+.header-left{display:flex;align-items:center;gap:14px;}
+.header-left img{height:26px;}
+.header-left .logo-text{font-family:'Orbit',sans-serif;font-size:17px;color:var(--ink-strong);letter-spacing:2px;font-weight:400;}
+header nav{display:flex;gap:24px;}
+header nav a{color:var(--text-secondary);text-decoration:none;font-size:13px;letter-spacing:.5px;transition:color .2s;}
+header nav a:hover,header nav a.active{color:var(--gold);}
+.header-right{display:flex;align-items:center;gap:16px;}
+.header-date{font-size:12px;color:var(--text-muted);}
+.flovah-badge{font-size:10px;letter-spacing:1px;color:var(--gold);border:1px solid var(--gold-dim);padding:3px 10px;border-radius:4px;font-weight:600;}
+.container{max-width:1100px;margin:0 auto;padding:80px 40px 40px;}
+.section{margin-bottom:56px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:16px;}
+.section-label i{font-size:12px;}
+.section-title{font-family:'Orbit',sans-serif;font-size:26px;color:var(--ink-strong);margin-bottom:10px;letter-spacing:1px;}
+.section-desc{font-size:14px;color:var(--text-secondary);margin-bottom:28px;line-height:1.8;max-width:780px;}
+.hero-banner{background:linear-gradient(135deg,rgba(201,169,98,.07) 0%,rgba(92,125,158,.05) 100%);border:1px solid var(--border);border-radius:16px;padding:44px 40px;margin-bottom:36px;position:relative;overflow:hidden;}
+.hero-banner::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--gold-glow) 0%,transparent 70%);}
+.hero-company{font-family:'Orbit',sans-serif;font-size:36px;color:var(--ink-strong);letter-spacing:2px;}
+.hero-sub{font-size:14px;color:var(--text-secondary);margin-top:6px;}
+.hero-badges{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.hero-badges span{font-size:11px;letter-spacing:1px;padding:4px 12px;border-radius:4px;font-weight:600;}
+.badge-gold{background:var(--gold-glow);color:var(--gold);border:1px solid var(--gold-dim);}
+.badge-blue{background:rgba(92,125,158,.12);color:var(--blue);border:1px solid var(--blue-dim);}
+.score-wrap{display:flex;align-items:center;gap:40px;margin:32px 0;flex-wrap:wrap;}
+.score-circle{width:130px;height:130px;border-radius:50%;position:relative;background:conic-gradient(var(--gold) 0deg,var(--gold) calc(var(--score)*3.6deg),var(--bg-elevated) calc(var(--score)*3.6deg));display:flex;align-items:center;justify-content:center;}
+.score-circle-inner{width:106px;height:106px;border-radius:50%;background:var(--bg-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-num{font-family:'Orbit',sans-serif;font-size:34px;color:var(--ink-strong);line-height:1;}
+.score-label{font-size:11px;color:var(--text-muted);margin-top:4px;letter-spacing:1px;}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0;}
+.metric-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px 18px;transition:border-color .2s;}
+.metric-card:hover{border-color:var(--gold-dim);}
+.metric-card .mc-label{font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px;}
+.metric-card .mc-value{font-family:'Orbit',sans-serif;font-size:22px;color:var(--ink-strong);}
+.metric-card .mc-sub{font-size:12px;color:var(--text-secondary);margin-top:4px;}
+.timeline{position:relative;padding-left:28px;margin:32px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border);}
+.timeline-item{position:relative;margin-bottom:22px;}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg-deep);}
+.timeline-year{font-family:'Orbit',sans-serif;font-size:14px;color:var(--gold);}
+.timeline-text{font-size:13px;color:var(--text-secondary);margin-top:2px;}
+.card-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:20px;}
+.card-panel h3{font-size:16px;color:var(--ink-strong);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.card-panel h3 i{color:var(--gold);font-size:14px;}
+.card-panel p{font-size:14px;color:var(--text-body);margin-bottom:12px;line-height:1.8;}
+.tech-badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;}
+.tech-badge{font-size:11px;padding:5px 14px;border-radius:20px;background:var(--bg-elevated);border:1px solid var(--border);color:var(--text-light);letter-spacing:.5px;}
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;}
+.data-table th{text-align:left;font-size:11px;letter-spacing:.5px;color:var(--text-muted);padding:12px 14px;border-bottom:1px solid var(--border);font-weight:600;}
+.data-table td{font-size:13px;color:var(--text-body);padding:12px 14px;border-bottom:1px solid var(--border);}
+.data-table tr:hover td{background:var(--bg-hover);}
+.data-table .highlight{color:var(--gold);font-weight:600;}
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.swot-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden;}
+.swot-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.swot-card.strength::before{background:linear-gradient(90deg,#4ade80,#22c55e);}
+.swot-card.weakness::before{background:linear-gradient(90deg,#f87171,#ef4444);}
+.swot-card.opportunity::before{background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.swot-card.threat::before{background:linear-gradient(90deg,#fb923c,#f97316);}
+.swot-card h4{font-size:14px;color:var(--ink-strong);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.swot-card ul{list-style:none;}
+.swot-card ul li{font-size:13px;color:var(--text-body);padding:5px 0;padding-left:16px;position:relative;line-height:1.7;}
+.swot-card ul li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;}
+.swot-card.strength ul li::before{background:#4ade80;}
+.swot-card.weakness ul li::before{background:#f87171;}
+.swot-card.opportunity ul li::before{background:var(--gold);}
+.swot-card.threat ul li::before{background:#fb923c;}
+.fin-bar-wrap{margin:16px 0;}
+.fin-bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+.fin-bar-label span:first-child{color:var(--text-light);}
+.fin-bar-label span:last-child{color:var(--ink-strong);font-weight:600;}
+.fin-bar-track{height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;}
+.fin-bar-fill{height:100%;border-radius:4px;width:0%;transition:width 1.2s ease-out;}
+.fin-bar-fill.gold{background:linear-gradient(90deg,var(--gold-dim),var(--gold));}
+.fin-bar-fill.blue{background:linear-gradient(90deg,var(--blue-dim),var(--blue));}
+.bar-chart{display:flex;align-items:flex-end;gap:18px;height:200px;margin:28px 0;padding:0 10px;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.bar-stick{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height 1.2s ease-out;position:relative;}
+.bar-stick.gold{background:linear-gradient(180deg,var(--gold),var(--gold-dim));}
+.bar-stick.blue{background:linear-gradient(180deg,var(--blue),var(--blue-dim));}
+.bar-val{font-size:11px;color:var(--text-light);font-weight:600;}
+.bar-label{font-size:11px;color:var(--text-muted);}
+.conclusion-box{background:linear-gradient(135deg,rgba(201,169,98,.08) 0%,rgba(92,125,158,.06) 100%);border:1px solid var(--gold-dim);border-radius:14px;padding:32px;margin:28px 0;}
+.conclusion-box h3{font-size:18px;color:var(--ink-strong);margin-bottom:14px;}
+.conclusion-box p{font-size:14px;color:var(--text-body);line-height:1.85;margin-bottom:10px;}
+footer{max-width:1100px;margin:0 auto;padding:40px 40px 60px;border-top:1px solid var(--border);}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-brand img{height:20px;}
+.footer-brand span{font-family:'Orbit',sans-serif;font-size:14px;color:var(--text-muted);letter-spacing:2px;}
+.footer-copy{font-size:11px;color:var(--text-muted);}
+@media(max-width:768px){
+    header{padding:0 16px;}header nav{display:none;}.container{padding:72px 16px 24px;}
+    .metric-grid{grid-template-columns:1fr 1fr;}.swot-grid{grid-template-columns:1fr;}
+    .hero-company{font-size:24px;}.score-wrap{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<header>
+    <div class="header-left">
+        <a href="index.html"><img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH"></a>
+        <span class="logo-text">FLOVAH Insights</span>
+    </div>
+    <nav>
+        <a href="#overview">기업 개요</a><a href="#tech">기술 분석</a><a href="#market">시장 분석</a>
+        <a href="#competitors">경쟁사</a><a href="#swot">SWOT</a><a href="#strategy">전략</a>
+        <a href="#financial">재무</a><a href="#conclusion">결론</a>
+    </nav>
+    <div class="header-right">
+        <span class="header-date">June 1, 2026</span>
+        <span class="flovah-badge">FLOVAH</span>
+    </div>
+</header>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 1 : 기업 개요 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="overview">
+<div class="section-label"><i class="fas fa-building"></i> COMPANY OVERVIEW</div>
+<div class="hero-banner">
+    <div class="hero-company">코리안리재보험</div>
+    <div class="hero-sub">Korean Reinsurance Company | KOSPI 003690 | 기업 종합 분석</div>
+    <div class="hero-badges">
+        <span class="badge-gold">재보험/금융</span>
+        <span class="badge-blue">KOSPI 상장</span>
+        <span class="badge-gold">국내 유일 전업 재보험사</span>
+        <span class="badge-blue">설립 1963년</span>
+    </div>
+</div>
+
+<div class="score-wrap">
+    <div class="score-circle" style="--score:72">
+        <div class="score-circle-inner">
+            <div class="score-num">72</div>
+            <div class="score-label">SCORE</div>
+        </div>
+    </div>
+    <div>
+        <p style="font-size:14px;color:var(--text-body);max-width:560px;line-height:1.8;">
+            코리안리재보험은 1963년 설립된 대한민국 유일의 전업 재보험회사로서, 60년 이상의 역사를 보유하고 있습니다.
+            국내 손해보험 및 생명보험 시장에서 안정적인 수재 기반을 확보하고 있으며, 해외 사업 확대를 통해
+            글로벌 재보험사로의 도약을 추진하고 있습니다. 종합 분석 점수 72점은 안정적 수익 기반과 배당 매력을
+            반영하되, 글로벌 경쟁력 및 성장성 측면의 제한요소를 고려한 결과입니다.
+        </p>
+    </div>
+</div>
+
+<div class="metric-grid">
+    <div class="metric-card"><div class="mc-label">2025 매출액</div><div class="mc-value">6.58조</div><div class="mc-sub">전년 대비 +8.2%</div></div>
+    <div class="metric-card"><div class="mc-label">시가총액</div><div class="mc-value">2.2조</div><div class="mc-sub">KOSPI 003690</div></div>
+    <div class="metric-card"><div class="mc-label">임직원 수</div><div class="mc-value">~600명</div><div class="mc-sub">국내·해외 법인 합산</div></div>
+    <div class="metric-card"><div class="mc-label">설립연도</div><div class="mc-value">1963</div><div class="mc-sub">60년+ 업력</div></div>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-info-circle"></i> 기업 핵심 개요</h3>
+    <p>코리안리재보험(Korean Re)은 대한민국 재보험 시장의 근간을 이루는 기업으로, 국내 손해보험사 및 생명보험사가 인수한 보험 리스크를 재인수하는 전업 재보험 회사입니다. 1963년 정부 주도로 설립된 이래, 국내 보험 산업의 성장과 함께 규모를 확대해왔으며, 현재는 해외 사업 비중을 지속적으로 높이며 글로벌 재보험사로의 전환을 추진하고 있습니다.</p>
+    <p>재보험이란 보험회사가 인수한 위험의 일부 또는 전부를 다른 보험회사에 전가하는 것을 의미합니다. 이는 보험 산업의 리스크 분산 메커니즘에서 핵심적인 역할을 수행하며, 대형 자연재해나 대규모 사고 발생 시 보험회사의 재무 안정성을 보장하는 최후의 방패 역할을 합니다. 코리안리는 이러한 재보험 시장에서 국내 유일의 전업 사업자로서 독보적인 위치를 차지하고 있습니다.</p>
+    <p>2025년 기준 총 매출(수재보험료) 6조 5,761억 원, 당기순이익 3,155억 원의 역대 최대 실적을 기록했습니다. 특히 2026년 1분기에는 순이익 2,095억 원을 달성하며 전년 동기 대비 131.4% 성장하여 실적 가속화 추세를 보이고 있습니다. 이는 자연재해 손실 감소, 보험료율 인상 효과, 그리고 해외 사업 수익성 개선이 복합적으로 작용한 결과입니다.</p>
+    <p>주주환원 측면에서도 코리안리는 안정적인 배당 정책을 유지하고 있습니다. 2025년 기준 배당수익률은 약 4.2%로, 금융 섹터 내에서도 매력적인 수준입니다. 회사는 비전2050 전략을 통해 글로벌 TOP30 재보험사 진입을 목표로 하고 있으며, 이를 위해 해외 거점 확대, 디지털 전환, 신사업 진출 등을 적극 추진하고 있습니다. 국내 독점적 지위와 해외 성장 잠재력이 코리안리의 핵심 투자 포인트입니다.</p>
+</div>
+
+<div class="section-label" style="margin-top:32px;"><i class="fas fa-clock"></i> KEY MILESTONES</div>
+<div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">1963</div><div class="timeline-text">대한재보험공사로 설립 — 정부 주도 재보험 전업 기관 출범. 국내 보험 산업의 리스크 인프라 기반 마련.</div></div>
+    <div class="timeline-item"><div class="timeline-year">1975</div><div class="timeline-text">해외 수재 사업 개시 — 동남아 시장을 시작으로 국제 재보험 시장 진출. 글로벌 네트워크 구축의 첫걸음.</div></div>
+    <div class="timeline-item"><div class="timeline-year">1978</div><div class="timeline-text">코리안리재보험으로 상호 변경 — 민영화 추진과 함께 기업 브랜드 재정립. 국제 경쟁력 강화 기반 마련.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2001</div><div class="timeline-text">한국거래소(KOSPI) 상장 — 자본시장 접근성 확보. 공모를 통한 자본 확충 및 기업 지배구조 투명성 강화.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2007</div><div class="timeline-text">해외 지점·법인 확대 — 싱가포르, 런던, 두바이 등 글로벌 주요 재보험 허브에 거점 설립. 해외 수재 비중 20% 돌파.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-text">역대 최대 실적 갱신 — 자연재해 손실비율 정상화와 보험료율 하드닝 사이클 효과로 영업이익 급등.</div></div>
+    <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-text">비전2050 전략 발표 — 글로벌 TOP30 재보험사 목표 선언. 해외 수재 비중 40% 이상 확대 및 디지털 전환 로드맵 공개.</div></div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 2 : 기술 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="tech">
+<div class="section-label"><i class="fas fa-microchip"></i> TECHNOLOGY ANALYSIS</div>
+<div class="section-title">기술 분석</div>
+<div class="section-desc">코리안리재보험의 핵심 기술 역량, 연구개발 현황, 디지털 전환 전략을 종합 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-shield-alt"></i> 재보험 리스크 모델링 기술</h3>
+    <p>재보험 산업의 핵심 기술 역량은 리스크 평가와 가격 산정(pricing) 능력에 집중됩니다. 코리안리는 국내 60년 이상의 손해 데이터를 축적하고 있으며, 이를 기반으로 자체 리스크 모델링 시스템을 운영합니다. 특히 국내 자연재해(태풍, 지진, 홍수) 리스크에 대한 데이터는 글로벌 재보험사 대비 우위에 있으며, 한반도 특유의 기후·지질학적 리스크를 정밀하게 반영한 모델을 보유하고 있습니다.</p>
+    <p>보험계리(Actuarial Science) 분야에서 코리안리는 국내 최고 수준의 전문인력을 확보하고 있습니다. 보험계리사, 리스크 애널리스트, 데이터 사이언티스트로 구성된 전문 조직이 보험료율 산정, 준비금 적정성 평가, 포트폴리오 최적화 등의 업무를 수행합니다. IFRS17 도입에 따른 보험부채 평가 체계 고도화에도 선제적으로 대응하여 업계 기준을 제시하고 있습니다.</p>
+    <p>자연재해 모델링 측면에서는 글로벌 표준 모델인 RMS, AIR Worldwide의 카탈로그 모델과 함께 자체 개발한 한국형 CAT(Catastrophe) 모델을 병행 운용하고 있습니다. 이 모델은 기상청, 한국지질자원연구원 등 국내 기관의 데이터를 직접 반영하여 국내 재해 리스크의 정밀도를 높이고 있으며, 이를 통해 적정 보험료 산출과 리스크 집적(Aggregation) 관리를 수행합니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-robot"></i> 디지털 전환 및 InsurTech 전략</h3>
+    <p>코리안리는 2024년부터 디지털 전환(DX) 전략을 본격 추진하고 있습니다. 머신러닝 기반 언더라이팅 시스템을 도입하여 수재 심사 프로세스의 자동화율을 높이고 있으며, 자연어처리(NLP) 기술을 활용한 계약 문서 분석 시스템을 시범 운영 중입니다. 이를 통해 기존 수작업 중심의 심사 프로세스를 효율화하고, 해외 수재 물건의 신속한 인수 판단을 지원하고 있습니다.</p>
+    <p>클라우드 기반 재보험 플랫폼 구축도 진행 중입니다. 기존 레거시 시스템을 클라우드 네이티브 아키텍처로 전환하여, 해외 거점과의 실시간 데이터 연동 및 글로벌 포트폴리오 관리 역량을 강화하고 있습니다. 또한 블록체인 기술을 활용한 재보험 거래 플랫폼(B3i 컨소시엄 참여)을 통해 계약 체결 및 정산 프로세스의 투명성과 효율성을 개선하고 있습니다.</p>
+    <p>위성 이미지 분석과 IoT 데이터를 활용한 실시간 리스크 모니터링 시스템도 개발 중입니다. 이를 통해 대형 자연재해 발생 시 신속한 손해 추정과 준비금 산출이 가능해지며, 기후변화에 따른 장기 리스크 트렌드 분석에도 활용됩니다. 특히 기후변화 시나리오 분석을 위한 ESG 리스크 모델링 역량을 강화하여 TCFD(기후변화 재무정보공개 태스크포스) 권고안에 부합하는 리스크 보고 체계를 구축하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-database"></i> 데이터 인프라 및 분석 역량</h3>
+    <p>코리안리는 60년 이상의 국내 보험사고 데이터를 보유한 유일한 기관으로, 이 데이터의 품질과 규모는 국내 재보험 시장에서 대체 불가능한 경쟁우위를 형성합니다. 특히 국내 자동차보험, 화재보험, 해상보험 등 주요 보종별 손해율 데이터는 보험업계 전체의 기준(benchmark)으로 활용되고 있습니다.</p>
+    <p>최근에는 빅데이터 분석 플랫폼을 도입하여 비정형 데이터(뉴스, SNS, 기상 데이터 등)를 활용한 선제적 리스크 감지 시스템을 구축하고 있습니다. 머신러닝 기반의 이상거래 탐지, 보험사기 예측 모델 등도 원수보험사에 부가서비스로 제공하며 고객 가치를 확대하고 있습니다. 국내 손해보험 업계 전반의 데이터 허브 역할을 수행하며, 산업 전체의 리스크 관리 수준 향상에 기여하고 있습니다.</p>
+</div>
+
+<div style="margin-top:20px;">
+    <h3 style="font-size:14px;color:var(--ink-strong);margin-bottom:12px;">기술 스택 및 역량</h3>
+    <div class="tech-badges">
+        <span class="tech-badge">리스크 모델링</span><span class="tech-badge">보험계리</span><span class="tech-badge">CAT 모델링</span>
+        <span class="tech-badge">IFRS17</span><span class="tech-badge">NLP 문서분석</span><span class="tech-badge">클라우드 플랫폼</span>
+        <span class="tech-badge">블록체인(B3i)</span><span class="tech-badge">위성 이미지 분석</span><span class="tech-badge">IoT 모니터링</span>
+        <span class="tech-badge">빅데이터 분석</span><span class="tech-badge">ESG 리스크 모델</span><span class="tech-badge">머신러닝</span>
+        <span class="tech-badge">RMS / AIR Worldwide</span><span class="tech-badge">K-ICS 모델링</span>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 3 : 시장 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="market">
+<div class="section-label"><i class="fas fa-chart-line"></i> MARKET ANALYSIS</div>
+<div class="section-title">시장 분석</div>
+<div class="section-desc">글로벌 및 국내 재보험 시장의 규모, 트렌드, 성장 동인을 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-globe"></i> 글로벌 재보험 시장 개관</h3>
+    <p>글로벌 재보험 시장은 2025년 기준 약 3,500억 달러(약 455조 원) 규모로 추산됩니다. 재보험 시장은 자연재해 빈도 증가, 기후변화 리스크 확대, 신흥시장 보험 침투율 상승 등의 구조적 성장 동인에 힘입어 향후 5년간 연평균 5~7% 성장이 예상됩니다. 특히 아시아-태평양 지역은 경제 성장과 보험 수요 확대에 따라 글로벌 평균을 상회하는 성장률이 전망됩니다.</p>
+    <p>재보험 시장은 현재 '하드마켓(Hard Market)' 사이클에 진입하고 있습니다. 이는 보험료율이 상승하고 인수 조건이 엄격해지는 시기를 의미하며, 재보험사에게는 수익성이 개선되는 우호적인 환경입니다. 2023~2025년에 걸친 대형 자연재해(미국 허리케인, 터키·모로코 지진 등)로 인한 손실 경험이 보험료율 인상을 견인하고 있으며, 이 추세는 2026~2027년까지 지속될 전망입니다.</p>
+    <p>글로벌 재보험 시장의 또 다른 주요 트렌드는 대체 자본(Alternative Capital)의 역할 확대입니다. 보험연계증권(ILS), 캣본드(Cat Bond), 사이드카(Sidecar) 등 자본시장 기반의 재보험 솔루션이 전통적 재보험 용량을 보완하고 있으며, 그 규모는 전체 재보험 용량의 약 15%에 달합니다. 코리안리도 이러한 대체 자본 시장에의 참여를 검토하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-won-sign"></i> 국내 재보험 시장 현황</h3>
+    <p>국내 재보험 시장은 2025년 기준 약 12~15조 원 규모로, 손해보험 재보험이 전체의 약 70%, 생명보험 재보험이 약 30%를 차지합니다. 코리안리는 국내 유일의 전업 재보험사로서 국내 원수보험사들의 출재 물량에서 약 30~35%의 시장점유율을 확보하고 있습니다. 나머지는 글로벌 재보험사(뮌헨리, 스위스리 등)와 해외 재보험사가 분담하는 구조입니다.</p>
+    <p>국내 보험시장은 성숙기에 접어들었으나, 재보험 수요는 여전히 견조합니다. 이는 기후변화에 따른 자연재해 리스크 증가, 사이버 보험 등 신종 리스크의 부상, IFRS17 도입에 따른 보험부채 변동성 관리 수요 등에 기인합니다. 특히 국내 보험사들의 해외 진출 확대에 따라 해외 물건의 국내 재보험 출재 수요도 증가하는 추세입니다.</p>
+    <p>또한 정부의 자연재해 보험제도 확대 정책도 재보험 시장 성장에 기여하고 있습니다. 풍수해보험, 지진보험 등 정책성 보험의 확대는 재보험 수요를 구조적으로 늘리는 요인이며, 코리안리는 이러한 정책보험의 주요 재보험 파트너로 참여하고 있습니다. 국민연금, 공무원연금 등 공적 연기금의 장수 리스크(Longevity Risk) 재보험 수요도 잠재적 성장 동인으로 주목됩니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-chart-area"></i> 시장 성장 동인 및 전망</h3>
+    <p><strong style="color:var(--gold);">기후변화 리스크 확대:</strong> 글로벌 기후변화로 인한 자연재해 빈도와 강도가 증가하면서 재보험 수요가 구조적으로 확대되고 있습니다. 특히 아시아-태평양 지역은 태풍, 홍수, 지진 등의 자연재해 노출이 높아 재보험 보호 수요가 지속적으로 증가하고 있습니다.</p>
+    <p><strong style="color:var(--gold);">신종 리스크의 부상:</strong> 사이버 보험, 팬데믹 보험, ESG 관련 보험 등 신종 리스크 분야의 보험 상품 개발이 활발해지면서 이에 대한 재보험 수요도 함께 성장하고 있습니다. 코리안리는 사이버 재보험 전담 팀을 신설하여 이 시장에 선제적으로 대응하고 있습니다.</p>
+    <p><strong style="color:var(--gold);">신흥시장 보험 침투율 상승:</strong> 동남아시아, 인도, 아프리카 등 신흥시장에서 경제 성장에 따른 보험 침투율 상승이 재보험 시장 확대를 견인합니다. 코리안리는 싱가포르 지점을 동남아 영업 허브로 활용하며 이 기회를 적극 포착하고 있습니다.</p>
+    <p><strong style="color:var(--gold);">규제 환경 변화:</strong> IFRS17, K-ICS(한국형 지급여력제도) 등 보험 규제 강화에 따라 보험사들의 리스크 관리 및 자본 효율화 수요가 증가하고 있으며, 이는 재보험 활용도를 높이는 방향으로 작용하고 있습니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 4 : 경쟁사 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="competitors">
+<div class="section-label"><i class="fas fa-users"></i> COMPETITOR ANALYSIS</div>
+<div class="section-title">경쟁사 분석</div>
+<div class="section-desc">코리안리재보험의 글로벌 및 국내 경쟁 환경을 주요 지표를 통해 비교 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-chess"></i> 경쟁 구도 개관</h3>
+    <p>글로벌 재보험 시장은 소수의 대형사가 시장을 지배하는 과점 구조입니다. Munich Re, Swiss Re, Hannover Re 등 유럽 3대 재보험사가 글로벌 시장의 약 30% 이상을 점유하고 있으며, 그 뒤를 Berkshire Hathaway Re, SCOR, Lloyd's of London 등이 따르고 있습니다. 코리안리는 글로벌 기준으로는 중위권에 위치하나, 아시아 재보험사 중에서는 상위권이며, 국내 시장에서는 독보적 지위를 보유합니다.</p>
+    <p>국내 시장에서는 코리안리가 유일한 전업 재보험사이므로 직접적인 국내 경쟁자는 없습니다. 다만, 삼성화재, 현대해상 등 대형 원수보험사들이 자체 보유(retention) 비율을 높이거나, 글로벌 재보험사에 직접 출재하는 것은 간접적 경쟁 요인입니다. 또한 글로벌 재보험사들의 서울사무소 운영을 통한 직접 영업도 경쟁 압력으로 작용합니다.</p>
+</div>
+
+<div class="card-panel" style="overflow-x:auto;">
+    <h3><i class="fas fa-table"></i> 주요 경쟁사 비교</h3>
+    <table class="data-table">
+        <thead><tr><th>기업명</th><th>국가</th><th>수재보험료</th><th>순이익</th><th>ROE</th><th>S&P등급</th><th>특이사항</th></tr></thead>
+        <tbody>
+            <tr><td class="highlight">코리안리</td><td>한국</td><td>6.6조 원</td><td>3,155억 원</td><td>12.5%</td><td>A</td><td>국내 유일 전업 재보험사</td></tr>
+            <tr><td>Munich Re</td><td>독일</td><td>~44조 원</td><td>~7.2조 원</td><td>18.2%</td><td>AA-</td><td>글로벌 1위, ERGO 원수보험 보유</td></tr>
+            <tr><td>Swiss Re</td><td>스위스</td><td>~36조 원</td><td>~4.8조 원</td><td>15.6%</td><td>AA-</td><td>글로벌 2위, Life Capital 운영</td></tr>
+            <tr><td>Hannover Re</td><td>독일</td><td>~30조 원</td><td>~2.8조 원</td><td>16.8%</td><td>AA-</td><td>글로벌 3위, 생명재보험 강점</td></tr>
+            <tr><td>삼성화재</td><td>한국</td><td>~24조 원</td><td>~1.8조 원</td><td>14.1%</td><td>A+</td><td>국내 1위 손보사, 자체 보유 확대</td></tr>
+            <tr><td>현대해상</td><td>한국</td><td>~14조 원</td><td>~9,500억 원</td><td>12.8%</td><td>A</td><td>국내 3위 손보사</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-balance-scale"></i> 경쟁 우위 및 열위 요인</h3>
+    <p><strong style="color:var(--gold);">경쟁 우위:</strong> 코리안리의 핵심 경쟁 우위는 국내 시장에서의 독점적 지위와 60년 이상의 국내 보험 데이터 축적에 있습니다. 국내 원수보험사와의 장기적 관계, 정책보험 재보험 파트너로서의 역할, 그리고 한국 리스크에 대한 전문성은 글로벌 경쟁사가 쉽게 대체할 수 없는 진입장벽을 형성합니다. 또한 S&P 기준 A등급의 재무건전성을 유지하며, 아시아 시장에서의 브랜드 인지도가 높습니다.</p>
+    <p><strong style="color:var(--blue);">경쟁 열위:</strong> 자본 규모 측면에서 글로벌 대형 재보험사 대비 현저히 작으며, 이는 대형 재해 발생 시 인수 용량의 한계로 작용할 수 있습니다. 또한 글로벌 인지도와 네트워크 면에서 유럽 3대 재보험사에 비해 열위에 있으며, 데이터 분석 및 기술 투자 규모도 제한적입니다. 해외 사업 비중이 30% 수준에 머물러 있어 글로벌 분산 효과가 제한적이라는 점도 과제입니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 5 : SWOT 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="swot">
+<div class="section-label"><i class="fas fa-th-large"></i> SWOT ANALYSIS</div>
+<div class="section-title">SWOT 분석</div>
+<div class="section-desc">코리안리재보험의 내부 강점·약점과 외부 기회·위협 요인을 체계적으로 분석합니다.</div>
+
+<div class="swot-grid">
+    <div class="swot-card strength">
+        <h4><i class="fas fa-arrow-up" style="color:#4ade80;"></i> 강점 (Strengths)</h4>
+        <ul>
+            <li>국내 유일의 전업 재보험회사로서 독보적 시장 지위 확보. 국내 원수보험사의 필수적 거래 파트너로 안정적 수재 기반을 유지하고 있습니다.</li>
+            <li>1963년 설립 이래 60년 이상 축적된 국내 보험 손해 데이터. 이는 대체 불가능한 자산으로 정확한 리스크 가격 산정의 기반이 됩니다.</li>
+            <li>S&P A등급의 안정적 재무건전성 유지. 글로벌 기관투자자 및 해외 원수보험사와의 거래에서 신뢰 기반으로 작용합니다.</li>
+            <li>안정적 배당 정책(2025년 기준 배당수익률 4.2%). 금융 섹터 내에서도 매력적인 주주환원 수준을 제공합니다.</li>
+            <li>2025년 순이익 3,155억 원(역대 최대), 2026년 Q1 순이익 2,095억 원(+131.4%) 등 실적 성장세가 가속화되고 있습니다.</li>
+        </ul>
+    </div>
+    <div class="swot-card weakness">
+        <h4><i class="fas fa-arrow-down" style="color:#f87171;"></i> 약점 (Weaknesses)</h4>
+        <ul>
+            <li>글로벌 대형 재보험사 대비 현저히 작은 자본 규모. Munich Re 대비 시가총액 1/30 수준으로 대형 리스크 인수 용량에 한계가 있습니다.</li>
+            <li>국내 시장 의존도가 여전히 높음(해외 비중 약 30%). 국내 보험시장 성숙기 진입에 따른 성장 한계에 노출됩니다.</li>
+            <li>디지털 전환 및 기술 투자 규모가 글로벌 경쟁사 대비 제한적. 빅데이터 분야의 기술 격차가 존재합니다.</li>
+            <li>브랜드 인지도가 국내 및 아시아 일부 지역에 한정. 유럽·북미 시장에서의 인지도 및 네트워크 부족이 해외 확장의 제약 요인입니다.</li>
+            <li>임직원 규모 약 600명으로 다각화된 사업 포트폴리오 운영에 인적자원 제약이 존재합니다.</li>
+        </ul>
+    </div>
+    <div class="swot-card opportunity">
+        <h4><i class="fas fa-lightbulb" style="color:var(--gold);"></i> 기회 (Opportunities)</h4>
+        <ul>
+            <li>글로벌 재보험 시장의 하드마켓 사이클 진입으로 보험료율 상승 및 수익성 개선 환경이 지속되고 있습니다.</li>
+            <li>기후변화에 따른 자연재해 리스크 증가로 재보험 수요가 구조적으로 확대되고 있습니다.</li>
+            <li>사이버보험, ESG보험, 팬데믹보험 등 신종 리스크 분야의 재보험 수요가 급성장하고 있습니다.</li>
+            <li>동남아시아, 인도 등 신흥시장의 보험 침투율 상승에 따른 해외 사업 기회가 확대되고 있습니다.</li>
+            <li>IFRS17, K-ICS 등 규제 강화에 따라 보험사들의 재보험 활용 수요가 증가하고 있습니다.</li>
+            <li>비전2050 전략을 통한 글로벌 TOP30 재보험사 진입 목표 달성의 기반이 마련되고 있습니다.</li>
+        </ul>
+    </div>
+    <div class="swot-card threat">
+        <h4><i class="fas fa-exclamation-triangle" style="color:#fb923c;"></i> 위협 (Threats)</h4>
+        <ul>
+            <li>글로벌 대형 재보험사의 아시아 시장 직접 진출 확대. 국내 원수보험사의 직접 출재 증가 가능성이 경쟁 압력을 높입니다.</li>
+            <li>예상치 못한 대형 자연재해(메가카타스트로피) 발생 시 대규모 손실 노출. 자본 규모 대비 리스크 집적이 위협 요인입니다.</li>
+            <li>저금리 환경 장기화에 따른 투자 수익률 하락. 보험 인수 이익 외 투자이익 의존도가 높은 재보험 수익 구조에 부정적입니다.</li>
+            <li>대체 자본(ILS, Cat Bond) 시장 확대가 전통 재보험 시장의 가격 결정력을 약화시킬 수 있습니다.</li>
+            <li>한반도 지정학적 리스크. 북한 관련 지정학적 불확실성이 외국인 투자자 관점에서 디스카운트 요인으로 작용합니다.</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 6 : 전략 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="strategy">
+<div class="section-label"><i class="fas fa-chess-queen"></i> STRATEGY ANALYSIS</div>
+<div class="section-title">전략 분석</div>
+<div class="section-desc">코리안리재보험의 성장 전략, 해외 확장 계획, 파트너십 및 M&A 전략을 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-rocket"></i> 비전2050 성장 전략</h3>
+    <p>코리안리는 2025년 '비전2050' 전략을 발표하며 장기 성장 로드맵을 제시했습니다. 핵심 목표는 2050년까지 글로벌 TOP30 재보험사 진입이며, 이를 위해 해외 수재보험료 비중을 현재 약 30%에서 50% 이상으로 확대하고, 총 수재보험료를 현재의 3배 이상으로 성장시키는 것을 목표로 하고 있습니다.</p>
+    <p>비전2050은 크게 세 가지 전략 축으로 구성됩니다. 첫째, '글로벌 확장(Global Expansion)' 전략으로 싱가포르, 런던, 두바이, 도쿄 등 글로벌 재보험 허브에서의 사업 규모를 확대합니다. 둘째, '디지털 전환(Digital Transformation)' 전략으로 머신러닝 기반 언더라이팅, 클라우드 인프라 구축, 데이터 분석 고도화를 추진합니다. 셋째, '신사업 진출(New Business)' 전략으로 사이버 재보험, ESG 리스크 솔루션, ILS(보험연계증권) 시장 등 신규 영역으로의 진출을 도모합니다.</p>
+    <p>특히 글로벌 확장 전략의 핵심은 아시아-태평양 시장에서의 선도적 지위 확보입니다. 한국 재보험의 강점인 아시아 리스크에 대한 전문성을 기반으로, 동남아시아 및 인도 시장에서의 시장점유율을 공격적으로 확대할 계획입니다. 이를 위해 현지 파트너십 강화, 전문인력 채용, 현지화된 상품 개발 등을 추진하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-handshake"></i> 파트너십 및 제휴 전략</h3>
+    <p>코리안리는 글로벌 재보험 네트워크 강화를 위해 다양한 전략적 파트너십을 구축하고 있습니다. 글로벌 재보험 브로커(Aon, Willis Towers Watson, Marsh & McLennan)와의 긴밀한 협력을 통해 해외 수재 물건의 접근성을 높이고 있으며, 아시아 지역 원수보험사들과의 직접 거래 관계도 꾸준히 확대하고 있습니다.</p>
+    <p>InsurTech 스타트업과의 협력도 적극 추진하고 있습니다. 국내외 보험 기술 스타트업에 대한 전략적 투자 및 협업을 통해 디지털 역량을 강화하고, 새로운 재보험 상품 개발 및 프로세스 혁신을 도모하고 있습니다. 특히 인도, 동남아 등 신흥시장의 디지털 보험 플랫폼과의 제휴를 통해 소액보험(Microinsurance) 재보험 시장 진출도 검토하고 있습니다.</p>
+    <p>또한 학계 및 연구기관과의 공동 연구를 통해 기후변화 리스크 모델링, 사이버 리스크 계량화 등 차세대 리스크 분석 역량을 개발하고 있습니다. 한국기상과학원, KAIST 등과의 공동 연구 프로젝트를 진행하며, 산학 협력을 통한 전문인력 양성에도 기여하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-expand-arrows-alt"></i> 해외 사업 확대 전략</h3>
+    <p>코리안리의 해외 사업은 현재 싱가포르 지점(아시아 허브), 런던 사무소(유럽·특수보험 허브), 두바이 사무소(중동·아프리카 허브)를 중심으로 운영되고 있습니다. 2025년 기준 해외 수재보험료 비중은 약 30%이며, 비전2050에 따라 이를 단계적으로 확대할 계획입니다.</p>
+    <p>단기적으로는 동남아시아 시장 공략에 집중하고 있습니다. 인도네시아, 베트남, 태국, 필리핀 등 고성장 보험시장에서의 재보험 점유율을 확대하기 위해 현지 보험사와의 장기 파트너십을 강화하고 있으며, 자연재해 재보험 및 농작물 보험 재보험 등 현지 수요에 특화된 솔루션을 개발하고 있습니다.</p>
+    <p>중장기적으로는 인도 시장 진출과 아프리카 시장 탐색을 계획하고 있습니다. 인도는 세계에서 가장 빠르게 성장하는 보험시장 중 하나로, 재보험 수요 확대가 예상됩니다. 아프리카 역시 보험 침투율이 매우 낮아 장기적 성장 잠재력이 크며, 두바이 사무소를 거점으로 시장 조사 및 네트워크 구축을 진행하고 있습니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-search-dollar"></i> M&A 및 투자 전략</h3>
+    <p>코리안리는 유기적 성장과 비유기적 성장을 병행하는 투트랙 전략을 추진하고 있습니다. M&A 관점에서는 아시아 지역의 중소형 재보험사 또는 특수보험(Specialty) 인수를 통한 역량 확대를 검토하고 있습니다. 특히 사이버 재보험, 해상 재보험 등 전문 분야의 역량을 M&A를 통해 빠르게 확보하는 전략을 고려 중입니다.</p>
+    <p>투자 포트폴리오 측면에서는 안정성 중심의 보수적 운용 기조를 유지하면서도, 대체투자 비중을 점진적으로 확대하고 있습니다. 인프라 투자, 부동산 투자, 사모펀드 등 장기 안정적 수익을 추구하는 대체투자를 늘려 투자 수익률 개선을 도모하고 있습니다. 또한 ILS(보험연계증권) 시장에의 투자자 참여도 검토하여 전통적 재보험 인수와 자본시장 투자의 시너지를 추구하고 있습니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 7 : 재무 분석 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="financial">
+<div class="section-label"><i class="fas fa-chart-bar"></i> FINANCIAL ANALYSIS</div>
+<div class="section-title">재무 분석</div>
+<div class="section-desc">코리안리재보험의 주요 재무 지표, 수익성, 성장성을 정량적으로 분석합니다.</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-coins"></i> 주요 재무 지표 (2025 기준)</h3>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>매출액 (수재보험료)</span><span>6조 5,761억 원</span></div><div class="fin-bar-track"><div class="fin-bar-fill gold" data-width="82"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>당기순이익</span><span>3,155억 원</span></div><div class="fin-bar-track"><div class="fin-bar-fill gold" data-width="65"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>ROE (자기자본이익률)</span><span>12.5%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" data-width="58"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>배당수익률</span><span>4.2%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" data-width="42"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>합산비율 (Combined Ratio)</span><span>95.8%</span></div><div class="fin-bar-track"><div class="fin-bar-fill gold" data-width="72"></div></div></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-label"><span>지급여력비율 (K-ICS)</span><span>198%</span></div><div class="fin-bar-track"><div class="fin-bar-fill blue" data-width="78"></div></div></div>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-chart-area"></i> 연도별 실적 추이</h3>
+    <div class="bar-chart">
+        <div class="bar-col"><div class="bar-val">4.8조</div><div class="bar-stick gold" data-height="96" style="height:96px;"></div><div class="bar-label">2021</div></div>
+        <div class="bar-col"><div class="bar-val">5.2조</div><div class="bar-stick gold" data-height="112" style="height:112px;"></div><div class="bar-label">2022</div></div>
+        <div class="bar-col"><div class="bar-val">5.8조</div><div class="bar-stick gold" data-height="132" style="height:132px;"></div><div class="bar-label">2023</div></div>
+        <div class="bar-col"><div class="bar-val">6.1조</div><div class="bar-stick gold" data-height="148" style="height:148px;"></div><div class="bar-label">2024</div></div>
+        <div class="bar-col"><div class="bar-val">6.6조</div><div class="bar-stick gold" data-height="170" style="height:170px;"></div><div class="bar-label">2025</div></div>
+        <div class="bar-col"><div class="bar-val">7.2조E</div><div class="bar-stick blue" data-height="186" style="height:186px;"></div><div class="bar-label">2026E</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:8px;">수재보험료 기준 | 2026E는 컨센서스 추정치</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-file-invoice-dollar"></i> 실적 분석 상세</h3>
+    <p>코리안리의 2025년 실적은 창사 이래 최대 수준을 기록했습니다. 총 수재보험료 6조 5,761억 원은 전년 대비 8.2% 성장한 수치이며, 당기순이익 3,155억 원은 전년 대비 22.4% 증가하여 수익성도 대폭 개선되었습니다. 이는 글로벌 재보험 시장의 하드마켓 환경에서 보험료율 인상 효과가 본격적으로 반영된 결과입니다.</p>
+    <p>특히 주목할 점은 2026년 1분기 실적입니다. 순이익 2,095억 원은 전년 동기(906억 원) 대비 131.4% 증가한 것으로, 분기 기준으로도 역대 최대입니다. 이는 대형 자연재해 손실이 없었던 우호적 환경과 함께, 해외 사업 포트폴리오의 수익성 개선이 주요 원인입니다. 합산비율(Combined Ratio)은 95.8%로, 100% 미만을 유지하며 인수 이익을 시현하고 있습니다.</p>
+    <p>자본 적정성 측면에서 K-ICS(한국형 지급여력비율)은 198%로 감독 기준(100%)을 크게 상회하고 있습니다. 이는 재보험사로서 충분한 리스크 흡수 능력을 보유하고 있음을 의미하며, 향후 사업 확대를 위한 자본 여력도 확보된 상태입니다. S&P 신용등급 A등급 유지는 글로벌 거래 상대방으로서의 신뢰성을 뒷받침합니다.</p>
+    <p>배당 정책은 안정적으로 운영되고 있습니다. 2025년 기준 배당수익률 4.2%는 코스피 금융 섹터 평균(약 3.5%)을 상회하는 수준이며, 배당성향은 약 30% 내외로 유지되고 있습니다. 회사는 주주환원율 제고를 위해 자사주 매입·소각도 병행 검토하고 있어, 향후 총주주수익률(TSR) 개선이 기대됩니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-balance-scale-right"></i> 투자 수익 및 자산 운용</h3>
+    <p>코리안리의 투자 자산 규모는 2025년 기준 약 10.5조 원으로, 채권(국채, 회사채) 비중이 약 65%, 주식 비중 약 10%, 대체투자 비중 약 15%, 현금 및 단기금융 약 10%로 구성됩니다. 투자수익률은 약 3.8%로, 재보험사의 보수적 운용 기조를 반영합니다.</p>
+    <p>금리 환경에 대한 민감도가 높은 편입니다. 채권 비중이 높아 금리 상승 시 평가손실이 발생할 수 있으나, 듀레이션 관리를 통해 금리 리스크를 제한적으로 관리하고 있습니다. 한편 금리 상승은 신규 투자 수익률 개선으로 이어져 중장기적으로는 투자 수익에 긍정적으로 작용합니다.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 8 : 결론 및 투자 의견 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="conclusion">
+<div class="section-label"><i class="fas fa-flag-checkered"></i> CONCLUSION</div>
+<div class="section-title">결론 및 투자 의견</div>
+<div class="section-desc">코리안리재보험에 대한 종합적인 분석 결론과 투자 관점에서의 시사점을 제시합니다.</div>
+
+<div class="conclusion-box">
+    <h3><i class="fas fa-star" style="color:var(--gold);"></i> 종합 투자 의견</h3>
+    <p>코리안리재보험은 국내 유일의 전업 재보험사로서 독보적인 시장 지위를 보유하고 있으며, 2025년 역대 최대 실적 달성과 2026년 1분기 실적 가속화를 통해 구조적 성장 국면에 진입했음을 확인했습니다. 종합 분석 점수 72점은 안정적 수익 기반과 배당 매력을 반영하되, 글로벌 경쟁력 및 성장성 한계를 고려한 결과입니다.</p>
+    <p>투자 관점에서의 핵심 매력은 세 가지입니다. 첫째, 글로벌 재보험 하드마켓 사이클의 수혜로 향후 2~3년간 실적 개선세가 지속될 전망입니다. 둘째, 4.2%의 배당수익률은 금융 섹터 내에서도 매력적인 수준이며, 주주환원 확대 의지도 확인됩니다. 셋째, 시가총액 대비 PBR(주가순자산비율)이 0.5배 수준으로 밸류에이션 매력이 높습니다.</p>
+    <p>리스크 요인으로는 대형 자연재해 발생 시 대규모 손실 가능성, 글로벌 대형사 대비 자본 규모 한계, 해외 사업 확대 과정에서의 실행 리스크 등이 있습니다. 다만 이러한 리스크는 현재 밸류에이션에 상당 부분 반영되어 있는 것으로 판단됩니다.</p>
+</div>
+
+<div class="card-panel">
+    <h3><i class="fas fa-bullseye"></i> 핵심 투자 포인트 요약</h3>
+    <p><strong style="color:var(--gold);">1. 하드마켓 수혜 지속:</strong> 글로벌 재보험 보험료율 인상 사이클이 2027년까지 지속될 전망이며, 이는 코리안리의 인수 이익 개선으로 직결됩니다. 2026년 연간 순이익은 4,000억 원을 상회할 것으로 전망됩니다.</p>
+    <p><strong style="color:var(--gold);">2. 저평가 매력:</strong> PBR 0.5배, PER 7배 수준의 밸류에이션은 글로벌 재보험사 평균(PBR 1.2배, PER 10배) 대비 현저히 낮은 수준입니다. 코리아 디스카운트를 감안하더라도 추가적인 밸류에이션 리레이팅 여지가 있습니다.</p>
+    <p><strong style="color:var(--gold);">3. 주주환원 매력:</strong> 배당수익률 4.2%에 자사주 매입·소각 가능성을 더하면 총주주수익률(TSR)은 금융 섹터 내 최상위권입니다. 정부의 밸류업 프로그램 참여도 기대됩니다.</p>
+    <p><strong style="color:var(--gold);">4. 해외 성장 옵션:</strong> 비전2050 전략을 통한 해외 사업 확대는 장기 성장 동력으로, 현재 주가에는 이 성장 옵션의 가치가 충분히 반영되지 않은 것으로 판단됩니다.</p>
+    <p><strong style="color:var(--blue);">주요 모니터링 포인트:</strong> 자연재해 손실 동향, 글로벌 재보험 시장 사이클 변화, 해외 사업 수재보험료 성장률, K-ICS 비율 변동, 배당 정책 변화 등을 지속적으로 모니터링할 필요가 있습니다. 특히 2026년 하반기 자연재해 시즌(허리케인, 태풍)의 손실 규모가 실적에 큰 영향을 미칠 수 있어 주의가 필요합니다.</p>
+</div>
+</section>
+
+</div><!-- /.container -->
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-06-01 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 8,100선 박스권 — 6월 FOMC 앞두고 관망세 지속. 외국인 순매도 우위, 반도체·방산 섹터 강세 유지.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 PCE 물가 안정세 확인, 연준 9월 금리인하 기대감 유지. 달러 약세 전환 가능성에 원화 강세 압력.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>보험·금융주 배당 매력 부각, 식품·급식 업종 실적 개선세 지속. 중소형 가치주 순환매 이어지는 양상.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+            <span>FLOVAH Insights</span>
+        </div>
+        <div class="footer-copy">&copy; 2026 FLOVAH Insights. All rights reserved. 본 리포트는 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다.</div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){var h=document.documentElement;var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;document.getElementById('progress-bar').style.width=pct+'%';});
+(function(){var sections=document.querySelectorAll('section[id]');var navLinks=document.querySelectorAll('header nav a');window.addEventListener('scroll',function(){var scrollPos=window.scrollY+120;sections.forEach(function(sec){if(sec.offsetTop<=scrollPos&&(sec.offsetTop+sec.offsetHeight)>scrollPos){navLinks.forEach(function(link){link.classList.remove('active');if(link.getAttribute('href')==='#'+sec.id){link.classList.add('active');}});}});});})();
+(function(){var bars=document.querySelectorAll('.fin-bar-fill[data-width]');var animated=new Set();function checkBars(){bars.forEach(function(bar){if(animated.has(bar))return;var rect=bar.getBoundingClientRect();if(rect.top<window.innerHeight-60){bar.style.width=bar.getAttribute('data-width')+'%';animated.add(bar);}});}window.addEventListener('scroll',checkBars);window.addEventListener('load',checkBars);})();
+(function(){var sticks=document.querySelectorAll('.bar-stick[data-height]');var done=false;function checkChart(){if(done)return;if(sticks.length===0)return;var rect=sticks[0].getBoundingClientRect();if(rect.top<window.innerHeight-40){sticks.forEach(function(s){s.style.height=s.getAttribute('data-height')+'px';});done=true;}}window.addEventListener('scroll',checkChart);window.addEventListener('load',checkChart);})();
+</script>
+</body>
+</html>

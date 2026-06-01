@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>롯데렌탈 기업분석 리포트 | FLOVAH Insights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --bg-deep: #09090b;
+    --bg-card: #0f1014;
+    --bg-elevated: #141619;
+    --bg-hover: #191b1f;
+    --bg-surface: #111316;
+    --ink: #ede8df;
+    --ink-strong: #f5f1e8;
+    --text-body: #b5ad9e;
+    --text-secondary: #7d7568;
+    --text-muted: #524c42;
+    --text-light: #9a9184;
+    --gold: #c9a962;
+    --gold-light: #dcc07a;
+    --gold-dim: #8a7438;
+    --gold-glow: rgba(201,169,98,.10);
+    --blue: #5c7d9e;
+    --blue-dim: #465f7a;
+    --rule: #1e1f24;
+    --border: #1e1f24;
+    --accent: #c9a962;
+    --accent2: #5c7d9e;
+    --card-bg: #0f1014;
+    --dark-bg: #09090b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-dim) var(--bg-deep);
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(9,9,11,.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.header-logo img {
+    height: 28px;
+    width: auto;
+}
+
+.header-logo span {
+    font-family: 'Orbit', sans-serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.header-date {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ── NAV ── */
+.side-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 60px);
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    z-index: 900;
+    overflow-y: auto;
+}
+
+.side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all .2s;
+    border-left: 3px solid transparent;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+    color: var(--gold);
+    background: var(--gold-glow);
+    border-left-color: var(--gold);
+}
+
+.side-nav a i {
+    width: 16px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ── MAIN ── */
+.main-content {
+    margin-left: 220px;
+    margin-top: 60px;
+    min-height: calc(100vh - 60px);
+}
+
+.section-block {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px;
+}
+
+.section-block + .section-block {
+    border-top: 1px solid var(--border);
+}
+
+/* ── HERO ── */
+.hero-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 40px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: 'Orbit', sans-serif;
+    font-size: 36px;
+    color: var(--ink-strong);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.hero-subtitle span {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ── SCORE ── */
+.score-ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 36px;
+}
+
+.score-ring {
+    position: relative;
+    width: 110px;
+    height: 110px;
+}
+
+.score-ring svg {
+    transform: rotate(-90deg);
+}
+
+.score-ring .bg-circle {
+    fill: none;
+    stroke: var(--bg-hover);
+    stroke-width: 8;
+}
+
+.score-ring .fg-circle {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 103;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.score-number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number .val {
+    font-family: 'Orbit', sans-serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.score-number .lbl {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.score-desc {
+    flex: 1;
+}
+
+.score-desc h3 {
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.score-desc p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ── METRICS ── */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color .2s;
+}
+
+.metric-card:hover {
+    border-color: var(--gold-dim);
+}
+
+.metric-card .mc-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metric-card .mc-label i {
+    color: var(--gold-dim);
+    font-size: 11px;
+}
+
+.metric-card .mc-value {
+    font-family: 'Orbit', sans-serif;
+    font-size: 22px;
+    color: var(--ink-strong);
+    line-height: 1.2;
+}
+
+.metric-card .mc-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.metric-card .mc-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    margin-top: 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.mc-change.up {
+    color: #6ec87a;
+    background: rgba(110,200,122,.08);
+}
+
+.mc-change.down {
+    color: #e06b6b;
+    background: rgba(224,107,107,.08);
+}
+
+/* ── TIMELINE ── */
+.timeline {
+    position: relative;
+    padding-left: 28px;
+    margin-top: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold-dim), var(--border));
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bg-deep);
+}
+
+.timeline-item .tl-year {
+    font-family: 'Orbit', sans-serif;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 2px;
+}
+
+.timeline-item .tl-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ── SECTION TITLE ── */
+.sec-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.sec-title .icon-box {
+    width: 40px;
+    height: 40px;
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 16px;
+}
+
+.sec-title h2 {
+    font-family: 'Orbit', sans-serif;
+    font-size: 22px;
+    color: var(--ink-strong);
+    letter-spacing: -0.3px;
+}
+
+.sec-title .sec-tag {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+/* ── CARD ── */
+.info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.info-card h4 {
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card h4 i {
+    color: var(--gold);
+    font-size: 13px;
+}
+
+.info-card p, .info-card li {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.85;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card ul li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+
+.info-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+}
+
+/* ── TWO COL ── */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ── TABLE ── */
+.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.comp-table thead th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--bg-elevated);
+    color: var(--text-light);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.comp-table thead th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.comp-table thead th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.comp-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-body);
+}
+
+.comp-table tbody tr:hover td {
+    background: var(--bg-hover);
+}
+
+.comp-table .highlight-row td {
+    background: var(--gold-glow);
+    color: var(--ink);
+}
+
+/* ── SWOT ── */
+.swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.swot-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.swot-box .swot-label {
+    font-family: 'Orbit', sans-serif;
+    font-size: 14px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.swot-box.strength .swot-label { color: #6ec87a; }
+.swot-box.weakness .swot-label { color: #e06b6b; }
+.swot-box.opportunity .swot-label { color: var(--gold); }
+.swot-box.threat .swot-label { color: var(--blue); }
+
+.swot-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.swot-box ul li {
+    font-size: 13px;
+    color: var(--text-body);
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.7;
+}
+
+.swot-box.strength ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: #6ec87a; }
+.swot-box.weakness ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: #e06b6b; }
+.swot-box.opportunity ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.swot-box.threat ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+/* ── PROGRESS ── */
+.progress-row {
+    margin-bottom: 18px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.progress-label .pl-name {
+    color: var(--text-light);
+}
+
+.progress-label .pl-val {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--bg-hover);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar .fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    transition: width 1s ease;
+}
+
+.progress-bar .fill.blue {
+    background: linear-gradient(90deg, var(--blue-dim), var(--blue));
+}
+
+/* ── BAR CHART ── */
+.bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    height: 200px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.bar-col .bar {
+    width: 100%;
+    max-width: 48px;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(to top, var(--gold-dim), var(--gold));
+    transition: height 1s ease;
+}
+
+.bar-col .bar.blue {
+    background: linear-gradient(to top, var(--blue-dim), var(--blue));
+}
+
+.bar-col .bar-label {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.bar-col .bar-value {
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* ── CONCLUSION ── */
+.conclusion-box {
+    background: linear-gradient(135deg, rgba(201,169,98,0.06) 0%, rgba(92,125,158,0.04) 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 16px;
+    padding: 36px;
+}
+
+.conclusion-box h3 {
+    font-family: 'Orbit', sans-serif;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.conclusion-box p {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.9;
+    margin-bottom: 12px;
+}
+
+.conclusion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.conclusion-tags span {
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.conclusion-tags span.gold {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+    background: var(--gold-glow);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+    font-family: 'Orbit', sans-serif;
+    font-size: 16px;
+    color: var(--gold-dim);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .side-nav { display: none; }
+    .main-content { margin-left: 0; }
+}
+
+@media (max-width: 768px) {
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    .two-col, .swot-grid { grid-template-columns: 1fr; }
+    .section-block, .hero-section { padding: 32px 20px; }
+    .site-header { padding: 0 20px; }
+    .hero-title { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <a href="index.html" class="header-logo">
+        <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH">
+        <span>FLOVAH Insights</span>
+    </a>
+    <div class="header-date">June 1, 2026</div>
+</header>
+
+<!-- SIDE NAV -->
+<nav class="side-nav" id="sideNav">
+    <a href="#overview" class="active"><i class="fas fa-building"></i>기업개요</a>
+    <a href="#tech"><i class="fas fa-microchip"></i>기술분석</a>
+    <a href="#market"><i class="fas fa-chart-line"></i>시장분석</a>
+    <a href="#competitor"><i class="fas fa-chess"></i>경쟁사분석</a>
+    <a href="#swot"><i class="fas fa-th-large"></i>SWOT 분석</a>
+    <a href="#strategy"><i class="fas fa-bullseye"></i>전략분석</a>
+    <a href="#financial"><i class="fas fa-coins"></i>재무분석</a>
+    <a href="#conclusion"><i class="fas fa-flag-checkered"></i>결론</a>
+</nav>
+
+<!-- MAIN -->
+<main class="main-content">
+
+<!-- ============================================================ -->
+<!-- SECTION 1: 기업개요 (Hero) -->
+<!-- ============================================================ -->
+<section id="overview">
+    <div class="hero-section">
+        <div class="hero-badge">
+            <i class="fas fa-car"></i>
+            렌탈/모빌리티 · KOSPI 089860
+        </div>
+        <h1 class="hero-title">롯데렌탈</h1>
+        <p class="hero-subtitle">
+            국내 최대 장기렌탈 사업자 — <span>역대 최대 실적</span> 기록 후 그룹 매각 추진 중
+        </p>
+
+        <!-- Score Ring -->
+        <div class="score-ring-wrap">
+            <div class="score-ring">
+                <svg width="110" height="110" viewBox="0 0 110 110">
+                    <circle class="bg-circle" cx="55" cy="55" r="50"/>
+                    <circle class="fg-circle" cx="55" cy="55" r="50"/>
+                </svg>
+                <div class="score-number">
+                    <span class="val">67</span>
+                    <span class="lbl">/ 100</span>
+                </div>
+            </div>
+            <div class="score-desc">
+                <h3>투자 매력도 — 중립 이상</h3>
+                <p>실적 개선 모멘텀은 뚜렷하나, 롯데그룹 매각 이슈에 따른 지배구조 불확실성이 밸류에이션 할인 요인으로 작용 중입니다. 장기렌탈 보유대수 확대와 단기렌탈 성장이 안정적인 캐시플로를 뒷받침합니다.</p>
+            </div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-won-sign"></i>2025 매출</div>
+                <div class="mc-value">2.92조</div>
+                <div class="mc-sub">2조 9,188억원</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-landmark"></i>시가총액</div>
+                <div class="mc-value">~1.5조</div>
+                <div class="mc-sub">KOSPI 089860</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-users"></i>직원 수</div>
+                <div class="mc-value">~3,000</div>
+                <div class="mc-sub">2025년 기준</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-calendar-alt"></i>설립연도</div>
+                <div class="mc-value">2002</div>
+                <div class="mc-sub">KT렌탈로 설립</div>
+            </div>
+        </div>
+
+        <!-- Additional Metrics -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-chart-bar"></i>2025 영업이익</div>
+                <div class="mc-value">3,125억</div>
+                <div class="mc-change up"><i class="fas fa-arrow-up"></i>+9.7% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-chart-pie"></i>2026 Q1 영업이익</div>
+                <div class="mc-value">836억</div>
+                <div class="mc-change up"><i class="fas fa-arrow-up"></i>+24.8% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-car-side"></i>보유 차량</div>
+                <div class="mc-value">35만대</div>
+                <div class="mc-change up"><i class="fas fa-arrow-up"></i>+5.5%</div>
+            </div>
+            <div class="metric-card">
+                <div class="mc-label"><i class="fas fa-percent"></i>영업이익률</div>
+                <div class="mc-value">10.7%</div>
+                <div class="mc-sub">수익성 개선 추세</div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="info-card">
+            <h4><i class="fas fa-stream"></i>기업 연혁</h4>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="tl-year">2002</div>
+                    <div class="tl-text">KT렌탈로 법인 설립, 국내 렌탈 사업 본격 진출</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2009</div>
+                    <div class="tl-text">롯데그룹 인수 — 그룹사 시너지 기반 사업 확장 개시</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2012</div>
+                    <div class="tl-text">사명 변경: '롯데렌탈'로 리브랜딩, 렌탈 전문 기업 정체성 확립</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2019</div>
+                    <div class="tl-text">코스피 시장 상장 — 공모가 대비 안정적 시장 안착</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2023</div>
+                    <div class="tl-text">중고차 소매 플랫폼 '티카(TCAR)' 론칭, 중고차 밸류체인 확장</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-year">2025</div>
+                    <div class="tl-text">역대 최대 실적 달성 — 영업이익 3,125억원, 매각 추진 본격화</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: 기술분석 -->
+<!-- ============================================================ -->
+<section id="tech">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-microchip"></i></div>
+            <h2>기술분석</h2>
+            <span class="sec-tag">Technology Analysis</span>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-car-side"></i>장기렌탈 플랫폼 기술</h4>
+                <p>롯데렌탈의 핵심 경쟁력은 35만대 이상의 차량을 효율적으로 관리하는 Fleet Management System(FMS)에 있습니다. 차량 조달부터 운행관리, 정비, 처분까지 전 생애주기를 통합 관리하며, AI 기반 수요 예측 모델을 도입하여 차종별 최적 재고 수준을 유지합니다.</p>
+                <ul>
+                    <li>AI 기반 차량 수요 예측 및 재고 최적화 시스템</li>
+                    <li>실시간 차량 상태 모니터링(GPS, OBD 연동)</li>
+                    <li>디지털 견적·계약·인수 프로세스 자동화</li>
+                    <li>빅데이터 기반 잔존가치 예측 모델 고도화</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-mobile-alt"></i>디지털 전환 전략</h4>
+                <p>비대면 렌탈 계약 비중이 2025년 기준 60%를 돌파하며, 모바일 앱 중심의 고객 접점 확대가 가속화되고 있습니다. 특히 '롯데렌터카' 앱의 UX 개선과 함께 법인 고객용 전용 포털 시스템을 구축하여 B2B 세그먼트의 디지털화를 추진 중입니다.</p>
+                <ul>
+                    <li>비대면 계약 비중 60%+ 달성(2025년 기준)</li>
+                    <li>법인 고객 전용 차량관리 포털 시스템 운영</li>
+                    <li>단기렌탈 무인 대여/반납 키오스크 확대</li>
+                    <li>블록체인 기반 차량 이력 관리 파일럿 도입</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-cogs"></i>중고차 플랫폼 '티카(TCAR)' 기술 인프라</h4>
+            <p>2023년 론칭한 중고차 소매 플랫폼 '티카'는 롯데렌탈의 대규모 반납 차량을 소매 시장으로 직접 연결하는 통합 플랫폼입니다. 롯데오토옥션과 연동된 경매 데이터를 기반으로 시세를 산정하며, 360도 차량 촬영 및 AI 외관 진단 기술을 적용하여 비대면 차량 구매 경험을 제공합니다. 렌탈 운영 데이터를 활용한 차량 품질 인증 체계는 중고차 시장에서의 신뢰도를 높이는 핵심 차별화 요소입니다.</p>
+            <ul>
+                <li>롯데오토옥션 연동 실시간 시세 산정 엔진</li>
+                <li>AI 기반 차량 외관 자동 진단 및 등급 산정</li>
+                <li>렌탈 이력 데이터 기반 차량 품질 인증 시스템</li>
+                <li>비대면 구매·배송·보증 원스톱 서비스 플랫폼</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-leaf"></i>친환경차 전환 대응</h4>
+            <p>전기차·수소차 등 친환경차 렌탈 비중이 빠르게 확대되는 가운데, 롯데렌탈은 전용 충전 인프라 구축과 배터리 잔존가치 관리 역량을 선제적으로 확보하고 있습니다. 2025년 기준 신규 도입 차량 중 친환경차 비중이 20%를 넘어서며, 법인 고객의 ESG 경영 수요에 대응하는 '그린 플릿(Green Fleet)' 솔루션을 제공합니다. 충전 인프라는 롯데그룹사(롯데에너지솔루션) 협업을 통해 주요 거점에 전용 충전소를 배치하고 있으며, 배터리 리스 모델 도입도 검토 중입니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: 시장분석 -->
+<!-- ============================================================ -->
+<section id="market">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+            <h2>시장분석</h2>
+            <span class="sec-tag">Market Analysis</span>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-globe"></i>국내 렌탈 시장 현황</h4>
+                <p>국내 자동차 렌탈 시장은 2025년 기준 약 15조원 규모로, 장기렌탈을 중심으로 연평균 5~7% 성장세를 유지하고 있습니다. 법인 고객의 보유 차량 렌탈 전환, 개인 장기렌탈 수요 증가, 그리고 MZ세대의 '소유에서 이용'으로의 소비 패러다임 변화가 시장 성장의 핵심 동인입니다.</p>
+                <ul>
+                    <li>국내 렌탈 시장 규모: 약 15조원(2025년 기준)</li>
+                    <li>장기렌탈 시장 연평균 성장률: 5~7%</li>
+                    <li>법인 고객 렌탈 전환 비율 지속 확대</li>
+                    <li>MZ세대 구독형 모빌리티 수요 증가 추세</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-chart-area"></i>단기렌탈 시장 성장</h4>
+                <p>단기렌탈 시장은 관광 수요 회복과 카셰어링 대체 수요를 바탕으로 빠른 성장세를 보이고 있습니다. 롯데렌탈의 일단기 매출은 전년 대비 31.5%, 월단기 매출은 45.0% 급증하며 시장 성장을 상회하는 실적을 기록 중입니다. 공항·관광지 거점 확대와 무인 서비스 도입이 성장을 견인하고 있습니다.</p>
+                <ul>
+                    <li>일단기 렌탈 매출 성장률: +31.5% YoY</li>
+                    <li>월단기 렌탈 매출 성장률: +45.0% YoY</li>
+                    <li>공항·관광지 거점 네트워크 지속 확충</li>
+                    <li>무인 대여/반납 서비스 도입 가속화</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-car-alt"></i>중고차 시장 진출 전략</h4>
+            <p>롯데렌탈은 연간 약 8~10만대의 반납 차량을 보유한 국내 최대 중고차 공급원입니다. 기존 B2B 경매(롯데오토옥션) 중심에서 B2C 소매 플랫폼 '티카'로 채널을 확장하며, 중고차 밸류체인 전반을 장악하는 전략을 추진하고 있습니다. 렌탈 차량 특유의 정비 이력 투명성과 품질 인증은 중고차 시장에서 차별화된 신뢰 포인트입니다. 2025년 기준 중고차 사업 매출은 전체의 약 15%를 차지하며, 향후 소매 비중 확대를 통해 수익성 개선이 기대됩니다.</p>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-exchange-alt"></i>모빌리티 시장 패러다임 변화</h4>
+            <p>전통적인 차량 렌탈 시장이 '통합 모빌리티 솔루션' 시장으로 진화하고 있습니다. 구독형 차량 이용, 법인 플릿 매니지먼트, 차량 공유, 그리고 친환경차 전환까지 — 모빌리티 서비스의 범위가 크게 확장되고 있습니다. 롯데렌탈은 장기·단기·중고차를 아우르는 풀라인업 서비스를 통해 이러한 시장 변화에 대응하고 있으며, 롯데그룹사와의 시너지(유통채널, 충전인프라, 금융서비스)를 활용한 통합 모빌리티 생태계 구축을 추진 중입니다. 다만 그룹 매각이 현실화될 경우 이러한 시너지 구조의 재편이 불가피하며, 이는 시장 포지셔닝에 중대한 변수로 작용할 전망입니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: 경쟁사분석 -->
+<!-- ============================================================ -->
+<section id="competitor">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-chess"></i></div>
+            <h2>경쟁사분석</h2>
+            <span class="sec-tag">Competitor Analysis</span>
+        </div>
+
+        <div class="info-card" style="overflow-x:auto;">
+            <h4><i class="fas fa-table"></i>주요 경쟁사 비교</h4>
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>기업명</th>
+                        <th>사업 영역</th>
+                        <th>매출 규모</th>
+                        <th>보유 차량</th>
+                        <th>핵심 강점</th>
+                        <th>시장 포지션</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td><strong>롯데렌탈</strong></td>
+                        <td>장기·단기·중고차</td>
+                        <td>2.92조원</td>
+                        <td>~35만대</td>
+                        <td>풀라인업, 그룹 시너지</td>
+                        <td>1위</td>
+                    </tr>
+                    <tr>
+                        <td>SK렌터카</td>
+                        <td>장기·단기렌탈</td>
+                        <td>~2.0조원</td>
+                        <td>~28만대</td>
+                        <td>SK 금융·에너지 시너지</td>
+                        <td>2위</td>
+                    </tr>
+                    <tr>
+                        <td>쏘카</td>
+                        <td>카셰어링·구독</td>
+                        <td>~5,000억원</td>
+                        <td>~2만대</td>
+                        <td>MZ세대 플랫폼 인지도</td>
+                        <td>카셰어링 1위</td>
+                    </tr>
+                    <tr>
+                        <td>현대캐피탈오토</td>
+                        <td>장기렌탈·리스</td>
+                        <td>~1.5조원</td>
+                        <td>~20만대</td>
+                        <td>현대·기아 캡티브 물량</td>
+                        <td>3위</td>
+                    </tr>
+                    <tr>
+                        <td>AJ렌터카</td>
+                        <td>장기·단기렌탈</td>
+                        <td>~8,000억원</td>
+                        <td>~12만대</td>
+                        <td>가격 경쟁력, 니치 고객</td>
+                        <td>4위</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-shield-alt"></i>롯데렌탈 경쟁 우위</h4>
+                <ul>
+                    <li>국내 최대 보유대수(35만대) 기반 규모의 경제</li>
+                    <li>장기·단기·중고차를 아우르는 풀라인업 서비스</li>
+                    <li>롯데오토옥션을 통한 중고차 처분 역량</li>
+                    <li>전국 영업 네트워크 및 정비 인프라 확보</li>
+                    <li>롯데그룹 법인 고객 기반의 안정적 수요처</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-exclamation-triangle"></i>경쟁 리스크 요인</h4>
+                <ul>
+                    <li>SK렌터카의 공격적인 시장 점유율 확대 전략</li>
+                    <li>쏘카 등 모빌리티 플랫폼의 구독형 서비스 확대</li>
+                    <li>현대캐피탈의 캡티브 물량 기반 가격 공세</li>
+                    <li>카카오모빌리티 등 빅테크 사업자 진입 위협</li>
+                    <li>그룹 매각 시 법인 고객 이탈 가능성</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-chess-knight"></i>경쟁 환경 전망</h4>
+            <p>국내 렌탈 시장은 상위 2개사(롯데렌탈·SK렌터카)가 시장의 약 55%를 점유하는 과점 구조입니다. 그러나 카셰어링(쏘카, 그린카), 구독형 서비스(현대 셀렉션), 그리고 자율주행 모빌리티의 대두로 경쟁의 경계가 빠르게 확장되고 있습니다. 롯데렌탈의 그룹 매각 이슈는 경쟁 구도에 중대한 변수이며, 새로운 대주주의 전략적 방향에 따라 시장 점유율과 경쟁력의 재편이 예상됩니다. 특히 SK그룹이 SK렌터카 중심의 모빌리티 사업 강화에 적극적인 상황에서, 롯데렌탈의 소유 구조 변화는 업계 전반의 M&A 및 전략적 제휴 움직임을 촉발할 가능성이 높습니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: SWOT 분석 -->
+<!-- ============================================================ -->
+<section id="swot">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-th-large"></i></div>
+            <h2>SWOT 분석</h2>
+            <span class="sec-tag">SWOT Analysis</span>
+        </div>
+
+        <div class="swot-grid">
+            <div class="swot-box strength">
+                <div class="swot-label"><i class="fas fa-arrow-up"></i>강점 (Strengths)</div>
+                <ul>
+                    <li>국내 최대 보유대수(35만대) 기반 압도적 규모의 경제</li>
+                    <li>장기·단기·중고차를 아우르는 렌탈 풀라인업 체계</li>
+                    <li>롯데오토옥션 및 티카를 통한 중고차 밸류체인 수직계열화</li>
+                    <li>전국 영업·정비 네트워크 및 법인 고객 인프라</li>
+                    <li>2025년 역대 최대 실적(영업이익 3,125억원) 달성으로 검증된 수익성</li>
+                    <li>단기렌탈 급성장(일단기 +31.5%, 월단기 +45.0%)으로 성장 동력 확보</li>
+                </ul>
+            </div>
+            <div class="swot-box weakness">
+                <div class="swot-label"><i class="fas fa-arrow-down"></i>약점 (Weaknesses)</div>
+                <ul>
+                    <li>롯데그룹 매각 추진에 따른 지배구조 불확실성 장기화</li>
+                    <li>높은 차량 구매 자금 의존도로 인한 금리 민감도</li>
+                    <li>법인 고객 편중 구조(개인 비중 상대적 부족)</li>
+                    <li>중고차 소매(티카) 사업 아직 초기 단계로 수익 기여 제한적</li>
+                    <li>디지털 플랫폼 경쟁력에서 쏘카 등 테크 기반 사업자 대비 열위</li>
+                    <li>롯데그룹사 시너지 의존 구조 — 매각 시 재편 리스크</li>
+                </ul>
+            </div>
+            <div class="swot-box opportunity">
+                <div class="swot-label"><i class="fas fa-lightbulb"></i>기회 (Opportunities)</div>
+                <ul>
+                    <li>친환경차(전기차·수소차) 전환 가속에 따른 렌탈 수요 확대</li>
+                    <li>'소유에서 이용' 패러다임 전환으로 개인 장기렌탈 시장 성장</li>
+                    <li>관광 수요 회복 및 외국인 관광객 증가로 단기렌탈 성장 지속</li>
+                    <li>법인 ESG 경영 확산에 따른 그린 플릿 솔루션 수요 증가</li>
+                    <li>매각을 통한 새로운 전략적 투자자 확보 시 성장 가속 가능성</li>
+                    <li>중고차 시장 플랫폼화 트렌드에 대응한 티카 성장 잠재력</li>
+                </ul>
+            </div>
+            <div class="swot-box threat">
+                <div class="swot-label"><i class="fas fa-bolt"></i>위협 (Threats)</div>
+                <ul>
+                    <li>금리 인상 지속 시 차량 조달 비용 증가 및 수익성 악화</li>
+                    <li>SK렌터카 등 경쟁사의 공격적 시장 점유율 확대 전략</li>
+                    <li>자율주행 상용화 시 렌탈 사업 모델 근본적 변화 가능성</li>
+                    <li>카카오·네이버 등 빅테크 플랫폼의 모빌리티 시장 진입</li>
+                    <li>중고차 가격 변동성 확대로 잔존가치 리스크 증가</li>
+                    <li>매각 실패 또는 장기화 시 경영 공백 및 투자 지연 우려</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: 전략분석 -->
+<!-- ============================================================ -->
+<section id="strategy">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-bullseye"></i></div>
+            <h2>전략분석</h2>
+            <span class="sec-tag">Strategy Analysis</span>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-rocket"></i>핵심 성장 전략</h4>
+            <p>롯데렌탈의 핵심 전략은 '렌탈 밸류체인 수직계열화'와 '모빌리티 생태계 확장'의 두 축으로 요약됩니다. 차량 조달에서 운영관리, 정비, 처분(중고차)에 이르는 전 과정을 내재화하여 단위 차량당 수익성을 극대화하는 동시에, 장기·단기·카셰어링·구독형 서비스로 고객 접점을 확장합니다.</p>
+            <ul>
+                <li>장기렌탈 보유대수 지속 확대(연 5%+ 성장 목표)</li>
+                <li>단기렌탈 거점 확충 및 무인 서비스 가속화</li>
+                <li>중고차 소매 플랫폼 '티카' 고도화 및 거래 규모 확대</li>
+                <li>법인 고객 대상 통합 플릿 매니지먼트 솔루션 제공</li>
+                <li>친환경차 전용 렌탈 패키지 및 충전 인프라 구축</li>
+            </ul>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-handshake"></i>매각 전략 및 시사점</h4>
+                <p>롯데그룹은 유동성 확보 및 사업 포트폴리오 재편 차원에서 롯데렌탈 매각을 추진하고 있습니다. 2025년 역대 최대 실적을 기록하며 매각 매력도가 극대화된 시점으로, 국내외 사모펀드(PE) 및 전략적 투자자를 대상으로 입찰을 진행 중인 것으로 알려져 있습니다.</p>
+                <ul>
+                    <li>2025년 역대 최대 실적으로 매각 밸류에이션 극대화</li>
+                    <li>국내외 사모펀드 및 전략적 투자자 대상 입찰 진행</li>
+                    <li>매각 후 롯데그룹사 시너지 구조 재편 불가피</li>
+                    <li>새 투자자의 전략적 방향이 향후 성장 궤적 결정</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-sitemap"></i>사업 다각화 전략</h4>
+                <p>렌탈 본업 외에 중고차 플랫폼, 차량 관리 서비스, 모빌리티 구독 모델 등으로 사업 영역을 다각화하고 있습니다. 특히 티카를 통한 중고차 B2C 진출은 차량 처분 수익성을 높이는 핵심 전략이며, 향후 인증 중고차 시장의 성장과 함께 매출 기여도가 확대될 전망입니다.</p>
+                <ul>
+                    <li>티카: 렌탈 반납 차량을 인증 중고차 소매로 전환</li>
+                    <li>롯데오토옥션: B2B 경매 시장 지배력 강화</li>
+                    <li>법인 플릿 관리: 차량+정비+보험 통합 패키지</li>
+                    <li>모빌리티 구독: 월정액 차량 이용 서비스 확대</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-route"></i>중장기 성장 로드맵</h4>
+            <p>롯데렌탈의 중장기 전략은 크게 세 가지 단계로 구분됩니다. 1단계(2025~2026)는 기존 렌탈 사업의 수익성 극대화와 매각 가치 제고에 집중하며, 2단계(2027~2028)는 새로운 소유 구조 하에서 디지털 전환 가속과 친환경차 전환을 본격화합니다. 3단계(2029~)는 자율주행 시대를 대비한 MaaS(Mobility as a Service) 플랫폼으로의 전환을 목표로 합니다. 다만 매각 일정과 신규 투자자의 전략적 방향에 따라 로드맵의 구체적인 실행 시기와 우선순위는 유동적일 수 있습니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: 재무분석 -->
+<!-- ============================================================ -->
+<section id="financial">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-coins"></i></div>
+            <h2>재무분석</h2>
+            <span class="sec-tag">Financial Analysis</span>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="info-card">
+            <h4><i class="fas fa-chart-bar"></i>핵심 재무 지표</h4>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">매출액 (2025)</span>
+                    <span class="pl-val">2조 9,188억원</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:92%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">영업이익 (2025)</span>
+                    <span class="pl-val">3,125억원 (+9.7%)</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:78%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">영업이익률</span>
+                    <span class="pl-val">10.7%</span>
+                </div>
+                <div class="progress-bar"><div class="fill blue" style="width:53%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">보유 차량 규모</span>
+                    <span class="pl-val">~35만대 (+5.5%)</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:88%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">2026 Q1 영업이익</span>
+                    <span class="pl-val">836억원 (+24.8%)</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width:65%;"></div></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-label">
+                    <span class="pl-name">시가총액</span>
+                    <span class="pl-val">~1.5조원</span>
+                </div>
+                <div class="progress-bar"><div class="fill blue" style="width:60%;"></div></div>
+            </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-chart-column"></i>연도별 매출 추이</h4>
+                <div class="bar-chart">
+                    <div class="bar-col">
+                        <div class="bar-value">2.1조</div>
+                        <div class="bar" style="height:55%;"></div>
+                        <div class="bar-label">2021</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2.4조</div>
+                        <div class="bar" style="height:63%;"></div>
+                        <div class="bar-label">2022</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2.6조</div>
+                        <div class="bar" style="height:70%;"></div>
+                        <div class="bar-label">2023</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2.7조</div>
+                        <div class="bar" style="height:78%;"></div>
+                        <div class="bar-label">2024</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2.9조</div>
+                        <div class="bar" style="height:92%;"></div>
+                        <div class="bar-label">2025</div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-chart-column"></i>연도별 영업이익 추이</h4>
+                <div class="bar-chart">
+                    <div class="bar-col">
+                        <div class="bar-value">1,820억</div>
+                        <div class="bar blue" style="height:42%;"></div>
+                        <div class="bar-label">2021</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2,280억</div>
+                        <div class="bar blue" style="height:53%;"></div>
+                        <div class="bar-label">2022</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2,550억</div>
+                        <div class="bar blue" style="height:62%;"></div>
+                        <div class="bar-label">2023</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">2,847억</div>
+                        <div class="bar blue" style="height:75%;"></div>
+                        <div class="bar-label">2024</div>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-value">3,125억</div>
+                        <div class="bar blue" style="height:92%;"></div>
+                        <div class="bar-label">2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h4><i class="fas fa-calculator"></i>수익성 분석</h4>
+                <p>롯데렌탈의 영업이익률은 2025년 10.7%로 꾸준한 개선 추세를 보이고 있습니다. 이는 장기렌탈 보유대수 확대에 따른 규모의 경제 효과, 단기렌탈 고마진 매출 비중 확대, 그리고 중고차 처분 수익의 안정화가 복합적으로 작용한 결과입니다.</p>
+                <ul>
+                    <li>장기렌탈 영업이익 +34.4% 급증 — 핵심 수익원 강화</li>
+                    <li>단기렌탈 고마진 구조로 수익성 견인</li>
+                    <li>중고차 처분 시 경매 채널 활용으로 손실 최소화</li>
+                    <li>2026 Q1 영업이익 +24.8%로 모멘텀 지속</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-balance-scale"></i>밸류에이션 분석</h4>
+                <p>시가총액 약 1.5조원 기준, PER은 약 8~9배 수준으로 렌탈 업종 평균 대비 할인 거래 중입니다. 이는 매각 이슈에 따른 지배구조 불확실성이 반영된 것으로, 매각 완료 시 리레이팅(re-rating) 가능성이 존재합니다.</p>
+                <ul>
+                    <li>PER: ~8~9배 (업종 평균 12배 대비 할인)</li>
+                    <li>PBR: ~0.8배 — 자산가치 대비 저평가</li>
+                    <li>EV/EBITDA: ~5~6배 — 매각 밸류 기준점</li>
+                    <li>배당수익률: ~2.5% — 안정적 배당 정책</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fas fa-file-invoice-dollar"></i>재무 건전성 평가</h4>
+            <p>렌탈 사업 특성상 차량 구매를 위한 차입금 규모가 크며(부채비율 약 250%), 이는 업종 평균 수준입니다. 다만 안정적인 렌탈 캐시플로를 기반으로 이자보상배율은 2배 이상을 유지하고 있어 재무 건전성은 양호한 편입니다. 2025년 영업활동현금흐름은 약 4,500억원 수준으로 차입금 상환 및 신규 차량 투자 여력을 충분히 확보하고 있습니다. 특히 장기렌탈 계약의 예측 가능한 현금흐름 구조는 금융 비용 관리에 유리한 요소입니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: 결론 -->
+<!-- ============================================================ -->
+<section id="conclusion">
+    <div class="section-block">
+        <div class="sec-title">
+            <div class="icon-box"><i class="fas fa-flag-checkered"></i></div>
+            <h2>결론</h2>
+            <span class="sec-tag">Conclusion</span>
+        </div>
+
+        <div class="conclusion-box">
+            <h3>투자 판단 요약 — 실적 모멘텀은 긍정적, 매각 불확실성은 변수</h3>
+            <p>롯데렌탈은 2025년 역대 최대 실적을 기록하며 국내 렌탈 시장 1위 사업자로서의 위치를 공고히 하고 있습니다. 장기렌탈 보유대수 +5.5% 확대, 단기렌탈 급성장(일단기 +31.5%, 월단기 +45.0%), 그리고 2026 Q1 영업이익 +24.8% 증가 등 실적 개선 모멘텀이 뚜렷합니다.</p>
+            <p>영업이익률 10.7%로 수익성도 견조하며, 중고차 플랫폼 '티카'를 통한 밸류체인 확장과 친환경차 전환 대응력도 긍정적입니다. 35만대 이상의 보유 차량에서 발생하는 안정적인 캐시플로는 사업의 방어적 성격을 강화합니다.</p>
+            <p>다만 롯데그룹의 매각 추진은 지배구조 불확실성이라는 리스크를 동반합니다. 매각 완료 시점, 인수자의 정체성과 전략적 방향, 그리고 롯데그룹사 시너지 구조의 재편 여부가 향후 기업가치에 중대한 영향을 미칠 변수입니다. 현재 PER 8~9배 수준의 밸류에이션은 이러한 불확실성을 상당 부분 반영하고 있으며, 매각 이슈의 해소 시 리레이팅 가능성이 열려 있습니다.</p>
+            <p>종합적으로 롯데렌탈은 견조한 실적과 성장성을 보유한 업종 대표주이나, 매각이라는 이벤트 리스크를 감안한 투자 접근이 필요합니다. 투자 매력도 67점으로, 매각 진행 상황을 주시하며 실적 모멘텀이 지속되는지 확인하는 것이 바람직합니다.</p>
+
+            <div class="conclusion-tags">
+                <span class="gold">렌탈 1위</span>
+                <span class="gold">역대 최대 실적</span>
+                <span>매각 이슈</span>
+                <span>밸류에이션 할인</span>
+                <span class="gold">단기렌탈 급성장</span>
+                <span>지배구조 불확실성</span>
+                <span class="gold">중고차 플랫폼</span>
+                <span>친환경차 전환</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;">2026-06-01 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 8,100선 박스권. 소비재·서비스 업종 실적 개선 모멘텀, 의류 OEM 슈퍼사이클 기대.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">소비·서비스</div>렌탈 시장 안정 성장세, 친환경차 전환 가속. 의류 OEM 수직계열화로 마진 개선 본격화.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">글로벌 매크로</div>미국 소비 경기 견조, PCE 안정. 원/달러 1,500원대 중반, 수출 기업 환율 수혜 지속.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 01일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-logo">FLOVAH Insights</div>
+    <p class="footer-copy">&copy; 2026 FLOVAH. 본 리포트는 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다.</p>
+</footer>
+
+<!-- Scroll Spy JS -->
+<script>
+(function() {
+    const navLinks = document.querySelectorAll('.side-nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    function onScroll() {
+        let current = '';
+        const scrollY = window.scrollY + 120;
+
+        sections.forEach(function(section) {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Smooth scroll for nav links
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Animate progress bars on scroll
+    var progressBars = document.querySelectorAll('.progress-bar .fill');
+    var barCols = document.querySelectorAll('.bar-col .bar');
+    var observed = false;
+
+    function animateBars() {
+        if (observed) return;
+        var financialSection = document.getElementById('financial');
+        if (!financialSection) return;
+        var rect = financialSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+            observed = true;
+            progressBars.forEach(function(bar) {
+                var w = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(function() { bar.style.width = w; }, 100);
+            });
+            barCols.forEach(function(bar) {
+                var h = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(function() { bar.style.height = h; }, 100);
+            });
+        }
+    }
+
+    window.addEventListener('scroll', animateBars);
+    animateBars();
+})();
+</script>
+
+</body>
+</html>

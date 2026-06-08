@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LS에코에너지 (229640) 기업분석 리포트 | FLOVAH Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #09090b;
+            --bg-secondary: #0f0f12;
+            --bg-elevated: #161619;
+            --bg-card: #1a1a1f;
+            --bg-card-hover: #1e1e24;
+            --gold: #c9a962;
+            --gold-dim: rgba(201, 169, 98, 0.15);
+            --gold-glow: rgba(201, 169, 98, 0.08);
+            --blue: #5c7d9e;
+            --blue-dim: rgba(92, 125, 158, 0.15);
+            --blue-glow: rgba(92, 125, 158, 0.08);
+            --text-light: #e8e6e3;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666;
+            --border: rgba(201, 169, 98, 0.12);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --positive: #4ecdc4;
+            --negative: #ff6b6b;
+            --warning: #ffd93d;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+        /* ── Header ── */
+        .site-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 1100px; margin: 0 auto;
+            padding: 14px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo-group { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 28px; width: auto; }
+        .logo-divider { width: 1px; height: 20px; background: var(--border); }
+        .logo-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px; font-weight: 600;
+            color: var(--gold); letter-spacing: 2px;
+        }
+        .header-date {
+            font-size: 12px; color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Hero ── */
+        .hero-section {
+            margin-top: 60px;
+            padding: 80px 40px 60px;
+            background: linear-gradient(180deg, rgba(201,169,98,0.06) 0%, transparent 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,169,98,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 20px;
+            background: var(--gold-dim); border: 1px solid rgba(201,169,98,0.2);
+            font-size: 12px; color: var(--gold); font-weight: 500;
+            margin-bottom: 24px; letter-spacing: 0.5px;
+        }
+        .hero-badge i { font-size: 10px; }
+        .hero-company {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px; font-weight: 700;
+            color: var(--text-light); line-height: 1.2;
+            margin-bottom: 8px; letter-spacing: -0.5px;
+        }
+        .hero-code {
+            font-size: 16px; color: var(--gold);
+            font-weight: 400; margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .hero-subtitle {
+            font-size: 18px; color: var(--text-secondary);
+            font-weight: 300; line-height: 1.6;
+            max-width: 600px; margin-bottom: 40px;
+        }
+
+        /* ── Metric Cards ── */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px; margin-bottom: 0;
+        }
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 24px; text-align: center;
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            border-color: var(--border);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+        .metric-label {
+            font-size: 12px; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 8px; font-weight: 500;
+        }
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 28px; font-weight: 700;
+            color: var(--text-light); margin-bottom: 4px;
+        }
+        .metric-sub {
+            font-size: 12px; color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* ── Section Common ── */
+        .report-section {
+            max-width: 1100px; margin: 0 auto;
+            padding: 60px 40px;
+        }
+        .section-header {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 32px;
+        }
+        .section-icon {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,169,98,0.2);
+            border-radius: var(--radius-sm);
+            color: var(--gold); font-size: 16px;
+        }
+        .section-title-group { flex: 1; }
+        .section-number {
+            font-size: 11px; color: var(--gold);
+            letter-spacing: 2px; font-weight: 600;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px; font-weight: 700;
+            color: var(--text-light); letter-spacing: -0.3px;
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin-bottom: 32px; opacity: 0.3;
+        }
+
+        /* ── Content Cards ── */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 28px; margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+        .content-card:hover { border-color: var(--border); }
+        .card-title {
+            font-size: 16px; font-weight: 600;
+            color: var(--text-light); margin-bottom: 12px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .card-title i { color: var(--gold); font-size: 14px; }
+        .card-text {
+            font-size: 14px; color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ── Timeline ── */
+        .timeline { position: relative; padding-left: 32px; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 7px; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--gold), var(--blue), transparent);
+        }
+        .timeline-item {
+            position: relative; margin-bottom: 28px;
+            padding-left: 24px;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute;
+            left: -28px; top: 6px;
+            width: 12px; height: 12px;
+            background: var(--bg-primary);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+        }
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px; font-weight: 700;
+            color: var(--gold); margin-bottom: 4px;
+        }
+        .timeline-text {
+            font-size: 13px; color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── Grid Layouts ── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+        /* ── Comparison Table ── */
+        .comp-table {
+            width: 100%; border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius); overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+        .comp-table thead { background: var(--bg-elevated); }
+        .comp-table th {
+            padding: 14px 16px; font-size: 12px;
+            color: var(--gold); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-align: left; border-bottom: 1px solid var(--border);
+        }
+        .comp-table td {
+            padding: 12px 16px; font-size: 13px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .comp-table tr:hover td { background: var(--bg-card-hover); }
+        .comp-table .highlight { color: var(--gold); font-weight: 600; }
+        .comp-table .positive { color: var(--positive); }
+        .comp-table .negative { color: var(--negative); }
+
+        /* ── SWOT ── */
+        .swot-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .swot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .swot-card:hover { transform: translateY(-2px); border-color: var(--border); }
+        .swot-label {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px; font-weight: 700;
+            letter-spacing: 2px; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .swot-s .swot-label { color: var(--positive); }
+        .swot-w .swot-label { color: var(--negative); }
+        .swot-o .swot-label { color: var(--gold); }
+        .swot-t .swot-label { color: #e88d67; }
+        .swot-list { list-style: none; }
+        .swot-list li {
+            font-size: 13px; color: var(--text-secondary);
+            padding: 8px 0; line-height: 1.6;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; align-items: flex-start; gap: 8px;
+        }
+        .swot-list li:last-child { border-bottom: none; }
+        .swot-list li::before {
+            content: '›'; font-weight: 700; flex-shrink: 0;
+            margin-top: -1px;
+        }
+        .swot-s .swot-list li::before { color: var(--positive); }
+        .swot-w .swot-list li::before { color: var(--negative); }
+        .swot-o .swot-list li::before { color: var(--gold); }
+        .swot-t .swot-list li::before { color: #e88d67; }
+
+        /* ── Bar Chart ── */
+        .chart-container { margin-bottom: 28px; }
+        .chart-title {
+            font-size: 14px; font-weight: 600;
+            color: var(--text-light); margin-bottom: 16px;
+        }
+        .chart-bar-group { margin-bottom: 12px; }
+        .chart-bar-label {
+            font-size: 12px; color: var(--text-muted);
+            margin-bottom: 4px;
+            display: flex; justify-content: space-between;
+        }
+        .chart-bar-track {
+            height: 28px; background: var(--bg-elevated);
+            border-radius: 4px; overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%; border-radius: 4px;
+            display: flex; align-items: center;
+            padding-left: 10px;
+            font-size: 11px; font-weight: 600; color: var(--bg-primary);
+            transition: width 0.8s ease;
+        }
+        .bar-gold { background: linear-gradient(90deg, var(--gold), #d4b97a); }
+        .bar-blue { background: linear-gradient(90deg, var(--blue), #7a9dbe); }
+        .bar-positive { background: linear-gradient(90deg, var(--positive), #6ed8d0); }
+
+        /* ── Score Badge ── */
+        .ai-score {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px; border-radius: 20px;
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,169,98,0.25);
+        }
+        .ai-score-label {
+            font-size: 12px; color: var(--gold);
+            font-weight: 500; letter-spacing: 0.5px;
+        }
+        .ai-score-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px; font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* ── Conclusion ── */
+        .conclusion-box {
+            background: linear-gradient(135deg, rgba(201,169,98,0.08) 0%, rgba(92,125,158,0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+        }
+
+        /* ── Tag ── */
+        .tag {
+            display: inline-block; padding: 4px 12px;
+            background: var(--gold-dim); border-radius: 20px;
+            font-size: 11px; color: var(--gold); font-weight: 500;
+            margin: 2px 4px 2px 0;
+        }
+        .tag-blue {
+            background: var(--blue-dim); color: var(--blue);
+        }
+
+        /* ── Key Insight ── */
+        .key-insight {
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px; margin: 20px 0;
+            background: var(--gold-glow);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+        .key-insight p {
+            font-size: 14px; color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .key-insight strong { color: var(--text-light); }
+
+        /* ── Footer ── */
+        .site-footer {
+            max-width: 1100px; margin: 0 auto;
+            padding: 40px 40px 60px;
+            text-align: center;
+        }
+        .footer-logo { height: 24px; margin-bottom: 16px; opacity: 0.6; }
+        .footer-text {
+            font-size: 12px; color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .footer-divider {
+            width: 60px; height: 1px;
+            background: var(--border); margin: 20px auto;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero-company { font-size: 32px; }
+            .metric-grid { grid-template-columns: repeat(2, 1fr); }
+            .two-col, .swot-grid { grid-template-columns: 1fr; }
+            .three-col { grid-template-columns: 1fr; }
+            .report-section { padding: 40px 20px; }
+            .hero-section { padding: 80px 20px 40px; }
+            .header-inner { padding: 14px 20px; }
+            .comp-table { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════ -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="logo-group">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="logo-img">
+            <div class="logo-divider"></div>
+            <span class="logo-text">FLOVAH INSIGHTS</span>
+        </div>
+        <div class="header-date">
+            <i class="far fa-calendar-alt" style="margin-right:4px;"></i> June 8, 2026
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 1: 기업 개요 (Hero)
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero-section">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <i class="fas fa-bolt"></i>
+            KOSPI · 전력케이블 · LS그룹
+        </div>
+        <h1 class="hero-company">LS에코에너지</h1>
+        <div class="hero-code">229640 · LS Eco Energy Co., Ltd.</div>
+        <p class="hero-subtitle">동남아 전력케이블 No.1, 글로벌 에너지 인프라 성장의 수혜주</p>
+
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px;flex-wrap:wrap;">
+            <div class="ai-score">
+                <span class="ai-score-label">FLOVAH Score</span>
+                <span class="ai-score-value">63</span>
+            </div>
+            <div class="tag">전력케이블</div>
+            <div class="tag">초고압</div>
+            <div class="tag">베트남 1위</div>
+            <div class="tag tag-blue">LS그룹</div>
+            <div class="tag tag-blue">에너지 인프라</div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">2025 매출</div>
+                <div class="metric-value">9,601억</div>
+                <div class="metric-sub">+10.5% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2025 영업이익</div>
+                <div class="metric-value">668억</div>
+                <div class="metric-sub">+49.2% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">초고압 케이블</div>
+                <div class="metric-value">+177%</div>
+                <div class="metric-sub">전년 대비 급증</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">베트남 점유율</div>
+                <div class="metric-value">1위</div>
+                <div class="metric-sub">LS-VINA 기반</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 기업 개요 본문 -->
+<section class="report-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-building"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 01</div>
+            <h2 class="section-title">기업 개요</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-info-circle"></i> 회사 소개</div>
+        <div class="card-text">
+            <p>LS에코에너지(LS Eco Energy Co., Ltd.)는 LS그룹 계열의 전력케이블 전문 제조기업으로, 2015년 LS전선아시아라는 이름으로 설립되어 2021년 현재의 사명으로 변경했다. 동남아시아, 특히 베트남 전력케이블 시장에서 압도적 1위의 시장 지위를 확보하고 있다.</p>
+            <br>
+            <p>핵심 자회사 LS-VINA(LS전선 비나)는 베트남 전력케이블 시장 점유율 1위 기업으로, 초고압·고압·중압 전력케이블 및 UTP(통신) 케이블을 생산하고 있다. 베트남 정부의 8차 국가전력계획(PDP8)에 따른 송배전망 투자 확대의 직접적 수혜를 받고 있으며, 현지 유일의 초고압 케이블 생산 기업이라는 독보적 경쟁 우위를 보유하고 있다.</p>
+            <br>
+            <p>2025년 매출 9,601억원(+10.5%), 영업이익 668억원(+49.2%), 순이익 485억원(+37.1%)을 기록하며 사상 최대 실적을 경신했다. 2026년 1분기에는 분기 영업이익 201억원(+31%)을 달성하며 역대 최대 분기 실적을 갱신하는 등 성장 모멘텀이 가속되고 있다. 시가총액은 약 1.7조원이다.</p>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-sitemap"></i> 사업 구조</div>
+        <div class="card-text">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">핵심 자회사</div>
+                    <div style="font-size:15px;color:var(--text-light);font-weight:600;">LS-VINA</div>
+                    <div style="font-size:12px;color:var(--gold);margin-top:4px;">베트남 전력케이블 1위</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">자회사</div>
+                    <div style="font-size:15px;color:var(--text-light);font-weight:600;">LSCV</div>
+                    <div style="font-size:12px;color:var(--blue);margin-top:4px;">2019년 인수</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">모그룹</div>
+                    <div style="font-size:15px;color:var(--text-light);font-weight:600;">LS그룹</div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">LS전선 기술력 기반</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="key-insight">
+        <p><strong>핵심 포인트:</strong> LS에코에너지는 베트남 전력케이블 시장 1위, 현지 유일의 초고압 케이블 생산 기업이라는 독보적 시장 지위를 기반으로, <strong>AI 데이터센터 전력수요 확대</strong>와 <strong>동남아 에너지 인프라 투자 확대</strong>라는 이중 성장 동력의 수혜를 받고 있다.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-history"></i> 주요 연혁</div>
+        <div class="timeline" style="margin-top:20px;">
+            <div class="timeline-item">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-text">LS전선아시아 설립 — LS그룹의 동남아 전력케이블 사업 전담 법인 출범</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2017</div>
+                <div class="timeline-text">KOSPI 시장 상장, 베트남 전력시장 성장 스토리로 투자자 주목</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2019</div>
+                <div class="timeline-text">LSCV 인수 완료, 동남아 생산 거점 및 제품 라인업 확대</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2021</div>
+                <div class="timeline-text">사명 변경: LS전선아시아 → LS에코에너지, 친환경 에너지 기업으로 브랜드 전환</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-text">북미 데이터센터향 전력케이블 수출 시작, AI 인프라 시장 진출 포석</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-text">초고압 케이블 수주 급증, 베트남 PDP8 전력계획 수혜 본격화</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-text">사상 최대 연간 실적 — 매출 9,601억원, 영업이익 668억원 달성</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2026.1Q</div>
+                <div class="timeline-text">역대 최대 분기 영업이익 201억원(+31%) 기록, 1조원 매출 달성 기대</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 2: 기술 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-cogs"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 02</div>
+            <h2 class="section-title">기술 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="two-col">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-bolt"></i> 초고압 케이블 기술</div>
+            <div class="card-text">
+                <p>LS에코에너지의 핵심 성장 동력은 초고압(EHV: Extra High Voltage) 전력케이블이다. 2026년 1분기 초고압 케이블 매출은 322억원으로 전년 동기 대비 <strong style="color:var(--gold);">177% 급증</strong>했다.</p>
+                <br>
+                <p>LS-VINA는 베트남 현지에서 유일하게 초고압 케이블을 생산할 수 있는 기업으로, 이는 LS그룹(LS전선)의 50년 이상 축적된 전력케이블 기술력을 이전받은 결과이다. 220kV급 이상의 초고압 케이블은 기술 진입장벽이 매우 높아, 후발 기업의 추격이 사실상 어려운 구조적 경쟁 우위를 형성하고 있다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-network-wired"></i> 전력 배전·통신 케이블</div>
+            <div class="card-text">
+                <p>초고압 케이블 외에도 LS에코에너지는 중·저압 배전 케이블, UTP(Unshielded Twisted Pair) 통신 케이블, URD(Underground Residential Distribution) 지중 배전 케이블 등 다양한 제품 포트폴리오를 보유하고 있다.</p>
+                <br>
+                <p>특히 북미 시장에서는 URD 및 UTP 케이블 수출이 빠르게 증가하고 있다. 미국의 전력망 노후화에 따른 지중화(Underground) 투자 확대와 AI 데이터센터 건설 붐에 따른 전력·통신 케이블 수요 증가가 동시에 진행되면서, <strong style="color:var(--gold);">북미향 수출이 새로운 성장 축</strong>으로 부상하고 있다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-industry"></i> LS그룹 기술력 활용</div>
+        <div class="card-text">
+            <p>LS에코에너지의 기술적 경쟁력은 모그룹 LS전선의 50년 이상 축적된 전력케이블 제조 기술에 기반하고 있다. LS전선은 한국 전력케이블 시장 1위 기업으로, 해저케이블·초고압케이블·초전도케이블 등 첨단 케이블 기술을 보유하고 있다.</p>
+            <br>
+            <p>LS에코에너지는 이 기술력을 동남아 시장에 맞게 현지화하여 적용하고 있으며, 특히 열대 기후 환경에 최적화된 절연 소재 기술과 고온·고습 환경에서의 장기 내구성 기술에서 차별화된 경쟁력을 확보하고 있다. 향후 해저케이블, 희토류 관련 신사업 진출도 모그룹 기술력을 활용하여 추진할 것으로 기대된다.</p>
+        </div>
+    </div>
+
+    <div class="key-insight">
+        <p><strong>기술 전망:</strong> 베트남 유일의 초고압 케이블 생산 역량은 LS에코에너지의 핵심 기술 해자(moat)이다. 초고압 케이블의 높은 수익성(일반 케이블 대비 3~5배 마진율)과 기술 진입장벽이 구조적 수익성 개선을 뒷받침할 전망이다.</p>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-flask"></i> 신성장 사업 영역</div>
+        <div class="card-text">
+            <p>LS에코에너지는 기존 전력케이블 사업을 넘어 신성장 영역으로의 확장을 모색하고 있다. 현재 가시화되고 있는 영역은 크게 두 가지이다.</p>
+            <br>
+            <p><strong style="color:var(--text-light);">1. 해저케이블 사업:</strong> 동남아 지역의 해상풍력 프로젝트 증가에 따라 해저케이블 수요가 확대되고 있다. LS전선의 해저케이블 기술을 활용하여 동남아 해저케이블 시장 진출이 검토되고 있으며, 대신증권은 이를 LS에코에너지의 중장기 재평가 요인으로 주목하고 있다.</p>
+            <br>
+            <p><strong style="color:var(--text-light);">2. 희토류 관련 사업:</strong> 베트남은 글로벌 희토류 매장량 2위 국가로, LS에코에너지의 현지 인프라와 네트워크를 활용한 희토류 가공·유통 사업 진출 가능성이 주목받고 있다. 미중 갈등에 따른 공급망 재편 과정에서 베트남의 전략적 가치가 부각되고 있다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 3: 시장 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 03</div>
+            <h2 class="section-title">시장 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-globe"></i> 글로벌 전력케이블 시장 전망</div>
+        <div class="card-text">
+            <p>글로벌 전력케이블 시장은 2025년 약 2,200억 달러 규모에서 2030년까지 약 3,100억 달러로 성장할 것으로 전망된다(CAGR 약 7%). 전력망 현대화, 재생에너지 연결, AI 데이터센터 건설 등이 시장 성장을 견인하는 3대 메가트렌드이다.</p>
+            <br>
+            <p>특히 AI 데이터센터 1개소당 100~300MW의 전력이 필요하며, 이에 따른 전력 인프라(변전소, 송배전선) 투자가 동반되면서 전력케이블 수요가 구조적으로 확대되고 있다. 동남아시아는 이 트렌드에서 가장 빠르게 성장하는 지역으로, 베트남·인도네시아·태국 등의 전력 인프라 투자가 연 15% 이상 증가하고 있다.</p>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-flag"></i> 베트남 전력시장</div>
+            <div class="card-text">
+                <p>베트남은 GDP 성장률 6~7%의 고성장을 지속하며 전력 수요가 연 10% 이상 증가하는 시장이다. 정부의 8차 국가전력계획(PDP8)은 2030년까지 전력 생산능력을 현재의 2배 이상으로 확대하는 목표를 제시했다.</p>
+                <br>
+                <p>이에 따라 송·배전망 인프라 투자가 대규모로 진행 중이며, LS-VINA는 베트남 전력공사(EVN)의 핵심 공급업체로서 직접적 수혜를 받고 있다. 특히 <strong style="color:var(--gold);">초고압 송전선로 건설 확대</strong>에 따라 고부가 초고압 케이블 매출이 폭발적으로 증가하고 있다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-server"></i> AI 데이터센터 전력수요</div>
+            <div class="card-text">
+                <p>글로벌 AI 데이터센터 건설 붐은 전력케이블 산업의 새로운 성장 동력이다. 북미·유럽을 중심으로 연간 수백 기가와트 규모의 데이터센터 신설이 계획되어 있으며, 동남아시아에서도 구글·마이크로소프트·아마존 등 빅테크 기업의 데이터센터 건설이 가속되고 있다.</p>
+                <br>
+                <p>LS에코에너지는 2023년부터 북미 데이터센터향 전력케이블 수출을 시작했으며, URD 및 UTP 케이블 수출이 빠르게 증가하고 있다. 동남아 현지에서도 데이터센터 건설 수요에 대응한 고품질 전력케이블 공급이 확대되고 있다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-chart-area"></i> 제품별 매출 구성</div>
+        <div class="card-text">
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>전력케이블 (초고압·고압)</span><span style="color:var(--gold);">45%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:90%;">고성장</div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>배전·산업용 케이블</span><span style="color:var(--blue);">30%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:60%;">안정 성장</div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>통신 케이블 (UTP 등)</span><span style="color:var(--positive);">15%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-positive" style="width:30%;">확대 중</div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>소재·기타</span><span style="color:var(--text-muted);">10%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill" style="width:20%;background:linear-gradient(90deg,#666,#888);">보합</div></div>
+                </div>
+            </div>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">* 초고압 케이블 비중 확대가 수익성 개선의 핵심 동력 — 초고압 케이블 마진율은 일반 케이블 대비 3~5배</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 4: 경쟁사 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-users"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 04</div>
+            <h2 class="section-title">경쟁사 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-table"></i> 주요 경쟁사 비교</div>
+        <div style="overflow-x:auto;">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>기업</th>
+                        <th>시가총액</th>
+                        <th>2025 매출</th>
+                        <th>영업이익률</th>
+                        <th>주력 분야</th>
+                        <th>지역 강점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="highlight">LS에코에너지</td>
+                        <td>1.7조</td>
+                        <td>9,601억</td>
+                        <td class="positive">7.0%</td>
+                        <td>초고압·배전 케이블</td>
+                        <td class="positive">베트남 1위</td>
+                    </tr>
+                    <tr>
+                        <td>LS전선</td>
+                        <td>5.8조</td>
+                        <td>7.2조</td>
+                        <td>5.8%</td>
+                        <td>해저·초고압·전력 케이블</td>
+                        <td>한국 1위</td>
+                    </tr>
+                    <tr>
+                        <td>대한전선</td>
+                        <td>2.1조</td>
+                        <td>3.8조</td>
+                        <td>4.2%</td>
+                        <td>초고압·전력 케이블</td>
+                        <td>한국 2위</td>
+                    </tr>
+                    <tr>
+                        <td>가온전선</td>
+                        <td>0.8조</td>
+                        <td>1.6조</td>
+                        <td>5.0%</td>
+                        <td>배전·통신 케이블</td>
+                        <td>LS그룹 계열</td>
+                    </tr>
+                    <tr>
+                        <td>넥상스(글로벌)</td>
+                        <td>12조</td>
+                        <td>8.2조</td>
+                        <td>8.5%</td>
+                        <td>해저·초고압 케이블</td>
+                        <td>글로벌 Top3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-trophy"></i> 경쟁 우위 요소</div>
+            <div class="card-text">
+                <p><strong style="color:var(--text-light);">1. 베트남 시장 지배적 위치</strong></p>
+                <p>LS-VINA는 베트남 전력케이블 시장 1위이자 현지 유일의 초고압 케이블 생산 기업이다. 베트남 전력공사(EVN)와의 장기 공급 관계는 후발 기업이 쉽게 복제할 수 없는 경쟁 해자이다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">2. LS그룹 기술력 시너지</strong></p>
+                <p>모그룹 LS전선의 50년 이상 축적된 전력케이블 기술을 활용하면서도, 동남아 현지 생산을 통해 원가 경쟁력을 동시에 확보하는 이원화 전략을 구사하고 있다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">3. 고부가 제품 비중 확대</strong></p>
+                <p>초고압 케이블의 매출 비중 확대를 통해 영업이익률이 빠르게 개선되고 있다. 2026년 1분기 영업이익률 6.8%는 국내 전선업계 평균(3~4%)을 크게 상회한다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-balance-scale"></i> 경쟁 구도 평가</div>
+            <div class="card-text">
+                <p><strong style="color:var(--text-light);">LS전선 vs LS에코에너지:</strong> LS전선은 한국 1위 + 글로벌 해저케이블 강자이며 LS에코에너지의 최대주주이다. 양사는 경쟁이 아닌 '한국(LS전선) + 동남아(LS에코에너지)'로 지역을 분담하는 협력 관계이다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">대한전선 vs LS에코에너지:</strong> 대한전선은 한국 내 초고압 케이블 시장에서 LS전선과 경쟁하나, 동남아 시장에서는 LS에코에너지가 압도적 우위를 보유하고 있다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">넥상스 vs LS에코에너지:</strong> 넥상스는 글로벌 Top3 케이블 기업이나, 동남아 현지 생산 기반에서는 LS에코에너지가 원가와 납기에서 우위를 보유한다.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 5: SWOT 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-th-large"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 05</div>
+            <h2 class="section-title">SWOT 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="swot-grid">
+        <div class="swot-card swot-s">
+            <div class="swot-label">
+                <i class="fas fa-shield-alt"></i> STRENGTHS — 강점
+            </div>
+            <ul class="swot-list">
+                <li>베트남 전력케이블 시장 1위, 초고압 케이블 현지 유일 생산</li>
+                <li>LS그룹(LS전선) 50년 기술력 이전에 기반한 제조 역량</li>
+                <li>베트남 전력공사(EVN) 핵심 공급업체로서의 장기 거래 관계</li>
+                <li>동남아 현지 생산을 통한 원가 경쟁력 확보</li>
+                <li>2년 연속 두 자릿수 매출 성장 및 사상 최대 실적 경신</li>
+            </ul>
+        </div>
+        <div class="swot-card swot-w">
+            <div class="swot-label">
+                <i class="fas fa-exclamation-triangle"></i> WEAKNESSES — 약점
+            </div>
+            <ul class="swot-list">
+                <li>LS-VINA 중심의 자회사 구조 복잡성, 지배구조 할인 요소</li>
+                <li>베트남 단일 국가 매출 의존도가 높아 지정학적 리스크 노출</li>
+                <li>원자재(구리, 알루미늄) 가격 변동에 따른 마진 변동성</li>
+                <li>글로벌 대형 케이블사(넥상스, 프리스미안) 대비 규모 열세</li>
+                <li>자체 R&D보다 모그룹 기술 이전에 의존하는 구조</li>
+            </ul>
+        </div>
+        <div class="swot-card swot-o">
+            <div class="swot-label">
+                <i class="fas fa-rocket"></i> OPPORTUNITIES — 기회
+            </div>
+            <ul class="swot-list">
+                <li>AI 데이터센터 전력수요 폭발에 따른 글로벌 전력케이블 수요 확대</li>
+                <li>베트남 PDP8 국가전력계획에 따른 송배전망 대규모 투자</li>
+                <li>동남아 해상풍력 프로젝트 확대 → 해저케이블 시장 진출 기회</li>
+                <li>희토류 관련 사업 진출 가능성(베트남 글로벌 2위 매장량)</li>
+                <li>북미·유럽 전력망 현대화 투자 수혜, 수출 시장 다변화</li>
+            </ul>
+        </div>
+        <div class="swot-card swot-t">
+            <div class="swot-label">
+                <i class="fas fa-bolt"></i> THREATS — 위협
+            </div>
+            <ul class="swot-list">
+                <li>구리·알루미늄 등 원자재 가격 급등 시 마진 압박</li>
+                <li>원/달러·달러/동 환율 변동에 따른 실적 변동성</li>
+                <li>중국 케이블 업체의 동남아 시장 침투 가속</li>
+                <li>베트남 정부 정책 변화 또는 전력 투자 지연 리스크</li>
+                <li>미중 무역갈등 심화에 따른 글로벌 공급망 불확실성</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 6: 전략 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chess"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 06</div>
+            <h2 class="section-title">전략 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-bullseye"></i> 핵심 성장 전략</div>
+        <div class="card-text">
+            <p>LS에코에너지의 중장기 성장 전략은 크게 세 가지 축으로 구성된다. 첫째, 초고압 케이블 중심의 고부가 제품 믹스 전환이다. 초고압 케이블의 마진율은 일반 배전 케이블 대비 3~5배 높아, 매출 성장과 수익성 개선을 동시에 달성할 수 있는 핵심 레버이다.</p>
+            <br>
+            <p>둘째, 수출 시장 다변화이다. 베트남 중심의 매출 구조에서 벗어나 북미 데이터센터향, 유럽 재생에너지향 수출을 확대하고 있다. 2026년에는 매출 1조원 돌파가 기대되며, 이 중 수출 비중이 빠르게 상승하고 있다.</p>
+            <br>
+            <p>셋째, 신성장 동력 확보이다. 해저케이블 사업과 희토류 관련 사업은 중장기 성장 잠재력이 크며, LS그룹의 기술력과 베트남 현지 인프라를 활용하여 선제적으로 시장에 진입하는 전략이다.</p>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-arrow-up"></i> 단기 전략 (2026~2027)</div>
+            <div class="card-text">
+                <p><strong style="color:var(--gold);">① 매출 1조원 돌파:</strong> 2026년 연간 매출 1조원 달성 목표. 초고압 케이블 수주 확대와 북미향 수출 증가가 핵심 동력.</p>
+                <br>
+                <p><strong style="color:var(--gold);">② 초고압 케이블 비중 확대:</strong> 초고압 케이블 매출 비중을 현재 15~20%에서 25% 이상으로 확대하여 영업이익률 8% 이상 달성 목표.</p>
+                <br>
+                <p><strong style="color:var(--gold);">③ 생산 캐파 증설:</strong> LS-VINA 공장 증설을 통해 초고압 케이블 생산능력을 확대. 급증하는 수주에 대응하기 위한 물리적 기반 확보.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-binoculars"></i> 중장기 전략 (2028~2030)</div>
+            <div class="card-text">
+                <p><strong style="color:var(--blue);">① 해저케이블 사업 진출:</strong> 동남아 해상풍력 프로젝트 확대에 대응하여, LS전선의 해저케이블 기술을 활용한 동남아 해저케이블 시장 진출 추진.</p>
+                <br>
+                <p><strong style="color:var(--blue);">② 동남아 거점 확대:</strong> 베트남 외 인도네시아·필리핀 등 ASEAN 주요국으로 생산 거점 및 영업망 확대. 동남아 전체 전력 인프라 시장 커버리지 확보.</p>
+                <br>
+                <p><strong style="color:var(--blue);">③ 희토류 밸류체인 진입:</strong> 베트남 희토류 매장량(글로벌 2위)을 활용한 희토류 가공·유통 사업 검토. 미중 갈등에 따른 공급망 재편의 수혜 포지셔닝.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="key-insight" style="margin-top:20px;">
+        <p><strong>전략 핵심 판단:</strong> LS에코에너지의 성장 스토리는 '베트남 전력 인프라 투자 확대 + AI 데이터센터 전력수요 + 초고압 고부가 전환'이라는 삼중 성장 엔진에 기반하고 있다. 2026년 매출 1조원 돌파 여부가 시장 신뢰도 확인의 분기점이 될 전망이다.</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 7: 재무 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-bar"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 07</div>
+            <h2 class="section-title">재무 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-coins"></i> 매출 추이 (2020~2026E)</div>
+        <div class="card-text">
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2020</span><span style="color:var(--text-light);">5,200억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:43%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2021</span><span style="color:var(--text-light);">6,100억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:51%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2022</span><span style="color:var(--text-light);">7,500억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:63%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2023</span><span style="color:var(--text-light);">7,920억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:66%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2024</span><span style="color:var(--text-light);">8,690억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:72%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2025</span><span style="color:var(--gold);">9,601억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:80%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2026E</span><span style="color:var(--gold);">1.2조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:100%;"></div></div>
+                </div>
+            </div>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">* 6년 연속 매출 성장, 2026년 사상 첫 매출 1조원 돌파 전망</p>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-chart-line"></i> 영업이익 추이 (2020~2026E)</div>
+        <div class="card-text">
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2020</span><span style="color:var(--text-light);">210억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:21%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2021</span><span style="color:var(--text-light);">280억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:28%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2022</span><span style="color:var(--text-light);">345억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:35%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2023</span><span style="color:var(--text-light);">380억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:38%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2024</span><span style="color:var(--text-light);">448억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:45%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2025</span><span style="color:var(--gold);">668억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:67%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2026E</span><span style="color:var(--gold);">1,000억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:100%;"></div></div>
+                </div>
+            </div>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">* 초고압 케이블 비중 확대에 따른 수익성 레버리지 효과로 영업이익 성장률이 매출 성장률을 상회</p>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-percentage"></i> 수익성 지표</div>
+            <div class="card-text">
+                <div class="chart-container">
+                    <div class="chart-title">영업이익률 추이</div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2023</span><span>4.8%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:48%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2024</span><span>5.2%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:52%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2025</span><span style="color:var(--gold);">7.0%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:70%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2026E</span><span style="color:var(--gold);">8.3%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:83%;"></div></div>
+                    </div>
+                </div>
+                <p style="margin-top:12px;font-size:13px;">초고압 케이블 비중 확대와 규모의 경제 효과가 결합되면서 영업이익률이 꾸준히 개선되고 있다. 국내 전선업계 평균(3~4%) 대비 크게 상회하는 수준이며, 2026년에는 8%대 진입이 기대된다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-search-dollar"></i> 밸류에이션</div>
+            <div class="card-text">
+                <div class="chart-container">
+                    <div class="chart-title">P/E 비교 (2025 기준)</div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>LS에코에너지</span><span style="color:var(--gold);">35.1x</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:70%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>전선 업종 평균</span><span>15.0x</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:30%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>에너지 인프라 평균</span><span>20.0x</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-positive" style="width:40%;"></div></div>
+                    </div>
+                </div>
+                <p style="margin-top:12px;font-size:13px;">2025년 순이익 485억원 기준 P/E 35배로 전선 업종 평균(15배) 대비 프리미엄이 존재하나, 이는 초고압 케이블 성장성과 AI 전력 인프라 수혜 기대가 반영된 결과이다. 대신증권 목표주가 <strong style="color:var(--gold);">62,000원</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-file-invoice-dollar"></i> 2026년 1분기 실적 요약</div>
+        <div class="card-text">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">매출액</div>
+                    <div style="font-family:'Orbit';font-size:22px;color:var(--text-light);font-weight:700;">2,964억</div>
+                    <div style="font-size:12px;color:var(--positive);margin-top:4px;">+29.8% YoY</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">영업이익</div>
+                    <div style="font-family:'Orbit';font-size:22px;color:var(--text-light);font-weight:700;">201억</div>
+                    <div style="font-size:12px;color:var(--positive);margin-top:4px;">+31.0% YoY</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">영업이익률</div>
+                    <div style="font-family:'Orbit';font-size:22px;color:var(--text-light);font-weight:700;">6.8%</div>
+                    <div style="font-size:12px;color:var(--positive);margin-top:4px;">역대 최대 분기</div>
+                </div>
+            </div>
+            <p>LS-VINA 매출 2,025억원(+23.2% YoY), 초고압 케이블 매출 322억원(+177% YoY)으로 고부가 제품 중심의 외형 성장이 지속되고 있다. 영업이익률 6.8%는 업계 평균(3~4%)을 크게 상회하며, 초고압 비중 확대에 따른 구조적 수익성 개선을 확인시켜 주었다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 8: 결론 및 투자 의견
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-flag-checkered"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 08</div>
+            <h2 class="section-title">결론 및 투자 의견</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="conclusion-box">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <div class="ai-score">
+                <span class="ai-score-label">FLOVAH Score</span>
+                <span class="ai-score-value">63</span>
+            </div>
+            <div style="font-size:14px;color:var(--text-secondary);">
+                <strong style="color:var(--gold);">긍정적 (Positive)</strong> — 동남아 에너지 인프라 + AI 전력수요 구조적 수혜
+            </div>
+        </div>
+
+        <div class="card-text" style="margin-bottom:24px;">
+            <p><strong style="color:var(--text-light);font-size:16px;">종합 평가</strong></p>
+            <br>
+            <p>LS에코에너지는 베트남 전력케이블 시장 1위, 현지 유일의 초고압 케이블 생산 기업이라는 독보적 시장 지위를 기반으로, 동남아 에너지 인프라 투자 확대와 글로벌 AI 데이터센터 전력수요라는 구조적 성장 동력의 수혜를 받고 있다. 2025년 사상 최대 실적에 이어 2026년 1분기에도 역대 최대 분기 실적을 갱신하며 성장 모멘텀이 가속되고 있다.</p>
+            <br>
+            <p>초고압 케이블 매출 급증(+177%)에 따른 고부가 제품 믹스 전환이 수익성 개선을 견인하고 있으며, 2026년 매출 1조원 돌파와 영업이익 1,000억원 달성이 기대된다. 다만, P/E 35배라는 밸류에이션 프리미엄과 원자재 가격·환율 변동성, 베트남 단일 시장 의존도는 지속적인 모니터링이 필요한 요인이다.</p>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <div style="font-size:13px;font-weight:600;color:var(--positive);margin-bottom:12px;">
+                    <i class="fas fa-check-circle"></i> 긍정 요인
+                </div>
+                <ul style="list-style:none;font-size:13px;color:var(--text-secondary);line-height:2;">
+                    <li>• 베트남 전력케이블 1위 독보적 시장 지위</li>
+                    <li>• 초고압 케이블 +177% 폭발적 성장</li>
+                    <li>• AI 데이터센터 + 동남아 인프라 이중 수혜</li>
+                    <li>• 2026 매출 1조원·영업이익 1,000억 전망</li>
+                    <li>• 해저케이블·희토류 신성장 동력 기대</li>
+                </ul>
+            </div>
+            <div>
+                <div style="font-size:13px;font-weight:600;color:var(--negative);margin-bottom:12px;">
+                    <i class="fas fa-exclamation-circle"></i> 리스크 요인
+                </div>
+                <ul style="list-style:none;font-size:13px;color:var(--text-secondary);line-height:2;">
+                    <li>• P/E 35배 업종 대비 높은 밸류에이션</li>
+                    <li>• 구리·알루미늄 원자재 가격 변동 리스크</li>
+                    <li>• 원/달러 환율 변동에 따른 실적 변동성</li>
+                    <li>• 베트남 단일 시장 의존도 지정학적 리스크</li>
+                    <li>• 자회사 구조 복잡성에 따른 지배구조 할인</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:24px;">
+        <div class="card-text" style="font-size:11px;color:var(--text-muted);line-height:1.8;">
+            <strong style="color:var(--text-secondary);">면책사항(Disclaimer):</strong> 본 리포트는 FLOVAH Insights에서 제공하는 기업분석 자료로, 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다. 투자 판단의 최종 책임은 투자자 본인에게 있으며, 본 자료의 정확성이나 완전성을 보장하지 않습니다. 과거 실적이 미래 수익을 보장하지 않으며, 투자에는 원금 손실의 위험이 수반됩니다.
+            <br><br>
+            <strong>FLOVAH Insights</strong> | 최종 업데이트: 2026년 06월 08일 09:00 KST
+        </div>
+    </div>
+</section>
+
+<!-- Additional Analysis: 에너지 인프라 밸류체인 포지셔닝 -->
+<section class="report-section" style="padding-top:0;">
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-project-diagram"></i> 에너지 인프라 밸류체인 내 포지셔닝</div>
+        <div class="card-text">
+            <p>LS에코에너지는 글로벌 에너지 인프라 밸류체인에서 '전력 전송·배전(Transmission & Distribution)' 영역의 핵심 공급업체로 자리잡고 있다. 에너지 밸류체인은 크게 발전(Generation) → 송전(Transmission) → 변전(Substation) → 배전(Distribution) → 소비(Consumption)로 구분되며, LS에코에너지는 송전과 배전 두 영역을 동시에 커버하는 위치에 있다.</p>
+            <br>
+            <p><strong style="color:var(--text-light);">초고압 송전 케이블:</strong> 발전소에서 생산된 전력을 장거리 전송하는 220kV급 이상의 초고압 케이블을 공급한다. 베트남의 대규모 발전소 건설에 따라 송전망 확충 수요가 급증하고 있으며, LS-VINA의 현지 유일 초고압 생산 역량이 핵심 경쟁 우위이다.</p>
+            <br>
+            <p><strong style="color:var(--text-light);">배전·통신 케이블:</strong> 변전소에서 최종 소비처(가정, 공장, 데이터센터)까지 전력을 전달하는 중·저압 배전 케이블과 데이터 전송을 위한 UTP 통신 케이블을 공급한다. AI 데이터센터 건설 현장에서는 전력과 통신 케이블이 동시에 필요하여, LS에코에너지의 통합 제품 라인업이 경쟁력으로 작용하고 있다.</p>
+        </div>
+    </div>
+
+    <div class="three-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-plug"></i> 베트남 전력 생태계</div>
+            <div class="card-text">
+                <p>베트남 전력공사(EVN)는 LS-VINA의 최대 고객이다. PDP8 국가전력계획에 따라 2030년까지 발전 용량 2배 확대, 송배전망 대규모 투자가 진행 중이며, LS-VINA는 핵심 공급업체로서 장기 수주 물량을 확보하고 있다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-server"></i> 데이터센터 생태계</div>
+            <div class="card-text">
+                <p>구글·아마존·마이크로소프트 등 빅테크 기업이 동남아 데이터센터 건설을 가속하고 있다. 데이터센터 1개소당 100~300MW 전력이 필요하며, 이에 수반되는 전력·통신 인프라 케이블 수요가 LS에코에너지의 성장을 뒷받침한다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-wind"></i> 재생에너지 생태계</div>
+            <div class="card-text">
+                <p>동남아 지역에서 태양광·풍력 등 재생에너지 프로젝트가 확대되면서, 발전소와 송전망을 연결하는 전력케이블 수요가 동반 성장하고 있다. 해상풍력 프로젝트는 해저케이블 신사업 진출의 기회를 제공한다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-exclamation-circle"></i> 주요 모니터링 포인트</div>
+        <div class="card-text">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--gold);">
+                    <div style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:6px;">매출 1조원 달성 여부</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">2026년 연간 매출 1조원 돌파 여부. 1분기 2,964억원으로 연간 기준 달성 가능성 높음.</div>
+                </div>
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--blue);">
+                    <div style="font-size:12px;color:var(--blue);font-weight:600;margin-bottom:6px;">초고압 케이블 수주 추이</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">초고압 케이블 매출 비중 및 수주잔고 변화. 고부가 전환 지속 여부가 수익성 핵심 변수.</div>
+                </div>
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--positive);">
+                    <div style="font-size:12px;color:var(--positive);font-weight:600;margin-bottom:6px;">베트남 PDP8 투자 집행</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">베트남 정부의 전력 인프라 투자 계획 실행 속도. 투자 지연 시 수주 감소 직접 영향.</div>
+                </div>
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--negative);">
+                    <div style="font-size:12px;color:var(--negative);font-weight:600;margin-bottom:6px;">원자재 가격·환율 동향</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">구리·알루미늄 가격 변동과 원/달러·달러/동 환율 변동. 실적 변동성의 핵심 외부 변수.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-06-08 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>미중 관세 갈등 확대와 외국인 매도세로 코스피 급락. 기술적 반등 기대감은 유지되나 변동성 관리 필수.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">반도체·AI</div>HBM·AI 반도체 구조적 성장세 유지. 엔비디아 블랙웰 수요 강세 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">매크로 변수</div>원/달러 환율 1,400원대 후반, 한은 금리 인하 기대감과 인플레이션 우려 병존.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>방산·조선 수주잔고 확대. 바이오 섹터 글로벌 임상 결과 시즌 돌입.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 08일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<!-- Footer -->
+<footer class="site-footer">
+    <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="footer-logo">
+    <div class="footer-divider"></div>
+    <div class="footer-text">
+        FLOVAH Insights — Premium Company Analysis<br>
+        본 리포트의 무단 복제 및 배포를 금합니다.<br>
+        &copy; 2026 FLOVAH. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>

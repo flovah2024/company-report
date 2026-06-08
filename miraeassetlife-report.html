@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미래에셋생명 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">June 8, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & 기업 개요 -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">미래에셋생명 <span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">미래에셋금융그룹의 생명보험사, 보장성 보험 확대로 수익성 개선 가속화</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">55</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">FLOVAH 종합 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 전환 역량 및 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">32.3조</div>
+                            <div class="metric-label">총자산</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">534억</div>
+                            <div class="metric-label">1Q26 순이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">167.2%</div>
+                            <div class="metric-label">K-ICS 비율</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,010억</div>
+                            <div class="metric-label">보장성 APE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 미래에셋생명 기업 소개</h3>
+                <p>미래에셋생명(종목코드: 085620)은 미래에셋금융그룹 계열의 생명보험사로, 2003년 PCA생명보험으로 설립되어 2015년 현재의 사명으로 변경되었습니다. 코스피에 상장되어 있으며, 시가총액은 약 2.6조원 규모입니다. 미래에셋금융그룹은 미래에셋증권, 미래에셋자산운용, 미래에셋캐피탈 등을 포함하는 국내 대표 금융투자 그룹으로, 미래에셋생명은 그룹 내 보험 부문의 핵심 축을 담당하고 있습니다.</p>
+                <p>미래에셋생명의 주력 사업은 생명보험 상품의 개발·판매·운용입니다. 전통적 사망보험, 연금보험, 저축보험뿐 아니라 건강보험, 변액보험 등 다양한 상품 포트폴리오를 보유하고 있습니다. 특히 2024년부터 본격화한 보장성 보험 중심의 체질 전환 전략이 뚜렷한 성과를 보이고 있으며, 2026년 1분기 보장성 APE(연납화보험료)가 전년 동기 대비 34.6% 증가한 1,010억원을 기록했습니다. 이는 IFRS17 회계기준 도입 이후 보장성 상품 중심의 수익 구조가 보험사의 수익성을 좌우하는 핵심 지표라는 점에서 매우 의미 있는 성과입니다.</p>
+                <p>직원수는 약 1,400명이며, 평균 연봉은 약 1억원 수준으로 금융업계 상위권에 해당합니다. 2026년 1분기 당기순이익은 534억원으로 전년 동기 대비 115% 증가하며 실적 턴어라운드를 확인시켜 주었습니다. 총자산 32.3조원, 자본총계 2.4조원의 재무 규모를 갖추고 있으며, K-ICS(신지급여력비율) 167.2%로 규제 기준(100%)을 크게 상회하는 자본적정성을 유지하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 핵심 사업 구조</h3>
+                <p><strong>보장성 보험 사업:</strong> 미래에셋생명의 성장 전략 핵심인 보장성 보험은 사망보험, 건강보험, 질병보험 등을 포함합니다. IFRS17 하에서 보장성 상품은 CSM(보험계약서비스마진) 축적에 유리하여 장기적 수익 안정성을 제공합니다. 2026년 1분기 보장성 APE 1,010억원은 회사 설립 이래 분기 최대 실적으로, 보장성 전환 전략의 성공을 입증합니다. 특히 건강보험 부문에서의 성장이 두드러지며, 고령화 사회 진입에 따른 구조적 수요 확대와 맞물려 있습니다.</p>
+                <p><strong>투자운용 사업:</strong> 32.3조원 규모의 운용자산을 바탕으로 채권, 주식, 대체투자 등 다양한 자산에 투자하여 안정적 수익을 창출합니다. 미래에셋그룹의 자산운용 역량을 활용한 글로벌 분산투자 전략이 특징이며, 국내외 부동산, 인프라, 사모펀드 등 대체투자 비중을 점진적으로 확대하고 있습니다. 금리 변동에 따른 ALM(자산부채관리) 최적화에도 주력하고 있습니다.</p>
+                <p><strong>변액보험 사업:</strong> 미래에셋그룹의 자산운용 전문성을 바탕으로 변액보험 상품에서도 경쟁 우위를 보유하고 있습니다. 변액종신보험, 변액연금보험 등 다양한 변액 상품 라인업을 운영하며, 고객의 투자 성향에 맞춘 펀드 선택지를 폭넓게 제공합니다. 다만 IFRS17 하에서 변액보험의 수익 기여도는 보장성 보험 대비 제한적이어서, 보장성 중심 포트폴리오 재편이 진행 중입니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003년</div>
+                        <div class="timeline-text">PCA생명보험 설립 - 호주 PCA그룹과의 합작으로 한국 생명보험 시장 진출</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">미래에셋생명으로 사명 변경 - 미래에셋금융그룹 편입 및 브랜드 통합</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017년</div>
+                        <div class="timeline-text">KOSPI 상장 - 자본시장 접근성 확대 및 기업 투명성 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">자산운용 역량 강화 - 그룹 자산운용 시너지를 활용한 투자 포트폴리오 다각화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022년</div>
+                        <div class="timeline-text">IFRS17 도입 준비 - 새 회계기준에 맞춘 상품 구조 및 재무 시스템 재편</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">보장성 전환 전략 본격화 - 건강보험·질병보험 중심 상품 믹스 전환 추진</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">1분기 순이익 534억원(+115% YoY) 달성 - 보장성 APE 분기 사상 최대 기록</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Deep Analysis</span>
+        </div>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-microchip"></i> Section 02</div>
+                <h2>기술 분석</h2>
+                <p>보험 디지털 혁신과 인슈어테크 전략</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-laptop-code"></i> 디지털 보험 플랫폼</h3>
+                <p>미래에셋생명은 보험 산업의 디지털 전환을 적극 추진하고 있습니다. 모바일 기반의 보험 가입·조회·청구 통합 플랫폼을 구축하여 고객 경험을 혁신하고 있으며, 비대면 채널을 통한 보험 상품 판매 비중이 지속적으로 증가하고 있습니다. 특히 미래에셋그룹의 핀테크 역량을 활용하여 보험과 투자를 연계한 통합 금융 서비스를 제공하는 것이 차별화 전략입니다.</p>
+                <p>온라인 보험 가입 시스템은 언더라이팅 자동화와 연계되어, 간편심사 대상 상품의 경우 실시간 승인이 가능합니다. 또한 보험금 청구 프로세스의 디지털화로 서류 제출부터 심사·지급까지의 소요 시간을 대폭 단축했습니다. 미래에셋증권, 미래에셋자산운용 등 그룹사 플랫폼과의 크로스셀링 연동을 통해 그룹 고객 기반을 활용한 보험 판매 시너지도 창출하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">모바일 보험 플랫폼</span>
+                    <span class="tech-badge">AI 언더라이팅</span>
+                    <span class="tech-badge">비대면 청약</span>
+                    <span class="tech-badge">실시간 보험금 조회</span>
+                    <span class="tech-badge">그룹 크로스셀링</span>
+                    <span class="tech-badge">디지털 건강관리</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i> AI 기반 리스크 관리 시스템</h3>
+                <p>미래에셋생명은 AI와 빅데이터를 활용한 보험 리스크 관리 체계를 구축하고 있습니다. 머신러닝 기반의 보험 사기 탐지(FDS) 시스템은 청구 패턴을 실시간으로 분석하여 이상 청구를 사전에 탐지합니다. 또한 자연어 처리(NLP) 기술을 활용한 보험 서류 자동 분류·심사 시스템은 업무 효율성을 크게 향상시켰습니다.</p>
+                <p>특히 IFRS17 도입 이후 CSM(보험계약서비스마진) 관리가 보험사 수익성의 핵심이 되면서, CSM 잔액 변동을 정밀하게 예측하고 관리하는 계리 분석 시스템의 고도화에 집중하고 있습니다. 보험 가격 책정, 준비금 산출, 손해율 예측 등에 AI 모델을 적용하여 리스크 관리의 정확도와 속도를 동시에 개선하고 있습니다. 또한 ALM(자산부채관리) 시스템에 시나리오 분석 엔진을 탑재하여 금리 변동, 사망률 변동 등 다양한 리스크 시나리오에 대한 자본 영향을 실시간으로 시뮬레이션합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-heartbeat"></i> 헬스케어 연계 서비스</h3>
+                    <p>미래에셋생명은 보험과 헬스케어를 연계한 디지털 건강관리 서비스를 확대하고 있습니다. 웨어러블 기기와 연동한 건강 데이터 수집·분석, 개인 맞춤형 건강 관리 프로그램 제공, 건강 행동 인센티브 등을 통해 보험의 가치를 '보장'에서 '예방'으로 확장하고 있습니다.</p>
+                    <ul>
+                        <li>웨어러블 기기 연동 건강 모니터링</li>
+                        <li>AI 기반 질병 위험 예측 서비스</li>
+                        <li>건강 증진 활동 보험료 할인 프로그램</li>
+                        <li>원격 건강 상담 서비스 연계</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cloud"></i> IT 인프라 현대화</h3>
+                    <p>미래에셋생명은 레거시 보험 시스템의 현대화를 단계적으로 추진하고 있습니다. 클라우드 기반의 유연한 IT 인프라로 전환하면서, 마이크로서비스 아키텍처를 도입하여 시스템의 확장성과 안정성을 확보하고 있습니다. 특히 IFRS17 대응을 위한 재무 시스템 고도화가 완료되어 정확한 계리 계산과 보고가 가능합니다.</p>
+                    <ul>
+                        <li>클라우드 하이브리드 아키텍처 구축</li>
+                        <li>IFRS17 재무 보고 시스템 고도화</li>
+                        <li>정보보안 관리체계(ISMS-P) 인증</li>
+                        <li>재해복구(DR) 센터 이중화 운영</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> 디지털 채널 혁신 전략</h3>
+                <p>미래에셋생명은 전통적인 설계사 채널 외에 디지털 채널의 비중을 점진적으로 확대하고 있습니다. AI 챗봇 기반의 고객 상담 시스템은 단순 문의의 70% 이상을 자동 처리하며, OCR 기술을 활용한 보험 청구 서류 자동 인식은 처리 속도를 3배 이상 개선했습니다. 또한 미래에셋증권 MTS(모바일트레이딩시스템)와의 연동을 통해 투자 고객에게 보험 상품을 자연스럽게 노출시키는 임베디드 인슈어런스 전략도 추진 중입니다.</p>
+                <p>향후에는 오픈 API를 활용한 보험 플랫폼 개방, 마이데이터 기반의 개인 맞춤형 보험 추천, 메타버스 기반의 가상 보험 상담 등 차세대 디지털 서비스도 준비하고 있습니다. 이러한 디지털 혁신은 고객 접근성 향상과 운영 효율화를 동시에 달성하며, 보험 산업의 구조적 전환에 선제적으로 대응하는 전략입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Market Intelligence</span>
+        </div>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chart-line"></i> Section 03</div>
+                <h2>시장 분석</h2>
+                <p>생명보험 시장 구조와 성장 동력</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-asia"></i> 국내 생명보험 시장 구조</h3>
+                <p>한국 생명보험 시장은 삼성생명, 한화생명, 교보생명 등 대형 3사가 시장의 약 55%를 점유하고 있으며, 미래에셋생명은 중형사 그룹에 속합니다. 2025년 기준 국내 생명보험 시장의 수입보험료 총액은 약 120조원 규모이며, IFRS17 도입 이후 보장성 보험 중심으로 시장 구조가 재편되고 있습니다.</p>
+                <p>IFRS17(보험계약 국제회계기준)의 도입은 생명보험 산업의 패러다임을 근본적으로 변화시켰습니다. 기존에는 보험료 수입 규모가 보험사의 실적을 좌우했다면, 새 기준하에서는 보장성 상품의 CSM(보험계약서비스마진) 축적과 해제가 수익의 핵심 동인이 됩니다. 이에 따라 보험사 간 경쟁의 초점이 보험료 규모에서 보장성 상품의 품질과 수익성으로 이동했으며, 미래에셋생명의 보장성 전환 전략은 이러한 시장 구조 변화에 적극적으로 대응한 것입니다.</p>
+                <p>고령화 사회 진입은 생명보험 시장에 구조적인 수요 변화를 가져오고 있습니다. 한국의 65세 이상 인구 비율은 2026년 20%를 넘어 초고령사회에 진입하며, 이에 따라 건강보험, 간병보험, 연금보험 등의 수요가 지속적으로 확대되고 있습니다. 미래에셋생명의 건강보험 중심 보장성 전환 전략은 이러한 인구 구조 변화와 정확히 맞닿아 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 시장 성장 동력</h3>
+                    <ul>
+                        <li><strong>고령화 보험 수요 확대:</strong> 초고령사회 진입으로 건강보험, 간병보험, 연금보험 수요가 구조적으로 증가하고 있습니다. 2026년 65세 이상 인구 비율이 20%를 돌파할 전망입니다.</li>
+                        <li><strong>IFRS17 수혜:</strong> 보장성 보험 중심의 수익 구조 전환으로, 보장성 상품 경쟁력이 높은 보험사의 수익성이 구조적으로 개선됩니다.</li>
+                        <li><strong>디지털 보험 시장 성장:</strong> 온라인·모바일 채널을 통한 보험 가입이 빠르게 증가하며, 밀레니얼·Z세대의 보험 수요가 새로운 성장 동력입니다.</li>
+                        <li><strong>헬스케어 보험 융합:</strong> 건강관리 서비스와 연계한 보험 상품의 수요가 증가하며, 예방 중심의 보험 패러다임이 확산되고 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 시장 리스크 요인</h3>
+                    <ul>
+                        <li><strong>저금리 환경 지속:</strong> 금리 하락은 보험사의 투자수익률을 압박하며, 특히 확정금리 상품 비중이 높은 보험사에 역마진 리스크를 유발합니다.</li>
+                        <li><strong>규제 환경 변화:</strong> 보험업법 개정, 소비자 보호 강화, 불완전판매 규제 등이 보험사의 영업 환경에 영향을 미칩니다.</li>
+                        <li><strong>인구 구조 변화의 양면성:</strong> 고령화는 보험 수요를 확대하지만, 저출산에 따른 보험 가입 인구 감소는 장기적 성장 제약 요인입니다.</li>
+                        <li><strong>디지털 경쟁 심화:</strong> 인슈어테크 기업, 빅테크의 보험 시장 진출로 전통 보험사의 경쟁 환경이 변화하고 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-search-dollar"></i> IFRS17 이후 생명보험 가치 사슬 변화</h3>
+                <p>IFRS17 도입은 생명보험 산업의 가치사슬을 근본적으로 재편했습니다. 상품 설계 단계에서 CSM 극대화를 고려한 보장성 상품 개발이 핵심이 되었으며, 판매 단계에서는 보장성 APE(연납화보험료)가 가장 중요한 성과 지표로 부상했습니다. 미래에셋생명의 2026년 1분기 보장성 APE 1,010억원(+34.6% YoY)은 이러한 새로운 경쟁 패러다임에서의 성과를 단적으로 보여줍니다.</p>
+                <p>자산운용 단계에서는 ALM(자산부채관리)의 정밀화가 중요해졌으며, 금리 변동에 따른 보험부채 평가액 변동이 자본적정성에 직접 영향을 미치는 구조가 되었습니다. K-ICS(신지급여력비율)가 핵심 건전성 지표로 자리잡았으며, 미래에셋생명의 K-ICS 167.2%는 규제 최소치(100%)를 상회하지만 업계 대형사 대비 다소 낮은 수준으로, 자본관리의 지속적 강화가 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 정책 환경과 규제 동향</h3>
+                <p>생명보험 산업은 금융당국의 규제 감독 하에 운영되며, 정책 변화가 보험사의 경영 환경에 직접적 영향을 미칩니다. IFRS17 시행 이후 금융감독원은 K-ICS 기반의 자본적정성 관리를 강화하고 있으며, 경과조치 적용 기준과 추가 자본 요건에 대한 논의가 지속되고 있습니다. 이러한 규제 환경은 자본적정성이 상대적으로 낮은 중소형 보험사에 더 큰 영향을 미칩니다.</p>
+                <p>또한 보험 소비자 보호 정책이 강화되면서, 보험 상품의 투명성, 불완전판매 방지, 보험금 신속 지급 등에 대한 요구가 높아지고 있습니다. 미래에셋생명은 그룹 차원의 컴플라이언스 체계를 바탕으로 규제 리스크에 선제적으로 대응하고 있으며, 보험 소비자 보호 부문에서도 개선 노력을 기울이고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Competitive Landscape</span>
+        </div>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-users"></i> Section 04</div>
+                <h2>경쟁사 분석</h2>
+                <p>생명보험 시장 주요 기업 비교</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 생명보험사 비교</h3>
+                <p>미래에셋생명은 국내 생명보험 시장에서 중형사로 분류되며, 대형 3사(삼성·한화·교보)와의 규모 격차가 존재합니다. 그러나 보장성 전환 속도, 그룹 시너지, 투자운용 역량 등에서 차별화된 경쟁력을 보유하고 있습니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>미래에셋생명</th>
+                            <th>삼성생명</th>
+                            <th>한화생명</th>
+                            <th>교보생명</th>
+                            <th>신한라이프</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>총자산</strong></td>
+                            <td style="color:var(--gold)">32.3조원</td>
+                            <td>320조원+</td>
+                            <td>140조원+</td>
+                            <td>120조원+</td>
+                            <td>55조원+</td>
+                        </tr>
+                        <tr>
+                            <td><strong>시가총액</strong></td>
+                            <td>약 2.6조원</td>
+                            <td>약 22조원</td>
+                            <td>약 3.5조원</td>
+                            <td>비상장</td>
+                            <td>신한금융 계열</td>
+                        </tr>
+                        <tr>
+                            <td><strong>K-ICS</strong></td>
+                            <td>167.2%</td>
+                            <td>220%+</td>
+                            <td>160%+</td>
+                            <td>190%+</td>
+                            <td>200%+</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주요 강점</strong></td>
+                            <td style="color:var(--gold)">그룹 시너지, 보장성 전환</td>
+                            <td>업계 1위 규모·브랜드</td>
+                            <td>다각화된 사업 구조</td>
+                            <td>고객 충성도, 보장성 강점</td>
+                            <td>신한금융 계열 시너지</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1Q26 순이익</strong></td>
+                            <td style="color:var(--gold)">534억원(+115%)</td>
+                            <td>약 6,000억원+</td>
+                            <td>약 1,500억원+</td>
+                            <td>약 2,500억원+</td>
+                            <td>약 1,200억원+</td>
+                        </tr>
+                        <tr>
+                            <td><strong>그룹 계열</strong></td>
+                            <td>미래에셋금융그룹</td>
+                            <td>삼성그룹</td>
+                            <td>한화그룹</td>
+                            <td>교보그룹</td>
+                            <td>신한금융그룹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>보장성 전환 속도</strong></td>
+                            <td style="color:var(--gold)">빠름 (APE +34.6%)</td>
+                            <td>보통</td>
+                            <td>보통</td>
+                            <td>빠름</td>
+                            <td>보통</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i> 경쟁 구도 심층 분석</h3>
+                <p><strong>삼성생명과의 비교:</strong> 삼성생명은 총자산 320조원 이상의 업계 절대강자로, 규모에서 미래에셋생명과는 약 10배의 격차가 있습니다. 그러나 미래에셋생명은 미래에셋그룹의 자산운용 전문성과 글로벌 투자 네트워크를 활용한 차별화된 투자운용 전략에서 상대적 강점을 보유합니다. 또한 보장성 전환 속도에서 미래에셋생명의 APE 성장률(+34.6%)은 업계 상위 수준입니다.</p>
+                <p><strong>한화생명·교보생명과의 비교:</strong> 한화생명은 한화그룹 계열의 종합 금융 역량을, 교보생명은 비상장 기업 특유의 장기적 전략 수행 능력과 높은 고객 충성도를 강점으로 합니다. 미래에셋생명은 이들 대비 규모는 작지만, 2026년 1분기 순이익 성장률(+115%)이 업계 평균을 크게 상회하며, 보장성 전환의 수익성 레버리지가 본격적으로 발현되고 있습니다.</p>
+                <p><strong>신한라이프와의 비교:</strong> 신한라이프는 신한금융그룹의 계열사로, 그룹 내 은행·카드·증권 등과의 시너지가 강점입니다. 미래에셋생명도 미래에셋증권·자산운용과의 그룹 시너지를 보유하지만, 방카슈랑스(은행 창구 판매) 측면에서는 은행 계열 보험사인 신한라이프가 유리합니다. 미래에셋생명은 증권사 고객 기반을 활용한 투자형 보험 상품에서 차별화를 추구하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 미래에셋생명의 차별적 경쟁 우위</h3>
+                <ul>
+                    <li><strong>미래에셋그룹 시너지:</strong> 미래에셋증권(업계 1위), 미래에셋자산운용(국내 최대) 등 그룹사와의 크로스셀링, 투자운용 시너지, 글로벌 네트워크 활용이 핵심 차별화 요인입니다.</li>
+                    <li><strong>보장성 전환 선도:</strong> 2026년 1분기 보장성 APE +34.6% 성장은 업계 최고 수준으로, IFRS17 하 수익 구조 전환에서 앞서고 있습니다.</li>
+                    <li><strong>자산운용 전문성:</strong> 미래에셋그룹의 글로벌 자산운용 역량을 활용한 투자수익률 제고 전략이 타 보험사 대비 차별적입니다.</li>
+                    <li><strong>상대적 경량 구조:</strong> 레거시 확정금리 부채 비중이 대형사 대비 낮아, 금리 변동에 대한 구조적 취약성이 상대적으로 작습니다.</li>
+                    <li><strong>높은 성장 모멘텀:</strong> 순이익 +115% YoY 성장은 중소형 보험사 중 가장 빠른 턴어라운드를 보여주며, 성장 가치 투자 매력이 높습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Strategic Framework</span>
+        </div>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-th-large"></i> Section 05</div>
+                <h2>SWOT 분석</h2>
+                <p>미래에셋생명의 전략적 포지션 평가</p>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-star" style="color:var(--gold)"></i> Strengths (강점)</h3>
+                    <ul>
+                        <li><strong>미래에셋 그룹 시너지:</strong> 미래에셋증권, 미래에셋자산운용 등 그룹 내 금융사와의 크로스셀링, 투자운용 시너지, 글로벌 네트워크 활용으로 차별화된 경쟁력을 보유합니다.</li>
+                        <li><strong>보장성 전환 성공:</strong> 2026년 1분기 보장성 APE 1,010억원(+34.6% YoY)은 보장성 중심 체질 전환의 가시적 성과로, IFRS17 하 수익 구조 개선이 본격화되고 있습니다.</li>
+                        <li><strong>높은 순이익 성장률:</strong> 1분기 순이익 534억원(+115% YoY)은 업계 최고 수준의 성장률로, 턴어라운드 모멘텀이 강력합니다.</li>
+                        <li><strong>자산운용 전문성:</strong> 미래에셋그룹의 글로벌 투자 역량을 바탕으로 32.3조원의 자산을 효율적으로 운용하고 있습니다.</li>
+                        <li><strong>상대적 경량 구조:</strong> 대형사 대비 레거시 확정금리 부채 비중이 낮아 금리 리스크에 대한 구조적 취약성이 상대적으로 작습니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-exclamation-circle" style="color:var(--blue)"></i> Weaknesses (약점)</h3>
+                    <ul>
+                        <li><strong>규모 열세:</strong> 총자산 32.3조원은 삼성생명(320조+), 한화생명(140조+), 교보생명(120조+) 대비 현저히 작아 규모의 경제에서 불리합니다.</li>
+                        <li><strong>브랜드 인지도:</strong> 미래에셋 브랜드는 증권·자산운용에서는 높은 인지도를 보유하지만, 생명보험 부문에서는 대형 3사 대비 소비자 인지도가 상대적으로 낮습니다.</li>
+                        <li><strong>K-ICS 관리 부담:</strong> K-ICS 167.2%는 규제 최소치를 상회하지만 업계 대형사 대비 다소 낮은 수준으로, 자본관리의 지속적 강화가 필요합니다.</li>
+                        <li><strong>판매 채널 한계:</strong> 은행 계열 보험사 대비 방카슈랑스 채널에서 열세이며, 전속 설계사 조직 규모도 대형사에 미치지 못합니다.</li>
+                        <li><strong>시장 점유율 제한:</strong> 생명보험 시장 점유율이 한 자릿수에 머물러, 시장 영향력과 가격 결정력이 제한적입니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-lightbulb" style="color:var(--gold)"></i> Opportunities (기회)</h3>
+                    <ul>
+                        <li><strong>고령화 보험수요 확대:</strong> 초고령사회 진입으로 건강보험, 간병보험, 연금보험 수요가 구조적으로 증가하며, 보장성 전환 전략의 성장 기반이 됩니다.</li>
+                        <li><strong>IFRS17 수혜:</strong> 보장성 보험 CSM 축적에 강점을 가진 보험사의 수익성이 구조적으로 개선되며, 미래에셋생명의 높은 보장성 APE 성장률은 이 수혜를 직접적으로 받습니다.</li>
+                        <li><strong>디지털 보험 시장 성장:</strong> 온라인·모바일 채널을 통한 보험 가입 증가로 전통적 채널 열세를 극복할 기회가 열리고 있습니다.</li>
+                        <li><strong>그룹 시너지 확대:</strong> 미래에셋증권·자산운용의 고객 기반과 플랫폼을 활용한 크로스셀링 강화 여지가 충분합니다.</li>
+                        <li><strong>헬스케어 보험 융합:</strong> 건강관리 서비스와 보험을 연계한 신상품 개발로 새로운 시장을 개척할 수 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-shield-alt" style="color:var(--blue)"></i> Threats (위협)</h3>
+                    <ul>
+                        <li><strong>저금리 환경:</strong> 금리 하락은 투자수익률 압박과 보험부채 평가액 증가로 K-ICS 비율 하락을 유발하며, 자본적정성 관리에 부담이 됩니다.</li>
+                        <li><strong>보험업 규제 강화:</strong> K-ICS 기준 강화, 소비자 보호 규제 확대, 불완전판매 관리 강화 등이 영업 환경에 영향을 미칩니다.</li>
+                        <li><strong>인구 구조 변화:</strong> 저출산에 따른 보험 가입 인구 감소는 장기적 성장 제약 요인이며, 고령 계약자의 보험금 청구 증가는 손해율 상승 리스크입니다.</li>
+                        <li><strong>디지털 경쟁 심화:</strong> 빅테크·인슈어테크의 보험 시장 진출로 전통 보험사의 고객 이탈 리스크가 증가하고 있습니다.</li>
+                        <li><strong>금융시장 변동성:</strong> 글로벌 금융시장 변동성 확대는 투자운용 손실 리스크와 자본적정성 악화를 동시에 유발할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Growth Strategy</span>
+        </div>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chess-king"></i> Section 06</div>
+                <h2>전략 분석</h2>
+                <p>보장성 중심 성장 전략과 미래 방향성</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 보장성 보험 확대 전략</h3>
+                <p>미래에셋생명의 핵심 전략은 보장성 보험 중심의 포트폴리오 전환입니다. IFRS17 하에서 보장성 보험의 CSM(보험계약서비스마진) 축적이 보험사 수익의 핵심 동인이 되면서, 건강보험·질병보험·사망보험 등 보장성 상품의 비중을 지속적으로 확대하고 있습니다.</p>
+                <ul>
+                    <li><strong>건강보험 라인업 확대:</strong> 고령화 사회에 대응하여 건강보험 상품 라인업을 대폭 강화했습니다. 2026년 1분기 건강보험 APE가 전체 보장성 APE의 약 60%를 차지하며, 질병·수술·입원 보장의 폭을 넓힌 맞춤형 건강보험 상품이 시장에서 좋은 반응을 얻고 있습니다.</li>
+                    <li><strong>설계사 조직 역량 강화:</strong> 보장성 보험 판매는 설계사의 컨설팅 역량이 핵심입니다. 전속 설계사 조직의 교육 프로그램을 강화하고, 보장성 상품 판매 인센티브를 확대하여 설계사의 보장성 전환 동기를 부여하고 있습니다.</li>
+                    <li><strong>CSM 잔액 확충:</strong> 보장성 보험의 신규 판매를 통해 CSM 잔액을 지속적으로 축적하고, 이를 바탕으로 장기적이고 안정적인 수익 흐름을 구축하는 것이 전략의 궁극적 목표입니다.</li>
+                    <li><strong>상품 다각화:</strong> 전통적 보장성 보험 외에 치매보험, 간병보험, 어린이보험 등 틈새시장 공략 상품을 개발하여 시장 점유율 확대를 추진합니다.</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i> 자본적정성 관리 전략</h3>
+                    <p>K-ICS 167.2%의 자본적정성을 유지·개선하기 위한 전략적 자본관리를 추진하고 있습니다. IFRS17 하에서 금리 변동, 사망률 변동 등이 K-ICS에 미치는 영향을 정밀하게 관리하며, 기본자본 비율 105%로 변동성에도 견딜 수 있는 자본 구조를 구축했습니다.</p>
+                    <p>자산운용 측면에서는 ALM(자산부채관리) 최적화를 통해 금리 리스크를 체계적으로 관리하며, 듀레이션 매칭 전략을 통해 금리 변동에 따른 자본적정성 변동을 최소화합니다. 필요 시 후순위채 발행, 자본성 증권 등을 통한 자본 확충도 고려하고 있습니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-hand-holding-usd"></i> 그룹 시너지 극대화 전략</h3>
+                    <p>미래에셋금융그룹 내 보험 부문의 역할을 강화하기 위해, 그룹사 간 시너지를 적극 활용하고 있습니다. 미래에셋증권의 800만 고객, 미래에셋자산운용의 글로벌 투자 네트워크, 미래에셋캐피탈의 금융 솔루션 역량을 보험 사업과 연계합니다.</p>
+                    <p>특히 미래에셋증권 MTS 앱 내 보험 상품 노출, 은퇴 설계 서비스와 연금보험 연계, 자산운용사 펀드와 변액보험 연동 등의 크로스셀링 전략을 통해 고객 가치를 극대화하고 있습니다. 이러한 그룹 시너지는 미래에셋생명이 규모 열세를 극복하고 차별화된 경쟁력을 확보하는 핵심 전략입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> ESG 경영과 사회적 책임</h3>
+                <p>미래에셋생명은 미래에셋금융그룹의 ESG 경영 방침에 따라 환경·사회·지배구조 전 분야에서 책임 있는 경영을 추진하고 있습니다. 환경(E) 측면에서는 ESG 투자 포트폴리오 확대, 탄소배출 감축, 녹색 금융 상품 개발 등을 추진합니다. 사회(S) 측면에서는 보험 사각지대 해소, 취약계층 보험 지원, 금융 교육 프로그램 운영 등을 실행하고 있습니다.</p>
+                <p>지배구조(G) 측면에서는 이사회 독립성 강화, 리스크 관리 체계 고도화, 투명한 경영 공시 등을 통해 기업 거버넌스를 개선하고 있습니다. 특히 2026년에는 ESG 투자 비중을 전체 운용자산의 15% 이상으로 확대하고, ESG 연계 보험 상품 라인업을 확충하는 것을 목표로 하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 해외 사업 및 글로벌 전략</h3>
+                <p>미래에셋금융그룹은 국내 금융 그룹 중 가장 적극적인 글로벌 전략을 추진하고 있으며, 미래에셋생명도 이에 연계한 해외 사업 확장을 모색하고 있습니다. 현재 해외 사업은 주로 그룹사와의 협업을 통한 글로벌 투자운용에 집중되어 있으며, 미래에셋자산운용의 13개국 해외 거점 네트워크를 활용한 투자 기회 발굴에 주력하고 있습니다.</p>
+                <p>중장기적으로는 동남아시아, 인도 등 신흥시장에서의 보험 사업 진출도 검토 중입니다. 이들 시장은 보험 침투율이 낮아 성장 잠재력이 크며, 미래에셋그룹의 현지 네트워크를 활용한 시장 진입이 가능합니다. 다만 현지 규제 환경, 시장 특성, 초기 투자 비용 등을 고려하여 신중한 접근이 필요하며, 단기적으로는 국내 보장성 전환 전략에 경영 자원을 집중하는 것이 합리적입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Financial Deep Dive</span>
+        </div>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="finance">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-calculator"></i> Section 07</div>
+                <h2>재무 분석</h2>
+                <p>수익성 개선 추이와 자본건전성 심층 분석</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-won-sign"></i> 분기 순이익 추이 (2024~2026)</h3>
+                <p>미래에셋생명의 분기별 순이익은 보장성 전환 전략의 성과와 투자운용 환경에 따라 변동합니다. 2026년 1분기 534억원은 전년 동기(248억원) 대비 115% 증가한 것으로, 보장성 보험 중심의 수익 구조 전환이 실적에 본격적으로 반영된 결과입니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>분기별 순이익 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:42%"></div>
+                            </div>
+                            <div class="bar-value">220억</div>
+                            <div class="bar-label">1Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:48%"></div>
+                            </div>
+                            <div class="bar-value">248억</div>
+                            <div class="bar-label">2Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:55%"></div>
+                            </div>
+                            <div class="bar-value">290억</div>
+                            <div class="bar-label">3Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:62%"></div>
+                            </div>
+                            <div class="bar-value">340억</div>
+                            <div class="bar-label">4Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:100%"></div>
+                            </div>
+                            <div class="bar-value">534억</div>
+                            <div class="bar-label">1Q26</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:85%;background:linear-gradient(180deg, var(--blue) 0%, var(--blue-dim) 100%)"></div>
+                            </div>
+                            <div class="bar-value" style="color:var(--blue)">480억E</div>
+                            <div class="bar-label">2Q26E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 보장성 APE 성장 추이</h3>
+                <p>보장성 APE(연납화보험료)는 IFRS17 하에서 보험사의 신계약 가치를 측정하는 핵심 지표입니다. 미래에셋생명의 보장성 APE는 보장성 전환 전략 본격화 이후 빠르게 성장하고 있으며, 2026년 1분기 1,010억원은 분기 사상 최대 실적입니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>분기별 보장성 APE 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:50%"></div>
+                            </div>
+                            <div class="bar-value">520억</div>
+                            <div class="bar-label">1Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:58%"></div>
+                            </div>
+                            <div class="bar-value">600억</div>
+                            <div class="bar-label">2Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:65%"></div>
+                            </div>
+                            <div class="bar-value">680억</div>
+                            <div class="bar-label">3Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:72%"></div>
+                            </div>
+                            <div class="bar-value">750억</div>
+                            <div class="bar-label">4Q24</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:100%"></div>
+                            </div>
+                            <div class="bar-value">1,010억</div>
+                            <div class="bar-label">1Q26</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:90%;background:linear-gradient(180deg, var(--blue) 0%, var(--blue-dim) 100%)"></div>
+                            </div>
+                            <div class="bar-value" style="color:var(--blue)">950억E</div>
+                            <div class="bar-label">2Q26E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale-right"></i> 자본 건전성</h3>
+                    <p>미래에셋생명의 총자산은 2026년 1분기 기준 32.3조원이며, 자본총계는 2.4조원입니다. K-ICS(신지급여력비율)는 167.2%로 규제 최소치(100%)를 크게 상회하고 있습니다.</p>
+                    <ul>
+                        <li><strong>K-ICS 비율:</strong> 167.2% (규제 최소 100%)</li>
+                        <li><strong>기본자본 K-ICS:</strong> 105% (변동성 내성 확인)</li>
+                        <li><strong>총자산:</strong> 32.3조원</li>
+                        <li><strong>자본총계:</strong> 2.4조원 (자기자본 2조 4,118억원)</li>
+                        <li><strong>운용자산 수익률:</strong> 안정적 관리 유지</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i> 주요 재무 지표</h3>
+                    <p>미래에셋생명의 재무 지표는 보장성 전환 전략의 성과를 반영하여 전반적으로 개선 추세를 보이고 있습니다. 다만 K-ICS 비율의 절대 수준은 업계 대형사 대비 다소 낮아 지속적 관리가 필요합니다.</p>
+                    <ul>
+                        <li><strong>1Q26 순이익:</strong> 534억원 (+115% YoY)</li>
+                        <li><strong>보장성 APE:</strong> 1,010억원 (+34.6% YoY)</li>
+                        <li><strong>시가총액:</strong> 약 2.6조원</li>
+                        <li><strong>직원수:</strong> 약 1,400명</li>
+                        <li><strong>평균연봉:</strong> 약 1억원</li>
+                        <li><strong>종목코드:</strong> 085620 (KOSPI)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> IFRS17 기반 수익 구조 분석</h3>
+                <p>IFRS17 하에서 미래에셋생명의 수익은 크게 보험영업손익과 투자영업손익으로 구성됩니다. 보험영업손익의 핵심은 CSM(보험계약서비스마진)의 상각 수익이며, 이는 보장성 보험의 신계약 판매를 통해 축적된 CSM이 보험 기간에 걸쳐 점진적으로 인식되는 구조입니다. 2026년 1분기 보장성 APE의 급격한 성장은 CSM 잔액 확충으로 이어져 중장기적 수익 안정성을 높이는 효과가 있습니다.</p>
+                <p>투자영업손익은 32.3조원의 운용자산에서 발생하는 이자수익, 배당수익, 평가손익 등으로 구성됩니다. 미래에셋그룹의 자산운용 역량을 활용하여 국내외 채권, 주식, 대체투자 등에 분산투자하며, 금리 환경 변화에 대응한 ALM 최적화를 지속적으로 수행하고 있습니다. 보험부채 할인율 변동에 따른 자본적정성 영향을 최소화하기 위한 듀레이션 매칭 전략도 핵심 운용 원칙 중 하나입니다.</p>
+                <p>2026년 1분기 실적 호조의 주요 동인은 보장성 보험 판매 호조에 따른 보험서비스결과 개선과 투자영업 부문의 안정적 수익 창출이 동시에 작용한 결과입니다. 특히 건강보험 중심의 보장성 전환이 CSM 축적 효과를 극대화하면서, 보험영업손익의 구조적 개선이 본격화되고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Investment Outlook</span>
+        </div>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-flag-checkered"></i> Section 08</div>
+                <h2>결론 및 투자 의견</h2>
+                <p>종합 평가와 투자 시사점</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-clipboard-check"></i> 종합 평가</h3>
+                <p>미래에셋생명은 미래에셋금융그룹 계열의 생명보험사로, 보장성 보험 확대를 통한 수익성 개선이 본격화되고 있습니다. 2026년 1분기 순이익 534억원(+115% YoY), 보장성 APE 1,010억원(+34.6% YoY)은 보장성 전환 전략의 가시적 성과를 보여주며, IFRS17 환경 하에서의 수익 구조 개선이 확인되고 있습니다.</p>
+                <p>FLOVAH 종합 점수 55점은 생명보험 산업의 보수적 특성과 미래에셋생명의 규모 열세를 반영한 것입니다. 디지털 전환 측면에서는 업계 평균 수준이며, 그룹 시너지를 활용한 차별화 전략은 긍정적이나 브랜드 인지도, K-ICS 절대 수준, 시장 점유율 등에서 개선 여지가 있습니다. 다만 보장성 전환 모멘텀의 강도와 높은 순이익 성장률은 중소형 보험사 중 가장 주목할 만한 성과입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 주요 리스크</h3>
+                <ul>
+                    <li><strong>K-ICS 하락 리스크:</strong> K-ICS 167.2%는 전분기(176.7%) 대비 9.1%p 하락한 수치로, 금리 변동이나 자본 이벤트 시 추가 하락 가능성에 대한 모니터링이 필요합니다.</li>
+                    <li><strong>금리 환경 불확실성:</strong> 금리 하락은 투자수익률 압박과 보험부채 평가액 증가를 통해 수익성과 자본적정성에 이중 부담을 줍니다.</li>
+                    <li><strong>규모 열세에 따른 경쟁 제약:</strong> 대형 3사 대비 현저한 규모 격차로 인해 상품 개발, 채널 확보, 가격 경쟁에서 구조적 불리함이 존재합니다.</li>
+                    <li><strong>보장성 전환 지속 가능성:</strong> 높은 보장성 APE 성장률의 지속 가능성과, 이에 따른 CSM 품질(수익성)에 대한 검증이 필요합니다.</li>
+                    <li><strong>그룹 리스크:</strong> 미래에셋금융그룹의 전체 경영 전략 변화나 재무적 이슈가 미래에셋생명에 간접적 영향을 미칠 수 있습니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 중립-긍정적 (Neutral to Positive)</strong></p>
+                <p>미래에셋생명은 보장성 전환 전략의 성과가 실적에 본격적으로 반영되기 시작한 단계입니다. 1분기 순이익 115% 성장은 턴어라운드의 강도를 보여주며, 보장성 APE의 가파른 성장은 중장기 수익 안정성 확보의 토대가 됩니다. 다만 K-ICS 비율 관리, 규모 열세 극복, 보장성 전환의 지속 가능성 등에 대한 불확실성을 고려하면 적극적 매수보다는 선별적 접근이 바람직합니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>성장 가치 투자자:</strong> 순이익 +115% 성장, 보장성 APE +34.6% 성장 등 높은 성장 모멘텀을 추구하는 투자자에게 적합합니다.</li>
+                    <li><strong>그룹 시너지 투자:</strong> 미래에셋금융그룹의 전체 생태계에 대한 투자 관점에서, 보험 부문의 턴어라운드에 주목하는 투자자에게 적합합니다.</li>
+                    <li><strong>중장기 보유 투자자:</strong> IFRS17 하 보장성 전환의 CSM 축적 효과가 수년에 걸쳐 실적에 반영되므로, 중장기적 시계의 투자자에게 적합합니다.</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간-높음(Medium-High) - 보장성 전환 모멘텀은 강력하나, K-ICS 관리 및 규모 열세는 지속적 모니터링이 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>분기별 보장성 APE 성장률 유지 여부와 CSM 잔액 변동</li>
+                    <li>K-ICS 비율 추이와 자본관리 방안 (후순위채 발행 등)</li>
+                    <li>금리 환경 변화에 따른 투자운용 수익률과 자본적정성 영향</li>
+                    <li>미래에셋그룹 내 크로스셀링 시너지 확대 성과</li>
+                    <li>디지털 채널 확대와 온라인 보험 판매 비중 변화</li>
+                    <li>연간 순이익 목표 달성 여부와 배당 정책 방향</li>
+                </ul>
+                <p>미래에셋생명이 보장성 전환 모멘텀을 유지하면서 K-ICS 관리에 성공하고, 그룹 시너지를 통해 규모 열세를 극복한다면, 중장기적으로 의미 있는 기업가치 재평가가 가능할 것입니다. 2026년 하반기 실적이 상반기 수준을 유지하는지 여부가 보장성 전환의 지속 가능성을 판단하는 핵심 기준이 될 것입니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 6월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>미래에셋생명 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>미래에셋생명 공시 자료 (2026년 1분기 보고서, 연간보고서)</li>
+                    <li>한국거래소(KRX) 및 미래에셋생명 Investor Relations 공개 정보</li>
+                    <li>금융감독원 전자공시시스템(DART) 재무 데이터</li>
+                    <li>보험연구원, 보험개발원 생명보험 시장 분석 자료</li>
+                    <li>미래에셋금융그룹 경영 전략 및 그룹사 공시 자료</li>
+                    <li>금융감독원 K-ICS 관련 규제 가이드라인</li>
+                    <li>국내외 주요 증권사 리서치 리포트 (미래에셋증권, 한국투자증권 등)</li>
+                    <li>한국은행 경제통계, 통계청 인구 전망 자료</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 최종 업데이트: 2026년 06월 08일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-06-08 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>미중 관세 갈등 확대와 외국인 매도세로 코스피 급락. 기술적 반등 기대감은 유지되나 변동성 관리 필수.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">반도체·AI</div>HBM·AI 반도체 구조적 성장세 유지. 엔비디아 블랙웰 수요 강세 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">매크로 변수</div>원/달러 환율 1,400원대 후반, 한은 금리 인하 기대감과 인플레이션 우려 병존.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>방산·조선 수주잔고 확대. 바이오 섹터 글로벌 임상 결과 시즌 돌입.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 08일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

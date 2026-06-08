@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK네트웍스 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">June 8, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & 기업 개요 -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">SK네트웍스 <span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">SK그룹의 종합상사에서 AI 중심 사업지주회사로 대전환</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">68</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">FLOVAH 종합 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 전환 역량 및 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">6.75조</div>
+                            <div class="metric-label">매출 (2025)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">863억</div>
+                            <div class="metric-label">영업이익 (2025)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8.5조</div>
+                            <div class="metric-label">총자산</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,220억</div>
+                            <div class="metric-label">AI 투자 (업스테이지)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> SK네트웍스 기업 소개</h3>
+                <p>SK네트웍스(종목코드: 001740)는 1953년 선경직물로 출발하여 70년 이상의 역사를 가진 SK그룹의 핵심 계열사입니다. 코스피에 상장되어 있으며, 시가총액은 약 2.6조원 규모입니다. 전통적으로 정보통신(ICT 디바이스 유통), 에너지(주유소 운영), 호텔(워커힐) 등 종합상사 사업을 영위해 왔으나, 최근 AI 중심 사업지주회사로의 대전환을 선언하며 기업 정체성의 근본적 변화를 추진하고 있습니다.</p>
+                <p>SK네트웍스의 주요 자회사로는 SK인텔릭스(구 SK매직, 환경가전 렌탈)와 글로와이드(화학·철강 트레이딩)가 있습니다. SK인텔릭스는 정수기, 공기청정기, 비데 등 환경가전 렌탈 시장에서 코웨이에 이어 2위권의 시장 점유율을 보유하고 있으며, 최근 웰니스 로봇 A1을 출시하며 AI 웰니스 플랫폼 기업으로의 전환을 추진 중입니다. 글로와이드는 화학·철강 제품의 국내외 무역을 담당합니다.</p>
+                <p>SK네트웍스의 가장 주목할 만한 전략적 변화는 업스테이지(Upstage)에 대한 대규모 AI 투자입니다. 업스테이지는 LLM(대규모 언어 모델) 전문 스타트업으로, 2024년부터 시작된 투자를 통해 SK네트웍스는 약 1,220억원을 투자하며 12.9%의 지분을 확보했습니다. 직원수는 연결 기준 약 4,100명이며, 2025년 연간 매출 6.75조원(-11.9% YoY), 영업이익 863억원(-24.2% YoY), 순이익 500억원(+8% YoY)을 기록했습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 핵심 사업 구조</h3>
+                <p><strong>정보통신(ICT) 사업:</strong> SK네트웍스의 전통 핵심 사업인 ICT 디바이스 유통은 삼성전자, 애플 등 주요 브랜드 스마트폰의 국내 유통을 담당합니다. 전국 매장 네트워크와 물류 인프라를 바탕으로 국내 스마트폰 유통 시장에서 높은 점유율을 유지하고 있습니다. 다만 스마트폰 시장의 성숙과 교체 주기 장기화로 매출 성장은 둔화되고 있어, AI 및 IoT 디바이스로의 유통 영역 확대를 모색하고 있습니다.</p>
+                <p><strong>환경가전 렌탈 사업 (SK인텔릭스):</strong> 자회사 SK인텔릭스(구 SK매직)는 정수기, 공기청정기, 비데, 식기세척기 등 환경가전 렌탈 사업을 영위합니다. 국내 렌탈 시장에서 코웨이에 이어 2위권의 경쟁력을 보유하며, 최근 웰니스 로봇 A1을 출시하여 AI 기반 웰니스 플랫폼 기업으로의 전환을 추진 중입니다. 렌탈 사업은 구독 모델에 기반한 안정적 현금흐름이 특징입니다.</p>
+                <p><strong>트레이딩 사업 (글로와이드):</strong> 자회사 글로와이드는 화학제품, 철강, 에너지 등의 국내외 무역을 담당합니다. 전통적 종합상사 기능을 수행하며, SK그룹 내외 거래 네트워크를 활용한 트레이딩 수익을 창출합니다. 글로벌 무역 환경 변화에 따른 실적 변동성이 있으나, 안정적인 거래 관계를 바탕으로 기본적인 수익 기반을 유지하고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1953년</div>
+                        <div class="timeline-text">선경직물 설립 - SK그룹의 모태 기업으로 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1977년</div>
+                        <div class="timeline-text">SK그룹 편입 - 그룹 종합상사 역할 수행 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000년</div>
+                        <div class="timeline-text">SK네트웍스로 사명 변경 - ICT 유통, 에너지 등 사업 다각화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2009년</div>
+                        <div class="timeline-text">워커힐호텔 인수 - 호텔·레저 사업 진출로 포트폴리오 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018년</div>
+                        <div class="timeline-text">SK매직 인수 - 환경가전 렌탈 시장 본격 진출, 구독경제 기반 확보</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">업스테이지 AI 투자 시작 - LLM 스타트업 전략적 투자로 AI 전환 신호탄</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">AI 중심 사업지주회사 비전 선언 - 전통 종합상사에서 AI 사업지주회사로 정체성 전환</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2026년</div>
+                        <div class="timeline-text">업스테이지 추가 투자 1,220억원 - 시리즈C 참여, 12.9% 지분 유지, AI 전환 가속화</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Deep Analysis</span>
+        </div>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-microchip"></i> Section 02</div>
+                <h2>기술 분석</h2>
+                <p>AI 전환 전략과 핵심 기술 투자</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i> 업스테이지 AI 투자 전략</h3>
+                <p>SK네트웍스의 AI 전환 전략의 핵심은 업스테이지(Upstage)에 대한 전략적 투자입니다. 업스테이지는 서울대 AI 연구소 출신 이활석 대표가 이끄는 LLM(대규모 언어 모델) 전문 기업으로, 문서 AI(Document AI)와 OCR 기술에서 세계적 수준의 기술력을 보유하고 있습니다. SK네트웍스는 총 약 1,220억원을 투자하여 12.9%의 지분을 확보했으며, 이는 단순한 재무적 투자를 넘어 사업적 시너지를 목표로 한 전략적 투자입니다.</p>
+                <p>업스테이지는 정부의 '독자 AI 파운데이션 모델' 프로젝트에 선정되며 기술력을 공식 인정받았습니다. 자체 개발한 Solar LLM은 한국어 자연어 처리에서 GPT-4에 필적하는 성능을 보여주며, 문서 인식·분석·번역 등 B2B AI 솔루션 시장에서 빠르게 성장하고 있습니다. SK네트웍스는 업스테이지의 AI 기술을 자사 사업(ICT 유통, 렌탈, 트레이딩)에 적용하여 사업 효율화와 새로운 수익원 창출을 추진하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">업스테이지 Solar LLM</span>
+                    <span class="tech-badge">Document AI</span>
+                    <span class="tech-badge">OCR 기술</span>
+                    <span class="tech-badge">AI 웰니스 로봇</span>
+                    <span class="tech-badge">AI 물류 최적화</span>
+                    <span class="tech-badge">데이터 분석</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> SK인텔릭스 AI 웰니스 플랫폼</h3>
+                <p>자회사 SK인텔릭스(구 SK매직)는 전통적 환경가전 렌탈 기업에서 AI 웰니스 플랫폼 기업으로의 전환을 추진하고 있습니다. 2026년 출시한 웰니스 로봇 A1은 AI 기반 건강관리, 운동 코칭, 생활 습관 모니터링 등의 기능을 탑재한 가정용 로봇으로, 기존 렌탈 고객 기반에 새로운 구독 서비스를 제공합니다.</p>
+                <p>웰니스 로봇은 업스테이지의 AI 기술과 SK인텔릭스의 가전 제조·렌탈 운영 역량이 결합된 산물입니다. 카메라, 센서, 음성 인식 등을 통해 사용자의 건강 상태를 모니터링하고, AI가 맞춤형 건강 관리 프로그램을 제안합니다. 향후 정수기, 공기청정기 등 기존 환경가전과 연동하여 통합형 AI 웰니스 플랫폼으로 발전시킬 계획입니다. 이는 고령화 사회에서의 돌봄 수요와 헬스케어 시장 성장에 대응하는 전략이기도 합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-laptop-code"></i> ICT 유통 디지털화</h3>
+                    <p>ICT 유통 사업에서도 AI와 데이터 분석 기술을 활용한 혁신을 추진하고 있습니다. 수요 예측 AI를 통해 매장별 재고를 최적화하고, 고객 행동 데이터 분석을 바탕으로 개인 맞춤형 마케팅을 실행합니다. 물류 효율화를 위한 AI 라우팅 시스템도 도입했습니다.</p>
+                    <ul>
+                        <li>AI 기반 수요 예측·재고 최적화</li>
+                        <li>고객 데이터 분석 마케팅 시스템</li>
+                        <li>AI 물류 라우팅 최적화</li>
+                        <li>비대면 판매 채널 확대</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-cogs"></i> 기업 내부 AI 적용</h3>
+                    <p>SK네트웍스는 내부 업무 프로세스에도 AI를 적극 도입하고 있습니다. 업스테이지의 Document AI를 활용한 계약서·인보이스 자동 처리, AI 기반 재무 분석·보고 자동화, 챗봇을 활용한 사내 업무 지원 시스템 등을 구축하여 업무 효율성을 크게 향상시켰습니다.</p>
+                    <ul>
+                        <li>Document AI 기반 서류 자동 처리</li>
+                        <li>AI 재무 분석·보고 자동화</li>
+                        <li>사내 AI 챗봇 업무 지원</li>
+                        <li>트레이딩 리스크 분석 AI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-lightbulb"></i> AI 생태계 구축 전략</h3>
+                <p>SK네트웍스는 업스테이지 투자를 시작으로, AI 스타트업 생태계와의 연결을 강화하고 있습니다. 단순한 투자 수익을 넘어, AI 기술의 사업화·상용화를 통해 기존 사업의 부가가치를 높이고 새로운 수익원을 창출하는 것이 핵심 목표입니다. SK그룹 차원에서도 AI를 핵심 성장 동력으로 설정하고 있어, SK네트웍스의 AI 전환 전략은 그룹 전략과 정합성을 갖추고 있습니다.</p>
+                <p>향후에는 업스테이지 외에도 AI 관련 유망 스타트업에 대한 추가 투자를 검토하고 있으며, AI 기술을 활용한 신규 사업 모델(AI 기반 B2B 서비스, AI 커머스, AI 헬스케어 등)의 개발도 추진 중입니다. SK인텔릭스의 웰니스 로봇은 이러한 AI 사업화 전략의 첫 번째 구체적 결과물이며, 향후 더 많은 AI 기반 제품·서비스가 출시될 것으로 기대됩니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Market Intelligence</span>
+        </div>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chart-line"></i> Section 03</div>
+                <h2>시장 분석</h2>
+                <p>종합상사 시장 구조와 AI 전환 기회</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-asia"></i> 국내 종합상사 시장 구조</h3>
+                <p>한국의 종합상사 시장은 포스코인터내셔널, LX인터내셔널, GS글로벌, 현대코퍼레이션 등이 참여하는 시장으로, SK네트웍스는 이 중에서도 차별화된 포지셔닝을 추구하고 있습니다. 전통적 종합상사의 역할인 무역·유통 중개가 디지털화와 직거래 확대로 축소되면서, 종합상사들은 새로운 사업 모델로의 전환을 모색하고 있습니다.</p>
+                <p>SK네트웍스는 이러한 종합상사의 구조적 전환기에서 가장 급진적인 변화를 추진하는 기업입니다. 'AI 중심 사업지주회사'라는 비전은 전통적 종합상사의 틀을 완전히 벗어나는 것으로, 국내외 종합상사 중에서도 유례없는 전환 시도입니다. 2025년 매출 6.75조원(-11.9% YoY)의 감소는 본업의 구조적 성숙을 보여주는 동시에, 새로운 성장 동력의 필요성을 방증합니다.</p>
+                <p>국내 AI 시장은 2026년 약 25조원 규모로 성장할 것으로 전망되며, LLM 시장은 글로벌 기준 연평균 35% 이상의 성장률이 예상됩니다. SK네트웍스가 업스테이지를 통해 진출하고자 하는 B2B AI 솔루션 시장은 특히 문서 AI, 기업용 AI 어시스턴트, AI 기반 자동화 등의 영역에서 빠른 성장세를 보이고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 시장 성장 동력</h3>
+                    <ul>
+                        <li><strong>AI 시장 급성장:</strong> 글로벌 AI 시장은 연평균 30% 이상 성장하며, B2B AI 솔루션, LLM 기반 서비스, AI 자동화 시장의 확대가 SK네트웍스의 전환 전략에 유리한 환경을 제공합니다.</li>
+                        <li><strong>렌탈 시장 성장:</strong> 국내 렌탈 시장은 연 5-7% 성장하며, 환경가전 외 웰니스·헬스케어 영역으로의 확장이 SK인텔릭스의 성장 기회입니다.</li>
+                        <li><strong>기업용 AI 도입 가속:</strong> 기업들의 AI 도입이 빠르게 확산되면서 업스테이지의 B2B AI 솔루션(Document AI, 기업용 LLM) 수요가 급증하고 있습니다.</li>
+                        <li><strong>구독경제 확산:</strong> 소유에서 구독으로의 소비 패러다임 전환이 렌탈·서비스형 사업 모델에 유리합니다.</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 시장 리스크 요인</h3>
+                    <ul>
+                        <li><strong>글로벌 무역 불확실성:</strong> 미중 무역갈등, 관세 리스크, 공급망 재편 등이 트레이딩 사업에 직접적 영향을 미칩니다.</li>
+                        <li><strong>AI 투자 불확실성:</strong> 업스테이지 등 AI 투자의 수익화 시점과 규모가 불확실하며, AI 시장의 급격한 경쟁 심화 리스크가 있습니다.</li>
+                        <li><strong>스마트폰 시장 성숙:</strong> ICT 디바이스 유통 사업의 성장 둔화가 지속되며, 디지털 채널 확대로 오프라인 유통 구조가 변화하고 있습니다.</li>
+                        <li><strong>환율 변동 리스크:</strong> 수출입 기반 트레이딩 사업 특성상 원/달러 환율 변동이 실적에 직접적 영향을 미칩니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-search-dollar"></i> AI 중심 사업지주회사 모델 분석</h3>
+                <p>SK네트웍스의 'AI 중심 사업지주회사' 모델은 전통 사업에서 발생하는 안정적 현금흐름을 바탕으로 AI 관련 투자와 사업 개발을 추진하는 하이브리드 구조입니다. 기존 ICT 유통, 렌탈, 트레이딩 사업은 현금 창출 역할을 하고, 업스테이지 투자와 AI 기반 신사업은 성장 동력 역할을 합니다. 이 모델의 성패는 기존 사업의 현금 창출 능력 유지와 AI 투자의 적시적 수익화에 달려 있습니다.</p>
+                <p>유사한 전환을 시도한 글로벌 사례로는 일본의 소프트뱅크가 통신 사업에서 AI·투자 회사로 전환한 것을 참고할 수 있습니다. 다만 SK네트웍스의 규모와 투자 규모는 소프트뱅크와 비교할 수 없으며, AI 투자의 집중도와 리스크 관리 측면에서 보다 신중한 접근이 필요합니다. 2026년 영업이익 컨센서스 1,159억원은 본업의 반등과 AI 관련 가치 인식이 반영된 것으로, 이를 달성할 수 있을지가 전환 전략의 첫 번째 검증 포인트입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 정책 환경과 AI 산업 지원</h3>
+                <p>한국 정부는 AI를 국가 핵심 전략 산업으로 지정하고, AI 기업에 대한 세제 혜택, R&D 지원, 규제 샌드박스 등 다양한 지원 정책을 추진하고 있습니다. 업스테이지가 정부의 '독자 AI 파운데이션 모델' 프로젝트에 선정된 것은 이러한 정책 환경의 수혜이며, SK네트웍스의 AI 전환 전략에도 긍정적 영향을 미칩니다.</p>
+                <p>또한 SK그룹 차원에서 AI를 핵심 성장 축으로 설정하고, SK텔레콤, SK하이닉스 등 그룹사와의 AI 생태계 구축을 추진하고 있습니다. SK네트웍스의 업스테이지 투자는 이러한 그룹 AI 전략의 일환으로, 그룹 차원의 시너지 창출이 기대됩니다. 다만 AI 규제 환경의 변화, 데이터 프라이버시 규제 강화, AI 윤리 이슈 등은 모니터링이 필요한 정책 리스크입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Competitive Landscape</span>
+        </div>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-users"></i> Section 04</div>
+                <h2>경쟁사 분석</h2>
+                <p>종합상사 시장 주요 기업 비교</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 종합상사 비교</h3>
+                <p>SK네트웍스는 전통적 종합상사 경쟁 구도에서 AI 중심 사업지주회사로 탈피를 시도하고 있어, 경쟁사와의 직접 비교가 점차 어려워지고 있습니다. 그러나 현재 매출 구조에서는 여전히 종합상사 성격이 강하므로, 동종 업계와의 비교를 통해 포지셔닝을 확인합니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>SK네트웍스</th>
+                            <th>LX인터내셔널</th>
+                            <th>GS글로벌</th>
+                            <th>포스코인터내셔널</th>
+                            <th>현대코퍼레이션</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>매출 (2025)</strong></td>
+                            <td style="color:var(--gold)">6.75조원</td>
+                            <td>약 12조원</td>
+                            <td>약 4조원</td>
+                            <td>약 30조원+</td>
+                            <td>약 3.5조원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업이익</strong></td>
+                            <td>863억원</td>
+                            <td>약 3,500억원</td>
+                            <td>약 400억원</td>
+                            <td>약 1.2조원</td>
+                            <td>약 300억원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주요 사업</strong></td>
+                            <td style="color:var(--gold)">ICT유통, 렌탈, AI</td>
+                            <td>자원개발, 물류</td>
+                            <td>에너지, 인프라</td>
+                            <td>에너지, 식량, 철강</td>
+                            <td>플랜트, 자원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI 전략</strong></td>
+                            <td style="color:var(--gold)">업스테이지 1,220억 투자</td>
+                            <td>제한적</td>
+                            <td>제한적</td>
+                            <td>그룹 차원 추진</td>
+                            <td>제한적</td>
+                        </tr>
+                        <tr>
+                            <td><strong>그룹 계열</strong></td>
+                            <td>SK그룹</td>
+                            <td>LX그룹</td>
+                            <td>GS그룹</td>
+                            <td>포스코그룹</td>
+                            <td>현대그룹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>시가총액</strong></td>
+                            <td>약 2.6조원</td>
+                            <td>약 1.5조원</td>
+                            <td>약 0.5조원</td>
+                            <td>약 8조원+</td>
+                            <td>약 0.4조원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>성장 전략</strong></td>
+                            <td style="color:var(--gold)">AI 사업지주회사 전환</td>
+                            <td>자원개발 확대</td>
+                            <td>친환경 에너지</td>
+                            <td>LNG·식량 확대</td>
+                            <td>플랜트 해외수주</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i> 경쟁 구도 심층 분석</h3>
+                <p><strong>포스코인터내셔널과의 비교:</strong> 포스코인터내셔널은 매출 30조원 이상의 국내 최대 종합상사로, LNG 트레이딩과 식량 사업에서 압도적 경쟁력을 보유합니다. SK네트웍스와는 규모에서 큰 격차가 있으나, 포스코인터내셔널이 에너지·식량 중심의 전통적 상사 모델을 유지하는 반면, SK네트웍스는 AI 중심 전환으로 완전히 다른 방향을 추구합니다.</p>
+                <p><strong>LX인터내셔널과의 비교:</strong> LX인터내셔널은 자원개발(인도네시아 팜오일·석탄)과 물류 사업에 강점을 가지며, SK네트웍스 대비 높은 영업이익률을 보여줍니다. 다만 자원 가격 변동에 대한 노출이 크며, AI 등 새로운 성장 동력 확보에서는 SK네트웍스 대비 뒤처져 있습니다.</p>
+                <p><strong>렌탈 시장 경쟁 (SK인텔릭스):</strong> SK인텔릭스의 직접 경쟁사는 코웨이, 쿠쿠홈시스, 청호나이스 등 환경가전 렌탈 기업입니다. 코웨이가 시장 1위를 유지하고 있는 가운데, SK인텔릭스는 AI 웰니스 플랫폼이라는 차별화 전략으로 시장 포지셔닝을 재정립하고 있습니다. 웰니스 로봇 A1의 시장 반응이 렌탈 사업의 향후 방향을 결정할 핵심 변수입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> SK네트웍스의 차별적 경쟁 우위</h3>
+                <ul>
+                    <li><strong>SK그룹 네트워크:</strong> SK텔레콤, SK하이닉스 등 SK그룹의 AI·반도체 생태계와의 시너지가 핵심 차별화 요인입니다. 그룹 차원의 AI 전략에 부합하는 투자·사업 기회를 선점할 수 있습니다.</li>
+                    <li><strong>AI 선제 투자:</strong> 업스테이지에 대한 1,220억원 규모의 전략적 투자는 국내 종합상사 중 유일한 대규모 AI 투자로, 산업 전환의 선도적 위치를 확보했습니다.</li>
+                    <li><strong>구독경제 기반:</strong> SK인텔릭스의 렌탈 사업은 안정적 구독 매출을 제공하며, 이 기반 위에 AI 웰니스 서비스를 연계하는 플랫폼 전략이 차별적입니다.</li>
+                    <li><strong>사업 다각화:</strong> ICT 유통, 렌탈, 트레이딩, AI 투자 등 다각화된 포트폴리오가 특정 사업 리스크를 분산시킵니다.</li>
+                    <li><strong>변화 의지:</strong> 'AI 중심 사업지주회사'라는 급진적 비전 선언은 경영진의 강한 전환 의지를 보여주며, 시장의 관심과 밸류에이션 리레이팅 기대를 높이고 있습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Strategic Framework</span>
+        </div>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-th-large"></i> Section 05</div>
+                <h2>SWOT 분석</h2>
+                <p>SK네트웍스의 전략적 포지션 평가</p>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-star" style="color:var(--gold)"></i> Strengths (강점)</h3>
+                    <ul>
+                        <li><strong>SK그룹 네트워크:</strong> SK텔레콤, SK하이닉스 등 AI·반도체 생태계와의 시너지, 그룹 차원의 전략적 지원과 사업 기회 선점 능력을 보유합니다.</li>
+                        <li><strong>AI 선제 투자:</strong> 업스테이지에 1,220억원 투자(12.9% 지분)로 국내 종합상사 중 유일한 대규모 AI 전략적 투자를 실행, 산업 전환을 선도합니다.</li>
+                        <li><strong>다각화된 수익 구조:</strong> ICT 유통, 환경가전 렌탈(SK인텔릭스), 트레이딩(글로와이드) 등 다각화된 사업 포트폴리오가 현금흐름 안정성을 제공합니다.</li>
+                        <li><strong>구독경제 기반:</strong> SK인텔릭스의 렌탈 사업은 안정적 구독 매출을 창출하며, AI 웰니스 플랫폼으로의 확장 기반이 됩니다.</li>
+                        <li><strong>70년 사업 역사:</strong> 1953년부터 축적된 사업 운영 경험과 전국적 유통·물류 네트워크는 새로운 사업 전개의 인프라로 활용됩니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-exclamation-circle" style="color:var(--blue)"></i> Weaknesses (약점)</h3>
+                    <ul>
+                        <li><strong>본업 매출 감소세:</strong> 2025년 매출 6.75조원(-11.9% YoY)으로 전통 사업의 성장 둔화가 지속되고 있으며, 영업이익도 863억원(-24.2% YoY)으로 감소했습니다.</li>
+                        <li><strong>수익성 약화:</strong> 영업이익률이 지속적으로 하락하고 있으며, 전통 사업에서의 수익성 개선 여력이 제한적입니다.</li>
+                        <li><strong>AI 전환 초기 단계:</strong> AI 중심 사업지주회사로의 전환은 아직 초기 단계로, 가시적인 AI 사업 수익이 미미합니다.</li>
+                        <li><strong>투자 회수 불확실성:</strong> 업스테이지 투자의 수익화 시점과 규모가 불확실하며, AI 투자의 사업적 시너지 실현까지 시간이 소요됩니다.</li>
+                        <li><strong>시장 인식 갭:</strong> 'AI 기업'으로의 시장 인식 전환이 아직 충분히 이루어지지 않아, 밸류에이션에 반영되지 못하고 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-lightbulb" style="color:var(--gold)"></i> Opportunities (기회)</h3>
+                    <ul>
+                        <li><strong>AI 전환 모멘텀:</strong> 글로벌 AI 시장의 폭발적 성장과 한국 정부의 AI 산업 육성 정책이 SK네트웍스의 전환 전략에 강력한 추진력을 제공합니다.</li>
+                        <li><strong>렌탈 시장 성장:</strong> 환경가전 렌탈 시장의 지속 성장과 AI 웰니스 플랫폼으로의 확장이 SK인텔릭스의 가치 증대 기회입니다.</li>
+                        <li><strong>업스테이지 성장 잠재력:</strong> 업스테이지의 기술력 인정(정부 프로젝트 선정), B2B AI 솔루션 시장 성장으로 투자 가치 상승이 기대됩니다.</li>
+                        <li><strong>그룹 AI 시너지:</strong> SK그룹의 AI 생태계(SK텔레콤 AI, SK하이닉스 HBM 등)와의 연계를 통한 사업 기회 확대가 가능합니다.</li>
+                        <li><strong>밸류에이션 리레이팅:</strong> AI 전환이 가시화되면 전통 종합상사 대비 높은 밸류에이션을 부여받을 수 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-shield-alt" style="color:var(--blue)"></i> Threats (위협)</h3>
+                    <ul>
+                        <li><strong>글로벌 무역 불확실성:</strong> 미중 무역갈등, 관세 확대, 공급망 재편 등이 트레이딩·유통 사업에 직접적 타격을 줄 수 있습니다.</li>
+                        <li><strong>AI 투자 불확실성:</strong> AI 시장의 급격한 경쟁 심화, 기술 변화 속도, 수익화 지연 등이 업스테이지 투자의 리스크 요인입니다.</li>
+                        <li><strong>본업 경쟁 심화:</strong> ICT 유통은 온라인 직판 확대로, 렌탈은 코웨이 등 선두 업체와의 경쟁 심화로 수익성 압박이 지속됩니다.</li>
+                        <li><strong>거시경제 리스크:</strong> 경기 침체, 환율 변동, 금리 환경 변화 등이 전통 사업의 실적에 부정적 영향을 미칠 수 있습니다.</li>
+                        <li><strong>전환 실패 리스크:</strong> AI 중심 사업지주회사 전환이 시장의 기대에 부합하지 못할 경우, 밸류에이션 디스카운트가 심화될 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Growth Strategy</span>
+        </div>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chess-king"></i> Section 06</div>
+                <h2>전략 분석</h2>
+                <p>AI 중심 사업지주회사 전환 전략과 미래 방향성</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> AI 중심 사업지주회사 전환 로드맵</h3>
+                <p>SK네트웍스의 핵심 전략은 전통 종합상사에서 AI 중심 사업지주회사로의 근본적 전환입니다. 이 전략은 크게 세 단계로 구성됩니다.</p>
+                <ul>
+                    <li><strong>1단계 - AI 씨앗심기 (2024~2025):</strong> 업스테이지에 대한 전략적 투자를 통해 AI 생태계와의 접점을 확보합니다. 1,220억원 규모의 투자로 12.9% 지분을 확보하고, 업스테이지의 기술을 자사 사업에 시범 적용하는 단계입니다. 이 단계는 이미 성공적으로 수행되었습니다.</li>
+                    <li><strong>2단계 - AI 사업화 (2025~2027):</strong> 업스테이지의 AI 기술을 자사 사업(ICT 유통, 렌탈, 트레이딩)에 본격 적용하고, SK인텔릭스의 AI 웰니스 플랫폼을 상용화합니다. 또한 추가 AI 투자를 통해 AI 포트폴리오를 확대합니다. 현재 이 단계에 진입 중입니다.</li>
+                    <li><strong>3단계 - AI 사업지주회사 완성 (2027~):</strong> AI 관련 사업 수익이 전체 영업이익의 30% 이상을 차지하고, 기업 정체성이 'AI 사업지주회사'로 완전히 전환되는 단계입니다. 이 단계의 달성 여부가 전환 전략의 궁극적 성패를 결정합니다.</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i> 본업 효율화 전략</h3>
+                    <p>AI 전환을 추진하면서도 본업의 수익성 유지·개선이 필수적입니다. ICT 유통 사업에서는 AI 기반 수요 예측과 재고 관리 최적화로 운영 효율을 높이고, 프리미엄 디바이스와 AI 기기 유통으로 상품 믹스를 개선합니다.</p>
+                    <p>SK인텔릭스의 렌탈 사업에서는 기존 환경가전 계정의 ARPU(가입자당 매출) 제고와 AI 웰니스 서비스 부가 매출 창출을 추진합니다. 글로와이드의 트레이딩 사업에서는 AI를 활용한 거래 리스크 관리와 시장 분석으로 수익성을 개선합니다. 본업에서의 안정적 현금흐름이 AI 투자 재원의 원천이므로, 본업 효율화는 전환 전략의 성공을 위한 필수 조건입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-hand-holding-usd"></i> 투자 포트폴리오 전략</h3>
+                    <p>업스테이지에 이어 AI 관련 투자 포트폴리오를 점진적으로 확대할 계획입니다. 업스테이지의 시리즈C 라운드에 500억원 규모로 추가 참여하며 지분율 12.9%를 유지한 것은 지속적 투자 의지를 보여줍니다.</p>
+                    <p>향후 투자 대상으로는 AI 로보틱스, AI 헬스케어, AI 커머스 등 자사 사업과 시너지가 높은 AI 스타트업이 고려되고 있습니다. 투자 원칙은 '사업적 시너지 + 기술적 차별성 + 시장 성장 잠재력'의 3가지 기준을 충족하는 기업에 집중하는 것입니다. SK그룹의 벤처 투자 네트워크와 SK인텔릭스의 산업 노하우를 활용한 딜소싱 역량도 강점입니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> ESG 경영과 지속가능 성장</h3>
+                <p>SK네트웍스는 SK그룹의 ESG 경영 방침에 따라 환경·사회·지배구조 전반에서 책임 있는 경영을 추진합니다. 환경(E) 측면에서는 ICT 유통에서의 탄소 배출 감축, SK인텔릭스의 친환경 가전 개발, 순환경제 프로그램 운영 등을 추진합니다. 렌탈 사업 자체가 제품의 재사용·재활용을 촉진하는 순환경제 모델이라는 점에서 ESG와 본질적으로 부합합니다.</p>
+                <p>사회(S) 측면에서는 공정한 유통 생태계 구축, 협력업체와의 상생 경영, 지역사회 공헌 활동 등을 실행합니다. 지배구조(G) 측면에서는 사외이사 비율 확대, 이사회 전문성 강화, ESG 위원회 운영 등을 통해 투명하고 책임 있는 기업 거버넌스를 구축하고 있습니다. AI 투자와 관련해서는 AI 윤리 가이드라인 수립, 데이터 보호 체계 강화 등도 중요한 ESG 과제입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> 글로벌 전략 및 해외 사업</h3>
+                <p>SK네트웍스의 글로벌 전략은 두 축으로 구성됩니다. 첫째, 글로와이드를 통한 전통적 무역 사업의 글로벌 네트워크 유지·강화입니다. 화학·철강 트레이딩에서 축적된 해외 거래처와의 관계를 바탕으로 안정적 무역 수익을 확보합니다. 둘째, 업스테이지의 글로벌 AI 시장 진출을 지원하는 것입니다. 업스테이지의 Document AI, Solar LLM 등은 해외 시장에서도 경쟁력이 있으며, SK네트웍스의 해외 네트워크가 시장 진출에 기여할 수 있습니다.</p>
+                <p>다만 현재 단계에서 해외 AI 사업은 업스테이지의 자체적 해외 진출에 의존하는 구조이며, SK네트웍스가 직접 해외 AI 사업을 전개하기까지는 시간이 필요합니다. 글로벌 AI 경쟁은 OpenAI, Google, Meta 등 빅테크와의 경쟁이므로, 니치 시장(한국어 AI, 문서 AI, B2B 특화)에서의 차별화가 핵심 전략입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Financial Deep Dive</span>
+        </div>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="finance">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-calculator"></i> Section 07</div>
+                <h2>재무 분석</h2>
+                <p>실적 추이와 AI 전환 투자 심층 분석</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-won-sign"></i> 영업이익 추이 (2020~2025)</h3>
+                <p>SK네트웍스의 영업이익은 전통 사업의 성숙과 사업 구조조정 영향으로 변동성을 보이고 있습니다. 2025년 863억원(-24.2% YoY)은 본업 매출 감소와 AI 전환 관련 비용 증가의 영향을 받은 것입니다. 2026년 컨센서스 1,159억원은 본업 반등과 AI 가치 인식을 반영합니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 영업이익 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:60%"></div>
+                            </div>
+                            <div class="bar-value">850억</div>
+                            <div class="bar-label">2020</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:72%"></div>
+                            </div>
+                            <div class="bar-value">1,020억</div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:85%"></div>
+                            </div>
+                            <div class="bar-value">1,200억</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:80%"></div>
+                            </div>
+                            <div class="bar-value">1,138억</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:80%"></div>
+                            </div>
+                            <div class="bar-value">1,138억</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:61%"></div>
+                            </div>
+                            <div class="bar-value">863억</div>
+                            <div class="bar-label">2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 매출 추이 및 사업별 구성</h3>
+                <p>SK네트웍스의 연결 매출은 2025년 6.75조원으로 전년 대비 11.9% 감소했습니다. 매출 감소의 주요 원인은 ICT 유통 사업의 시장 성숙, 트레이딩 물량 감소 등입니다. 다만 순이익은 500억원(+8% YoY)으로 증가하여, 수익 구조의 질적 개선이 진행되고 있음을 보여줍니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 매출 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:82%"></div>
+                            </div>
+                            <div class="bar-value">8.2조</div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:95%"></div>
+                            </div>
+                            <div class="bar-value">9.5조</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:88%"></div>
+                            </div>
+                            <div class="bar-value">8.8조</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:77%"></div>
+                            </div>
+                            <div class="bar-value">7.66조</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:68%"></div>
+                            </div>
+                            <div class="bar-value">6.75조</div>
+                            <div class="bar-label">2025</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:72%;background:linear-gradient(180deg, var(--blue) 0%, var(--blue-dim) 100%)"></div>
+                            </div>
+                            <div class="bar-value" style="color:var(--blue)">7.0조E</div>
+                            <div class="bar-label">2026E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale-right"></i> 재무 건전성</h3>
+                    <p>SK네트웍스의 총자산은 약 8.5조원 규모이며, 부채비율은 업계 평균 수준을 유지하고 있습니다. 업스테이지 투자(1,220억원)가 자본에 미치는 영향은 관리 가능한 수준입니다.</p>
+                    <ul>
+                        <li><strong>총자산:</strong> 약 8.5조원</li>
+                        <li><strong>부채비율:</strong> 업계 평균 수준 유지</li>
+                        <li><strong>영업활동 현금흐름:</strong> 안정적 양(+)</li>
+                        <li><strong>AI 투자 규모:</strong> 1,220억원 (업스테이지)</li>
+                        <li><strong>투자자산 가치:</strong> 업스테이지 기업가치 상승 기대</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i> 주요 재무 지표</h3>
+                    <p>SK네트웍스의 재무 지표는 전통 사업의 매출 감소에도 불구하고, 순이익 개선과 AI 투자 가치 기대가 반영되고 있습니다.</p>
+                    <ul>
+                        <li><strong>2025 매출:</strong> 6.75조원 (-11.9% YoY)</li>
+                        <li><strong>2025 영업이익:</strong> 863억원 (-24.2% YoY)</li>
+                        <li><strong>2025 순이익:</strong> 500억원 (+8% YoY)</li>
+                        <li><strong>2026E 영업이익:</strong> 1,159억원 (컨센서스)</li>
+                        <li><strong>시가총액:</strong> 약 2.6조원</li>
+                        <li><strong>종목코드:</strong> 001740 (KOSPI)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> AI 투자 가치 분석</h3>
+                <p>SK네트웍스의 AI 투자 가치 분석에서 가장 중요한 것은 업스테이지의 기업가치 변동입니다. 업스테이지는 시리즈C 펀딩을 통해 기업가치가 상승했으며, SK네트웍스의 12.9% 지분 가치도 이에 연동됩니다. 업스테이지의 매출 성장률, B2B 고객 확보 속도, 기술 경쟁력 유지 여부가 투자 가치의 핵심 변수입니다.</p>
+                <p>현재 SK네트웍스의 시가총액 약 2.6조원에서 업스테이지 투자 가치가 차지하는 비중이 점차 확대될 것으로 예상됩니다. 업스테이지가 IPO에 성공하거나 기업가치가 1조원 이상으로 평가될 경우, SK네트웍스의 지분 가치만으로 1,300억원 이상의 가치가 인정되어 주가에 의미 있는 영향을 미칠 수 있습니다. 반면 AI 시장 경쟁 심화, 수익화 지연 등으로 업스테이지의 기업가치가 하락할 경우 투자 손실 리스크도 존재합니다.</p>
+                <p>SK인텔릭스의 웰니스 로봇 사업이 성공적으로 안착할 경우, SK인텔릭스의 기업가치 재평가도 SK네트웍스의 전체 기업가치에 긍정적 영향을 미칩니다. SK인텔릭스가 '환경가전 렌탈' 기업에서 'AI 웰니스 플랫폼' 기업으로 인식이 전환되면, 렌탈 사업 대비 높은 밸류에이션 배수가 적용될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Investment Outlook</span>
+        </div>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-flag-checkered"></i> Section 08</div>
+                <h2>결론 및 투자 의견</h2>
+                <p>종합 평가와 투자 시사점</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-clipboard-check"></i> 종합 평가</h3>
+                <p>SK네트웍스는 1953년 설립된 70년 역사의 SK그룹 계열 종합상사가 AI 중심 사업지주회사로의 근본적 전환을 추진하고 있는 기업입니다. 업스테이지에 1,220억원을 투자(12.9% 지분)하며 국내 종합상사 중 유일한 대규모 AI 전략적 투자를 실행했으며, 자회사 SK인텔릭스의 AI 웰니스 로봇 출시로 AI 사업화의 첫 걸음을 내딛었습니다.</p>
+                <p>FLOVAH 종합 점수 68점은 AI 전환 추진의 적극성과 그룹 시너지 잠재력을 반영한 것입니다. AI 전환 비전의 명확성, 업스테이지 투자의 전략적 의미, SK그룹 AI 생태계와의 시너지 등이 긍정적 요인입니다. 반면 본업 매출 감소, AI 수익화 불확실성, 전환 초기의 실적 변동성 등이 감점 요인입니다. 핵심은 'AI 사업지주회사'라는 비전이 실제 수익으로 연결되는 시점과 규모입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 주요 리스크</h3>
+                <ul>
+                    <li><strong>AI 전환 실행 리스크:</strong> AI 중심 사업지주회사 전환은 전례가 없는 시도로, 실행 과정에서 예상치 못한 어려움이 발생할 수 있습니다. 전환이 지연되거나 실패할 경우 기존 사업 약화와 AI 사업 미성숙이 동시에 나타날 수 있습니다.</li>
+                    <li><strong>업스테이지 투자 리스크:</strong> 1,220억원 규모의 집중 투자로, 업스테이지의 기업가치 하락이나 사업 실패 시 의미 있는 투자 손실이 발생할 수 있습니다.</li>
+                    <li><strong>본업 실적 악화 리스크:</strong> AI 전환에 경영 자원이 집중되면서 전통 사업의 경쟁력 약화가 가속화될 수 있으며, 이는 현금흐름 감소로 이어질 수 있습니다.</li>
+                    <li><strong>글로벌 무역 환경 악화:</strong> 미중 관세 갈등, 환율 변동 등이 트레이딩·유통 사업에 부정적 영향을 미칠 수 있습니다.</li>
+                    <li><strong>AI 시장 경쟁 심화:</strong> 글로벌 빅테크의 AI 시장 지배력 강화로 업스테이지의 성장 공간이 제한될 수 있습니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 중립-긍정적 (Neutral to Positive)</strong></p>
+                <p>SK네트웍스는 전통 종합상사의 구조적 한계를 AI 전환으로 돌파하려는 의욕적 기업입니다. 업스테이지 투자와 SK인텔릭스 AI 웰니스 플랫폼은 전환의 구체적 행동이며, 2026년 영업이익 컨센서스 1,159억원 달성 여부가 단기 투자 판단의 핵심입니다. 다만 AI 전환의 수익화 시점이 불확실하고, 본업 매출 감소세가 지속되고 있어 리스크와 기회가 동시에 존재합니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>AI 테마 투자자:</strong> 업스테이지 지분(12.9%)을 통한 AI 성장 참여 기회로, AI 산업 전반에 투자하고자 하는 투자자에게 간접 투자 수단이 됩니다.</li>
+                    <li><strong>밸류 전환 투자자:</strong> 종합상사 밸류에이션에서 AI 기업 밸류에이션으로의 리레이팅을 기대하는 투자자에게 적합합니다.</li>
+                    <li><strong>SK그룹 투자:</strong> SK그룹의 AI 생태계 전략에 투자하고자 하는 관점에서, 상대적으로 저평가된 진입점을 제공합니다.</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간-높음(Medium-High) - AI 전환 모멘텀은 긍정적이나, 실행 불확실성과 본업 실적 변동성이 리스크입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>영업이익 컨센서스(1,159억원) 달성 여부와 분기별 실적 추이</li>
+                    <li>업스테이지의 B2B AI 솔루션 매출 성장률 및 신규 고객 확보</li>
+                    <li>SK인텔릭스 웰니스 로봇 A1의 시장 반응 및 구독 계정 확보 추이</li>
+                    <li>추가 AI 투자 계획 발표 및 AI 포트폴리오 확대 방향</li>
+                    <li>본업(ICT 유통, 트레이딩) 매출 반등 여부</li>
+                    <li>SK그룹 AI 생태계 시너지 구체화 사례</li>
+                </ul>
+                <p>SK네트웍스가 AI 전환을 성공적으로 수행하여 본업의 현금흐름과 AI 사업의 성장을 동시에 달성한다면, 종합상사 디스카운트에서 벗어나 AI 사업지주회사로서의 프리미엄을 부여받을 수 있을 것입니다. 반면 전환이 시장의 기대에 미치지 못할 경우, '말만 앞선 전환'이라는 부정적 평가를 받을 수 있어, 실질적인 AI 수익 창출이 핵심 관건입니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 6월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>SK네트웍스 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>SK네트웍스 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 SK네트웍스 Investor Relations 공개 정보</li>
+                    <li>금융감독원 전자공시시스템(DART) 재무 데이터</li>
+                    <li>업스테이지(Upstage) 공개 정보 및 투자 관련 공시</li>
+                    <li>SK인텔릭스 사업보고서 및 시장 조사 자료</li>
+                    <li>산업통상자원부 종합상사 관련 통계 및 정책 자료</li>
+                    <li>국내외 주요 증권사 리서치 리포트 (삼성증권, 미래에셋증권 등)</li>
+                    <li>한국은행 경제통계, 한국무역협회 무역 동향 자료</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 최종 업데이트: 2026년 06월 08일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-06-08 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>미중 관세 갈등 확대와 외국인 매도세로 코스피 급락. 기술적 반등 기대감은 유지되나 변동성 관리 필수.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">반도체·AI</div>HBM·AI 반도체 구조적 성장세 유지. 엔비디아 블랙웰 수요 강세 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">매크로 변수</div>원/달러 환율 1,400원대 후반, 한은 금리 인하 기대감과 인플레이션 우려 병존.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>방산·조선 수주잔고 확대. 바이오 섹터 글로벌 임상 결과 시즌 돌입.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 08일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

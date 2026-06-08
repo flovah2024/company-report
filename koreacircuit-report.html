@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코리아써키트 (007810) 기업분석 리포트 | FLOVAH Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #09090b;
+            --bg-secondary: #0f0f12;
+            --bg-elevated: #161619;
+            --bg-card: #1a1a1f;
+            --bg-card-hover: #1e1e24;
+            --gold: #c9a962;
+            --gold-dim: rgba(201, 169, 98, 0.15);
+            --gold-glow: rgba(201, 169, 98, 0.08);
+            --blue: #5c7d9e;
+            --blue-dim: rgba(92, 125, 158, 0.15);
+            --blue-glow: rgba(92, 125, 158, 0.08);
+            --text-light: #e8e6e3;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666;
+            --border: rgba(201, 169, 98, 0.12);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --positive: #4ecdc4;
+            --negative: #ff6b6b;
+            --warning: #ffd93d;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+        /* ── Header ── */
+        .site-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 1100px; margin: 0 auto;
+            padding: 14px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo-group { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 28px; width: auto; }
+        .logo-divider { width: 1px; height: 20px; background: var(--border); }
+        .logo-text {
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px; font-weight: 600;
+            color: var(--gold); letter-spacing: 2px;
+        }
+        .header-date {
+            font-size: 12px; color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Hero ── */
+        .hero-section {
+            margin-top: 60px;
+            padding: 80px 40px 60px;
+            background: linear-gradient(180deg, rgba(201,169,98,0.06) 0%, transparent 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,169,98,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 20px;
+            background: var(--gold-dim); border: 1px solid rgba(201,169,98,0.2);
+            font-size: 12px; color: var(--gold); font-weight: 500;
+            margin-bottom: 24px; letter-spacing: 0.5px;
+        }
+        .hero-badge i { font-size: 10px; }
+        .hero-company {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px; font-weight: 700;
+            color: var(--text-light); line-height: 1.2;
+            margin-bottom: 8px; letter-spacing: -0.5px;
+        }
+        .hero-code {
+            font-size: 16px; color: var(--gold);
+            font-weight: 400; margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .hero-subtitle {
+            font-size: 18px; color: var(--text-secondary);
+            font-weight: 300; line-height: 1.6;
+            max-width: 600px; margin-bottom: 40px;
+        }
+
+        /* ── Metric Cards ── */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px; margin-bottom: 0;
+        }
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 24px; text-align: center;
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            border-color: var(--border);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+        .metric-label {
+            font-size: 12px; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 8px; font-weight: 500;
+        }
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 28px; font-weight: 700;
+            color: var(--text-light); margin-bottom: 4px;
+        }
+        .metric-sub {
+            font-size: 12px; color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* ── Section Common ── */
+        .report-section {
+            max-width: 1100px; margin: 0 auto;
+            padding: 60px 40px;
+        }
+        .section-header {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 32px;
+        }
+        .section-icon {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,169,98,0.2);
+            border-radius: var(--radius-sm);
+            color: var(--gold); font-size: 16px;
+        }
+        .section-title-group { flex: 1; }
+        .section-number {
+            font-size: 11px; color: var(--gold);
+            letter-spacing: 2px; font-weight: 600;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px; font-weight: 700;
+            color: var(--text-light); letter-spacing: -0.3px;
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin-bottom: 32px; opacity: 0.3;
+        }
+
+        /* ── Content Cards ── */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 28px; margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+        .content-card:hover { border-color: var(--border); }
+        .card-title {
+            font-size: 16px; font-weight: 600;
+            color: var(--text-light); margin-bottom: 12px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .card-title i { color: var(--gold); font-size: 14px; }
+        .card-text {
+            font-size: 14px; color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ── Timeline ── */
+        .timeline { position: relative; padding-left: 32px; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 7px; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--gold), var(--blue), transparent);
+        }
+        .timeline-item {
+            position: relative; margin-bottom: 28px;
+            padding-left: 24px;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute;
+            left: -28px; top: 6px;
+            width: 12px; height: 12px;
+            background: var(--bg-primary);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+        }
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px; font-weight: 700;
+            color: var(--gold); margin-bottom: 4px;
+        }
+        .timeline-text {
+            font-size: 13px; color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── Grid Layouts ── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+        /* ── Comparison Table ── */
+        .comp-table {
+            width: 100%; border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius); overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+        .comp-table thead { background: var(--bg-elevated); }
+        .comp-table th {
+            padding: 14px 16px; font-size: 12px;
+            color: var(--gold); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            text-align: left; border-bottom: 1px solid var(--border);
+        }
+        .comp-table td {
+            padding: 12px 16px; font-size: 13px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .comp-table tr:hover td { background: var(--bg-card-hover); }
+        .comp-table .highlight { color: var(--gold); font-weight: 600; }
+        .comp-table .positive { color: var(--positive); }
+        .comp-table .negative { color: var(--negative); }
+
+        /* ── SWOT ── */
+        .swot-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .swot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .swot-card:hover { transform: translateY(-2px); border-color: var(--border); }
+        .swot-label {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px; font-weight: 700;
+            letter-spacing: 2px; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .swot-s .swot-label { color: var(--positive); }
+        .swot-w .swot-label { color: var(--negative); }
+        .swot-o .swot-label { color: var(--gold); }
+        .swot-t .swot-label { color: #e88d67; }
+        .swot-list { list-style: none; }
+        .swot-list li {
+            font-size: 13px; color: var(--text-secondary);
+            padding: 8px 0; line-height: 1.6;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; align-items: flex-start; gap: 8px;
+        }
+        .swot-list li:last-child { border-bottom: none; }
+        .swot-list li::before {
+            content: '›'; font-weight: 700; flex-shrink: 0;
+            margin-top: -1px;
+        }
+        .swot-s .swot-list li::before { color: var(--positive); }
+        .swot-w .swot-list li::before { color: var(--negative); }
+        .swot-o .swot-list li::before { color: var(--gold); }
+        .swot-t .swot-list li::before { color: #e88d67; }
+
+        /* ── Bar Chart ── */
+        .chart-container { margin-bottom: 28px; }
+        .chart-title {
+            font-size: 14px; font-weight: 600;
+            color: var(--text-light); margin-bottom: 16px;
+        }
+        .chart-bar-group { margin-bottom: 12px; }
+        .chart-bar-label {
+            font-size: 12px; color: var(--text-muted);
+            margin-bottom: 4px;
+            display: flex; justify-content: space-between;
+        }
+        .chart-bar-track {
+            height: 28px; background: var(--bg-elevated);
+            border-radius: 4px; overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            height: 100%; border-radius: 4px;
+            display: flex; align-items: center;
+            padding-left: 10px;
+            font-size: 11px; font-weight: 600; color: var(--bg-primary);
+            transition: width 0.8s ease;
+        }
+        .bar-gold { background: linear-gradient(90deg, var(--gold), #d4b97a); }
+        .bar-blue { background: linear-gradient(90deg, var(--blue), #7a9dbe); }
+        .bar-positive { background: linear-gradient(90deg, var(--positive), #6ed8d0); }
+
+        /* ── Score Badge ── */
+        .ai-score {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px; border-radius: 20px;
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,169,98,0.25);
+        }
+        .ai-score-label {
+            font-size: 12px; color: var(--gold);
+            font-weight: 500; letter-spacing: 0.5px;
+        }
+        .ai-score-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px; font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* ── Conclusion ── */
+        .conclusion-box {
+            background: linear-gradient(135deg, rgba(201,169,98,0.08) 0%, rgba(92,125,158,0.06) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+        }
+
+        /* ── Tag ── */
+        .tag {
+            display: inline-block; padding: 4px 12px;
+            background: var(--gold-dim); border-radius: 20px;
+            font-size: 11px; color: var(--gold); font-weight: 500;
+            margin: 2px 4px 2px 0;
+        }
+        .tag-blue {
+            background: var(--blue-dim); color: var(--blue);
+        }
+
+        /* ── Key Insight ── */
+        .key-insight {
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px; margin: 20px 0;
+            background: var(--gold-glow);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+        .key-insight p {
+            font-size: 14px; color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .key-insight strong { color: var(--text-light); }
+
+        /* ── Footer ── */
+        .site-footer {
+            max-width: 1100px; margin: 0 auto;
+            padding: 40px 40px 60px;
+            text-align: center;
+        }
+        .footer-logo { height: 24px; margin-bottom: 16px; opacity: 0.6; }
+        .footer-text {
+            font-size: 12px; color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .footer-divider {
+            width: 60px; height: 1px;
+            background: var(--border); margin: 20px auto;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero-company { font-size: 32px; }
+            .metric-grid { grid-template-columns: repeat(2, 1fr); }
+            .two-col, .swot-grid { grid-template-columns: 1fr; }
+            .three-col { grid-template-columns: 1fr; }
+            .report-section { padding: 40px 20px; }
+            .hero-section { padding: 80px 20px 40px; }
+            .header-inner { padding: 14px 20px; }
+            .comp-table { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════ -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="logo-group">
+            <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="logo-img">
+            <div class="logo-divider"></div>
+            <span class="logo-text">FLOVAH INSIGHTS</span>
+        </div>
+        <div class="header-date">
+            <i class="far fa-calendar-alt" style="margin-right:4px;"></i> June 8, 2026
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 1: 기업 개요 (Hero)
+     ═══════════════════════════════════════════════════════ -->
+<section class="hero-section">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <i class="fas fa-microchip"></i>
+            KOSPI · 전자부품 · PCB
+        </div>
+        <h1 class="hero-company">코리아써키트</h1>
+        <div class="hero-code">007810 · Korea Circuit Co., Ltd.</div>
+        <p class="hero-subtitle">AI·반도체 인프라의 핵심, 글로벌 PCB 기술 리더</p>
+
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px;flex-wrap:wrap;">
+            <div class="ai-score">
+                <span class="ai-score-label">FLOVAH Score</span>
+                <span class="ai-score-value">72</span>
+            </div>
+            <div class="tag">PCB</div>
+            <div class="tag">AI 반도체</div>
+            <div class="tag">메모리모듈</div>
+            <div class="tag tag-blue">FC-BGA</div>
+            <div class="tag tag-blue">HDI</div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">2025 매출</div>
+                <div class="metric-value">1.51조</div>
+                <div class="metric-sub">+7.3% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2025 영업이익</div>
+                <div class="metric-value">538억</div>
+                <div class="metric-sub">+262% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">2026E 영업이익</div>
+                <div class="metric-value">1,351억</div>
+                <div class="metric-sub">+151% YoY</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">설립</div>
+                <div class="metric-value">54년</div>
+                <div class="metric-sub">Since 1972</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 기업 개요 본문 -->
+<section class="report-section">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-building"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 01</div>
+            <h2 class="section-title">기업 개요</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-info-circle"></i> 회사 소개</div>
+        <div class="card-text">
+            <p>코리아써키트(Korea Circuit Co., Ltd.)는 1972년에 설립된 대한민국 대표 인쇄회로기판(PCB) 전문 제조기업이다. 54년간 축적된 기술력을 바탕으로 반도체 PKG 기판, HDI(High Density Interconnect), FPCB(연성 인쇄회로기판), LED PCB 등 다양한 고부가가치 PCB 제품을 생산하고 있다.</p>
+            <br>
+            <p>최근에는 AI 서버용 메모리모듈 PCB와 엔비디아 소캠2(SOCAM2) 관련 기판, 브로드컴 AI 가속기향 FC-BGA(Flip Chip Ball Grid Array) 기판 등 차세대 반도체 인프라 핵심 부품 공급업체로 부상하고 있다. 2025년 매출 1.51조원, 영업이익 538억원을 기록하며 전년 대비 영업이익이 262% 성장하는 괄목할 실적을 시현했다.</p>
+            <br>
+            <p>본사는 경기도 안산시에 위치하며, 안산·화성·베트남 공장 등 글로벌 생산 거점을 확보하고 있다. 코스피(KOSPI)에 상장되어 있으며, 시가총액은 약 2.5조원 수준이다. AI 반도체 인프라 확대에 따른 구조적 수혜가 기대되며, 2026년 영업이익 1,351억원이 전망되는 고성장 궤도에 진입했다.</p>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-sitemap"></i> 사업 구조</div>
+        <div class="card-text">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">주력 사업</div>
+                    <div style="font-size:15px;color:var(--text-light);font-weight:600;">PCB 제조</div>
+                    <div style="font-size:12px;color:var(--gold);margin-top:4px;">매출 비중 85%+</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">생산 거점</div>
+                    <div style="font-size:15px;color:var(--text-light);font-weight:600;">3개 공장</div>
+                    <div style="font-size:12px;color:var(--blue);margin-top:4px;">안산·화성·베트남</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">종업원 수</div>
+                    <div style="font-size:15px;color:var(--text-light);font-weight:600;">4,500+</div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">국내외 합산</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="key-insight">
+        <p><strong>핵심 포인트:</strong> 코리아써키트는 54년간 축적된 PCB 기술력을 기반으로, 엔비디아 소캠2와 브로드컴 FC-BGA 등 AI 반도체 핵심 기판을 공급하며 <strong>AI 인프라 밸류체인의 핵심 플레이어</strong>로 부상하고 있다.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-history"></i> 주요 연혁</div>
+        <div class="timeline" style="margin-top:20px;">
+            <div class="timeline-item">
+                <div class="timeline-year">1972</div>
+                <div class="timeline-text">코리아써키트 설립 — 국내 최초 PCB 전문 제조사 출범</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1988</div>
+                <div class="timeline-text">코스피(KOSPI) 시장 상장, 본격적 외형 성장 시작</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2000</div>
+                <div class="timeline-text">HDI(다층 고밀도 기판) 생산라인 구축, 모바일·IT 시장 대응</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-text">베트남 생산법인 설립, 글로벌 원가 경쟁력 확보</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2018</div>
+                <div class="timeline-text">서버용 메모리모듈 PCB 양산 시작, 데이터센터 시장 진출</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-text">FC-BGA(플립칩 볼그리드어레이) 기판 개발 착수, AI 가속기 시장 대응</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-text">연간 영업이익 538억원(+262%) 달성, 흑자전환 기조 확립</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-text">엔비디아 소캠2 출하 개시, 브로드컴 AI향 FC-BGA 진입 기대</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 2: 기술 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-cogs"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 02</div>
+            <h2 class="section-title">기술 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="two-col">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-memory"></i> 서버 메모리모듈 PCB</div>
+            <div class="card-text">
+                <p>코리아써키트의 핵심 성장 동력은 서버용 DDR5 메모리모듈 PCB이다. AI 서버 1대당 사용되는 메모리 용량이 기존 서버 대비 4~8배 증가하면서, 메모리모듈 PCB 수요가 구조적으로 확대되고 있다.</p>
+                <br>
+                <p>특히 엔비디아 소캠2(SOCAM2)는 기존 서버용 DDR5 모듈 기판보다 구조적으로 더 고도화된 제품으로, 일반 모듈 PCB 대비 <strong style="color:var(--gold);">최대 3배에 달하는 단가</strong>가 기대된다. 2026년 상반기부터 소캠2 출하가 시작되며, 이는 코리아써키트의 ASP(평균판매단가)를 획기적으로 끌어올릴 전망이다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-microchip"></i> FC-BGA 기판 기술</div>
+            <div class="card-text">
+                <p>FC-BGA(Flip Chip Ball Grid Array)는 고성능 반도체 칩을 패키징하는 핵심 기판 기술이다. 코리아써키트는 브로드컴과의 전략적 협력을 통해 AI 가속기 ASIC향 FC-BGA 기판 시장에 진출을 준비하고 있다.</p>
+                <br>
+                <p>현재 테스트 단계가 긍정적으로 진행되고 있으며, 2026년 하반기부터 본격적인 매출 기여가 예상된다. FC-BGA는 기존 PCB 대비 높은 기술 장벽과 높은 수익성을 갖추고 있어, 코리아써키트의 <strong style="color:var(--gold);">제품 포트폴리오 고도화</strong>에 핵심 역할을 할 전망이다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-layer-group"></i> HDI 기판 기술력</div>
+        <div class="card-text">
+            <p>HDI(High Density Interconnect) 기판은 스마트폰, 태블릿, 웨어러블 기기 등 소형화·고밀도화가 요구되는 전자기기에 필수적인 고부가가치 PCB이다. 코리아써키트는 수십 년간 축적된 미세회로 패터닝 기술과 레이저 비아 가공 기술을 보유하고 있다.</p>
+            <br>
+            <p>2026년 1분기에도 HDI 부문은 높은 가동률을 유지하며 안정적인 수익 기반 역할을 수행했다. 스마트폰 시장의 AI 온디바이스 트렌드에 따라 SoC 복잡도가 증가하면서 HDI 기판의 레이어 수 증가와 단가 상승이 동반될 전망이다.</p>
+        </div>
+    </div>
+
+    <div class="key-insight">
+        <p><strong>기술 전망:</strong> 소캠2(3배 ASP)와 FC-BGA(AI ASIC향)의 이중 성장 엔진이 2026년 하반기부터 본격 가동되며, 코리아써키트의 기술적 해자(moat)가 더욱 강화될 것으로 판단된다.</p>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-flask"></i> R&D 및 특허 현황</div>
+        <div class="card-text">
+            <p>코리아써키트는 매출액의 약 3~4%를 연구개발에 투자하며, 반도체 패키징 기판의 미세화·고다층화 기술 개발에 집중하고 있다. 주요 기술 역량으로는 ▲ 미세회로 L/S(Line & Space) 패터닝 ▲ 레이저 비아(via) 가공 ▲ 고다층 기판 적층 기술 ▲ 임베디드 부품 기술 등이 있다.</p>
+            <br>
+            <p>특히 차세대 AI 서버용 기판에 요구되는 고주파 특성, 열관리 성능, 신호 무결성(Signal Integrity) 관련 기술 개발을 가속하고 있다. 이를 통해 엔비디아, 브로드컴 등 글로벌 반도체 빅테크와의 협력 기반을 강화하고 있다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 3: 시장 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 03</div>
+            <h2 class="section-title">시장 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-globe"></i> 글로벌 PCB 시장 전망</div>
+        <div class="card-text">
+            <p>글로벌 PCB 시장은 2025년 약 850억 달러 규모에서 2028년까지 약 1,050억 달러로 성장할 것으로 전망된다(CAGR 약 7%). 특히 AI 서버, 자율주행, 5G 인프라 등 고부가가치 영역의 PCB 수요가 시장 성장을 견인하고 있다.</p>
+            <br>
+            <p>AI 서버용 PCB는 기존 일반 서버 대비 기판 면적과 레이어 수가 2~3배 증가하며, 단가도 비례적으로 상승한다. 엔비디아의 블랙웰(Blackwell) GPU 플랫폼과 차세대 루빈(Rubin) 아키텍처의 수요 강세가 지속되면서 AI향 PCB 시장은 연간 20% 이상의 고성장이 전망된다.</p>
+        </div>
+    </div>
+
+    <div class="two-col">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-server"></i> AI 서버 인프라 시장</div>
+            <div class="card-text">
+                <p>글로벌 AI 서버 시장은 2026년 약 2,500억 달러 규모로, 전년 대비 30% 이상 성장이 예상된다. 엔비디아, AMD, 브로드컴 등 반도체 기업의 AI 가속기 수요 폭발이 PCB 산업 전반에 강한 상승 동력을 제공하고 있다.</p>
+                <br>
+                <p>특히 HBM(High Bandwidth Memory) 용량 확대에 따른 메모리모듈 PCB 수요와, 커스텀 AI ASIC 확산에 따른 FC-BGA 기판 수요가 동시에 증가하는 구조적 변화가 진행 중이다. 코리아써키트는 이 두 가지 트렌드 모두에서 수혜가 기대되는 위치에 있다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-won-sign"></i> 국내 PCB 산업 동향</div>
+            <div class="card-text">
+                <p>국내 PCB 산업은 삼성전기, LG이노텍 등 대기업과 대덕전자, 심텍, 코리아써키트 등 전문 PCB 기업이 경쟁하는 구도이다. 최근에는 AI 서버향 고부가 기판 수주 확보가 업체별 실적 차별화의 핵심 변수로 부상했다.</p>
+                <br>
+                <p>원/달러 환율이 1,400원대 후반을 유지하면서 수출 비중이 높은 PCB 업체들의 원화 환산 매출에 긍정적 영향을 미치고 있다. 다만, 구리·유리섬유 등 원자재 가격 변동성은 지속적인 리스크 요인으로 관리가 필요하다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-chart-area"></i> 주요 수요처별 시장 규모</div>
+        <div class="card-text">
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>AI 서버 / 데이터센터</span><span style="color:var(--gold);">35%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:85%;">급성장</div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>스마트폰 / 모바일</span><span style="color:var(--blue);">25%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:62%;">안정 성장</div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>자동차 / 전장</span><span style="color:var(--positive);">18%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-positive" style="width:45%;">확대 중</div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>산업용 / 기타</span><span style="color:var(--text-muted);">22%</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill" style="width:55%;background:linear-gradient(90deg,#666,#888);">보합</div></div>
+                </div>
+            </div>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">* AI 서버/데이터센터향 PCB 수요는 2024~2028년 CAGR 20% 이상 성장 전망</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 4: 경쟁사 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-users"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 04</div>
+            <h2 class="section-title">경쟁사 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-table"></i> 주요 경쟁사 비교</div>
+        <div style="overflow-x:auto;">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>기업</th>
+                        <th>시가총액</th>
+                        <th>2025 매출</th>
+                        <th>2025 영업이익</th>
+                        <th>주력 분야</th>
+                        <th>AI 노출도</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="highlight">코리아써키트</td>
+                        <td>2.5조</td>
+                        <td>1.51조</td>
+                        <td>538억</td>
+                        <td>서버 모듈 PCB, FC-BGA</td>
+                        <td class="positive">★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td>삼성전기</td>
+                        <td>14조</td>
+                        <td>10.2조</td>
+                        <td>8,100억</td>
+                        <td>MLCC, SLP, FC-BGA</td>
+                        <td class="positive">★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td>대덕전자</td>
+                        <td>2.8조</td>
+                        <td>1.2조</td>
+                        <td>420억</td>
+                        <td>반도체 PKG 기판</td>
+                        <td>★★★☆☆</td>
+                    </tr>
+                    <tr>
+                        <td>LG이노텍</td>
+                        <td>11조</td>
+                        <td>21.8조</td>
+                        <td>1.1조</td>
+                        <td>카메라모듈, HDI</td>
+                        <td>★★★☆☆</td>
+                    </tr>
+                    <tr>
+                        <td>심텍</td>
+                        <td>1.5조</td>
+                        <td>1.1조</td>
+                        <td>380억</td>
+                        <td>메모리 PCB, FC-BGA</td>
+                        <td class="positive">★★★★☆</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-trophy"></i> 경쟁 우위 요소</div>
+            <div class="card-text">
+                <p><strong style="color:var(--text-light);">1. 수직 계열화된 생산 역량</strong></p>
+                <p>PCB 설계부터 원자재 가공, 양산까지 일관 생산체제를 구축하여 품질 관리와 납기 대응에서 차별화된 경쟁력을 보유하고 있다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">2. 글로벌 빅테크 직접 공급</strong></p>
+                <p>엔비디아 소캠2와 브로드컴 FC-BGA 등 글로벌 반도체 선도 기업과의 직접 공급 관계를 확보한 것은 PCB 업종 내 강력한 진입장벽이 된다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">3. 원가 경쟁력</strong></p>
+                <p>베트남 생산법인을 통한 원가 절감과 안산·화성 국내 공장의 고부가 제품 집중 생산 체제가 이원화된 경쟁력을 제공한다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-balance-scale"></i> 경쟁 구도 평가</div>
+            <div class="card-text">
+                <p><strong style="color:var(--text-light);">삼성전기 vs 코리아써키트:</strong> 삼성전기는 MLCC·SLP 등 다각화된 포트폴리오와 압도적 규모를 보유하나, 서버 메모리모듈 PCB 시장에서는 코리아써키트의 전문성이 강점으로 작용한다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">심텍 vs 코리아써키트:</strong> 심텍과는 메모리 PCB에서 직접 경쟁 관계이나, 코리아써키트는 소캠2 등 고부가 제품에서 선점 우위를 확보 중이다.</p>
+                <br>
+                <p><strong style="color:var(--text-light);">대덕전자 vs 코리아써키트:</strong> 반도체 PKG 기판에서 경쟁하나, 코리아써키트는 서버 메모리모듈이라는 명확한 성장 영역에서 차별화하고 있다.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 5: SWOT 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-th-large"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 05</div>
+            <h2 class="section-title">SWOT 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="swot-grid">
+        <div class="swot-card swot-s">
+            <div class="swot-label">
+                <i class="fas fa-shield-alt"></i> STRENGTHS — 강점
+            </div>
+            <ul class="swot-list">
+                <li>54년 PCB 기술 축적, 미세회로 패터닝 핵심 역량 보유</li>
+                <li>엔비디아 소캠2 · 브로드컴 FC-BGA 등 AI 인프라 핵심 공급처</li>
+                <li>서버 메모리모듈 PCB 분야 국내 Top-tier 기술력</li>
+                <li>베트남 생산법인 통한 글로벌 원가 경쟁력 확보</li>
+                <li>안산·화성 2개 국내 공장의 이원화된 생산 체제</li>
+            </ul>
+        </div>
+        <div class="swot-card swot-w">
+            <div class="swot-label">
+                <i class="fas fa-exclamation-triangle"></i> WEAKNESSES — 약점
+            </div>
+            <ul class="swot-list">
+                <li>삼성전기·LG이노텍 대비 절대적 규모 열세 (시총 2.5조 vs 14조)</li>
+                <li>매출 구조의 PCB 단일 사업 의존도 높음</li>
+                <li>FC-BGA는 아직 초기 단계, 양산 실적 검증 필요</li>
+                <li>영업이익률 3.6%(2025년)으로 업계 평균 대비 개선 여지 상존</li>
+                <li>R&D 투자 규모가 대기업 대비 제한적</li>
+            </ul>
+        </div>
+        <div class="swot-card swot-o">
+            <div class="swot-label">
+                <i class="fas fa-rocket"></i> OPPORTUNITIES — 기회
+            </div>
+            <ul class="swot-list">
+                <li>AI 서버 PCB 수요 폭발적 성장 (연 20%+ CAGR)</li>
+                <li>소캠2 양산 → ASP 3배 상승 효과로 수익성 레벨업</li>
+                <li>브로드컴 FC-BGA 진입 시 AI ASIC 시장 신규 성장 동력 확보</li>
+                <li>HBM 용량 확대에 따른 메모리모듈 PCB 구조적 수혜</li>
+                <li>차세대 엔비디아 루빈(Rubin) 플랫폼향 선제적 대응 기회</li>
+            </ul>
+        </div>
+        <div class="swot-card swot-t">
+            <div class="swot-label">
+                <i class="fas fa-bolt"></i> THREATS — 위협
+            </div>
+            <ul class="swot-list">
+                <li>구리·유리섬유 등 원자재 가격 변동성에 따른 마진 압박</li>
+                <li>중국 PCB 업체의 기술 추격 및 저가 공세</li>
+                <li>미중 관세 갈등 확대에 따른 글로벌 공급망 불확실성</li>
+                <li>AI 투자 사이클 둔화 시 서버 PCB 수요 급감 리스크</li>
+                <li>삼성전기·심텍 등 국내 경쟁사의 동일 시장 진출 가속</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 6: 전략 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chess"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 06</div>
+            <h2 class="section-title">전략 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-bullseye"></i> 핵심 성장 전략</div>
+        <div class="card-text">
+            <p>코리아써키트의 중장기 성장 전략은 크게 세 가지 축으로 구성된다. 첫째, AI 서버용 고부가 PCB 포트폴리오 확대를 통한 ASP 향상이다. 엔비디아 소캠2의 양산 안착과 브로드컴 FC-BGA 진입을 통해 제품 믹스를 고부가 중심으로 전환하고 있다.</p>
+            <br>
+            <p>둘째, 생산 캐파(CAPA) 확충이다. AI 서버향 PCB 수요 급증에 대응하기 위해 기존 안산·화성 공장의 라인 증설과 베트남 법인의 생산능력 확대를 추진하고 있다. 2026년 영업이익 1,351억원 달성을 위한 물리적 기반 확보가 핵심이다.</p>
+            <br>
+            <p>셋째, 글로벌 고객사 다변화이다. 엔비디아, 브로드컴 외에도 AMD, 인텔, 구글(TPU) 등 다양한 AI 반도체 기업과의 접점을 넓혀 매출 안정성을 제고하는 전략이다.</p>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-arrow-up"></i> 단기 전략 (2026~2027)</div>
+            <div class="card-text">
+                <p><strong style="color:var(--gold);">① 소캠2 양산 극대화:</strong> 2026년 상반기 출하 시작과 함께 생산 안정화에 주력. 고단가 제품 비중 확대를 통해 영업이익률 8% 이상 목표.</p>
+                <br>
+                <p><strong style="color:var(--gold);">② FC-BGA 양산 진입:</strong> 브로드컴 AI 가속기향 FC-BGA 기판의 테스트 통과 후 하반기 본격 양산 준비. 신규 성장 축 확보.</p>
+                <br>
+                <p><strong style="color:var(--gold);">③ HDI 가동률 유지:</strong> 기존 HDI·FPCB 사업의 높은 가동률을 유지하며 안정적 현금흐름 확보. AI 온디바이스 트렌드 대응.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-binoculars"></i> 중장기 전략 (2028~2030)</div>
+            <div class="card-text">
+                <p><strong style="color:var(--blue);">① 차세대 반도체 기판 R&D:</strong> 엔비디아 루빈(Rubin), 2nm 이하 공정 대응 기판 기술 확보. 유리 기판(Glass Core) 등 차세대 소재 연구.</p>
+                <br>
+                <p><strong style="color:var(--blue);">② 글로벌 생산 거점 확대:</strong> 베트남 제2공장 또는 동남아 신규 거점 확보 검토. 고객사 요구에 부합하는 지정학적 리스크 분산 체계 구축.</p>
+                <br>
+                <p><strong style="color:var(--blue);">③ 사업 포트폴리오 다각화:</strong> PCB 외 반도체 후공정 재료, 기판 재료 등 인접 영역으로의 확장 검토를 통해 매출 안정성 제고.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="key-insight" style="margin-top:20px;">
+        <p><strong>전략 핵심 판단:</strong> 코리아써키트의 2026년은 소캠2 양산 안착과 FC-BGA 진입이라는 '더블 카탈리스트'가 작동하는 변곡점이다. 이 두 가지의 성공적 실행 여부가 중장기 기업가치를 결정할 핵심 변수이다.</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 7: 재무 분석
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-chart-bar"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 07</div>
+            <h2 class="section-title">재무 분석</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-coins"></i> 매출 추이 (2021~2026E)</div>
+        <div class="card-text">
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2021</span><span style="color:var(--text-light);">1.32조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:62%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2022</span><span style="color:var(--text-light);">1.45조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:68%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2023</span><span style="color:var(--text-light);">1.35조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:64%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2024</span><span style="color:var(--text-light);">1.41조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:66%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2025</span><span style="color:var(--text-light);">1.51조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:71%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2026E</span><span style="color:var(--gold);">1.70조</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:80%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-chart-line"></i> 영업이익 추이 (2021~2026E)</div>
+        <div class="card-text">
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2021</span><span style="color:var(--text-light);">312억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:23%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2022</span><span style="color:var(--negative);">-180억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill" style="width:8%;background:var(--negative);"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2023</span><span style="color:var(--negative);">-320억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill" style="width:5%;background:var(--negative);"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2024</span><span style="color:var(--text-light);">149억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:11%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2025</span><span style="color:var(--text-light);">538억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:40%;"></div></div>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar-label"><span>2026E</span><span style="color:var(--gold);">1,351억</span></div>
+                    <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:100%;"></div></div>
+                </div>
+            </div>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">* 2022~2023 영업적자 → 2024 흑자전환 → 2025~2026 본격 이익 성장 궤도</p>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-percentage"></i> 수익성 지표</div>
+            <div class="card-text">
+                <div class="chart-container">
+                    <div class="chart-title">영업이익률 추이</div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2024</span><span>1.1%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:11%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2025</span><span>3.6%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:36%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>2026E</span><span style="color:var(--gold);">7.9%</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:79%;"></div></div>
+                    </div>
+                </div>
+                <p style="margin-top:12px;font-size:13px;">소캠2 양산과 FC-BGA 진입에 따른 제품 믹스 개선으로 영업이익률이 가파르게 상승하는 구간에 진입했다. 2027년에는 10%대 진입이 기대된다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-search-dollar"></i> 밸류에이션</div>
+            <div class="card-text">
+                <div class="chart-container">
+                    <div class="chart-title">P/E 비교 (2026E 기준)</div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>코리아써키트</span><span style="color:var(--gold);">13.5x</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-gold" style="width:45%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>PCB 업종 평균</span><span>18.0x</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-blue" style="width:60%;"></div></div>
+                    </div>
+                    <div class="chart-bar-group">
+                        <div class="chart-bar-label"><span>AI 수혜 업종</span><span>25.0x</span></div>
+                        <div class="chart-bar-track"><div class="chart-bar-fill bar-positive" style="width:83%;"></div></div>
+                    </div>
+                </div>
+                <p style="margin-top:12px;font-size:13px;">대신증권 분석에 따르면 2026년 EPS 기준 P/E 13.5배로 PCB 업종 내 <strong style="color:var(--gold);">현저한 저평가</strong> 상태이다. 증권사 목표주가 82,000~105,000원.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-file-invoice-dollar"></i> 2026년 1분기 실적 요약</div>
+        <div class="card-text">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">매출액</div>
+                    <div style="font-family:'Orbit';font-size:22px;color:var(--text-light);font-weight:700;">4,199억</div>
+                    <div style="font-size:12px;color:var(--positive);margin-top:4px;">+18% YoY</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">영업이익</div>
+                    <div style="font-family:'Orbit';font-size:22px;color:var(--text-light);font-weight:700;">264억</div>
+                    <div style="font-size:12px;color:var(--positive);margin-top:4px;">흑자전환</div>
+                </div>
+                <div style="text-align:center;padding:16px;background:var(--bg-elevated);border-radius:8px;">
+                    <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">영업이익률</div>
+                    <div style="font-family:'Orbit';font-size:22px;color:var(--text-light);font-weight:700;">6.3%</div>
+                    <div style="font-size:12px;color:var(--positive);margin-top:4px;">개선 지속</div>
+                </div>
+            </div>
+            <p>서버향 메모리모듈 매출 확대와 HDI의 높은 가동률 유지로 전분기 대비 수익성이 개선되었다. 소캠2 출하 본격화 이전 단계임에도 견조한 실적을 시현했다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 8: 결론 및 투자 의견
+     ═══════════════════════════════════════════════════════ -->
+<section class="report-section" style="padding-top:0;">
+    <div class="section-header">
+        <div class="section-icon"><i class="fas fa-flag-checkered"></i></div>
+        <div class="section-title-group">
+            <div class="section-number">Section 08</div>
+            <h2 class="section-title">결론 및 투자 의견</h2>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="conclusion-box">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <div class="ai-score">
+                <span class="ai-score-label">FLOVAH Score</span>
+                <span class="ai-score-value">72</span>
+            </div>
+            <div style="font-size:14px;color:var(--text-secondary);">
+                <strong style="color:var(--gold);">긍정적 (Positive)</strong> — AI 반도체 인프라 구조적 수혜주
+            </div>
+        </div>
+
+        <div class="card-text" style="margin-bottom:24px;">
+            <p><strong style="color:var(--text-light);font-size:16px;">종합 평가</strong></p>
+            <br>
+            <p>코리아써키트는 54년간 축적된 PCB 기술 역량을 기반으로, AI 반도체 인프라 확대의 핵심 수혜주로 부상하고 있다. 엔비디아 소캠2 양산 시작(2026 상반기)과 브로드컴 FC-BGA 진입(2026 하반기)이라는 두 가지 강력한 성장 카탈리스트를 보유하고 있으며, 이에 따라 2026년 영업이익 1,351억원(+151% YoY)이 전망된다.</p>
+            <br>
+            <p>현재 2026년 기준 P/E 13.5배로 PCB 업종 평균 18배, AI 수혜 업종 평균 25배 대비 현저한 저평가 상태이다. 다만, FC-BGA 양산의 실제 진행 상황과 AI 투자 사이클의 지속성은 지속적인 모니터링이 필요한 리스크 요인이다.</p>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <div style="font-size:13px;font-weight:600;color:var(--positive);margin-bottom:12px;">
+                    <i class="fas fa-check-circle"></i> 긍정 요인
+                </div>
+                <ul style="list-style:none;font-size:13px;color:var(--text-secondary);line-height:2;">
+                    <li>• 소캠2 ASP 3배 프리미엄 → 수익성 레벨업</li>
+                    <li>• 브로드컴 FC-BGA 신규 성장 동력 확보</li>
+                    <li>• AI 서버 PCB 구조적 수요 확대</li>
+                    <li>• P/E 13.5배 현저한 저평가</li>
+                    <li>• 증권사 목표주가 82,000~105,000원</li>
+                </ul>
+            </div>
+            <div>
+                <div style="font-size:13px;font-weight:600;color:var(--negative);margin-bottom:12px;">
+                    <i class="fas fa-exclamation-circle"></i> 리스크 요인
+                </div>
+                <ul style="list-style:none;font-size:13px;color:var(--text-secondary);line-height:2;">
+                    <li>• FC-BGA 양산 일정 지연 가능성</li>
+                    <li>• 원자재(구리·유리섬유) 가격 변동</li>
+                    <li>• 미중 무역갈등에 따른 공급망 리스크</li>
+                    <li>• AI 투자 사이클 둔화 가능성</li>
+                    <li>• 국내 경쟁사 진출에 따른 경쟁 심화</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:24px;">
+        <div class="card-text" style="font-size:11px;color:var(--text-muted);line-height:1.8;">
+            <strong style="color:var(--text-secondary);">면책사항(Disclaimer):</strong> 본 리포트는 FLOVAH Insights에서 제공하는 기업분석 자료로, 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다. 투자 판단의 최종 책임은 투자자 본인에게 있으며, 본 자료의 정확성이나 완전성을 보장하지 않습니다. 과거 실적이 미래 수익을 보장하지 않으며, 투자에는 원금 손실의 위험이 수반됩니다.
+            <br><br>
+            <strong>FLOVAH Insights</strong> | 최종 업데이트: 2026년 06월 08일 09:00 KST
+        </div>
+    </div>
+</section>
+
+<!-- Additional Analysis: 산업 밸류체인 포지셔닝 -->
+<section class="report-section" style="padding-top:0;">
+    <div class="content-card">
+        <div class="card-title"><i class="fas fa-project-diagram"></i> AI 반도체 밸류체인 내 포지셔닝</div>
+        <div class="card-text">
+            <p>코리아써키트는 AI 반도체 밸류체인에서 '기판(Substrate)' 영역의 핵심 공급업체로 자리잡고 있다. 반도체 밸류체인은 크게 설계(Design) → 제조(Fabrication) → 패키징(Packaging) → 기판(Substrate) → 모듈(Module)로 구분되며, 코리아써키트는 기판과 모듈 두 영역을 동시에 커버하는 독보적 위치에 있다.</p>
+            <br>
+            <p><strong style="color:var(--text-light);">서버 메모리모듈 PCB:</strong> 삼성전자·SK하이닉스가 생산한 HBM/DDR5 메모리를 서버에 장착하기 위한 모듈 기판을 공급한다. AI 서버 1대당 탑재되는 메모리 용량이 기존 서버 대비 4~8배 증가하면서, 모듈 PCB 수요가 구조적으로 확대되는 국면이다.</p>
+            <br>
+            <p><strong style="color:var(--text-light);">FC-BGA 기판:</strong> 브로드컴 등 팹리스 기업이 설계한 AI ASIC(주문형 반도체)를 패키징하기 위한 고부가 기판이다. 기존 TSMC 등 파운드리의 첨단 패키징 기술과 연계되어 차세대 반도체 생태계의 필수 요소로 부상 중이다.</p>
+        </div>
+    </div>
+
+    <div class="three-col" style="margin-top:20px;">
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-microchip"></i> 엔비디아 생태계</div>
+            <div class="card-text">
+                <p>엔비디아의 GPU 서버는 대량의 DDR5 메모리모듈을 필요로 하며, 소캠2는 이를 위한 차세대 고성능 모듈 기판이다. 블랙웰(B200) → 루빈(Rubin)으로 이어지는 GPU 로드맵에 따라 메모리 대역폭과 용량 요구가 지속 증가할 전망이다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-network-wired"></i> 브로드컴 생태계</div>
+            <div class="card-text">
+                <p>브로드컴은 구글 TPU, 메타 MTIA 등 빅테크 기업의 커스텀 AI 가속기를 설계·공급하는 핵심 파트너이다. 이들 AI ASIC에 사용되는 FC-BGA 기판은 높은 층수와 미세 패턴이 요구되며, 코리아써키트의 기술 진입이 기대된다.</p>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-title"><i class="fas fa-hdd"></i> 메모리 생태계</div>
+            <div class="card-text">
+                <p>삼성전자·SK하이닉스의 HBM3E → HBM4 전환에 따라 메모리 패키징 기판의 복잡도가 증가하고 있다. 고대역폭 메모리의 인터포저(interposer)와 모듈 기판 기술이 점차 고도화되면서, 코리아써키트의 기술 해자가 강화될 전망이다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card" style="margin-top:20px;">
+        <div class="card-title"><i class="fas fa-exclamation-circle"></i> 주요 모니터링 포인트</div>
+        <div class="card-text">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--gold);">
+                    <div style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:6px;">소캠2 양산 일정</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">2026년 상반기 출하 시작 예정. 양산 안정화 속도와 수율이 핵심 변수.</div>
+                </div>
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--blue);">
+                    <div style="font-size:12px;color:var(--blue);font-weight:600;margin-bottom:6px;">FC-BGA 테스트 결과</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">브로드컴 AI 가속기향 FC-BGA 기판 테스트 통과 여부. 하반기 양산 진입 핵심.</div>
+                </div>
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--positive);">
+                    <div style="font-size:12px;color:var(--positive);font-weight:600;margin-bottom:6px;">AI 서버 투자 사이클</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">빅테크 기업의 AI 인프라 CAPEX 지속 여부. 둔화 시 PCB 수요 직접 영향.</div>
+                </div>
+                <div style="padding:16px;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--negative);">
+                    <div style="font-size:12px;color:var(--negative);font-weight:600;margin-bottom:6px;">원자재 가격 동향</div>
+                    <div style="font-size:13px;color:var(--text-secondary);">구리·유리섬유 가격 변동성. 원자재 비용 상승 시 영업이익률 하방 압력.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-06-08 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>미중 관세 갈등 확대와 외국인 매도세로 코스피 급락. 기술적 반등 기대감은 유지되나 변동성 관리 필수.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">반도체·AI</div>HBM·AI 반도체 구조적 성장세 유지. 엔비디아 블랙웰 수요 강세 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">매크로 변수</div>원/달러 환율 1,400원대 후반, 한은 금리 인하 기대감과 인플레이션 우려 병존.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>방산·조선 수주잔고 확대. 바이오 섹터 글로벌 임상 결과 시즌 돌입.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 08일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+
+<!-- Footer -->
+<footer class="site-footer">
+    <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" class="footer-logo">
+    <div class="footer-divider"></div>
+    <div class="footer-text">
+        FLOVAH Insights — Premium Company Analysis<br>
+        본 리포트의 무단 복제 및 배포를 금합니다.<br>
+        &copy; 2026 FLOVAH. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>

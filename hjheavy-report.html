@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HJ중공업 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul { list-style: none; }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">June 8, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & 기업 개요 -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">HJ중공업 <span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">방산 함정의 자존심, 조선·건설 동반 부활로 폭발적 실적 전환</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">55</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">FLOVAH 종합 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 전환 역량 및 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">2.0조</div>
+                            <div class="metric-label">매출(2025)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">670억</div>
+                            <div class="metric-label">영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.75조</div>
+                            <div class="metric-label">수주잔고</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">89년</div>
+                            <div class="metric-label">설립 이후</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> HJ중공업 기업 소개</h3>
+                <p>HJ중공업(종목코드 097230)은 1937년 부산 영도에서 조선소로 출발한 89년 역사의 조선·건설 기업입니다. 과거 한진중공업으로 알려졌으며, 2019년 한진그룹에서 분리되어 HJ그룹으로 독립 출범했습니다. 현재 조선부문과 건설부문의 투 트랙(Two-Track) 사업 구조를 갖추고 있으며, 특히 대한민국 해군 함정 건조 분야에서 독보적인 위치를 점하고 있습니다.</p>
+                <p>2025년 연결 기준 매출 1조 9,997억원, 영업이익 670억원을 기록하여 전년 대비 매출 6% 증가, 영업이익 824.8% 급증이라는 폭발적 실적 전환을 이뤄냈습니다. 당기순이익 역시 514억원으로 전년 대비 884.6% 증가했습니다. 이는 조선부문 매출 증가와 이익구조 대폭 개선이 주된 원인으로, 5년 만에 영업이익이 500억원대를 상회한 것입니다.</p>
+                <p>매출 구성은 조선 43.18%, 건설 55.75%, 기타 1.07%로 건설 비중이 아직 높으나, 조선부문 매출 비중이 2022년 18%에서 급격히 회복되면서 두 사업이 균형잡힌 성장을 보이고 있습니다. 국내 함정 방위산업체 1호이자 공기부양 고속상륙정을 국내에서 유일하게 건조할 수 있는 기업으로, K-방산 수출 확대의 핵심 수혜주로 평가받고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 핵심 사업 구조</h3>
+                <p><strong>조선부문:</strong> HJ중공업의 조선 사업은 해군 함정과 해경 경비함 등 방산 분야가 핵심입니다. 해군이 발주한 신형 고속정(PKX-B) 32척과 공기부양식 고속상륙정(LSF-II) 8척을 전량 수주·건조한 실적을 보유하고 있으며, 이는 국내에서 유일한 역량입니다. 상선 분야에서는 중소형 벌크선, 컨테이너선 등을 건조하고 있으며, 2024년 역대 최대 수주(1.75조원)를 달성하여 향후 3~4년치 일감을 확보했습니다.</p>
+                <p><strong>건설부문:</strong> 주거·상업용 건축과 토목 사업을 영위하며, '영도 더 클래스', '해운대 더 클래스' 등 자체 브랜드 주거 사업을 전개하고 있습니다. 2024년 건설부문 수주는 2.5조원으로 연간 목표를 초과 달성했습니다. 부산 지역을 중심으로 한 지역 밀착형 건설 사업과 SOC 인프라 사업이 주력이며, 최근에는 수도권 진출도 확대하고 있습니다.</p>
+                <p><strong>방산부문:</strong> 해군 함정 건조를 넘어 함정 유지보수(MRO), 해양 방산 시스템 통합, 무인수상정(USV) 개발 등으로 사업 영역을 확장하고 있습니다. K-방산 수출이 확대됨에 따라 동남아·중동 국가 해군 함정 수출 기회도 모색 중입니다. 국방부의 해군력 증강 계획에 따른 차기 호위함, 경항공모함 사업 참여도 추진하고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1937년</div>
+                        <div class="timeline-text">부산 영도에 조선소 설립 - 일제강점기 조선 산업의 태동, 한반도 근대 조선업의 시작점</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1950년대</div>
+                        <div class="timeline-text">한국전쟁 후 재건 - 전후 복구 사업과 함께 조선소 재건, 해군 함정 수리 사업 시작</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970년</div>
+                        <div class="timeline-text">한진그룹 편입 - 한진중공업으로 사명 변경, 그룹 인프라를 활용한 사업 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1997년</div>
+                        <div class="timeline-text">코스피(KOSPI) 상장 - 자본시장과의 접점 확보, 성장 자본 조달 기반 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">해군 함정 수주 확대 - PKX-B 고속정 수주, 방산 함정 전문 조선소로서의 입지 강화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019년</div>
+                        <div class="timeline-text">한진그룹 분리, HJ그룹 출범 - 독자 경영 체제 전환, HJ중공업으로 사명 변경</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024년</div>
+                        <div class="timeline-text">역대 최대 수주 1.75조원 달성 - 조선 업황 회복과 방산 수요 확대가 맞물린 성과</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">영업이익 825% 급증(670억원) - 5년 만에 500억원대 돌파, 조선·건설 동반 실적 전환</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Deep Analysis</span>
+        </div>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-microchip"></i> Section 02</div>
+                <h2>기술 분석</h2>
+                <p>방산 함정 기술력과 조선·건설 혁신</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-ship"></i> 방산 함정 건조 기술</h3>
+                <p>HJ중공업의 핵심 기술 경쟁력은 해군 함정 건조에 있습니다. 특히 공기부양식 고속상륙정(LSF-II)은 국내에서 HJ중공업만이 건조할 수 있는 특수 함정으로, 수면 위를 호버링하며 40노트 이상의 고속으로 병력과 장비를 상륙시키는 전술적 핵심 자산입니다. 이 기술은 수십 년간의 건조 경험과 노하우가 축적된 결과로, 후발 주자의 진입이 사실상 불가능합니다.</p>
+                <p>신형 고속정(PKX-B) 건조에서는 스텔스 설계 기술, 복합소재 선체 기술, 전투체계 통합 기술 등을 적용하여 고속·고기동성과 낮은 피탐확률을 동시에 구현합니다. 해군 함정의 전투체계, 무장 시스템, 센서 통합 등 시스템 엔지니어링 역량도 보유하고 있으며, 이는 단순 선체 건조를 넘어 함정 전체 시스템을 통합·인도하는 종합 역량입니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">공기부양정 건조</span>
+                    <span class="tech-badge">스텔스 함정 설계</span>
+                    <span class="tech-badge">전투체계 통합</span>
+                    <span class="tech-badge">복합소재 기술</span>
+                    <span class="tech-badge">무인수상정(USV)</span>
+                    <span class="tech-badge">디지털 조선소</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-cogs"></i> 스마트 조선소 전환</h3>
+                <p>HJ중공업은 부산 영도 조선소의 디지털 전환을 추진하고 있습니다. 3D 설계 시스템(AVEVA Marine), 디지털 트윈(Digital Twin) 기반 건조 시뮬레이션, IoT 센서를 활용한 생산 공정 모니터링 등을 도입하여 생산성과 품질을 동시에 향상시키고 있습니다. 특히 용접 로봇, 도장 자동화 설비 등의 도입으로 인력 의존도를 줄이면서도 공기(工期)를 단축하는 성과를 거두고 있습니다.</p>
+                <p>방산 함정 건조에서는 보안 요구사항이 엄격하여 디지털 전환의 범위가 제한적이지만, 상선 건조와 블록 제작에서는 스마트 팩토리 개념을 적극 적용하고 있습니다. 조선소의 크레인, 도크 등 핵심 인프라 현대화 투자도 진행 중이며, 이를 통해 대형 함정 및 특수선 건조 역량을 한층 강화할 계획입니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-hard-hat"></i> 건설 기술 역량</h3>
+                    <p>건설부문에서는 주거 브랜드 '더 클래스'를 중심으로 설계·시공 역량을 발휘하고 있습니다. BIM(Building Information Modeling) 기반 설계, 모듈러 건축 기법, 친환경 건축 기술 등을 적용하여 시공 품질과 효율성을 높이고 있습니다.</p>
+                    <ul>
+                        <li>BIM 기반 통합 설계·시공 관리</li>
+                        <li>친환경 건축(제로에너지 건축물)</li>
+                        <li>해양·항만 토목 특수 기술</li>
+                        <li>부산 지역 밀착형 시공 네트워크</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket"></i> 차세대 방산 기술</h3>
+                    <p>HJ중공업은 미래 해양 방산 분야의 기술 우위를 확보하기 위해 차세대 함정 기술 개발에 투자하고 있습니다. 무인수상정(USV), 무인잠수정(UUV), 자율 항해 시스템 등 무인 해양 플랫폼 기술이 핵심입니다.</p>
+                    <ul>
+                        <li>무인수상정(USV) 기술 개발</li>
+                        <li>차기 호위함(FFX-III) 기술 준비</li>
+                        <li>함정 유지보수(MRO) 디지털화</li>
+                        <li>전기추진 함정 기술 연구</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-anchor"></i> 조선 생산성 혁신</h3>
+                <p>HJ중공업은 부산 영도 조선소의 한정된 도크 공간을 최대한 효율적으로 활용하기 위해 생산성 혁신에 집중하고 있습니다. 블록 건조 기법의 최적화, 선행 의장(Pre-outfitting)률 향상, 공정 간 대기시간 단축 등을 통해 연간 건조 능력을 높이고 있습니다. 2024~2025년의 수주잔고 소화를 위해서는 현재 도크 가동률을 95% 이상으로 유지해야 하며, 이를 위한 야드 레이아웃 최적화와 설비 투자가 진행 중입니다.</p>
+                <p>인력 확보도 핵심 과제입니다. 조선업 전반의 인력난 속에서 HJ중공업은 지역 직업훈련기관과의 연계, 숙련 기능인력 처우 개선, 외국인 근로자 활용 등을 통해 생산 인력을 확보하고 있습니다. 특히 용접, 도장 등 핵심 직종의 숙련 인력 유지가 함정 건조의 품질과 공기를 좌우하는 핵심 요소입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Market Intelligence</span>
+        </div>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chart-line"></i> Section 03</div>
+                <h2>시장 분석</h2>
+                <p>K-방산·조선 슈퍼사이클과 건설 시장</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-asia"></i> 글로벌 방산·조선 시장 동향</h3>
+                <p>글로벌 방산 시장은 우크라이나-러시아 전쟁, 미중 갈등, 중동 불안 등 지정학적 리스크 확대로 각국의 국방비 증액이 가속화되면서 구조적 성장세에 진입했습니다. 특히 해군력 증강은 주요국의 핵심 국방 어젠다로, 함정 발주가 크게 증가하고 있습니다. 글로벌 해군 함정 시장 규모는 2025년 약 500억 달러로 추정되며, 연평균 4~5% 성장이 전망됩니다.</p>
+                <p>K-방산은 폴란드 K2 전차, UAE 천궁-II 수출 등 대규모 수출 계약을 연속 달성하며 글로벌 방산 시장에서 주목받고 있습니다. 해군 분야에서도 필리핀, 인도네시아, 페루 등에 경비함·초계정을 수출한 실적이 있으며, HJ중공업의 방산 함정 기술은 K-방산 수출 확대의 핵심 축이 될 수 있습니다.</p>
+                <p>조선 시장은 환경 규제(IMO 탄소중립) 강화에 따른 친환경 선박 교체 수요, 노후 선박 대체 수요 등으로 슈퍼사이클에 진입했다는 평가가 지배적입니다. 클락슨 신조선가지수는 역대 최고 수준에 근접하고 있으며, 한국 조선소의 수주는 LNG선, 컨테이너선, 특수선 중심으로 호조를 보이고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 시장 성장 동력</h3>
+                    <ul>
+                        <li><strong>K-방산 수출 급성장:</strong> 2022년 이후 연간 방산 수출액이 200억 달러를 상회하며, 해군 함정 수출도 확대되고 있습니다. HJ중공업의 고속정·상륙정 기술은 동남아·중동 시장에서 수요가 높습니다.</li>
+                        <li><strong>국방비 증액 추세:</strong> 한국 국방예산은 2026년 약 65조원(전년 대비 +5.5%)으로, 해군 전력 증강 예산이 크게 확대되고 있습니다.</li>
+                        <li><strong>조선 슈퍼사이클:</strong> IMO 환경규제, 노후선 교체, 글로벌 공급망 재편 등으로 신조선 수요가 구조적으로 증가하고 있습니다.</li>
+                        <li><strong>건설 경기 반등 기대:</strong> 정부 SOC 투자 확대, 부산 지역 개발 사업(북항 재개발 등)으로 건설부문 수주 환경이 개선되고 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 시장 리스크 요인</h3>
+                    <ul>
+                        <li><strong>조선업 인력난 심화:</strong> 숙련 용접공, 도장 기능인력 등의 부족으로 수주잔고 소화에 차질이 발생할 수 있습니다. 인건비 상승도 수익성 압박 요인입니다.</li>
+                        <li><strong>원자재 가격 변동:</strong> 후판(철강), 구리, 특수합금 등 조선 원자재 가격 변동이 건조 원가에 직접 영향을 미칩니다.</li>
+                        <li><strong>건설부문 부동산 리스크:</strong> 부동산 경기 침체 장기화 시 자체 개발 사업의 분양률 저하와 PF 리스크가 발생할 수 있습니다.</li>
+                        <li><strong>환율 변동 리스크:</strong> 달러화 수주 비중이 높은 조선부문은 원화 강세 시 수익성이 악화될 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-search-dollar"></i> 국내 함정 발주 계획 분석</h3>
+                <p>대한민국 해군의 전력 증강 계획은 HJ중공업에 중장기적 수주 파이프라인을 제공합니다. 해군은 차기 호위함(FFX-III) 사업, 대형 수송함(LPH-II) 사업, 잠수함 추가 도입, 무인수상정(USV) 실전 배치 등 대규모 전력 증강을 계획하고 있습니다. HJ중공업이 참여 가능한 사업만 해도 향후 10년간 약 5조원 이상의 발주가 예상됩니다.</p>
+                <p>해양경찰청의 경비함정 교체 수요도 안정적인 수주 기반이 됩니다. 노후 경비함의 대체 건조, 대형 경비함 신규 발주 등이 꾸준히 이루어지고 있으며, HJ중공업은 이 분야에서도 다수의 건조 실적을 보유하고 있습니다. 방산 함정의 특성상 한 번 수주하면 계약 기간이 3~5년으로 길어 안정적인 매출 기반이 됩니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 정책 환경과 방산 산업 육성</h3>
+                <p>정부는 K-방산 수출 확대를 국가 전략 산업으로 육성하고 있습니다. 방산 수출 금융 지원, 오프셋(절충교역) 조건 완화, 방산 기업 세제 혜택 등 다양한 정책 지원이 이루어지고 있으며, 해군 함정 수출은 이러한 정책 기조의 핵심 분야입니다. 특히 인도-태평양 지역 해양 안보 수요 증가는 한국 해군 함정의 수출 기회를 크게 확대하고 있습니다.</p>
+                <p>조선 산업에 대한 정책 지원도 강화되고 있습니다. 조선업 인력 양성 프로그램, 중소 조선소 경쟁력 강화 지원, 친환경 선박 전환 R&D 지원 등이 추진되고 있으며, HJ중공업과 같은 중형 조선소의 방산·특수선 경쟁력 강화도 정책 과제에 포함됩니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Competitive Landscape</span>
+        </div>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-users"></i> Section 04</div>
+                <h2>경쟁사 분석</h2>
+                <p>조선·방산 업계 경쟁 구도 비교</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 경쟁사 비교</h3>
+                <p>HJ중공업은 국내 조선업계에서 HD현대중공업, 한화오션, 삼성중공업 등 대형 3사와는 규모에서 차이가 나지만, 방산 함정과 특수선 분야에서 독보적 경쟁력을 보유하고 있습니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>HJ중공업</th>
+                            <th>HD현대중공업</th>
+                            <th>한화오션</th>
+                            <th>삼성중공업</th>
+                            <th>대한조선</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>매출(2025)</strong></td>
+                            <td>2.0조</td>
+                            <td style="color:var(--gold)">약 15조</td>
+                            <td>약 8조</td>
+                            <td>약 10조</td>
+                            <td>약 0.8조</td>
+                        </tr>
+                        <tr>
+                            <td><strong>영업이익률</strong></td>
+                            <td style="color:var(--gold)">3.4%</td>
+                            <td>약 5%</td>
+                            <td>약 4%</td>
+                            <td>약 3%</td>
+                            <td>적자</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주력 선종</strong></td>
+                            <td style="color:var(--gold)">방산 함정·특수선</td>
+                            <td>VLCC·LNG선</td>
+                            <td>잠수함·LNG선</td>
+                            <td>LNG선·드릴십</td>
+                            <td>벌크선</td>
+                        </tr>
+                        <tr>
+                            <td><strong>방산 역량</strong></td>
+                            <td style="color:var(--gold)">독보적(함정1호)</td>
+                            <td>함정(일부)</td>
+                            <td>잠수함·구축함</td>
+                            <td>미약</td>
+                            <td>없음</td>
+                        </tr>
+                        <tr>
+                            <td><strong>수주잔고</strong></td>
+                            <td>약 7조</td>
+                            <td>약 50조+</td>
+                            <td>약 20조</td>
+                            <td>약 25조</td>
+                            <td>약 2조</td>
+                        </tr>
+                        <tr>
+                            <td><strong>건설사업</strong></td>
+                            <td style="color:var(--gold)">있음(55.7%)</td>
+                            <td>없음</td>
+                            <td>없음</td>
+                            <td>없음</td>
+                            <td>없음</td>
+                        </tr>
+                        <tr>
+                            <td><strong>시가총액</strong></td>
+                            <td>약 1.8조</td>
+                            <td>약 15조</td>
+                            <td>약 10조</td>
+                            <td>약 8조</td>
+                            <td>약 0.5조</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-pie"></i> 방산 함정 시장 포지션</h3>
+                    <p>방산 함정 분야에서 HJ중공업의 핵심 경쟁자는 한화오션(구 대우조선해양)과 HD현대중공업입니다. 한화오션은 잠수함, 이지스급 구축함 등 대형 함정에 강점이 있고, HD현대중공업은 호위함, 상륙함 등에서 실적을 보유합니다. HJ중공업은 고속정, 공기부양정 등 중소형 특수함정에서 독보적이며, 이는 전혀 다른 기술 기반이라 상호 대체가 어렵습니다.</p>
+                    <p>이러한 차별화된 포지셔닝은 가격 경쟁보다는 기술 경쟁에 기반한 수주를 가능하게 하며, 대형 3사와 직접 경쟁하기보다 보완적 관계에 있다는 점이 특징입니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-crosshairs"></i> 건설부문 경쟁 환경</h3>
+                    <p>건설부문에서 HJ중공업은 부산 지역 중심의 지역 밀착형 시공사로 포지셔닝되어 있습니다. 전국 단위 대형 시공사(대우건설, GS건설, 현대건설 등)와는 직접 경쟁하기보다, 부산·경남 지역의 주거·상업 개발과 SOC 사업에서 경쟁력을 발휘합니다.</p>
+                    <p>자체 주거 브랜드 '더 클래스'의 부산 지역 인지도가 높으며, 영도, 해운대, 남구 등 핵심 입지에서의 개발 사업 실적이 풍부합니다. 다만 부동산 경기에 민감한 분양 사업 비중이 높아, 시장 침체 시 리스크가 커질 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 경쟁 환경 전망</h3>
+                <p>조선·방산 업계의 경쟁 구도는 향후 5년간 HJ중공업에 우호적으로 전개될 전망입니다. 대형 3사가 LNG선·컨테이너선 등 대형 상선 수주에 집중하면서 방산 함정과 중소형 특수선에 대한 투자 여력이 제한적이기 때문입니다. HJ중공업은 이 틈새 시장에서 독보적 포지션을 유지하면서, 수주잔고 소화를 통한 안정적 매출 성장이 가능합니다.</p>
+                <p>K-방산 수출 확대는 HJ중공업에게 새로운 성장 기회를 제공합니다. 동남아(필리핀, 인도네시아, 태국), 중동(사우디, UAE), 남미(페루, 콜롬비아) 등의 해군 현대화 수요에 고속정·경비함을 수출할 가능성이 있으며, 이는 내수 의존적 사업 구조를 탈피하는 핵심 전략이 될 것입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">SWOT Framework</span>
+        </div>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-th-large"></i> Section 05</div>
+                <h2>SWOT 분석</h2>
+                <p>HJ중공업의 전략적 포지션 평가</p>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-star" style="color:var(--gold)"></i> Strengths (강점)</h3>
+                    <ul>
+                        <li><strong>방산 함정 독보적 기술력:</strong> 국내 함정 방위산업체 1호, 공기부양 고속상륙정(LSF-II) 국내 유일 건조 역량. 수십 년간 축적된 함정 건조 노하우는 진입장벽이 매우 높습니다.</li>
+                        <li><strong>풍부한 수주잔고:</strong> 2024년 역대 최대 수주 1.75조원 달성, 전체 수주잔고 약 7조원으로 3~4년치 이상의 일감을 확보. 건설부문도 2.5조원 수주로 목표 초과 달성.</li>
+                        <li><strong>조선·건설 투 트랙 사업 구조:</strong> 조선과 건설의 이원화된 사업 구조로 경기 변동에 대한 완충 효과가 있으며, 양 부문의 동반 성장이 시너지를 창출합니다.</li>
+                        <li><strong>89년 역사의 조선소 인프라:</strong> 부산 영도 조선소의 도크, 크레인, 안벽 등 핵심 인프라를 보유하고 있으며, 이는 수조원의 신규 투자 없이는 확보 불가능한 자산입니다.</li>
+                        <li><strong>폭발적 실적 전환:</strong> 영업이익 825% 증가, 순이익 885% 증가로 실적 턴어라운드가 확인되었으며, 2026년에도 추가 성장이 전망됩니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-exclamation-circle" style="color:var(--blue)"></i> Weaknesses (약점)</h3>
+                    <ul>
+                        <li><strong>대형 3사 대비 규모 열세:</strong> 매출 2조원은 HD현대중공업(15조), 한화오션(8조), 삼성중공업(10조) 대비 현저히 작아, 대형 선박 수주에서 경쟁력이 제한됩니다.</li>
+                        <li><strong>도크 규모의 제약:</strong> 부산 영도 조선소의 도크 크기가 대형선(VLCC급 이상) 건조에는 부적합하여, 대형 상선 시장 진입이 구조적으로 어렵습니다.</li>
+                        <li><strong>건설부문 부동산 리스크:</strong> 매출의 55.7%를 차지하는 건설부문은 부동산 경기에 민감하며, 자체 분양 사업의 리스크가 상존합니다.</li>
+                        <li><strong>영업이익률 아직 낮은 수준:</strong> 3.4%의 영업이익률은 개선되고 있으나 아직 업계 평균 대비 높지 않으며, 원가 관리와 생산성 향상이 필요합니다.</li>
+                        <li><strong>브랜드 인지도 제한:</strong> HJ그룹 분리 이후 기업 브랜드 인지도가 한진중공업 시절 대비 낮아졌으며, 투자자 인지도도 제한적입니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-lightbulb" style="color:var(--gold)"></i> Opportunities (기회)</h3>
+                    <ul>
+                        <li><strong>K-방산 수출 확대:</strong> 글로벌 방산 수요 급증과 K-방산 브랜드 파워 강화로, 해군 함정 수출 기회가 크게 확대되고 있습니다. 동남아·중동 시장이 핵심 타깃입니다.</li>
+                        <li><strong>해군력 증강 계획:</strong> 한국 해군의 중장기 전력 증강 계획에 따른 대규모 함정 발주가 예정되어 있으며, 10년간 약 5조원 이상의 파이프라인이 기대됩니다.</li>
+                        <li><strong>조선 슈퍼사이클:</strong> 환경규제 강화, 노후선 교체 수요로 글로벌 신조선 발주가 구조적으로 증가하고 있으며, 중소형 특수선 시장에서의 수혜가 기대됩니다.</li>
+                        <li><strong>부산 지역 개발:</strong> 북항 재개발, 에코델타시티, 부산 도시철도 확장 등 부산 지역 대규모 개발 사업이 건설부문 수주를 견인할 전망입니다.</li>
+                        <li><strong>무인 해양 플랫폼 시장:</strong> USV·UUV 등 무인 해양 플랫폼 시장이 급성장하고 있으며, HJ중공업의 함정 기술 기반이 유리한 포지션을 제공합니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-shield-alt" style="color:var(--blue)"></i> Threats (위협)</h3>
+                    <ul>
+                        <li><strong>조선업 인력난:</strong> 숙련 인력 부족은 업계 공통의 위협이며, 인건비 상승으로 건조 원가가 증가할 수 있습니다. 수주잔고 소화에도 차질이 우려됩니다.</li>
+                        <li><strong>원자재 가격 변동:</strong> 후판, 특수합금, 구리 등 조선 원자재 가격 급등 시 건조 원가 상승으로 수익성이 압박될 수 있습니다.</li>
+                        <li><strong>부동산 경기 침체:</strong> 건설부문의 높은 매출 비중(55.7%)을 감안하면, 부동산 경기 장기 침체 시 전체 실적에 상당한 영향을 미칩니다.</li>
+                        <li><strong>방산 예산 변동:</strong> 정치적 상황에 따른 국방예산 삭감, 방산 사업 지연·취소 리스크가 상존합니다.</li>
+                        <li><strong>환율 변동 리스크:</strong> 달러화 수주 비중이 높은 조선부문은 원화 강세 시 수익성이 악화됩니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Growth Strategy</span>
+        </div>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chess-king"></i> Section 06</div>
+                <h2>전략 분석</h2>
+                <p>방산 확장과 조선·건설 동반 성장 전략</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 2026년 핵심 경영 전략</h3>
+                <p>HJ중공업의 2026년 전략은 '수주잔고의 수익 극대화'와 '성장 엔진의 다변화'로 요약됩니다. 2024~2025년 확보한 역대 최대 수주잔고를 효율적으로 소화하면서 수익성을 극대화하고, 방산 수출과 신사업을 통해 중장기 성장 기반을 마련하는 것이 핵심입니다.</p>
+                <ul>
+                    <li><strong>전략 1 - 수주잔고 효율적 소화:</strong> 약 7조원의 수주잔고를 계획대로 소화하여 2026년 매출 2.45조원(+22.4% YoY), 영업이익 2,170억원(+223% YoY)의 달성을 목표합니다. 생산성 혁신과 원가 관리를 통해 영업이익률을 8% 이상으로 끌어올리는 것이 핵심입니다.</li>
+                    <li><strong>전략 2 - 방산 함정 수출 추진:</strong> 국내 방산 수주에 더해 해외 해군 함정 수출을 본격 추진합니다. 동남아, 중동 지역 해군 현대화 수요에 대응하여 고속정, 경비함 수출 계약을 추진 중입니다.</li>
+                    <li><strong>전략 3 - 건설부문 리스크 관리:</strong> 건설 수주는 선별적으로 수행하고, PF 리스크가 높은 사업은 자제하며 도급 중심의 안정적 매출 기반을 유지합니다.</li>
+                    <li><strong>전략 4 - 신사업 기반 조성:</strong> 무인수상정(USV), 함정 MRO, 해양 플랫폼 등 신사업을 통해 방산 수익의 다변화를 추진합니다.</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i> 조선부문 성장 전략</h3>
+                    <p>조선부문의 핵심 전략은 방산 함정의 기술 우위를 유지하면서, 상선 및 특수선 분야에서도 수주를 확대하는 것입니다. 방산 함정은 기술 진입장벽이 높아 안정적 마진을 확보할 수 있으며, 상선은 조선 슈퍼사이클의 수혜로 수주 기회가 풍부합니다.</p>
+                    <p>영도 조선소의 가동률을 95% 이상으로 유지하면서 생산성을 높이고, 도크 회전율 향상을 통해 연간 건조 능력을 확대합니다. 디지털 조선소 전환 투자도 병행하여 공정 효율화를 통한 원가 절감을 추진합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-hard-hat"></i> 건설부문 안정화 전략</h3>
+                    <p>건설부문은 '리스크 관리'와 '수익성 확보'에 초점을 맞추고 있습니다. 자체 분양 사업은 사업성이 확실한 프로젝트에 한정하고, 도급·SOC 사업 비중을 높여 안정적 수익 기반을 확보합니다.</p>
+                    <p>부산 지역의 핵심 개발 사업(북항 재개발, 에코델타시티 등)에 적극 참여하면서, 수도권 진출도 선별적으로 확대합니다. 건설부문이 조선부문의 실적 변동성을 완충하는 역할을 유지하도록 포트폴리오를 관리합니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe"></i> K-방산 수출 전략</h3>
+                <p>HJ중공업의 방산 수출 전략은 '기술 차별화를 통한 틈새시장 공략'입니다. 대형 함정(구축함, 잠수함) 시장에서는 한화오션, HD현대중공업과 경쟁이 어렵지만, 고속정, 공기부양정, 경비함 등 중소형 특수함정 시장에서는 세계적 수준의 경쟁력을 보유하고 있습니다.</p>
+                <p>필리핀, 인도네시아, 태국 등 동남아 국가들은 해양 영토 분쟁과 해상 치안 강화 필요성에 따라 고속정과 경비함 수요가 급증하고 있습니다. 중동의 사우디, UAE 등도 해군력 증강을 추진하고 있어 수출 기회가 있습니다. HJ중공업은 이러한 시장에 맞춤형 함정 솔루션을 제안하고, 기술이전(ToT)과 현지 건조 지원 등 패키지 딜 전략을 추진하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-rocket"></i> 신사업 및 미래 성장동력</h3>
+                <p>HJ중공업은 기존 함정 건조 역량을 기반으로 신사업 영역을 개척하고 있습니다. 무인수상정(USV)은 해군의 미래 전력으로 주목받고 있으며, HJ중공업의 고속정 건조 기술이 USV 개발에 직접 활용될 수 있습니다. 함정 유지보수(MRO) 사업은 이미 건조한 함정의 수명 주기 관리를 통해 안정적 반복 수익을 창출하는 모델입니다.</p>
+                <p>해양 에너지 분야에서는 해상풍력 발전 하부구조물(자켓, 모노파일), 해양 플랫폼 건조 등으로 사업 영역을 확장할 수 있습니다. 영도 조선소의 인프라는 이러한 해양 구조물 제작에 활용 가능하며, 탄소중립 시대의 해양 에너지 수요 확대가 새로운 성장 동력이 될 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Financial Deep Dive</span>
+        </div>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="finance">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-calculator"></i> Section 07</div>
+                <h2>재무 분석</h2>
+                <p>폭발적 턴어라운드와 성장 궤적</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-won-sign"></i> 영업이익 추이 (2020~2026E)</h3>
+                <p>HJ중공업의 영업이익은 2020~2023년 100억원 미만의 저조한 실적에서, 2025년 670억원으로 폭발적 전환을 이뤘습니다. 2026년에는 2,170억원(+223%)으로 추가 대폭 성장이 전망됩니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 영업이익 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:24%"></div>
+                            </div>
+                            <div class="bar-value">516억</div>
+                            <div class="bar-label">2020</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:5%"></div>
+                            </div>
+                            <div class="bar-value">72억</div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:3%"></div>
+                            </div>
+                            <div class="bar-value">39억</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:4%"></div>
+                            </div>
+                            <div class="bar-value">72억</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:4%"></div>
+                            </div>
+                            <div class="bar-value">72억</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:31%"></div>
+                            </div>
+                            <div class="bar-value">670억</div>
+                            <div class="bar-label">2025</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:100%;background:linear-gradient(180deg, var(--blue) 0%, var(--blue-dim) 100%)"></div>
+                            </div>
+                            <div class="bar-value" style="color:var(--blue)">2,170억E</div>
+                            <div class="bar-label">2026E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 매출 및 영업이익률 추이</h3>
+                <p>매출은 2024년 1.89조원에서 2025년 2.0조원(+6%), 2026년 2.45조원(+22.4%)으로 성장세가 가속화되고 있습니다. 특히 주목할 점은 영업이익률의 급격한 개선으로, 2024년 3.8%에서 2025년 3.4%(일시적 조정), 2026년 8.9%로 수익성이 크게 개선될 전망입니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 매출 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:55%"></div>
+                            </div>
+                            <div class="bar-value">1.52조</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:68%"></div>
+                            </div>
+                            <div class="bar-value">1.68조</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:77%"></div>
+                            </div>
+                            <div class="bar-value">1.89조</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:82%"></div>
+                            </div>
+                            <div class="bar-value">2.00조</div>
+                            <div class="bar-label">2025</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:100%;background:linear-gradient(180deg, var(--blue) 0%, var(--blue-dim) 100%)"></div>
+                            </div>
+                            <div class="bar-value" style="color:var(--blue)">2.45조E</div>
+                            <div class="bar-label">2026E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale-right"></i> 수주잔고 분석</h3>
+                    <p>HJ중공업의 수주잔고는 2024년 기준 약 7조원으로, 이는 연간 매출의 약 3.5배에 해당합니다. 조선부문 수주잔고 약 3조원은 방산 함정과 상선이 혼합되어 있으며, 건설부문 수주잔고는 약 4조원입니다.</p>
+                    <ul>
+                        <li><strong>조선 수주잔고:</strong> 약 3조원 (3~4년치)</li>
+                        <li><strong>건설 수주잔고:</strong> 약 4조원</li>
+                        <li><strong>2024 신규 수주:</strong> 1.75조원 (역대 최대)</li>
+                        <li><strong>건설 수주(2024):</strong> 2.5조원 (목표 초과)</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i> 주요 재무 지표</h3>
+                    <p>2025년 실적 전환으로 재무 지표가 크게 개선되었으며, 2026년에는 추가적인 대폭 개선이 전망됩니다.</p>
+                    <ul>
+                        <li><strong>매출(2025):</strong> 2.0조원 (+6% YoY)</li>
+                        <li><strong>영업이익(2025):</strong> 670억원 (+825% YoY)</li>
+                        <li><strong>순이익(2025):</strong> 514억원 (+885% YoY)</li>
+                        <li><strong>영업이익률:</strong> 3.4% (2025) → 8.9%E (2026)</li>
+                        <li><strong>매출(2026E):</strong> 2.45조원 (+22.4%)</li>
+                        <li><strong>영업이익(2026E):</strong> 2,170억원 (+223%)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 부문별 수익 구조 분석</h3>
+                <p>HJ중공업의 수익 구조는 조선과 건설 양 부문의 기여도 변화가 핵심 분석 포인트입니다. 2022년 조선부문 매출 비중이 18%까지 떨어졌다가 2025년 43.18%로 급회복한 것은 조선 업황의 턴어라운드를 상징합니다. 조선부문의 이익 기여도는 매출 비중보다 높은데, 이는 방산 함정의 상대적으로 높은 마진 때문입니다.</p>
+                <p>건설부문(55.75%)은 도급 사업과 자체 개발 사업으로 구분됩니다. 도급 사업은 안정적이지만 마진이 낮고, 자체 개발 사업은 높은 마진을 기대할 수 있으나 분양 리스크가 있습니다. HJ중공업은 도급 비중을 높여 리스크를 관리하면서도, 사업성이 확실한 프로젝트에 한해 자체 개발을 병행하는 전략을 취하고 있습니다.</p>
+                <p>2026년 실적 전망에서 주목할 점은 조선부문의 이익 기여도가 크게 높아진다는 것입니다. 방산 함정 인도 확대와 상선 건조 마진 개선이 맞물리면서, 조선부문 영업이익률이 10%에 근접할 것으로 예상됩니다. 이는 2025년 대비 수익의 질이 크게 개선됨을 의미하며, 영업이익 2,170억원 전망의 핵심 근거입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Investment Outlook</span>
+        </div>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-flag-checkered"></i> Section 08</div>
+                <h2>결론 및 투자 의견</h2>
+                <p>종합 평가와 투자 시사점</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-clipboard-check"></i> 종합 평가</h3>
+                <p>HJ중공업(097230)은 89년 역사의 조선·건설 기업으로, 방산 함정 분야에서 국내 독보적 위치를 점하고 있습니다. 2025년 영업이익 825% 증가(670억원), 순이익 885% 증가(514억원)로 폭발적 실적 전환을 이뤘으며, 2026년에는 영업이익 2,170억원(+223%)으로 추가 대폭 성장이 전망됩니다.</p>
+                <p>FLOVAH 종합 점수 55점은 방산·조선 산업의 구조적 특성을 반영한 것입니다. 디지털 전환 측면에서는 스마트 조선소 전환이 초기 단계이며, 대형 3사 대비 규모 열세, 건설부문의 부동산 리스크 등이 감점 요인입니다. 그러나 방산 함정의 독보적 기술력, 역대 최대 수주잔고, 조선·건설 동반 턴어라운드는 중기적 실적 성장의 강력한 토대입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 주요 리스크</h3>
+                <ul>
+                    <li><strong>조선업 인력난:</strong> 숙련 기능인력 부족으로 수주잔고 소화에 차질이 발생할 수 있으며, 인건비 상승이 수익성을 압박합니다. 이는 업계 공통의 구조적 리스크입니다.</li>
+                    <li><strong>원자재 가격 변동:</strong> 후판, 특수합금 등 조선 원자재 가격 급등 시 건조 원가가 상승하여 수익성 전망이 악화될 수 있습니다.</li>
+                    <li><strong>건설부문 부동산 리스크:</strong> 매출의 55.7%를 차지하는 건설부문은 부동산 경기에 민감하며, 경기 침체 시 분양률 저하와 PF 리스크가 현실화될 수 있습니다.</li>
+                    <li><strong>방산 사업 지연 리스크:</strong> 정치적 변수, 예산 삭감, 사업 일정 지연 등으로 방산 수주 및 인도 일정에 변동이 발생할 수 있습니다.</li>
+                    <li><strong>환율 변동:</strong> 달러화 수주 비중이 높은 조선부문은 원화 강세 시 수익성이 악화됩니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 긍정적 (Positive)</strong></p>
+                <p>HJ중공업은 방산 함정의 독보적 기술력, 역대 최대 수주잔고, 폭발적 실적 전환을 바탕으로 중기적 성장 가시성이 높은 기업입니다. 2026년 영업이익 2,170억원 전망은 현재 시가총액(1.8조원) 대비 매우 매력적인 밸류에이션을 제공하며, K-방산 수출 확대와 조선 슈퍼사이클의 수혜가 기대됩니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>방산 테마 투자자:</strong> K-방산 수출 확대, 해군력 증강 테마에 관심이 있는 투자자에게 적합합니다. 대형 방산주 대비 시가총액이 작아 레버리지 효과가 큽니다.</li>
+                    <li><strong>턴어라운드 투자자:</strong> 실적 턴어라운드가 확인되었으며, 2026년 추가 대폭 성장이 전망되어 실적 모멘텀 투자에 적합합니다.</li>
+                    <li><strong>가치 투자자:</strong> 2026년 예상 실적 기준 PER 8배 수준으로, 조선·방산 업종 평균 대비 저평가 메리트가 있습니다.</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 중간(Medium) - 수주잔고 기반의 실적 가시성은 높으나, 인력난·원자재 리스크·건설 경기 변동에 대한 모니터링이 필요합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>분기별 수주·매출·영업이익 추이 - 2,170억원 목표 달성 여부가 핵심 모니터링 포인트</li>
+                    <li>방산 함정 수출 계약 체결 여부 - K-방산 수출 스토리의 실현 여부 확인</li>
+                    <li>차기 해군 함정 사업(FFX-III 등) 참여 현황 - 중장기 수주 파이프라인의 구체화</li>
+                    <li>건설부문 분양률 및 수주 동향 - 부동산 리스크 모니터링의 핵심 지표</li>
+                    <li>조선소 인력 확보 현황 - 수주잔고 소화 능력의 핵심 변수</li>
+                    <li>배당 정책 발표 - 실적 개선에 따른 주주환원 정책 방향성</li>
+                </ul>
+                <p>HJ중공업이 수주잔고의 효율적 소화를 통해 2026년 영업이익 2,170억원을 달성하고, 방산 수출을 통해 성장의 새로운 축을 마련하며, 건설부문의 리스크를 안정적으로 관리한다면, 중기적으로 기업가치의 의미 있는 재평가가 가능할 것입니다. 방산·조선 슈퍼사이클의 핵심 수혜주로서, 실적 모멘텀과 밸류에이션 매력을 동시에 갖춘 투자 기회로 판단됩니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 6월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>HJ중공업 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>HJ중공업 공시 자료 (2025년 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 HJ중공업 Investor Relations 공개 정보</li>
+                    <li>금융감독원 전자공시시스템(DART) 재무 데이터</li>
+                    <li>IBK투자증권, 삼성증권 등 주요 증권사 리서치 리포트</li>
+                    <li>클락슨(Clarksons) 신조선가 및 수주 동향 자료</li>
+                    <li>국방부, 방위사업청 방산 사업 공개 자료</li>
+                    <li>한국조선해양플랜트협회 조선 산업 통계</li>
+                    <li>한국건설산업연구원 건설 시장 전망 자료</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 최종 업데이트: 2026년 06월 08일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-06-08 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>미중 관세 갈등 확대와 외국인 매도세로 코스피 급락. 기술적 반등 기대감은 유지되나 변동성 관리 필수.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">반도체·AI</div>HBM·AI 반도체 구조적 성장세 유지. 엔비디아 블랙웰 수요 강세 지속.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">매크로 변수</div>원/달러 환율 1,400원대 후반, 한은 금리 인하 기대감과 인플레이션 우려 병존.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>방산·조선 수주잔고 확대. 바이오 섹터 글로벌 임상 결과 시즌 돌입.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 08일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>

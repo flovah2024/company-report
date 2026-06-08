@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신영증권 기업 분석 리포트 | FLOVAH Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans+KR:wght@100;300;400;500;600;700;800;900&family=Orbit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* ── Premium Editorial: Warm Black · Antique Gold · Steel Blue ── */
+            --bg-deep: #09090b;
+            --bg-card: #0f1014;
+            --bg-elevated: #141619;
+            --bg-hover: #191b1f;
+            --bg-surface: #111316;
+
+            --ink: #ede8df;
+            --ink-strong: #f5f1e8;
+            --text-body: #b5ad9e;
+            --text-secondary: #7d7568;
+            --text-muted: #524c42;
+            --text-light: #9a9184;
+
+            --gold: #c9a962;
+            --gold-light: #dcc07a;
+            --gold-dim: #8a7438;
+            --gold-glow: rgba(201,169,98,.10);
+
+            --blue: #5c7d9e;
+            --blue-dim: #465f7a;
+
+            --rule: #1e1f24;
+            --border: #1e1f24;
+            --border-light: #1a1b20;
+            --border-color: #1e1f24;
+
+            --accent: #c9a962;
+            --accent2: #5c7d9e;
+            --success: #c9a962;
+            --danger: #c9a962;
+            --warning: #c9a962;
+            --purple: #5c7d9e;
+
+            --card-bg: #0f1014;
+            --dark-bg: #09090b;
+            --navy: #c9a962;
+            --navy-light: #5c7d9e;
+            --cream: rgba(201,169,98,.05);
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Google Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(201,169,98,.25);
+            color: var(--ink-strong);
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(12,14,19,.92);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-family: 'Google Sans', 'Noto Sans KR', sans-serif;
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color .3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover { color: var(--ink); }
+        nav a.active { color: var(--gold); }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1.5px;
+            background: var(--gold);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+        }
+
+        .header-date {
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .flovah-badge {
+            background: transparent;
+            color: var(--gold);
+            padding: 4px 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 0;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ MAIN ============ */
+        main {
+            margin-top: 60px;
+            padding: 56px 48px 80px;
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section { margin-bottom: 72px; }
+
+        /* ============ SECTION TITLES ============ */
+        .section-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--ink-strong);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title i {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: .8;
+        }
+
+        .section-title span {
+            color: var(--ink-strong);
+            -webkit-text-fill-color: var(--ink-strong);
+            background: none;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, rgba(201,169,98,.08) 0%, rgba(92,125,158,.04) 100%);
+            border-radius: 0;
+            padding: 56px 48px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+
+        .hero-title {
+            font-family: 'Orbit', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* ============ AI SCORE BADGE ============ */
+        .ai-score-badge {
+            background: rgba(201,169,98,.08);
+            border: 1px solid rgba(201,169,98,.2);
+            padding: 20px 24px;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .score-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--bg-deep);
+            flex-shrink: 0;
+        }
+
+        /* ============ METRICS GRID ============ */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            border-top: none;
+            margin-top: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .metric-card:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Orbit', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ CONTENT CARDS ============ */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            border-radius: 0;
+        }
+
+        .content-card h3 {
+            color: var(--ink-strong);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i {
+            color: var(--gold);
+            font-size: 16px;
+        }
+
+        .content-card p {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        .content-card ul {
+            list-style: none;
+            color: var(--text-body);
+        }
+
+        .content-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .content-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ TABLE ============ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+
+        thead {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        th {
+            padding: 14px;
+            text-align: left;
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-right: 1px solid var(--rule);
+        }
+
+        th:last-child { border-right: none; }
+
+        td {
+            padding: 16px 14px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr:hover { background: var(--bg-elevated); }
+
+        /* ============ TIMELINE ============ */
+        .timeline {
+            position: relative;
+            margin-top: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 0;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-item {
+            margin-left: 68px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+        }
+
+        .timeline-year {
+            font-family: 'Orbit', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-text {
+            color: var(--text-body);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ============ CHART CONTAINER ============ */
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            padding: 32px;
+            margin-top: 24px;
+            border-radius: 0;
+        }
+
+        .bar-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .bar-item { text-align: center; }
+
+        .bar-container {
+            height: 180px;
+            background: var(--bg-elevated);
+            border-radius: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px 8px 0;
+            margin-bottom: 0;
+            border: 1px solid var(--rule);
+            border-bottom: none;
+        }
+
+        .bar {
+            width: 55%;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
+            border-radius: 2px 2px 0 0;
+            transition: all .4s ease;
+            position: relative;
+        }
+
+        .bar-item:hover .bar {
+            box-shadow: 0 0 16px rgba(201,168,76,.25);
+        }
+
+        .bar-value {
+            padding: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--gold-dim);
+            font-family: 'Orbit', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ GRID SECTIONS ============ */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .two-column > .content-card:last-child { border-right: none; }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-bottom: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card {
+            border-top: none;
+            border-right: 1px solid var(--rule);
+        }
+
+        .three-column > .content-card:last-child { border-right: none; }
+
+        /* ============ TECH STACK ============ */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 0;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all .3s ease;
+        }
+
+        .tech-badge:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            transform: none;
+        }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-header h2 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink-strong);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-family: 'Orbit', sans-serif;
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 4px 16px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-badge i { margin-right: 6px; }
+
+        /* ============ DIVIDERS ============ */
+        .divider {
+            height: 0;
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 48px 0;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 64px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .section-divider-text {
+            display: inline-block;
+            background: var(--bg-deep);
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbit', sans-serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REPORT INFO ============ */
+        .report-info {
+            background: var(--bg-card);
+            border: 1px solid var(--rule);
+            border-radius: 0;
+            padding: 28px 32px;
+            margin-bottom: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .report-info-item { display: flex; gap: 14px; }
+
+        .report-info-icon {
+            font-size: 18px;
+            color: var(--gold-dim);
+            flex-shrink: 0;
+        }
+
+        .report-info-content h4 {
+            color: var(--ink);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .report-info-content p {
+            color: var(--text-body);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ============ INLINE OVERRIDES — 2-color system: gold + blue ============ */
+        [style*="color:var(--accent)"] { color: var(--gold) !important; }
+        [style*="color:var(--accent2)"] { color: var(--blue) !important; }
+        [style*="color:var(--success)"] { color: var(--gold) !important; }
+        [style*="color:var(--warning)"] { color: var(--gold) !important; }
+        [style*="color:var(--text-light)"] { color: var(--text-body) !important; }
+        [style*="color:var(--text-muted)"] { color: var(--text-muted) !important; }
+        [style*="color:#64ffda"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold)"] { color: var(--gold) !important; }
+        [style*="color:var(--blue)"] { color: var(--blue) !important; }
+        [style*="color:var(--gold-dim)"] { color: var(--gold-dim) !important; }
+
+        /* ============ SWOT Grid ============ */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .swot-card {
+            background: var(--bg-card);
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 36px 32px;
+            position: relative;
+        }
+
+        .swot-card:nth-child(2n) { border-right: none; }
+        .swot-card:nth-child(n+3) { border-bottom: none; }
+
+        .swot-card h3 {
+            font-family: 'Orbit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .swot-card ul {
+            list-style: none;
+        }
+
+        .swot-card li {
+            padding: 8px 0;
+            padding-left: 18px;
+            color: var(--text-body);
+            font-size: 15px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42,45,54,.4);
+        }
+
+        .swot-card li:last-child { border-bottom: none; }
+
+        .swot-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .two-column, .three-column { grid-template-columns: 1fr; }
+            .two-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .three-column > .content-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .swot-grid { grid-template-columns: 1fr; }
+            .swot-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            nav { gap: 12px; }
+            nav a { font-size: 10px; }
+            .hero { padding: 48px 36px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; flex-wrap: wrap; }
+            nav { display: none; }
+            main { padding: 36px 20px; }
+            .section-title { font-size: 24px; }
+            .hero-title { font-size: 30px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .metric-card { border-right: none; }
+            table { font-size: 12px; }
+            th, td { padding: 10px; }
+            .content-card { padding: 28px 24px; }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card { animation: fadeInUp .5s ease forwards; }
+        .metric-card { animation: fadeInUp .5s ease forwards; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-16px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item { animation: slideInRight .5s ease forwards; }
+
+        /* ============ SCROLLBAR ============ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+        /* ============ PRINT ============ */
+        @media print {
+            header { position: relative; height: auto; border-bottom: 2px solid #000; background: #fff; }
+            nav { display: none; }
+            body { background: #fff; color: #222; }
+            .content-card { break-inside: avoid; page-break-inside: avoid; background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+        <header>
+        <a href="index.html" class="logo-section" style="text-decoration:none">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://framerusercontent.com/images/w1htPvYXGPDElzhWfEYlJBJPjs.png" alt="FLOVAH" style="height:28px;width:auto;filter:brightness(0.95);">
+            </div>
+        </a>
+        <nav>
+            <a href="#overview" class="active">Overview</a>
+            <a href="#company">Company</a>
+            <a href="#technology">Technology</a>
+            <a href="#market">Market</a>
+            <a href="#competitors">Competitors</a>
+            <a href="#swot">SWOT</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#finance">Financials</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
+        <div class="header-meta">
+            <span class="header-date">June 8, 2026</span>
+            <div class="flovah-badge">FLOVAH</div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTION 1: HERO & 기업 개요 -->
+        <section id="overview">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">신영증권 <span class="hero-title-highlight">기업 종합 분석</span></h1>
+                    <p class="hero-subtitle">1956년 설립, 32년 연속 흑자의 안정 경영으로 신뢰받는 증권사</p>
+                    <div style="text-align: center;">
+                        <div class="ai-score-badge">
+                            <div class="score-circle">58</div>
+                            <div style="flex: 1;">
+                                <div style="color:var(--gold);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">FLOVAH 종합 점수</div>
+                                <div style="color:var(--text-muted);font-size:12px;line-height:1.5;">디지털 전환 역량 및 산업 적응 능력 평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">3.13조</div>
+                            <div class="metric-label">2025 매출</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,912억</div>
+                            <div class="metric-label">영업이익</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2.0조</div>
+                            <div class="metric-label">자본총계</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">32년</div>
+                            <div class="metric-label">연속 흑자</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Overview -->
+            <div class="content-card">
+                <h3><i class="fas fa-building"></i> 신영증권 기업 소개</h3>
+                <p>신영증권은 1956년 2월 25일 설립된 대한민국에서 가장 오랜 역사를 가진 증권사 중 하나입니다. 종목코드 001720으로 코스피에 상장되어 있으며, 1987년 8월 한국증권거래소에 상장한 이래 국내 자본시장의 성장과 함께해 왔습니다. 1971년 원국희 회장에 의해 인수된 이후, 보수적 경영 철학을 바탕으로 53년 연속 흑자라는 국내 금융업계 유일무이한 기록을 달성하고 있습니다.</p>
+                <p>신영증권의 주요 사업 영역은 투자매매업, 투자중개업, 투자자문업, 투자일임업, 신탁업, 집합투자업으로 구분됩니다. 본점 포함 9개 지점을 운영하며, 2003년 설립한 신영자산운용을 통해 자산운용 사업도 영위하고 있습니다. 2025 회계연도(2025년 4월~2026년 3월) 기준 매출 3.13조원(+27% YoY), 영업이익 1,912억원(+40.4% YoY), 순이익 1,497억원(+33.3% YoY)으로 사상 최대 실적을 달성했습니다.</p>
+                <p>특히 주목할 점은 신영증권이 발행주식의 53% 이상을 자사주로 보유하고 있다는 것입니다. 이는 한국 상장사 중 자사주 비중 1위로, 경영권 안정성과 주주가치 보호 측면에서 독특한 구조를 형성합니다. 순자본비율 926.4%, 자산부채비율 118.1%로 매우 안정적인 재무구조를 유지하고 있습니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-info-circle"></i> 핵심 사업 부문 분석</h3>
+                <p><strong>투자매매·투자중개 부문:</strong> 신영증권의 핵심 수익원으로, 주식·채권·파생상품의 자기매매와 위탁매매를 수행합니다. 보수적 운용 철학에 따라 안정적 수익을 추구하며, 채권 운용에서 특히 강점을 보이고 있습니다. 2025 회계연도 주식시장 활황과 채권 시장 안정화가 이 부문의 실적 개선을 견인했습니다.</p>
+                <p><strong>자산관리(WM) 부문:</strong> 고액자산가 대상의 PB(Private Banking) 서비스와 투자일임·투자자문 서비스를 제공합니다. 2010년부터 자산관리 부문 강화 전략을 추진하여, 현재 WM 부문은 신영증권의 안정적 수수료 수익 기반을 형성하고 있습니다. 고령화 사회에서의 자산관리 수요 증가가 중장기 성장 동력입니다.</p>
+                <p><strong>신탁·집합투자 부문:</strong> 금전신탁, 재산신탁, 특정금전신탁 등 다양한 신탁 상품을 운영하며, 신영자산운용과 연계한 펀드 판매도 수행합니다. 특히 신영자산운용의 가치투자 철학은 장기 성과에서 우수한 트랙레코드를 보유하고 있습니다.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="content-card">
+                <h3><i class="fas fa-history"></i> 역사 및 주요 마일스톤</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1956년</div>
+                        <div class="timeline-text">신영증권주식회사 설립 - 대한민국 증권업의 초창기 주자로 출발</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1971년</div>
+                        <div class="timeline-text">원국희 회장 인수 - 보수적 경영 철학 수립, 장기 흑자 경영의 기반 마련</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1987년</div>
+                        <div class="timeline-text">KOSPI 상장 - 한국증권거래소 상장으로 자본시장과의 접점 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003년</div>
+                        <div class="timeline-text">신영자산운용 설립 - 가치투자 기반 자산운용 사업 진출, 장기 성과 우수</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010년</div>
+                        <div class="timeline-text">자산관리 부문 강화 - WM 전략 추진, 고액자산가 PB 서비스 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015년</div>
+                        <div class="timeline-text">WM 전문화 전략 본격화 - 투자일임·투자자문 역량 고도화</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020년</div>
+                        <div class="timeline-text">디지털 전환 추진 - MTS·HTS 고도화, 비대면 서비스 확대</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025년</div>
+                        <div class="timeline-text">영업이익 사상 최대 1,912억원 달성 - 32년 연속 흑자 경영 기록 갱신</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Deep Analysis</span>
+        </div>
+
+        <!-- SECTION 2: 기술 분석 -->
+        <section id="technology">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-microchip"></i> Section 02</div>
+                <h2>기술 분석</h2>
+                <p>증권 IT 인프라와 디지털 전환 전략</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-laptop-code"></i> 트레이딩 시스템 및 IT 인프라</h3>
+                <p>신영증권은 안정적 트레이딩 시스템 운영을 핵심 IT 역량으로 삼고 있습니다. 자체 개발한 HTS(홈트레이딩시스템)와 MTS(모바일트레이딩시스템)를 운영하며, 2020년부터 디지털 전환을 추진하여 비대면 채널의 기능과 안정성을 대폭 강화했습니다. 주문 처리 지연시간(latency)을 밀리초 단위로 관리하며, 시스템 가용성 99.95% 이상을 유지하고 있습니다.</p>
+                <p>채권 트레이딩에서는 알고리즘 기반의 자동 호가 시스템을 운영하여, 대형사 대비 규모는 작지만 채권 시장에서의 마켓메이킹 역량을 확보하고 있습니다. 또한 리스크 관리 시스템(RMS)을 고도화하여 실시간 포지션 모니터링, VaR(Value at Risk) 한도 관리, 스트레스 테스트 등을 자동화하고 있습니다.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTS/MTS</span>
+                    <span class="tech-badge">채권 알고트레이딩</span>
+                    <span class="tech-badge">RMS 리스크관리</span>
+                    <span class="tech-badge">API 트레이딩</span>
+                    <span class="tech-badge">클라우드 인프라</span>
+                    <span class="tech-badge">데이터 분석</span>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-brain"></i> 데이터 기반 투자 분석</h3>
+                <p>신영증권 리서치센터는 국내 중소형 증권사 중에서도 독자적 리서치 역량을 보유하고 있습니다. 특히 가치투자 관점의 기업 분석에 강점을 가지며, 신영자산운용의 투자 철학과 연계된 장기적 시각의 분석이 차별점입니다. 빅데이터 분석을 활용한 산업 트렌드 분석, 재무 데이터 스크리닝, 퀀트 모델링 등을 수행하고 있습니다.</p>
+                <p>고객 자산관리 영역에서는 로보어드바이저 기술을 도입하여 중소형 고객에게도 체계적 자산배분 서비스를 제공하고 있습니다. 또한 고객 포트폴리오의 리스크-수익 프로파일을 자동 분석하여 PB에게 실시간 리밸런싱 권고를 제공하는 시스템을 운영 중입니다. 다만 대형 증권사 대비 IT 투자 규모의 한계로, 최첨단 기술의 도입 속도에서는 차이가 존재합니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-mobile-alt"></i> 디지털 채널 전략</h3>
+                    <p>2020년 디지털 전환 추진 이후, 신영증권은 MTS 앱의 UI/UX를 전면 개편하고, 비대면 계좌 개설, 온라인 투자상품 가입, 모바일 뱅킹 연동 등 디지털 서비스를 확대했습니다. 특히 고령 고객층이 많은 특성을 고려하여 직관적이고 접근성 높은 인터페이스 설계에 주력하고 있습니다.</p>
+                    <ul>
+                        <li>모바일 앱 리뉴얼 및 간편 주문 기능</li>
+                        <li>비대면 계좌 개설 및 투자상품 가입</li>
+                        <li>실시간 시세·공시·리서치 제공</li>
+                        <li>카카오톡 알림 서비스 연동</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-shield-alt"></i> 정보보안 및 컴플라이언스</h3>
+                    <p>금융기관으로서 정보보안은 최우선 과제입니다. 신영증권은 ISMS(정보보호관리체계) 인증을 유지하며, 사이버 위협에 대한 24/7 모니터링 체계를 운영하고 있습니다. 내부통제 시스템을 통해 미공개 정보 이용, 이해충돌 방지, 시장 조작 행위 탐지 등 컴플라이언스 기능을 자동화하고 있습니다.</p>
+                    <ul>
+                        <li>ISMS 인증 및 정보보안 관리체계</li>
+                        <li>24/7 사이버 위협 모니터링</li>
+                        <li>내부통제 자동화 시스템</li>
+                        <li>임직원 교육 및 모의훈련</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-robot"></i> 핀테크 대응 및 미래 기술</h3>
+                <p>핀테크 기업과 빅테크의 금융업 진출이 가속화되는 환경에서, 신영증권은 자체 디지털 역량 강화와 외부 협업을 병행하는 전략을 추진하고 있습니다. API 기반의 오픈뱅킹 시스템 연동, 마이데이터 사업 참여, 클라우드 기반 인프라 전환 등을 단계적으로 추진하고 있습니다.</p>
+                <p>다만 토스증권, 카카오페이증권 등 디지털 네이티브 증권사와의 기술 격차는 인정되는 부분이며, 이에 대응하기 위해 기존 고객 기반(고액자산가, 기관투자자)에 특화된 디지털 서비스로 차별화를 추구하고 있습니다. 보수적 경영 철학에 기반한 안정성과 대면 서비스의 품질을 디지털 채널에서도 구현하는 것이 핵심 전략입니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Market Intelligence</span>
+        </div>
+
+        <!-- SECTION 3: 시장 분석 -->
+        <section id="market">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chart-line"></i> Section 03</div>
+                <h2>시장 분석</h2>
+                <p>국내 증권업 시장 구조와 경쟁 환경</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-globe-asia"></i> 국내 증권업 시장 구조</h3>
+                <p>대한민국 증권업은 대형 5사(미래에셋증권, 한국투자증권, NH투자증권, 삼성증권, KB증권)가 전체 시장의 약 60%를 점유하는 과점 구조입니다. 신영증권은 총자산 13.1조원, 자본 2.0조원 규모로 중형 증권사에 해당하며, 대형사와의 규모 경쟁보다는 안정적 경영과 차별화된 서비스로 시장 내 독자적 포지션을 구축하고 있습니다.</p>
+                <p>2025년 국내 증권업 전체 순이익은 전년 대비 크게 개선되었으며, 이는 주식시장 활황, 채권 시장 안정화, IB(투자은행) 딜 증가 등이 복합적으로 작용한 결과입니다. 코스피가 사상 최고치를 갱신하면서 거래량 증가에 따른 위탁매매 수수료가 증가했고, 금리 안정화에 따른 채권 평가이익도 실적에 기여했습니다.</p>
+                <p>증권업의 수익 구조는 전통적 브로커리지(위탁매매)에서 자산관리(WM), 투자은행(IB), 자기매매(PI)로 다변화되고 있습니다. 신영증권은 WM과 자기매매에서 상대적 강점을 보이며, IB 부문은 대형사 대비 열위에 있으나 중소형 딜 중심으로 역량을 축적하고 있습니다.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-bar"></i> 시장 성장 동력</h3>
+                    <ul>
+                        <li><strong>고령화·자산관리 수요 증가:</strong> 초고령사회 진입과 함께 은퇴 자산관리, 연금 투자, 상속·증여 설계 등 WM 수요가 구조적으로 증가하고 있습니다. 신영증권의 핵심 고객층인 50~70대 자산가 세그먼트가 확대됩니다.</li>
+                        <li><strong>개인투자자 시장 참여 확대:</strong> 개인투자자의 주식시장 참여율 증가와 투자 문화 확산으로 위탁매매 수수료 및 금융상품 판매 수익이 증가하고 있습니다.</li>
+                        <li><strong>채권 시장 성장:</strong> 국채, 회사채, 구조화 채권 등 채권 시장 규모 확대와 기관투자자의 채권 운용 수요 증가가 트레이딩 수익에 긍정적입니다.</li>
+                        <li><strong>신탁·연금 시장:</strong> 금전신탁, 퇴직연금 시장 규모가 지속 성장하며, 이는 안정적 수수료 수익 기반이 됩니다.</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 시장 리스크 요인</h3>
+                    <ul>
+                        <li><strong>수수료 인하 경쟁:</strong> 무료 수수료 정책을 내세운 핀테크 증권사의 공격적 마케팅으로 위탁매매 수수료율이 지속 하락하고 있습니다. 장기적으로 브로커리지 수익 감소가 불가피합니다.</li>
+                        <li><strong>핀테크·빅테크 진출:</strong> 토스증권, 카카오페이증권, 네이버페이 등 디지털 플랫폼의 증권업 진출로 젊은 세대 고객 유치 경쟁이 심화되고 있습니다.</li>
+                        <li><strong>시장 변동성 리스크:</strong> 글로벌 무역 갈등, 금리 변동, 지정학적 리스크 등으로 증시 변동성이 확대될 경우 자기매매 손실 및 거래량 감소 위험이 있습니다.</li>
+                        <li><strong>규제 환경 변화:</strong> 공매도 규제, 주식양도세 변화, 금융투자업 건전성 규제 강화 등이 증권업 수익성에 영향을 미칠 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-search-dollar"></i> 증권업 가치사슬과 수익 구조</h3>
+                <p>증권업의 수익 구조는 크게 4가지로 구분됩니다. 첫째, 위탁매매 수수료(브로커리지)로, 고객의 주식·채권·파생상품 거래에서 발생하는 수수료입니다. 전통적 핵심 수익원이나 수수료율 하락으로 비중이 감소 추세입니다. 둘째, 자기매매(PI) 수익으로, 자기자본을 활용한 주식·채권·파생상품 투자에서 발생합니다. 신영증권은 보수적 운용 전략으로 안정적 PI 수익을 시현하고 있습니다.</p>
+                <p>셋째, 자산관리(WM) 수수료로, 투자자문·투자일임·신탁 서비스에서 발생하는 관리 수수료입니다. 경기 변동에 상대적으로 덜 민감한 안정적 수익원으로, 신영증권이 전략적으로 강화하고 있는 부문입니다. 넷째, IB(투자은행) 수수료로, IPO 주관, 채권 발행, M&A 자문 등에서 발생합니다. 신영증권은 중소형 IB 딜을 중심으로 역량을 축적하고 있으나, 대형사 대비 파이프라인 규모는 제한적입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-landmark"></i> 규제 환경과 자본 건전성</h3>
+                <p>금융위원회와 금융감독원의 규제 하에 운영되는 증권업은 자본 건전성 관리가 핵심입니다. 신영증권의 순자본비율(NCR) 926.4%는 규제 최소 기준(100%)을 크게 상회하며, 이는 업계 최상위 수준입니다. 높은 순자본비율은 위기 시 충격 흡수 능력과 신규 사업 진출 여력을 의미합니다.</p>
+                <p>최근 금융당국은 증권사의 부동산 PF 익스포저 관리, 레버리지 한도, 유동성 비율 등에 대한 규제를 강화하고 있습니다. 신영증권은 보수적 경영 철학에 따라 부동산 PF 익스포저가 상대적으로 낮고, 건전성 지표가 양호하여 규제 리스크가 제한적입니다. 다만 금융투자업 인가 체계 변화, 수수료 규제, 투자자 보호 규제 등의 정책 동향은 지속적으로 모니터링해야 합니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Competitive Landscape</span>
+        </div>
+
+        <!-- SECTION 4: 경쟁사 분석 -->
+        <section id="competitors">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-users"></i> Section 04</div>
+                <h2>경쟁사 분석</h2>
+                <p>국내 주요 증권사 비교 분석</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-balance-scale"></i> 주요 증권사 비교</h3>
+                <p>신영증권은 중형 증권사로서 대형 5사와의 직접 경쟁보다는, 안정적 경영과 WM 전문성으로 차별화된 포지션을 구축하고 있습니다. 아래 표는 주요 경쟁사와의 핵심 지표 비교입니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>신영증권</th>
+                            <th>한국투자증권</th>
+                            <th>미래에셋증권</th>
+                            <th>NH투자증권</th>
+                            <th>삼성증권</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>설립</strong></td>
+                            <td style="color:var(--gold)">1956년</td>
+                            <td>1974년</td>
+                            <td>1970년</td>
+                            <td>1969년</td>
+                            <td>1982년</td>
+                        </tr>
+                        <tr>
+                            <td><strong>총자산</strong></td>
+                            <td>13.1조</td>
+                            <td>약 80조</td>
+                            <td>약 85조</td>
+                            <td>약 70조</td>
+                            <td>약 55조</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자본</strong></td>
+                            <td>2.0조</td>
+                            <td>약 9조</td>
+                            <td>약 12조</td>
+                            <td>약 8조</td>
+                            <td>약 6조</td>
+                        </tr>
+                        <tr>
+                            <td><strong>연속 흑자</strong></td>
+                            <td style="color:var(--gold)">32년+</td>
+                            <td>해당 없음</td>
+                            <td>해당 없음</td>
+                            <td>해당 없음</td>
+                            <td>해당 없음</td>
+                        </tr>
+                        <tr>
+                            <td><strong>핵심 강점</strong></td>
+                            <td>안정 경영, WM</td>
+                            <td>IB, PI</td>
+                            <td>글로벌, PI</td>
+                            <td>리테일, IB</td>
+                            <td>WM, 디지털</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NCR</strong></td>
+                            <td style="color:var(--gold)">926.4%</td>
+                            <td>약 300%</td>
+                            <td>약 350%</td>
+                            <td>약 280%</td>
+                            <td>약 400%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자사주 비율</strong></td>
+                            <td style="color:var(--gold)">53%+</td>
+                            <td>약 5%</td>
+                            <td>약 3%</td>
+                            <td>약 2%</td>
+                            <td>약 10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-chess"></i> 경쟁 구도 심층 분석</h3>
+                <p><strong>대형 증권사와의 차별화:</strong> 한국투자증권, 미래에셋증권 등 대형사는 자본력을 바탕으로 대형 IB 딜, 글로벌 사업, 대규모 PI 운용에서 우위를 점합니다. 신영증권은 이들과의 정면 경쟁을 피하고, 보수적 리스크 관리, 장기 가치투자 철학, 맞춤형 WM 서비스로 차별화합니다. 32년 연속 흑자는 어떤 대형사도 달성하지 못한 기록으로, 안정적 투자를 선호하는 고객에게 강력한 신뢰 요소입니다.</p>
+                <p><strong>디지털 증권사와의 경쟁:</strong> 토스증권, 카카오페이증권 등 디지털 네이티브 증권사는 무료 수수료, 간편한 UX, 대규모 사용자 기반으로 젊은 세대를 빠르게 흡수하고 있습니다. 신영증권은 이 세그먼트에서 열위에 있지만, 대면 서비스 품질과 전문 리서치를 원하는 중장년 자산가 세그먼트에서는 경쟁력을 유지하고 있습니다.</p>
+                <p><strong>유사 규모 중형사와의 비교:</strong> 대신증권, 키움증권, 하나증권 등 유사 규모의 중형 증권사와 비교 시, 신영증권의 차별점은 압도적인 재무 건전성(NCR 926.4%)과 자사주 비율(53%+)입니다. 다만 디지털 경쟁력과 IB 파이프라인에서는 키움증권(온라인 트레이딩 강자) 등에 비해 상대적 열위입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-trophy"></i> 신영증권의 핵심 경쟁 우위</h3>
+                <ul>
+                    <li><strong>53년 연속 흑자 경영:</strong> 국내 금융회사 중 유일무이한 기록으로, 경기 침체·금융위기를 포함한 어떤 환경에서도 흑자를 유지한 리스크 관리 역량의 증거입니다.</li>
+                    <li><strong>압도적 재무 건전성:</strong> NCR 926.4%, 자산부채비율 118.1%로 업계 최상위 안전성을 보유하며, 이는 규제 리스크와 시장 충격에 대한 높은 내성을 의미합니다.</li>
+                    <li><strong>자사주 53% 보유:</strong> 한국 상장사 중 자사주 비중 1위로, 경영권 안정성과 주주가치 보호에 기여하며, 향후 자사주 소각 등 주주환원 여력도 보유합니다.</li>
+                    <li><strong>가치투자 철학:</strong> 신영자산운용의 가치투자 철학은 장기 성과에서 우수한 트랙레코드를 보유하며, 이는 WM 고객 신뢰의 기반입니다.</li>
+                    <li><strong>보수적 리스크 관리:</strong> 부동산 PF 등 고위험 자산에 대한 신중한 접근으로, 업계 전반의 리스크가 현실화되는 국면에서도 안정적 실적을 유지합니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Strategic Framework</span>
+        </div>
+
+        <!-- SECTION 5: SWOT 분석 -->
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-th-large"></i> Section 05</div>
+                <h2>SWOT 분석</h2>
+                <p>신영증권의 전략적 포지션 평가</p>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-star" style="color:var(--gold)"></i> Strengths (강점)</h3>
+                    <ul>
+                        <li><strong>장기 흑자 경영의 신뢰:</strong> 53년 연속 흑자(32년 이상 연속)는 국내 금융업계 유일무이한 기록으로, 보수적 리스크 관리 역량의 증거이며 고객·투자자 신뢰의 근간입니다.</li>
+                        <li><strong>압도적 재무 건전성:</strong> NCR 926.4%, 자산부채비율 118.1%로 업계 최상위 안전성을 보유하며, 어떤 시장 환경에서도 생존 가능한 자본 버퍼를 확보하고 있습니다.</li>
+                        <li><strong>자사주 53%의 구조적 강점:</strong> 한국 상장사 자사주 비중 1위로, 경영권 안정성, 주주가치 보호, 향후 소각을 통한 주가 부양 여력을 동시에 보유합니다.</li>
+                        <li><strong>가치투자 기반 WM 역량:</strong> 신영자산운용의 우수한 장기 성과와 연계된 자산관리 서비스는 고액자산가 세그먼트에서 차별적 경쟁력을 제공합니다.</li>
+                        <li><strong>2025 사상 최대 실적:</strong> 영업이익 1,912억원(+40.4%)으로 성장성도 입증하며, 안정성과 성장의 균형을 달성했습니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-exclamation-circle" style="color:var(--blue)"></i> Weaknesses (약점)</h3>
+                    <ul>
+                        <li><strong>대형사 대비 규모 열세:</strong> 총자산 13.1조원, 자본 2.0조원으로 대형 5사 대비 5~6배 작은 규모이며, 이는 대형 IB 딜 참여, 글로벌 사업, 대규모 PI 운용에서 구조적 한계로 작용합니다.</li>
+                        <li><strong>디지털 경쟁력 한계:</strong> 디지털 네이티브 증권사 대비 모바일 앱 UX, 사용자 기반, 디지털 마케팅 역량에서 열위이며, 젊은 세대 고객 유치에 어려움이 있습니다.</li>
+                        <li><strong>IB 파이프라인 부족:</strong> 대형 IPO, 대형 M&A 자문 등 고수익 IB 딜에서의 참여가 제한적이며, 이는 수익 다변화의 한계로 이어집니다.</li>
+                        <li><strong>지점 네트워크 축소:</strong> 9개 지점만 운영하여 전국적 접점이 제한적이며, 지방 고객 접근성이 낮습니다.</li>
+                        <li><strong>브랜드 인지도:</strong> 일반 소비자 대상 브랜드 인지도가 대형사 대비 낮아, 리테일 고객 확보에 불리합니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--gold)"><i class="fas fa-lightbulb" style="color:var(--gold)"></i> Opportunities (기회)</h3>
+                    <ul>
+                        <li><strong>고령화·자산관리 수요 급증:</strong> 초고령사회 진입으로 은퇴 자산관리, 연금 투자, 상속·증여 컨설팅 수요가 폭발적으로 증가하며, 이는 신영증권 WM 사업의 핵심 성장 동력입니다.</li>
+                        <li><strong>자사주 활용 주주환원:</strong> 53% 자사주 소각 시 유통주식 감소에 따른 EPS 증가, 주가 상승이 기대되며, 이는 기업가치 재평가의 트리거가 될 수 있습니다.</li>
+                        <li><strong>채권 시장 성장:</strong> 국채, ESG 채권, 구조화 채권 등 채권 시장 규모 확대로 채권 트레이딩 및 채권형 상품 판매 수익 증가가 기대됩니다.</li>
+                        <li><strong>밸류업 프로그램:</strong> 정부의 기업 밸류업 프로그램 참여를 통한 주주가치 제고 전략이 주가 리레이팅 기회를 제공합니다.</li>
+                        <li><strong>니치 시장 전문화:</strong> 중소형 IPO, 중소기업 M&A, 가족기업 승계 등 니치 IB 영역에서 전문성을 구축할 기회가 있습니다.</li>
+                    </ul>
+                </div>
+                <div class="swot-card">
+                    <h3 style="color:var(--blue)"><i class="fas fa-shield-alt" style="color:var(--blue)"></i> Threats (위협)</h3>
+                    <ul>
+                        <li><strong>수수료 인하 경쟁 심화:</strong> 핀테크 증권사의 무료·초저가 수수료 정책으로 위탁매매 수수료율이 지속 하락하고 있으며, 이는 전통적 수익원의 구조적 침식을 의미합니다.</li>
+                        <li><strong>핀테크·빅테크 진출:</strong> 토스, 카카오, 네이버 등 플랫폼 기업의 금융업 진출로 개인투자자 시장에서의 경쟁이 급격히 심화되고 있습니다.</li>
+                        <li><strong>시장 변동성 리스크:</strong> 글로벌 무역 갈등, 금리 변동, 지정학적 리스크에 따른 증시 급락 시 자기매매 손실과 거래량 감소가 동시에 발생할 수 있습니다.</li>
+                        <li><strong>인재 유출:</strong> 대형사의 공격적 보상 패키지로 인한 핵심 인재(리서치 애널리스트, PB, 트레이더) 유출 리스크가 상존합니다.</li>
+                        <li><strong>규제 변화:</strong> 증권업 건전성 규제 강화, 투자자 보호 규정 변화, 세제 변경 등이 수익성에 부정적 영향을 미칠 가능성이 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Growth Strategy</span>
+        </div>
+
+        <!-- SECTION 6: 전략 분석 -->
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-chess-king"></i> Section 06</div>
+                <h2>전략 분석</h2>
+                <p>안정 경영 기반의 성장 전략</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> 경영 전략 프레임워크</h3>
+                <p>신영증권의 경영 전략은 '안정 위의 성장'이라는 철학에 기반합니다. 53년 연속 흑자를 가능하게 한 보수적 리스크 관리를 유지하면서, 자산관리(WM) 사업 확대, 디지털 전환, 수익 다변화를 통해 성장을 추구합니다.</p>
+                <ul>
+                    <li><strong>WM 사업 고도화:</strong> 고액자산가 대상 맞춤형 자산관리 서비스를 강화하고, 은퇴 설계, 상속·증여 컨설팅, 해외 자산 투자 등 종합 WM 플랫폼으로의 발전을 추진합니다. 신영자산운용과의 시너지를 극대화하여 가치투자 기반의 차별화된 WM 서비스를 제공합니다.</li>
+                    <li><strong>디지털 역량 강화:</strong> MTS·HTS의 기능과 UX를 지속 개선하고, 로보어드바이저, 데이터 분석 등 기술 투자를 확대합니다. 다만 디지털 네이티브 증권사와의 기술 경쟁보다는 기존 고객 기반에 특화된 디지털 서비스에 집중합니다.</li>
+                    <li><strong>수익 다변화:</strong> 위탁매매 수수료 의존도를 낮추고, 자산관리 수수료, 채권 트레이딩 수익, 신탁 수수료 등 다양한 수익원의 비중을 확대합니다.</li>
+                    <li><strong>리스크 관리 고도화:</strong> 보수적 경영 철학을 유지하면서 리스크 관리 시스템을 첨단화하여, 시장 충격에 대한 대응 역량을 강화합니다.</li>
+                </ul>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-hand-holding-usd"></i> 주주환원 전략</h3>
+                    <p>신영증권의 가장 강력한 주주가치 제고 카드는 53% 자사주 활용입니다. 자사주 소각은 유통주식 수를 줄여 EPS(주당순이익)를 즉시 증가시키며, 이는 주가 상승의 직접적 트리거가 됩니다. 정부의 기업 밸류업 프로그램과 맞물려 자사주 활용에 대한 시장의 기대가 높아지고 있습니다.</p>
+                    <p>배당 정책도 안정적으로 운영되고 있습니다. 32년 연속 흑자 경영으로 배당 재원이 안정적이며, 실적 개선에 따른 배당 증가 여력도 충분합니다. 다만 자사주 소각 시기와 규모, 배당 성향의 변화 등은 아직 구체화되지 않아 시장의 기대와 실행 사이의 갭이 존재합니다.</p>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line"></i> 성장 동력 확보 전략</h3>
+                    <p>신영증권은 규모의 한계를 인정하면서, 차별화된 영역에서의 전문성 확보를 통해 성장을 추구합니다. 고령화 트렌드에 맞춘 은퇴 자산관리 전문화, 가족기업 승계 컨설팅, 중소기업 금융 솔루션 등이 핵심 성장 영역입니다.</p>
+                    <p>채권 운용 역량을 바탕으로 한 채권형 자산관리 상품 확대, ESG 관련 투자 상품 개발, 해외 자산 투자 서비스 확대 등도 추진합니다. 신영자산운용과의 협업을 통해 차별화된 펀드 라인업을 구축하고, 이를 WM 채널을 통해 판매하는 수직 통합 전략을 강화하고 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-users-cog"></i> 인재 및 조직 전략</h3>
+                <p>증권업에서 인재는 핵심 자산입니다. 신영증권은 장기근속 문화를 바탕으로 안정적인 인적 자원 관리를 수행하고 있습니다. 평균 근속연수가 업계 평균을 상회하며, 이는 고객 관계의 연속성과 업무 전문성 축적에 긍정적으로 작용합니다. 다만 대형사의 공격적 보상 패키지에 대응하기 위한 핵심 인재 유지 전략이 필요합니다.</p>
+                <p>조직 구조 측면에서는 WM, 트레이딩, IB, 리서치 등 사업 부문별 전문성을 강화하면서, 부문 간 협업 시너지를 극대화하는 매트릭스 조직 운영을 추진하고 있습니다. 특히 리서치 역량과 WM 서비스의 연계, 채권 트레이딩과 자산관리의 융합 등 내부 시너지 강화가 핵심 과제입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-leaf"></i> ESG 경영 및 사회적 책임</h3>
+                <p>신영증권은 ESG 경영을 통한 지속가능한 성장을 추구하고 있습니다. 환경(E) 측면에서는 사옥의 에너지 효율 개선, 탄소배출 감축, ESG 관련 투자 상품 개발 등을 추진합니다. 사회(S) 측면에서는 금융 소외계층 지원, 청소년 금융교육, 지역사회 공헌 활동 등을 실행하고 있습니다. 지배구조(G) 측면에서는 이사회 독립성 강화, 내부통제 체계 고도화, 투명한 경영 공시 등을 통해 기업 거버넌스를 개선하고 있습니다.</p>
+                <p>특히 신영자산운용은 ESG 투자 원칙을 수립하여, 투자 의사결정에 ESG 요소를 반영하고 있습니다. 이는 장기 가치투자 철학과 자연스럽게 연계되며, ESG 관심도가 높은 기관투자자 자금 유치에 기여하고 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Financial Deep Dive</span>
+        </div>
+
+        <!-- SECTION 7: 재무 분석 -->
+        <section id="finance">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-calculator"></i> Section 07</div>
+                <h2>재무 분석</h2>
+                <p>사상 최대 실적의 구조 분석과 전망</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-won-sign"></i> 영업이익 추이 (2020~2025)</h3>
+                <p>신영증권은 2025 회계연도(2025.04~2026.03)에 영업이익 1,912억원을 달성하며 사상 최대 실적을 기록했습니다. 전년 대비 40.4% 증가한 수치로, 주식시장 활황, 채권 운용 수익 증가, WM 수수료 확대 등이 복합적으로 기여했습니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 영업이익 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:52%"></div>
+                            </div>
+                            <div class="bar-value">990억</div>
+                            <div class="bar-label">2020</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:60%"></div>
+                            </div>
+                            <div class="bar-value">1,150억</div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:55%"></div>
+                            </div>
+                            <div class="bar-value">1,050억</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:58%"></div>
+                            </div>
+                            <div class="bar-value">1,100억</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:72%"></div>
+                            </div>
+                            <div class="bar-value">1,361억</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:100%"></div>
+                            </div>
+                            <div class="bar-value">1,912억</div>
+                            <div class="bar-label">2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-percentage"></i> 매출 및 순이익 추이</h3>
+                <p>2025 회계연도 매출은 3.13조원으로 전년 대비 27% 증가했습니다. 순이익은 1,497억원으로 33.3% 증가하며, 영업이익률과 순이익률 모두 개선되었습니다. 이는 매출 증가와 함께 비용 효율화가 동시에 이루어진 결과입니다.</p>
+                <div class="chart-container">
+                    <h3 style="color:var(--ink);font-size:16px;margin-bottom:8px;"><i class="fas fa-chart-bar" style="color:var(--gold);margin-right:8px;"></i>연간 매출 추이</h3>
+                    <div class="bar-items">
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:58%"></div>
+                            </div>
+                            <div class="bar-value">1.82조</div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:55%"></div>
+                            </div>
+                            <div class="bar-value">1.72조</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:63%"></div>
+                            </div>
+                            <div class="bar-value">1.97조</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:79%"></div>
+                            </div>
+                            <div class="bar-value">2.47조</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:100%"></div>
+                            </div>
+                            <div class="bar-value">3.13조</div>
+                            <div class="bar-label">2025</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-container">
+                                <div class="bar" style="height:92%;background:linear-gradient(180deg, var(--blue) 0%, var(--blue-dim) 100%)"></div>
+                            </div>
+                            <div class="bar-value" style="color:var(--blue)">2.9조E</div>
+                            <div class="bar-label">2026E</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-card">
+                    <h3><i class="fas fa-balance-scale-right"></i> 재무 건전성 지표</h3>
+                    <p>신영증권의 재무 건전성은 국내 증권업계에서 독보적 수준입니다. 보수적 경영 철학이 수십 년간 축적된 결과이며, 이는 위기 시 최대의 경쟁 우위가 됩니다.</p>
+                    <ul>
+                        <li><strong>순자본비율(NCR):</strong> 926.4% (규제 최소 100%)</li>
+                        <li><strong>자산부채비율:</strong> 118.1% (안정적)</li>
+                        <li><strong>총자산:</strong> 13.1조원</li>
+                        <li><strong>자본총계:</strong> 2.0조원</li>
+                        <li><strong>자사주 비율:</strong> 53%+ (상장사 1위)</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3><i class="fas fa-coins"></i> 수익성 지표</h3>
+                    <p>2025 회계연도 사상 최대 실적 달성으로 수익성 지표가 전반적으로 개선되었습니다. 특히 영업이익률과 ROE가 동시에 상승하며 질적 성장이 확인됩니다.</p>
+                    <ul>
+                        <li><strong>매출:</strong> 3.13조원 (+27% YoY)</li>
+                        <li><strong>영업이익:</strong> 1,912억원 (+40.4% YoY)</li>
+                        <li><strong>순이익:</strong> 1,497억원 (+33.3% YoY)</li>
+                        <li><strong>영업이익률:</strong> 약 6.1%</li>
+                        <li><strong>ROE:</strong> 약 7.5%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> 수익 구조 분석</h3>
+                <p>신영증권의 수익 구조는 자기매매 수익, 위탁매매 수수료, 자산관리 수수료, 이자수익 등으로 다변화되어 있습니다. 2025 회계연도 실적 급증의 주요 동인은 자기매매 부문의 채권 운용 수익 증가와 주식시장 활황에 따른 위탁매매 수수료 증가였습니다.</p>
+                <p>자기매매(PI) 부문에서는 채권 운용에서 금리 하락 국면의 채권 평가이익이 크게 기여했으며, 주식 운용에서도 시장 상승에 따른 자본이득이 발생했습니다. 보수적 운용 철학에 따라 레버리지를 낮게 유지하면서도 양호한 수익을 시현한 것은 운용 역량의 증거입니다.</p>
+                <p>위탁매매 부문에서는 코스피 사상 최고치 갱신과 개인투자자 거래량 증가로 수수료 수익이 확대되었습니다. 자산관리 부문에서는 투자일임·투자자문 잔고 증가와 신탁 수수료 수입 확대가 안정적 수수료 기반을 형성하고 있습니다. 이자수익은 높은 순자본비율에 기반한 여유 자금의 채권 운용에서 발생하며, 금리 환경에 따라 변동합니다.</p>
+            </div>
+        </section>
+
+        <!-- SECTION DIVIDER -->
+        <div class="section-divider">
+            <span class="section-divider-text">Investment Outlook</span>
+        </div>
+
+        <!-- SECTION 8: 결론 및 투자 의견 -->
+        <section id="conclusion">
+            <div class="section-header">
+                <div class="section-badge"><i class="fas fa-flag-checkered"></i> Section 08</div>
+                <h2>결론 및 투자 의견</h2>
+                <p>종합 평가와 투자 시사점</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-clipboard-check"></i> 종합 평가</h3>
+                <p>신영증권은 1956년 설립 이후 53년 연속 흑자라는 국내 금융업계 유일무이한 기록을 보유한 증권사입니다. NCR 926.4%, 자사주 비율 53%+ 등 압도적 재무 건전성과 경영 안정성이 최대 강점이며, 2025 회계연도 영업이익 1,912억원(+40.4%) 사상 최대 실적 달성으로 성장성도 입증했습니다.</p>
+                <p>FLOVAH 종합 점수 58점은 신영증권의 구조적 특성을 반영합니다. 대형사 대비 규모 열세, 디지털 경쟁력 한계, IB 파이프라인 부족 등이 주요 감점 요인이지만, 보수적 경영의 안정성, 자사주 활용 잠재력, WM 전문성은 중형 증권사로서 독자적 가치를 형성합니다. 특히 고령화 트렌드에서의 WM 수요 확대와 자사주 소각 가능성은 중장기 기업가치 재평가의 핵심 변수입니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> 주요 리스크</h3>
+                <ul>
+                    <li><strong>시장 변동성:</strong> 글로벌 무역 갈등, 금리 변동 등에 따른 증시 급락 시 자기매매 손실과 거래량 감소가 동시에 발생할 수 있으며, 2025년 사상 최대 실적 유지 가능성에 대한 의문이 존재합니다.</li>
+                    <li><strong>수수료 경쟁 심화:</strong> 핀테크 증권사의 무료 수수료 정책 확산으로 위탁매매 수수료 수익의 구조적 하락이 불가피하며, 이에 대한 수익 대체 전략의 속도가 중요합니다.</li>
+                    <li><strong>자사주 활용 불확실성:</strong> 53% 자사주가 기대를 모으고 있지만, 소각 시기·규모에 대한 구체적 계획이 없어 기대 대비 실행 지연 리스크가 있습니다.</li>
+                    <li><strong>규모 한계:</strong> 대형사 대비 자본 규모의 한계로 인한 대형 딜 참여 기회 상실, 규제 변화 대응 비용 부담 등이 장기적 성장 제약 요인입니다.</li>
+                    <li><strong>디지털 전환 속도:</strong> 디지털 네이티브 증권사 대비 기술 투자 규모와 인력 확보에서 구조적 열위이며, 이는 신규 고객 유치에 부정적 영향을 미칩니다.</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-thumbs-up"></i> 투자 의견</h3>
+                <p><strong>평가 등급: 중립 (Neutral)</strong></p>
+                <p>신영증권은 안정성과 배당 매력을 갖춘 가치주로서의 투자 가치가 있습니다. 53년 연속 흑자와 NCR 926.4%의 재무 건전성은 하방 리스크를 제한하며, 자사주 53% 소각 가능성은 업사이드 트리거가 될 수 있습니다. 다만 대형사 대비 규모 열세, 디지털 경쟁력 한계, 성장성 제한 등이 적극적 매수를 어렵게 하는 요인입니다.</p>
+                <p><strong>추천 투자자 유형:</strong></p>
+                <ul>
+                    <li><strong>가치 투자자:</strong> PBR 1배 미만의 저평가 메리트와 자사주 소각을 통한 주주가치 제고 가능성에 주목하는 장기 투자자에게 적합합니다.</li>
+                    <li><strong>안정 지향 투자자:</strong> 32년+ 연속 흑자, 압도적 재무 건전성을 바탕으로 원금 손실 리스크를 최소화하고자 하는 보수적 투자자에게 적합합니다.</li>
+                    <li><strong>배당 투자자:</strong> 안정적 수익 기반에서 발생하는 배당과 자사주 활용 기대를 결합한 총수익률 투자를 추구하는 투자자에게 적합합니다.</li>
+                </ul>
+                <p><strong>투자 위험 수준:</strong> 낮음~중간(Low to Medium) - 압도적 재무 건전성으로 하방 리스크가 제한적이나, 성장성 제한이 상방 가능성을 억제합니다.</p>
+            </div>
+
+            <div class="content-card">
+                <h3><i class="fas fa-road"></i> 향후 주목할 점</h3>
+                <p><strong>2026년 핵심 이벤트:</strong></p>
+                <ul>
+                    <li>자사주(53%) 활용 계획 구체화 여부 (소각, 배당, 기타)</li>
+                    <li>2025 사상 최대 실적 이후 2026 실적 유지·성장 가능성</li>
+                    <li>WM 부문 성장률 및 투자일임·투자자문 잔고 변화</li>
+                    <li>디지털 전환 투자 규모 및 성과</li>
+                    <li>기업 밸류업 프로그램 참여 및 주주환원 정책 변화</li>
+                    <li>채권 시장 환경 변화와 자기매매 수익 변동</li>
+                </ul>
+                <p>신영증권이 자사주 활용을 통해 주주가치를 제고하고, WM 사업 확대로 안정적 수수료 수익 기반을 강화하며, 디지털 역량을 점진적으로 향상시킨다면, 중장기적으로 기업가치의 의미 있는 재평가가 가능할 것입니다. 특히 자사주 소각이 실행된다면 주가에 즉각적이고 강력한 긍정적 영향을 미칠 것으로 예상됩니다. 현 시점에서는 밸류에이션 매력과 자사주 활용 기대를 고려한 점진적 투자 접근이 적절한 전략으로 판단됩니다.</p>
+            </div>
+        </section>
+
+        <!-- REPORT FOOTER -->
+        <section style="margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--rule);">
+            <div class="report-info">
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-hourglass-end"></i></div>
+                    <div class="report-info-content">
+                        <h4>분석 기준일</h4>
+                        <p>2026년 6월 8일</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="report-info-content">
+                        <h4>면책사항</h4>
+                        <p>이 리포트는 교육 및 정보 제공 목적이며, 투자 권고가 아닙니다</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-robot"></i></div>
+                    <div class="report-info-content">
+                        <h4>작성 출처</h4>
+                        <p>FLOVAH Advanced Analytics</p>
+                    </div>
+                </div>
+                <div class="report-info-item">
+                    <div class="report-info-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="report-info-content">
+                        <h4>데이터 기준</h4>
+                        <p>신영증권 공시 자료 및 시장 조사 통합</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 2px solid var(--rule); margin: 56px 0;">
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule);">
+                <h4 style="color: var(--ink); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px;"><i class="fas fa-book"></i> 분석 자료 출처</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 13px; line-height: 1.8;">
+                    <li>신영증권 공시 자료 (2025 회계연도 연간보고서, 분기보고서)</li>
+                    <li>한국거래소(KRX) 및 신영증권 Investor Relations 공개 정보</li>
+                    <li>금융감독원 전자공시시스템(DART) 재무 데이터</li>
+                    <li>금융투자협회 증권업 통계 및 시장 분석 자료</li>
+                    <li>신영자산운용 운용 보고서 및 성과 데이터</li>
+                    <li>한국투자증권, 미래에셋증권, NH투자증권, 삼성증권 등 경쟁사 공시 자료</li>
+                    <li>한국은행 경제통계, 자본시장연구원 시장 분석 자료</li>
+                    <li>국내외 주요 증권사 리서치 리포트</li>
+                </ul>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-card); border-top: 1px solid var(--rule); margin-top: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.8; text-align: center;">
+                <p><strong>면책사항:</strong> 본 리포트는 공개된 정보와 FLOVAH의 분석을 기반으로 작성되었습니다. 이는 교육 및 정보 제공 목적이며, 투자 권고 또는 특정 거래 권유가 아닙니다. 투자 결정은 개인의 투자 판단과 책임 하에 이루어져야 하며, 과거 성과는 미래 성과를 보장하지 않습니다. 기술, 시장, 지정학적 요인에 따른 예측 불확실성이 존재합니다. 본 분석 내용의 정확성과 완전성을 보장하지 않으며, 시장 변화에 따라 의견은 예고 없이 변경될 수 있습니다.</p>
+                <p style="margin-top: 16px;"><strong>FLOVAH Advanced Analytics</strong> | 최종 업데이트: 2026년 06월 08일 09:00 KST</p>
+                <p>이 리포트의 모든 콘텐츠에 대한 저작권은 FLOVAH에 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active link highlight on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate progress bars on view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-bar-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.animation = 'none';
+                            setTimeout(() => {
+                                fill.style.animation = '';
+                            }, 10);
+                        }, index * 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- DAILY-MARKET-CARD -->
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px 0;">
+  <div style="padding:24px 28px;background:linear-gradient(135deg,rgba(201,169,98,0.08) 0%,rgba(92,125,158,0.06) 100%);border:1px solid var(--border);border-radius:12px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <i class="fas fa-globe-asia" style="color:var(--gold);font-size:14px;"></i>
+      <strong style="color:var(--text-light);font-size:15px;letter-spacing:0.3px;">2026-06-08 시장 동향 브리프</strong>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Market Pulse</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">코스피·코스닥</div>코스피 8,800선 이후 글로벌 관세 이슈로 급락세. 美 상호관세 확대 우려와 외국인 매도세 지속으로 투자심리 위축. 기술적 반등 기대감은 유지되나 변동성 관리 필수.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">반도체·AI</div>삼성전자·SK하이닉스 관세 충격에도 HBM·AI 반도체 수요는 구조적 성장세 유지. 엔비디아 블랙웰 수요 강세 지속, 국내 반도체 장비·소재주 동반 조정.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">매크로 변수</div>미중 무역 갈등 재점화로 글로벌 증시 동반 하락. 원/달러 환율 1,400원대 후반 등락, 한은 금리 인하 기대감과 인플레이션 우려 병존.</div>
+      <div><div style="color:var(--gold);font-weight:600;font-size:12px;margin-bottom:4px;">섹터 동향</div>방산·조선 섹터 수주잔고 확대 지속. 2차전지 업종 단기 조정 이후 반등 시도. 바이오 섹터는 글로벌 임상 결과 발표 시즌 돌입.</div>
+    </div>
+  </div>
+</div>
+<!-- /DAILY-MARKET-CARD -->
+<!-- LAST-UPDATE-BLOCK -->
+<div style="max-width:1100px;margin:0 auto;padding:20px 40px 0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;">
+        <i class="fas fa-sync-alt" style="color:var(--gold);font-size:12px;"></i>
+        <span style="font-size:13px;color:var(--text-secondary);">최종 업데이트: <strong style="color:var(--text-light);">2026년 06월 08일 09:00 KST</strong></span>
+        <span style="margin-left:auto;font-size:11px;color:var(--text-muted);">FLOVAH Auto-Monitor</span>
+    </div>
+</div>
+<!-- /LAST-UPDATE-BLOCK -->
+</body>
+</html>
